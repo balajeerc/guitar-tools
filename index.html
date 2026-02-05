@@ -9,72 +9,88 @@
 </head>
 
 <body>
+    <!-- Fixed HTML -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="#scales" class="nav-link">Scales</a>
+            <a href="#fretboard-discovery" class="nav-link">Fretboard Discovery</a>
+        </div>
+    </nav>
+
     <div class="container">
-        <!-- Controls -->
-        <div class="controls">
-            <div class="control-group">
-                <span class="control-label">Root Note:</span>
-                <div class="note-selector">
-                    <button class="note-btn" id="prevNote">&lt;</button>
-                    <div class="note-display" id="currentNote">C</div>
-                    <button class="note-btn" id="nextNote">&gt;</button>
+        <!-- Scales Feature -->
+        <div id="scales-page" class="page">
+            <!-- Controls -->
+            <div class="controls">
+                <div class="control-group">
+                    <span class="control-label">Root Note:</span>
+                    <div class="note-selector">
+                        <button class="note-btn" id="prevNote">&#10094;</button>
+                        <div class="note-display" id="currentNote">C</div>
+                        <button class="note-btn" id="nextNote">&#10095;</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <span class="control-label">Pentatonic:</span>
+                    <div class="toggle-group">
+                        <button class="toggle-btn active" id="majorBtn" data-scale="major">Major</button>
+                        <button class="toggle-btn" id="minorBtn" data-scale="minor">Minor</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <span class="control-label">Display:</span>
+                    <div class="toggle-group">
+                        <button class="toggle-btn active" id="notesBtn" data-display="notes">Notes</button>
+                        <button class="toggle-btn" id="intervalsBtn" data-display="intervals">Intervals</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="control-group">
-                <span class="control-label">Pentatonic:</span>
-                <div class="toggle-group">
-                    <button class="toggle-btn active" id="majorBtn" data-scale="major">Major</button>
-                    <button class="toggle-btn" id="minorBtn" data-scale="minor">Minor</button>
+            <!-- CAGED Header -->
+            <div class="caged-header" id="cagedHeader">
+                <!-- Dynamically populated -->
+            </div>
+
+            <!-- Fretboard -->
+            <div class="fretboard-container">
+                <div class="fretboard" id="fretboard">
+                    <!-- Dynamically populated -->
+                </div>
+                <div class="fret-numbers" id="fretNumbers">
+                    <!-- Dynamically populated -->
                 </div>
             </div>
 
-            <div class="control-group">
-                <span class="control-label">Display:</span>
-                <div class="toggle-group">
-                    <button class="toggle-btn active" id="notesBtn" data-display="notes">Notes</button>
-                    <button class="toggle-btn" id="intervalsBtn" data-display="intervals">Intervals</button>
+            <!-- Legend -->
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color legend-c"></div>
+                    <span>C Shape</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color legend-a"></div>
+                    <span>A Shape</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color legend-g"></div>
+                    <span>G Shape</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color legend-e"></div>
+                    <span>E Shape</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color legend-d"></div>
+                    <span>D Shape</span>
                 </div>
             </div>
         </div>
 
-        <!-- CAGED Header -->
-        <div class="caged-header" id="cagedHeader">
+        <!-- Fretboard Discovery Feature -->
+        <div id="fretboard-discovery-page" class="page" style="display: none;">
             <!-- Dynamically populated -->
-        </div>
-
-        <!-- Fretboard -->
-        <div class="fretboard-container">
-            <div class="fretboard" id="fretboard">
-                <!-- Dynamically populated -->
-            </div>
-            <div class="fret-numbers" id="fretNumbers">
-                <!-- Dynamically populated -->
-            </div>
-        </div>
-
-        <!-- Legend -->
-        <div class="legend">
-            <div class="legend-item">
-                <div class="legend-color legend-c"></div>
-                <span>C Shape</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color legend-a"></div>
-                <span>A Shape</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color legend-g"></div>
-                <span>G Shape</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color legend-e"></div>
-                <span>E Shape</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color legend-d"></div>
-                <span>D Shape</span>
-            </div>
         </div>
     </div>
 

@@ -1,28 +1,6 @@
 // CAGED system logic for guitar fretboard
 
-import type { CAGEDShape } from "./types";
-
-/**
- * Build a CAGED map that returns the shape for each string/fret combination
- * @param rootIndex - The root note index (0-11, where 0=A, 3=C)
- * @param totalFrets - Total number of frets on the fretboard
- * @returns 2D array where map[stringIndex][fret] = CAGEDShape
- */
-export function buildCAGEDMap(
-  rootIndex: number,
-  totalFrets: number,
-): CAGEDShape[][] {
-  // Create a 2D map: map[stringIndex][fret] = shape
-  const map: CAGEDShape[][] = [];
-  for (let s = 0; s < 6; s++) {
-    map[s] = [];
-    for (let fret = 0; fret <= totalFrets; fret++) {
-      map[s][fret] = getShapeAtFret(rootIndex, fret);
-    }
-  }
-
-  return map;
-}
+import type { CAGEDShape } from "../../shared/types";
 
 /**
  * Get the CAGED shape at a specific fret position

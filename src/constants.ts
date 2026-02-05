@@ -147,4 +147,3 @@ export const STRING_ORDER = [5, 4, 3, 2, 1, 0];
 // Fret marker positions
 export const SINGLE_DOT_FRETS = [3, 5, 7, 9, 15, 17, 19, 21];
 export const DOUBLE_DOT_FRETS = [12];
-export const MARKER_FRETS = [3, 5, 7, 9, 12, 15, 17, 19, 21];

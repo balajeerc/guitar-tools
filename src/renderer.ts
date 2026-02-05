@@ -13,7 +13,6 @@ import {
   STRING_ORDER,
   SINGLE_DOT_FRETS,
   DOUBLE_DOT_FRETS,
-  MARKER_FRETS,
 } from "./constants";
 import { getNoteAtPosition, isInScale, getScaleDegree } from "./musicTheory";
 import { getShapeAtFret, getShapeBoundaries } from "./caged";
@@ -219,8 +218,13 @@ export function renderFretboard(
   // Render fret numbers
   let numbersHTML = '<div class="fret-number">Open</div>';
   for (let fret = 1; fret <= TOTAL_FRETS; fret++) {
-    const isMarker = MARKER_FRETS.includes(fret);
-    numbersHTML += `<div class="fret-number ${isMarker ? "marker" : ""}">${fret}</div>`;
+    let markerClass = "";
+    if (SINGLE_DOT_FRETS.includes(fret)) {
+      markerClass = "marker-single";
+    } else if (DOUBLE_DOT_FRETS.includes(fret)) {
+      markerClass = "marker-double";
+    }
+    numbersHTML += `<div class="fret-number ${markerClass}">${fret}</div>`;
   }
   fretNumbers.innerHTML = numbersHTML;
 }

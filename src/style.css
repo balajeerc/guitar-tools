@@ -253,8 +253,8 @@ body {
 
 .interval-third,
 .interval-fifth {
-    background: #fb8c00;
-    border: 2px solid #e65100;
+    background: rgba(79, 195, 247, 0.8);
+    border: 2px solid #0288d1;
     color: white;
 }
 
@@ -283,18 +283,45 @@ body {
     width: 50px;
 }
 
-.fret-number.marker {
+.fret-number.marker-single,
+.fret-number.marker-double {
     position: relative;
 }
 
-.fret-number.marker::before {
-    content: '▲';
+.fret-number.marker-single::before {
+    content: '';
     position: absolute;
     top: -15px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 10px;
-    color: #888;
+    width: 8px;
+    height: 8px;
+    background-color: #bbb;
+    border-radius: 50%;
+}
+
+.fret-number.marker-double::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    margin-left: -10px;
+    width: 8px;
+    height: 8px;
+    background-color: #bbb;
+    border-radius: 50%;
+}
+
+.fret-number.marker-double::after {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    margin-left: 2px;
+    width: 8px;
+    height: 8px;
+    background-color: #bbb;
+    border-radius: 50%;
 }
 
 /* Fret Dots */

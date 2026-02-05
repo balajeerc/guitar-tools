@@ -47,21 +47,3 @@ export function getScaleDegree(
   const relativeNote = (noteIndex - rootIndex + 12) % 12;
   return intervals.indexOf(relativeNote);
 }
-
-/**
- * Get the interval name for a scale degree in pentatonic scale
- * @param scaleDegree - The scale degree (0-4)
- * @param scaleType - The scale type ("major" or "minor")
- * @returns The interval name (e.g., "R", "2", "3", "5", "6" or "7")
- */
-export function getIntervalName(
-  scaleDegree: number,
-  scaleType: ScaleType,
-): string {
-  if (scaleDegree === 0) return "R";
-  if (scaleDegree === 1) return "2";
-  if (scaleDegree === 2) return "3";
-  if (scaleDegree === 3) return "5";
-  if (scaleDegree === 4) return scaleType === "major" ? "6" : "7";
-  return "";
-}

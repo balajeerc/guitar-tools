@@ -4,7 +4,7 @@ export type CAGEDShape = "C" | "A" | "G" | "E" | "D";
 export type ScaleType = "major" | "minor";
 export type DisplayMode = "notes" | "intervals";
 
-export interface StringRange {
+interface StringRange {
   min: number;
   max: number;
 }

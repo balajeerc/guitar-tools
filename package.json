@@ -3,18 +3,25 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "index.js",
   "scripts": {
     "dev": "(fuser -k 19090/tcp || true) && vite",
     "lint": "eslint . --max-warnings=0",
+    "check:code-duplication": "jscpd src --min-lines 10 --threshold 0",
+    "check:unused-code": "knip",
     "build": "vite build",
     "preview": "vite preview",
-    "check": "tsc --noEmit --strict && pnpm lint"
+    "check": "tsc --noEmit --strict && pnpm lint && pnpm check:code-duplication && pnpm check:unused-code",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.28.2",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "@typescript-eslint/eslint-plugin": "^8.54.0",
@@ -26,6 +33,9 @@
     "eslint-plugin-sonarjs": "^3.0.6",
     "eslint-plugin-unicorn": "^62.0.0",
     "globals": "^17.3.0",
+    "husky": "^9.1.7",
+    "jscpd": "^4.0.8",
+    "knip": "^5.83.0",
     "typescript": "^5.9.3",
     "vite": "^7.3.1"
   }

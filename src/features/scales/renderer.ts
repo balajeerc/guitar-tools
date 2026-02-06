@@ -22,7 +22,43 @@ import {
   generateStringsHTML,
   generateFretNumbersHTML,
 } from "../../shared/fretboardRenderer";
-import { getShapeAtFret, getShapeBoundaries } from "./caged";
+import {
+  getShapeAtFret,
+  getShapeBoundaries,
+  getChordShapePositions,
+} from "./caged";
+
+// Track current scale type for hover handlers
+let currentScaleType: ScaleType = "major";
+
+/**
+ * Handle shape label hover - highlight chord notes
+ */
+function handleShapeLabelHover(shape: CAGEDShape, startFret: number): void {
+  const chordPositions = getChordShapePositions(shape, currentScaleType);
+
+  // Find all notes that match the chord shape positions
+  for (const { stringIdx, fretOffset } of chordPositions) {
+    const absoluteFret = startFret + fretOffset;
+    // Find notes at this position using data attributes
+    const notes = document.querySelectorAll(
+      `.note[data-string="${stringIdx}"][data-fret="${absoluteFret}"]`,
+    );
+    for (const note of notes) {
+      note.classList.add("chord-highlight");
+    }
+  }
+}
+
+/**
+ * Handle shape label mouse leave - remove highlights
+ */
+function handleShapeLabelLeave(): void {
+  const highlightedNotes = document.querySelectorAll(".note.chord-highlight");
+  for (const note of highlightedNotes) {
+    note.classList.remove("chord-highlight");
+  }
+}
 
 /**
  * Render the CAGED header showing shape labels
@@ -37,7 +73,7 @@ export function renderCAGEDHeader(rootIndex: number): void {
   // Create header elements positioned correctly using getShapeBoundaries
   const headerShapes = getShapeBoundaries(rootIndex, TOTAL_FRETS);
 
-  // Build header HTML
+  // Build header HTML with data attributes for hover handlers
   let headerHTML = "";
   for (const { shape, fret } of headerShapes) {
     const pattern = PATTERN_NUMBERS[shape];
@@ -47,7 +83,7 @@ export function renderCAGEDHeader(rootIndex: number): void {
     const leftPos = NUT_POSITION + fret * FRET_WIDTH;
 
     headerHTML += `
-            <div class="shape-label" style="position: absolute; left: ${leftPos}px;">
+            <div class="shape-label" style="position: absolute; left: ${leftPos}px;" data-shape="${shape}" data-start-fret="${fret}">
                 <span class="shape-letter">${shape}</span>
                 <span class="shape-text">shape</span>
                 <div class="shape-line" style="background-color: ${color};"></div>
@@ -60,6 +96,21 @@ export function renderCAGEDHeader(rootIndex: number): void {
   header.style.height = "120px";
   header.style.minWidth = "1400px";
   header.innerHTML = headerHTML;
+
+  // Attach hover event listeners to shape labels
+  const shapeLabels = header.querySelectorAll(".shape-label");
+  for (const label of shapeLabels) {
+    const shape = label.getAttribute("data-shape") as CAGEDShape;
+    const startFret = Number.parseInt(
+      label.getAttribute("data-start-fret") || "0",
+      10,
+    );
+
+    label.addEventListener("mouseenter", () =>
+      handleShapeLabelHover(shape, startFret),
+    );
+    label.addEventListener("mouseleave", handleShapeLabelLeave);
+  }
 }
 
 // Interval display mapping by scale degree index for each scale type
@@ -136,16 +187,19 @@ function generateNoteHTMLForFret(
   const x =
     fret === 0 ? NUT_POSITION / 2 : NUT_POSITION + (fret - 0.5) * FRET_WIDTH;
 
+  // Add data attributes for string and fret position (for chord highlighting)
+  const dataAttrs = `data-string="${stringIdx}" data-fret="${fret}"`;
+
   if (displayMode === "notes") {
     const noteName = NOTES[noteIndex];
     const isRoot = noteIndex === rootIndex;
     const noteClass = isRoot ? "note note-square" : "note note-circle";
-    return `<div class="${noteClass}" style="left: ${x}px; top: ${stringY}px;">${noteName}</div>`;
+    return `<div class="${noteClass}" style="left: ${x}px; top: ${stringY}px;" ${dataAttrs}>${noteName}</div>`;
   }
 
   const scaleDegree = getScaleDegree(noteIndex, rootIndex, scaleType);
   const { className, text } = getIntervalDetails(scaleDegree, scaleType);
-  return `<div class="note ${className}" style="left: ${x}px; top: ${stringY}px;">${text}</div>`;
+  return `<div class="note ${className}" style="left: ${x}px; top: ${stringY}px;" ${dataAttrs}>${text}</div>`;
 }
 
 function generateNotesHTML(
@@ -177,6 +231,9 @@ export function renderFretboard(
   scaleType: ScaleType,
   displayMode: DisplayMode,
 ): void {
+  // Update module-level scale type for hover handlers
+  currentScaleType = scaleType;
+
   const fretboard = document.getElementById("fretboard");
   const fretNumbers = document.getElementById("fretNumbers");
 

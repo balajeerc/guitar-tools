@@ -1,6 +1,133 @@
 // CAGED system logic for guitar fretboard
 
-import type { CAGEDShape } from "../../shared/types";
+import type { CAGEDShape, ScaleType } from "../../shared/types";
+
+/**
+ * Chord shape finger positions for each CAGED shape
+ * Each shape defines the fret offsets for strings 0-5 (low E to high E)
+ * null means the string is not played in the chord shape
+ * The offset is relative to the shape's starting fret position
+ *
+ * For minor chords, we use the minor versions of each shape
+ */
+const MAJOR_CHORD_SHAPES: Record<
+  CAGEDShape,
+  Array<{ stringIdx: number; fretOffset: number }>
+> = {
+  // C shape major chord: x32010 (offsets relative to shape start fret)
+  // When C shape starts at fret 0: A=3, D=2, G=0, B=1, E=0
+  C: [
+    { stringIdx: 1, fretOffset: 3 }, // A string: fret 3
+    { stringIdx: 2, fretOffset: 2 }, // D string: fret 2
+    { stringIdx: 3, fretOffset: 0 }, // G string: open
+    { stringIdx: 4, fretOffset: 1 }, // B string: fret 1
+    { stringIdx: 5, fretOffset: 0 }, // High E: open
+  ],
+  // A shape major chord: x02220 (offsets relative to shape start fret)
+  // When A shape starts at fret 0: A=0, D=2, G=2, B=2, E=0
+  A: [
+    { stringIdx: 1, fretOffset: 0 }, // A string: open
+    { stringIdx: 2, fretOffset: 2 }, // D string: fret 2
+    { stringIdx: 3, fretOffset: 2 }, // G string: fret 2
+    { stringIdx: 4, fretOffset: 2 }, // B string: fret 2
+    { stringIdx: 5, fretOffset: 0 }, // High E: open
+  ],
+  // G shape major chord: 320003 (offsets relative to shape start fret)
+  // When G shape starts at fret 0: E=3, A=2, D=0, G=0, B=0, E=3
+  G: [
+    { stringIdx: 0, fretOffset: 3 }, // Low E: fret 3
+    { stringIdx: 1, fretOffset: 2 }, // A string: fret 2
+    { stringIdx: 2, fretOffset: 0 }, // D string: open
+    { stringIdx: 3, fretOffset: 0 }, // G string: open
+    { stringIdx: 4, fretOffset: 0 }, // B string: open
+    { stringIdx: 5, fretOffset: 3 }, // High E: fret 3
+  ],
+  // E shape major chord: 022100 (offsets relative to shape start fret)
+  // When E shape starts at fret 0: E=0, A=2, D=2, G=1, B=0, E=0
+  E: [
+    { stringIdx: 0, fretOffset: 0 }, // Low E: open
+    { stringIdx: 1, fretOffset: 2 }, // A string: fret 2
+    { stringIdx: 2, fretOffset: 2 }, // D string: fret 2
+    { stringIdx: 3, fretOffset: 1 }, // G string: fret 1
+    { stringIdx: 4, fretOffset: 0 }, // B string: open
+    { stringIdx: 5, fretOffset: 0 }, // High E: open
+  ],
+  // D shape major chord: xx0232 (offsets relative to shape start fret)
+  // When D shape starts at fret 0: D=0, G=2, B=3, E=2
+  D: [
+    { stringIdx: 2, fretOffset: 0 }, // D string: open
+    { stringIdx: 3, fretOffset: 2 }, // G string: fret 2
+    { stringIdx: 4, fretOffset: 3 }, // B string: fret 3
+    { stringIdx: 5, fretOffset: 2 }, // High E: fret 2
+  ],
+};
+
+const MINOR_CHORD_SHAPES: Record<
+  CAGEDShape,
+  Array<{ stringIdx: number; fretOffset: number }>
+> = {
+  // Cm shape: x35543 (mini barre chord, relative offsets)
+  // When Cm shape starts at fret 0 (actually played as barre at fret 3)
+  // Simplified: A=3, D=1, G=0, B=1
+  C: [
+    { stringIdx: 1, fretOffset: 3 }, // A string: root
+    { stringIdx: 2, fretOffset: 1 }, // D string: 5th
+    { stringIdx: 3, fretOffset: 0 }, // G string: b3
+    { stringIdx: 4, fretOffset: 1 }, // B string: root
+  ],
+  // Am shape: x02210 (offsets relative to shape start fret)
+  // When Am shape starts at fret 0: A=0, D=2, G=2, B=1, E=0
+  A: [
+    { stringIdx: 1, fretOffset: 0 }, // A string: root
+    { stringIdx: 2, fretOffset: 2 }, // D string: 5th
+    { stringIdx: 3, fretOffset: 2 }, // G string: root
+    { stringIdx: 4, fretOffset: 1 }, // B string: b3
+    { stringIdx: 5, fretOffset: 0 }, // High E: 5th
+  ],
+  // Gm shape: 310033 (offsets relative to shape start fret)
+  // When Gm shape starts at fret 0: E=3, A=1, D=0, G=0, B=3, E=3
+  G: [
+    { stringIdx: 0, fretOffset: 3 }, // Low E: root
+    { stringIdx: 1, fretOffset: 1 }, // A string: b3
+    { stringIdx: 2, fretOffset: 0 }, // D string: 5th
+    { stringIdx: 3, fretOffset: 0 }, // G string: root
+    { stringIdx: 4, fretOffset: 3 }, // B string: 5th
+    { stringIdx: 5, fretOffset: 3 }, // High E: root
+  ],
+  // Em shape: 022000 (offsets relative to shape start fret)
+  // When Em shape starts at fret 0: E=0, A=2, D=2, G=0, B=0, E=0
+  E: [
+    { stringIdx: 0, fretOffset: 0 }, // Low E: root
+    { stringIdx: 1, fretOffset: 2 }, // A string: 5th
+    { stringIdx: 2, fretOffset: 2 }, // D string: root
+    { stringIdx: 3, fretOffset: 0 }, // G string: b3
+    { stringIdx: 4, fretOffset: 0 }, // B string: 5th
+    { stringIdx: 5, fretOffset: 0 }, // High E: root
+  ],
+  // Dm shape: xx0231 (offsets relative to shape start fret)
+  // When Dm shape starts at fret 0: D=0, G=2, B=3, E=1
+  D: [
+    { stringIdx: 2, fretOffset: 0 }, // D string: 5th
+    { stringIdx: 3, fretOffset: 2 }, // G string: root
+    { stringIdx: 4, fretOffset: 3 }, // B string: 5th
+    { stringIdx: 5, fretOffset: 1 }, // High E: b3
+  ],
+};
+
+/**
+ * Get the chord shape positions for a given shape and scale type
+ * @param shape - The CAGED shape
+ * @param scaleType - "major" or "minor"
+ * @returns Array of string/fret offset positions
+ */
+export function getChordShapePositions(
+  shape: CAGEDShape,
+  scaleType: ScaleType,
+): Array<{ stringIdx: number; fretOffset: number }> {
+  return scaleType === "major"
+    ? MAJOR_CHORD_SHAPES[shape]
+    : MINOR_CHORD_SHAPES[shape];
+}
 
 /**
  * Get the CAGED shape at a specific fret position

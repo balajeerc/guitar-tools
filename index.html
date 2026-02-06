@@ -66,25 +66,62 @@
 
             <!-- Legend -->
             <div class="legend">
-                <div class="legend-item">
-                    <div class="legend-color legend-c"></div>
-                    <span>C Shape</span>
+                <div class="highlight-control-group">
+                    <span class="highlight-toggle-label">Highlights:</span>
+                    <div class="highlight-toggle">
+                        <div class="highlight-toggle-options">
+                            <button class="highlight-toggle-btn active" id="cagedHighlightBtn">CAGED</button>
+                            <button class="highlight-toggle-btn" id="pentatonicHighlightBtn">Pentatonic</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="legend-item">
-                    <div class="legend-color legend-a"></div>
-                    <span>A Shape</span>
+
+                <!-- CAGED Legend Items -->
+                <div id="cagedLegend" class="legend-items">
+                    <div class="legend-item">
+                        <div class="legend-color legend-c"></div>
+                        <span>C Shape</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-a"></div>
+                        <span>A Shape</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-g"></div>
+                        <span>G Shape</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-e"></div>
+                        <span>E Shape</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-d"></div>
+                        <span>D Shape</span>
+                    </div>
                 </div>
-                <div class="legend-item">
-                    <div class="legend-color legend-g"></div>
-                    <span>G Shape</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color legend-e"></div>
-                    <span>E Shape</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color legend-d"></div>
-                    <span>D Shape</span>
+
+                <!-- Pentatonic Legend Items (hidden by default) -->
+                <div id="pentatonicLegend" class="legend-items" style="display: none;">
+                    <div class="legend-item">
+                        <div class="legend-color legend-pos-1"></div>
+                        <span>Position 1</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-pos-2"></div>
+                        <span>Position 2</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-pos-3"></div>
+                        <span>Position 3</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-pos-4"></div>
+                        <span>Position 4</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-pos-5"></div>
+                        <span>Position 5</span>
+                    </div>
                 </div>
             </div>
         </div>

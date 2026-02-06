@@ -1,6 +1,6 @@
 // Musical constants and CAGED pattern data
 
-import type { CAGEDShape } from "./types";
+import type { CAGEDShape, PentatonicPosition } from "./types";
 
 // Musical notes (sharp notation)
 export const NOTES: readonly string[] = [
@@ -43,6 +43,24 @@ export const LINE_COLORS: Record<CAGEDShape, string> = {
   G: "#4caf50",
   E: "#ff9800",
   D: "#2196f3",
+};
+
+// Pentatonic position labels
+export const POSITION_LABELS: Record<PentatonicPosition, string> = {
+  1: "1",
+  2: "2",
+  3: "3",
+  4: "4",
+  5: "5",
+};
+
+// Line colors for pentatonic position header display
+export const POSITION_LINE_COLORS: Record<PentatonicPosition, string> = {
+  1: "#e91e63",
+  2: "#9c27b0",
+  3: "#4caf50",
+  4: "#ff9800",
+  5: "#2196f3",
 };
 
 // Fretboard layout constants

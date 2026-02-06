@@ -1,10 +1,18 @@
 // Fretboard rendering functions
 
-import type { CAGEDShape, ScaleType, DisplayMode } from "../../shared/types";
+import type {
+  CAGEDShape,
+  ScaleType,
+  DisplayMode,
+  HighlightMode,
+  PentatonicPosition,
+} from "../../shared/types";
 import {
   NOTES,
   PATTERN_NUMBERS,
   LINE_COLORS,
+  POSITION_LABELS,
+  POSITION_LINE_COLORS,
   TOTAL_FRETS,
   NUT_POSITION,
   FRET_WIDTH,
@@ -26,6 +34,8 @@ import {
   getShapeAtFret,
   getShapeBoundaries,
   getChordShapePositions,
+  getPentatonicPositionAtFret,
+  getPentatonicPositionBoundaries,
 } from "./caged";
 
 // Track current scale type for hover handlers
@@ -61,35 +71,64 @@ function handleShapeLabelLeave(): void {
 }
 
 /**
- * Render the CAGED header showing shape labels
+ * Render the header showing shape/position labels
  * @param rootIndex - The root note index (0-11)
+ * @param highlightMode - The highlight mode ("caged" or "pentatonic")
  */
-export function renderCAGEDHeader(rootIndex: number): void {
+export function renderCAGEDHeader(
+  rootIndex: number,
+  highlightMode: HighlightMode = "caged",
+): void {
   const header = document.getElementById("cagedHeader");
   if (!header) return;
 
   header.innerHTML = "";
 
-  // Create header elements positioned correctly using getShapeBoundaries
-  const headerShapes = getShapeBoundaries(rootIndex, TOTAL_FRETS);
-
-  // Build header HTML with data attributes for hover handlers
   let headerHTML = "";
-  for (const { shape, fret } of headerShapes) {
-    const pattern = PATTERN_NUMBERS[shape];
-    const color = LINE_COLORS[shape];
 
-    // Calculate left position (approximate based on fret)
-    const leftPos = NUT_POSITION + fret * FRET_WIDTH;
+  if (highlightMode === "caged") {
+    // Create header elements positioned correctly using getShapeBoundaries
+    const headerShapes = getShapeBoundaries(rootIndex, TOTAL_FRETS);
 
-    headerHTML += `
-            <div class="shape-label" style="position: absolute; left: ${leftPos}px;" data-shape="${shape}" data-start-fret="${fret}">
-                <span class="shape-letter">${shape}</span>
-                <span class="shape-text">shape</span>
-                <div class="shape-line" style="background-color: ${color};"></div>
-                <span class="shape-pattern">pattern ${pattern}</span>
-            </div>
-        `;
+    // Build header HTML with data attributes for hover handlers
+    for (const { shape, fret } of headerShapes) {
+      const pattern = PATTERN_NUMBERS[shape];
+      const color = LINE_COLORS[shape];
+
+      // Calculate left position (approximate based on fret)
+      const leftPos = NUT_POSITION + fret * FRET_WIDTH;
+
+      headerHTML += `
+              <div class="shape-label" style="position: absolute; left: ${leftPos}px;" data-shape="${shape}" data-start-fret="${fret}">
+                  <span class="shape-letter">${shape}</span>
+                  <span class="shape-text">shape</span>
+                  <div class="shape-line" style="background-color: ${color};"></div>
+                  <span class="shape-pattern">pattern ${pattern}</span>
+              </div>
+          `;
+    }
+  } else {
+    // Pentatonic mode - display positions
+    const headerPositions = getPentatonicPositionBoundaries(
+      rootIndex,
+      TOTAL_FRETS,
+    );
+
+    for (const { position, fret } of headerPositions) {
+      const positionLabel = POSITION_LABELS[position];
+      const color = POSITION_LINE_COLORS[position];
+
+      // Calculate left position (approximate based on fret)
+      const leftPos = NUT_POSITION + fret * FRET_WIDTH;
+
+      headerHTML += `
+              <div class="shape-label" style="position: absolute; left: ${leftPos}px;" data-position="${position}" data-start-fret="${fret}">
+                  <span class="shape-letter">${positionLabel}</span>
+                  <span class="shape-text">position</span>
+                  <div class="shape-line" style="background-color: ${color};"></div>
+              </div>
+          `;
+    }
   }
 
   header.style.position = "relative";
@@ -97,19 +136,21 @@ export function renderCAGEDHeader(rootIndex: number): void {
   header.style.minWidth = "1400px";
   header.innerHTML = headerHTML;
 
-  // Attach hover event listeners to shape labels
-  const shapeLabels = header.querySelectorAll(".shape-label");
-  for (const label of shapeLabels) {
-    const shape = label.getAttribute("data-shape") as CAGEDShape;
-    const startFret = Number.parseInt(
-      label.getAttribute("data-start-fret") || "0",
-      10,
-    );
+  // Attach hover event listeners to shape labels (only for CAGED mode)
+  if (highlightMode === "caged") {
+    const shapeLabels = header.querySelectorAll(".shape-label");
+    for (const label of shapeLabels) {
+      const shape = label.getAttribute("data-shape") as CAGEDShape;
+      const startFret = Number.parseInt(
+        label.getAttribute("data-start-fret") || "0",
+        10,
+      );
 
-    label.addEventListener("mouseenter", () =>
-      handleShapeLabelHover(shape, startFret),
-    );
-    label.addEventListener("mouseleave", handleShapeLabelLeave);
+      label.addEventListener("mouseenter", () =>
+        handleShapeLabelHover(shape, startFret),
+      );
+      label.addEventListener("mouseleave", handleShapeLabelLeave);
+    }
   }
 }
 
@@ -143,7 +184,7 @@ function getIntervalDetails(
   return INTERVAL_DISPLAY[scaleType][scaleDegree];
 }
 
-function generateShapeZonesHTML(rootIndex: number): string {
+function generateCAGEDZonesHTML(rootIndex: number): string {
   let html = "";
   let prevShape: CAGEDShape | null = null;
   let shapeStart = 0;
@@ -166,6 +207,40 @@ function generateShapeZonesHTML(rootIndex: number): string {
     }
   }
   return html;
+}
+
+function generatePentatonicZonesHTML(rootIndex: number): string {
+  let html = "";
+  let prevPosition: PentatonicPosition | null = null;
+  let positionStart = 0;
+
+  for (let fret = 0; fret <= TOTAL_FRETS + 1; fret++) {
+    const position: PentatonicPosition | null =
+      fret <= TOTAL_FRETS ? getPentatonicPositionAtFret(rootIndex, fret) : null;
+    if (position !== prevPosition) {
+      if (prevPosition !== null) {
+        const startX =
+          positionStart === 0
+            ? 0
+            : NUT_POSITION + (positionStart - 1) * FRET_WIDTH + FRET_WIDTH / 2;
+        const endX = NUT_POSITION + (fret - 1) * FRET_WIDTH + FRET_WIDTH / 2;
+        const width = endX - startX;
+        html += `<div class="shape-zone pent-pos-${prevPosition}" style="left: ${startX}px; width: ${width}px;"></div>`;
+      }
+      positionStart = fret;
+      prevPosition = position;
+    }
+  }
+  return html;
+}
+
+function generateShapeZonesHTML(
+  rootIndex: number,
+  highlightMode: HighlightMode,
+): string {
+  return highlightMode === "caged"
+    ? generateCAGEDZonesHTML(rootIndex)
+    : generatePentatonicZonesHTML(rootIndex);
 }
 
 function generateNoteHTMLForFret(
@@ -225,11 +300,13 @@ function generateNotesHTML(
  * @param rootIndex - The root note index (0-11)
  * @param scaleType - The scale type ("major" or "minor")
  * @param displayMode - The display mode ("notes" or "intervals")
+ * @param highlightMode - The highlight mode ("caged" or "pentatonic")
  */
 export function renderFretboard(
   rootIndex: number,
   scaleType: ScaleType,
   displayMode: DisplayMode,
+  highlightMode: HighlightMode = "caged",
 ): void {
   // Update module-level scale type for hover handlers
   currentScaleType = scaleType;
@@ -241,8 +318,8 @@ export function renderFretboard(
 
   let fretboardHTML = "";
 
-  // Add CAGED shape background zones
-  fretboardHTML += generateShapeZonesHTML(rootIndex);
+  // Add shape background zones (CAGED or Pentatonic based on highlightMode)
+  fretboardHTML += generateShapeZonesHTML(rootIndex, highlightMode);
 
   // Add fret lines (vertical)
   fretboardHTML += generateFretLinesHTML();

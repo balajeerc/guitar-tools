@@ -1,6 +1,10 @@
 // CAGED system logic for guitar fretboard
 
-import type { CAGEDShape, ScaleType } from "../../shared/types";
+import type {
+  CAGEDShape,
+  ScaleType,
+  PentatonicPosition,
+} from "../../shared/types";
 
 /**
  * Chord shape finger positions for each CAGED shape
@@ -172,4 +176,60 @@ export function getShapeBoundaries(
   }
 
   return shapes;
+}
+
+/**
+ * Map CAGED shape to pentatonic position
+ * The standard pentatonic positions align with CAGED shapes:
+ * - Position 1 → E shape (root on low E string)
+ * - Position 2 → D shape
+ * - Position 3 → C shape
+ * - Position 4 → A shape
+ * - Position 5 → G shape
+ */
+const CAGED_TO_PENTATONIC_POSITION: Record<CAGEDShape, PentatonicPosition> = {
+  E: 1,
+  D: 2,
+  C: 3,
+  A: 4,
+  G: 5,
+};
+
+/**
+ * Get the pentatonic position at a specific fret
+ * @param rootIndex - The root note index (0-11, where 0=A)
+ * @param fret - The fret number
+ * @returns The pentatonic position (1-5) at that fret
+ */
+export function getPentatonicPositionAtFret(
+  rootIndex: number,
+  fret: number,
+): PentatonicPosition {
+  // Get the CAGED shape at this fret and map it to pentatonic position
+  const shape = getShapeAtFret(rootIndex, fret);
+  return CAGED_TO_PENTATONIC_POSITION[shape];
+}
+
+/**
+ * Get all pentatonic position boundaries for the fretboard header display
+ * @param rootIndex - The root note index (0-11)
+ * @param totalFrets - Total number of frets
+ * @returns Array of {position, fret} objects
+ */
+export function getPentatonicPositionBoundaries(
+  rootIndex: number,
+  totalFrets: number,
+): { position: PentatonicPosition; fret: number }[] {
+  const positions: { position: PentatonicPosition; fret: number }[] = [];
+  let prevPosition: PentatonicPosition | null = null;
+
+  for (let fret = 0; fret <= totalFrets; fret++) {
+    const position = getPentatonicPositionAtFret(rootIndex, fret);
+    if (position !== prevPosition) {
+      positions.push({ position, fret });
+      prevPosition = position;
+    }
+  }
+
+  return positions;
 }

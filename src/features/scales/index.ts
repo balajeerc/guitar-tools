@@ -1,4 +1,4 @@
-import type { ScaleType, DisplayMode } from "../../shared/types";
+import type { ScaleType, DisplayMode, HighlightMode } from "../../shared/types";
 import {
   renderCAGEDHeader,
   renderFretboard,
@@ -9,81 +9,112 @@ import {
 let currentRootIndex: number = 3; // Start with C (matches the image)
 let currentScale: ScaleType = "major";
 let displayMode: DisplayMode = "notes";
+let highlightMode: HighlightMode = "caged";
 
 /**
  * Update all display elements based on current state
  */
 function updateDisplay(): void {
   updateNoteDisplay(currentRootIndex);
-  renderCAGEDHeader(currentRootIndex);
-  renderFretboard(currentRootIndex, currentScale, displayMode);
+  renderCAGEDHeader(currentRootIndex, highlightMode);
+  renderFretboard(currentRootIndex, currentScale, displayMode, highlightMode);
 }
 
-export function initScalesFeature(): void {
-  // Note navigation buttons
+function setupNoteNavigation(): void {
   const prevNoteBtn = document.getElementById("prevNote");
-  if (prevNoteBtn) {
-    prevNoteBtn.addEventListener("click", () => {
-      currentRootIndex = (currentRootIndex - 1 + 12) % 12;
-      updateDisplay();
-    });
-  }
-
   const nextNoteBtn = document.getElementById("nextNote");
-  if (nextNoteBtn) {
-    nextNoteBtn.addEventListener("click", () => {
-      currentRootIndex = (currentRootIndex + 1) % 12;
-      updateDisplay();
-    });
-  }
 
-  // Scale type buttons
+  prevNoteBtn?.addEventListener("click", () => {
+    currentRootIndex = (currentRootIndex - 1 + 12) % 12;
+    updateDisplay();
+  });
+
+  nextNoteBtn?.addEventListener("click", () => {
+    currentRootIndex = (currentRootIndex + 1) % 12;
+    updateDisplay();
+  });
+}
+
+function setupScaleTypeButtons(): void {
   const majorBtn = document.getElementById("majorBtn");
   const minorBtn = document.getElementById("minorBtn");
 
-  if (majorBtn && minorBtn) {
-    majorBtn.addEventListener("click", () => {
-      currentScale = "major";
-      majorBtn.classList.add("active");
-      minorBtn.classList.remove("active");
-      updateDisplay();
-    });
+  if (!majorBtn || !minorBtn) return;
 
-    minorBtn.addEventListener("click", () => {
-      currentScale = "minor";
-      minorBtn.classList.add("active");
-      majorBtn.classList.remove("active");
-      updateDisplay();
-    });
-  }
+  majorBtn.addEventListener("click", () => {
+    currentScale = "major";
+    majorBtn.classList.add("active");
+    minorBtn.classList.remove("active");
+    updateDisplay();
+  });
 
-  // Display mode buttons
+  minorBtn.addEventListener("click", () => {
+    currentScale = "minor";
+    minorBtn.classList.add("active");
+    majorBtn.classList.remove("active");
+    updateDisplay();
+  });
+}
+
+function setupDisplayModeButtons(): void {
   const notesBtn = document.getElementById("notesBtn");
   const intervalsBtn = document.getElementById("intervalsBtn");
 
-  if (notesBtn && intervalsBtn) {
-    notesBtn.addEventListener("click", () => {
-      displayMode = "notes";
-      notesBtn.classList.add("active");
-      intervalsBtn.classList.remove("active");
-      updateDisplay();
-    });
+  if (!notesBtn || !intervalsBtn) return;
 
-    intervalsBtn.addEventListener("click", () => {
-      displayMode = "intervals";
-      intervalsBtn.classList.add("active");
-      notesBtn.classList.remove("active");
-      updateDisplay();
-    });
+  notesBtn.addEventListener("click", () => {
+    displayMode = "notes";
+    notesBtn.classList.add("active");
+    intervalsBtn.classList.remove("active");
+    updateDisplay();
+  });
+
+  intervalsBtn.addEventListener("click", () => {
+    displayMode = "intervals";
+    intervalsBtn.classList.add("active");
+    notesBtn.classList.remove("active");
+    updateDisplay();
+  });
+}
+
+function setupHighlightModeToggle(): void {
+  const cagedHighlightBtn = document.getElementById("cagedHighlightBtn");
+  const pentatonicHighlightBtn = document.getElementById(
+    "pentatonicHighlightBtn",
+  );
+  const cagedLegend = document.getElementById("cagedLegend");
+  const pentatonicLegend = document.getElementById("pentatonicLegend");
+
+  if (
+    !cagedHighlightBtn ||
+    !pentatonicHighlightBtn ||
+    !cagedLegend ||
+    !pentatonicLegend
+  ) {
+    return;
   }
 
-  // Keyboard navigation
-  // Note: This might conflict if multiple features use arrow keys.
-  // For now, we'll keep it but might need to scope it later.
+  cagedHighlightBtn.addEventListener("click", () => {
+    highlightMode = "caged";
+    cagedHighlightBtn.classList.add("active");
+    pentatonicHighlightBtn.classList.remove("active");
+    cagedLegend.style.display = "flex";
+    pentatonicLegend.style.display = "none";
+    updateDisplay();
+  });
+
+  pentatonicHighlightBtn.addEventListener("click", () => {
+    highlightMode = "pentatonic";
+    pentatonicHighlightBtn.classList.add("active");
+    cagedHighlightBtn.classList.remove("active");
+    cagedLegend.style.display = "none";
+    pentatonicLegend.style.display = "flex";
+    updateDisplay();
+  });
+}
+
+function setupKeyboardNavigation(): void {
   document.addEventListener("keydown", (e: KeyboardEvent) => {
-    // Only handle if this page is visible?
-    // For now, let's assume simple routing where we might not detach this.
-    // Ideally we should return a cleanup function.
     const page = document.getElementById("scales-page");
     if (page && page.style.display === "none") return;
 
@@ -95,6 +126,14 @@ export function initScalesFeature(): void {
       updateDisplay();
     }
   });
+}
+
+export function initScalesFeature(): void {
+  setupNoteNavigation();
+  setupScaleTypeButtons();
+  setupDisplayModeButtons();
+  setupHighlightModeToggle();
+  setupKeyboardNavigation();
 
   // Initial render
   updateDisplay();

@@ -62,22 +62,34 @@ export function renderCAGEDHeader(rootIndex: number): void {
   header.innerHTML = headerHTML;
 }
 
+// Interval display mapping by scale degree index for each scale type
+// Major pentatonic: R, 2, 3, 5, 6 (indices 0, 1, 2, 3, 4)
+// Minor pentatonic: R, b3, 4, 5, b7 (indices 0, 1, 2, 3, 4)
+const INTERVAL_DISPLAY: Record<
+  ScaleType,
+  Array<{ className: string; text: string }>
+> = {
+  major: [
+    { className: "interval-root", text: "R" },
+    { className: "interval-other", text: "2" },
+    { className: "interval-third", text: "3" },
+    { className: "interval-fifth", text: "5" },
+    { className: "interval-other", text: "6" },
+  ],
+  minor: [
+    { className: "interval-root", text: "R" },
+    { className: "interval-third", text: "3" },
+    { className: "interval-other", text: "4" },
+    { className: "interval-fifth", text: "5" },
+    { className: "interval-other", text: "7" },
+  ],
+};
+
 function getIntervalDetails(
   scaleDegree: number,
   scaleType: ScaleType,
 ): { className: string; text: string } {
-  if (scaleDegree === 0) return { className: "interval-root", text: "R" };
-  if (scaleDegree === 2) return { className: "interval-third", text: "3" };
-  if (scaleDegree === 3) return { className: "interval-fifth", text: "5" };
-
-  let text = "";
-  if (scaleDegree === 1) {
-    text = "2";
-  } else if (scaleDegree === 4) {
-    text = scaleType === "major" ? "6" : "7";
-  }
-
-  return { className: "interval-other", text };
+  return INTERVAL_DISPLAY[scaleType][scaleDegree];
 }
 
 function generateShapeZonesHTML(rootIndex: number): string {

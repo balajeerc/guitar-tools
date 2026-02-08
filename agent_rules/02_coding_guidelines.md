@@ -1,5 +1,11 @@
 # Coding Guidelines
 
+## Use `pnpm` instead of `npm`
+
+- This applies to all commands like `pnpm build`, `pnpm dev` etc.
+- This is especially needed for `pnpm install`
+  - Never run `npm install`. Always use `pnpm install`. Always use `pnpm` for all package management tasks.
+
 ## Always run `pnpm check` before marking task complete
 
 - If `pnpm check` returns errors or warnings, fix them!

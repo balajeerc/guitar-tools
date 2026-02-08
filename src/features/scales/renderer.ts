@@ -31,11 +31,11 @@ import {
   generateFretNumbersHTML,
 } from "../../shared/fretboardRenderer";
 import {
-  getShapeAtFret,
   getShapeBoundaries,
   getChordShapePositions,
-  getPentatonicPositionAtFret,
   getPentatonicPositionBoundaries,
+  getShapesForFret,
+  getPentatonicPositionsForFret,
 } from "./caged";
 
 // Track current scale type for hover handlers
@@ -184,63 +184,419 @@ function getIntervalDetails(
   return INTERVAL_DISPLAY[scaleType][scaleDegree];
 }
 
-function generateCAGEDZonesHTML(rootIndex: number): string {
-  let html = "";
-  let prevShape: CAGEDShape | null = null;
-  let shapeStart = 0;
+// =============================================================================
+// Note-Centric Multi-Pass Shading System
+// =============================================================================
 
-  for (let fret = 0; fret <= TOTAL_FRETS + 1; fret++) {
-    const shape: CAGEDShape | null =
-      fret <= TOTAL_FRETS ? getShapeAtFret(rootIndex, fret) : null;
-    if (shape !== prevShape) {
-      if (prevShape !== null) {
-        const startX =
-          shapeStart === 0
-            ? 0
-            : NUT_POSITION + (shapeStart - 1) * FRET_WIDTH + FRET_WIDTH / 2;
-        const endX = NUT_POSITION + (fret - 1) * FRET_WIDTH + FRET_WIDTH / 2;
-        const width = endX - startX;
-        html += `<div class="shape-zone shape-${prevShape.toLowerCase()}" style="left: ${startX}px; width: ${width}px;"></div>`;
-      }
-      shapeStart = fret;
-      prevShape = shape;
-    }
-  }
-  return html;
+/**
+ * Shape colors as RGBA values for blending
+ * These correspond to the CSS colors used for shape zones
+ */
+const SHAPE_COLORS_RGBA: Record<CAGEDShape, { r: number; g: number; b: number; a: number }> = {
+  C: { r: 244, g: 143, b: 177, a: 0.6 },
+  A: { r: 206, g: 147, b: 216, a: 0.6 },
+  G: { r: 165, g: 214, b: 167, a: 0.6 },
+  E: { r: 255, g: 204, b: 128, a: 0.6 },
+  D: { r: 144, g: 202, b: 249, a: 0.6 },
+};
+
+/**
+ * Pentatonic position colors (mapped from CAGED shapes via CAGED_TO_PENTATONIC_POSITION)
+ */
+const POSITION_COLORS_RGBA: Record<PentatonicPosition, { r: number; g: number; b: number; a: number }> = {
+  1: { r: 244, g: 143, b: 177, a: 0.6 }, // E shape → Position 1
+  2: { r: 206, g: 147, b: 216, a: 0.6 }, // D shape → Position 2
+  3: { r: 165, g: 214, b: 167, a: 0.6 }, // C shape → Position 3
+  4: { r: 255, g: 204, b: 128, a: 0.6 }, // A shape → Position 4
+  5: { r: 144, g: 202, b: 249, a: 0.6 }, // G shape → Position 5
+};
+
+/**
+ * Cell identifier for tracking colored cells
+ */
+type CellKey = `${number}-${number}`; // row-fret
+
+interface CellColorState {
+  colors: Array<{ r: number; g: number; b: number; a: number }>;
 }
 
-function generatePentatonicZonesHTML(rootIndex: number): string {
-  let html = "";
-  let prevPosition: PentatonicPosition | null = null;
-  let positionStart = 0;
-
-  for (let fret = 0; fret <= TOTAL_FRETS + 1; fret++) {
-    const position: PentatonicPosition | null =
-      fret <= TOTAL_FRETS ? getPentatonicPositionAtFret(rootIndex, fret) : null;
-    if (position !== prevPosition) {
-      if (prevPosition !== null) {
-        const startX =
-          positionStart === 0
-            ? 0
-            : NUT_POSITION + (positionStart - 1) * FRET_WIDTH + FRET_WIDTH / 2;
-        const endX = NUT_POSITION + (fret - 1) * FRET_WIDTH + FRET_WIDTH / 2;
-        const width = endX - startX;
-        html += `<div class="shape-zone pent-pos-${prevPosition}" style="left: ${startX}px; width: ${width}px;"></div>`;
-      }
-      positionStart = fret;
-      prevPosition = position;
-    }
+/**
+ * Blend multiple RGBA colors using alpha compositing
+ */
+function blendColors(
+  colors: Array<{ r: number; g: number; b: number; a: number }>,
+): { r: number; g: number; b: number; a: number } {
+  if (colors.length === 0) {
+    return { r: 0, g: 0, b: 0, a: 0 };
   }
-  return html;
+  if (colors.length === 1) {
+    return colors[0];
+  }
+
+  // Use additive blending for overlapping shapes
+  let totalR = 0;
+  let totalG = 0;
+  let totalB = 0;
+  let totalA = 0;
+
+  for (const color of colors) {
+    totalR += color.r * color.a;
+    totalG += color.g * color.a;
+    totalB += color.b * color.a;
+    totalA += color.a;
+  }
+
+  if (totalA === 0) {
+    return { r: 0, g: 0, b: 0, a: 0 };
+  }
+
+  // Average the colors weighted by alpha
+  return {
+    r: Math.min(255, Math.round(totalR / totalA)),
+    g: Math.min(255, Math.round(totalG / totalA)),
+    b: Math.min(255, Math.round(totalB / totalA)),
+    a: Math.min(1, totalA / colors.length + 0.1 * (colors.length - 1)), // Slightly increase alpha for overlaps
+  };
 }
 
-function generateShapeZonesHTML(
+/**
+ * Convert RGBA to CSS string
+ */
+function rgbaToCSS(color: { r: number; g: number; b: number; a: number }): string {
+  return `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
+}
+
+/**
+ * Get the row boundaries for note cells.
+ * 7 rows total: boundaries are the string Y positions themselves.
+ *   Row 0: top edge → string 0 (above high E)
+ *   Row 1: string 0 → string 1 (between high E and B)
+ *   Row 2: string 1 → string 2 (between B and G)
+ *   Row 3: string 2 → string 3 (between G and D)
+ *   Row 4: string 3 → string 4 (between D and A)
+ *   Row 5: string 4 → string 5 (between A and low E)
+ *   Row 6: string 5 → bottom edge (below low E)
+ *
+ * For a note on visual string i: above = row i, below = row i+1.
+ */
+function getCellRowBoundaries(): Array<{ top: number; bottom: number }> {
+  const yPositions = STRING_Y_POSITIONS;
+  const topEdge = 5;
+  const bottomEdge = 195;
+
+  const rows: Array<{ top: number; bottom: number }> = [];
+
+  // Row 0: above first string
+  rows.push({ top: topEdge, bottom: yPositions[0] });
+
+  // Rows 1-5: between adjacent strings
+  for (let i = 0; i < yPositions.length - 1; i++) {
+    rows.push({ top: yPositions[i], bottom: yPositions[i + 1] });
+  }
+
+  // Row 6: below last string
+  rows.push({ top: yPositions[yPositions.length - 1], bottom: bottomEdge });
+
+  return rows;
+}
+
+/**
+ * Get visual row index for a string (which rows are above and below this string)
+ * Returns { above: rowIndex, below: rowIndex }
+ */
+function getRowsForString(visualStringIdx: number): { above: number; below: number } {
+  // Visual string 0 is at top (high E), visual string 5 is at bottom (low E)
+  // Row 0 is above high E, row 1 is between high E and B, etc.
+  return {
+    above: visualStringIdx,      // Row above this string
+    below: visualStringIdx + 1,  // Row below this string
+  };
+}
+
+/**
+ * Find nearest previous fret with notes
+ */
+function findPreviousFret(
+  fret: number,
+  minFret: number,
+  fretExtents: Map<number, { minRow: number; maxRow: number }>,
+): number | null {
+  for (let f = fret - 1; f >= minFret; f--) {
+    if (fretExtents.has(f)) {
+      return f;
+    }
+  }
+  return null;
+}
+
+/**
+ * Find nearest next fret with notes
+ */
+function findNextFret(
+  fret: number,
+  maxFret: number,
+  fretExtents: Map<number, { minRow: number; maxRow: number }>,
+): number | null {
+  for (let f = fret + 1; f <= maxFret; f++) {
+    if (fretExtents.has(f)) {
+      return f;
+    }
+  }
+  return null;
+}
+
+/**
+ * Merge two extents to create a union
+ */
+function mergeExtents(
+  extent1: { minRow: number; maxRow: number },
+  extent2: { minRow: number; maxRow: number },
+): { minRow: number; maxRow: number } {
+  return {
+    minRow: Math.min(extent1.minRow, extent2.minRow),
+    maxRow: Math.max(extent1.maxRow, extent2.maxRow),
+  };
+}
+
+/**
+ * Calculate row extent for a gap fret by interpolating between neighboring frets
+ */
+function calculateGapFretExtent(
+  fret: number,
+  minFret: number,
+  maxFret: number,
+  fretExtents: Map<number, { minRow: number; maxRow: number }>,
+): { minRow: number; maxRow: number } | null {
+  const prev = findPreviousFret(fret, minFret, fretExtents);
+  const next = findNextFret(fret, maxFret, fretExtents);
+
+  // Use union of neighboring extents to bridge the gap
+  if (prev !== null && next !== null) {
+    const prevExtent = fretExtents.get(prev);
+    const nextExtent = fretExtents.get(next);
+    if (prevExtent && nextExtent) {
+      return mergeExtents(prevExtent, nextExtent);
+    }
+  }
+
+  // Use previous extent if available
+  if (prev !== null) {
+    return fretExtents.get(prev) || null;
+  }
+
+  // Use next extent if available
+  if (next !== null) {
+    return fretExtents.get(next) || null;
+  }
+
+  return null;
+}
+
+/**
+ * Build per-fret row extents from notes in a group
+ */
+function buildFretExtents(
+  group: { checkFret: (fret: number) => boolean },
+  notePositions: Array<{ visualStringIdx: number; stringIdx: number; fret: number }>,
+): Map<number, { minRow: number; maxRow: number }> {
+  const fretExtents = new Map<number, { minRow: number; maxRow: number }>();
+
+  for (const { visualStringIdx, fret } of notePositions) {
+    if (!group.checkFret(fret)) continue;
+
+    const { above, below } = getRowsForString(visualStringIdx);
+    const existing = fretExtents.get(fret);
+    if (!existing) {
+      fretExtents.set(fret, { minRow: above, maxRow: below });
+    } else {
+      existing.minRow = Math.min(existing.minRow, above);
+      existing.maxRow = Math.max(existing.maxRow, below);
+    }
+  }
+
+  return fretExtents;
+}
+
+/**
+ * Add color to a cell in the color map
+ */
+function addColorToCell(
+  cellColors: Map<CellKey, CellColorState>,
+  row: number,
+  fret: number,
+  color: { r: number; g: number; b: number; a: number },
+): void {
+  const key: CellKey = `${row}-${fret}`;
+  if (!cellColors.has(key)) {
+    cellColors.set(key, { colors: [] });
+  }
+  const cell = cellColors.get(key);
+  if (cell) {
+    cell.colors.push(color);
+  }
+}
+
+/**
+ * Fill cells with color for a fret range
+ */
+function fillFretRange(
+  minFret: number,
+  maxFret: number,
+  fretExtents: Map<number, { minRow: number; maxRow: number }>,
+  cellColors: Map<CellKey, CellColorState>,
+  color: { r: number; g: number; b: number; a: number },
+): void {
+  for (let fret = minFret; fret <= maxFret; fret++) {
+    const extent = fretExtents.get(fret) || calculateGapFretExtent(fret, minFret, maxFret, fretExtents);
+
+    if (!extent) continue;
+
+    // Color all rows in this extent for this fret
+    for (let row = extent.minRow; row <= extent.maxRow; row++) {
+      addColorToCell(cellColors, row, fret, color);
+    }
+  }
+}
+
+/**
+ * Process a single group (shape or position) and add colors to cells
+ */
+function processGroupShading(
+  group: {
+    color: { r: number; g: number; b: number; a: number };
+    checkFret: (fret: number) => boolean;
+  },
+  notePositions: Array<{ visualStringIdx: number; stringIdx: number; fret: number }>,
+  cellColors: Map<CellKey, CellColorState>,
+): void {
+  // Build per-fret row extents from notes in this group
+  const fretExtents = buildFretExtents(group, notePositions);
+
+  if (fretExtents.size === 0) return;
+
+  // Find fret range for this group
+  const shapeFrets = [...fretExtents.keys()].sort((a, b) => a - b);
+  const minFret = shapeFrets[0];
+  const maxFret = shapeFrets[shapeFrets.length - 1];
+
+  // Fill all frets in range, interpolating gap frets
+  fillFretRange(minFret, maxFret, fretExtents, cellColors, group.color);
+}
+
+/**
+ * Collect all note positions in the scale
+ */
+function collectNotePositions(
+  rootIndex: number,
+  scaleType: ScaleType,
+): Array<{ visualStringIdx: number; stringIdx: number; fret: number }> {
+  const notePositions: Array<{ visualStringIdx: number; stringIdx: number; fret: number }> = [];
+  for (const [visualIdx, stringIdx] of STRING_ORDER.entries()) {
+    for (let fret = 0; fret <= TOTAL_FRETS; fret++) {
+      const noteIndex = getNoteAtPosition(stringIdx, fret);
+      if (isInScale(noteIndex, rootIndex, scaleType)) {
+        notePositions.push({ visualStringIdx: visualIdx, stringIdx, fret });
+      }
+    }
+  }
+  return notePositions;
+}
+
+/**
+ * Build groups for shading based on highlight mode
+ */
+function buildShadingGroups(
   rootIndex: number,
   highlightMode: HighlightMode,
+): Array<{
+  color: { r: number; g: number; b: number; a: number };
+  checkFret: (fret: number) => boolean;
+}> {
+  const groups: Array<{
+    color: { r: number; g: number; b: number; a: number };
+    checkFret: (fret: number) => boolean;
+  }> = [];
+
+  if (highlightMode === "caged") {
+    const shapesOrder: CAGEDShape[] = ["C", "A", "G", "E", "D"];
+    for (const shape of shapesOrder) {
+      groups.push({
+        color: SHAPE_COLORS_RGBA[shape],
+        checkFret: (fret) => getShapesForFret(rootIndex, fret).includes(shape),
+      });
+    }
+  } else {
+    const positionsOrder: PentatonicPosition[] = [1, 2, 3, 4, 5];
+    for (const position of positionsOrder) {
+      groups.push({
+        color: POSITION_COLORS_RGBA[position],
+        checkFret: (fret) => getPentatonicPositionsForFret(rootIndex, fret).includes(position),
+      });
+    }
+  }
+
+  return groups;
+}
+
+/**
+ * Generate HTML from colored cells
+ */
+function generateCellsHTML(cellColors: Map<CellKey, CellColorState>): string {
+  let html = "";
+  const rowBoundaries = getCellRowBoundaries();
+
+  for (const [key, state] of cellColors.entries()) {
+    const [rowStr, fretStr] = key.split("-");
+    const row = Number.parseInt(rowStr, 10);
+    const fret = Number.parseInt(fretStr, 10);
+
+    const blendedColor = blendColors(state.colors);
+    const cssColor = rgbaToCSS(blendedColor);
+
+    const rowBounds = rowBoundaries[row];
+    if (!rowBounds) continue;
+
+    // Calculate cell position
+    const top = rowBounds.top;
+    const height = rowBounds.bottom - rowBounds.top;
+
+    // Horizontal position: each fret's cell spans one full fret width
+    const left = fret === 0 ? 0 : NUT_POSITION + (fret - 1) * FRET_WIDTH;
+    const width = fret === 0 ? NUT_POSITION : FRET_WIDTH;
+
+    html += `<div class="note-zone-cell" style="position: absolute; left: ${left}px; top: ${top}px; width: ${width}px; height: ${height}px; background-color: ${cssColor};"></div>`;
+  }
+
+  return html;
+}
+
+/**
+ * Generate note-centric zone HTML using multi-pass shading
+ * @param rootIndex - The root note index (0-11)
+ * @param scaleType - The scale type ("major" or "minor")
+ * @param highlightMode - The highlight mode ("caged" or "pentatonic")
+ */
+function generateNoteCentricZonesHTML(
+  rootIndex: number,
+  scaleType: ScaleType,
+  highlightMode: HighlightMode,
 ): string {
-  return highlightMode === "caged"
-    ? generateCAGEDZonesHTML(rootIndex)
-    : generatePentatonicZonesHTML(rootIndex);
+  // Track colors for each cell
+  const cellColors = new Map<CellKey, CellColorState>();
+
+  // Collect all note positions in the scale
+  const notePositions = collectNotePositions(rootIndex, scaleType);
+
+  // Build groups: each group is a shape (CAGED) or position (pentatonic)
+  const groups = buildShadingGroups(rootIndex, highlightMode);
+
+  // Multi-pass shading per group
+  for (const group of groups) {
+    processGroupShading(group, notePositions, cellColors);
+  }
+
+  // Generate HTML for all colored cells
+  return generateCellsHTML(cellColors);
 }
 
 function generateNoteHTMLForFret(
@@ -318,8 +674,8 @@ export function renderFretboard(
 
   let fretboardHTML = "";
 
-  // Add shape background zones (CAGED or Pentatonic based on highlightMode)
-  fretboardHTML += generateShapeZonesHTML(rootIndex, highlightMode);
+  // Add note-centric shape zones with multi-pass blending
+  fretboardHTML += generateNoteCentricZonesHTML(rootIndex, scaleType, highlightMode);
 
   // Add fret lines (vertical)
   fretboardHTML += generateFretLinesHTML();

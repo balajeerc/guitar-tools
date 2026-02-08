@@ -143,7 +143,7 @@ export function getChordShapePositions(
  * @param fret - The fret number
  * @returns The CAGED shape at that position
  */
-export function getShapeAtFret(rootIndex: number, fret: number): CAGEDShape {
+function getShapeAtFret(rootIndex: number, fret: number): CAGEDShape {
   const offsetFromC = (rootIndex - 3 + 12) % 12;
   const posInCycle = (fret - offsetFromC + 120) % 12;
 
@@ -201,7 +201,7 @@ const CAGED_TO_PENTATONIC_POSITION: Record<CAGEDShape, PentatonicPosition> = {
  * @param fret - The fret number
  * @returns The pentatonic position (1-5) at that fret
  */
-export function getPentatonicPositionAtFret(
+function getPentatonicPositionAtFret(
   rootIndex: number,
   fret: number,
 ): PentatonicPosition {
@@ -232,4 +232,86 @@ export function getPentatonicPositionBoundaries(
   }
 
   return positions;
+}
+
+/**
+ * Shape cycle order and boundaries within the 12-semitone cycle
+ * Each entry: [startPosInCycle, endPosInCycle (exclusive), shape]
+ */
+const SHAPE_CYCLE_BOUNDARIES: Array<{
+  start: number;
+  end: number;
+  shape: CAGEDShape;
+}> = [
+  { start: 0, end: 3, shape: "C" },
+  { start: 3, end: 5, shape: "A" },
+  { start: 5, end: 8, shape: "G" },
+  { start: 8, end: 10, shape: "E" },
+  { start: 10, end: 12, shape: "D" },
+];
+
+/**
+ * Get the position in cycle for a given fret and root
+ */
+function getPosInCycle(rootIndex: number, fret: number): number {
+  const offsetFromC = (rootIndex - 3 + 12) % 12;
+  return (fret - offsetFromC + 120) % 12;
+}
+
+/**
+ * Get all CAGED shapes that a note at a given fret belongs to.
+ * Notes at shape boundaries belong to both adjacent shapes.
+ * @param rootIndex - The root note index (0-11)
+ * @param fret - The fret number
+ * @returns Array of CAGED shapes this fret position belongs to
+ */
+export function getShapesForFret(rootIndex: number, fret: number): CAGEDShape[] {
+  const posInCycle = getPosInCycle(rootIndex, fret);
+  const shapes: CAGEDShape[] = [];
+
+  for (const boundary of SHAPE_CYCLE_BOUNDARIES) {
+    // Check if this position is within the shape's range
+    if (posInCycle >= boundary.start && posInCycle < boundary.end) {
+      shapes.push(boundary.shape);
+    }
+    // Check if this position is at the boundary (last fret of shape, also belongs to next)
+    if (posInCycle === boundary.end - 1) {
+      // Find the next shape in cycle
+      const nextIdx =
+        (SHAPE_CYCLE_BOUNDARIES.findIndex((b) => b.shape === boundary.shape) +
+          1) %
+        5;
+      const nextShape = SHAPE_CYCLE_BOUNDARIES[nextIdx].shape;
+      if (!shapes.includes(nextShape)) {
+        shapes.push(nextShape);
+      }
+    }
+    // Check if this position is at the start of a shape (also belongs to previous)
+    if (posInCycle === boundary.start) {
+      const prevIdx =
+        (SHAPE_CYCLE_BOUNDARIES.findIndex((b) => b.shape === boundary.shape) +
+          4) %
+        5;
+      const prevShape = SHAPE_CYCLE_BOUNDARIES[prevIdx].shape;
+      if (!shapes.includes(prevShape)) {
+        shapes.push(prevShape);
+      }
+    }
+  }
+
+  return shapes;
+}
+
+/**
+ * Get all pentatonic positions that a note at a given fret belongs to.
+ * @param rootIndex - The root note index (0-11)
+ * @param fret - The fret number
+ * @returns Array of pentatonic positions this fret position belongs to
+ */
+export function getPentatonicPositionsForFret(
+  rootIndex: number,
+  fret: number,
+): PentatonicPosition[] {
+  const shapes = getShapesForFret(rootIndex, fret);
+  return shapes.map((shape) => CAGED_TO_PENTATONIC_POSITION[shape]);
 }

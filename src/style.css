@@ -260,27 +260,6 @@ body {
     background-color: rgba(144, 202, 249, 0.6);
 }
 
-/* Pentatonic Position Zones */
-.shape-zone.pent-pos-1 {
-    background-color: rgba(244, 143, 177, 0.6);
-}
-
-.shape-zone.pent-pos-2 {
-    background-color: rgba(206, 147, 216, 0.6);
-}
-
-.shape-zone.pent-pos-3 {
-    background-color: rgba(165, 214, 167, 0.6);
-}
-
-.shape-zone.pent-pos-4 {
-    background-color: rgba(255, 204, 128, 0.6);
-}
-
-.shape-zone.pent-pos-5 {
-    background-color: rgba(144, 202, 249, 0.6);
-}
-
 /* Notes */
 .note {
     width: 26px;

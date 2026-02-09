@@ -315,21 +315,108 @@ function generateCAGEDZonesHTML(rootIndex: number): string {
   return html;
 }
 
+/** RGB color values for pentatonic position zone backgrounds */
+const POSITION_ZONE_COLORS: Record<
+  PentatonicPosition,
+  [number, number, number]
+> = {
+  1: [244, 143, 177],
+  2: [206, 147, 216],
+  3: [165, 214, 167],
+  4: [255, 204, 128],
+  5: [144, 202, 249],
+};
+
+function blendPositionColors(positions: PentatonicPosition[]): string {
+  const len = positions.length;
+  const r = Math.round(
+    positions.reduce((sum, p) => sum + POSITION_ZONE_COLORS[p][0], 0) / len,
+  );
+  const g = Math.round(
+    positions.reduce((sum, p) => sum + POSITION_ZONE_COLORS[p][1], 0) / len,
+  );
+  const b = Math.round(
+    positions.reduce((sum, p) => sum + POSITION_ZONE_COLORS[p][2], 0) / len,
+  );
+  return `rgba(${r}, ${g}, ${b}, 0.6)`;
+}
+
+/**
+ * Build a map of fret number -> list of positions covering that fret.
+ * Positions are added in order of their startFret (sorted by caller).
+ */
+function buildFretPositionMap(
+  extents: Array<{
+    position: PentatonicPosition;
+    startFret: number;
+    endFret: number;
+  }>,
+): Map<number, PentatonicPosition[]> {
+  const map = new Map<number, PentatonicPosition[]>();
+  for (const { position, startFret, endFret } of extents) {
+    const clampedEnd = Math.min(endFret, TOTAL_FRETS);
+    for (let fret = startFret; fret <= clampedEnd; fret++) {
+      const existing = map.get(fret);
+      if (existing) {
+        existing.push(position);
+      } else {
+        map.set(fret, [position]);
+      }
+    }
+  }
+  return map;
+}
+
+/**
+ * Group contiguous frets that share the same set of positions into segments.
+ */
+function groupFretSegments(
+  fretPositions: Map<number, PentatonicPosition[]>,
+): Array<{ startFret: number; endFret: number; positions: PentatonicPosition[] }> {
+  const sortedFrets = [...fretPositions.keys()].sort((a, b) => a - b);
+  if (sortedFrets.length === 0) return [];
+
+  const segments: Array<{
+    startFret: number;
+    endFret: number;
+    positions: PentatonicPosition[];
+  }> = [];
+  let segStart = sortedFrets[0];
+  let segPositions = fretPositions.get(segStart) ?? [];
+  let segKey = segPositions.join(",");
+
+  for (let i = 1; i < sortedFrets.length; i++) {
+    const fret = sortedFrets[i];
+    const positions = fretPositions.get(fret) ?? [];
+    const key = positions.join(",");
+
+    if (fret !== sortedFrets[i - 1] + 1 || key !== segKey) {
+      segments.push({ startFret: segStart, endFret: sortedFrets[i - 1], positions: segPositions });
+      segStart = fret;
+      segPositions = positions;
+      segKey = key;
+    }
+  }
+  segments.push({ startFret: segStart, endFret: sortedFrets[sortedFrets.length - 1], positions: segPositions });
+
+  return segments;
+}
+
 function generatePentatonicZonesHTML(
   rootIndex: number,
   scaleType: ScaleType,
 ): string {
   const extents = getPentatonicExtentsOnFretboard(rootIndex, scaleType);
-  let html = "";
+  const fretPositions = buildFretPositionMap(extents);
+  const segments = groupFretSegments(fretPositions);
 
-  for (const { position, startFret, endFret } of extents) {
+  let html = "";
+  for (const { startFret, endFret, positions } of segments) {
     const startX =
-      startFret === 0
-        ? 0
-        : NUT_POSITION + (startFret - 1) * FRET_WIDTH + FRET_WIDTH / 2;
-    const endX = NUT_POSITION + (endFret - 1) * FRET_WIDTH + FRET_WIDTH / 2;
-    const width = endX - startX;
-    html += `<div class="shape-zone pent-pos-${position}" style="left: ${startX}px; width: ${width}px;"></div>`;
+      startFret === 0 ? 0 : NUT_POSITION + (startFret - 1) * FRET_WIDTH;
+    const endX = NUT_POSITION + endFret * FRET_WIDTH;
+    const color = blendPositionColors(positions);
+    html += `<div class="shape-zone" style="left: ${startX}px; width: ${endX - startX}px; background-color: ${color};"></div>`;
   }
   return html;
 }

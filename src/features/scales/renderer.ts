@@ -34,8 +34,7 @@ import {
   getShapeAtFret,
   getShapeBoundaries,
   getChordShapePositions,
-  getPentatonicPositionAtFret,
-  getPentatonicPositionBoundaries,
+  getPentatonicExtentsOnFretboard,
 } from "./caged";
 
 // Track current scale type for hover handlers
@@ -71,6 +70,166 @@ function handleShapeLabelLeave(): void {
 }
 
 /**
+ * Handle position label hover - show position boundary box
+ */
+function handlePositionLabelHover(
+  position: PentatonicPosition,
+  startFret: number,
+  endFret: number,
+): void {
+  const fretboard = document.getElementById("fretboard");
+  if (!fretboard) return;
+
+  // Remove any existing hover box
+  handlePositionLabelLeave();
+
+  const clampedEndFret = Math.min(endFret, TOTAL_FRETS);
+
+  // Calculate the box dimensions
+  // Notes are positioned at (fret - 0.5) * FRET_WIDTH, so align box edges with notes
+  const startX =
+    startFret === 0
+      ? 0
+      : NUT_POSITION + (startFret - 1) * FRET_WIDTH + FRET_WIDTH / 2;
+  const endX = NUT_POSITION + (clampedEndFret - 1) * FRET_WIDTH + FRET_WIDTH / 2;
+  const width = endX - startX;
+
+  // Get the color for this position
+  const color = POSITION_LINE_COLORS[position];
+
+  // Create and append the hover box
+  const hoverBox = document.createElement("div");
+  hoverBox.className = "position-hover-box";
+  hoverBox.style.left = `${startX}px`;
+  hoverBox.style.width = `${width}px`;
+  hoverBox.style.borderColor = color;
+  hoverBox.id = "position-hover-box";
+
+  fretboard.appendChild(hoverBox);
+}
+
+/**
+ * Handle position label mouse leave - remove boundary box
+ */
+function handlePositionLabelLeave(): void {
+  const hoverBox = document.getElementById("position-hover-box");
+  if (hoverBox) {
+    hoverBox.remove();
+  }
+}
+
+/**
+ * Generate HTML for CAGED shape header labels
+ */
+function generateCAGEDHeaderHTML(rootIndex: number): string {
+  const headerShapes = getShapeBoundaries(rootIndex, TOTAL_FRETS);
+  let html = "";
+
+  for (let i = 0; i < headerShapes.length; i++) {
+    const { shape, fret } = headerShapes[i];
+    const pattern = PATTERN_NUMBERS[shape];
+    const color = LINE_COLORS[shape];
+
+    // Calculate the end fret of this shape (start of next shape or TOTAL_FRETS)
+    const nextFret = i < headerShapes.length - 1 ? headerShapes[i + 1].fret : TOTAL_FRETS + 1;
+
+    // Calculate center position of the shape span
+    const shapeSpan = nextFret - fret;
+    const centerFret = fret + (shapeSpan - 1) / 2;
+    const centerX = fret === 0
+      ? NUT_POSITION * 0.5 + FRET_WIDTH * (shapeSpan - 1) / 2
+      : NUT_POSITION + centerFret * FRET_WIDTH;
+
+    html += `
+            <div class="shape-label" style="position: absolute; left: ${centerX}px;" data-shape="${shape}" data-start-fret="${fret}">
+                <span class="shape-letter">${shape}</span>
+                <span class="shape-text">shape</span>
+                <div class="shape-line" style="background-color: ${color};"></div>
+                <span class="shape-pattern">pattern ${pattern}</span>
+            </div>
+        `;
+  }
+  return html;
+}
+
+/**
+ * Generate HTML for pentatonic position header labels
+ */
+function generatePentatonicHeaderHTML(
+  rootIndex: number,
+  scaleType: ScaleType,
+): string {
+  const extents = getPentatonicExtentsOnFretboard(rootIndex, scaleType);
+  let html = "";
+
+  for (const { position, startFret, endFret } of extents) {
+    const positionLabel = POSITION_LABELS[position];
+    const color = POSITION_LINE_COLORS[position];
+
+    const positionSpan = endFret - startFret + 1;
+    const centerFret = startFret + (positionSpan - 1) / 2;
+    const centerX =
+      startFret === 0
+        ? NUT_POSITION * 0.5 + (FRET_WIDTH * (positionSpan - 1)) / 2
+        : NUT_POSITION + centerFret * FRET_WIDTH;
+
+    html += `
+            <div class="shape-label" style="position: absolute; left: ${centerX}px;" data-position="${position}" data-start-fret="${startFret}" data-end-fret="${endFret}">
+                <span class="shape-letter">${positionLabel}</span>
+                <span class="shape-text">position</span>
+                <div class="shape-line" style="background-color: ${color};"></div>
+            </div>
+        `;
+  }
+  return html;
+}
+
+/**
+ * Attach event listeners for CAGED shape labels
+ */
+function attachCAGEDEventListeners(header: HTMLElement): void {
+  const shapeLabels = header.querySelectorAll(".shape-label");
+  for (const label of shapeLabels) {
+    const shape = label.getAttribute("data-shape") as CAGEDShape;
+    const startFret = Number.parseInt(
+      label.getAttribute("data-start-fret") || "0",
+      10,
+    );
+
+    label.addEventListener("mouseenter", () =>
+      handleShapeLabelHover(shape, startFret),
+    );
+    label.addEventListener("mouseleave", handleShapeLabelLeave);
+  }
+}
+
+/**
+ * Attach event listeners for pentatonic position labels
+ */
+function attachPentatonicEventListeners(header: HTMLElement): void {
+  const positionLabels = header.querySelectorAll(".shape-label");
+  for (const label of positionLabels) {
+    const position = Number.parseInt(
+      label.getAttribute("data-position") || "0",
+      10,
+    ) as PentatonicPosition;
+    const startFret = Number.parseInt(
+      label.getAttribute("data-start-fret") || "0",
+      10,
+    );
+    const endFret = Number.parseInt(
+      label.getAttribute("data-end-fret") || "0",
+      10,
+    );
+
+    label.addEventListener("mouseenter", () =>
+      handlePositionLabelHover(position, startFret, endFret),
+    );
+    label.addEventListener("mouseleave", handlePositionLabelLeave);
+  }
+}
+
+/**
  * Render the header showing shape/position labels
  * @param rootIndex - The root note index (0-11)
  * @param highlightMode - The highlight mode ("caged" or "pentatonic")
@@ -78,79 +237,26 @@ function handleShapeLabelLeave(): void {
 export function renderCAGEDHeader(
   rootIndex: number,
   highlightMode: HighlightMode = "caged",
+  scaleType: ScaleType = "major",
 ): void {
   const header = document.getElementById("cagedHeader");
   if (!header) return;
 
-  header.innerHTML = "";
-
-  let headerHTML = "";
-
-  if (highlightMode === "caged") {
-    // Create header elements positioned correctly using getShapeBoundaries
-    const headerShapes = getShapeBoundaries(rootIndex, TOTAL_FRETS);
-
-    // Build header HTML with data attributes for hover handlers
-    for (const { shape, fret } of headerShapes) {
-      const pattern = PATTERN_NUMBERS[shape];
-      const color = LINE_COLORS[shape];
-
-      // Calculate left position (approximate based on fret)
-      const leftPos = NUT_POSITION + fret * FRET_WIDTH;
-
-      headerHTML += `
-              <div class="shape-label" style="position: absolute; left: ${leftPos}px;" data-shape="${shape}" data-start-fret="${fret}">
-                  <span class="shape-letter">${shape}</span>
-                  <span class="shape-text">shape</span>
-                  <div class="shape-line" style="background-color: ${color};"></div>
-                  <span class="shape-pattern">pattern ${pattern}</span>
-              </div>
-          `;
-    }
-  } else {
-    // Pentatonic mode - display positions
-    const headerPositions = getPentatonicPositionBoundaries(
-      rootIndex,
-      TOTAL_FRETS,
-    );
-
-    for (const { position, fret } of headerPositions) {
-      const positionLabel = POSITION_LABELS[position];
-      const color = POSITION_LINE_COLORS[position];
-
-      // Calculate left position (approximate based on fret)
-      const leftPos = NUT_POSITION + fret * FRET_WIDTH;
-
-      headerHTML += `
-              <div class="shape-label" style="position: absolute; left: ${leftPos}px;" data-position="${position}" data-start-fret="${fret}">
-                  <span class="shape-letter">${positionLabel}</span>
-                  <span class="shape-text">position</span>
-                  <div class="shape-line" style="background-color: ${color};"></div>
-              </div>
-          `;
-    }
-  }
-
   header.style.position = "relative";
   header.style.height = "120px";
   header.style.minWidth = "1400px";
+
+  const headerHTML =
+    highlightMode === "caged"
+      ? generateCAGEDHeaderHTML(rootIndex)
+      : generatePentatonicHeaderHTML(rootIndex, scaleType);
+
   header.innerHTML = headerHTML;
 
-  // Attach hover event listeners to shape labels (only for CAGED mode)
   if (highlightMode === "caged") {
-    const shapeLabels = header.querySelectorAll(".shape-label");
-    for (const label of shapeLabels) {
-      const shape = label.getAttribute("data-shape") as CAGEDShape;
-      const startFret = Number.parseInt(
-        label.getAttribute("data-start-fret") || "0",
-        10,
-      );
-
-      label.addEventListener("mouseenter", () =>
-        handleShapeLabelHover(shape, startFret),
-      );
-      label.addEventListener("mouseleave", handleShapeLabelLeave);
-    }
+    attachCAGEDEventListeners(header);
+  } else {
+    attachPentatonicEventListeners(header);
   }
 }
 
@@ -209,27 +315,21 @@ function generateCAGEDZonesHTML(rootIndex: number): string {
   return html;
 }
 
-function generatePentatonicZonesHTML(rootIndex: number): string {
+function generatePentatonicZonesHTML(
+  rootIndex: number,
+  scaleType: ScaleType,
+): string {
+  const extents = getPentatonicExtentsOnFretboard(rootIndex, scaleType);
   let html = "";
-  let prevPosition: PentatonicPosition | null = null;
-  let positionStart = 0;
 
-  for (let fret = 0; fret <= TOTAL_FRETS + 1; fret++) {
-    const position: PentatonicPosition | null =
-      fret <= TOTAL_FRETS ? getPentatonicPositionAtFret(rootIndex, fret) : null;
-    if (position !== prevPosition) {
-      if (prevPosition !== null) {
-        const startX =
-          positionStart === 0
-            ? 0
-            : NUT_POSITION + (positionStart - 1) * FRET_WIDTH + FRET_WIDTH / 2;
-        const endX = NUT_POSITION + (fret - 1) * FRET_WIDTH + FRET_WIDTH / 2;
-        const width = endX - startX;
-        html += `<div class="shape-zone pent-pos-${prevPosition}" style="left: ${startX}px; width: ${width}px;"></div>`;
-      }
-      positionStart = fret;
-      prevPosition = position;
-    }
+  for (const { position, startFret, endFret } of extents) {
+    const startX =
+      startFret === 0
+        ? 0
+        : NUT_POSITION + (startFret - 1) * FRET_WIDTH + FRET_WIDTH / 2;
+    const endX = NUT_POSITION + endFret * FRET_WIDTH + FRET_WIDTH / 2;
+    const width = endX - startX;
+    html += `<div class="shape-zone pent-pos-${position}" style="left: ${startX}px; width: ${width}px;"></div>`;
   }
   return html;
 }
@@ -237,10 +337,11 @@ function generatePentatonicZonesHTML(rootIndex: number): string {
 function generateShapeZonesHTML(
   rootIndex: number,
   highlightMode: HighlightMode,
+  scaleType: ScaleType,
 ): string {
   return highlightMode === "caged"
     ? generateCAGEDZonesHTML(rootIndex)
-    : generatePentatonicZonesHTML(rootIndex);
+    : generatePentatonicZonesHTML(rootIndex, scaleType);
 }
 
 function generateNoteHTMLForFret(
@@ -319,7 +420,7 @@ export function renderFretboard(
   let fretboardHTML = "";
 
   // Add shape background zones (CAGED or Pentatonic based on highlightMode)
-  fretboardHTML += generateShapeZonesHTML(rootIndex, highlightMode);
+  fretboardHTML += generateShapeZonesHTML(rootIndex, highlightMode, scaleType);
 
   // Add fret lines (vertical)
   fretboardHTML += generateFretLinesHTML();

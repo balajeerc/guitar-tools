@@ -160,10 +160,11 @@ body {
     min-width: 80px;
     cursor: pointer;
     transition: transform 0.15s ease-in-out;
+    transform: translateX(-50%);
 }
 
 .shape-label:hover {
-    transform: scale(1.05);
+    transform: translateX(-50%) scale(1.05);
 }
 
 .shape-letter {
@@ -577,4 +578,16 @@ body {
 .checkbox-label input[type="checkbox"]:checked + span {
     color: #667eea;
     font-weight: 600;
+}
+
+/* Position Hover Box */
+.position-hover-box {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border: 3px solid;
+    border-radius: 8px;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0.8;
 }

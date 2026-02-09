@@ -179,57 +179,91 @@ export function getShapeBoundaries(
 }
 
 /**
- * Map CAGED shape to pentatonic position
- * The standard pentatonic positions align with CAGED shapes:
- * - Position 1 → E shape (root on low E string)
- * - Position 2 → D shape
- * - Position 3 → C shape
- * - Position 4 → A shape
- * - Position 5 → G shape
+ * Hardcoded pentatonic position extents: [startFret, endFret] (inclusive).
+ * Keyed by rootIndex (0=A, 1=A#, ... 11=G#), then scaleType, then position.
+ * Adjacent positions overlap by 1-2 frets (shared frets playable in either position).
+ * These repeat every 12 frets on the fretboard.
  */
-const CAGED_TO_PENTATONIC_POSITION: Record<CAGEDShape, PentatonicPosition> = {
-  E: 1,
-  D: 2,
-  C: 3,
-  A: 4,
-  G: 5,
+// prettier-ignore
+const PENTATONIC_POSITION_TABLE: Record<
+  number,
+  Record<ScaleType, Record<PentatonicPosition, [number, number]>>
+> = {
+  0: { // A
+    major: { 1: [4, 7],  2: [6, 10],  3: [9, 12],  4: [11, 14], 5: [2, 5] },
+    minor: { 1: [5, 8],  2: [7, 10],  3: [9, 13],  4: [12, 15], 5: [2, 5] },
+  },
+  1: { // A#
+    major: { 1: [5, 8],  2: [7, 11],  3: [10, 13], 4: [12, 15], 5: [3, 6] },
+    minor: { 1: [6, 9],  2: [8, 11],  3: [10, 14], 4: [1, 4],   5: [3, 6] },
+  },
+  2: { // B
+    major: { 1: [6, 9],  2: [8, 12],  3: [11, 14], 4: [1, 4],   5: [4, 7] },
+    minor: { 1: [7, 10], 2: [9, 12],  3: [11, 15], 4: [2, 5],   5: [4, 7] },
+  },
+  3: { // C
+    major: { 1: [7, 10], 2: [9, 13],  3: [12, 15], 4: [2, 5],   5: [5, 8] },
+    minor: { 1: [8, 11], 2: [10, 13], 3: [12, 16], 4: [3, 6],   5: [5, 8] },
+  },
+  4: { // C#
+    major: { 1: [8, 11], 2: [10, 14], 3: [1, 4],   4: [3, 6],   5: [6, 9] },
+    minor: { 1: [9, 12], 2: [11, 14], 3: [1, 5],   4: [4, 7],   5: [6, 9] },
+  },
+  5: { // D
+    major: { 1: [9, 12], 2: [11, 15], 3: [2, 5],   4: [4, 7],   5: [7, 10] },
+    minor: { 1: [10, 13], 2: [12, 15], 3: [2, 6],  4: [5, 8],   5: [7, 10] },
+  },
+  6: { // D#
+    major: { 1: [10, 13], 2: [12, 16], 3: [3, 6],  4: [5, 8],   5: [8, 11] },
+    minor: { 1: [11, 14], 2: [1, 4],   3: [3, 7],  4: [6, 9],   5: [8, 11] },
+  },
+  7: { // E
+    major: { 1: [11, 14], 2: [1, 5],   3: [4, 7],  4: [6, 9],   5: [9, 12] },
+    minor: { 1: [12, 15], 2: [2, 5],   3: [4, 8],  4: [7, 10],  5: [9, 12] },
+  },
+  8: { // F
+    major: { 1: [12, 15], 2: [2, 6],   3: [5, 8],  4: [7, 10],  5: [10, 13] },
+    minor: { 1: [1, 4],   2: [3, 6],   3: [5, 9],  4: [8, 11],  5: [10, 13] },
+  },
+  9: { // F#
+    major: { 1: [1, 4],   2: [3, 7],   3: [6, 9],  4: [8, 11],  5: [11, 14] },
+    minor: { 1: [2, 5],   2: [4, 7],   3: [6, 10], 4: [9, 12],  5: [11, 14] },
+  },
+  10: { // G
+    major: { 1: [2, 5],  2: [4, 8],   3: [7, 10],  4: [9, 12],  5: [12, 15] },
+    minor: { 1: [3, 6],  2: [5, 8],   3: [7, 11],  4: [10, 13], 5: [12, 15] },
+  },
+  11: { // G#
+    major: { 1: [3, 6],  2: [5, 9],   3: [8, 11],  4: [10, 13], 5: [1, 4] },
+    minor: { 1: [4, 7],  2: [6, 9],   3: [8, 12],  4: [11, 14], 5: [1, 4] },
+  },
 };
 
 /**
- * Get the pentatonic position at a specific fret
+ * Get all pentatonic position extents visible on the fretboard.
+ * Returns positions with their start/end frets (inclusive), sorted by start fret.
+ * Positions may overlap where adjacent shapes share frets.
  * @param rootIndex - The root note index (0-11, where 0=A)
- * @param fret - The fret number
- * @returns The pentatonic position (1-5) at that fret
+ * @param scaleType - "major" or "minor"
+ * @param totalFrets - Total number of frets on the fretboard
  */
-export function getPentatonicPositionAtFret(
+export function getPentatonicExtentsOnFretboard(
   rootIndex: number,
-  fret: number,
-): PentatonicPosition {
-  // Get the CAGED shape at this fret and map it to pentatonic position
-  const shape = getShapeAtFret(rootIndex, fret);
-  return CAGED_TO_PENTATONIC_POSITION[shape];
-}
+  scaleType: ScaleType,
+): Array<{ position: PentatonicPosition; startFret: number; endFret: number }> {
+  const positionExtents = PENTATONIC_POSITION_TABLE[rootIndex][scaleType];
+  const result: Array<{
+    position: PentatonicPosition;
+    startFret: number;
+    endFret: number;
+  }> = [];
 
-/**
- * Get all pentatonic position boundaries for the fretboard header display
- * @param rootIndex - The root note index (0-11)
- * @param totalFrets - Total number of frets
- * @returns Array of {position, fret} objects
- */
-export function getPentatonicPositionBoundaries(
-  rootIndex: number,
-  totalFrets: number,
-): { position: PentatonicPosition; fret: number }[] {
-  const positions: { position: PentatonicPosition; fret: number }[] = [];
-  let prevPosition: PentatonicPosition | null = null;
-
-  for (let fret = 0; fret <= totalFrets; fret++) {
-    const position = getPentatonicPositionAtFret(rootIndex, fret);
-    if (position !== prevPosition) {
-      positions.push({ position, fret });
-      prevPosition = position;
-    }
+  for (const posStr of Object.keys(positionExtents)) {
+    const position = Number(posStr) as PentatonicPosition;
+    const [startFret, endFret] = positionExtents[position];
+    result.push({ position, startFret, endFret });
   }
 
-  return positions;
+  result.sort((a, b) => a.startFret - b.startFret);
+  return result;
 }

@@ -16,7 +16,7 @@ let highlightMode: HighlightMode = "caged";
  */
 function updateDisplay(): void {
   updateNoteDisplay(currentRootIndex);
-  renderCAGEDHeader(currentRootIndex, highlightMode);
+  renderCAGEDHeader(currentRootIndex, highlightMode, currentScale);
   renderFretboard(currentRootIndex, currentScale, displayMode, highlightMode);
 }
 

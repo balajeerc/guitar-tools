@@ -171,7 +171,7 @@ function generatePentatonicHeaderHTML(
     const centerX =
       startFret === 0
         ? NUT_POSITION * 0.5 + (FRET_WIDTH * (positionSpan - 1)) / 2
-        : NUT_POSITION + centerFret * FRET_WIDTH;
+        : NUT_POSITION + (centerFret - 0.5) * FRET_WIDTH;
 
     html += `
             <div class="shape-label" style="position: absolute; left: ${centerX}px;" data-position="${position}" data-start-fret="${startFret}" data-end-fret="${endFret}">
@@ -327,7 +327,7 @@ function generatePentatonicZonesHTML(
       startFret === 0
         ? 0
         : NUT_POSITION + (startFret - 1) * FRET_WIDTH + FRET_WIDTH / 2;
-    const endX = NUT_POSITION + endFret * FRET_WIDTH + FRET_WIDTH / 2;
+    const endX = NUT_POSITION + (endFret - 1) * FRET_WIDTH + FRET_WIDTH / 2;
     const width = endX - startX;
     html += `<div class="shape-zone pent-pos-${position}" style="left: ${startX}px; width: ${width}px;"></div>`;
   }

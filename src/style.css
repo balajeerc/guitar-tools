@@ -520,6 +520,24 @@ body {
 }
 
 /* Checkbox Group */
+.select-all-btn {
+    padding: 6px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f5f5f5;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: #667eea;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.select-all-btn:hover {
+    background: #e8e8e8;
+    border-color: #667eea;
+}
+
 .checkbox-group {
     display: flex;
     flex-wrap: wrap;

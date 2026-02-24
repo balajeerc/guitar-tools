@@ -52,6 +52,54 @@ function updateDisplay(): void {
   renderFretboard(selectedNotes, selectedStrings);
 }
 
+const ALL_STRINGS = [1, 2, 3, 4, 5, 6];
+
+/**
+ * Create a toggle-all button for a checkbox group
+ */
+function createToggleAllButton<T>(
+  allItems: T[],
+  selectedItems: Set<T>,
+  checkboxGroup: HTMLElement,
+): { button: HTMLButtonElement; updateLabel: () => void } {
+  const button = document.createElement("button");
+  button.className = "select-all-btn";
+
+  function updateLabel(): void {
+    const allSelected = allItems.every((item) => selectedItems.has(item));
+    button.textContent = allSelected ? "Deselect All" : "Select All";
+  }
+
+  updateLabel();
+
+  button.addEventListener("click", () => {
+    const allSelected = allItems.every((item) => selectedItems.has(item));
+    const checkboxes = checkboxGroup.querySelectorAll<HTMLInputElement>(
+      'input[type="checkbox"]',
+    );
+
+    if (allSelected) {
+      selectedItems.clear();
+      for (const cb of checkboxes) {
+        cb.checked = false;
+      }
+    } else {
+      for (const item of allItems) {
+        selectedItems.add(item);
+      }
+      for (const cb of checkboxes) {
+        cb.checked = true;
+      }
+    }
+
+    saveSelectionsToStorage();
+    updateDisplay();
+    updateLabel();
+  });
+
+  return { button, updateLabel };
+}
+
 /**
  * Create multi-select control for notes
  */
@@ -66,6 +114,13 @@ function createNoteControls(): HTMLElement {
 
   const checkboxGroup = document.createElement("div");
   checkboxGroup.className = "checkbox-group";
+
+  const { button: toggleBtn, updateLabel } = createToggleAllButton(
+    [...NOTES],
+    selectedNotes,
+    checkboxGroup,
+  );
+  container.appendChild(toggleBtn);
 
   for (const note of NOTES) {
     const checkboxWrapper = document.createElement("label");
@@ -84,6 +139,7 @@ function createNoteControls(): HTMLElement {
       }
       saveSelectionsToStorage();
       updateDisplay();
+      updateLabel();
     });
 
     const labelText = document.createElement("span");
@@ -113,6 +169,13 @@ function createStringControls(): HTMLElement {
   const checkboxGroup = document.createElement("div");
   checkboxGroup.className = "checkbox-group";
 
+  const { button: toggleBtn, updateLabel } = createToggleAllButton(
+    ALL_STRINGS,
+    selectedStrings,
+    checkboxGroup,
+  );
+  container.appendChild(toggleBtn);
+
   for (let stringNumber = 1; stringNumber <= 6; stringNumber++) {
     const checkboxWrapper = document.createElement("label");
     checkboxWrapper.className = "checkbox-label";
@@ -130,6 +193,7 @@ function createStringControls(): HTMLElement {
       }
       saveSelectionsToStorage();
       updateDisplay();
+      updateLabel();
     });
 
     const labelText = document.createElement("span");

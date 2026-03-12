@@ -246,6 +246,11 @@ export function renderCAGEDHeader(
   header.style.height = "120px";
   header.style.minWidth = "1400px";
 
+  if (highlightMode === "full") {
+    header.innerHTML = "";
+    return;
+  }
+
   const headerHTML =
     highlightMode === "caged"
       ? generateCAGEDHeaderHTML(rootIndex)
@@ -263,7 +268,7 @@ export function renderCAGEDHeader(
 // Interval display mapping by scale degree index for each scale type
 // Major pentatonic: R, 2, 3, 5, 6 (indices 0, 1, 2, 3, 4)
 // Minor pentatonic: R, b3, 4, 5, b7 (indices 0, 1, 2, 3, 4)
-const INTERVAL_DISPLAY: Record<
+const PENTATONIC_INTERVAL_DISPLAY: Record<
   ScaleType,
   Array<{ className: string; text: string }>
 > = {
@@ -283,11 +288,40 @@ const INTERVAL_DISPLAY: Record<
   ],
 };
 
+// Full scale interval display: R, 2, 3, 4, 5, 6, 7 (indices 0-6)
+const FULL_INTERVAL_DISPLAY: Record<
+  ScaleType,
+  Array<{ className: string; text: string }>
+> = {
+  major: [
+    { className: "interval-root", text: "R" },
+    { className: "interval-other", text: "2" },
+    { className: "interval-third", text: "3" },
+    { className: "interval-other", text: "4" },
+    { className: "interval-fifth", text: "5" },
+    { className: "interval-other", text: "6" },
+    { className: "interval-other", text: "7" },
+  ],
+  minor: [
+    { className: "interval-root", text: "R" },
+    { className: "interval-other", text: "2" },
+    { className: "interval-third", text: "b3" },
+    { className: "interval-other", text: "4" },
+    { className: "interval-fifth", text: "5" },
+    { className: "interval-other", text: "b6" },
+    { className: "interval-other", text: "b7" },
+  ],
+};
+
 function getIntervalDetails(
   scaleDegree: number,
   scaleType: ScaleType,
+  useFullScale: boolean,
 ): { className: string; text: string } {
-  return INTERVAL_DISPLAY[scaleType][scaleDegree];
+  const display = useFullScale
+    ? FULL_INTERVAL_DISPLAY[scaleType]
+    : PENTATONIC_INTERVAL_DISPLAY[scaleType];
+  return display[scaleDegree];
 }
 
 function generateCAGEDZonesHTML(rootIndex: number): string {
@@ -426,6 +460,7 @@ function generateShapeZonesHTML(
   highlightMode: HighlightMode,
   scaleType: ScaleType,
 ): string {
+  if (highlightMode === "full") return "";
   return highlightMode === "caged"
     ? generateCAGEDZonesHTML(rootIndex)
     : generatePentatonicZonesHTML(rootIndex, scaleType);
@@ -439,11 +474,12 @@ function generateNoteHTMLForFret(
     rootIndex: number;
     scaleType: ScaleType;
     displayMode: DisplayMode;
+    useFullScale: boolean;
   },
 ): string {
-  const { rootIndex, scaleType, displayMode } = options;
+  const { rootIndex, scaleType, displayMode, useFullScale } = options;
   const noteIndex = getNoteAtPosition(stringIdx, fret);
-  const inScale = isInScale(noteIndex, rootIndex, scaleType);
+  const inScale = isInScale(noteIndex, rootIndex, scaleType, useFullScale);
 
   if (!inScale) return "";
 
@@ -460,8 +496,8 @@ function generateNoteHTMLForFret(
     return `<div class="${noteClass}" style="left: ${x}px; top: ${stringY}px;" ${dataAttrs}>${noteName}</div>`;
   }
 
-  const scaleDegree = getScaleDegree(noteIndex, rootIndex, scaleType);
-  const { className, text } = getIntervalDetails(scaleDegree, scaleType);
+  const scaleDegree = getScaleDegree(noteIndex, rootIndex, scaleType, useFullScale);
+  const { className, text } = getIntervalDetails(scaleDegree, scaleType, useFullScale);
   return `<div class="note ${className}" style="left: ${x}px; top: ${stringY}px;" ${dataAttrs}>${text}</div>`;
 }
 
@@ -469,9 +505,11 @@ function generateNotesHTML(
   rootIndex: number,
   scaleType: ScaleType,
   displayMode: DisplayMode,
+  highlightMode: HighlightMode,
 ): string {
   let html = "";
-  const options = { rootIndex, scaleType, displayMode };
+  const useFullScale = highlightMode === "full";
+  const options = { rootIndex, scaleType, displayMode, useFullScale };
 
   for (const [visualIdx, stringIdx] of STRING_ORDER.entries()) {
     const stringY = STRING_Y_POSITIONS[visualIdx];
@@ -519,7 +557,7 @@ export function renderFretboard(
   fretboardHTML += generateStringsHTML();
 
   // Add notes positioned on strings
-  fretboardHTML += generateNotesHTML(rootIndex, scaleType, displayMode);
+  fretboardHTML += generateNotesHTML(rootIndex, scaleType, displayMode, highlightMode);
 
   fretboard.innerHTML = fretboardHTML;
 

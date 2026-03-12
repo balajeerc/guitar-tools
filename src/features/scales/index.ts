@@ -82,22 +82,29 @@ function setupHighlightModeToggle(): void {
   const pentatonicHighlightBtn = document.getElementById(
     "pentatonicHighlightBtn",
   );
+  const fullHighlightBtn = document.getElementById("fullHighlightBtn");
   const cagedLegend = document.getElementById("cagedLegend");
   const pentatonicLegend = document.getElementById("pentatonicLegend");
 
   if (
     !cagedHighlightBtn ||
     !pentatonicHighlightBtn ||
+    !fullHighlightBtn ||
     !cagedLegend ||
     !pentatonicLegend
   ) {
     return;
   }
 
+  const allBtns = [cagedHighlightBtn, pentatonicHighlightBtn, fullHighlightBtn];
+  function setActiveBtn(activeBtn: HTMLElement): void {
+    for (const btn of allBtns) btn.classList.remove("active");
+    activeBtn.classList.add("active");
+  }
+
   cagedHighlightBtn.addEventListener("click", () => {
     highlightMode = "caged";
-    cagedHighlightBtn.classList.add("active");
-    pentatonicHighlightBtn.classList.remove("active");
+    setActiveBtn(cagedHighlightBtn);
     cagedLegend.style.display = "flex";
     pentatonicLegend.style.display = "none";
     updateDisplay();
@@ -105,10 +112,17 @@ function setupHighlightModeToggle(): void {
 
   pentatonicHighlightBtn.addEventListener("click", () => {
     highlightMode = "pentatonic";
-    pentatonicHighlightBtn.classList.add("active");
-    cagedHighlightBtn.classList.remove("active");
+    setActiveBtn(pentatonicHighlightBtn);
     cagedLegend.style.display = "none";
     pentatonicLegend.style.display = "flex";
+    updateDisplay();
+  });
+
+  fullHighlightBtn.addEventListener("click", () => {
+    highlightMode = "full";
+    setActiveBtn(fullHighlightBtn);
+    cagedLegend.style.display = "none";
+    pentatonicLegend.style.display = "none";
     updateDisplay();
   });
 }

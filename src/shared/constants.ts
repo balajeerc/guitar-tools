@@ -27,6 +27,10 @@ export const OPEN_STRINGS: readonly number[] = [7, 0, 5, 10, 2, 7]; // E=7, A=0,
 export const MAJOR_PENTATONIC: readonly number[] = [0, 2, 4, 7, 9]; // 1, 2, 3, 5, 6
 export const MINOR_PENTATONIC: readonly number[] = [0, 3, 5, 7, 10]; // 1, b3, 4, 5, b7
 
+// Full scale intervals (in semitones from root)
+export const MAJOR_SCALE: readonly number[] = [0, 2, 4, 5, 7, 9, 11]; // 1, 2, 3, 4, 5, 6, 7
+export const MINOR_SCALE: readonly number[] = [0, 2, 3, 5, 7, 8, 10]; // 1, 2, b3, 4, 5, b6, b7
+
 // CAGED pattern numbers
 export const PATTERN_NUMBERS: Record<CAGEDShape, number> = {
   C: 3,

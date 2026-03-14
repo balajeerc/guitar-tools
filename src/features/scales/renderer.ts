@@ -37,6 +37,18 @@ import {
   getPentatonicExtentsOnFretboard,
 } from "./caged";
 
+/** Check if a note is in the pentatonic scale but not a chord tone (R/3/5) */
+function isPentatonicNonChordTone(
+  noteIndex: number,
+  rootIndex: number,
+  scaleType: ScaleType,
+): boolean {
+  const relativeNote = (noteIndex - rootIndex + 12) % 12;
+  const thirdInterval = scaleType === "major" ? 4 : 3;
+  if (relativeNote === 0 || relativeNote === thirdInterval || relativeNote === 7) return false;
+  return isInScale(noteIndex, rootIndex, scaleType, false);
+}
+
 // Track current scale type for hover handlers
 let currentScaleType: ScaleType = "major";
 
@@ -295,21 +307,21 @@ const FULL_INTERVAL_DISPLAY: Record<
 > = {
   major: [
     { className: "interval-root", text: "R" },
-    { className: "interval-other", text: "2" },
+    { className: "interval-pentatonic", text: "2" },
     { className: "interval-third", text: "3" },
     { className: "interval-other", text: "4" },
     { className: "interval-fifth", text: "5" },
-    { className: "interval-other", text: "6" },
+    { className: "interval-pentatonic", text: "6" },
     { className: "interval-other", text: "7" },
   ],
   minor: [
     { className: "interval-root", text: "R" },
     { className: "interval-other", text: "2" },
     { className: "interval-third", text: "b3" },
-    { className: "interval-other", text: "4" },
+    { className: "interval-pentatonic", text: "4" },
     { className: "interval-fifth", text: "5" },
     { className: "interval-other", text: "b6" },
-    { className: "interval-other", text: "b7" },
+    { className: "interval-pentatonic", text: "b7" },
   ],
 };
 
@@ -492,7 +504,14 @@ function generateNoteHTMLForFret(
   if (displayMode === "notes") {
     const noteName = NOTES[noteIndex];
     const isRoot = noteIndex === rootIndex;
-    const noteClass = isRoot ? "note note-square" : "note note-circle";
+    let noteClass: string;
+    if (isRoot) {
+      noteClass = "note note-square";
+    } else if (useFullScale && isPentatonicNonChordTone(noteIndex, rootIndex, scaleType)) {
+      noteClass = "note note-circle-yellow";
+    } else {
+      noteClass = "note note-circle";
+    }
     return `<div class="${noteClass}" style="left: ${x}px; top: ${stringY}px;" ${dataAttrs}>${noteName}</div>`;
   }
 

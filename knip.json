@@ -2,5 +2,5 @@
     "ignoreBinaries": [
         "fuser"
     ],
-    "ignore": []
+    "ignore": ["public/sw.js"]
 }

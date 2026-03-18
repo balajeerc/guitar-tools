@@ -1,6 +1,10 @@
 import { initRouter } from "./router";
+import { registerServiceWorker } from "./pwa/serviceWorkerRegistration";
+import { initInstallPrompt } from "./pwa/installPrompt";
 
-// Initialize the application
 document.addEventListener("DOMContentLoaded", () => {
   initRouter();
+  initInstallPrompt();
 });
+
+registerServiceWorker();

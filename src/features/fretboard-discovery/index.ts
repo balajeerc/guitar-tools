@@ -1,12 +1,14 @@
 import { NOTES } from "../../shared/constants";
 import { renderFretboard } from "./renderer";
 import { MOBILE_BREAKPOINT } from "../../shared/layout";
+import { setupAccordionToggle } from "../../shared/accordion";
 
 // LocalStorage keys
 const STORAGE_KEY_NOTES = "fretboard-discovery-notes";
 const STORAGE_KEY_STRINGS = "fretboard-discovery-strings";
 
 // Application state
+const ALL_STRINGS = [1, 2, 3, 4, 5, 6];
 let selectedNotes: Set<string> = new Set(NOTES);
 let selectedStrings: Set<number> = new Set([1, 2, 3, 4, 5, 6]);
 
@@ -47,13 +49,37 @@ function saveSelectionsToStorage(): void {
 }
 
 /**
+ * Generate summary text for the accordion toggle
+ */
+function getControlsSummary(): string {
+  const noteCount = selectedNotes.size;
+  const stringCount = selectedStrings.size;
+  const notesPart =
+    noteCount === NOTES.length ? "All notes" : `${noteCount} notes`;
+  const stringsPart =
+    stringCount === ALL_STRINGS.length
+      ? "All strings"
+      : `${stringCount} strings`;
+  return `${notesPart} · ${stringsPart}`;
+}
+
+/**
+ * Update the accordion summary text
+ */
+function updateControlsSummary(): void {
+  const summary = document.getElementById("discoveryControlsSummary");
+  if (summary) {
+    summary.textContent = getControlsSummary();
+  }
+}
+
+/**
  * Update display based on current selections
  */
 function updateDisplay(): void {
   renderFretboard(selectedNotes, selectedStrings);
+  updateControlsSummary();
 }
-
-const ALL_STRINGS = [1, 2, 3, 4, 5, 6];
 
 /**
  * Create a toggle-all button for a checkbox group
@@ -219,18 +245,26 @@ export function initFretboardDiscoveryFeature(): void {
   // Load saved selections from localStorage
   loadSelectionsFromStorage();
 
-  // Create the page structure
+  // Create the page structure with accordion wrapper
   container.innerHTML = `
-    <div class="controls" id="discovery-controls">
-      <!-- Controls will be inserted here -->
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="discoveryAccordionToggle">
+        <span class="controls-summary" id="discoveryControlsSummary">${getControlsSummary()}</span>
+        <span class="controls-accordion-arrow">&#9662;</span>
+      </button>
+      <div class="controls" id="discovery-controls">
+        <!-- Controls will be inserted here -->
+      </div>
     </div>
 
-    <div class="fretboard-container">
-      <div class="fretboard" id="fretboard-discovery">
-        <!-- Dynamically populated -->
-      </div>
-      <div class="fret-numbers" id="fretNumbers-discovery">
-        <!-- Dynamically populated -->
+    <div class="fretboard-discovery-board">
+      <div class="fretboard-container">
+        <div class="fretboard" id="fretboard-discovery">
+          <!-- Dynamically populated -->
+        </div>
+        <div class="fret-numbers" id="fretNumbers-discovery">
+          <!-- Dynamically populated -->
+        </div>
       </div>
     </div>
   `;
@@ -241,6 +275,9 @@ export function initFretboardDiscoveryFeature(): void {
     controlsContainer.appendChild(createNoteControls());
     controlsContainer.appendChild(createStringControls());
   }
+
+  // Set up accordion toggle
+  setupAccordionToggle("discoveryAccordionToggle");
 
   // Re-render when crossing mobile breakpoint
   window

@@ -1002,4 +1002,10 @@ body {
     .checkbox-group {
         justify-content: center;
     }
+
+    /* Fretboard Discovery: center the fretboard on mobile */
+    .fretboard-discovery-board {
+        display: flex;
+        justify-content: center;
+    }
 }

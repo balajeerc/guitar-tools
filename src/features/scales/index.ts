@@ -6,6 +6,7 @@ import {
 } from "./renderer";
 import { MOBILE_BREAKPOINT } from "../../shared/layout";
 import { NOTES } from "../../shared/constants";
+import { setupAccordionToggle } from "../../shared/accordion";
 
 // Application state
 let currentRootIndex: number = 3; // Start with C (matches the image)
@@ -156,30 +157,13 @@ function setupKeyboardNavigation(): void {
   });
 }
 
-function setupAccordionToggle(): void {
-  const toggle = document.getElementById("controlsAccordionToggle");
-  const wrapper = toggle?.parentElement;
-  if (!toggle || !wrapper) return;
-
-  toggle.addEventListener("click", () => {
-    wrapper.classList.toggle("expanded");
-  });
-
-  // Close accordion when clicking outside
-  document.addEventListener("click", (e: MouseEvent) => {
-    if (!wrapper.contains(e.target as Node)) {
-      wrapper.classList.remove("expanded");
-    }
-  });
-}
-
 export function initScalesFeature(): void {
   setupNoteNavigation();
   setupScaleTypeButtons();
   setupDisplayModeButtons();
   setupHighlightModeToggle();
   setupKeyboardNavigation();
-  setupAccordionToggle();
+  setupAccordionToggle("controlsAccordionToggle");
 
   // Re-render when crossing mobile breakpoint
   window

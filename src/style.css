@@ -122,35 +122,30 @@ body {
 .note-selector {
     display: inline-flex;
     align-items: center;
+    gap: 2px;
+    padding: 4px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-muted);
 }
 
 .note-btn {
-    width: 36px;
-    height: 36px;
-    border: 1px solid var(--color-border);
-    background: var(--color-surface);
+    width: 32px;
+    padding: 8px 0;
+    border: none;
+    background: transparent;
     cursor: pointer;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--color-text-secondary);
-    transition: all var(--transition-fast);
+    border-radius: var(--radius-sm);
+    transition: color var(--transition-fast), background-color var(--transition-fast);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.note-btn:first-child {
-    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
-    border-right: none;
-}
-
-.note-btn:last-child {
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    border-left: none;
-}
-
 .note-btn:hover {
-    background: var(--color-muted);
     color: var(--color-text);
 }
 
@@ -159,17 +154,17 @@ body {
 }
 
 .note-display {
-    width: 52px;
-    height: 36px;
+    padding: 8px 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 13px;
+    font-weight: 600;
     letter-spacing: 0.5px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-radius: 0;
+    background: var(--color-surface);
+    color: var(--color-primary);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 /* Toggle Buttons */
@@ -810,14 +805,13 @@ body {
     }
 
     .note-btn {
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        padding: 6px 0;
     }
 
     .note-display {
-        width: 48px;
-        height: 32px;
-        font-size: 13px;
+        padding: 6px 12px;
+        font-size: 12px;
     }
 
     /* Fretboard section: header beside fretboard on mobile */

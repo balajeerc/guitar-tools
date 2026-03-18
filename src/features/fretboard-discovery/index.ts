@@ -1,5 +1,6 @@
 import { NOTES } from "../../shared/constants";
 import { renderFretboard } from "./renderer";
+import { MOBILE_BREAKPOINT } from "../../shared/layout";
 
 // LocalStorage keys
 const STORAGE_KEY_NOTES = "fretboard-discovery-notes";
@@ -240,6 +241,11 @@ export function initFretboardDiscoveryFeature(): void {
     controlsContainer.appendChild(createNoteControls());
     controlsContainer.appendChild(createStringControls());
   }
+
+  // Re-render when crossing mobile breakpoint
+  window
+    .matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`)
+    .addEventListener("change", () => updateDisplay());
 
   // Initial render
   updateDisplay();

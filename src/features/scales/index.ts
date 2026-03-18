@@ -4,6 +4,7 @@ import {
   renderFretboard,
   updateNoteDisplay,
 } from "./renderer";
+import { MOBILE_BREAKPOINT } from "../../shared/layout";
 
 // Application state
 let currentRootIndex: number = 3; // Start with C (matches the image)
@@ -148,6 +149,11 @@ export function initScalesFeature(): void {
   setupDisplayModeButtons();
   setupHighlightModeToggle();
   setupKeyboardNavigation();
+
+  // Re-render when crossing mobile breakpoint
+  window
+    .matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`)
+    .addEventListener("change", () => updateDisplay());
 
   // Initial render
   updateDisplay();

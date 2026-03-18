@@ -412,12 +412,11 @@ body {
 /* Legend */
 .legend {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     gap: 30px;
     margin-top: 20px;
     padding: 15px;
-    padding-left: 33%;
     background: white;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -600,4 +599,224 @@ body {
     pointer-events: none;
     z-index: 5;
     opacity: 0.8;
+}
+
+/* Fretboard Section Wrapper */
+.fretboard-section {
+    display: block;
+}
+
+/* ============================================
+   Mobile Vertical Fretboard Layout
+   ============================================ */
+@media (max-width: 767px) {
+    body {
+        padding: 10px;
+    }
+
+    /* Controls stack vertically */
+    .controls {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .control-group {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* Nav */
+    .nav-container {
+        justify-content: center;
+    }
+
+    /* Fretboard section: header beside fretboard on mobile */
+    .fretboard-section {
+        display: flex;
+        flex-direction: row;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* CAGED Header becomes vertical sidebar */
+    .caged-header {
+        flex-direction: column;
+        width: 60px;
+        min-width: 60px;
+        overflow: visible;
+        padding: 10px 5px;
+        border-radius: 10px 0 0 10px;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    .shape-label {
+        transform: translateY(-50%);
+    }
+
+    .shape-label:hover {
+        transform: translateY(-50%) scale(1.05);
+    }
+
+    .shape-letter {
+        font-size: 24px;
+    }
+
+    .shape-text {
+        font-size: 10px;
+    }
+
+    .shape-line {
+        width: 40px;
+    }
+
+    .shape-pattern {
+        font-size: 10px;
+    }
+
+    /* Fretboard container: horizontal flex for fret numbers + fretboard */
+    .fretboard-container {
+        display: flex;
+        flex-direction: row;
+        overflow: visible;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 10px;
+    }
+
+    /* Fret numbers: vertical column to the left of fretboard */
+    .fret-numbers {
+        display: flex;
+        flex-direction: column;
+        min-width: 30px;
+        width: 30px;
+        margin-top: 0;
+        margin-right: 5px;
+        order: -1;
+    }
+
+    .fret-number {
+        width: auto;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+    }
+
+    .fret-number:first-child {
+        width: auto;
+        height: 50px;
+        font-size: 10px;
+    }
+
+    /* Fret number marker dots: reposition for vertical layout */
+    .fret-number.marker-single::before {
+        top: 50%;
+        left: auto;
+        right: -8px;
+        transform: translateY(-50%);
+    }
+
+    .fret-number.marker-double::before {
+        top: 50%;
+        left: auto;
+        right: -8px;
+        margin-left: 0;
+        margin-top: -6px;
+        transform: none;
+    }
+
+    .fret-number.marker-double::after {
+        top: 50%;
+        left: auto;
+        right: -8px;
+        margin-left: 0;
+        margin-top: 6px;
+        transform: none;
+    }
+
+    /* Fretboard: vertical orientation */
+    .fretboard {
+        min-width: 200px;
+        width: 200px;
+        height: 1260px;
+        min-height: 1260px;
+    }
+
+    /* Fret lines: horizontal in vertical mode */
+    .fret-line {
+        top: auto;
+        bottom: auto;
+        left: 10px;
+        right: 10px;
+        width: auto;
+        height: 2px;
+    }
+
+    .fret-line.nut {
+        width: auto;
+        height: 4px;
+    }
+
+    /* String lines: vertical in vertical mode */
+    .string-line {
+        left: auto;
+        right: auto;
+        top: 0;
+        bottom: 0;
+        height: auto;
+    }
+
+    /* Fret dots: swap positioning axis */
+    .fret-dot.single {
+        top: auto;
+        left: 100px;
+    }
+
+    .fret-dot.double-top {
+        top: auto;
+        left: 68px;
+    }
+
+    .fret-dot.double-bottom {
+        top: auto;
+        left: 132px;
+    }
+
+    /* Shape zones: vertical mode */
+    .shape-zone {
+        top: auto;
+        bottom: auto;
+        left: 5px;
+        right: 5px;
+    }
+
+    /* Position hover box: vertical mode */
+    .position-hover-box {
+        top: auto;
+        bottom: auto;
+        left: 0;
+        right: 0;
+    }
+
+    /* Legend stacks vertically */
+    .legend {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 15px;
+        gap: 15px;
+    }
+
+    .legend-items {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    /* Checkbox groups wrap */
+    .checkbox-group {
+        justify-content: center;
+    }
 }

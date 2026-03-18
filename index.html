@@ -47,27 +47,9 @@
                         <button class="toggle-btn" id="intervalsBtn" data-display="intervals">Intervals</button>
                     </div>
                 </div>
-            </div>
 
-            <!-- CAGED Header -->
-            <div class="caged-header" id="cagedHeader">
-                <!-- Dynamically populated -->
-            </div>
-
-            <!-- Fretboard -->
-            <div class="fretboard-container">
-                <div class="fretboard" id="fretboard">
-                    <!-- Dynamically populated -->
-                </div>
-                <div class="fret-numbers" id="fretNumbers">
-                    <!-- Dynamically populated -->
-                </div>
-            </div>
-
-            <!-- Legend -->
-            <div class="legend">
                 <div class="highlight-control-group">
-                    <span class="highlight-toggle-label">Show:</span>
+                    <span class="control-label">Show:</span>
                     <div class="highlight-toggle">
                         <div class="highlight-toggle-options">
                             <button class="highlight-toggle-btn active" id="cagedHighlightBtn">CAGED</button>
@@ -76,7 +58,28 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <!-- Fretboard Section (header + fretboard, flex row on mobile) -->
+            <div class="fretboard-section">
+                <!-- CAGED Header -->
+                <div class="caged-header" id="cagedHeader">
+                    <!-- Dynamically populated -->
+                </div>
+
+                <!-- Fretboard -->
+                <div class="fretboard-container">
+                    <div class="fretboard" id="fretboard">
+                        <!-- Dynamically populated -->
+                    </div>
+                    <div class="fret-numbers" id="fretNumbers">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Legend -->
+            <div class="legend">
                 <!-- CAGED Legend Items -->
                 <div id="cagedLegend" class="legend-items">
                     <div class="legend-item">

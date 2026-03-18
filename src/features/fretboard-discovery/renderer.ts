@@ -15,6 +15,7 @@ import {
   generateStringsHTML,
   generateFretNumbersHTML,
 } from "../../shared/fretboardRenderer";
+import { getLayoutConfig, type LayoutConfig } from "../../shared/layout";
 
 /**
  * Generate HTML for notes on the fretboard based on selected notes and strings
@@ -22,6 +23,7 @@ import {
 function generateNotesHTML(
   selectedNotes: Set<string>,
   selectedStrings: Set<number>,
+  config: LayoutConfig,
 ): string {
   let html = "";
 
@@ -34,7 +36,9 @@ function generateNotesHTML(
       continue;
     }
 
-    const stringY = STRING_Y_POSITIONS[visualIdx];
+    // In vertical mode, reverse positions so bass strings are on the left (EADGBE)
+    const posIdx = config.isVertical ? 5 - visualIdx : visualIdx;
+    const stringPos = STRING_Y_POSITIONS[posIdx];
 
     for (let fret = 0; fret <= TOTAL_FRETS; fret++) {
       const noteIndex = getNoteAtPosition(stringIdx, fret);
@@ -45,12 +49,12 @@ function generateNotesHTML(
         continue;
       }
 
-      const x =
+      const fretPos =
         fret === 0
           ? NUT_POSITION / 2
           : NUT_POSITION + (fret - 0.5) * FRET_WIDTH;
 
-      html += `<div class="note note-circle" style="left: ${x}px; top: ${stringY}px;">${noteName}</div>`;
+      html += `<div class="note note-circle" style="${config.fretAxis}: ${fretPos}px; ${config.stringAxis}: ${stringPos}px;">${noteName}</div>`;
     }
   }
   return html;
@@ -68,19 +72,20 @@ export function renderFretboard(
 
   if (!fretboard || !fretNumbers) return;
 
+  const config = getLayoutConfig();
   let fretboardHTML = "";
 
-  // Add fret lines (vertical)
-  fretboardHTML += generateFretLinesHTML();
+  // Add fret lines
+  fretboardHTML += generateFretLinesHTML(config);
 
   // Add fret dots
-  fretboardHTML += generateDotsHTML();
+  fretboardHTML += generateDotsHTML(config);
 
-  // Add 6 string lines (horizontal)
-  fretboardHTML += generateStringsHTML();
+  // Add 6 string lines
+  fretboardHTML += generateStringsHTML(config);
 
   // Add notes positioned on strings
-  fretboardHTML += generateNotesHTML(selectedNotes, selectedStrings);
+  fretboardHTML += generateNotesHTML(selectedNotes, selectedStrings, config);
 
   fretboard.innerHTML = fretboardHTML;
 

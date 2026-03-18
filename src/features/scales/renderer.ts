@@ -30,6 +30,7 @@ import {
   generateStringsHTML,
   generateFretNumbersHTML,
 } from "../../shared/fretboardRenderer";
+import { getLayoutConfig, type LayoutConfig } from "../../shared/layout";
 import {
   getShapeAtFret,
   getShapeBoundaries,
@@ -95,16 +96,17 @@ function handlePositionLabelHover(
   // Remove any existing hover box
   handlePositionLabelLeave();
 
+  const config = getLayoutConfig();
   const clampedEndFret = Math.min(endFret, TOTAL_FRETS);
 
   // Calculate the box dimensions
   // Notes are positioned at (fret - 0.5) * FRET_WIDTH, so align box edges with notes
-  const startX =
+  const startPos =
     startFret === 0
       ? 0
       : NUT_POSITION + (startFret - 1) * FRET_WIDTH + FRET_WIDTH / 2;
-  const endX = NUT_POSITION + (clampedEndFret - 1) * FRET_WIDTH + FRET_WIDTH / 2;
-  const width = endX - startX;
+  const endPos = NUT_POSITION + (clampedEndFret - 1) * FRET_WIDTH + FRET_WIDTH / 2;
+  const size = endPos - startPos;
 
   // Get the color for this position
   const color = POSITION_LINE_COLORS[position];
@@ -112,8 +114,8 @@ function handlePositionLabelHover(
   // Create and append the hover box
   const hoverBox = document.createElement("div");
   hoverBox.className = "position-hover-box";
-  hoverBox.style.left = `${startX}px`;
-  hoverBox.style.width = `${width}px`;
+  hoverBox.style[config.fretAxis] = `${startPos}px`;
+  hoverBox.style[config.fretDimension] = `${size}px`;
   hoverBox.style.borderColor = color;
   hoverBox.id = "position-hover-box";
 
@@ -133,7 +135,7 @@ function handlePositionLabelLeave(): void {
 /**
  * Generate HTML for CAGED shape header labels
  */
-function generateCAGEDHeaderHTML(rootIndex: number): string {
+function generateCAGEDHeaderHTML(rootIndex: number, config: LayoutConfig): string {
   const headerShapes = getShapeBoundaries(rootIndex, TOTAL_FRETS);
   let html = "";
 
@@ -148,12 +150,12 @@ function generateCAGEDHeaderHTML(rootIndex: number): string {
     // Calculate center position of the shape span
     const shapeSpan = nextFret - fret;
     const centerFret = fret + (shapeSpan - 1) / 2;
-    const centerX = fret === 0
+    const centerPos = fret === 0
       ? NUT_POSITION * 0.5 + FRET_WIDTH * (shapeSpan - 1) / 2
       : NUT_POSITION + centerFret * FRET_WIDTH;
 
     html += `
-            <div class="shape-label" style="position: absolute; left: ${centerX}px;" data-shape="${shape}" data-start-fret="${fret}">
+            <div class="shape-label" style="position: absolute; ${config.fretAxis}: ${centerPos}px;" data-shape="${shape}" data-start-fret="${fret}">
                 <span class="shape-letter">${shape}</span>
                 <span class="shape-text">shape</span>
                 <div class="shape-line" style="background-color: ${color};"></div>
@@ -170,6 +172,7 @@ function generateCAGEDHeaderHTML(rootIndex: number): string {
 function generatePentatonicHeaderHTML(
   rootIndex: number,
   scaleType: ScaleType,
+  config: LayoutConfig,
 ): string {
   const extents = getPentatonicExtentsOnFretboard(rootIndex, scaleType);
   let html = "";
@@ -180,13 +183,13 @@ function generatePentatonicHeaderHTML(
 
     const positionSpan = endFret - startFret + 1;
     const centerFret = startFret + (positionSpan - 1) / 2;
-    const centerX =
+    const centerPos =
       startFret === 0
         ? NUT_POSITION * 0.5 + (FRET_WIDTH * (positionSpan - 1)) / 2
         : NUT_POSITION + (centerFret - 0.5) * FRET_WIDTH;
 
     html += `
-            <div class="shape-label" style="position: absolute; left: ${centerX}px;" data-position="${position}" data-start-fret="${startFret}" data-end-fret="${endFret}">
+            <div class="shape-label" style="position: absolute; ${config.fretAxis}: ${centerPos}px;" data-position="${position}" data-start-fret="${startFret}" data-end-fret="${endFret}">
                 <span class="shape-letter">${positionLabel}</span>
                 <span class="shape-text">position</span>
                 <div class="shape-line" style="background-color: ${color};"></div>
@@ -254,9 +257,20 @@ export function renderCAGEDHeader(
   const header = document.getElementById("cagedHeader");
   if (!header) return;
 
+  const config = getLayoutConfig();
   header.style.position = "relative";
-  header.style.height = "120px";
-  header.style.minWidth = "1400px";
+
+  if (config.isVertical) {
+    header.style.height = "";
+    header.style.minWidth = "";
+    header.style.minHeight = `${NUT_POSITION + TOTAL_FRETS * FRET_WIDTH}px`;
+    header.style.width = "60px";
+  } else {
+    header.style.height = "120px";
+    header.style.minWidth = "1400px";
+    header.style.minHeight = "";
+    header.style.width = "";
+  }
 
   if (highlightMode === "full") {
     header.innerHTML = "";
@@ -265,8 +279,8 @@ export function renderCAGEDHeader(
 
   const headerHTML =
     highlightMode === "caged"
-      ? generateCAGEDHeaderHTML(rootIndex)
-      : generatePentatonicHeaderHTML(rootIndex, scaleType);
+      ? generateCAGEDHeaderHTML(rootIndex, config)
+      : generatePentatonicHeaderHTML(rootIndex, scaleType, config);
 
   header.innerHTML = headerHTML;
 
@@ -336,7 +350,7 @@ function getIntervalDetails(
   return display[scaleDegree];
 }
 
-function generateCAGEDZonesHTML(rootIndex: number): string {
+function generateCAGEDZonesHTML(rootIndex: number, config: LayoutConfig): string {
   let html = "";
   let prevShape: CAGEDShape | null = null;
   let shapeStart = 0;
@@ -346,13 +360,13 @@ function generateCAGEDZonesHTML(rootIndex: number): string {
       fret <= TOTAL_FRETS ? getShapeAtFret(rootIndex, fret) : null;
     if (shape !== prevShape) {
       if (prevShape !== null) {
-        const startX =
+        const startPos =
           shapeStart === 0
             ? 0
             : NUT_POSITION + (shapeStart - 1) * FRET_WIDTH + FRET_WIDTH / 2;
-        const endX = NUT_POSITION + (fret - 1) * FRET_WIDTH + FRET_WIDTH / 2;
-        const width = endX - startX;
-        html += `<div class="shape-zone shape-${prevShape.toLowerCase()}" style="left: ${startX}px; width: ${width}px;"></div>`;
+        const endPos = NUT_POSITION + (fret - 1) * FRET_WIDTH + FRET_WIDTH / 2;
+        const size = endPos - startPos;
+        html += `<div class="shape-zone shape-${prevShape.toLowerCase()}" style="${config.fretAxis}: ${startPos}px; ${config.fretDimension}: ${size}px;"></div>`;
       }
       shapeStart = fret;
       prevShape = shape;
@@ -451,6 +465,7 @@ function groupFretSegments(
 function generatePentatonicZonesHTML(
   rootIndex: number,
   scaleType: ScaleType,
+  config: LayoutConfig,
 ): string {
   const extents = getPentatonicExtentsOnFretboard(rootIndex, scaleType);
   const fretPositions = buildFretPositionMap(extents);
@@ -458,11 +473,11 @@ function generatePentatonicZonesHTML(
 
   let html = "";
   for (const { startFret, endFret, positions } of segments) {
-    const startX =
+    const startPos =
       startFret === 0 ? 0 : NUT_POSITION + (startFret - 1) * FRET_WIDTH;
-    const endX = NUT_POSITION + endFret * FRET_WIDTH;
+    const endPos = NUT_POSITION + endFret * FRET_WIDTH;
     const color = blendPositionColors(positions);
-    html += `<div class="shape-zone" style="left: ${startX}px; width: ${endX - startX}px; background-color: ${color};"></div>`;
+    html += `<div class="shape-zone" style="${config.fretAxis}: ${startPos}px; ${config.fretDimension}: ${endPos - startPos}px; background-color: ${color};"></div>`;
   }
   return html;
 }
@@ -471,16 +486,17 @@ function generateShapeZonesHTML(
   rootIndex: number,
   highlightMode: HighlightMode,
   scaleType: ScaleType,
+  config: LayoutConfig,
 ): string {
   if (highlightMode === "full") return "";
   return highlightMode === "caged"
-    ? generateCAGEDZonesHTML(rootIndex)
-    : generatePentatonicZonesHTML(rootIndex, scaleType);
+    ? generateCAGEDZonesHTML(rootIndex, config)
+    : generatePentatonicZonesHTML(rootIndex, scaleType, config);
 }
 
 function generateNoteHTMLForFret(
   stringIdx: number,
-  stringY: number,
+  stringPos: number,
   fret: number,
   options: {
     rootIndex: number;
@@ -488,6 +504,7 @@ function generateNoteHTMLForFret(
     displayMode: DisplayMode;
     useFullScale: boolean;
   },
+  config: LayoutConfig,
 ): string {
   const { rootIndex, scaleType, displayMode, useFullScale } = options;
   const noteIndex = getNoteAtPosition(stringIdx, fret);
@@ -495,11 +512,12 @@ function generateNoteHTMLForFret(
 
   if (!inScale) return "";
 
-  const x =
+  const fretPos =
     fret === 0 ? NUT_POSITION / 2 : NUT_POSITION + (fret - 0.5) * FRET_WIDTH;
 
   // Add data attributes for string and fret position (for chord highlighting)
   const dataAttrs = `data-string="${stringIdx}" data-fret="${fret}"`;
+  const posStyle = `${config.fretAxis}: ${fretPos}px; ${config.stringAxis}: ${stringPos}px;`;
 
   if (displayMode === "notes") {
     const noteName = NOTES[noteIndex];
@@ -512,12 +530,12 @@ function generateNoteHTMLForFret(
     } else {
       noteClass = "note note-circle";
     }
-    return `<div class="${noteClass}" style="left: ${x}px; top: ${stringY}px;" ${dataAttrs}>${noteName}</div>`;
+    return `<div class="${noteClass}" style="${posStyle}" ${dataAttrs}>${noteName}</div>`;
   }
 
   const scaleDegree = getScaleDegree(noteIndex, rootIndex, scaleType, useFullScale);
   const { className, text } = getIntervalDetails(scaleDegree, scaleType, useFullScale);
-  return `<div class="note ${className}" style="left: ${x}px; top: ${stringY}px;" ${dataAttrs}>${text}</div>`;
+  return `<div class="note ${className}" style="${posStyle}" ${dataAttrs}>${text}</div>`;
 }
 
 function generateNotesHTML(
@@ -525,16 +543,19 @@ function generateNotesHTML(
   scaleType: ScaleType,
   displayMode: DisplayMode,
   highlightMode: HighlightMode,
+  config: LayoutConfig,
 ): string {
   let html = "";
   const useFullScale = highlightMode === "full";
   const options = { rootIndex, scaleType, displayMode, useFullScale };
 
   for (const [visualIdx, stringIdx] of STRING_ORDER.entries()) {
-    const stringY = STRING_Y_POSITIONS[visualIdx];
+    // In vertical mode, reverse positions so bass strings are on the left (EADGBE)
+    const posIdx = config.isVertical ? 5 - visualIdx : visualIdx;
+    const stringPos = STRING_Y_POSITIONS[posIdx];
 
     for (let fret = 0; fret <= TOTAL_FRETS; fret++) {
-      html += generateNoteHTMLForFret(stringIdx, stringY, fret, options);
+      html += generateNoteHTMLForFret(stringIdx, stringPos, fret, options, config);
     }
   }
   return html;
@@ -561,22 +582,23 @@ export function renderFretboard(
 
   if (!fretboard || !fretNumbers) return;
 
+  const config = getLayoutConfig();
   let fretboardHTML = "";
 
   // Add shape background zones (CAGED or Pentatonic based on highlightMode)
-  fretboardHTML += generateShapeZonesHTML(rootIndex, highlightMode, scaleType);
+  fretboardHTML += generateShapeZonesHTML(rootIndex, highlightMode, scaleType, config);
 
-  // Add fret lines (vertical)
-  fretboardHTML += generateFretLinesHTML();
+  // Add fret lines
+  fretboardHTML += generateFretLinesHTML(config);
 
   // Add fret dots
-  fretboardHTML += generateDotsHTML();
+  fretboardHTML += generateDotsHTML(config);
 
-  // Add 6 string lines (horizontal)
-  fretboardHTML += generateStringsHTML();
+  // Add 6 string lines
+  fretboardHTML += generateStringsHTML(config);
 
   // Add notes positioned on strings
-  fretboardHTML += generateNotesHTML(rootIndex, scaleType, displayMode, highlightMode);
+  fretboardHTML += generateNotesHTML(rootIndex, scaleType, displayMode, highlightMode, config);
 
   fretboard.innerHTML = fretboardHTML;
 

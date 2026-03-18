@@ -4,9 +4,33 @@
     box-sizing: border-box;
 }
 
+:root {
+    /* Brand colors */
+    --color-primary: #667eea;
+    --color-primary-dark: #5a6fd6;
+
+    /* Neutrals */
+    --color-bg: #f5f5f5;
+    --color-surface: #ffffff;
+    --color-muted: #f4f4f5;
+    --color-border: #e4e4e7;
+    --color-border-strong: #d4d4d8;
+    --color-text: #18181b;
+    --color-text-secondary: #71717a;
+    --color-text-muted: #a1a1aa;
+
+    /* Radii */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f5f5f5;
+    background: var(--color-bg);
     min-height: 100vh;
     padding: 20px;
 }
@@ -18,38 +42,40 @@ body {
 
 /* Navigation */
 .main-nav {
-    background: white;
-    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
     margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    border-radius: 10px;
+    background: transparent;
 }
 
 .nav-container {
-    max-width: 1600px;
-    margin: 0 auto;
-    display: flex;
-    gap: 20px;
-    padding: 0 20px;
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    background: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
 }
 
 .nav-link {
     text-decoration: none;
-    color: #555;
+    color: var(--color-text-secondary);
     font-weight: 500;
-    padding: 8px 16px;
-    border-radius: 5px;
-    transition: all 0.2s;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.nav-link:hover {
-    background: #f0f0f0;
-    color: #333;
+.nav-link:hover:not(.active) {
+    color: var(--color-text);
 }
 
 .nav-link.active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: var(--color-surface);
+    color: var(--color-text);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 /* Controls Section */
@@ -57,90 +83,116 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px;
-    margin-bottom: 30px;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    gap: 32px;
+    margin-bottom: 24px;
+    padding: 16px 24px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .control-group {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
 .control-label {
-    font-size: 14px;
-    color: #666;
+    font-size: 12px;
+    color: var(--color-text-muted);
     font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* Note Selector */
 .note-selector {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 5px;
 }
 
 .note-btn {
-    width: 40px;
-    height: 40px;
-    border: none;
-    background: #e0e0e0;
-    border-radius: 5px;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
     cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    color: #555;
-    transition: all 0.2s;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.note-btn:first-child {
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    border-right: none;
+}
+
+.note-btn:last-child {
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    border-left: none;
 }
 
 .note-btn:hover {
-    background: #d0d0d0;
+    background: var(--color-muted);
+    color: var(--color-text);
+}
+
+.note-btn:active {
+    background: var(--color-border);
 }
 
 .note-display {
-    width: 60px;
-    height: 40px;
+    width: 52px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    font-weight: bold;
-    color: #333;
+    font-weight: 700;
+    letter-spacing: 0.5px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    border-radius: 8px;
+    border-radius: 0;
 }
 
 /* Toggle Buttons */
 .toggle-group {
-    display: flex;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    gap: 2px;
+    padding: 4px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-muted);
 }
 
-.toggle-btn {
-    padding: 12px 20px;
+.toggle-btn,
+.highlight-toggle-btn {
+    padding: 8px 16px;
     border: none;
-    background: #e0e0e0;
+    background: transparent;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
-    color: #555;
-    transition: all 0.2s;
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-sm);
+    transition: color var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.toggle-btn.active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+.toggle-btn.active,
+.highlight-toggle-btn.active {
+    background: var(--color-surface);
+    color: var(--color-primary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-.toggle-btn:hover:not(.active) {
-    background: #d0d0d0;
+.toggle-btn:hover:not(.active),
+.highlight-toggle-btn:hover:not(.active) {
+    color: var(--color-text);
 }
 
 /* CAGED Header */
@@ -486,23 +538,17 @@ body {
 .highlight-control-group {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
 .highlight-toggle {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 2px;
     padding: 4px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background: #f5f5f5;
-}
-
-.highlight-toggle-label {
-    font-size: 13px;
-    color: #666;
-    font-weight: 500;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-muted);
 }
 
 .highlight-toggle-options {
@@ -511,24 +557,7 @@ body {
 }
 
 .highlight-toggle-btn {
-    padding: 6px 12px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 500;
-    color: #666;
-    border-radius: 4px;
-    transition: all 0.2s;
-}
-
-.highlight-toggle-btn.active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
-
-.highlight-toggle-btn:hover:not(.active) {
-    background: #e0e0e0;
+    padding: 8px 14px;
 }
 
 /* Checkbox Group */
@@ -617,8 +646,8 @@ body {
     /* Controls stack vertically */
     .controls {
         flex-direction: column;
-        gap: 15px;
-        padding: 15px;
+        gap: 16px;
+        padding: 16px;
     }
 
     .control-group {
@@ -626,9 +655,26 @@ body {
         justify-content: center;
     }
 
-    /* Nav */
-    .nav-container {
+    .highlight-control-group {
+        flex-wrap: wrap;
         justify-content: center;
+    }
+
+    .toggle-btn,
+    .highlight-toggle-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .note-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .note-display {
+        width: 48px;
+        height: 32px;
+        font-size: 13px;
     }
 
     /* Fretboard section: header beside fretboard on mobile */

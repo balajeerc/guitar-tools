@@ -5,6 +5,7 @@ import {
   updateNoteDisplay,
 } from "./renderer";
 import { MOBILE_BREAKPOINT } from "../../shared/layout";
+import { NOTES } from "../../shared/constants";
 
 // Application state
 let currentRootIndex: number = 3; // Start with C (matches the image)
@@ -12,13 +13,25 @@ let currentScale: ScaleType = "major";
 let displayMode: DisplayMode = "notes";
 let highlightMode: HighlightMode = "caged";
 
-/**
- * Update all display elements based on current state
- */
+function capitalize(s: string): string {
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+function updateControlsSummary(): void {
+  const summary = document.getElementById("controlsSummary");
+  if (!summary) return;
+  const note = NOTES[currentRootIndex];
+  const scale = capitalize(currentScale);
+  const display = capitalize(displayMode);
+  const show = highlightMode === "caged" ? "CAGED" : capitalize(highlightMode);
+  summary.textContent = `${note} ${scale} · ${display} · ${show}`;
+}
+
 function updateDisplay(): void {
   updateNoteDisplay(currentRootIndex);
   renderCAGEDHeader(currentRootIndex, highlightMode, currentScale);
   renderFretboard(currentRootIndex, currentScale, displayMode, highlightMode);
+  updateControlsSummary();
 }
 
 function setupNoteNavigation(): void {
@@ -143,12 +156,30 @@ function setupKeyboardNavigation(): void {
   });
 }
 
+function setupAccordionToggle(): void {
+  const toggle = document.getElementById("controlsAccordionToggle");
+  const wrapper = toggle?.parentElement;
+  if (!toggle || !wrapper) return;
+
+  toggle.addEventListener("click", () => {
+    wrapper.classList.toggle("expanded");
+  });
+
+  // Close accordion when clicking outside
+  document.addEventListener("click", (e: MouseEvent) => {
+    if (!wrapper.contains(e.target as Node)) {
+      wrapper.classList.remove("expanded");
+    }
+  });
+}
+
 export function initScalesFeature(): void {
   setupNoteNavigation();
   setupScaleTypeButtons();
   setupDisplayModeButtons();
   setupHighlightModeToggle();
   setupKeyboardNavigation();
+  setupAccordionToggle();
 
   // Re-render when crossing mobile breakpoint
   window

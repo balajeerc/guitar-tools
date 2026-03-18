@@ -24,40 +24,50 @@
     <div class="container">
         <!-- Scales Feature -->
         <div id="scales-page" class="page">
-            <!-- Controls -->
-            <div class="controls">
-                <div class="control-group">
-                    <span class="control-label">Root Note:</span>
-                    <div class="note-selector">
-                        <button class="note-btn" id="prevNote">&#10094;</button>
-                        <div class="note-display" id="currentNote">C</div>
-                        <button class="note-btn" id="nextNote">&#10095;</button>
-                    </div>
-                </div>
+            <!-- Controls Accordion (mobile) / Inline Controls (desktop) -->
+            <div class="controls-wrapper">
+                <button class="controls-accordion-toggle" id="controlsAccordionToggle">
+                    <span class="controls-summary" id="controlsSummary">C Major · Notes · CAGED</span>
+                    <span class="controls-accordion-arrow">&#9662;</span>
+                </button>
+                <div class="controls" id="controlsPanel">
+                    <div class="controls-row">
+                        <div class="control-group">
+                            <span class="control-label">Root:</span>
+                            <div class="note-selector">
+                                <button class="note-btn" id="prevNote">&#10094;</button>
+                                <div class="note-display" id="currentNote">C</div>
+                                <button class="note-btn" id="nextNote">&#10095;</button>
+                            </div>
+                        </div>
 
-                <div class="control-group">
-                    <span class="control-label">Scale:</span>
-                    <div class="toggle-group">
-                        <button class="toggle-btn active" id="majorBtn" data-scale="major">Major</button>
-                        <button class="toggle-btn" id="minorBtn" data-scale="minor">Minor</button>
+                        <div class="control-group">
+                            <span class="control-label">Scale:</span>
+                            <div class="toggle-group">
+                                <button class="toggle-btn active" id="majorBtn" data-scale="major">Major</button>
+                                <button class="toggle-btn" id="minorBtn" data-scale="minor">Minor</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="control-group">
-                    <span class="control-label">Display:</span>
-                    <div class="toggle-group">
-                        <button class="toggle-btn active" id="notesBtn" data-display="notes">Notes</button>
-                        <button class="toggle-btn" id="intervalsBtn" data-display="intervals">Intervals</button>
-                    </div>
-                </div>
+                    <div class="controls-row">
+                        <div class="control-group">
+                            <span class="control-label">Display:</span>
+                            <div class="toggle-group">
+                                <button class="toggle-btn active" id="notesBtn" data-display="notes">Notes</button>
+                                <button class="toggle-btn" id="intervalsBtn" data-display="intervals">Intervals</button>
+                            </div>
+                        </div>
 
-                <div class="highlight-control-group">
-                    <span class="control-label">Show:</span>
-                    <div class="highlight-toggle">
-                        <div class="highlight-toggle-options">
-                            <button class="highlight-toggle-btn active" id="cagedHighlightBtn">CAGED</button>
-                            <button class="highlight-toggle-btn" id="pentatonicHighlightBtn">Pentatonic</button>
-                            <button class="highlight-toggle-btn" id="fullHighlightBtn">Full</button>
+                        <div class="highlight-control-group">
+                            <span class="control-label">Show:</span>
+                            <div class="highlight-toggle">
+                                <div class="highlight-toggle-options">
+                                    <button class="highlight-toggle-btn active" id="cagedHighlightBtn">CAGED</button>
+                                    <button class="highlight-toggle-btn" id="pentatonicHighlightBtn">Pentatonic</button>
+                                    <button class="highlight-toggle-btn" id="fullHighlightBtn">Full</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

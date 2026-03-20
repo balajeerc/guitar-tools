@@ -19,6 +19,51 @@
     --color-text-secondary: #71717a;
     --color-text-muted: #a1a1aa;
 
+    /* Fretboard */
+    --color-fretboard-bg: #ffffff;
+    --color-fret-line: #ccc;
+    --color-fret-line-nut: #333;
+    --color-string-from: #999;
+    --color-string-to: #777;
+    --color-fret-dot: #ddd;
+    --color-fret-number: #666;
+    --color-fret-marker: #bbb;
+
+    /* CAGED header */
+    --color-caged-header-from: #f0f0f0;
+    --color-caged-header-to: #e8e8e8;
+    --color-shape-letter: #555;
+    --color-shape-text: #777;
+    --color-shape-pattern: #888;
+
+    /* Notes */
+    --color-note-bg: #ffffff;
+    --color-note-border: #333;
+    --color-note-text: #333;
+    --color-note-root-bg: #333;
+    --color-note-root-text: #ffffff;
+    --color-interval-other-bg: rgba(255, 255, 255, 0.5);
+    --color-interval-other-border: rgba(51, 51, 51, 0.5);
+    --color-interval-other-text: rgba(51, 51, 51, 0.5);
+
+    /* UI elements */
+    --color-legend-item: #555;
+    --color-checkbox-bg: #f5f5f5;
+    --color-checkbox-bg-hover: #e8e8e8;
+    --color-checkbox-text: #555;
+    --color-checkbox-checked: #667eea;
+    --color-select-all-border: #ddd;
+    --color-select-all-bg: #f5f5f5;
+    --color-select-all-bg-hover: #e8e8e8;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-string: 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-up-lg: 0 -2px 10px rgba(0, 0, 0, 0.1);
+
     /* Radii */
     --radius-sm: 6px;
     --radius-md: 8px;
@@ -28,11 +73,66 @@
     --transition-fast: 150ms ease;
 }
 
+[data-theme="dark"] {
+    --color-primary: #8b9cf7;
+    --color-primary-dark: #7b8de8;
+
+    --color-bg: #1a1a2e;
+    --color-surface: #25253e;
+    --color-muted: #2a2a45;
+    --color-border: #3a3a55;
+    --color-border-strong: #4a4a65;
+    --color-text: #e8e8f0;
+    --color-text-secondary: #a0a0b8;
+    --color-text-muted: #707088;
+
+    --color-fretboard-bg: #25253e;
+    --color-fret-line: #4a4a65;
+    --color-fret-line-nut: #c0c0d0;
+    --color-string-from: #888898;
+    --color-string-to: #6a6a7a;
+    --color-fret-dot: #3a3a55;
+    --color-fret-number: #9090a8;
+    --color-fret-marker: #5a5a70;
+
+    --color-caged-header-from: #2a2a45;
+    --color-caged-header-to: #222238;
+    --color-shape-letter: #c0c0d0;
+    --color-shape-text: #9090a8;
+    --color-shape-pattern: #8080a0;
+
+    --color-note-bg: #2a2a45;
+    --color-note-border: #c0c0d0;
+    --color-note-text: #e0e0f0;
+    --color-note-root-bg: #e0e0f0;
+    --color-note-root-text: #1a1a2e;
+    --color-interval-other-bg: rgba(42, 42, 69, 0.7);
+    --color-interval-other-border: rgba(192, 192, 208, 0.7);
+    --color-interval-other-text: rgba(210, 210, 225, 0.85);
+
+    --color-legend-item: #c0c0d0;
+    --color-checkbox-bg: #2a2a45;
+    --color-checkbox-bg-hover: #35355a;
+    --color-checkbox-text: #c0c0d0;
+    --color-checkbox-checked: #8b9cf7;
+    --color-select-all-border: #3a3a55;
+    --color-select-all-bg: #2a2a45;
+    --color-select-all-bg-hover: #35355a;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 2px 10px rgba(0, 0, 0, 0.3);
+    --shadow-xl: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-string: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-up-lg: 0 -2px 10px rgba(0, 0, 0, 0.3);
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--color-bg);
     min-height: 100vh;
     padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -75,7 +175,7 @@ body {
 .nav-link.active {
     background: var(--color-surface);
     color: var(--color-text);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-md);
 }
 
 /* Controls Wrapper & Accordion */
@@ -101,7 +201,7 @@ body {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    box-shadow: var(--shadow-sm);
 }
 
 .control-group {
@@ -164,7 +264,7 @@ body {
     background: var(--color-surface);
     color: var(--color-primary);
     border-radius: var(--radius-sm);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-md);
 }
 
 /* Toggle Buttons */
@@ -194,7 +294,7 @@ body {
 .highlight-toggle-btn.active {
     background: var(--color-surface);
     color: var(--color-primary);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-md);
 }
 
 .toggle-btn:hover:not(.active),
@@ -207,7 +307,7 @@ body {
     display: flex;
     justify-content: flex-start;
     padding: 20px;
-    background: linear-gradient(to bottom, #f0f0f0, #e8e8e8);
+    background: linear-gradient(to bottom, var(--color-caged-header-from), var(--color-caged-header-to));
     border-radius: 10px 10px 0 0;
     overflow-x: auto;
 }
@@ -229,12 +329,12 @@ body {
 .shape-letter {
     font-size: 48px;
     font-weight: bold;
-    color: #555;
+    color: var(--color-shape-letter);
 }
 
 .shape-text {
     font-size: 14px;
-    color: #777;
+    color: var(--color-shape-text);
     margin-top: -5px;
 }
 
@@ -247,17 +347,17 @@ body {
 
 .shape-pattern {
     font-size: 12px;
-    color: #888;
+    color: var(--color-shape-pattern);
     margin-top: 3px;
 }
 
 /* Fretboard */
 .fretboard-container {
-    background: white;
+    background: var(--color-fretboard-bg);
     border-radius: 0 0 10px 10px;
     padding: 20px;
     overflow-x: auto;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-lg);
 }
 
 .fretboard {
@@ -271,8 +371,8 @@ body {
     position: absolute;
     left: 0;
     right: 0;
-    background: linear-gradient(to bottom, #999, #777);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to bottom, var(--color-string-from), var(--color-string-to));
+    box-shadow: var(--shadow-string);
     opacity: 0.6;
     z-index: 2;
 }
@@ -283,12 +383,12 @@ body {
     top: 10px;
     bottom: 10px;
     width: 2px;
-    background: #ccc;
+    background: var(--color-fret-line);
 }
 
 .fret-line.nut {
     width: 4px;
-    background: #333;
+    background: var(--color-fret-line-nut);
 }
 
 /* CAGED Shape Background Zones */
@@ -342,9 +442,9 @@ body {
 }
 
 .note-circle {
-    background: white;
-    border: 2px solid #333;
-    color: #333;
+    background: var(--color-note-bg);
+    border: 2px solid var(--color-note-border);
+    color: var(--color-note-text);
 }
 
 .note-circle-yellow {
@@ -354,8 +454,8 @@ body {
 }
 
 .note-square {
-    background: #333;
-    color: white;
+    background: var(--color-note-root-bg);
+    color: var(--color-note-root-text);
     border-radius: 4px;
 }
 
@@ -380,9 +480,9 @@ body {
 }
 
 .interval-other {
-    background: rgba(255, 255, 255, 0.5);
-    border: 2px solid rgba(51, 51, 51, 0.5);
-    color: rgba(51, 51, 51, 0.5);
+    background: var(--color-interval-other-bg);
+    border: 2px solid var(--color-interval-other-border);
+    color: var(--color-interval-other-text);
 }
 
 /* Fret Numbers */
@@ -397,7 +497,7 @@ body {
     width: 55px;
     text-align: center;
     font-size: 14px;
-    color: #666;
+    color: var(--color-fret-number);
 }
 
 .fret-number:first-child {
@@ -417,7 +517,7 @@ body {
     transform: translateX(-50%);
     width: 8px;
     height: 8px;
-    background-color: #bbb;
+    background-color: var(--color-fret-marker);
     border-radius: 50%;
 }
 
@@ -429,7 +529,7 @@ body {
     margin-left: -10px;
     width: 8px;
     height: 8px;
-    background-color: #bbb;
+    background-color: var(--color-fret-marker);
     border-radius: 50%;
 }
 
@@ -441,7 +541,7 @@ body {
     margin-left: 2px;
     width: 8px;
     height: 8px;
-    background-color: #bbb;
+    background-color: var(--color-fret-marker);
     border-radius: 50%;
 }
 
@@ -450,7 +550,7 @@ body {
     position: absolute;
     width: 10px;
     height: 10px;
-    background: #ddd;
+    background: var(--color-fret-dot);
     border-radius: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
@@ -476,9 +576,9 @@ body {
     gap: 30px;
     margin-top: 20px;
     padding: 15px;
-    background: white;
+    background: var(--color-surface);
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-lg);
 }
 
 .legend-items {
@@ -491,7 +591,7 @@ body {
     align-items: center;
     gap: 8px;
     font-size: 14px;
-    color: #555;
+    color: var(--color-legend-item);
 }
 
 .legend-color {
@@ -570,20 +670,20 @@ body {
 /* Checkbox Group */
 .select-all-btn {
     padding: 6px 12px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--color-select-all-border);
     border-radius: 5px;
-    background: #f5f5f5;
+    background: var(--color-select-all-bg);
     cursor: pointer;
     font-size: 13px;
     font-weight: 500;
-    color: #667eea;
+    color: var(--color-primary);
     transition: all 0.2s;
     white-space: nowrap;
 }
 
 .select-all-btn:hover {
-    background: #e8e8e8;
-    border-color: #667eea;
+    background: var(--color-select-all-bg-hover);
+    border-color: var(--color-primary);
 }
 
 .checkbox-group {
@@ -597,7 +697,7 @@ body {
     align-items: center;
     gap: 5px;
     padding: 6px 12px;
-    background: #f5f5f5;
+    background: var(--color-checkbox-bg);
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.2s;
@@ -605,7 +705,7 @@ body {
 }
 
 .checkbox-label:hover {
-    background: #e8e8e8;
+    background: var(--color-checkbox-bg-hover);
 }
 
 .checkbox-label input[type="checkbox"] {
@@ -617,11 +717,11 @@ body {
 .checkbox-label span {
     font-size: 14px;
     font-weight: 500;
-    color: #555;
+    color: var(--color-checkbox-text);
 }
 
 .checkbox-label input[type="checkbox"]:checked + span {
-    color: #667eea;
+    color: var(--color-checkbox-checked);
     font-weight: 600;
 }
 
@@ -642,6 +742,41 @@ body {
     display: block;
 }
 
+/* Theme Toggle */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
+    margin-left: 8px;
+    flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+    color: var(--color-text);
+    border-color: var(--color-border-strong);
+}
+
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+    display: none;
+}
+
+[data-theme="dark"] .theme-toggle .icon-sun {
+    display: block;
+}
+
+[data-theme="light"] .theme-toggle .icon-moon {
+    display: block;
+}
+
 /* PWA Install Banner */
 .pwa-install-banner {
     position: fixed;
@@ -654,7 +789,7 @@ body {
     padding: 12px 20px;
     background: var(--color-surface);
     border-top: 1px solid var(--color-border);
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-up-lg);
     z-index: 1000;
     gap: 12px;
 }
@@ -733,7 +868,7 @@ body {
         background: var(--color-surface);
         border: 1px solid var(--color-border);
         border-radius: var(--radius-lg);
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+        box-shadow: var(--shadow-sm);
         cursor: pointer;
         font-family: inherit;
     }
@@ -769,7 +904,7 @@ body {
         border: 1px solid var(--color-border);
         border-top: none;
         border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--shadow-xl);
     }
 
     .controls-wrapper.expanded .controls {
@@ -818,9 +953,9 @@ body {
     .fretboard-section {
         display: flex;
         flex-direction: row;
-        background: white;
+        background: var(--color-fretboard-bg);
         border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--shadow-lg);
     }
 
     /* CAGED Header becomes vertical sidebar */

@@ -144,9 +144,30 @@ body {
 .main-nav {
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: relative;
     padding: 16px 0;
     margin-bottom: 20px;
     background: transparent;
+}
+
+.nav-group {
+    position: relative;
+}
+
+.nav-logo {
+    display: none;
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100px;
+    width: auto;
+    margin-right: 12px;
+}
+
+[data-theme="dark"] .nav-logo {
+    display: block;
 }
 
 .nav-container {
@@ -850,6 +871,10 @@ body {
     .main-nav {
         padding: 8px 0;
         margin-bottom: 8px;
+    }
+
+    .nav-logo {
+        display: none !important;
     }
 
     /* Controls accordion wrapper */

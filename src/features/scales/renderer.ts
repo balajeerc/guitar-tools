@@ -177,7 +177,10 @@ function generatePentatonicHeaderHTML(
   const extents = getPentatonicExtentsOnFretboard(rootIndex, scaleType);
   let html = "";
 
-  for (const { position, startFret, endFret } of extents) {
+  for (const { position, startFret, endFret, partial } of extents) {
+    // Skip labels for positions that are partially cut off at fretboard edges
+    if (partial) continue;
+
     const positionLabel = POSITION_LABELS[position];
     const color = POSITION_LINE_COLORS[position];
 

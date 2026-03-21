@@ -5,6 +5,7 @@ import type {
   ScaleType,
   PentatonicPosition,
 } from "../../shared/types";
+import { TOTAL_FRETS } from "../../shared/constants";
 
 /**
  * Chord shape finger positions for each CAGED shape
@@ -250,18 +251,40 @@ const PENTATONIC_POSITION_TABLE: Record<
 export function getPentatonicExtentsOnFretboard(
   rootIndex: number,
   scaleType: ScaleType,
-): Array<{ position: PentatonicPosition; startFret: number; endFret: number }> {
+): Array<{
+  position: PentatonicPosition;
+  startFret: number;
+  endFret: number;
+  partial: boolean;
+}> {
   const positionExtents = PENTATONIC_POSITION_TABLE[rootIndex][scaleType];
   const result: Array<{
     position: PentatonicPosition;
     startFret: number;
     endFret: number;
+    partial: boolean;
   }> = [];
 
   for (const posStr of Object.keys(positionExtents)) {
     const position = Number(posStr) as PentatonicPosition;
-    const [startFret, endFret] = positionExtents[position];
-    result.push({ position, startFret, endFret });
+    const [baseStart, baseEnd] = positionExtents[position];
+
+    // Cycle positions every 12 frets to cover the entire fretboard
+    for (const shift of [-12, 0, 12, 24]) {
+      const startFret = baseStart + shift;
+      const endFret = baseEnd + shift;
+
+      // Skip if entirely off fretboard
+      if (endFret < 0 || startFret > TOTAL_FRETS) continue;
+
+      const clamped = startFret < 0 || endFret > TOTAL_FRETS;
+      result.push({
+        position,
+        startFret: Math.max(0, startFret),
+        endFret: Math.min(endFret, TOTAL_FRETS),
+        partial: clamped,
+      });
+    }
   }
 
   result.sort((a, b) => a.startFret - b.startFret);

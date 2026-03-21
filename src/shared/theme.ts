@@ -57,7 +57,7 @@ function toggleTheme(): void {
   localStorage.setItem(STORAGE_KEY, next);
 }
 
-function createThemeToggleButton(): HTMLButtonElement {
+export function createThemeToggleButton(): HTMLButtonElement {
   const button = document.createElement("button");
   button.className = "theme-toggle";
   button.setAttribute("aria-label", "Toggle theme");

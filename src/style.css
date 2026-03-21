@@ -794,6 +794,19 @@ body {
     display: block;
 }
 
+/* Mobile Navigation - hidden on desktop */
+.mobile-nav-bar {
+    display: none;
+}
+
+.sidebar-overlay {
+    display: none;
+}
+
+.sidebar {
+    display: none;
+}
+
 /* PWA Install Banner */
 .pwa-install-banner {
     position: fixed;
@@ -869,13 +882,169 @@ body {
         margin-bottom: 8px;
     }
 
-    .nav-logo {
-        display: none !important;
+    /* Hide desktop nav group, show mobile nav bar */
+    .nav-group {
+        display: none;
+    }
+
+    .mobile-nav-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 4px;
+    }
+
+    .mobile-nav-logo {
+        height: 60px;
+        width: auto;
+    }
+
+    /* Hamburger button */
+    .hamburger-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        padding: 8px;
+    }
+
+    .hamburger-icon {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--color-text);
+        position: relative;
+    }
+
+    .hamburger-icon::before,
+    .hamburger-icon::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 22px;
+        height: 2px;
+        background: var(--color-text);
+    }
+
+    .hamburger-icon::before {
+        top: -7px;
+    }
+
+    .hamburger-icon::after {
+        top: 7px;
+    }
+
+    /* Sidebar overlay */
+    .sidebar-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    .sidebar-overlay.open {
+        display: block;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* Sidebar drawer */
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 280px;
+        max-width: 80vw;
+        height: 100%;
+        background: var(--color-surface);
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        box-shadow: var(--shadow-xl);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .sidebar-logo {
+        height: 80px;
+        width: auto;
+    }
+
+    .sidebar-close-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-sm);
+        background: var(--color-surface);
+        cursor: pointer;
+        color: var(--color-text-secondary);
+        font-size: 16px;
+        transition: color var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .sidebar-close-btn:hover {
+        color: var(--color-text);
+        border-color: var(--color-border-strong);
+    }
+
+    /* Sidebar content */
+    .sidebar-content {
+        display: flex;
+        flex-direction: column;
+        padding: 16px;
+        gap: 4px;
+    }
+
+    .sidebar-link {
+        display: block;
+        padding: 12px 16px;
+        border-radius: var(--radius-sm);
+        font-size: 16px;
+    }
+
+    .sidebar-link.active {
+        background: var(--color-muted);
+    }
+
+    .sidebar-theme-toggle {
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        margin-top: 8px;
+        border-top: 1px solid var(--color-border);
+    }
+
+    .sidebar-theme-toggle .theme-toggle {
+        margin-left: 0;
     }
 
     /* Controls accordion wrapper */
     .controls-wrapper {
-        position: relative;
+        position: sticky;
+        top: 0;
         margin-bottom: 8px;
         z-index: 20;
     }

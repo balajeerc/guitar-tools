@@ -31,7 +31,29 @@
                 <a href="#fretboard-discovery" class="nav-link">Fretboard</a>
             </div>
         </div>
+
+        <!-- Mobile: logo + hamburger bar (hidden on desktop) -->
+        <div class="mobile-nav-bar">
+            <img src="/logo-dark.png" alt="Guitar Tools" class="mobile-nav-logo" />
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu">
+                <span class="hamburger-icon"></span>
+            </button>
+        </div>
     </nav>
+
+    <!-- Mobile sidebar overlay + drawer (hidden on desktop) -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="/logo-dark.png" alt="Guitar Tools" class="sidebar-logo" />
+            <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close menu">&#10005;</button>
+        </div>
+        <nav class="sidebar-content">
+            <a href="#scales" class="nav-link sidebar-link">Scales</a>
+            <a href="#fretboard-discovery" class="nav-link sidebar-link">Fretboard</a>
+            <div class="sidebar-theme-toggle" id="sidebarThemeToggle"></div>
+        </nav>
+    </aside>
 
     <div class="container">
         <!-- Scales Feature -->

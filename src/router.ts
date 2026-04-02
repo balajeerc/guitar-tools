@@ -1,6 +1,6 @@
 import { initScalesFeature } from "./features/scales";
 import { initFretboardDiscoveryFeature } from "./features/fretboard-discovery";
-import { initNoteDetection } from "./features/note-detection";
+import { initListenerFeature } from "./features/listener";
 
 function showPage(pageId: string): void {
   const pages = document.querySelectorAll(".page");
@@ -18,7 +18,6 @@ function showPage(pageId: string): void {
     if (link.getAttribute("href") === `#${pageId.replace("-page", "")}`) {
       link.classList.add("active");
     } else if (link.getAttribute("href") === "#" && pageId === "scales-page") {
-      // Handle default case if needed, or just rely on explicit hashes
       link.classList.add("active");
     } else {
       link.classList.remove("active");
@@ -33,6 +32,9 @@ export function initRouter(): void {
     },
     "fretboard-discovery": () => {
       showPage("fretboard-discovery-page");
+    },
+    listener: () => {
+      showPage("listener-page");
     },
   };
 
@@ -52,7 +54,7 @@ export function initRouter(): void {
   // Initialize features
   initScalesFeature();
   initFretboardDiscoveryFeature();
-  initNoteDetection();
+  initListenerFeature();
 
   // Handle initial route
   handleRoute();

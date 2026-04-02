@@ -29,6 +29,7 @@
             <div class="nav-container">
                 <a href="#scales" class="nav-link">Scales</a>
                 <a href="#fretboard-discovery" class="nav-link">Fretboard</a>
+                <a href="#listener" class="nav-link">Listener</a>
             </div>
         </div>
 
@@ -51,6 +52,7 @@
         <nav class="sidebar-content">
             <a href="#scales" class="nav-link sidebar-link">Scales</a>
             <a href="#fretboard-discovery" class="nav-link sidebar-link">Fretboard</a>
+            <a href="#listener" class="nav-link sidebar-link">Listener</a>
             <div class="sidebar-theme-toggle" id="sidebarThemeToggle"></div>
         </nav>
     </aside>
@@ -105,11 +107,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Note Detection -->
-            <div class="note-detection-container" id="noteDetectionContainer">
-                <!-- Dynamically populated -->
             </div>
 
             <!-- Fretboard Section (header + fretboard, flex row on mobile) -->
@@ -185,6 +182,57 @@
         <!-- Fretboard Discovery Feature -->
         <div id="fretboard-discovery-page" class="page" style="display: none;">
             <!-- Dynamically populated -->
+        </div>
+
+        <!-- Listener Feature -->
+        <div id="listener-page" class="page" style="display: none;">
+            <!-- Controls Accordion (mobile) / Inline Controls (desktop) -->
+            <div class="controls-wrapper">
+                <button class="controls-accordion-toggle" id="listenerControlsAccordionToggle">
+                    <span class="controls-summary" id="listenerControlsSummary">C Major</span>
+                    <span class="controls-accordion-arrow">&#9662;</span>
+                </button>
+                <div class="controls" id="listenerControlsPanel">
+                    <div class="controls-row">
+                        <div class="control-group">
+                            <span class="control-label">Root:</span>
+                            <div class="note-selector">
+                                <button class="note-btn" id="listenerPrevNote">&#10094;</button>
+                                <div class="note-display" id="listenerCurrentNote">C</div>
+                                <button class="note-btn" id="listenerNextNote">&#10095;</button>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <span class="control-label">Scale:</span>
+                            <div class="toggle-group">
+                                <button class="toggle-btn active" id="listenerMajorBtn">Major</button>
+                                <button class="toggle-btn" id="listenerMinorBtn">Minor</button>
+                                <button class="toggle-btn" id="listenerFullBtn">Full</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Big detected note display -->
+            <div class="listener-display">
+                <div class="listener-note-row">
+                    <span class="listener-degree-spacer" aria-hidden="true"></span>
+                    <span class="listener-note-name" id="listenerNoteName">-</span>
+                    <span class="listener-degree" id="listenerDegree"></span>
+                </div>
+                <span class="listener-cents" id="listenerCents"></span>
+            </div>
+
+            <!-- Listen / Stop button -->
+            <div class="listener-actions">
+                <button class="note-detection-btn" id="listenerToggleBtn">Listen</button>
+            </div>
+
+            <!-- Linear scale strip -->
+            <div class="scale-strip">
+                <!-- Dynamically populated -->
+            </div>
         </div>
     </div>
 

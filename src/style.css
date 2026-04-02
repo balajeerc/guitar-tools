@@ -458,6 +458,22 @@ body {
     z-index: 15;
 }
 
+/* Detected note highlight (from microphone input) */
+.note.note-detected {
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.9), 0 0 12px rgba(76, 175, 80, 0.7);
+    z-index: 16;
+    animation: pulse-detected 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-detected {
+    from {
+        box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.9), 0 0 12px rgba(76, 175, 80, 0.7);
+    }
+    to {
+        box-shadow: 0 0 0 4px rgba(76, 175, 80, 1), 0 0 18px rgba(76, 175, 80, 0.9);
+    }
+}
+
 .note-circle {
     background: var(--color-note-bg);
     border: 2px solid var(--color-note-border);
@@ -1333,4 +1349,209 @@ body {
         display: flex;
         justify-content: center;
     }
+
+    .note-detection-container {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* ===== Note Detection ===== */
+
+.note-detection-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 0;
+}
+
+.note-detection-btn {
+    padding: 8px 18px;
+    border: 2px solid var(--color-border);
+    border-radius: 20px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.note-detection-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.note-detection-btn.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+    animation: pulse-btn 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-btn {
+    from { opacity: 1; }
+    to { opacity: 0.85; }
+}
+
+.detection-display {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    width: 190px;
+    flex-shrink: 0;
+}
+
+.detected-note {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-text);
+    width: 36px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.detected-degree {
+    font-size: 14px;
+    font-weight: 600;
+    color: #7c4dff;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.detected-frequency {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    width: 46px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.detected-cents {
+    font-size: 12px;
+    font-weight: 600;
+    width: 40px;
+    text-align: left;
+    flex-shrink: 0;
+}
+
+.detected-cents.in-tune {
+    color: #4caf50;
+}
+
+.detected-cents.out-of-tune {
+    color: #ff9800;
+}
+
+.calibration-btn.recalibrate {
+    padding: 6px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.calibration-btn.recalibrate:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* ===== Calibration Wizard ===== */
+
+.calibration-wizard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+}
+
+.calibration-progress {
+    display: flex;
+    gap: 10px;
+}
+
+.calibration-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--color-border-strong);
+    background: transparent;
+    transition: all 0.2s ease;
+}
+
+.calibration-dot.done {
+    background: #4caf50;
+    border-color: #4caf50;
+}
+
+.calibration-dot.active {
+    border-color: var(--color-primary);
+    animation: pulse-dot 1s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-dot {
+    from { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4); }
+    to { box-shadow: 0 0 0 6px rgba(102, 126, 234, 0); }
+}
+
+.calibration-step-text {
+    font-size: 15px;
+    color: var(--color-text);
+    text-align: center;
+}
+
+.calibration-status {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    min-height: 20px;
+}
+
+.calibration-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.calibration-btn.next,
+.calibration-btn.skip,
+.calibration-btn.cancel {
+    padding: 6px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.calibration-btn.next {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+    font-weight: 600;
+}
+
+.calibration-btn.next:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.calibration-btn.next:hover:not(:disabled) {
+    background: var(--color-primary-dark);
+}
+
+.calibration-btn.skip:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.calibration-btn.cancel:hover {
+    border-color: #e53935;
+    color: #e53935;
 }

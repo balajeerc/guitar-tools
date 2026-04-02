@@ -1,5 +1,6 @@
 import { initScalesFeature } from "./features/scales";
 import { initFretboardDiscoveryFeature } from "./features/fretboard-discovery";
+import { initNoteDetection } from "./features/note-detection";
 
 function showPage(pageId: string): void {
   const pages = document.querySelectorAll(".page");
@@ -51,6 +52,7 @@ export function initRouter(): void {
   // Initialize features
   initScalesFeature();
   initFretboardDiscoveryFeature();
+  initNoteDetection();
 
   // Handle initial route
   handleRoute();

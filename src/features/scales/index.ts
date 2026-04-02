@@ -14,6 +14,16 @@ let currentScale: ScaleType = "major";
 let displayMode: DisplayMode = "notes";
 let highlightMode: HighlightMode = "caged";
 
+/** Get the currently selected root note index (0-11, where 0=A) */
+export function getCurrentRootIndex(): number {
+  return currentRootIndex;
+}
+
+/** Get the currently selected scale type */
+export function getCurrentScale(): ScaleType {
+  return currentScale;
+}
+
 function capitalize(s: string): string {
   return s.charAt(0).toUpperCase() + s.slice(1);
 }

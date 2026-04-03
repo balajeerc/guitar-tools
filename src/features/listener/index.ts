@@ -1,104 +1,26 @@
 // Listener feature — standalone audio note detection with scale degree display
 
-import { detectPitch } from "../note-detection/pitchDetector";
-import { frequencyToNote } from "../note-detection/noteMapper";
 import { NOTES } from "../../shared/constants";
 import { setupAccordionToggle } from "../../shared/accordion";
-import {
-  acquireMic,
-  setupAudio,
-  releaseMic,
-  computeRms,
-  SILENCE_THRESHOLD,
-} from "../../shared/audioUtils";
+import { createAudioListener, type AudioListenerHandle } from "../../shared/audioListener";
 import { renderScaleStrip, updateListenerDisplay } from "./renderer";
 import type { ListenerScaleMode } from "./types";
-
-let audioContext: AudioContext | null = null;
-let analyser: AnalyserNode | null = null;
-let mediaStream: MediaStream | null = null;
-let animationFrameId = 0;
-let isListening = false;
 
 // Listener-local scale state
 let currentRootIndex = 3; // C
 let currentMode: ListenerScaleMode = "major";
 
-function releaseAudio(): void {
-  releaseMic(mediaStream, audioContext);
-  mediaStream = null;
-  audioContext = null;
-  analyser = null;
-}
+let listener: AudioListenerHandle;
 
-function detectLoop(): void {
-  if (!isListening || !analyser || !audioContext) return;
-
-  const buffer = new Float32Array(analyser.fftSize);
-  analyser.getFloatTimeDomainData(buffer);
-
-  const rms = computeRms(buffer);
-  if (rms < SILENCE_THRESHOLD) {
-    updateListenerDisplay(null, null, null, currentRootIndex, currentMode);
-    animationFrameId = requestAnimationFrame(detectLoop);
-    return;
-  }
-
-  const frequency = detectPitch(buffer, audioContext.sampleRate);
-
-  if (frequency !== null) {
-    const note = frequencyToNote(frequency);
-    if (note) {
-      updateListenerDisplay(
-        note.noteIndex,
-        note.name,
-        note.centsOff,
-        currentRootIndex,
-        currentMode,
-      );
-    } else {
-      updateListenerDisplay(null, null, null, currentRootIndex, currentMode);
-    }
-  } else {
-    updateListenerDisplay(null, null, null, currentRootIndex, currentMode);
-  }
-
-  animationFrameId = requestAnimationFrame(detectLoop);
-}
-
-function renderListeningUI(): void {
-  const btn = document.getElementById("listenerToggleBtn");
-  if (btn) {
-    btn.textContent = "Stop";
-    btn.classList.add("active");
-  }
-}
-
-function renderIdleUI(): void {
-  const btn = document.getElementById("listenerToggleBtn");
-  if (btn) {
-    btn.textContent = "Listen";
-    btn.classList.remove("active");
-  }
+function renderIdleDisplay(): void {
   updateListenerDisplay(null, null, null, currentRootIndex, currentMode);
 }
 
-async function startListening(): Promise<void> {
-  mediaStream = await acquireMic();
-  const { ctx, node } = setupAudio(mediaStream);
-  audioContext = ctx;
-  analyser = node;
-
-  isListening = true;
-  renderListeningUI();
-  detectLoop();
-}
-
-function stopListening(): void {
-  isListening = false;
-  cancelAnimationFrame(animationFrameId);
-  releaseAudio();
-  renderIdleUI();
+function renderButtonState(listening: boolean): void {
+  const btn = document.getElementById("listenerToggleBtn");
+  if (!btn) return;
+  btn.textContent = listening ? "Stop" : "Listen";
+  btn.classList.toggle("active", listening);
 }
 
 function capitalize(s: string): string {
@@ -173,10 +95,10 @@ function setupControls(): void {
 function setupToggle(): void {
   const btn = document.getElementById("listenerToggleBtn");
   btn?.addEventListener("click", () => {
-    if (isListening) {
-      stopListening();
+    if (listener.isListening()) {
+      listener.stop();
     } else {
-      void startListening();
+      void listener.start();
     }
   });
 }
@@ -185,9 +107,32 @@ export function initListenerFeature(): void {
   const page = document.getElementById("listener-page");
   if (!page) return;
 
+  listener = createAudioListener({
+    onNote(note) {
+      if (note) {
+        updateListenerDisplay(
+          note.noteIndex,
+          note.name,
+          note.centsOff,
+          currentRootIndex,
+          currentMode,
+        );
+      } else {
+        renderIdleDisplay();
+      }
+    },
+    onStart() {
+      renderButtonState(true);
+    },
+    onStop() {
+      renderButtonState(false);
+      renderIdleDisplay();
+    },
+  });
+
   setupControls();
   setupToggle();
   setupAccordionToggle("listenerControlsAccordionToggle");
   reRenderStrip();
-  renderIdleUI();
+  renderIdleDisplay();
 }

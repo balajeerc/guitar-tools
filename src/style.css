@@ -1476,3 +1476,117 @@ body {
     color: var(--color-text-secondary);
 }
 
+/* ===== Tuner Feature (Fender-style Gauge) ===== */
+
+.tuner-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 0 8px;
+}
+
+.tuner-meter {
+    width: 320px;
+    max-width: 90vw;
+}
+
+.tuner-meter-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.tuner-meter-label {
+    fill: var(--color-text-muted);
+    font-size: 12px;
+    font-weight: 600;
+    text-anchor: middle;
+}
+
+.tuner-needle {
+    stroke: var(--color-text);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    transition: opacity 0.3s ease;
+}
+
+.tuner-needle-pivot {
+    fill: var(--color-text-secondary);
+}
+
+/* Note name + cents display below the meter */
+.tuner-note-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-top: 16px;
+}
+
+.tuner-note-name {
+    font-size: 64px;
+    font-weight: 800;
+    color: var(--color-text);
+    line-height: 1;
+}
+
+.tuner-cents {
+    font-size: 16px;
+    font-weight: 600;
+    min-height: 22px;
+}
+
+.tuner-cents.in-tune {
+    color: #4caf50;
+}
+
+.tuner-cents.out-of-tune {
+    color: #ff9800;
+}
+
+/* Start / Stop button */
+.tuner-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 8px 0 24px;
+}
+
+/* String selector buttons */
+.tuner-strings {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 16px;
+    flex-wrap: wrap;
+}
+
+.tuner-string-btn {
+    width: 56px;
+    height: 56px;
+    border: 2px solid var(--color-border);
+    border-radius: 50%;
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tuner-string-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.tuner-string-btn.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+

@@ -30,6 +30,7 @@
                 <a href="#scales" class="nav-link">Scales</a>
                 <a href="#fretboard-discovery" class="nav-link">Fretboard</a>
                 <a href="#listener" class="nav-link">Listener</a>
+                <a href="#tuner" class="nav-link">Tuner</a>
             </div>
         </div>
 
@@ -53,6 +54,7 @@
             <a href="#scales" class="nav-link sidebar-link">Scales</a>
             <a href="#fretboard-discovery" class="nav-link sidebar-link">Fretboard</a>
             <a href="#listener" class="nav-link sidebar-link">Listener</a>
+            <a href="#tuner" class="nav-link sidebar-link">Tuner</a>
             <div class="sidebar-theme-toggle" id="sidebarThemeToggle"></div>
         </nav>
     </aside>
@@ -232,6 +234,51 @@
             <!-- Linear scale strip -->
             <div class="scale-strip">
                 <!-- Dynamically populated -->
+            </div>
+        </div>
+
+        <!-- Tuner Feature -->
+        <div id="tuner-page" class="page" style="display: none;">
+            <!-- Tuner meter display -->
+            <div class="tuner-display">
+                <div class="tuner-meter">
+                    <svg class="tuner-meter-svg" viewBox="0 0 300 170">
+                        <!-- Meter arc segments -->
+                        <g class="tuner-meter-segments" id="tunerMeterSegments">
+                            <!-- Dynamically populated -->
+                        </g>
+                        <!-- Center tick mark -->
+                        <line x1="150" y1="18" x2="150" y2="30" stroke="#4caf50" stroke-width="2.5" />
+                        <!-- -50 / +50 labels -->
+                        <text x="30" y="148" class="tuner-meter-label">-50</text>
+                        <text x="270" y="148" class="tuner-meter-label">+50</text>
+                        <!-- Needle -->
+                        <line class="tuner-needle" id="tunerNeedle" x1="150" y1="155" x2="150" y2="28" />
+                        <!-- Needle pivot -->
+                        <circle cx="150" cy="155" r="5" class="tuner-needle-pivot" />
+                    </svg>
+                </div>
+
+                <!-- Note name + octave -->
+                <div class="tuner-note-display">
+                    <span class="tuner-note-name" id="tunerNoteName">-</span>
+                    <span class="tuner-cents" id="tunerCents"></span>
+                </div>
+            </div>
+
+            <!-- Listen / Stop button -->
+            <div class="tuner-actions">
+                <button class="note-detection-btn" id="tunerToggleBtn">Start</button>
+            </div>
+
+            <!-- String selector buttons -->
+            <div class="tuner-strings" id="tunerStrings">
+                <button class="tuner-string-btn" data-string="0">E2</button>
+                <button class="tuner-string-btn" data-string="1">A2</button>
+                <button class="tuner-string-btn" data-string="2">D3</button>
+                <button class="tuner-string-btn" data-string="3">G3</button>
+                <button class="tuner-string-btn" data-string="4">B3</button>
+                <button class="tuner-string-btn" data-string="5">E4</button>
             </div>
         </div>
     </div>

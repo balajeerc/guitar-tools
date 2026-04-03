@@ -1,6 +1,7 @@
 import { initScalesFeature } from "./features/scales";
 import { initFretboardDiscoveryFeature } from "./features/fretboard-discovery";
 import { initListenerFeature } from "./features/listener";
+import { initTunerFeature } from "./features/tuner";
 
 function showPage(pageId: string): void {
   const pages = document.querySelectorAll(".page");
@@ -36,6 +37,9 @@ export function initRouter(): void {
     listener: () => {
       showPage("listener-page");
     },
+    tuner: () => {
+      showPage("tuner-page");
+    },
   };
 
   function handleRoute(): void {
@@ -55,6 +59,7 @@ export function initRouter(): void {
   initScalesFeature();
   initFretboardDiscoveryFeature();
   initListenerFeature();
+  initTunerFeature();
 
   // Handle initial route
   handleRoute();

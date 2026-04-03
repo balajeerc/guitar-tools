@@ -16,10 +16,25 @@ function getDegreeLabels(mode: ListenerScaleMode): string[] {
   return mode === "major" ? MAJOR_DEGREE_LABELS : MINOR_DEGREE_LABELS;
 }
 
+type ScaleMembership = "major-only" | "minor-only" | "both" | "neither";
+
 interface ScaleNote {
   name: string;
   noteIndex: number;
   degree: string;
+  membership: ScaleMembership;
+}
+
+const MAJOR_SET = new Set(MAJOR_SCALE);
+const MINOR_SET = new Set(MINOR_SCALE);
+
+function getScaleMembership(semitone: number): ScaleMembership {
+  const inMajor = MAJOR_SET.has(semitone);
+  const inMinor = MINOR_SET.has(semitone);
+  if (inMajor && inMinor) return "both";
+  if (inMajor) return "major-only";
+  if (inMinor) return "minor-only";
+  return "neither";
 }
 
 /** Build the list of notes for the selected mode */
@@ -27,7 +42,7 @@ function getScaleNotes(rootIndex: number, mode: ListenerScaleMode): ScaleNote[] 
   if (mode === "full") {
     return CHROMATIC_DEGREE_LABELS.map((degree, i) => {
       const noteIndex = (rootIndex + i) % 12;
-      return { name: NOTES[noteIndex], noteIndex, degree };
+      return { name: NOTES[noteIndex], noteIndex, degree, membership: getScaleMembership(i) };
     });
   }
 
@@ -36,7 +51,7 @@ function getScaleNotes(rootIndex: number, mode: ListenerScaleMode): ScaleNote[] 
 
   return intervals.map((interval, i) => {
     const noteIndex = (rootIndex + interval) % 12;
-    return { name: NOTES[noteIndex], noteIndex, degree: degreeLabels[i] };
+    return { name: NOTES[noteIndex], noteIndex, degree: degreeLabels[i], membership: getScaleMembership(interval) };
   });
 }
 
@@ -53,13 +68,15 @@ export function renderScaleStrip(
   strip.innerHTML = scaleNotes
     .map(
       (n) =>
-        `<div class="scale-strip-note" data-note-index="${n.noteIndex}">
+        `<div class="scale-strip-note ${n.membership}" data-note-index="${n.noteIndex}">
           <span class="strip-note-name">${n.name}</span>
           <span class="strip-note-degree">${n.degree}</span>
         </div>`,
     )
     .join("");
 }
+
+const FADE_DURATION_MS = 300;
 
 function updateCentsDisplay(centsEl: HTMLElement, centsOff: number | null): void {
   if (centsOff !== null) {
@@ -96,11 +113,7 @@ function updateDegreeDisplay(
   rootIndex: number,
   mode: ListenerScaleMode,
 ): void {
-  if (noteIndex === null) {
-    degreeEl.textContent = "";
-    degreeEl.classList.remove("out-of-scale");
-    return;
-  }
+  if (noteIndex === null) return;
 
   const { label, inScale } = formatDegree(noteIndex, rootIndex, mode);
   degreeEl.textContent = label;
@@ -113,8 +126,24 @@ function updateStripHighlight(noteIndex: number | null): void {
   );
   for (const el of stripNotes) {
     const idx = Number((el as HTMLElement).dataset.noteIndex);
-    el.classList.toggle("active", noteIndex !== null && idx === noteIndex);
+    const isTarget = noteIndex !== null && idx === noteIndex;
+    if (isTarget) {
+      el.classList.add("active");
+      el.classList.remove("fading");
+    } else if (el.classList.contains("active")) {
+      el.classList.remove("active");
+      el.classList.add("fading");
+      setTimeout(() => el.classList.remove("fading"), FADE_DURATION_MS);
+    }
   }
+}
+
+let fadeTimer: ReturnType<typeof setTimeout> | null = null;
+
+function setDisplayFading(isFading: boolean): void {
+  const display = document.querySelector(".listener-display");
+  if (!display) return;
+  display.classList.toggle("fading", isFading);
 }
 
 /** Highlight the active note on the scale strip and update the big display */
@@ -129,9 +158,30 @@ export function updateListenerDisplay(
   const centsEl = document.getElementById("listenerCents");
   const degreeEl = document.getElementById("listenerDegree");
 
-  if (noteEl) noteEl.textContent = noteName ?? "-";
-  if (centsEl) updateCentsDisplay(centsEl, centsOff);
-  if (degreeEl) updateDegreeDisplay(degreeEl, noteIndex, rootIndex, mode);
+  if (noteIndex !== null) {
+    if (fadeTimer) {
+      clearTimeout(fadeTimer);
+      fadeTimer = null;
+    }
+    setDisplayFading(false);
+    if (noteEl) noteEl.textContent = noteName ?? "-";
+    if (centsEl) updateCentsDisplay(centsEl, centsOff);
+    if (degreeEl) updateDegreeDisplay(degreeEl, noteIndex, rootIndex, mode);
+  } else if (!fadeTimer) {
+    setDisplayFading(true);
+    fadeTimer = setTimeout(() => {
+      if (noteEl) noteEl.textContent = "-";
+      if (centsEl) {
+        centsEl.textContent = "";
+        centsEl.className = "listener-cents";
+      }
+      if (degreeEl) {
+        degreeEl.textContent = "";
+        degreeEl.classList.remove("out-of-scale");
+      }
+      fadeTimer = null;
+    }, FADE_DURATION_MS);
+  }
 
   updateStripHighlight(noteIndex);
 }

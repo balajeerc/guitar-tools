@@ -1386,6 +1386,14 @@ body {
     width: 100%;
 }
 
+.listener-display {
+    transition: opacity 0.3s ease;
+}
+
+.listener-display.fading {
+    opacity: 0;
+}
+
 .listener-note-name {
     font-size: 72px;
     font-weight: 800;
@@ -1453,15 +1461,62 @@ body {
     border-radius: var(--radius-md);
     border: 2px solid var(--color-border);
     background: var(--color-surface);
-    transition: all 0.15s ease;
+    transition: all 0.3s ease;
     min-width: 48px;
 }
 
+.scale-strip-note.fading {
+    transition: all 0.3s ease;
+}
+
+/* Scale membership colors (Full mode) */
+.scale-strip-note.major-only {
+    border-color: rgba(255, 112, 67, 0.5);
+    background: rgba(255, 112, 67, 0.06);
+}
+
+.scale-strip-note.minor-only {
+    border-color: rgba(100, 181, 246, 0.5);
+    background: rgba(100, 181, 246, 0.06);
+}
+
+.scale-strip-note.both {
+    border: 2px solid transparent;
+    background:
+        var(--color-surface) padding-box,
+        linear-gradient(to bottom, #ff7043 30%, #b07ae0 50%, #64b5f6 70%) border-box;
+}
+
+.scale-strip-note.neither {
+    opacity: 0.45;
+}
+
+/* Active highlight */
 .scale-strip-note.active {
     border-color: #4caf50;
     background: rgba(76, 175, 80, 0.12);
     box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3), 0 0 12px rgba(76, 175, 80, 0.2);
     transform: scale(1.1);
+}
+
+.scale-strip-note.major-only.active {
+    border-color: #ff7043;
+    background: rgba(255, 112, 67, 0.15);
+    box-shadow: 0 0 0 3px rgba(255, 112, 67, 0.3), 0 0 12px rgba(255, 112, 67, 0.2);
+}
+
+.scale-strip-note.minor-only.active {
+    border-color: #64b5f6;
+    background: rgba(100, 181, 246, 0.15);
+    box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.3), 0 0 12px rgba(100, 181, 246, 0.2);
+}
+
+.scale-strip-note.both.active {
+    border: 2px solid transparent;
+    background:
+        rgba(176, 122, 224, 0.15) padding-box,
+        linear-gradient(to bottom, #ff7043 30%, #b07ae0 50%, #64b5f6 70%) border-box;
+    box-shadow: 0 0 0 3px rgba(176, 122, 224, 0.3), 0 0 12px rgba(176, 122, 224, 0.2);
 }
 
 .strip-note-name {

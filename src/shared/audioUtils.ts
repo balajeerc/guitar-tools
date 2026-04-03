@@ -3,10 +3,17 @@
 const BUFFER_SIZE = 2048;
 
 /** RMS amplitude below this is treated as silence */
-export const SILENCE_THRESHOLD = 0.01;
+export const SILENCE_THRESHOLD = 0.005;
 
 export function acquireMic(): Promise<MediaStream> {
-  return navigator.mediaDevices.getUserMedia({ audio: true });
+  return navigator.mediaDevices.getUserMedia({
+    audio: {
+      // Disable voice-call DSP that mangles instrument audio on phones
+      echoCancellation: false,
+      noiseSuppression: false,
+      autoGainControl: false,
+    },
+  });
 }
 
 export function setupAudio(stream: MediaStream): {

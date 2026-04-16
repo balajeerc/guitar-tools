@@ -1,4 +1,4 @@
-const CACHE_NAME = "guitar-tools-v1";
+const CACHE_NAME = "guitar-tools-v2";
 
 const PRECACHE_URLS = [
   "/",
@@ -30,18 +30,35 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
+  const { request } = event;
+
+  if (request.mode === "navigate") {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(request, clone);
+          });
+          return response;
+        })
+        .catch(() => caches.match(request))
+    );
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request).then((cached) => {
+    caches.match(request).then((cached) => {
       if (cached) return cached;
 
-      return fetch(event.request).then((response) => {
+      return fetch(request).then((response) => {
         if (!response || response.status !== 200 || response.type !== "basic") {
           return response;
         }
 
         const clone = response.clone();
         caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, clone);
+          cache.put(request, clone);
         });
 
         return response;

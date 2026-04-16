@@ -64,7 +64,12 @@ function createBanner(): HTMLElement {
   return banner;
 }
 
+function isMobileOrTablet(): boolean {
+  return window.matchMedia("(max-width: 1024px)").matches;
+}
+
 function showBanner(): void {
+  if (!isMobileOrTablet()) return;
   if (document.querySelector("#pwa-install-banner")) return;
   document.body.append(createBanner());
 }

@@ -1,6 +1,6 @@
 // Renderer for the Listener feature — linear scale display + detected note
 
-import { NOTES, MAJOR_SCALE, MINOR_SCALE } from "../../shared/constants";
+import { MAJOR_SCALE, MINOR_SCALE, getNoteName, type AccidentalStyle } from "../../shared/constants";
 import { getScaleDegree } from "../../shared/musicTheory";
 import type { ListenerScaleMode } from "./types";
 
@@ -16,33 +16,36 @@ function getDegreeLabels(mode: ListenerScaleMode): string[] {
   return mode === "major" ? MAJOR_DEGREE_LABELS : MINOR_DEGREE_LABELS;
 }
 
-type ScaleMembership = "major-only" | "minor-only" | "both" | "neither";
+type NoteRole = "root" | "major-third" | "minor-third" | "fifth" | "plain";
 
 interface ScaleNote {
   name: string;
   noteIndex: number;
   degree: string;
-  membership: ScaleMembership;
+  role: NoteRole;
 }
 
-const MAJOR_SET = new Set(MAJOR_SCALE);
-const MINOR_SET = new Set(MINOR_SCALE);
-
-function getScaleMembership(semitone: number): ScaleMembership {
-  const inMajor = MAJOR_SET.has(semitone);
-  const inMinor = MINOR_SET.has(semitone);
-  if (inMajor && inMinor) return "both";
-  if (inMajor) return "major-only";
-  if (inMinor) return "minor-only";
-  return "neither";
+/** Classify a note's role based on its semitone interval from root */
+function getNoteRole(semitone: number, mode: ListenerScaleMode): NoteRole {
+  if (semitone === 0) return "root";
+  if (semitone === 7) return "fifth";
+  if (mode === "full") {
+    if (semitone === 4) return "major-third";
+    if (semitone === 3) return "minor-third";
+  } else if (mode === "major" && semitone === 4) {
+    return "major-third";
+  } else if (mode === "minor" && semitone === 3) {
+    return "minor-third";
+  }
+  return "plain";
 }
 
 /** Build the list of notes for the selected mode */
-function getScaleNotes(rootIndex: number, mode: ListenerScaleMode): ScaleNote[] {
+function getScaleNotes(rootIndex: number, mode: ListenerScaleMode, accidental: AccidentalStyle): ScaleNote[] {
   if (mode === "full") {
     return CHROMATIC_DEGREE_LABELS.map((degree, i) => {
       const noteIndex = (rootIndex + i) % 12;
-      return { name: NOTES[noteIndex], noteIndex, degree, membership: getScaleMembership(i) };
+      return { name: getNoteName(noteIndex, accidental), noteIndex, degree, role: getNoteRole(i, mode) };
     });
   }
 
@@ -51,7 +54,7 @@ function getScaleNotes(rootIndex: number, mode: ListenerScaleMode): ScaleNote[] 
 
   return intervals.map((interval, i) => {
     const noteIndex = (rootIndex + interval) % 12;
-    return { name: NOTES[noteIndex], noteIndex, degree: degreeLabels[i], membership: getScaleMembership(interval) };
+    return { name: getNoteName(noteIndex, accidental), noteIndex, degree: degreeLabels[i], role: getNoteRole(interval, mode) };
   });
 }
 
@@ -60,15 +63,16 @@ export function renderScaleStrip(
   container: HTMLElement,
   rootIndex: number,
   mode: ListenerScaleMode,
+  accidental: AccidentalStyle,
 ): void {
-  const scaleNotes = getScaleNotes(rootIndex, mode);
+  const scaleNotes = getScaleNotes(rootIndex, mode, accidental);
   const strip = container.querySelector(".scale-strip");
   if (!strip) return;
 
   strip.innerHTML = scaleNotes
     .map(
       (n) =>
-        `<div class="scale-strip-note ${n.membership}" data-note-index="${n.noteIndex}">
+        `<div class="scale-strip-note ${n.role}" data-note-index="${n.noteIndex}">
           <span class="strip-note-name">${n.name}</span>
           <span class="strip-note-degree">${n.degree}</span>
         </div>`,

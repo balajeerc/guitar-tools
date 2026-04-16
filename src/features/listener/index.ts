@@ -1,6 +1,6 @@
 // Listener feature — standalone audio note detection with scale degree display
 
-import { NOTES } from "../../shared/constants";
+import { getNoteName, type AccidentalStyle } from "../../shared/constants";
 import { setupAccordionToggle } from "../../shared/accordion";
 import { createAudioListener, type AudioListenerHandle } from "../../shared/audioListener";
 import { renderScaleStrip, updateListenerDisplay } from "./renderer";
@@ -9,6 +9,7 @@ import type { ListenerScaleMode } from "./types";
 // Listener-local scale state
 let currentRootIndex = 3; // C
 let currentMode: ListenerScaleMode = "major";
+let currentAccidental: AccidentalStyle = "sharp";
 
 let listener: AudioListenerHandle;
 
@@ -30,19 +31,19 @@ function capitalize(s: string): string {
 function updateControlsSummary(): void {
   const summary = document.getElementById("listenerControlsSummary");
   if (!summary) return;
-  summary.textContent = `${NOTES[currentRootIndex]} ${capitalize(currentMode)}`;
+  summary.textContent = `${getNoteName(currentRootIndex, currentAccidental)} ${capitalize(currentMode)}`;
 }
 
 function reRenderStrip(): void {
   const page = document.getElementById("listener-page");
   if (!page) return;
-  renderScaleStrip(page, currentRootIndex, currentMode);
+  renderScaleStrip(page, currentRootIndex, currentMode, currentAccidental);
   updateControlsSummary();
 }
 
 function updateNoteLabel(): void {
   const el = document.getElementById("listenerCurrentNote");
-  if (el) el.textContent = NOTES[currentRootIndex];
+  if (el) el.textContent = getNoteName(currentRootIndex, currentAccidental);
 }
 
 function setActiveScaleBtn(activeBtn: HTMLElement, allBtns: HTMLElement[]): void {
@@ -56,8 +57,13 @@ function setupControls(): void {
   const majorBtn = document.getElementById("listenerMajorBtn");
   const minorBtn = document.getElementById("listenerMinorBtn");
   const fullBtn = document.getElementById("listenerFullBtn");
+  const sharpBtn = document.getElementById("listenerSharpBtn");
+  const flatBtn = document.getElementById("listenerFlatBtn");
 
   const scaleBtns = [majorBtn, minorBtn, fullBtn].filter(
+    (b): b is HTMLElement => b !== null,
+  );
+  const accidentalBtns = [sharpBtn, flatBtn].filter(
     (b): b is HTMLElement => b !== null,
   );
 
@@ -90,6 +96,20 @@ function setupControls(): void {
     setActiveScaleBtn(fullBtn, scaleBtns);
     reRenderStrip();
   });
+
+  sharpBtn?.addEventListener("click", () => {
+    currentAccidental = "sharp";
+    setActiveScaleBtn(sharpBtn, accidentalBtns);
+    updateNoteLabel();
+    reRenderStrip();
+  });
+
+  flatBtn?.addEventListener("click", () => {
+    currentAccidental = "flat";
+    setActiveScaleBtn(flatBtn, accidentalBtns);
+    updateNoteLabel();
+    reRenderStrip();
+  });
 }
 
 function setupToggle(): void {
@@ -112,7 +132,7 @@ export function initListenerFeature(): void {
       if (note) {
         updateListenerDisplay(
           note.noteIndex,
-          note.name,
+          getNoteName(note.noteIndex, currentAccidental),
           note.centsOff,
           currentRootIndex,
           currentMode,

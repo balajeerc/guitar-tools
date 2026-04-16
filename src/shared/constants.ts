@@ -18,6 +18,28 @@ export const NOTES: readonly string[] = [
   "G#",
 ];
 
+// Musical notes (flat notation)
+const NOTES_FLAT: readonly string[] = [
+  "A",
+  "Bb",
+  "B",
+  "C",
+  "Db",
+  "D",
+  "Eb",
+  "E",
+  "F",
+  "Gb",
+  "G",
+  "Ab",
+];
+
+export type AccidentalStyle = "sharp" | "flat";
+
+export function getNoteName(noteIndex: number, style: AccidentalStyle): string {
+  return style === "flat" ? NOTES_FLAT[noteIndex] : NOTES[noteIndex];
+}
+
 // Standard tuning (low to high): E A D G B E
 // NOTES = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#']
 // Indices: A=0, A#=1, B=2, C=3, C#=4, D=5, D#=6, E=7, F=8, F#=9, G=10, G#=11

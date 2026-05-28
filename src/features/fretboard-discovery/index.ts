@@ -2,6 +2,8 @@ import { NOTES } from "../../shared/constants";
 import { renderFretboard } from "./renderer";
 import { MOBILE_BREAKPOINT } from "../../shared/layout";
 import { setupAccordionToggle } from "../../shared/accordion";
+import { loadPersisted, savePersisted } from "../../shared/persist";
+import { createResetLink } from "../../shared/resetLink";
 
 // LocalStorage keys
 const STORAGE_KEY_NOTES = "fretboard-discovery-notes";
@@ -16,36 +18,47 @@ let selectedStrings: Set<number> = new Set([1, 2, 3, 4, 5, 6]);
  * Load selections from localStorage
  */
 function loadSelectionsFromStorage(): void {
-  try {
-    const storedNotes = localStorage.getItem(STORAGE_KEY_NOTES);
-    if (storedNotes) {
-      const parsed = JSON.parse(storedNotes) as string[];
-      selectedNotes = new Set(parsed);
-    }
+  const notes = loadPersisted<string[] | null>(STORAGE_KEY_NOTES, null);
+  if (notes) selectedNotes = new Set(notes);
 
-    const storedStrings = localStorage.getItem(STORAGE_KEY_STRINGS);
-    if (storedStrings) {
-      const parsed = JSON.parse(storedStrings) as number[];
-      selectedStrings = new Set(parsed);
-    }
-  } catch (error) {
-    console.error("Error loading selections from localStorage:", error);
-  }
+  const strings = loadPersisted<number[] | null>(STORAGE_KEY_STRINGS, null);
+  if (strings) selectedStrings = new Set(strings);
 }
 
 /**
  * Save selections to localStorage
  */
 function saveSelectionsToStorage(): void {
-  try {
-    localStorage.setItem(STORAGE_KEY_NOTES, JSON.stringify([...selectedNotes]));
-    localStorage.setItem(
-      STORAGE_KEY_STRINGS,
-      JSON.stringify([...selectedStrings]),
-    );
-  } catch (error) {
-    console.error("Error saving selections to localStorage:", error);
+  savePersisted(STORAGE_KEY_NOTES, [...selectedNotes]);
+  savePersisted(STORAGE_KEY_STRINGS, [...selectedStrings]);
+}
+
+/**
+ * Reset note and string selections to defaults (all selected)
+ */
+function resetSelections(): void {
+  // Mutate the existing Sets in place so toggle-all handlers keep their refs
+  selectedNotes.clear();
+  for (const note of NOTES) selectedNotes.add(note);
+  selectedStrings.clear();
+  for (const stringNumber of ALL_STRINGS) selectedStrings.add(stringNumber);
+
+  const controls = document.getElementById("discovery-controls");
+  if (controls) {
+    for (const cb of controls.querySelectorAll<HTMLInputElement>(
+      'input[type="checkbox"]',
+    )) {
+      cb.checked = true;
+    }
+    for (const btn of controls.querySelectorAll<HTMLButtonElement>(
+      ".select-all-btn",
+    )) {
+      btn.textContent = "Deselect All";
+    }
   }
+
+  saveSelectionsToStorage();
+  updateDisplay();
 }
 
 /**
@@ -274,6 +287,7 @@ export function initFretboardDiscoveryFeature(): void {
   if (controlsContainer) {
     controlsContainer.appendChild(createNoteControls());
     controlsContainer.appendChild(createStringControls());
+    controlsContainer.appendChild(createResetLink(resetSelections));
   }
 
   // Set up accordion toggle

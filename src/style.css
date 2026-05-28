@@ -1648,3 +1648,29 @@ body {
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
 }
 
+/* Reset link for control panels */
+.reset-link {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition-fast);
+}
+
+.reset-link:hover {
+    color: var(--color-primary);
+}
+
+.tuner-reset-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 4px;
+}
+

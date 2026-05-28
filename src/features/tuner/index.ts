@@ -1,6 +1,8 @@
 // Tuner feature — Fender-style guitar tuner with per-string selection
 
 import { createAudioListener, type AudioListenerHandle } from "../../shared/audioListener";
+import { loadPersisted, savePersisted } from "../../shared/persist";
+import { createResetLink } from "../../shared/resetLink";
 import { STANDARD_TUNING } from "./constants";
 import {
   renderMeterSegments,
@@ -10,8 +12,11 @@ import {
   updateMeterGlow,
 } from "./renderer";
 
+const STORAGE_KEY = "tuner-state";
+const DEFAULT_SELECTED_STRING: number | null = null;
+
 /** Currently selected string index (null = auto-detect any note) */
-let selectedString: number | null = null;
+let selectedString: number | null = DEFAULT_SELECTED_STRING;
 
 // DOM element references (cached on init)
 let needleEl: SVGLineElement | null = null;
@@ -90,8 +95,15 @@ function setupStringButtons(): void {
     // Toggle: clicking the same string deselects it (auto mode)
     selectedString = selectedString === idx ? null : idx;
 
+    savePersisted(STORAGE_KEY, selectedString);
     updateStringHighlight(container, selectedString);
   });
+}
+
+function resetState(): void {
+  selectedString = DEFAULT_SELECTED_STRING;
+  savePersisted(STORAGE_KEY, selectedString);
+  if (stringsContainer) updateStringHighlight(stringsContainer, selectedString);
 }
 
 export function initTunerFeature(): void {
@@ -106,6 +118,11 @@ export function initTunerFeature(): void {
   noteNameEl = document.getElementById("tunerNoteName");
   centsEl = document.getElementById("tunerCents");
   stringsContainer = document.getElementById("tunerStrings");
+
+  selectedString = loadPersisted<number | null>(
+    STORAGE_KEY,
+    DEFAULT_SELECTED_STRING,
+  );
 
   // Render the static meter segments
   if (segmentsEl) renderMeterSegments(segmentsEl);
@@ -130,6 +147,14 @@ export function initTunerFeature(): void {
 
   setupToggle();
   setupStringButtons();
+
+  if (stringsContainer) {
+    const resetRow = document.createElement("div");
+    resetRow.className = "tuner-reset-row";
+    resetRow.appendChild(createResetLink(resetState));
+    stringsContainer.insertAdjacentElement("afterend", resetRow);
+  }
+
   renderButtonState(false);
   updateDisplay(null, null, selectedString);
 }

@@ -7,12 +7,72 @@ import {
 import { MOBILE_BREAKPOINT } from "../../shared/layout";
 import { NOTES } from "../../shared/constants";
 import { setupAccordionToggle } from "../../shared/accordion";
+import { loadPersisted, savePersisted } from "../../shared/persist";
+import { createResetLink } from "../../shared/resetLink";
+import { setButtonActive } from "../../shared/dom";
+
+interface ScalesState {
+  rootIndex: number;
+  scale: ScaleType;
+  displayMode: DisplayMode;
+  highlightMode: HighlightMode;
+}
+
+const STORAGE_KEY = "scales-state";
+const DEFAULTS: ScalesState = {
+  rootIndex: 3, // C (matches the image)
+  scale: "major",
+  displayMode: "notes",
+  highlightMode: "caged",
+};
 
 // Application state
-let currentRootIndex: number = 3; // Start with C (matches the image)
-let currentScale: ScaleType = "major";
-let displayMode: DisplayMode = "notes";
-let highlightMode: HighlightMode = "caged";
+let currentRootIndex: number = DEFAULTS.rootIndex;
+let currentScale: ScaleType = DEFAULTS.scale;
+let displayMode: DisplayMode = DEFAULTS.displayMode;
+let highlightMode: HighlightMode = DEFAULTS.highlightMode;
+
+function saveState(): void {
+  savePersisted(STORAGE_KEY, {
+    rootIndex: currentRootIndex,
+    scale: currentScale,
+    displayMode,
+    highlightMode,
+  } satisfies ScalesState);
+}
+
+function applyState(s: ScalesState): void {
+  currentRootIndex = s.rootIndex;
+  currentScale = s.scale;
+  displayMode = s.displayMode;
+  highlightMode = s.highlightMode;
+}
+
+/** Sync control buttons and legends to match current state */
+function syncControls(): void {
+  updateNoteDisplay(currentRootIndex);
+  setButtonActive("majorBtn", currentScale === "major");
+  setButtonActive("minorBtn", currentScale === "minor");
+  setButtonActive("notesBtn", displayMode === "notes");
+  setButtonActive("intervalsBtn", displayMode === "intervals");
+  setButtonActive("cagedHighlightBtn", highlightMode === "caged");
+  setButtonActive("pentatonicHighlightBtn", highlightMode === "pentatonic");
+  setButtonActive("fullHighlightBtn", highlightMode === "full");
+
+  const cagedLegend = document.getElementById("cagedLegend");
+  const pentatonicLegend = document.getElementById("pentatonicLegend");
+  if (cagedLegend)
+    cagedLegend.style.display = highlightMode === "caged" ? "flex" : "none";
+  if (pentatonicLegend)
+    pentatonicLegend.style.display =
+      highlightMode === "pentatonic" ? "flex" : "none";
+}
+
+function resetState(): void {
+  applyState(DEFAULTS);
+  syncControls();
+  updateDisplay();
+}
 
 
 function capitalize(s: string): string {
@@ -34,6 +94,7 @@ function updateDisplay(): void {
   renderCAGEDHeader(currentRootIndex, highlightMode, currentScale);
   renderFretboard(currentRootIndex, currentScale, displayMode, highlightMode);
   updateControlsSummary();
+  saveState();
 }
 
 function setupNoteNavigation(): void {
@@ -159,12 +220,21 @@ function setupKeyboardNavigation(): void {
 }
 
 export function initScalesFeature(): void {
+  applyState(loadPersisted(STORAGE_KEY, DEFAULTS));
+
   setupNoteNavigation();
   setupScaleTypeButtons();
   setupDisplayModeButtons();
   setupHighlightModeToggle();
   setupKeyboardNavigation();
   setupAccordionToggle("controlsAccordionToggle");
+
+  document
+    .getElementById("controlsPanel")
+    ?.appendChild(createResetLink(resetState));
+
+  // Reflect persisted state in the controls before first render
+  syncControls();
 
   // Re-render when crossing mobile breakpoint
   window

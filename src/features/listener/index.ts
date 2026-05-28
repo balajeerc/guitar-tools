@@ -3,13 +3,43 @@
 import { getNoteName, type AccidentalStyle } from "../../shared/constants";
 import { setupAccordionToggle } from "../../shared/accordion";
 import { createAudioListener, type AudioListenerHandle } from "../../shared/audioListener";
+import { loadPersisted, savePersisted } from "../../shared/persist";
+import { createResetLink } from "../../shared/resetLink";
+import { setButtonActive } from "../../shared/dom";
 import { renderScaleStrip, updateListenerDisplay } from "./renderer";
 import type { ListenerScaleMode } from "./types";
 
+interface ListenerState {
+  rootIndex: number;
+  mode: ListenerScaleMode;
+  accidental: AccidentalStyle;
+}
+
+const STORAGE_KEY = "listener-state";
+const DEFAULTS: ListenerState = {
+  rootIndex: 3, // C
+  mode: "major",
+  accidental: "sharp",
+};
+
 // Listener-local scale state
-let currentRootIndex = 3; // C
-let currentMode: ListenerScaleMode = "major";
-let currentAccidental: AccidentalStyle = "sharp";
+let currentRootIndex = DEFAULTS.rootIndex;
+let currentMode: ListenerScaleMode = DEFAULTS.mode;
+let currentAccidental: AccidentalStyle = DEFAULTS.accidental;
+
+function saveState(): void {
+  savePersisted(STORAGE_KEY, {
+    rootIndex: currentRootIndex,
+    mode: currentMode,
+    accidental: currentAccidental,
+  } satisfies ListenerState);
+}
+
+function applyState(s: ListenerState): void {
+  currentRootIndex = s.rootIndex;
+  currentMode = s.mode;
+  currentAccidental = s.accidental;
+}
 
 let listener: AudioListenerHandle;
 
@@ -39,6 +69,7 @@ function reRenderStrip(): void {
   if (!page) return;
   renderScaleStrip(page, currentRootIndex, currentMode, currentAccidental);
   updateControlsSummary();
+  saveState();
 }
 
 function updateNoteLabel(): void {
@@ -49,6 +80,22 @@ function updateNoteLabel(): void {
 function setActiveScaleBtn(activeBtn: HTMLElement, allBtns: HTMLElement[]): void {
   for (const btn of allBtns) btn.classList.remove("active");
   activeBtn.classList.add("active");
+}
+
+/** Sync control buttons to match current state */
+function syncControls(): void {
+  updateNoteLabel();
+  setButtonActive("listenerMajorBtn", currentMode === "major");
+  setButtonActive("listenerMinorBtn", currentMode === "minor");
+  setButtonActive("listenerFullBtn", currentMode === "full");
+  setButtonActive("listenerSharpBtn", currentAccidental === "sharp");
+  setButtonActive("listenerFlatBtn", currentAccidental === "flat");
+}
+
+function resetState(): void {
+  applyState(DEFAULTS);
+  syncControls();
+  reRenderStrip();
 }
 
 function setupControls(): void {
@@ -127,6 +174,8 @@ export function initListenerFeature(): void {
   const page = document.getElementById("listener-page");
   if (!page) return;
 
+  applyState(loadPersisted(STORAGE_KEY, DEFAULTS));
+
   listener = createAudioListener({
     onNote(note) {
       if (note) {
@@ -153,6 +202,12 @@ export function initListenerFeature(): void {
   setupControls();
   setupToggle();
   setupAccordionToggle("listenerControlsAccordionToggle");
+
+  document
+    .getElementById("listenerControlsPanel")
+    ?.appendChild(createResetLink(resetState));
+
+  syncControls();
   reRenderStrip();
   renderIdleDisplay();
 }

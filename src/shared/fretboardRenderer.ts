@@ -11,6 +11,11 @@ import {
 } from "./constants";
 import type { LayoutConfig } from "./layout";
 
+/** Pixel position (along the fret axis) of a note centred on the given fret. */
+export function fretCenterPosition(fret: number): number {
+  return fret === 0 ? NUT_POSITION / 2 : NUT_POSITION + (fret - 0.5) * FRET_WIDTH;
+}
+
 export function generateFretLinesHTML(config: LayoutConfig): string {
   let html = "";
   for (let fret = 0; fret <= TOTAL_FRETS; fret++) {

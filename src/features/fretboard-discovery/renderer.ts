@@ -3,8 +3,6 @@
 import {
   NOTES,
   TOTAL_FRETS,
-  NUT_POSITION,
-  FRET_WIDTH,
   STRING_Y_POSITIONS,
   STRING_ORDER,
 } from "../../shared/constants";
@@ -14,8 +12,13 @@ import {
   generateDotsHTML,
   generateStringsHTML,
   generateFretNumbersHTML,
+  fretCenterPosition,
 } from "../../shared/fretboardRenderer";
 import { getLayoutConfig, type LayoutConfig } from "../../shared/layout";
+import { computeGroupBands } from "./grouping";
+
+// Thickness of a grouping band across the string axis, in pixels
+const BAND_THICKNESS = 14;
 
 /**
  * Generate HTML for notes on the fretboard based on selected notes and strings
@@ -49,13 +52,37 @@ function generateNotesHTML(
         continue;
       }
 
-      const fretPos =
-        fret === 0
-          ? NUT_POSITION / 2
-          : NUT_POSITION + (fret - 0.5) * FRET_WIDTH;
+      const fretPos = fretCenterPosition(fret);
 
       html += `<div class="note note-circle" style="${config.fretAxis}: ${fretPos}px; ${config.stringAxis}: ${stringPos}px;">${noteName}</div>`;
     }
+  }
+  return html;
+}
+
+/**
+ * Generate HTML for the coloured grouping bands connecting same-group notes
+ * along each string.
+ */
+function generateGroupBandsHTML(
+  selectedNotes: Set<string>,
+  selectedStrings: Set<number>,
+  config: LayoutConfig,
+): string {
+  const bands = computeGroupBands(selectedNotes, selectedStrings);
+  // Centre each band on its string line along the cross (string) axis.
+  const centerTransform = config.isVertical ? "translateX(-50%)" : "translateY(-50%)";
+
+  let html = "";
+  for (const { visualStringIndex, group, startFret, endFret } of bands) {
+    // In vertical mode, reverse positions so bass strings are on the left (EADGBE)
+    const posIdx = config.isVertical ? 5 - visualStringIndex : visualStringIndex;
+    const stringPos = STRING_Y_POSITIONS[posIdx];
+
+    const startPos = fretCenterPosition(startFret);
+    const size = fretCenterPosition(endFret) - startPos;
+
+    html += `<div class="note-group-band group-${group}" style="${config.fretAxis}: ${startPos}px; ${config.fretDimension}: ${size}px; ${config.stringAxis}: ${stringPos}px; ${config.stringThicknessProp}: ${BAND_THICKNESS}px; transform: ${centerTransform};"></div>`;
   }
   return html;
 }
@@ -66,6 +93,7 @@ function generateNotesHTML(
 export function renderFretboard(
   selectedNotes: Set<string>,
   selectedStrings: Set<number>,
+  groupingEnabled = false,
 ): void {
   const fretboard = document.getElementById("fretboard-discovery");
   const fretNumbers = document.getElementById("fretNumbers-discovery");
@@ -83,6 +111,11 @@ export function renderFretboard(
 
   // Add 6 string lines
   fretboardHTML += generateStringsHTML(config);
+
+  // Add grouping bands above the strings but below the notes
+  if (groupingEnabled) {
+    fretboardHTML += generateGroupBandsHTML(selectedNotes, selectedStrings, config);
+  }
 
   // Add notes positioned on strings
   fretboardHTML += generateNotesHTML(selectedNotes, selectedStrings, config);

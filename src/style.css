@@ -436,6 +436,36 @@ body {
     background-color: rgba(144, 202, 249, 0.6);
 }
 
+/* Note grouping bands (discovery feature) */
+.note-group-band {
+    position: absolute;
+    border-radius: 7px;
+    z-index: 5;
+}
+
+.note-group-band.group-abc {
+    background-color: rgba(255, 152, 0, 0.55);
+}
+
+.note-group-band.group-def {
+    background-color: rgba(33, 150, 243, 0.55);
+}
+
+/* Grouping legend (discovery feature) */
+.group-legend {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.legend-color.group-abc {
+    background-color: rgba(255, 152, 0, 0.55);
+}
+
+.legend-color.group-def {
+    background-color: rgba(33, 150, 243, 0.55);
+}
+
 /* Notes */
 .note {
     width: 26px;

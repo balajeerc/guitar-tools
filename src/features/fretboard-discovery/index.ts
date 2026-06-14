@@ -1,5 +1,6 @@
 import { NOTES } from "../../shared/constants";
 import { renderFretboard } from "./renderer";
+import { GROUP_LABELS, type NoteGroup } from "./grouping";
 import { MOBILE_BREAKPOINT } from "../../shared/layout";
 import { setupAccordionToggle } from "../../shared/accordion";
 import { loadPersisted, savePersisted } from "../../shared/persist";
@@ -8,11 +9,19 @@ import { createResetLink } from "../../shared/resetLink";
 // LocalStorage keys
 const STORAGE_KEY_NOTES = "fretboard-discovery-notes";
 const STORAGE_KEY_STRINGS = "fretboard-discovery-strings";
+const STORAGE_KEY_GROUPING = "fretboard-discovery-grouping";
 
 // Application state
 const ALL_STRINGS = [1, 2, 3, 4, 5, 6];
+const DEFAULT_GROUPING = false;
 let selectedNotes: Set<string> = new Set(NOTES);
 let selectedStrings: Set<number> = new Set([1, 2, 3, 4, 5, 6]);
+let groupingEnabled = DEFAULT_GROUPING;
+
+// References to grouping controls, set up in createGroupingControls()
+let groupingOffBtn: HTMLButtonElement | null = null;
+let groupingOnBtn: HTMLButtonElement | null = null;
+let groupingLegend: HTMLElement | null = null;
 
 /**
  * Load selections from localStorage
@@ -23,6 +32,11 @@ function loadSelectionsFromStorage(): void {
 
   const strings = loadPersisted<number[] | null>(STORAGE_KEY_STRINGS, null);
   if (strings) selectedStrings = new Set(strings);
+
+  groupingEnabled = loadPersisted<boolean>(
+    STORAGE_KEY_GROUPING,
+    DEFAULT_GROUPING,
+  );
 }
 
 /**
@@ -31,6 +45,7 @@ function loadSelectionsFromStorage(): void {
 function saveSelectionsToStorage(): void {
   savePersisted(STORAGE_KEY_NOTES, [...selectedNotes]);
   savePersisted(STORAGE_KEY_STRINGS, [...selectedStrings]);
+  savePersisted(STORAGE_KEY_GROUPING, groupingEnabled);
 }
 
 /**
@@ -42,6 +57,8 @@ function resetSelections(): void {
   for (const note of NOTES) selectedNotes.add(note);
   selectedStrings.clear();
   for (const stringNumber of ALL_STRINGS) selectedStrings.add(stringNumber);
+
+  groupingEnabled = DEFAULT_GROUPING;
 
   const controls = document.getElementById("discovery-controls");
   if (controls) {
@@ -56,6 +73,7 @@ function resetSelections(): void {
       btn.textContent = "Deselect All";
     }
   }
+  syncGroupingControls();
 
   saveSelectionsToStorage();
   updateDisplay();
@@ -73,7 +91,8 @@ function getControlsSummary(): string {
     stringCount === ALL_STRINGS.length
       ? "All strings"
       : `${stringCount} strings`;
-  return `${notesPart} · ${stringsPart}`;
+  const groupingPart = groupingEnabled ? " · Grouped" : "";
+  return `${notesPart} · ${stringsPart}${groupingPart}`;
 }
 
 /**
@@ -90,7 +109,7 @@ function updateControlsSummary(): void {
  * Update display based on current selections
  */
 function updateDisplay(): void {
-  renderFretboard(selectedNotes, selectedStrings);
+  renderFretboard(selectedNotes, selectedStrings, groupingEnabled);
   updateControlsSummary();
 }
 
@@ -249,6 +268,77 @@ function createStringControls(): HTMLElement {
 }
 
 /**
+ * Sync the grouping toggle buttons and legend to the current state
+ */
+function syncGroupingControls(): void {
+  groupingOffBtn?.classList.toggle("active", !groupingEnabled);
+  groupingOnBtn?.classList.toggle("active", groupingEnabled);
+  if (groupingLegend) {
+    groupingLegend.style.display = groupingEnabled ? "flex" : "none";
+  }
+}
+
+/**
+ * Build the legend explaining the grouping band colours
+ */
+function createGroupingLegend(): HTMLElement {
+  const legend = document.createElement("div");
+  legend.className = "group-legend";
+
+  for (const group of ["abc", "def"] as NoteGroup[]) {
+    const item = document.createElement("span");
+    item.className = "legend-item";
+    item.innerHTML = `<span class="legend-color group-${group}"></span>${GROUP_LABELS[group]}`;
+    legend.appendChild(item);
+  }
+
+  return legend;
+}
+
+/**
+ * Create the note-grouping on/off toggle control
+ */
+function createGroupingControls(): HTMLElement {
+  const container = document.createElement("div");
+  container.className = "control-group";
+
+  const label = document.createElement("span");
+  label.className = "control-label";
+  label.textContent = "Grouping:";
+  container.appendChild(label);
+
+  const toggleGroup = document.createElement("div");
+  toggleGroup.className = "toggle-group";
+
+  function makeBtn(text: string, enabled: boolean): HTMLButtonElement {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "toggle-btn";
+    btn.textContent = text;
+    btn.addEventListener("click", () => {
+      if (groupingEnabled === enabled) return;
+      groupingEnabled = enabled;
+      syncGroupingControls();
+      saveSelectionsToStorage();
+      updateDisplay();
+    });
+    return btn;
+  }
+
+  groupingOffBtn = makeBtn("Off", false);
+  groupingOnBtn = makeBtn("On", true);
+  toggleGroup.appendChild(groupingOffBtn);
+  toggleGroup.appendChild(groupingOnBtn);
+  container.appendChild(toggleGroup);
+
+  groupingLegend = createGroupingLegend();
+  container.appendChild(groupingLegend);
+
+  syncGroupingControls();
+  return container;
+}
+
+/**
  * Initialize the Fretboard Discovery feature
  */
 export function initFretboardDiscoveryFeature(): void {
@@ -287,6 +377,7 @@ export function initFretboardDiscoveryFeature(): void {
   if (controlsContainer) {
     controlsContainer.appendChild(createNoteControls());
     controlsContainer.appendChild(createStringControls());
+    controlsContainer.appendChild(createGroupingControls());
     controlsContainer.appendChild(createResetLink(resetSelections));
   }
 

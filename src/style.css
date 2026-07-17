@@ -319,6 +319,26 @@ body {
     color: var(--color-text);
 }
 
+/* Chord type toggle — wraps to multiple rows given the many chord types */
+.chord-type-toggle {
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 560px;
+}
+
+.chord-type-toggle .toggle-btn {
+    padding: 6px 12px;
+}
+
+/* Chord spelling info line (Chords feature) */
+.chord-info {
+    text-align: center;
+    margin: 12px 0 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+}
+
 /* CAGED Header */
 .caged-header {
     display: flex;

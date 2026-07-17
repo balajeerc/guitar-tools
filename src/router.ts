@@ -1,4 +1,5 @@
 import { initScalesFeature } from "./features/scales";
+import { initChordsFeature } from "./features/chords";
 import { initFretboardDiscoveryFeature } from "./features/fretboard-discovery";
 import { initListenerFeature } from "./features/listener";
 import { initTunerFeature } from "./features/tuner";
@@ -31,6 +32,9 @@ export function initRouter(): void {
     scales: () => {
       showPage("scales-page");
     },
+    chords: () => {
+      showPage("chords-page");
+    },
     "fretboard-discovery": () => {
       showPage("fretboard-discovery-page");
     },
@@ -57,6 +61,7 @@ export function initRouter(): void {
 
   // Initialize features
   initScalesFeature();
+  initChordsFeature();
   initFretboardDiscoveryFeature();
   initListenerFeature();
   initTunerFeature();

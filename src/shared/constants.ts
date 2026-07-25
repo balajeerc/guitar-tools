@@ -45,6 +45,12 @@ export function getNoteName(noteIndex: number, style: AccidentalStyle): string {
 // Indices: A=0, A#=1, B=2, C=3, C#=4, D=5, D#=6, E=7, F=8, F#=9, G=10, G#=11
 export const OPEN_STRINGS: readonly number[] = [7, 0, 5, 10, 2, 7]; // E=7, A=0, D=5, G=10, B=2, E=7
 
+// Absolute pitch of each open string in semitones from low E (string 0).
+// Unlike OPEN_STRINGS (which wraps mod 12), this preserves octave info so
+// octave-range calculations (e.g. Fret Walk) can compare absolute pitches.
+// Standard tuning intervals between adjacent strings: E→A=5, A→D=5, D→G=5, G→B=4, B→E=5.
+export const STRING_BASE_PITCH: readonly number[] = [0, 5, 10, 15, 19, 24];
+
 // Pentatonic scale intervals (in semitones from root)
 export const MAJOR_PENTATONIC: readonly number[] = [0, 2, 4, 7, 9]; // 1, 2, 3, 5, 6
 export const MINOR_PENTATONIC: readonly number[] = [0, 3, 5, 7, 10]; // 1, b3, 4, 5, b7

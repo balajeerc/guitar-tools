@@ -16,6 +16,25 @@ export function fretCenterPosition(fret: number): number {
   return fret === 0 ? NUT_POSITION / 2 : NUT_POSITION + (fret - 0.5) * FRET_WIDTH;
 }
 
+/**
+ * Size a CAGED-style header element to align with the fretboard in the current
+ * layout: a horizontal banner above the board, or a vertical sidebar beside it.
+ */
+export function sizeCagedHeader(header: HTMLElement, config: LayoutConfig): void {
+  header.style.position = "relative";
+  if (config.isVertical) {
+    header.style.height = "";
+    header.style.minWidth = "";
+    header.style.minHeight = `${NUT_POSITION + TOTAL_FRETS * FRET_WIDTH}px`;
+    header.style.width = "60px";
+  } else {
+    header.style.height = "120px";
+    header.style.minWidth = "1400px";
+    header.style.minHeight = "";
+    header.style.width = "";
+  }
+}
+
 export function generateFretLinesHTML(config: LayoutConfig): string {
   let html = "";
   for (let fret = 0; fret <= TOTAL_FRETS; fret++) {

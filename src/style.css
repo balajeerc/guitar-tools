@@ -25,6 +25,7 @@
     --color-fret-line-nut: #333;
     --color-string-from: #999;
     --color-string-to: #777;
+    --color-walk-line: #5f5f5f;
     --color-fret-dot: #ddd;
     --color-fret-number: #666;
     --color-fret-marker: #bbb;
@@ -91,6 +92,7 @@
     --color-fret-line-nut: #c0c0d0;
     --color-string-from: #888898;
     --color-string-to: #6a6a7a;
+    --color-walk-line: #a2a2c0;
     --color-fret-dot: #3a3a55;
     --color-fret-number: #9090a8;
     --color-fret-marker: #5a5a70;
@@ -408,6 +410,27 @@ body {
     background: var(--color-fret-line-nut);
 }
 
+/* Fret Walk: ascending walk line connecting the selected notes. Sits above the
+   strings (z-index 2) but below the note markers (z-index 10). */
+.fret-walk-path {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.fret-walk-path line {
+    stroke: var(--color-walk-line);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.85;
+}
+
 /* CAGED Shape Background Zones */
 .shape-zone {
     position: absolute;
@@ -480,6 +503,16 @@ body {
     z-index: 10;
     transform: translate(-50%, -50%);
     transition: box-shadow 0.15s ease-in-out;
+}
+
+/* Fret Walk: the board is clickable; notes never capture pointer events
+   so clicks always resolve to the nearest position via the board handler. */
+.fret-walk-board .fretboard {
+    cursor: pointer;
+}
+
+.fret-walk-board .note {
+    pointer-events: none;
 }
 
 /* Chord shape highlight on shape label hover */
@@ -1363,6 +1396,11 @@ body {
     /* Fretboard Discovery: center the fretboard on mobile */
     .fretboard-discovery-board {
         display: flex;
+        justify-content: center;
+    }
+
+    /* Fret Walk: center the fretboard on mobile using fretboard-section layout */
+    .fretboard-section.fret-walk-board {
         justify-content: center;
     }
 

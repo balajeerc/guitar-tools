@@ -29,6 +29,7 @@ import {
   generateDotsHTML,
   generateStringsHTML,
   generateFretNumbersHTML,
+  sizeCagedHeader,
 } from "../../shared/fretboardRenderer";
 import { getLayoutConfig, type LayoutConfig } from "../../shared/layout";
 import {
@@ -261,19 +262,7 @@ export function renderCAGEDHeader(
   if (!header) return;
 
   const config = getLayoutConfig();
-  header.style.position = "relative";
-
-  if (config.isVertical) {
-    header.style.height = "";
-    header.style.minWidth = "";
-    header.style.minHeight = `${NUT_POSITION + TOTAL_FRETS * FRET_WIDTH}px`;
-    header.style.width = "60px";
-  } else {
-    header.style.height = "120px";
-    header.style.minWidth = "1400px";
-    header.style.minHeight = "";
-    header.style.width = "";
-  }
+  sizeCagedHeader(header, config);
 
   if (highlightMode === "full") {
     header.innerHTML = "";

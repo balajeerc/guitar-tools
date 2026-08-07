@@ -5,6 +5,10 @@
 }
 
 :root {
+    /* Signals to the browser that both schemes are supported, so UA-rendered
+       parts (form controls, scrollbars, canvas backdrop) follow the active theme */
+    color-scheme: light dark;
+
     /* Brand colors */
     --color-primary: #667eea;
     --color-primary-dark: #5a6fd6;
@@ -84,7 +88,13 @@
     --transition-fast: 150ms ease;
 }
 
+[data-theme="light"] {
+    color-scheme: light;
+}
+
 [data-theme="dark"] {
+    color-scheme: dark;
+
     --color-primary: #8b9cf7;
     --color-primary-dark: #7b8de8;
 

@@ -1,6 +1,7 @@
 import { initScalesFeature } from "./features/scales";
 import { initFretWalkFeature } from "./features/fret-walk";
 import { initFretboardDiscoveryFeature } from "./features/fretboard-discovery";
+import { initCircleOfFifthsFeature } from "./features/circle-of-fifths";
 import { initListenerFeature } from "./features/listener";
 import { initTunerFeature } from "./features/tuner";
 
@@ -38,6 +39,9 @@ export function initRouter(): void {
     "fretboard-discovery": () => {
       showPage("fretboard-discovery-page");
     },
+    "circle-of-fifths": () => {
+      showPage("circle-of-fifths-page");
+    },
     listener: () => {
       showPage("listener-page");
     },
@@ -63,6 +67,7 @@ export function initRouter(): void {
   initScalesFeature();
   initFretWalkFeature();
   initFretboardDiscoveryFeature();
+  initCircleOfFifthsFeature();
   initListenerFeature();
   initTunerFeature();
 

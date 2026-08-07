@@ -57,6 +57,16 @@
     --color-select-all-bg: #f5f5f5;
     --color-select-all-bg-hover: #e8e8e8;
 
+    /* Circle of fifths */
+    --color-cof-sector: #ffffff;
+    --color-cof-sector-hover: #eef0fc;
+    --color-cof-divider: #d4d4d8;
+    --color-cof-ring: #52525b;
+    --color-cof-hub: #f4f4f5;
+    --color-cof-label: #18181b;
+    --color-cof-label-alt: #a1a1aa;
+    --color-cof-selected-text: #ffffff;
+
     /* Shadows */
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
     --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -120,6 +130,15 @@
     --color-select-all-border: #3a3a55;
     --color-select-all-bg: #2a2a45;
     --color-select-all-bg-hover: #35355a;
+
+    --color-cof-sector: #2f2f4d;
+    --color-cof-sector-hover: #3b3b60;
+    --color-cof-divider: #4a4a65;
+    --color-cof-ring: #ffffff;
+    --color-cof-hub: #22223a;
+    --color-cof-label: #e8e8f0;
+    --color-cof-label-alt: #8a8aa0;
+    --color-cof-selected-text: #1a1a2e;
 
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
     --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.3);
@@ -1742,3 +1761,245 @@ body {
     margin-top: 4px;
 }
 
+
+/* Circle of Fifths — wheel */
+.cof-wheel-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 8px 16px 24px;
+}
+
+.cof-wheel {
+    width: 100%;
+    max-width: 470px;
+    height: auto;
+}
+
+.cof-sector {
+    fill: var(--color-cof-sector);
+    stroke: var(--color-cof-divider);
+    stroke-width: 1;
+    cursor: pointer;
+    transition: fill var(--transition-fast);
+}
+
+.cof-sector:hover {
+    fill: var(--color-cof-sector-hover);
+}
+
+.cof-sector.selected,
+.cof-sector.selected:hover {
+    fill: var(--color-primary);
+}
+
+.cof-hub {
+    fill: var(--color-cof-hub);
+    pointer-events: none;
+}
+
+.cof-rings circle {
+    fill: none;
+    stroke: var(--color-cof-ring);
+    stroke-width: 2;
+    pointer-events: none;
+}
+
+.cof-labels {
+    pointer-events: none;
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+
+.cof-label {
+    fill: var(--color-cof-label);
+}
+
+.cof-label.selected {
+    fill: var(--color-cof-selected-text);
+}
+
+.cof-label-major {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.cof-label-minor {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.cof-label-alt {
+    font-size: 14px;
+    font-weight: 600;
+    fill: var(--color-cof-label-alt);
+}
+
+.cof-label-alt.selected {
+    opacity: 0.7;
+}
+
+/* Roman numerals: sized against the ring label they subtitle, so both rings
+   read the same weight relative to their key names. */
+.cof-numeral {
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    fill: var(--color-primary);
+}
+
+.cof-numeral-major {
+    font-size: 12px;
+}
+
+.cof-numeral-minor {
+    font-size: 11px;
+}
+
+.cof-numeral.selected {
+    fill: var(--color-cof-selected-text);
+}
+
+.cof-hub-label {
+    text-anchor: middle;
+    dominant-baseline: central;
+    font-size: 40px;
+    font-weight: 700;
+    fill: var(--color-primary);
+    pointer-events: none;
+}
+
+/* Circle of Fifths — progression panel */
+.cof-panel {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 18px 20px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.cof-panel-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.cof-panel-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+.cof-key-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.cof-degrees {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0 20px;
+}
+
+.cof-degree-btn {
+    min-width: 48px;
+    padding: 9px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-muted);
+    color: var(--color-text-secondary);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.cof-degree-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.cof-degree-btn.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-cof-selected-text);
+}
+
+.cof-progression {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 72px;
+}
+
+.cof-chord {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    min-width: 70px;
+    padding: 10px 12px;
+    background: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+
+.cof-chord-numeral {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--color-primary);
+}
+
+.cof-chord-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.cof-chord-sep {
+    color: var(--color-text-muted);
+    font-size: 16px;
+}
+
+.cof-progression-empty {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+}
+
+.cof-reset-row {
+    display: flex;
+    margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+    .cof-wheel-wrapper {
+        padding: 4px 0 16px;
+    }
+
+    .cof-panel {
+        padding: 14px;
+    }
+
+    .cof-degree-btn {
+        min-width: 40px;
+        padding: 8px 6px;
+    }
+
+    .cof-chord {
+        min-width: 60px;
+        padding: 8px 10px;
+    }
+
+    .cof-chord-name {
+        font-size: 19px;
+    }
+}

@@ -4,6 +4,7 @@ import { initFretboardDiscoveryFeature } from "./features/fretboard-discovery";
 import { initCircleOfFifthsFeature } from "./features/circle-of-fifths";
 import { initListenerFeature } from "./features/listener";
 import { initTunerFeature } from "./features/tuner";
+import { initMetronomeFeature } from "./features/metronome";
 
 function showPage(pageId: string): void {
   const pages = document.querySelectorAll(".page");
@@ -48,6 +49,9 @@ export function initRouter(): void {
     tuner: () => {
       showPage("tuner-page");
     },
+    metronome: () => {
+      showPage("metronome-page");
+    },
   };
 
   function handleRoute(): void {
@@ -70,6 +74,7 @@ export function initRouter(): void {
   initCircleOfFifthsFeature();
   initListenerFeature();
   initTunerFeature();
+  initMetronomeFeature();
 
   // Handle initial route
   handleRoute();

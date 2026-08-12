@@ -2013,3 +2013,174 @@ body {
         font-size: 19px;
     }
 }
+
+/* ============================================
+   Metronome
+   ============================================ */
+
+.metronome-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 0 16px;
+}
+
+/* Pendulum */
+.metronome-pendulum {
+    position: relative;
+    width: 200px;
+    height: 160px;
+}
+
+.metronome-pendulum-arm {
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    width: 4px;
+    height: 140px;
+    margin-left: -2px;
+    border-radius: 2px;
+    background: var(--color-border-strong);
+    transform-origin: bottom center;
+}
+
+.metronome-pendulum-bob {
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    width: 26px;
+    height: 26px;
+    margin-left: -13px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    box-shadow: var(--shadow-md);
+}
+
+.metronome-pendulum-pivot {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 16px;
+    height: 16px;
+    margin-left: -8px;
+    border-radius: 50%;
+    background: var(--color-border-strong);
+}
+
+/* Tempo readout */
+.metronome-tempo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.metronome-bpm {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    min-width: 120px;
+    justify-content: center;
+}
+
+/* Editable tempo field, styled to read as plain text until focused */
+.metronome-bpm-value {
+    width: 3.2ch;
+    padding: 0 2px;
+    border: none;
+    border-bottom: 2px dashed transparent;
+    background: transparent;
+    font-family: inherit;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.1;
+    text-align: center;
+    color: var(--color-text);
+    font-variant-numeric: tabular-nums;
+}
+
+.metronome-bpm-value:hover {
+    border-bottom-color: var(--color-border-strong);
+}
+
+.metronome-bpm-value:focus {
+    outline: none;
+    border-bottom-color: var(--color-primary);
+}
+
+.metronome-bpm-unit {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+}
+
+.metronome-slider {
+    width: min(420px, 88vw);
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+
+/* Beat dots */
+.metronome-beats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.metronome-beat {
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border-radius: 50%;
+    border: 2px solid var(--color-border-strong);
+    background: var(--color-surface);
+    cursor: pointer;
+    transition: transform 0.08s ease, background 0.08s ease;
+}
+
+.metronome-beat-strong {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.metronome-beat-weak {
+    background: var(--color-border-strong);
+    border-color: var(--color-border-strong);
+}
+
+.metronome-beat-off {
+    background: transparent;
+    border-style: dashed;
+}
+
+.metronome-beat.current {
+    transform: scale(1.35);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.35);
+}
+
+.metronome-hint {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+.metronome-actions {
+    display: flex;
+    gap: 12px;
+}
+
+@media (max-width: 767px) {
+    .metronome-pendulum {
+        width: 160px;
+        height: 130px;
+    }
+
+    .metronome-pendulum-arm {
+        height: 112px;
+    }
+
+    .metronome-bpm-value {
+        font-size: 36px;
+    }
+}

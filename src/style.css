@@ -2244,3 +2244,229 @@ body {
         font-size: 36px;
     }
 }
+
+/* ============================================
+   Beats
+   ============================================ */
+
+.beats-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 28px 0 16px;
+}
+
+.beats-toolbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.beats-tempo-slider {
+    width: min(420px, 88vw);
+}
+
+.beats-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.beats-workspace {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.beats-grid-scroll {
+    width: 100%;
+    overflow-x: auto;
+    padding: 8px 0 12px;
+}
+
+.beats-grid {
+    display: grid;
+    grid-template-columns: minmax(76px, 1fr) repeat(16, minmax(34px, 1fr));
+    align-items: center;
+    gap: 8px;
+    min-width: 820px;
+    padding: 18px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-md);
+}
+
+.beats-corner,
+.beats-step-label {
+    min-height: 22px;
+}
+
+.beats-step-label {
+    color: var(--color-text-muted);
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.beats-step-label.current {
+    color: var(--color-primary);
+}
+
+.beats-track-label {
+    color: var(--color-text);
+    font-size: 14px;
+    font-weight: 650;
+}
+
+.beats-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 1;
+    min-height: 34px;
+    padding: 0;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--color-muted);
+    cursor: pointer;
+    transition: border-color 80ms ease, background-color 80ms ease, transform 80ms ease;
+}
+
+.beats-cell span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-border-strong);
+}
+
+.beats-cell:hover {
+    border-color: var(--color-primary);
+}
+
+.beats-cell.active {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+}
+
+.beats-cell.active span {
+    background: var(--color-surface);
+}
+
+.beats-cell.current {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.35);
+}
+
+.beats-beat-start {
+    margin-left: 4px;
+}
+
+.beats-mixer {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(130px, 1fr));
+    gap: 12px;
+    padding: 12px 18px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+}
+
+.beats-mixer-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.beats-level {
+    flex: 1;
+    min-width: 60px;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+
+.beats-hint {
+    color: var(--color-text-muted);
+    font-size: 12px;
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .beats-panel {
+        padding-top: 18px;
+    }
+
+    .beats-workspace {
+        gap: 10px;
+    }
+
+    .beats-grid-scroll {
+        overflow-x: visible;
+        padding: 0;
+    }
+
+    .beats-grid {
+        grid-template-columns: 34px repeat(4, minmax(44px, 1fr));
+        grid-template-rows: 26px repeat(16, 44px);
+        gap: 5px;
+        min-width: 0;
+        padding: 12px;
+    }
+
+    .beats-corner {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .beats-track-label {
+        grid-column: var(--beats-column);
+        grid-row: 1;
+        align-self: center;
+        font-size: 11px;
+        text-align: center;
+    }
+
+    .beats-step-label {
+        grid-column: 1;
+        grid-row: var(--beats-row);
+        align-self: center;
+    }
+
+    .beats-cell {
+        grid-column: var(--beats-column);
+        grid-row: var(--beats-row);
+        height: 44px;
+        min-height: 44px;
+        aspect-ratio: auto;
+    }
+
+    .beats-beat-start {
+        margin-left: 0;
+    }
+
+    .beats-cell.beats-beat-start {
+        border-top-width: 2px;
+        border-top-color: var(--color-primary);
+    }
+
+    .beats-step-label.beats-beat-start {
+        color: var(--color-text-secondary);
+    }
+
+    .beats-mixer {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px 14px;
+        padding: 12px;
+    }
+
+    .beats-mixer-control {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+    }
+}

@@ -5,6 +5,7 @@ import { initCircleOfFifthsFeature } from "./features/circle-of-fifths";
 import { initListenerFeature } from "./features/listener";
 import { initTunerFeature } from "./features/tuner";
 import { initMetronomeFeature } from "./features/metronome";
+import { initBeatsFeature } from "./features/beats";
 import { initTriadsFeature } from "./features/triads";
 
 function showPage(pageId: string): void {
@@ -56,6 +57,9 @@ export function initRouter(): void {
     metronome: () => {
       showPage("metronome-page");
     },
+    beats: () => {
+      showPage("beats-page");
+    },
   };
 
   function handleRoute(): void {
@@ -80,6 +84,7 @@ export function initRouter(): void {
   initListenerFeature();
   initTunerFeature();
   initMetronomeFeature();
+  initBeatsFeature();
 
   // Handle initial route
   handleRoute();

@@ -5,6 +5,7 @@ import { initCircleOfFifthsFeature } from "./features/circle-of-fifths";
 import { initListenerFeature } from "./features/listener";
 import { initTunerFeature } from "./features/tuner";
 import { initMetronomeFeature } from "./features/metronome";
+import { initTriadsFeature } from "./features/triads";
 
 function showPage(pageId: string): void {
   const pages = document.querySelectorAll(".page");
@@ -33,6 +34,9 @@ export function initRouter(): void {
   const routes: Record<string, () => void> = {
     scales: () => {
       showPage("scales-page");
+    },
+    triads: () => {
+      showPage("triads-page");
     },
     "fret-walk": () => {
       showPage("fret-walk-page");
@@ -69,6 +73,7 @@ export function initRouter(): void {
 
   // Initialize features
   initScalesFeature();
+  initTriadsFeature();
   initFretWalkFeature();
   initFretboardDiscoveryFeature();
   initCircleOfFifthsFeature();

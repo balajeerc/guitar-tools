@@ -399,6 +399,50 @@ body {
     margin-top: 3px;
 }
 
+/* Triads */
+.triad-boards {
+    display: grid;
+    gap: 24px;
+}
+
+.triad-string-set-title {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 0 0 8px 12px;
+    color: var(--color-text);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.triad-string-set-title span {
+    color: var(--color-text-muted);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.triad-shape-label .shape-letter {
+    font-size: 36px;
+}
+
+.triad-shape-path {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.triad-shape-path polyline {
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.5;
+}
+
 /* Fretboard */
 .fretboard-container {
     background: var(--color-fretboard-bg);
@@ -1276,6 +1320,22 @@ body {
 
     .shape-pattern {
         font-size: 10px;
+    }
+
+    .triad-boards {
+        gap: 20px;
+    }
+
+    .triad-string-set-title {
+        margin-left: 4px;
+    }
+
+    .triad-shape-label .shape-letter {
+        font-size: 20px;
+    }
+
+    .triad-shape-label {
+        min-width: 54px;
     }
 
     /* Fretboard container: horizontal flex for fret numbers + fretboard */

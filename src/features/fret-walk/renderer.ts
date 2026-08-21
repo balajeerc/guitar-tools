@@ -378,49 +378,6 @@ export function renderFretWalk(
   renderFretWalkHeader(anchors);
 }
 
-/**
- * Given a pointer position (viewport coordinates) over the fretboard, return
- * the nearest {stringIdx, fret} position. Used so the blank fretboard can be
- * clicked anywhere to anchor a root.
- */
-export function positionFromPoint(
-  clientX: number,
-  clientY: number,
-  fretboard: HTMLElement,
-): { stringIdx: number; fret: number } | null {
-  const config = getLayoutConfig();
-  const rect = fretboard.getBoundingClientRect();
-  const fretCoord = config.isVertical
-    ? clientY - rect.top
-    : clientX - rect.left;
-  const stringCoord = config.isVertical
-    ? clientX - rect.left
-    : clientY - rect.top;
-
-  let bestFret = 0;
-  let bestFretDist = Infinity;
-  for (let fret = 0; fret <= TOTAL_FRETS; fret++) {
-    const dist = Math.abs(fretCoord - fretCenterPosition(fret));
-    if (dist < bestFretDist) {
-      bestFretDist = dist;
-      bestFret = fret;
-    }
-  }
-
-  let bestVisual = 0;
-  let bestStringDist = Infinity;
-  for (let visualIdx = 0; visualIdx < 6; visualIdx++) {
-    const posIdx = config.isVertical ? 5 - visualIdx : visualIdx;
-    const dist = Math.abs(stringCoord - STRING_Y_POSITIONS[posIdx]);
-    if (dist < bestStringDist) {
-      bestStringDist = dist;
-      bestVisual = visualIdx;
-    }
-  }
-
-  return { stringIdx: STRING_ORDER[bestVisual], fret: bestFret };
-}
-
 /** Human-readable description of the anchor for the info line. */
 export function describeAnchor(anchor: Anchor): string {
   const noteIndex = getNoteAtPosition(anchor.stringIdx, anchor.fret);

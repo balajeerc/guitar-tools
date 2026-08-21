@@ -7,10 +7,10 @@ import { setupAccordionToggle } from "../../shared/accordion";
 import { loadPersisted, savePersisted } from "../../shared/persist";
 import { createResetLink } from "../../shared/resetLink";
 import { setButtonActive } from "../../shared/dom";
+import { positionFromPoint } from "../../shared/fretboardPosition";
 import {
   renderFretWalk,
   describeAnchor,
-  positionFromPoint,
   anchorPitch,
   type Anchor,
   type FretWalkMode,

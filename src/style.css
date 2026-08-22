@@ -2312,6 +2312,85 @@ body {
     gap: 14px;
 }
 
+.beats-loop-library {
+    display: grid;
+    grid-template-columns: minmax(150px, 1fr) minmax(180px, 1fr) auto;
+    align-items: end;
+    gap: 10px 14px;
+    padding: 14px 18px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+}
+
+.beats-loop-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.beats-loop-field input,
+.beats-loop-field select {
+    width: 100%;
+    height: 38px;
+    padding: 0 10px;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--color-muted);
+    color: var(--color-text);
+    font: inherit;
+    font-weight: 500;
+}
+
+.beats-loop-field input:focus,
+.beats-loop-field select:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 1px;
+}
+
+.beats-loop-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.beats-loop-btn {
+    height: 38px;
+    padding: 0 14px;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--color-muted);
+    color: var(--color-text-secondary);
+    font-family: inherit;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+.beats-loop-btn:hover:not(:disabled) {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.beats-loop-btn:disabled {
+    cursor: default;
+    opacity: 0.45;
+}
+
+.beats-loop-delete:hover:not(:disabled) {
+    border-color: #e53935;
+    color: #e53935;
+}
+
+.beats-loop-status {
+    grid-column: 1 / -1;
+    min-height: 16px;
+    color: var(--color-text-muted);
+    font-size: 12px;
+}
+
 .beats-workspace {
     display: flex;
     flex-direction: column;
@@ -2442,6 +2521,30 @@ body {
 
     .beats-workspace {
         gap: 10px;
+    }
+
+    .beats-loop-library {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .beats-loop-actions {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .beats-loop-btn {
+        padding: 0 8px;
+    }
+
+    .beats-loop-field input,
+    .beats-loop-field select {
+        font-size: 16px;
+    }
+
+    .beats-loop-status {
+        grid-column: 1;
     }
 
     .beats-grid-scroll {

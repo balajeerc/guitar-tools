@@ -7,24 +7,18 @@ import {
   SMALL_BPM_STEP,
 } from "../metronome/beats";
 import { beatsPanelHtml } from "./panel";
+import { setupLoopLibrary } from "./loopLibrary";
+import type { BeatLoopState, SavedBeatLoop } from "./loops";
 import {
   createDefaultPattern,
   DEFAULT_LEVELS,
   DRUM_VOICES,
   normalizeLevels,
   normalizePattern,
-  type BeatPattern,
   type DrumVoice,
-  type TrackLevels,
 } from "./pattern";
 import { createBeatsPlayback, type BeatsPlayback } from "./playback";
 import { highlightGridStep, updateBeatCell } from "./renderer";
-
-interface BeatsState {
-  bpm: number;
-  pattern: BeatPattern;
-  levels: TrackLevels;
-}
 
 const STORAGE_KEY = "beats-state";
 const DEFAULT_BPM = 100;
@@ -32,8 +26,9 @@ const DEFAULT_BPM = 100;
 let state = createDefaultState();
 let running = false;
 let playback: BeatsPlayback | null = null;
+let activeLoopId = "";
 
-function createDefaultState(): BeatsState {
+function createDefaultState(): BeatLoopState {
   return {
     bpm: DEFAULT_BPM,
     pattern: createDefaultPattern(),
@@ -145,11 +140,27 @@ async function togglePlayback(): Promise<void> {
 }
 
 function resetState(container: HTMLElement): void {
-  if (running) void togglePlayback();
+  stopPlayback();
+  activeLoopId = "";
   state = createDefaultState();
-  container.innerHTML = beatsPanelHtml(state.bpm, state.pattern, state.levels);
-  setupFeatureElements(container);
-  updateTempoDisplay();
+  renderFeature(container);
+}
+
+function stopPlayback(): void {
+  if (!running) return;
+  playback?.stop();
+  running = false;
+}
+
+function loadLoop(container: HTMLElement, loop: SavedBeatLoop): void {
+  stopPlayback();
+  activeLoopId = loop.id;
+  state = {
+    bpm: clampBpm(loop.bpm),
+    pattern: normalizePattern(loop.pattern),
+    levels: normalizeLevels(loop.levels),
+  };
+  renderFeature(container);
 }
 
 function setupRouteStop(): void {
@@ -169,6 +180,11 @@ function setupFeatureElements(container: HTMLElement): void {
   );
   setupTempoControls();
   setupGrid(grid);
+  setupLoopLibrary({
+    getCurrentState: () => state,
+    onLoad: (loop) => loadLoop(container, loop),
+    initialSelectedId: activeLoopId,
+  });
   document.getElementById("beatsToggleBtn")?.addEventListener("click", () => {
     void togglePlayback();
   });
@@ -178,17 +194,21 @@ function setupFeatureElements(container: HTMLElement): void {
   updateRunningDisplay();
 }
 
+function renderFeature(container: HTMLElement): void {
+  container.innerHTML = beatsPanelHtml(state.bpm, state.pattern, state.levels);
+  setupFeatureElements(container);
+  updateTempoDisplay();
+}
+
 export function initBeatsFeature(): void {
   const container = document.getElementById("beats-page");
   if (!container) return;
-  const persisted = loadPersisted<BeatsState>(STORAGE_KEY, createDefaultState());
+  const persisted = loadPersisted<BeatLoopState>(STORAGE_KEY, createDefaultState());
   state = {
     bpm: clampBpm(persisted.bpm),
     pattern: normalizePattern(persisted.pattern),
     levels: normalizeLevels(persisted.levels),
   };
-  container.innerHTML = beatsPanelHtml(state.bpm, state.pattern, state.levels);
-  setupFeatureElements(container);
+  renderFeature(container);
   setupRouteStop();
-  updateTempoDisplay();
 }

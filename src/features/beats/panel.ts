@@ -6,6 +6,7 @@ import {
 } from "../metronome/beats";
 import type { BeatPattern, TrackLevels } from "./pattern";
 import { beatGridHtml, beatMixerHtml } from "./renderer";
+import { MAX_LOOP_NAME_LENGTH } from "./loops";
 
 export function beatsPanelHtml(
   bpm: number,
@@ -30,6 +31,22 @@ export function beatsPanelHtml(
           <button class="note-detection-btn" id="beatsToggleBtn">Start</button>
           <span id="beatsReset"></span>
         </div>
+      </div>
+      <div class="beats-loop-library" aria-label="Saved beat loops">
+        <label class="beats-loop-field">
+          <span>Loop name</span>
+          <input id="beatsLoopName" type="text" maxlength="${MAX_LOOP_NAME_LENGTH}" placeholder="My beat">
+        </label>
+        <label class="beats-loop-field">
+          <span>Saved loops</span>
+          <select id="beatsLoopSelect" aria-label="Saved beat loops"></select>
+        </label>
+        <div class="beats-loop-actions">
+          <button class="beats-loop-btn" id="beatsLoopSave" type="button">Save</button>
+          <button class="beats-loop-btn" id="beatsLoopLoad" type="button">Load</button>
+          <button class="beats-loop-btn beats-loop-delete" id="beatsLoopDelete" type="button">Delete</button>
+        </div>
+        <span class="beats-loop-status" id="beatsLoopStatus" aria-live="polite"></span>
       </div>
       <div class="beats-workspace" id="beatsGrid">
         ${beatMixerHtml(levels)}

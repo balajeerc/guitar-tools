@@ -51,9 +51,9 @@ export function accidentalPrefix(degree: string): Accidental {
   return "";
 }
 
-export function intervalAnswerHtml(degrees: readonly string[]): string {
+export function intervalAnswerHtml(degrees: readonly string[], label = "Correct intervals"): string {
   const boxes = degrees
     .map((degree) => `<span>${formatDegree(degree)}</span>`)
     .join('<i aria-hidden="true">–</i>');
-  return `<div class="melodies-answer"><b>Correct intervals</b><div>${boxes}</div></div>`;
+  return `<div class="melodies-answer"><b>${label}</b><div>${boxes}</div></div>`;
 }

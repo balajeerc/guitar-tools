@@ -61,7 +61,7 @@ export function melodiesPanelHtml(): string {
 
       <div class="melodies-manual" id="melodiesManualPanel" hidden>
         <label class="melodies-manual-label" for="melodiesIntervalInput">
-          Type scale degrees 1–7, then adjust accidentals underneath
+          Use the original key, or treat the first heard note as 1
         </label>
         <div class="melodies-interval-entry" id="melodiesIntervalEntry">
           <div class="melodies-interval-boxes" id="melodiesIntervalBoxes"></div>

@@ -3,23 +3,17 @@ import { createAudioListener, type AudioListenerHandle } from "../../shared/audi
 import { loadPersisted, savePersisted } from "../../shared/persist";
 import type { DetectedNote } from "../note-detection/noteMapper";
 import { pickMelody, type Melody, type MelodyDifficulty } from "./catalog";
-import { evaluateDegreeGuess, isKeyGuessCorrect, sanitizeDegreeInput } from "./manualGuess";
+import {
+  degreesFromFirstNote, evaluateDegreeGuess, type ManualAnswerBasis, sanitizeDegreeInput,
+} from "./manualGuess";
 import { intervalLabel, createMelodyMatcher, type MelodyMatcher, type MatchResult } from "./matcher";
 import { createNoteGate, type NoteGate } from "./noteGate";
 import { melodiesPanelHtml } from "./panel";
 import { createMelodyPlayer } from "./playback";
+import { melodyResultHtml } from "./result";
 import {
-  accidentalName,
-  accidentalPrefix,
-  accidentalSymbol,
-  type Accidental,
-  formatDegree,
-  formatTime,
-  intervalAnswerHtml,
-  setDisabled,
-  setHidden,
-  setPressed,
-  setText,
+  accidentalName, accidentalPrefix, accidentalSymbol, type Accidental, formatDegree, formatTime,
+  setDisabled, setHidden, setPressed, setText,
 } from "./ui";
 
 type RoundStatus = "ready" | "guessing" | "complete" | "revealed";
@@ -39,6 +33,7 @@ interface RoundState {
   micMatchedNotes: number;
   manualInput: readonly string[];
   manualJudgement: readonly boolean[] | null;
+  manualAnswerBasis: ManualAnswerBasis;
   hasPlayed: boolean;
   microphoneActive: boolean;
   playing: boolean;
@@ -126,26 +121,20 @@ function updateDetectedNote(note: DetectedNote): void {
   state.previousMidi = note.midiNote;
 }
 
-function calculateScore(result: MatchResult): number {
-  const timeFactor = 1 / (1 + state.elapsedMs / 30_000);
-  return Math.round(1000 * (result.attemptAccuracy / 100) * timeFactor);
-}
-
 function showResult(result: MatchResult, revealed: boolean): void {
   const container = document.getElementById("melodiesResult");
   if (!container) return;
   container.hidden = false;
-  const accuracyLabel = state.method === "manual" ? "interval accuracy" : "note accuracy";
-  let details = revealed
-    ? "Answer revealed — try another when you’re ready."
-    : `${formatTime(state.elapsedMs)} · ${result.attemptAccuracy}% ${accuracyLabel} · ${calculateScore(result)} points`;
   const keyGuess = (document.getElementById("melodiesKeyInput") as HTMLInputElement | null)?.value ?? "";
-  const keyCorrect = isKeyGuessCorrect(keyGuess, state.melody.key);
-  if (!revealed && keyCorrect !== null) {
-    details += keyCorrect ? ` · Key: ${state.melody.key} ✓` : ` · Key was ${state.melody.key}`;
-  }
-  const answer = intervalAnswerHtml(state.melody.degrees);
-  container.innerHTML = `<strong>${state.melody.title}</strong><span>${state.melody.attribution} · ${state.melody.key}</span>${answer}<small>${details}</small>`;
+  container.innerHTML = melodyResultHtml({
+    melody: state.melody,
+    result,
+    revealed,
+    elapsedMs: state.elapsedMs,
+    manual: state.method === "manual",
+    answerBasis: state.manualAnswerBasis,
+    keyGuess,
+  });
 }
 
 function completeRound(result: MatchResult): void {
@@ -236,7 +225,7 @@ function renderManualBoxes(): void {
 function beginManualGuessing(): void {
   if (!state.hasPlayed || state.status !== "guessing") return;
   setText("melodiesStatus", "Enter the interval pattern");
-  setText("melodiesHint", "Use scale degrees 1–7. The key is optional.");
+  setText("melodiesHint", "Use original-key degrees, or make the first note 1. The key guess is optional.");
   updateButtons();
 }
 
@@ -250,6 +239,7 @@ function updateManualInput(field: HTMLInputElement): void {
   });
   state.manualInput = degrees;
   state.manualJudgement = null;
+  state.manualAnswerBasis = null;
   renderManualBoxes();
   renderProgress(degrees.length, "entered");
   setText("melodiesStatus", `${degrees.length} of ${state.melody.degrees.length} intervals entered`);
@@ -270,8 +260,10 @@ function matchResultForManual(accuracy: number, complete: boolean, correctCount:
 
 function checkManualGuess(): void {
   if (state.manualInput.length !== state.melody.degrees.length) return;
-  const result = evaluateDegreeGuess(state.manualInput, state.melody.degrees);
+  const firstNotePattern = degreesFromFirstNote(state.melody.notes.map(({ midi }) => midi));
+  const result = evaluateDegreeGuess(state.manualInput, state.melody.degrees, firstNotePattern);
   state.manualJudgement = result.correctPositions;
+  state.manualAnswerBasis = result.answerBasis;
   renderManualBoxes();
   renderProgress(result.correctCount, "intervals");
   if (result.complete) {
@@ -296,6 +288,7 @@ function cycleAccidental(index: number): void {
   degrees[index] = `${nextAccidental(degree)}${digit}`;
   state.manualInput = degrees;
   state.manualJudgement = null;
+  state.manualAnswerBasis = null;
   renderManualBoxes();
   renderProgress(degrees.length, "entered");
   setText("melodiesStatus", `Interval ${index + 1} changed to ${formatDegree(degrees[index])}`);
@@ -344,7 +337,7 @@ function selectMethod(method: GuessMethod): void {
   setText(
     "melodiesHint",
     method === "manual"
-      ? "Tap the boxes to open the numeric keyboard. The timer starts with your first entry."
+      ? "Tap the boxes to open the numeric keyboard. The first heard note may be entered as 1."
       : "The first note can be anywhere that feels comfortable.",
   );
   updateMethodUi();
@@ -385,7 +378,9 @@ async function playCurrentMelody(): Promise<void> {
   setText("melodiesStatus", state.method === "manual" ? "Enter the interval pattern" : "Now play it back");
   setText(
     "melodiesHint",
-    state.method === "manual" ? "Use scale degrees 1–7. The key is optional." : "Start the microphone when ready.",
+    state.method === "manual"
+      ? "Use original-key degrees, or make the first note 1. The key guess is optional."
+      : "Start the microphone when ready.",
   );
   updateButtons();
 }
@@ -421,6 +416,7 @@ function createRound(
     micMatchedNotes: 0,
     manualInput: [],
     manualJudgement: null,
+    manualAnswerBasis: null,
     hasPlayed: false,
     microphoneActive: false,
     playing: false,

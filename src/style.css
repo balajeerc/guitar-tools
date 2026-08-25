@@ -2207,6 +2207,17 @@ body {
     color: var(--color-text-secondary);
 }
 
+.melodies-answer-caveat {
+    margin: 12px 0 0;
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.melodies-answer-caveat b {
+    color: var(--color-primary);
+}
+
 .melodies-answer {
     display: flex;
     flex-direction: column;

@@ -7,6 +7,7 @@ import { initTunerFeature } from "./features/tuner";
 import { initMetronomeFeature } from "./features/metronome";
 import { initBeatsFeature } from "./features/beats";
 import { initTriadsFeature } from "./features/triads";
+import { initMelodiesFeature } from "./features/melodies";
 
 function showPage(pageId: string): void {
   const pages = document.querySelectorAll(".page");
@@ -48,6 +49,9 @@ export function initRouter(): void {
     "circle-of-fifths": () => {
       showPage("circle-of-fifths-page");
     },
+    melodies: () => {
+      showPage("melodies-page");
+    },
     listener: () => {
       showPage("listener-page");
     },
@@ -81,6 +85,7 @@ export function initRouter(): void {
   initFretWalkFeature();
   initFretboardDiscoveryFeature();
   initCircleOfFifthsFeature();
+  initMelodiesFeature();
   initListenerFeature();
   initTunerFeature();
   initMetronomeFeature();

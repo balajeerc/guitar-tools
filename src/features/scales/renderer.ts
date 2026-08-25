@@ -38,6 +38,10 @@ import {
   getChordShapePositions,
   getPentatonicExtentsOnFretboard,
 } from "./caged";
+import {
+  getFullScaleExtentsOnFretboard,
+  type ScalePositionExtent,
+} from "./fullScale";
 
 /** Check if a note is in the pentatonic scale but not a chord tone (R/3/5) */
 function isPentatonicNonChordTone(
@@ -168,14 +172,23 @@ function generateCAGEDHeaderHTML(rootIndex: number, config: LayoutConfig): strin
 }
 
 /**
- * Generate HTML for pentatonic position header labels
+ * Get the position extents used by a position-based highlight mode.
  */
-function generatePentatonicHeaderHTML(
+function getPositionExtents(
   rootIndex: number,
   scaleType: ScaleType,
+  highlightMode: "pentatonic" | "full",
+): ScalePositionExtent[] {
+  return highlightMode === "full"
+    ? getFullScaleExtentsOnFretboard(rootIndex, scaleType)
+    : getPentatonicExtentsOnFretboard(rootIndex, scaleType);
+}
+
+/** Generate HTML for numbered scale-position header labels. */
+function generatePositionHeaderHTML(
+  extents: readonly ScalePositionExtent[],
   config: LayoutConfig,
 ): string {
-  const extents = getPentatonicExtentsOnFretboard(rootIndex, scaleType);
   let html = "";
 
   for (const { position, startFret, endFret, partial } of extents) {
@@ -223,9 +236,9 @@ function attachCAGEDEventListeners(header: HTMLElement): void {
 }
 
 /**
- * Attach event listeners for pentatonic position labels
+ * Attach event listeners for numbered position labels
  */
-function attachPentatonicEventListeners(header: HTMLElement): void {
+function attachPositionEventListeners(header: HTMLElement): void {
   const positionLabels = header.querySelectorAll(".shape-label");
   for (const label of positionLabels) {
     const position = Number.parseInt(
@@ -251,7 +264,7 @@ function attachPentatonicEventListeners(header: HTMLElement): void {
 /**
  * Render the header showing shape/position labels
  * @param rootIndex - The root note index (0-11)
- * @param highlightMode - The highlight mode ("caged" or "pentatonic")
+ * @param highlightMode - The active fretboard grouping mode
  */
 export function renderCAGEDHeader(
   rootIndex: number,
@@ -264,22 +277,20 @@ export function renderCAGEDHeader(
   const config = getLayoutConfig();
   sizeCagedHeader(header, config);
 
-  if (highlightMode === "full") {
-    header.innerHTML = "";
-    return;
-  }
-
   const headerHTML =
     highlightMode === "caged"
       ? generateCAGEDHeaderHTML(rootIndex, config)
-      : generatePentatonicHeaderHTML(rootIndex, scaleType, config);
+      : generatePositionHeaderHTML(
+          getPositionExtents(rootIndex, scaleType, highlightMode),
+          config,
+        );
 
   header.innerHTML = headerHTML;
 
   if (highlightMode === "caged") {
     attachCAGEDEventListeners(header);
   } else {
-    attachPentatonicEventListeners(header);
+    attachPositionEventListeners(header);
   }
 }
 
@@ -367,7 +378,7 @@ function generateCAGEDZonesHTML(rootIndex: number, config: LayoutConfig): string
   return html;
 }
 
-/** RGB color values for pentatonic position zone backgrounds */
+/** RGB color values for numbered position zone backgrounds */
 const POSITION_ZONE_COLORS: Record<
   PentatonicPosition,
   [number, number, number]
@@ -398,7 +409,7 @@ function blendPositionColors(positions: PentatonicPosition[]): string {
  * Positions are added in order of their startFret (sorted by caller).
  */
 function buildFretPositionMap(
-  extents: Array<{
+  extents: ReadonlyArray<{
     position: PentatonicPosition;
     startFret: number;
     endFret: number;
@@ -454,12 +465,10 @@ function groupFretSegments(
   return segments;
 }
 
-function generatePentatonicZonesHTML(
-  rootIndex: number,
-  scaleType: ScaleType,
+function generatePositionZonesHTML(
+  extents: readonly ScalePositionExtent[],
   config: LayoutConfig,
 ): string {
-  const extents = getPentatonicExtentsOnFretboard(rootIndex, scaleType);
   const fretPositions = buildFretPositionMap(extents);
   const segments = groupFretSegments(fretPositions);
 
@@ -480,10 +489,13 @@ function generateShapeZonesHTML(
   scaleType: ScaleType,
   config: LayoutConfig,
 ): string {
-  if (highlightMode === "full") return "";
-  return highlightMode === "caged"
-    ? generateCAGEDZonesHTML(rootIndex, config)
-    : generatePentatonicZonesHTML(rootIndex, scaleType, config);
+  if (highlightMode === "caged") {
+    return generateCAGEDZonesHTML(rootIndex, config);
+  }
+  return generatePositionZonesHTML(
+    getPositionExtents(rootIndex, scaleType, highlightMode),
+    config,
+  );
 }
 
 function generateNoteHTMLForFret(
@@ -558,7 +570,7 @@ function generateNotesHTML(
  * @param rootIndex - The root note index (0-11)
  * @param scaleType - The scale type ("major" or "minor")
  * @param displayMode - The display mode ("notes" or "intervals")
- * @param highlightMode - The highlight mode ("caged" or "pentatonic")
+ * @param highlightMode - The active fretboard grouping mode
  */
 export function renderFretboard(
   rootIndex: number,
@@ -577,7 +589,7 @@ export function renderFretboard(
   const config = getLayoutConfig();
   let fretboardHTML = "";
 
-  // Add shape background zones (CAGED or Pentatonic based on highlightMode)
+  // Add shape background zones for the active grouping mode
   fretboardHTML += generateShapeZonesHTML(rootIndex, highlightMode, scaleType, config);
 
   // Add fret lines

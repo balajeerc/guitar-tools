@@ -22,7 +22,7 @@ const STORAGE_KEY = "scales-state";
 const DEFAULTS: ScalesState = {
   rootIndex: 3, // C (matches the image)
   scale: "major",
-  displayMode: "notes",
+  displayMode: "intervals",
   highlightMode: "caged",
 };
 
@@ -65,7 +65,7 @@ function syncControls(): void {
     cagedLegend.style.display = highlightMode === "caged" ? "flex" : "none";
   if (pentatonicLegend)
     pentatonicLegend.style.display =
-      highlightMode === "pentatonic" ? "flex" : "none";
+      highlightMode === "caged" ? "none" : "flex";
 }
 
 function resetState(): void {
@@ -199,7 +199,7 @@ function setupHighlightModeToggle(): void {
     highlightMode = "full";
     setActiveBtn(fullHighlightBtn);
     cagedLegend.style.display = "none";
-    pentatonicLegend.style.display = "none";
+    pentatonicLegend.style.display = "flex";
     updateDisplay();
   });
 }

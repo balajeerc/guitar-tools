@@ -52,7 +52,7 @@ function generateNotesHTML(
         continue;
       }
 
-      const fretPos = fretCenterPosition(fret);
+      const fretPos = fretCenterPosition(fret, config);
 
       html += `<div class="note note-circle" style="${config.fretAxis}: ${fretPos}px; ${config.stringAxis}: ${stringPos}px;">${noteName}</div>`;
     }
@@ -79,8 +79,8 @@ function generateGroupBandsHTML(
     const posIdx = config.isVertical ? 5 - visualStringIndex : visualStringIndex;
     const stringPos = STRING_Y_POSITIONS[posIdx];
 
-    const startPos = fretCenterPosition(startFret);
-    const size = fretCenterPosition(endFret) - startPos;
+    const startPos = fretCenterPosition(startFret, config);
+    const size = fretCenterPosition(endFret, config) - startPos;
 
     html += `<div class="note-group-band group-${group}" style="${config.fretAxis}: ${startPos}px; ${config.fretDimension}: ${size}px; ${config.stringAxis}: ${stringPos}px; ${config.stringThicknessProp}: ${BAND_THICKNESS}px; transform: ${centerTransform};"></div>`;
   }
@@ -123,5 +123,5 @@ export function renderFretboard(
   fretboard.innerHTML = fretboardHTML;
 
   // Render fret numbers
-  fretNumbers.innerHTML = generateFretNumbersHTML();
+  fretNumbers.innerHTML = generateFretNumbersHTML(config);
 }

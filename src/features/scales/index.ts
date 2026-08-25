@@ -4,7 +4,7 @@ import {
   renderFretboard,
   updateNoteDisplay,
 } from "./renderer";
-import { MOBILE_BREAKPOINT } from "../../shared/layout";
+import { observeFretboardResize } from "../../shared/layout";
 import { NOTES } from "../../shared/constants";
 import { setupAccordionToggle } from "../../shared/accordion";
 import { loadPersisted, savePersisted } from "../../shared/persist";
@@ -236,10 +236,7 @@ export function initScalesFeature(): void {
   // Reflect persisted state in the controls before first render
   syncControls();
 
-  // Re-render when crossing mobile breakpoint
-  window
-    .matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`)
-    .addEventListener("change", () => updateDisplay());
+  observeFretboardResize(updateDisplay);
 
   // Initial render
   updateDisplay();

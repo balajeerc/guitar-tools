@@ -1,7 +1,7 @@
 import { NOTES } from "../../shared/constants";
 import { renderFretboard } from "./renderer";
 import { GROUP_LABELS, type NoteGroup } from "./grouping";
-import { MOBILE_BREAKPOINT } from "../../shared/layout";
+import { observeFretboardResize } from "../../shared/layout";
 import { setupAccordionToggle } from "../../shared/accordion";
 import { loadPersisted, savePersisted } from "../../shared/persist";
 import { createResetLink } from "../../shared/resetLink";
@@ -384,10 +384,7 @@ export function initFretboardDiscoveryFeature(): void {
   // Set up accordion toggle
   setupAccordionToggle("discoveryAccordionToggle");
 
-  // Re-render when crossing mobile breakpoint
-  window
-    .matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`)
-    .addEventListener("change", () => updateDisplay());
+  observeFretboardResize(updateDisplay);
 
   // Initial render
   updateDisplay();

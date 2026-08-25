@@ -1,7 +1,5 @@
 import type { ScaleType } from "../../shared/types";
 import {
-  FRET_WIDTH,
-  NUT_POSITION,
   STRING_ORDER,
   STRING_Y_POSITIONS,
 } from "../../shared/constants";
@@ -48,7 +46,7 @@ function stringPosition(stringIdx: number, config: LayoutConfig): number {
 function noteCoordinates(shape: TriadShape, config: LayoutConfig): string {
   return shape.notes
     .map(({ stringIdx, fret }) => {
-      const fretPos = fretCenterPosition(fret);
+      const fretPos = fretCenterPosition(fret, config);
       const across = stringPosition(stringIdx, config);
       return config.isVertical ? `${across},${fretPos}` : `${fretPos},${across}`;
     })
@@ -65,7 +63,7 @@ function generateShapeLinesHTML(shapes: readonly TriadShape[], config: LayoutCon
 function generateNotesHTML(shapes: readonly TriadShape[], config: LayoutConfig): string {
   return shapes.flatMap((shape) => shape.notes.map(({ degree, stringIdx, fret }) => {
     const details = DEGREE_DETAILS[degree];
-    const posStyle = `${config.fretAxis}: ${fretCenterPosition(fret)}px; ${config.stringAxis}: ${stringPosition(stringIdx, config)}px;`;
+    const posStyle = `${config.fretAxis}: ${fretCenterPosition(fret, config)}px; ${config.stringAxis}: ${stringPosition(stringIdx, config)}px;`;
     return `<div class="note ${details.className}" style="${posStyle}" data-triad-shape="${shape.id}">${details.label}</div>`;
   })).join("");
 }
@@ -74,8 +72,8 @@ function generateHeaderHTML(shapes: readonly TriadShape[], config: LayoutConfig)
   return shapes.map((shape) => {
     const label = INVERSION_LABELS[shape.inversion];
     const center = shape.centerFret === 0
-      ? NUT_POSITION / 2
-      : NUT_POSITION + (shape.centerFret - 0.5) * FRET_WIDTH;
+      ? config.nutPosition / 2
+      : config.nutPosition + (shape.centerFret - 0.5) * config.fretWidth;
     return `<div class="shape-label triad-shape-label" style="position: absolute; ${config.fretAxis}: ${center}px;" data-triad-shape="${shape.id}">
       <span class="shape-letter">${label.primary}</span>
       <span class="shape-text">${label.secondary}</span>
@@ -108,7 +106,7 @@ export function renderTriads(rootIndex: number, scaleType: ScaleType): void {
         <div class="caged-header triad-header" id="${set.id}-header"></div>
         <div class="fretboard-container">
           <div class="fretboard" id="${set.id}-board"></div>
-          <div class="fret-numbers">${generateFretNumbersHTML()}</div>
+          <div class="fret-numbers">${generateFretNumbersHTML(config)}</div>
         </div>
       </div>
     </section>`).join("");

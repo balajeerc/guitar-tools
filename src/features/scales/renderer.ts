@@ -14,8 +14,6 @@ import {
   POSITION_LABELS,
   POSITION_LINE_COLORS,
   TOTAL_FRETS,
-  NUT_POSITION,
-  FRET_WIDTH,
   STRING_Y_POSITIONS,
   STRING_ORDER,
 } from "../../shared/constants";
@@ -57,6 +55,13 @@ function isPentatonicNonChordTone(
 
 // Track current scale type for hover handlers
 let currentScaleType: ScaleType = "major";
+
+/** Pixel boundary between adjacent non-overlapping CAGED zones. */
+function cagedBoundaryPosition(fret: number, config: LayoutConfig): number {
+  if (fret <= 0) return 0;
+  if (fret > TOTAL_FRETS) return config.fretboardLength;
+  return config.nutPosition + (fret - 0.5) * config.fretWidth;
+}
 
 /**
  * Handle shape label hover - highlight chord notes
@@ -104,13 +109,17 @@ function handlePositionLabelHover(
   const config = getLayoutConfig();
   const clampedEndFret = Math.min(endFret, TOTAL_FRETS);
 
-  // Calculate the box dimensions
-  // Notes are positioned at (fret - 0.5) * FRET_WIDTH, so align box edges with notes
+  // Calculate the box dimensions, aligned with the dynamic note centers.
   const startPos =
     startFret === 0
       ? 0
-      : NUT_POSITION + (startFret - 1) * FRET_WIDTH + FRET_WIDTH / 2;
-  const endPos = NUT_POSITION + (clampedEndFret - 1) * FRET_WIDTH + FRET_WIDTH / 2;
+      : config.nutPosition +
+        (startFret - 1) * config.fretWidth +
+        config.fretWidth / 2;
+  const endPos =
+    config.nutPosition +
+    (clampedEndFret - 1) * config.fretWidth +
+    config.fretWidth / 2;
   const size = endPos - startPos;
 
   // Get the color for this position
@@ -152,12 +161,9 @@ function generateCAGEDHeaderHTML(rootIndex: number, config: LayoutConfig): strin
     // Calculate the end fret of this shape (start of next shape or TOTAL_FRETS)
     const nextFret = i < headerShapes.length - 1 ? headerShapes[i + 1].fret : TOTAL_FRETS + 1;
 
-    // Calculate center position of the shape span
-    const shapeSpan = nextFret - fret;
-    const centerFret = fret + (shapeSpan - 1) / 2;
-    const centerPos = fret === 0
-      ? NUT_POSITION * 0.5 + FRET_WIDTH * (shapeSpan - 1) / 2
-      : NUT_POSITION + centerFret * FRET_WIDTH;
+    const startPos = cagedBoundaryPosition(fret, config);
+    const endPos = cagedBoundaryPosition(nextFret, config);
+    const centerPos = (startPos + endPos) / 2;
 
     html += `
             <div class="shape-label" style="position: absolute; ${config.fretAxis}: ${centerPos}px;" data-shape="${shape}" data-start-fret="${fret}">
@@ -202,8 +208,9 @@ function generatePositionHeaderHTML(
     const centerFret = startFret + (positionSpan - 1) / 2;
     const centerPos =
       startFret === 0
-        ? NUT_POSITION * 0.5 + (FRET_WIDTH * (positionSpan - 1)) / 2
-        : NUT_POSITION + (centerFret - 0.5) * FRET_WIDTH;
+        ? config.nutPosition * 0.5 +
+          (config.fretWidth * (positionSpan - 1)) / 2
+        : config.nutPosition + (centerFret - 0.5) * config.fretWidth;
 
     html += `
             <div class="shape-label" style="position: absolute; ${config.fretAxis}: ${centerPos}px;" data-position="${position}" data-start-fret="${startFret}" data-end-fret="${endFret}">
@@ -363,11 +370,8 @@ function generateCAGEDZonesHTML(rootIndex: number, config: LayoutConfig): string
       fret <= TOTAL_FRETS ? getShapeAtFret(rootIndex, fret) : null;
     if (shape !== prevShape) {
       if (prevShape !== null) {
-        const startPos =
-          shapeStart === 0
-            ? 0
-            : NUT_POSITION + (shapeStart - 1) * FRET_WIDTH + FRET_WIDTH / 2;
-        const endPos = NUT_POSITION + (fret - 1) * FRET_WIDTH + FRET_WIDTH / 2;
+        const startPos = cagedBoundaryPosition(shapeStart, config);
+        const endPos = cagedBoundaryPosition(fret, config);
         const size = endPos - startPos;
         html += `<div class="shape-zone shape-${prevShape.toLowerCase()}" style="${config.fretAxis}: ${startPos}px; ${config.fretDimension}: ${size}px;"></div>`;
       }
@@ -475,8 +479,10 @@ function generatePositionZonesHTML(
   let html = "";
   for (const { startFret, endFret, positions } of segments) {
     const startPos =
-      startFret === 0 ? 0 : NUT_POSITION + (startFret - 1) * FRET_WIDTH;
-    const endPos = NUT_POSITION + endFret * FRET_WIDTH;
+      startFret === 0
+        ? 0
+        : config.nutPosition + (startFret - 1) * config.fretWidth;
+    const endPos = config.nutPosition + endFret * config.fretWidth;
     const color = blendPositionColors(positions);
     html += `<div class="shape-zone" style="${config.fretAxis}: ${startPos}px; ${config.fretDimension}: ${endPos - startPos}px; background-color: ${color};"></div>`;
   }
@@ -517,7 +523,9 @@ function generateNoteHTMLForFret(
   if (!inScale) return "";
 
   const fretPos =
-    fret === 0 ? NUT_POSITION / 2 : NUT_POSITION + (fret - 0.5) * FRET_WIDTH;
+    fret === 0
+      ? config.nutPosition / 2
+      : config.nutPosition + (fret - 0.5) * config.fretWidth;
 
   // Add data attributes for string and fret position (for chord highlighting)
   const dataAttrs = `data-string="${stringIdx}" data-fret="${fret}"`;
@@ -607,7 +615,7 @@ export function renderFretboard(
   fretboard.innerHTML = fretboardHTML;
 
   // Render fret numbers
-  fretNumbers.innerHTML = generateFretNumbersHTML();
+  fretNumbers.innerHTML = generateFretNumbersHTML(config);
 }
 
 /**

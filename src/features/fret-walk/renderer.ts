@@ -141,7 +141,7 @@ function noteCoord(
   const visualIdx = STRING_ORDER.indexOf(stringIdx);
   const posIdx = config.isVertical ? 5 - visualIdx : visualIdx;
   const stringPos = STRING_Y_POSITIONS[posIdx];
-  const fretPos = fretCenterPosition(fret);
+  const fretPos = fretCenterPosition(fret, config);
   return config.isVertical
     ? { cx: stringPos, cy: fretPos }
     : { cx: fretPos, cy: stringPos };
@@ -170,7 +170,7 @@ function generateNoteHTML(opts: NoteRenderOptions): string {
   if (!info) return "";
 
   const noteIndex = getNoteAtPosition(stringIdx, fret);
-  const fretPos = fretCenterPosition(fret);
+  const fretPos = fretCenterPosition(fret, config);
   const posStyle = `${config.fretAxis}: ${fretPos}px; ${config.stringAxis}: ${stringPos}px;`;
   const dataAttrs = `data-string="${stringIdx}" data-fret="${fret}"`;
 
@@ -337,7 +337,7 @@ function renderFretWalkHeader(anchors: readonly Anchor[]): void {
   const first = anchors[0];
   const noteIndex = getNoteAtPosition(first.stringIdx, first.fret);
   const noteName = NOTES[noteIndex];
-  const pos = fretCenterPosition(first.fret);
+  const pos = fretCenterPosition(first.fret, config);
 
   header.innerHTML = `
     <div class="shape-label" style="position: absolute; ${config.fretAxis}: ${pos}px;" data-shape="${noteName}">
@@ -373,7 +373,7 @@ export function renderFretWalk(
   html += generateNotesHTML(sel, displayMode, mode, config);
 
   fretboard.innerHTML = html;
-  fretNumbers.innerHTML = generateFretNumbersHTML();
+  fretNumbers.innerHTML = generateFretNumbersHTML(config);
 
   renderFretWalkHeader(anchors);
 }

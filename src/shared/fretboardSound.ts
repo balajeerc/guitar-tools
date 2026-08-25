@@ -114,7 +114,8 @@ function showTap(board: HTMLElement, position: FretboardPosition): void {
   const posIdx = config.isVertical ? 5 - visualIdx : visualIdx;
   const marker = document.createElement("span");
   marker.className = "fretboard-sound-tap";
-  marker.style[config.fretAxis] = `${fretCenterPosition(position.fret)}px`;
+  marker.style[config.fretAxis] =
+    `${fretCenterPosition(position.fret, config)}px`;
   marker.style[config.stringAxis] = `${STRING_Y_POSITIONS[posIdx]}px`;
   board.appendChild(marker);
   marker.addEventListener("animationend", () => marker.remove(), { once: true });

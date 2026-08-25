@@ -29,7 +29,7 @@ export function positionFromPoint(
   let bestFret = 0;
   let bestFretDist = Infinity;
   for (let fret = 0; fret <= TOTAL_FRETS; fret++) {
-    const dist = Math.abs(fretCoord - fretCenterPosition(fret));
+    const dist = Math.abs(fretCoord - fretCenterPosition(fret, config));
     if (dist < bestFretDist) {
       bestFretDist = dist;
       bestFret = fret;

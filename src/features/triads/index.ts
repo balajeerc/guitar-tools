@@ -1,6 +1,6 @@
 import type { ScaleType } from "../../shared/types";
 import { NOTES } from "../../shared/constants";
-import { MOBILE_BREAKPOINT } from "../../shared/layout";
+import { observeFretboardResize } from "../../shared/layout";
 import { setupAccordionToggle } from "../../shared/accordion";
 import { setButtonActive } from "../../shared/dom";
 import { loadPersisted, savePersisted } from "../../shared/persist";
@@ -68,6 +68,6 @@ export function initTriadsFeature(): void {
   setupControls();
   setupAccordionToggle("triadsAccordionToggle");
   document.getElementById("triadsControlsPanel")?.appendChild(createResetLink(resetState));
-  window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`).addEventListener("change", updateDisplay);
+  observeFretboardResize(updateDisplay);
   updateDisplay();
 }

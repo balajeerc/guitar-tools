@@ -2,7 +2,7 @@
 // from the previous root to the next root, filtered by a Major/Minor/Full scale.
 
 import type { DisplayMode } from "../../shared/types";
-import { MOBILE_BREAKPOINT } from "../../shared/layout";
+import { observeFretboardResize } from "../../shared/layout";
 import { setupAccordionToggle } from "../../shared/accordion";
 import { loadPersisted, savePersisted } from "../../shared/persist";
 import { createResetLink } from "../../shared/resetLink";
@@ -269,10 +269,7 @@ export function initFretWalkFeature(): void {
   setupOutsideClick();
   setupAccordionToggle("fretWalkAccordionToggle");
 
-  // Re-render when crossing the mobile breakpoint.
-  window
-    .matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`)
-    .addEventListener("change", () => updateDisplay());
+  observeFretboardResize(updateDisplay);
 
   // Initial render.
   updateDisplay();

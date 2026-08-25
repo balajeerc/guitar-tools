@@ -2,8 +2,6 @@
 
 import {
   TOTAL_FRETS,
-  NUT_POSITION,
-  FRET_WIDTH,
   STRING_Y_POSITIONS,
   STRING_THICKNESS,
   SINGLE_DOT_FRETS,
@@ -12,8 +10,13 @@ import {
 import type { LayoutConfig } from "./layout";
 
 /** Pixel position (along the fret axis) of a note centred on the given fret. */
-export function fretCenterPosition(fret: number): number {
-  return fret === 0 ? NUT_POSITION / 2 : NUT_POSITION + (fret - 0.5) * FRET_WIDTH;
+export function fretCenterPosition(
+  fret: number,
+  config: LayoutConfig,
+): number {
+  return fret === 0
+    ? config.nutPosition / 2
+    : config.nutPosition + (fret - 0.5) * config.fretWidth;
 }
 
 /**
@@ -25,11 +28,12 @@ export function sizeCagedHeader(header: HTMLElement, config: LayoutConfig): void
   if (config.isVertical) {
     header.style.height = "";
     header.style.minWidth = "";
-    header.style.minHeight = `${NUT_POSITION + TOTAL_FRETS * FRET_WIDTH}px`;
+    header.style.minHeight = `${config.fretboardLength}px`;
     header.style.width = "60px";
   } else {
     header.style.height = "120px";
-    header.style.minWidth = "1400px";
+    header.style.minWidth =
+      `${config.fretboardLength + config.fretboardContainerPadding}px`;
     header.style.minHeight = "";
     header.style.width = "";
   }
@@ -38,7 +42,10 @@ export function sizeCagedHeader(header: HTMLElement, config: LayoutConfig): void
 export function generateFretLinesHTML(config: LayoutConfig): string {
   let html = "";
   for (let fret = 0; fret <= TOTAL_FRETS; fret++) {
-    const pos = fret === 0 ? NUT_POSITION : NUT_POSITION + fret * FRET_WIDTH;
+    const pos =
+      fret === 0
+        ? config.nutPosition
+        : config.nutPosition + fret * config.fretWidth;
     const isNut = fret === 0;
     html += `<div class="fret-line ${isNut ? "nut" : ""}" style="${config.fretAxis}: ${pos}px;"></div>`;
   }
@@ -48,12 +55,12 @@ export function generateFretLinesHTML(config: LayoutConfig): string {
 export function generateDotsHTML(config: LayoutConfig): string {
   let html = "";
   for (const fret of SINGLE_DOT_FRETS) {
-    const pos = NUT_POSITION + (fret - 0.5) * FRET_WIDTH;
+    const pos = config.nutPosition + (fret - 0.5) * config.fretWidth;
     html += `<div class="fret-dot single" style="${config.fretAxis}: ${pos}px;"></div>`;
   }
 
   for (const fret of DOUBLE_DOT_FRETS) {
-    const pos = NUT_POSITION + (fret - 0.5) * FRET_WIDTH;
+    const pos = config.nutPosition + (fret - 0.5) * config.fretWidth;
     html += `<div class="fret-dot double-top" style="${config.fretAxis}: ${pos}px;"></div>`;
     html += `<div class="fret-dot double-bottom" style="${config.fretAxis}: ${pos}px;"></div>`;
   }
@@ -70,8 +77,14 @@ export function generateStringsHTML(config: LayoutConfig): string {
   return html;
 }
 
-export function generateFretNumbersHTML(): string {
-  let numbersHTML = '<div class="fret-number">Open</div>';
+export function generateFretNumbersHTML(config: LayoutConfig): string {
+  const openStyle = config.isVertical
+    ? ""
+    : ` style="width: ${config.nutPosition}px;"`;
+  const fretStyle = config.isVertical
+    ? ""
+    : ` style="width: ${config.fretWidth}px;"`;
+  let numbersHTML = `<div class="fret-number"${openStyle}>Open</div>`;
   for (let fret = 1; fret <= TOTAL_FRETS; fret++) {
     let markerClass = "";
     if (SINGLE_DOT_FRETS.includes(fret)) {
@@ -79,7 +92,7 @@ export function generateFretNumbersHTML(): string {
     } else if (DOUBLE_DOT_FRETS.includes(fret)) {
       markerClass = "marker-double";
     }
-    numbersHTML += `<div class="fret-number ${markerClass}">${fret}</div>`;
+    numbersHTML += `<div class="fret-number ${markerClass}"${fretStyle}>${fret}</div>`;
   }
   return numbersHTML;
 }

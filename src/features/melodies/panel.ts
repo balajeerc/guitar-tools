@@ -86,7 +86,9 @@ export function melodiesPanelHtml(): string {
       <div class="melodies-result" id="melodiesResult" hidden></div>
       <div class="melodies-footer-actions">
         <button class="melodies-link-btn" id="melodiesRevealBtn">Reveal answer</button>
+        <button class="melodies-link-btn" id="melodiesPreviousBtn" disabled>← Previous tune</button>
         <button class="melodies-link-btn" id="melodiesNewBtn">New melody</button>
+        <button class="melodies-link-btn" id="melodiesNextBtn" disabled>Next tune →</button>
       </div>
     </div>
 

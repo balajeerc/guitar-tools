@@ -4,40 +4,20 @@ import { loadPersisted, savePersisted } from "../../shared/persist";
 import type { DetectedNote } from "../note-detection/noteMapper";
 import { pickMelody, type Melody, type MelodyDifficulty } from "./catalog";
 import {
-  degreesFromFirstNote, evaluateDegreeGuess, type ManualAnswerBasis, sanitizeDegreeInput,
+  appendMelody, canMoveHistory, createMelodyHistory, moveHistory, type MelodyHistory,
+} from "./history";
+import {
+  degreesFromFirstNote, evaluateDegreeGuess, sanitizeDegreeInput,
 } from "./manualGuess";
-import { intervalLabel, createMelodyMatcher, type MelodyMatcher, type MatchResult } from "./matcher";
-import { createNoteGate, type NoteGate } from "./noteGate";
+import { intervalLabel, type MatchResult } from "./matcher";
 import { melodiesPanelHtml } from "./panel";
 import { createMelodyPlayer } from "./playback";
 import { melodyResultHtml } from "./result";
+import { createRound, type GuessMethod, type RoundState } from "./round";
 import {
   accidentalName, accidentalPrefix, accidentalSymbol, type Accidental, formatDegree, formatTime,
   setDisabled, setHidden, setPressed, setText,
 } from "./ui";
-
-type RoundStatus = "ready" | "guessing" | "complete" | "revealed";
-type GuessMethod = "microphone" | "manual";
-
-interface RoundState {
-  melody: Melody;
-  matcher: MelodyMatcher;
-  gate: NoteGate;
-  status: RoundStatus;
-  elapsedMs: number;
-  startedAt: number;
-  round: number;
-  previousMidi: number | null;
-  method: GuessMethod;
-  difficulty: MelodyDifficulty;
-  micMatchedNotes: number;
-  manualInput: readonly string[];
-  manualJudgement: readonly boolean[] | null;
-  manualAnswerBasis: ManualAnswerBasis;
-  hasPlayed: boolean;
-  microphoneActive: boolean;
-  playing: boolean;
-}
 
 const player = createMelodyPlayer();
 const METHOD_STORAGE_KEY = "melodies-guess-method";
@@ -50,6 +30,7 @@ const DIFFICULTY_HINTS: Record<MelodyDifficulty, string> = {
 let listener: AudioListenerHandle | null = null;
 let timerFrame: number | null = null;
 let state: RoundState;
+let melodyHistory: MelodyHistory;
 
 function currentElapsed(): number {
   if (state.status !== "guessing") return state.elapsedMs;
@@ -93,6 +74,8 @@ function updateButtons(): void {
   );
   setDisabled("melodiesIntervalInput", finished || !state.hasPlayed);
   setDisabled("melodiesKeyInput", finished || !state.hasPlayed);
+  setDisabled("melodiesPreviousBtn", !canMoveHistory(melodyHistory, -1));
+  setDisabled("melodiesNextBtn", !canMoveHistory(melodyHistory, 1));
   setHidden("melodiesGuessBtn", state.method === "manual");
   updateAccidentalButtons(finished || !state.hasPlayed);
 }
@@ -345,10 +328,9 @@ function selectMethod(method: GuessMethod): void {
 
 function selectDifficulty(difficulty: MelodyDifficulty): void {
   if (state.difficulty === difficulty) return;
-  stopActiveRound();
-  savePersisted(DIFFICULTY_STORAGE_KEY, difficulty);
-  state = createRound(pickMelody(difficulty), state.round + 1, state.method, difficulty);
-  resetRoundUi();
+  const melody = pickMelody(difficulty);
+  appendMelody(melodyHistory, melody);
+  startFreshRound(melody);
 }
 
 function focusIntervalInput(): void {
@@ -396,36 +378,12 @@ function stopActiveRound(): void {
   stopRoundMedia();
 }
 
-function createRound(
-  melody: Melody,
-  round: number,
-  method: GuessMethod,
-  difficulty: MelodyDifficulty,
-): RoundState {
-  return {
-    melody,
-    matcher: createMelodyMatcher(melody.notes.map(({ midi }) => midi)),
-    gate: createNoteGate(),
-    status: "ready",
-    elapsedMs: 0,
-    startedAt: 0,
-    round,
-    previousMidi: null,
-    method,
-    difficulty,
-    micMatchedNotes: 0,
-    manualInput: [],
-    manualJudgement: null,
-    manualAnswerBasis: null,
-    hasPlayed: false,
-    microphoneActive: false,
-    playing: false,
-  };
-}
-
 function resetRoundUi(): void {
   const difficultyLabel = state.difficulty.charAt(0).toUpperCase() + state.difficulty.slice(1);
-  setText("melodiesRoundLabel", `${difficultyLabel} · Mystery melody · Round ${state.round}`);
+  setText(
+    "melodiesRoundLabel",
+    `${difficultyLabel} · Mystery melody · Tune ${melodyHistory.index + 1} of ${melodyHistory.entries.length}`,
+  );
   setText("melodiesTimer", "0:00.0");
   setText(
     "melodiesStatus",
@@ -448,15 +406,22 @@ function resetRoundUi(): void {
   updateMethodUi();
 }
 
-function newRound(): void {
+function startFreshRound(melody: Melody): void {
   stopActiveRound();
-  state = createRound(
-    pickMelody(state.difficulty, state.melody.id),
-    state.round + 1,
-    state.method,
-    state.difficulty,
-  );
+  savePersisted(DIFFICULTY_STORAGE_KEY, melody.difficulty);
+  state = createRound(melody, state.round + 1, state.method);
   resetRoundUi();
+}
+
+function newRound(): void {
+  const melody = pickMelody(state.difficulty, state.melody.id);
+  appendMelody(melodyHistory, melody);
+  startFreshRound(melody);
+}
+
+function navigateHistory(offset: number): void {
+  const melody = moveHistory(melodyHistory, offset);
+  if (melody) startFreshRound(melody);
 }
 
 function revealAnswer(): void {
@@ -482,6 +447,8 @@ function setupRoundEvents(): void {
   document.getElementById("melodiesGuessBtn")?.addEventListener("click", toggleGuessing);
   document.getElementById("melodiesRevealBtn")?.addEventListener("click", revealAnswer);
   document.getElementById("melodiesNewBtn")?.addEventListener("click", newRound);
+  document.getElementById("melodiesPreviousBtn")?.addEventListener("click", () => navigateHistory(-1));
+  document.getElementById("melodiesNextBtn")?.addEventListener("click", () => navigateHistory(1));
 }
 
 function setupMethodEvents(): void {
@@ -532,7 +499,9 @@ export function initMelodiesFeature(): void {
   if (!container) return;
   container.innerHTML = melodiesPanelHtml();
   const difficulty = loadDifficulty();
-  state = createRound(pickMelody(difficulty), 1, loadGuessMethod(), difficulty);
+  const initialMelody = pickMelody(difficulty);
+  melodyHistory = createMelodyHistory(initialMelody);
+  state = createRound(initialMelody, 1, loadGuessMethod());
   listener = createAudioListener({ onNote: handleNote });
   setupEvents();
   resetRoundUi();

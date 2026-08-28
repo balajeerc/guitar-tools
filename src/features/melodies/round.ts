@@ -14,7 +14,6 @@ export interface RoundState {
   elapsedMs: number;
   startedAt: number;
   round: number;
-  previousMidi: number | null;
   method: GuessMethod;
   difficulty: MelodyDifficulty;
   micMatchedNotes: number;
@@ -35,7 +34,6 @@ export function createRound(melody: Melody, round: number, method: GuessMethod):
     elapsedMs: 0,
     startedAt: 0,
     round,
-    previousMidi: null,
     method,
     difficulty: melody.difficulty,
     micMatchedNotes: 0,

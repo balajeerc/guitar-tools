@@ -34,6 +34,16 @@ export function melodiesPanelHtml(): string {
         <p id="melodiesDifficultyHint">Famous, memorable tunes.</p>
       </fieldset>
 
+      <div class="melodies-root-row">
+        <button type="button" class="melodies-root-toggle" id="melodiesRootToggle" aria-pressed="false">
+          Show root
+        </button>
+        <output class="melodies-root-value" id="melodiesRootValue" aria-live="polite" hidden>
+          Target root <strong id="melodiesRootNote">C</strong>
+          <span id="melodiesKeyName">C major</span>
+        </output>
+      </div>
+
       <fieldset class="melodies-method">
         <legend>How do you want to guess?</legend>
         <button type="button" class="melodies-method-btn active" id="melodiesMicMethodBtn" aria-pressed="true">

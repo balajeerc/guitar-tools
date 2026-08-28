@@ -19,13 +19,6 @@ function pitchClassInterval(midi: number, anchor: number): number {
   return ((midi - anchor) % SEMITONES_PER_OCTAVE + SEMITONES_PER_OCTAVE) % SEMITONES_PER_OCTAVE;
 }
 
-export function intervalLabel(interval: number): string {
-  if (interval === 0) return "same note";
-  if (interval <= 6) return `up ${interval} semitone${interval === 1 ? "" : "s"}`;
-  const descending = SEMITONES_PER_OCTAVE - interval;
-  return `down ${descending} semitone${descending === 1 ? "" : "s"}`;
-}
-
 export function createMelodyMatcher(expectedMidi: readonly number[]): MelodyMatcher {
   let playedAnchor: number | null = null;
   let matchedNotes = 0;

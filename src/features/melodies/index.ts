@@ -9,10 +9,11 @@ import {
 import {
   degreesFromFirstNote, evaluateDegreeGuess, sanitizeDegreeInput,
 } from "./manualGuess";
-import { intervalLabel, type MatchResult } from "./matcher";
+import type { MatchResult } from "./matcher";
 import { melodiesPanelHtml } from "./panel";
 import { createMelodyPlayer } from "./playback";
 import { melodyResultHtml } from "./result";
+import { rootDisplacementLabel, rootNameFromKey } from "./root";
 import { createRound, type GuessMethod, type RoundState } from "./round";
 import {
   accidentalName, accidentalPrefix, accidentalSymbol, type Accidental, formatDegree, formatTime,
@@ -22,6 +23,7 @@ import {
 const player = createMelodyPlayer();
 const METHOD_STORAGE_KEY = "melodies-guess-method";
 const DIFFICULTY_STORAGE_KEY = "melodies-difficulty";
+const SHOW_ROOT_STORAGE_KEY = "melodies-show-root";
 const DIFFICULTY_HINTS: Record<MelodyDifficulty, string> = {
   easy: "Famous, memorable tunes.",
   medium: "Less familiar tunes with longer phrases.",
@@ -31,6 +33,7 @@ let listener: AudioListenerHandle | null = null;
 let timerFrame: number | null = null;
 let state: RoundState;
 let melodyHistory: MelodyHistory;
+let showRoot = false;
 
 function currentElapsed(): number {
   if (state.status !== "guessing") return state.elapsedMs;
@@ -95,13 +98,7 @@ function noteLabel(note: DetectedNote): string {
 
 function updateDetectedNote(note: DetectedNote): void {
   setText("melodiesDetectedNote", noteLabel(note));
-  if (state.previousMidi === null) {
-    setText("melodiesDetectedInterval", "Starting note — this sets your key");
-  } else {
-    const interval = ((note.midiNote - state.previousMidi) % 12 + 12) % 12;
-    setText("melodiesDetectedInterval", intervalLabel(interval));
-  }
-  state.previousMidi = note.midiNote;
+  setText("melodiesDetectedInterval", rootDisplacementLabel(note.midiNote, state.melody.key));
 }
 
 function showResult(result: MatchResult, revealed: boolean): void {
@@ -311,6 +308,20 @@ function updateDifficultyUi(): void {
   setText("melodiesDifficultyHint", DIFFICULTY_HINTS[state.difficulty]);
 }
 
+function updateRootUi(): void {
+  setPressed("melodiesRootToggle", showRoot);
+  setText("melodiesRootToggle", showRoot ? "Hide root" : "Show root");
+  setText("melodiesRootNote", rootNameFromKey(state.melody.key));
+  setText("melodiesKeyName", state.melody.key);
+  setHidden("melodiesRootValue", !showRoot);
+}
+
+function toggleRoot(): void {
+  showRoot = !showRoot;
+  savePersisted(SHOW_ROOT_STORAGE_KEY, showRoot);
+  updateRootUi();
+}
+
 function selectMethod(method: GuessMethod): void {
   if (state.status === "complete" || state.status === "revealed" || state.method === method) return;
   if (state.microphoneActive) stopMicrophone();
@@ -403,6 +414,7 @@ function resetRoundUi(): void {
   const result = document.getElementById("melodiesResult");
   if (result) result.hidden = true;
   updateDifficultyUi();
+  updateRootUi();
   updateMethodUi();
 }
 
@@ -449,6 +461,7 @@ function setupRoundEvents(): void {
   document.getElementById("melodiesNewBtn")?.addEventListener("click", newRound);
   document.getElementById("melodiesPreviousBtn")?.addEventListener("click", () => navigateHistory(-1));
   document.getElementById("melodiesNextBtn")?.addEventListener("click", () => navigateHistory(1));
+  document.getElementById("melodiesRootToggle")?.addEventListener("click", toggleRoot);
 }
 
 function setupMethodEvents(): void {
@@ -502,6 +515,7 @@ export function initMelodiesFeature(): void {
   const initialMelody = pickMelody(difficulty);
   melodyHistory = createMelodyHistory(initialMelody);
   state = createRound(initialMelody, 1, loadGuessMethod());
+  showRoot = loadPersisted(SHOW_ROOT_STORAGE_KEY, false);
   listener = createAudioListener({ onNote: handleNote });
   setupEvents();
   resetRoundUi();

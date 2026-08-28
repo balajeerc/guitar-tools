@@ -23,7 +23,7 @@ const DEFAULTS: ScalesState = {
   rootIndex: 3, // C (matches the image)
   scale: "major",
   displayMode: "intervals",
-  highlightMode: "caged",
+  highlightMode: "full",
 };
 
 // Application state

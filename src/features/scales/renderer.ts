@@ -109,6 +109,17 @@ function handlePositionLabelHover(
   const config = getLayoutConfig();
   const clampedEndFret = Math.min(endFret, TOTAL_FRETS);
 
+  // Keep the active position at full strength while de-emphasizing the rest
+  // of the scale. The fret range is inclusive, matching the position extents.
+  const notes = fretboard.querySelectorAll<HTMLElement>(".note[data-fret]");
+  for (const note of notes) {
+    const fret = Number.parseInt(note.dataset.fret ?? "", 10);
+    note.classList.toggle(
+      "position-dimmed",
+      Number.isNaN(fret) || fret < startFret || fret > clampedEndFret,
+    );
+  }
+
   // Calculate the box dimensions, aligned with the dynamic note centers.
   const startPos =
     startFret === 0
@@ -143,6 +154,11 @@ function handlePositionLabelLeave(): void {
   const hoverBox = document.getElementById("position-hover-box");
   if (hoverBox) {
     hoverBox.remove();
+  }
+
+  const dimmedNotes = document.querySelectorAll("#fretboard .note.position-dimmed");
+  for (const note of dimmedNotes) {
+    note.classList.remove("position-dimmed");
   }
 }
 

@@ -575,7 +575,12 @@ body {
     position: absolute;
     z-index: 10;
     transform: translate(-50%, -50%);
-    transition: box-shadow 0.15s ease-in-out;
+    transition: box-shadow 0.15s ease-in-out, opacity 0.18s ease-in-out;
+}
+
+/* Keep surrounding scale notes visible while focusing a hovered position. */
+#scales-page .note.position-dimmed {
+    opacity: 0.2;
 }
 
 /* Fret Walk: the board is clickable; notes never capture pointer events

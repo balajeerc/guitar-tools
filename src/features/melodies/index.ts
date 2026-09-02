@@ -15,6 +15,8 @@ import { createMelodyPlayer } from "./playback";
 import { melodyResultHtml } from "./result";
 import { rootDisplacementLabel, rootNameFromKey } from "./root";
 import { createRound, type GuessMethod, type RoundState } from "./round";
+import type { MelodyTone } from "./tone";
+import { loadMelodyTone, setupToneControl } from "./toneControl";
 import {
   accidentalName, accidentalPrefix, accidentalSymbol, type Accidental, formatDegree, formatTime,
   setDisabled, setHidden, setPressed, setText,
@@ -34,6 +36,7 @@ let timerFrame: number | null = null;
 let state: RoundState;
 let melodyHistory: MelodyHistory;
 let showRoot = false;
+let tone: MelodyTone;
 
 function currentElapsed(): number {
   if (state.status !== "guessing") return state.elapsedMs;
@@ -364,7 +367,7 @@ async function playCurrentMelody(): Promise<void> {
   setText("melodiesHint", "The round timer is now running.");
   setText("melodiesPlayBtn", "♪ Playing…");
   updateButtons();
-  await player.play(state.melody);
+  await player.play(state.melody, tone);
   if (state.round !== round) return;
   state.playing = false;
   setText("melodiesPlayBtn", "↻ Hear again");
@@ -491,6 +494,7 @@ function setupEvents(): void {
   setupMethodEvents();
   setupDifficultyEvents();
   setupManualEvents();
+  setupToneControl(tone, (nextTone) => { tone = nextTone; });
   window.addEventListener("hashchange", () => {
     if (window.location.hash.slice(1) !== "melodies") stopRoundMedia();
   });
@@ -516,6 +520,7 @@ export function initMelodiesFeature(): void {
   melodyHistory = createMelodyHistory(initialMelody);
   state = createRound(initialMelody, 1, loadGuessMethod());
   showRoot = loadPersisted(SHOW_ROOT_STORAGE_KEY, false);
+  tone = loadMelodyTone();
   listener = createAudioListener({ onNote: handleNote });
   setupEvents();
   resetRoundUi();

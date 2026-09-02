@@ -1,3 +1,5 @@
+import { toneControlHtml } from "./toneControl";
+
 export function melodiesPanelHtml(): string {
   return `<section class="melodies-game" aria-labelledby="melodiesHeading">
     <header class="melodies-hero">
@@ -33,6 +35,8 @@ export function melodiesPanelHtml(): string {
         </div>
         <p id="melodiesDifficultyHint">Famous, memorable tunes.</p>
       </fieldset>
+
+      ${toneControlHtml()}
 
       <div class="melodies-root-row">
         <button type="button" class="melodies-root-toggle" id="melodiesRootToggle" aria-pressed="false">

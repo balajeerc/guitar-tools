@@ -1882,6 +1882,47 @@ body {
     font-size: 11px;
 }
 
+.melodies-tone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: -4px 0 15px;
+    padding: 0;
+    border: 0;
+}
+
+.melodies-tone legend {
+    margin-right: 2px;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.melodies-tone-options {
+    display: inline-flex;
+    padding: 3px;
+    background: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-radius: 99px;
+}
+
+.melodies-tone-btn {
+    padding: 7px 11px;
+    color: var(--color-text-secondary);
+    background: transparent;
+    border: 0;
+    border-radius: 99px;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.melodies-tone-btn.active {
+    color: white;
+    background: var(--color-primary);
+}
+
 .melodies-root-row {
     display: flex;
     align-items: center;

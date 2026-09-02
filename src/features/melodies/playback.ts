@@ -1,7 +1,8 @@
 import type { Melody } from "./catalog";
+import { melodyToneProfile, type MelodyTone } from "./tone";
 
 export interface MelodyPlayer {
-  play: (melody: Melody) => Promise<void>;
+  play: (melody: Melody, tone: MelodyTone) => Promise<void>;
   stop: () => void;
 }
 
@@ -11,19 +12,28 @@ function midiFrequency(midi: number): number {
   return 440 * 2 ** ((midi - 69) / 12);
 }
 
-function scheduleNote(ctx: AudioContext, midi: number, start: number, duration: number): OscillatorNode {
+function scheduleNote(
+  ctx: AudioContext,
+  midi: number,
+  start: number,
+  duration: number,
+  tone: MelodyTone,
+): OscillatorNode {
+  const profile = melodyToneProfile(tone);
   const oscillator = ctx.createOscillator();
   const filter = ctx.createBiquadFilter();
   const gain = ctx.createGain();
-  const release = Math.max(0.06, Math.min(0.14, duration * 0.3));
+  const release = Math.max(0.05, Math.min(0.16, duration * profile.releaseRatio));
+  const attackEnd = start + Math.min(profile.attackSeconds, duration * 0.2);
+  const releaseStart = Math.max(attackEnd, start + duration - release);
 
-  oscillator.type = "triangle";
+  oscillator.type = profile.oscillator;
   oscillator.frequency.setValueAtTime(midiFrequency(midi), start);
   filter.type = "lowpass";
-  filter.frequency.setValueAtTime(2200, start);
+  filter.frequency.setValueAtTime(profile.filterHz, start);
   gain.gain.setValueAtTime(0.0001, start);
-  gain.gain.exponentialRampToValueAtTime(0.32, start + 0.015);
-  gain.gain.setValueAtTime(0.24, Math.max(start + 0.02, start + duration - release));
+  gain.gain.exponentialRampToValueAtTime(profile.peakGain, attackEnd);
+  gain.gain.exponentialRampToValueAtTime(profile.sustainGain, releaseStart);
   gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
 
   oscillator.connect(filter);
@@ -43,7 +53,7 @@ export function createMelodyPlayer(): MelodyPlayer {
     scheduled = [];
   }
 
-  async function play(melody: Melody): Promise<void> {
+  async function play(melody: Melody, tone: MelodyTone): Promise<void> {
     stop();
     context ??= new AudioContext();
     const ctx = context;
@@ -52,7 +62,7 @@ export function createMelodyPlayer(): MelodyPlayer {
     let cursor = ctx.currentTime + START_DELAY_SECONDS;
     scheduled = melody.notes.map(({ midi, beats }) => {
       const duration = beats * beatSeconds;
-      const oscillator = scheduleNote(ctx, midi, cursor, duration * 0.88);
+      const oscillator = scheduleNote(ctx, midi, cursor, duration * 0.88, tone);
       cursor += duration;
       return oscillator;
     });

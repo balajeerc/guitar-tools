@@ -11,10 +11,11 @@ import { renderTriadsPageTemplate } from "./template";
 interface TriadsState {
   rootIndex: number;
   scaleType: ScaleType;
+  showOrbit: boolean;
 }
 
 const STORAGE_KEY = "triads-state";
-const DEFAULTS: TriadsState = { rootIndex: 3, scaleType: "major" };
+const DEFAULTS: TriadsState = { rootIndex: 3, scaleType: "major", showOrbit: false };
 let state: TriadsState = { ...DEFAULTS };
 
 function updateDisplay(): void {
@@ -23,11 +24,15 @@ function updateDisplay(): void {
   if (currentNote) currentNote.textContent = NOTES[state.rootIndex];
   if (summary) {
     summary.textContent =
-      `${NOTES[state.rootIndex]} ${state.scaleType === "major" ? "Major" : "Minor"}`;
+      `${NOTES[state.rootIndex]} ${state.scaleType === "major" ? "Major" : "Minor"}${state.showOrbit ? " · Orbit" : ""}`;
   }
   setButtonActive("triadsMajorBtn", state.scaleType === "major");
   setButtonActive("triadsMinorBtn", state.scaleType === "minor");
-  renderTriads(state.rootIndex, state.scaleType);
+  setButtonActive("triadsOrbitOffBtn", !state.showOrbit);
+  setButtonActive("triadsOrbitOnBtn", state.showOrbit);
+  document.getElementById("triadsOrbitOffBtn")?.setAttribute("aria-pressed", String(!state.showOrbit));
+  document.getElementById("triadsOrbitOnBtn")?.setAttribute("aria-pressed", String(state.showOrbit));
+  renderTriads(state.rootIndex, state.scaleType, state.showOrbit);
   savePersisted(STORAGE_KEY, state);
 }
 
@@ -47,6 +52,14 @@ function setupControls(): void {
     state = { ...state, scaleType: "minor" };
     updateDisplay();
   });
+  document.getElementById("triadsOrbitOffBtn")?.addEventListener("click", () => {
+    state = { ...state, showOrbit: false };
+    updateDisplay();
+  });
+  document.getElementById("triadsOrbitOnBtn")?.addEventListener("click", () => {
+    state = { ...state, showOrbit: true };
+    updateDisplay();
+  });
   document.addEventListener("keydown", (event) => {
     const page = document.getElementById("triads-page");
     if (!page || page.style.display === "none") return;
@@ -63,7 +76,7 @@ function resetState(): void {
 export function initTriadsFeature(): void {
   const page = document.getElementById("triads-page");
   if (!page) return;
-  state = loadPersisted(STORAGE_KEY, DEFAULTS);
+  state = { ...DEFAULTS, ...loadPersisted(STORAGE_KEY, DEFAULTS) };
   page.innerHTML = renderTriadsPageTemplate();
   setupControls();
   setupAccordionToggle("triadsAccordionToggle");

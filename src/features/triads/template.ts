@@ -21,6 +21,13 @@ export function renderTriadsPageTemplate(): string {
             <button class="toggle-btn" id="triadsMinorBtn" type="button">Minor</button>
           </div>
         </div>
+        <div class="control-group">
+          <span class="control-label">Orbit:</span>
+          <div class="toggle-group" title="Show the surrounding R–♭3–3–5–♭7 blues cluster">
+            <button class="toggle-btn active" id="triadsOrbitOffBtn" type="button" aria-pressed="true">Off</button>
+            <button class="toggle-btn" id="triadsOrbitOnBtn" type="button" aria-pressed="false">On</button>
+          </div>
+        </div>
       </div>
     </div>
     <div class="triad-boards" id="triadBoards"></div>

@@ -50,6 +50,9 @@
     --color-interval-other-bg: rgba(255, 255, 255, 0.5);
     --color-interval-other-border: rgba(51, 51, 51, 0.5);
     --color-interval-other-text: rgba(51, 51, 51, 0.5);
+    --color-orbit-bg: rgba(255, 255, 255, 0.88);
+    --color-orbit-border: #667eea;
+    --color-orbit-text: #4f5fb5;
 
     /* UI elements */
     --color-legend-item: #555;
@@ -131,6 +134,9 @@
     --color-interval-other-bg: rgba(42, 42, 69, 0.7);
     --color-interval-other-border: rgba(192, 192, 208, 0.7);
     --color-interval-other-text: rgba(210, 210, 225, 0.85);
+    --color-orbit-bg: rgba(42, 42, 69, 0.92);
+    --color-orbit-border: #9aa8ff;
+    --color-orbit-text: #bdc6ff;
 
     --color-legend-item: #c0c0d0;
     --color-checkbox-bg: #2a2a45;
@@ -441,6 +447,22 @@ body {
     stroke-linecap: round;
     stroke-linejoin: round;
     opacity: 0.5;
+}
+
+.triad-orbit-path line {
+    stroke: var(--color-orbit-border);
+    stroke-width: 2;
+    stroke-dasharray: 4 4;
+    opacity: 0.55;
+}
+
+.triad-orbit-note {
+    width: 23px;
+    height: 23px;
+    background: var(--color-orbit-bg);
+    border: 2px dashed var(--color-orbit-border);
+    color: var(--color-orbit-text);
+    font-size: 10px;
 }
 
 /* Fretboard */

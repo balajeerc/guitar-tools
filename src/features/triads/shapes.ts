@@ -3,6 +3,7 @@ import { STRING_BASE_PITCH, TOTAL_FRETS } from "../../shared/constants";
 
 export type TriadDegree = "root" | "third" | "fifth";
 export type TriadInversion = "root" | "first" | "second";
+export type OrbitDegree = "minorThird" | "majorThird" | "flatSeventh";
 
 export interface TriadStringSet {
   readonly id: string;
@@ -24,6 +25,13 @@ export interface TriadShape {
   readonly centerFret: number;
 }
 
+export interface OrbitNotePosition {
+  readonly degree: OrbitDegree;
+  readonly stringIdx: number;
+  readonly fret: number;
+  readonly sourceFret: number;
+}
+
 export const TRIAD_STRING_SETS: readonly TriadStringSet[] = [
   { id: "strings-1-3", label: "Strings 1–3", tuning: "G–B–E", stringIndices: [3, 4, 5] },
   { id: "strings-2-4", label: "Strings 2–4", tuning: "D–G–B", stringIndices: [2, 3, 4] },
@@ -38,6 +46,25 @@ const DEGREE_ORDERS: Record<TriadInversion, readonly TriadDegree[]> = {
 };
 
 const INVERSIONS: readonly TriadInversion[] = ["root", "first", "second"];
+
+// These neighboring tones reproduce the compact "blues cluster" surrounding
+// each inversion: R, b3, 3, 5, b7. The b7 is available on both sides of the
+// shape, two frets below the root and three frets above the fifth.
+const ORBIT_RULES: Record<ScaleType, Record<TriadDegree, {
+  readonly degree: OrbitDegree;
+  readonly fretOffset: number;
+}>> = {
+  major: {
+    root: { degree: "flatSeventh", fretOffset: -2 },
+    third: { degree: "minorThird", fretOffset: -1 },
+    fifth: { degree: "flatSeventh", fretOffset: 3 },
+  },
+  minor: {
+    root: { degree: "flatSeventh", fretOffset: -2 },
+    third: { degree: "majorThird", fretOffset: 1 },
+    fifth: { degree: "flatSeventh", fretOffset: 3 },
+  },
+};
 
 function degreeSemitones(scaleType: ScaleType): Record<TriadDegree, number> {
   return { root: 0, third: scaleType === "major" ? 4 : 3, fifth: 7 };
@@ -92,4 +119,18 @@ export function getTriadShapes(
   }
 
   return shapes.sort((a, b) => a.centerFret - b.centerFret);
+}
+
+export function getOrbitNotes(shape: TriadShape, scaleType: ScaleType): OrbitNotePosition[] {
+  return shape.notes.flatMap(({ degree, stringIdx, fret }) => {
+    const rule = ORBIT_RULES[scaleType][degree];
+    const orbitFret = fret + rule.fretOffset;
+    if (orbitFret < 0 || orbitFret > TOTAL_FRETS) return [];
+    return [{
+      degree: rule.degree,
+      stringIdx,
+      fret: orbitFret,
+      sourceFret: fret,
+    }];
+  });
 }

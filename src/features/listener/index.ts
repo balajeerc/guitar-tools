@@ -6,6 +6,7 @@ import { createAudioListener, type AudioListenerHandle } from "../../shared/audi
 import { loadPersisted, savePersisted } from "../../shared/persist";
 import { createResetLink } from "../../shared/resetLink";
 import { setButtonActive } from "../../shared/dom";
+import { createAudioInputPanel } from "../../shared/audioInput";
 import { renderScaleStrip, updateListenerDisplay } from "./renderer";
 import type { ListenerScaleMode } from "./types";
 
@@ -50,7 +51,7 @@ function renderIdleDisplay(): void {
 function renderButtonState(listening: boolean): void {
   const btn = document.getElementById("listenerToggleBtn");
   if (!btn) return;
-  btn.textContent = listening ? "Stop" : "Listen";
+  btn.textContent = listening ? "Stop listening" : "Start listening";
   btn.classList.toggle("active", listening);
 }
 
@@ -202,6 +203,7 @@ export function initListenerFeature(): void {
   setupControls();
   setupToggle();
   setupAccordionToggle("listenerControlsAccordionToggle");
+  page.appendChild(createAudioInputPanel("listener"));
 
   document
     .getElementById("listenerControlsPanel")

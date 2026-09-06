@@ -1,4 +1,5 @@
 import { toneControlHtml } from "./toneControl";
+import { audioInputPanelHtml } from "../../shared/audioInput";
 
 export function melodiesPanelHtml(): string {
   return `<section class="melodies-game" aria-labelledby="melodiesHeading">
@@ -106,6 +107,7 @@ export function melodiesPanelHtml(): string {
       </div>
     </div>
 
-    <p class="melodies-mic-note">Use a clean, single-note sound. Microphone audio stays on this device.</p>
+    ${audioInputPanelHtml("melodies")}
+    <p class="melodies-mic-note">Use a clean, single-note sound. Audio input stays on this device.</p>
   </section>`;
 }

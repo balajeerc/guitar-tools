@@ -12,6 +12,7 @@ import {
   computeRms,
   SILENCE_THRESHOLD,
 } from "./audioUtils";
+import { AUDIO_INPUT_CHANGED_EVENT } from "./audioInput";
 
 /** EMA smoothing factor: 0 = no smoothing, 1 = no memory. Lower = smoother. */
 const SMOOTHING_ALPHA = 0.15;
@@ -31,6 +32,8 @@ export interface AudioListenerCallbacks {
   onStart?: () => void;
   /** Called when listening stops */
   onStop?: () => void;
+  /** Called when an active input cannot be opened */
+  onError?: () => void;
 }
 
 export interface AudioListenerHandle {
@@ -149,6 +152,18 @@ export function createAudioListener(
     resetSmoothing();
     callbacks.onStop?.();
   }
+
+  async function restartForInputChange(): Promise<void> {
+    if (!listening) return;
+    stop();
+    try {
+      await start();
+    } catch {
+      callbacks.onError?.();
+    }
+  }
+
+  window.addEventListener(AUDIO_INPUT_CHANGED_EVENT, () => void restartForInputChange());
 
   return {
     start,

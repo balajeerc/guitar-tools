@@ -1,19 +1,48 @@
 // Shared audio utilities for microphone acquisition and pitch detection
 
+import {
+  clearSelectedAudioInput,
+  getSelectedAudioInputId,
+  notifyAudioInputsAvailable,
+} from "./audioInput";
+
 const BUFFER_SIZE = 2048;
 
 /** RMS amplitude below this is treated as silence */
 export const SILENCE_THRESHOLD = 0.005;
 
-export function acquireMic(): Promise<MediaStream> {
-  return navigator.mediaDevices.getUserMedia({
-    audio: {
-      // Disable voice-call DSP that mangles instrument audio on phones
-      echoCancellation: false,
-      noiseSuppression: false,
-      autoGainControl: false,
-    },
-  });
+function audioConstraints(deviceId: string | null): MediaTrackConstraints {
+  return {
+    ...(deviceId ? { deviceId: { exact: deviceId } } : {}),
+    // Disable voice-call DSP that mangles instrument audio on phones
+    echoCancellation: false,
+    noiseSuppression: false,
+    autoGainControl: false,
+  };
+}
+
+function missingDevice(error: unknown): boolean {
+  return error instanceof DOMException
+    && (error.name === "NotFoundError" || error.name === "OverconstrainedError");
+}
+
+export async function acquireMic(): Promise<MediaStream> {
+  const selectedDeviceId = getSelectedAudioInputId();
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      audio: audioConstraints(selectedDeviceId),
+    });
+    notifyAudioInputsAvailable();
+    return stream;
+  } catch (error) {
+    if (!selectedDeviceId || !missingDevice(error)) throw error;
+    clearSelectedAudioInput();
+    const stream = await navigator.mediaDevices.getUserMedia({
+      audio: audioConstraints(null),
+    });
+    notifyAudioInputsAvailable();
+    return stream;
+  }
 }
 
 export function setupAudio(stream: MediaStream): {

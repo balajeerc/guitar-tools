@@ -10,6 +10,7 @@
     <meta name="theme-color" content="#667eea">
     <meta name="color-scheme" content="light dark">
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180x180.png">
+    <script async src="https://www.youtube.com/iframe_api"></script>
     <script>
         (function () {
             var t = localStorage.getItem('theme');
@@ -34,6 +35,7 @@
                 <a href="#fretboard-discovery" class="nav-link">Fretboard</a>
                 <a href="#circle-of-fifths" class="nav-link">Circle of 5ths</a>
                 <a href="#melodies" class="nav-link">Melodies</a>
+                <a href="#play-by-ear" class="nav-link">Play by Ear</a>
                 <a href="#listener" class="nav-link">Listener</a>
                 <a href="#tuner" class="nav-link">Tuner</a>
                 <a href="#metronome" class="nav-link">Metronome</a>
@@ -64,6 +66,7 @@
             <a href="#fretboard-discovery" class="nav-link sidebar-link">Fretboard</a>
             <a href="#circle-of-fifths" class="nav-link sidebar-link">Circle of 5ths</a>
             <a href="#melodies" class="nav-link sidebar-link">Melodies</a>
+            <a href="#play-by-ear" class="nav-link sidebar-link">Play by Ear</a>
             <a href="#listener" class="nav-link sidebar-link">Listener</a>
             <a href="#tuner" class="nav-link sidebar-link">Tuner</a>
             <a href="#metronome" class="nav-link sidebar-link">Metronome</a>
@@ -220,6 +223,11 @@
             <!-- Dynamically populated -->
         </div>
 
+        <!-- Curated songs ear-training feature -->
+        <div id="play-by-ear-page" class="page" style="display: none;">
+            <!-- Dynamically populated -->
+        </div>
+
         <!-- Listener Feature -->
         <div id="listener-page" class="page" style="display: none;">
             <!-- Controls Accordion (mobile) / Inline Controls (desktop) -->
@@ -269,7 +277,7 @@
 
             <!-- Listen / Stop button -->
             <div class="listener-actions">
-                <button class="note-detection-btn" id="listenerToggleBtn">Listen</button>
+                <button class="note-detection-btn" id="listenerToggleBtn">Start listening</button>
             </div>
 
             <!-- Linear scale strip -->
@@ -319,7 +327,7 @@
 
             <!-- Listen / Stop button -->
             <div class="tuner-actions">
-                <button class="note-detection-btn" id="tunerToggleBtn">Start</button>
+                <button class="note-detection-btn" id="tunerToggleBtn">Start listening</button>
             </div>
 
             <!-- String selector buttons -->

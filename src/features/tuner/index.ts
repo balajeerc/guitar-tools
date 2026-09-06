@@ -3,6 +3,7 @@
 import { createAudioListener, type AudioListenerHandle } from "../../shared/audioListener";
 import { loadPersisted, savePersisted } from "../../shared/persist";
 import { createResetLink } from "../../shared/resetLink";
+import { createAudioInputPanel } from "../../shared/audioInput";
 import { STANDARD_TUNING } from "./constants";
 import {
   renderMeterSegments,
@@ -67,7 +68,7 @@ function matchString(
 function renderButtonState(listening: boolean): void {
   const btn = document.getElementById("tunerToggleBtn");
   if (!btn) return;
-  btn.textContent = listening ? "Stop" : "Start";
+  btn.textContent = listening ? "Stop listening" : "Start listening";
   btn.classList.toggle("active", listening);
 }
 
@@ -147,6 +148,8 @@ export function initTunerFeature(): void {
 
   setupToggle();
   setupStringButtons();
+
+  page.appendChild(createAudioInputPanel("tuner"));
 
   if (stringsContainer) {
     const resetRow = document.createElement("div");

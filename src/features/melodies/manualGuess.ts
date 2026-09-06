@@ -28,9 +28,12 @@ function judgePattern(value: readonly string[], expected: readonly string[]): Om
 
 export function degreesFromFirstNote(midis: readonly number[]): readonly string[] {
   if (midis.length === 0) return [];
-  const firstMidi = midis[0];
+  return degreesFromTonic(midis, midis[0]);
+}
+
+export function degreesFromTonic(midis: readonly number[], tonicMidi: number): readonly string[] {
   return midis.map((midi) => {
-    const semitones = ((midi - firstMidi) % 12 + 12) % 12;
+    const semitones = ((midi - tonicMidi) % 12 + 12) % 12;
     return CHROMATIC_DEGREES[semitones];
   });
 }

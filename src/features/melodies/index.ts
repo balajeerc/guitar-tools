@@ -18,7 +18,7 @@ import { createRound, type GuessMethod, type RoundState } from "./round";
 import type { MelodyTone } from "./tone";
 import { loadMelodyTone, setupToneControl } from "./toneControl";
 import {
-  accidentalName, accidentalPrefix, accidentalSymbol, type Accidental, formatDegree, formatTime,
+  accidentalPrefix, degreeBoxesHtml, formatDegree, formatTime, nextDegreeAccidental,
   setDisabled, setHidden, setPressed, setText,
 } from "./ui";
 
@@ -189,20 +189,13 @@ function toggleGuessing(): void {
 function renderManualBoxes(): void {
   const container = document.getElementById("melodiesIntervalBoxes");
   if (!container) return;
-  container.innerHTML = state.melody.degrees
-    .map((_, index) => {
-      const degree = state.manualInput[index] ?? "";
-      const judgement = state.manualJudgement?.[index];
-      const classes = ["melodies-interval-box"];
-      if (degree.length > 0) classes.push("filled");
-      if (judgement === true) classes.push("correct");
-      if (judgement === false) classes.push("incorrect");
-      const accidental = accidentalSymbol(degree);
-      const disabled = degree.length === 0 || state.status === "complete" || state.status === "revealed";
-      const label = `Interval ${index + 1} is ${accidentalName(degree)}; change accidental`;
-      return `<span class="melodies-interval-slot"><span class="${classes.join(" ")}">${formatDegree(degree)}</span><button type="button" class="melodies-accidental-btn" data-index="${index}" aria-label="${label}" ${disabled ? "disabled" : ""}>${accidental}</button></span>`;
-    })
-    .join("");
+  container.innerHTML = degreeBoxesHtml({
+    expectedLength: state.melody.degrees.length,
+    values: state.manualInput,
+    judgement: state.manualJudgement,
+    disabled: state.status === "complete" || state.status === "revealed",
+    idPrefix: "melodies",
+  });
 }
 
 function beginManualGuessing(): void {
@@ -257,18 +250,12 @@ function checkManualGuess(): void {
   setText("melodiesHint", "Highlighted boxes need another listen. Backspace and try again.");
 }
 
-function nextAccidental(degree: string): Accidental {
-  if (degree.startsWith("b")) return "#";
-  if (degree.startsWith("#")) return "";
-  return "b";
-}
-
 function cycleAccidental(index: number): void {
   const degree = state.manualInput[index];
   if (!degree) return;
   const digit = degree.charAt(degree.length - 1);
   const degrees = [...state.manualInput];
-  degrees[index] = `${nextAccidental(degree)}${digit}`;
+  degrees[index] = `${nextDegreeAccidental(degree)}${digit}`;
   state.manualInput = degrees;
   state.manualJudgement = null;
   state.manualAnswerBasis = null;
@@ -280,12 +267,12 @@ function cycleAccidental(index: number): void {
 }
 
 function handleIntervalEntryClick(event: MouseEvent): void {
-  const button = (event.target as HTMLElement).closest<HTMLButtonElement>(".melodies-accidental-btn");
+  const button = (event.target as HTMLElement).closest<HTMLButtonElement>("[data-melodies-accidental]");
   if (!button) {
     focusIntervalInput();
     return;
   }
-  const index = Number(button.dataset.index);
+  const index = Number(button.dataset.melodiesAccidental);
   if (!Number.isNaN(index)) cycleAccidental(index);
 }
 

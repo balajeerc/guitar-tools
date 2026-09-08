@@ -195,9 +195,76 @@
     margin-top: 12px;
 }
 
-.play-ear-loop-actions .melodies-btn {
-    min-width: 130px;
-    padding: 10px 16px;
+.play-ear-transport,
+.play-ear-speed-control {
+    display: flex;
+    align-items: center;
+}
+
+.play-ear-transport {
+    gap: 10px;
+}
+
+.play-ear-loop-btn,
+.play-ear-speed-control {
+    height: 40px;
+    color: var(--color-text);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-strong);
+}
+
+.play-ear-loop-btn {
+    display: grid;
+    flex: none;
+    width: 40px;
+    padding: 0;
+    place-items: center;
+    border-radius: 50%;
+    font: inherit;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.play-ear-speed-control {
+    gap: 2px;
+    padding: 3px 5px 3px 10px;
+    border-radius: 99px;
+}
+
+.play-ear-speed-control > span {
+    margin-right: 3px;
+    color: var(--color-text-secondary);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.play-ear-speed-control button {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    color: var(--color-text);
+    background: var(--color-muted);
+    border: 0;
+    border-radius: 50%;
+    place-items: center;
+    font: inherit;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.play-ear-speed-control output {
+    min-width: 34px;
+    color: var(--color-text);
+    font-size: 11px;
+    font-weight: 750;
+    text-align: center;
+}
+
+.play-ear-loop-btn:disabled,
+.play-ear-speed-control button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
 }
 
 .play-ear-loop-actions a {
@@ -226,7 +293,15 @@
 .play-ear-section-tabs {
     display: grid;
     gap: 7px;
-    margin: 10px 0 20px;
+    margin: 10px 0 6px;
+}
+
+.play-ear-section-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
 .play-ear-section-btn {
@@ -339,8 +414,8 @@
         flex-direction: column;
     }
 
-    .play-ear-loop-actions .melodies-btn {
-        width: 100%;
+    .play-ear-transport {
+        justify-content: center;
     }
 
     .play-ear-loop-actions a {

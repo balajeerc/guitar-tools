@@ -32,8 +32,8 @@ export function audioInputPanelHtml(scope: string, notice = DEFAULT_NOTICE): str
     </div>
     <label class="audio-input-field" for="${scope}AudioInput">
       <span>Audio input</span>
-      <select id="${scope}AudioInput" data-audio-input-select>
-        <option value="">System default</option>
+      <select id="${scope}AudioInput" data-audio-input-select disabled>
+        <option value="">Allow audio access first</option>
       </select>
     </label>
     <small data-audio-input-help>Allow audio access once to see device names.</small>
@@ -54,13 +54,22 @@ async function getAudioInputs(): Promise<MediaDeviceInfo[]> {
   return devices.filter(({ kind, deviceId }) => kind === "audioinput" && deviceId !== "default");
 }
 
-function renderSelector(select: HTMLSelectElement, devices: readonly MediaDeviceInfo[]): void {
+function renderSelector(select: HTMLSelectElement, devices: readonly MediaDeviceInfo[]): boolean {
+  const namedDevices = devices.filter(({ label }) => label.trim().length > 0);
+  if (namedDevices.length === 0) {
+    select.replaceChildren(new Option("Allow audio access first", ""));
+    select.disabled = true;
+    return false;
+  }
+
   const selectedId = getSelectedAudioInputId() ?? "";
   select.replaceChildren(new Option("System default", ""));
-  for (const [index, device] of devices.entries()) {
-    select.add(new Option(device.label || `Audio input ${index + 1}`, device.deviceId));
+  for (const device of namedDevices) {
+    select.add(new Option(device.label, device.deviceId));
   }
-  select.value = devices.some(({ deviceId }) => deviceId === selectedId) ? selectedId : "";
+  select.value = namedDevices.some(({ deviceId }) => deviceId === selectedId) ? selectedId : "";
+  select.disabled = false;
+  return true;
 }
 
 async function refreshAudioInputControls(): Promise<void> {
@@ -68,8 +77,10 @@ async function refreshAudioInputControls(): Promise<void> {
   if (selects.length === 0) return;
   try {
     const devices = await getAudioInputs();
-    for (const select of selects) renderSelector(select, devices);
-    const hasLabels = devices.some(({ label }) => label.length > 0);
+    let hasLabels = false;
+    for (const select of selects) {
+      hasLabels = renderSelector(select, devices) || hasLabels;
+    }
     for (const help of document.querySelectorAll<HTMLElement>("[data-audio-input-help]")) {
       help.hidden = hasLabels;
     }

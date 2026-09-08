@@ -57,6 +57,8 @@ let listener: AudioListenerHandle;
 let player: YouTubeSectionPlayer | null = null;
 let pauseWhileGuessing = true;
 let completedSections = new Set<string>();
+let playbackRates: readonly number[] = [1];
+let playbackRate = 1;
 
 function currentSong(): EarTrainingSong {
   return EAR_TRAINING_SONGS[state.songIndex];
@@ -116,19 +118,50 @@ function renderManualBoxes(): void {
   });
 }
 
-function updateButtons(): void {
-  const finished = state.status === "complete" || state.status === "revealed";
-  setText("playEarLoopBtn", state.videoLooping ? "Pause loop" : "▶ Play loop");
-  setText("playEarGuessBtn", listener.isListening() ? "Stop playing" : "Start playing");
+function updateLoopButton(): void {
+  const loopButton = document.getElementById("playEarLoopBtn");
+  const loopLabel = state.videoLooping ? "Restart loop" : "Play loop";
+  setText("playEarLoopBtn", state.videoLooping ? "↻" : "▶");
+  loopButton?.setAttribute("aria-label", loopLabel);
+  loopButton?.setAttribute("title", loopLabel);
   setDisabled("playEarLoopBtn", state.playerLoading);
+}
+
+function updatePlaybackRateButtons(): void {
+  setText("playEarPlaybackRate", `${playbackRate}×`);
+  const playbackRateIndex = playbackRates.indexOf(playbackRate);
+  setDisabled("playEarSlowerBtn", !player || state.playerLoading || playbackRateIndex <= 0);
+  setDisabled(
+    "playEarFasterBtn",
+    !player || state.playerLoading || playbackRateIndex === -1 || playbackRateIndex >= playbackRates.length - 1,
+  );
+}
+
+function updatePlaybackButtons(): void {
+  updateLoopButton();
+  updatePlaybackRateButtons();
+  setText("playEarGuessBtn", listener.isListening() ? "Stop playing" : "Start playing");
+}
+
+function updateGuessButtons(finished: boolean): void {
   setDisabled("playEarGuessBtn", !state.hasListened || finished);
   setDisabled("playEarResetNotesBtn", finished || state.matchedNotes === 0);
   setDisabled("playEarCheckBtn", finished || state.manualInput.length !== currentSection().notes.length);
   setDisabled("playEarMicMethodBtn", finished);
   setDisabled("playEarManualMethodBtn", finished);
   setDisabled("playEarRevealBtn", finished);
+}
+
+function updateNavigationButtons(): void {
   setDisabled("playEarPreviousSectionBtn", state.sectionIndex === 0);
   setDisabled("playEarNextSectionBtn", state.sectionIndex === currentSong().sections.length - 1);
+}
+
+function updateButtons(): void {
+  const finished = state.status === "complete" || state.status === "revealed";
+  updatePlaybackButtons();
+  updateGuessButtons(finished);
+  updateNavigationButtons();
   const field = document.getElementById("playEarIntervalInput") as HTMLInputElement | null;
   if (field) field.disabled = !state.hasListened || finished;
 }
@@ -234,12 +267,18 @@ async function ensurePlayer(): Promise<YouTubeSectionPlayer> {
         setText("playEarVideoStatus", "Loop paused");
         updateButtons();
       },
+      onPlaybackRateChange(rate) {
+        playbackRate = rate;
+        updateButtons();
+      },
       onError(message) {
         state.videoLooping = false;
         setText("playEarVideoStatus", message);
         updateButtons();
       },
     });
+    playbackRates = player.getAvailablePlaybackRates();
+    playbackRate = player.getPlaybackRate();
     return player;
   } finally {
     state.playerLoading = false;
@@ -247,11 +286,7 @@ async function ensurePlayer(): Promise<YouTubeSectionPlayer> {
   }
 }
 
-async function toggleLoop(): Promise<void> {
-  if (state.videoLooping) {
-    pauseVideo();
-    return;
-  }
+async function playOrRestartLoop(): Promise<void> {
   try {
     const videoPlayer = await ensurePlayer();
     state.hasListened = true;
@@ -260,6 +295,20 @@ async function toggleLoop(): Promise<void> {
     setText("playEarHint", "When ready, play it back or enter the intervals.");
   } catch {
     setText("playEarVideoStatus", "YouTube could not be loaded. Check your connection and try again.");
+  }
+  updateButtons();
+}
+
+async function changePlaybackRate(direction: -1 | 1): Promise<void> {
+  try {
+    const videoPlayer = await ensurePlayer();
+    playbackRates = videoPlayer.getAvailablePlaybackRates();
+    const currentIndex = playbackRates.indexOf(playbackRate);
+    const nextIndex = Math.max(0, Math.min(currentIndex + direction, playbackRates.length - 1));
+    const nextRate = playbackRates[nextIndex];
+    videoPlayer.setPlaybackRate(nextRate);
+  } catch {
+    setText("playEarVideoStatus", "Playback speed could not be changed.");
   }
   updateButtons();
 }
@@ -402,7 +451,9 @@ function revealAnswer(): void {
 }
 
 function setupPlaybackEvents(): void {
-  document.getElementById("playEarLoopBtn")?.addEventListener("click", () => void toggleLoop());
+  document.getElementById("playEarLoopBtn")?.addEventListener("click", () => void playOrRestartLoop());
+  document.getElementById("playEarSlowerBtn")?.addEventListener("click", () => void changePlaybackRate(-1));
+  document.getElementById("playEarFasterBtn")?.addEventListener("click", () => void changePlaybackRate(1));
   document.getElementById("playEarGuessBtn")?.addEventListener("click", () => void toggleListening());
   document.getElementById("playEarResetNotesBtn")?.addEventListener("click", resetRecognizedNotes);
   document.getElementById("playEarCheckBtn")?.addEventListener("click", checkManualGuess);

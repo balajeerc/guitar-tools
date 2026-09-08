@@ -24,7 +24,15 @@ export function playByEarPanelHtml(): string {
         </div>
         <p class="play-ear-video-status" id="playEarVideoStatus" aria-live="polite">Choose a section, then play the loop.</p>
         <div class="play-ear-loop-actions">
-          <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarLoopBtn">▶ Play loop</button>
+          <div class="play-ear-transport">
+            <button type="button" class="play-ear-loop-btn" id="playEarLoopBtn" aria-label="Play loop" title="Play loop">▶</button>
+            <div class="play-ear-speed-control" aria-label="Playback speed">
+              <span>Speed</span>
+              <button type="button" id="playEarSlowerBtn" aria-label="Slow down" title="Slow down" disabled>−</button>
+              <output id="playEarPlaybackRate" aria-live="polite">1×</output>
+              <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up" disabled>+</button>
+            </div>
+          </div>
           <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer">Open on YouTube ↗</a>
         </div>
       </section>
@@ -34,6 +42,10 @@ export function playByEarPanelHtml(): string {
           <span>Section</span><strong id="playEarSectionCounter"></strong>
         </div>
         <div class="play-ear-section-tabs" id="playEarSectionTabs"></div>
+        <nav class="play-ear-section-navigation" aria-label="Section navigation">
+          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn">← Previous section</button>
+          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn">Next section →</button>
+        </nav>
 
         <div class="melodies-prompt">
           <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
@@ -70,6 +82,7 @@ export function playByEarPanelHtml(): string {
           <div class="melodies-actions">
             <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn" disabled>Start playing</button>
             <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarResetNotesBtn" disabled>Reset notes</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn">Reveal answer</button>
           </div>
           <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
         </div>
@@ -85,11 +98,6 @@ export function playByEarPanelHtml(): string {
         </div>
 
         <div class="melodies-result" id="playEarResult" hidden></div>
-        <div class="melodies-footer-actions">
-          <button type="button" class="melodies-link-btn" id="playEarRevealBtn">Reveal answer</button>
-          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn">← Previous section</button>
-          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn">Next section →</button>
-        </div>
       </section>
     </div>
 

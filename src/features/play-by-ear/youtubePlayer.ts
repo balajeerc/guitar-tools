@@ -5,6 +5,9 @@ interface YouTubePlayerEvent {
 interface YouTubePlayer {
   cueVideoById(options: VideoOptions): void;
   loadVideoById(options: VideoOptions): void;
+  getAvailablePlaybackRates(): number[];
+  getPlaybackRate(): number;
+  setPlaybackRate(rate: number): void;
   pauseVideo(): void;
   destroy(): void;
 }
@@ -17,7 +20,7 @@ interface VideoOptions {
 
 interface YouTubeApi {
   Player: new (elementId: string, options: Record<string, unknown>) => YouTubePlayer;
-  PlayerState: { ENDED: number; PLAYING: number; PAUSED: number };
+  PlayerState: { ENDED: number; PLAYING: number; PAUSED: number; CUED: number };
 }
 
 type YouTubeWindow = Window & typeof globalThis & {
@@ -34,6 +37,9 @@ export interface YouTubeSection {
 export interface YouTubeSectionPlayer {
   cue: (section: YouTubeSection) => void;
   playLoop: (section: YouTubeSection) => void;
+  getAvailablePlaybackRates: () => readonly number[];
+  getPlaybackRate: () => number;
+  setPlaybackRate: (rate: number) => void;
   pause: () => void;
   destroy: () => void;
 }
@@ -41,6 +47,7 @@ export interface YouTubeSectionPlayer {
 interface PlayerCallbacks {
   onPlaying: () => void;
   onPaused: () => void;
+  onPlaybackRateChange: (rate: number) => void;
   onError: (message: string) => void;
 }
 
@@ -77,6 +84,13 @@ export async function createYouTubeSectionPlayer(
   const api = await loadYouTubeApi();
   let activeSection = initialSection;
   let looping = false;
+  let desiredPlaybackRate = 1;
+
+  function restorePlaybackRate(instance: YouTubePlayer): void {
+    if (instance.getPlaybackRate() !== desiredPlaybackRate) {
+      instance.setPlaybackRate(desiredPlaybackRate);
+    }
+  }
 
   const player = await new Promise<YouTubePlayer>((resolve) => {
     const instance = new api.Player(elementId, {
@@ -91,9 +105,24 @@ export async function createYouTubeSectionPlayer(
       events: {
         onReady: (): void => resolve(instance),
         onStateChange: (event: YouTubePlayerEvent): void => {
-          if (event.data === api.PlayerState.ENDED && looping) instance.loadVideoById(activeSection);
-          else if (event.data === api.PlayerState.PLAYING) callbacks.onPlaying();
-          else if (event.data === api.PlayerState.PAUSED) callbacks.onPaused();
+          switch (event.data) {
+            case api.PlayerState.ENDED:
+              if (looping) instance.loadVideoById(activeSection);
+              break;
+            case api.PlayerState.PLAYING:
+              restorePlaybackRate(instance);
+              callbacks.onPlaying();
+              break;
+            case api.PlayerState.CUED:
+              restorePlaybackRate(instance);
+              break;
+            case api.PlayerState.PAUSED:
+              callbacks.onPaused();
+              break;
+          }
+        },
+        onPlaybackRateChange: (event: YouTubePlayerEvent): void => {
+          callbacks.onPlaybackRateChange(event.data);
         },
         onError: (event: YouTubePlayerEvent): void => callbacks.onError(playerErrorMessage(event.data)),
       },
@@ -110,6 +139,16 @@ export async function createYouTubeSectionPlayer(
       activeSection = section;
       looping = true;
       player.loadVideoById(section);
+    },
+    getAvailablePlaybackRates(): readonly number[] {
+      return player.getAvailablePlaybackRates();
+    },
+    getPlaybackRate(): number {
+      return player.getPlaybackRate();
+    },
+    setPlaybackRate(rate): void {
+      desiredPlaybackRate = rate;
+      player.setPlaybackRate(rate);
     },
     pause(): void {
       looping = false;

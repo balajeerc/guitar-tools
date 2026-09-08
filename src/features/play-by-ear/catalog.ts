@@ -32,9 +32,8 @@ function section(definition: SectionDefinition): EarTrainingSection {
 }
 
 const SEVEN_NATION_MAIN_RIFF = [52, 52, 55, 52, 50, 48, 47] as const;
-const POSSESS_YOUR_HEART_BASS_LINE = [
-  48, 50, 50, 50, 48, 48, 50, 50, 50, 48, 53, 50, 50, 50, 53, 50, 53, 55, 57,
-] as const;
+const POSSESS_YOUR_HEART_BASS_LINE_PART_ONE = [48, 50, 50, 50, 48, 48, 50, 50, 50, 48] as const;
+const POSSESS_YOUR_HEART_BASS_LINE_PART_TWO = [53, 50, 50, 50, 53, 50, 53, 55, 57] as const;
 const POSSESS_YOUR_HEART_PIANO_MELODY = [62, 62, 60, 57, 53, 53, 55, 60] as const;
 
 /**
@@ -69,13 +68,22 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
     key: "D minor",
     sections: [
       section({
-        id: "opening-bass-line",
-        label: "Opening bass line",
+        id: "opening-bass-line-part-one",
+        label: "Opening bass line · Part 1",
         startSeconds: 21,
-        endSeconds: 35.2,
-        difficulty: "medium",
+        endSeconds: 24.5,
+        difficulty: "easy",
         tonicMidi: 50,
-        notes: POSSESS_YOUR_HEART_BASS_LINE,
+        notes: POSSESS_YOUR_HEART_BASS_LINE_PART_ONE,
+      }),
+      section({
+        id: "opening-bass-line-part-two",
+        label: "Opening bass line · Part 2",
+        startSeconds: 24.5,
+        endSeconds: 28.5,
+        difficulty: "easy",
+        tonicMidi: 50,
+        notes: POSSESS_YOUR_HEART_BASS_LINE_PART_TWO,
       }),
       section({
         id: "piano-melody",

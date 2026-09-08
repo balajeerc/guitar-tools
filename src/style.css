@@ -203,6 +203,11 @@
 
 .play-ear-transport {
     gap: 10px;
+    flex-wrap: wrap;
+}
+
+.play-ear-simplified-btn {
+    white-space: nowrap;
 }
 
 .play-ear-loop-btn,

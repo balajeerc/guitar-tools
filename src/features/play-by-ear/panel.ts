@@ -32,6 +32,7 @@ export function playByEarPanelHtml(): string {
               <output id="playEarPlaybackRate" aria-live="polite">1×</output>
               <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up" disabled>+</button>
             </div>
+            <button type="button" class="melodies-link-btn play-ear-simplified-btn" id="playEarSimplifiedBtn">Play simplified version</button>
           </div>
           <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer">Open on YouTube ↗</a>
         </div>

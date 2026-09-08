@@ -3,31 +3,17 @@ import { createAudioListener, type AudioListenerHandle } from "../../shared/audi
 import { loadPersisted, savePersisted } from "../../shared/persist";
 import type { DetectedNote } from "../note-detection/noteMapper";
 import { createNoteGate, type NoteGate } from "../melodies/noteGate";
-import {
-  degreesFromFirstNote,
-  evaluateDegreeGuess,
-  sanitizeDegreeInput,
-} from "../melodies/manualGuess";
+import { degreesFromFirstNote, evaluateDegreeGuess, sanitizeDegreeInput } from "../melodies/manualGuess";
 import type { MelodyMatcher } from "../melodies/matcher";
 import {
-  accidentalPrefix,
-  degreeBoxesHtml,
-  formatDegree,
-  intervalAnswerHtml,
-  nextDegreeAccidental,
-  setDisabled,
-  setHidden,
-  setPressed,
-  setText,
+  accidentalPrefix, degreeBoxesHtml, formatDegree, intervalAnswerHtml, nextDegreeAccidental,
+  setDisabled, setHidden, setPressed, setText,
 } from "../melodies/ui";
 import { EAR_TRAINING_SONGS, type EarTrainingSection, type EarTrainingSong } from "./catalog";
 import { playByEarPanelHtml } from "./panel";
-import {
-  createYouTubeSectionPlayer,
-  type YouTubeSection,
-  type YouTubeSectionPlayer,
-} from "./youtubePlayer";
+import { createYouTubeSectionPlayer, type YouTubeSection, type YouTubeSectionPlayer } from "./youtubePlayer";
 import { createSlidingMelodyMatcher } from "./slidingMatcher";
+import { createSimplifiedVersionPlayer } from "./simplifiedPlayer";
 
 type GuessMethod = "microphone" | "manual";
 type GameStatus = "ready" | "guessing" | "complete" | "revealed";
@@ -51,6 +37,7 @@ const METHOD_STORAGE_KEY = "play-by-ear-guess-method";
 const PAUSE_STORAGE_KEY = "play-by-ear-pause-video";
 const COMPLETED_STORAGE_KEY = "play-by-ear-completed-sections";
 const PLAY_BY_EAR_STABLE_NOTE_MS = 50;
+const simplifiedPlayer = createSimplifiedVersionPlayer();
 
 let state: GameState;
 let listener: AudioListenerHandle;
@@ -140,6 +127,8 @@ function updatePlaybackRateButtons(): void {
 function updatePlaybackButtons(): void {
   updateLoopButton();
   updatePlaybackRateButtons();
+  setText("playEarSimplifiedBtn", simplifiedPlayer.isPlaying() ? "♪ Playing…" : "Play simplified version");
+  setDisabled("playEarSimplifiedBtn", simplifiedPlayer.isPlaying());
   setText("playEarGuessBtn", listener.isListening() ? "Stop playing" : "Start playing");
 }
 
@@ -234,6 +223,7 @@ function pauseVideo(): void {
 function selectSection(index: number): void {
   if (index < 0 || index >= currentSong().sections.length || index === state.sectionIndex) return;
   stopInput();
+  simplifiedPlayer.stop();
   pauseVideo();
   state = createState(state.songIndex, index, state.method);
   player?.cue(youtubeSection());
@@ -243,6 +233,7 @@ function selectSection(index: number): void {
 function selectSong(index: number): void {
   if (index < 0 || index >= EAR_TRAINING_SONGS.length || index === state.songIndex) return;
   stopInput();
+  simplifiedPlayer.stop();
   pauseVideo();
   state = createState(index, 0, state.method);
   player?.cue(youtubeSection());
@@ -287,6 +278,7 @@ async function ensurePlayer(): Promise<YouTubeSectionPlayer> {
 }
 
 async function playOrRestartLoop(): Promise<void> {
+  simplifiedPlayer.stop();
   try {
     const videoPlayer = await ensurePlayer();
     state.hasListened = true;
@@ -297,6 +289,20 @@ async function playOrRestartLoop(): Promise<void> {
     setText("playEarVideoStatus", "YouTube could not be loaded. Check your connection and try again.");
   }
   updateButtons();
+}
+
+async function playSimplifiedVersion(): Promise<void> {
+  if (simplifiedPlayer.isPlaying()) return;
+  pauseVideo();
+  const playback = simplifiedPlayer.play(currentSong(), currentSection());
+  updateButtons();
+  try {
+    await playback;
+  } catch {
+    setText("playEarVideoStatus", "The simplified version could not be played.");
+  } finally {
+    updateButtons();
+  }
 }
 
 async function changePlaybackRate(direction: -1 | 1): Promise<void> {
@@ -314,6 +320,7 @@ async function changePlaybackRate(direction: -1 | 1): Promise<void> {
 }
 
 function prepareGuess(): void {
+  simplifiedPlayer.stop();
   if (pauseWhileGuessing && state.videoLooping) pauseVideo();
   state.status = "guessing";
 }
@@ -438,6 +445,7 @@ function checkManualGuess(): void {
 
 function revealAnswer(): void {
   stopInput();
+  simplifiedPlayer.stop();
   pauseVideo();
   state.status = "revealed";
   const result = document.getElementById("playEarResult");
@@ -454,6 +462,7 @@ function setupPlaybackEvents(): void {
   document.getElementById("playEarLoopBtn")?.addEventListener("click", () => void playOrRestartLoop());
   document.getElementById("playEarSlowerBtn")?.addEventListener("click", () => void changePlaybackRate(-1));
   document.getElementById("playEarFasterBtn")?.addEventListener("click", () => void changePlaybackRate(1));
+  document.getElementById("playEarSimplifiedBtn")?.addEventListener("click", () => void playSimplifiedVersion());
   document.getElementById("playEarGuessBtn")?.addEventListener("click", () => void toggleListening());
   document.getElementById("playEarResetNotesBtn")?.addEventListener("click", resetRecognizedNotes);
   document.getElementById("playEarCheckBtn")?.addEventListener("click", checkManualGuess);
@@ -494,6 +503,7 @@ function setupPreferenceEvents(): void {
   window.addEventListener("hashchange", () => {
     if (window.location.hash.slice(1) !== "play-by-ear") {
       stopInput();
+      simplifiedPlayer.stop();
       pauseVideo();
     }
   });

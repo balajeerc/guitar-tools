@@ -44,7 +44,21 @@ const COME_AS_YOU_ARE_OPENING_RIFF = [54, 54, 56, 57, 57, 56, 54, 52, 54] as con
 const TOXIC_MAIN_HOOK = [48, 48, 51, 48, 53, 51, 50, 51] as const;
 const BAD_ROMANCE_VOCAL_HOOK = [57, 57, 57, 59, 60, 59, 57] as const;
 const SHAPE_OF_YOU_MAIN_HOOK = [49, 52, 49, 52, 49, 52, 56, 54] as const;
-const BLINDING_LIGHTS_SYNTH_HOOK = [53, 53, 60, 63, 65, 63, 60, 58, 60] as const;
+const BLINDING_LIGHTS_SYNTH_HOOK = [53, 53, 60, 63, 65, 63, 60, 58] as const;
+const SUNSHINE_OF_YOUR_LOVE_MAIN_RIFF = [50, 50, 48, 50, 57, 56, 55, 50, 53, 50] as const;
+const SWEET_CHILD_OF_MINE_GUITAR_INTRO = [49, 61, 56, 54, 53, 56, 51, 56] as const;
+const SATISFACTION_MAIN_RIFF = [52, 52, 52, 54, 55, 55, 54, 54] as const;
+const SUPERSTITION_MAIN_RIFF = [51, 54, 56, 57, 56, 54, 51] as const;
+const LAYLA_MAIN_RIFF = [57, 60, 62, 65, 62, 60, 62] as const;
+const CRAZY_TRAIN_MAIN_RIFF = [54, 54, 61, 66, 62, 66, 61, 66] as const;
+const COME_TOGETHER_MAIN_RIFF = [50, 50, 50, 57, 53, 50] as const;
+const ENTER_SANDMAN_MAIN_RIFF = [52, 64, 58, 57, 55, 52] as const;
+const HYSTERIA_BASS_INTRO = [57, 55, 57, 60, 57, 55, 57, 52] as const;
+const SMOOTH_GUITAR_INTRO = [64, 65, 64, 62, 64, 60, 59, 57] as const;
+const FEEL_GOOD_INC_BASSLINE = [51, 51, 54, 51, 49, 51, 56, 54] as const;
+const DO_I_WANNA_KNOW_MAIN_RIFF = [55, 58, 60, 62, 65, 67] as const;
+const UPTOWN_FUNK_MAIN_RIFF = [50, 50, 48, 50, 53, 50, 48, 50] as const;
+const BAD_GUY_MAIN_RIFF = [55, 55, 55, 55, 55, 55, 55, 58, 60, 62] as const;
 const POSSESS_YOUR_HEART_BASS_LINE_PART_ONE = [48, 50, 50, 50, 48, 48, 50, 50, 50, 48] as const;
 const POSSESS_YOUR_HEART_BASS_LINE_PART_TWO = [53, 50, 50, 50, 53, 50, 53, 55, 57] as const;
 const POSSESS_YOUR_HEART_PIANO_MELODY = [62, 62, 60, 57, 53, 53, 55, 60] as const;
@@ -65,7 +79,7 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         id: "opening-guitar-melody",
         label: "Opening guitar melody",
         startSeconds: 0,
-        endSeconds: 8,
+        endSeconds: 9,
         difficulty: "easy",
         tonicMidi: 60,
         notes: MY_GIRL_OPENING_MELODY,
@@ -84,7 +98,7 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         id: "main-guitar-riff",
         label: "Main guitar riff",
         startSeconds: 0,
-        endSeconds: 9,
+        endSeconds: 20,
         difficulty: "easy",
         tonicMidi: 55,
         notes: SMOKE_ON_THE_WATER_MAIN_RIFF,
@@ -95,15 +109,15 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
     id: "iron-man",
     title: "Iron Man",
     artist: "Black Sabbath",
-    performance: "Official audio · 2012 remaster",
-    youtubeVideoId: "pOfBdvuky1s",
+    performance: "Selected YouTube video",
+    youtubeVideoId: "h194IFE-E9o",
     key: "B minor",
     sections: [
       section({
         id: "main-guitar-riff",
         label: "Main guitar riff",
-        startSeconds: 28,
-        endSeconds: 36,
+        startSeconds: 24,
+        endSeconds: 40,
         difficulty: "easy",
         tonicMidi: 47,
         notes: IRON_MAN_MAIN_RIFF,
@@ -121,8 +135,8 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
       section({
         id: "bass-hook",
         label: "Bass hook",
-        startSeconds: 7.5,
-        endSeconds: 15,
+        startSeconds: 0,
+        endSeconds: 13,
         difficulty: "easy",
         tonicMidi: 52,
         notes: ANOTHER_ONE_BITES_THE_DUST_BASS_HOOK,
@@ -140,8 +154,8 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
       section({
         id: "bass-hook",
         label: "Bass hook",
-        startSeconds: 11,
-        endSeconds: 20,
+        startSeconds: 0,
+        endSeconds: 14,
         difficulty: "easy",
         tonicMidi: 54,
         notes: BILLIE_JEAN_BASS_HOOK,
@@ -159,8 +173,8 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
       section({
         id: "main-hook",
         label: "Main hook",
-        startSeconds: 43,
-        endSeconds: 51,
+        startSeconds: 14,
+        endSeconds: 28,
         difficulty: "easy",
         tonicMidi: 51,
         notes: BEAT_IT_MAIN_HOOK,
@@ -179,7 +193,7 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         id: "synth-hook",
         label: "Synth hook",
         startSeconds: 0,
-        endSeconds: 8,
+        endSeconds: 15,
         difficulty: "easy",
         tonicMidi: 48,
         notes: SWEET_DREAMS_SYNTH_HOOK,
@@ -197,8 +211,8 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
       section({
         id: "chorus-vocal",
         label: "Chorus vocal",
-        startSeconds: 63,
-        endSeconds: 71,
+        startSeconds: 64,
+        endSeconds: 80,
         difficulty: "easy",
         tonicMidi: 57,
         notes: TAKE_ON_ME_CHORUS_VOCAL,
@@ -217,7 +231,7 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         id: "opening-guitar-riff",
         label: "Opening guitar riff",
         startSeconds: 0,
-        endSeconds: 8,
+        endSeconds: 15,
         difficulty: "easy",
         tonicMidi: 54,
         notes: COME_AS_YOU_ARE_OPENING_RIFF,
@@ -235,8 +249,8 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
       section({
         id: "main-riff",
         label: "Main phrase",
-        startSeconds: 2,
-        endSeconds: 10.5,
+        startSeconds: 0,
+        endSeconds: 15,
         difficulty: "easy",
         tonicMidi: 52,
         notes: SEVEN_NATION_MAIN_RIFF,
@@ -254,8 +268,8 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
       section({
         id: "main-hook",
         label: "Main hook",
-        startSeconds: 9,
-        endSeconds: 17,
+        startSeconds: 0,
+        endSeconds: 10,
         difficulty: "easy",
         tonicMidi: 48,
         notes: TOXIC_MAIN_HOOK,
@@ -266,15 +280,15 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
     id: "bad-romance",
     title: "Bad Romance",
     artist: "Lady Gaga",
-    performance: "Official music video",
-    youtubeVideoId: "qrO4YZeyl0I",
+    performance: "Selected YouTube video",
+    youtubeVideoId: "TTOPBQhrvtQ",
     key: "A minor",
     sections: [
       section({
         id: "vocal-hook",
         label: "Vocal hook",
-        startSeconds: 43,
-        endSeconds: 51,
+        startSeconds: 0,
+        endSeconds: 15,
         difficulty: "easy",
         tonicMidi: 57,
         notes: BAD_ROMANCE_VOCAL_HOOK,
@@ -293,7 +307,7 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         id: "main-hook",
         label: "Main hook",
         startSeconds: 0,
-        endSeconds: 8,
+        endSeconds: 15,
         difficulty: "easy",
         tonicMidi: 49,
         notes: SHAPE_OF_YOU_MAIN_HOOK,
@@ -311,11 +325,277 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
       section({
         id: "synth-hook",
         label: "Synth hook",
-        startSeconds: 29,
-        endSeconds: 38,
+        startSeconds: 26,
+        endSeconds: 42,
         difficulty: "easy",
         tonicMidi: 53,
         notes: BLINDING_LIGHTS_SYNTH_HOOK,
+      }),
+    ],
+  },
+  {
+    id: "sunshine-of-your-love",
+    title: "Sunshine of Your Love",
+    artist: "Cream",
+    performance: "Selected YouTube video",
+    youtubeVideoId: "zt51rITH3EA",
+    key: "D minor",
+    sections: [
+      section({
+        id: "main-riff",
+        label: "Main riff",
+        startSeconds: 0,
+        endSeconds: 14,
+        difficulty: "easy",
+        tonicMidi: 50,
+        notes: SUNSHINE_OF_YOUR_LOVE_MAIN_RIFF,
+      }),
+    ],
+  },
+  {
+    id: "sweet-child-of-mine",
+    title: "Sweet Child O' Mine",
+    artist: "Guns N' Roses",
+    performance: "Official music video",
+    youtubeVideoId: "1w7OgIMMRc4",
+    key: "Db major",
+    sections: [
+      section({
+        id: "guitar-intro",
+        label: "Guitar intro",
+        startSeconds: 0,
+        endSeconds: 15,
+        difficulty: "easy",
+        tonicMidi: 49,
+        notes: SWEET_CHILD_OF_MINE_GUITAR_INTRO,
+      }),
+    ],
+  },
+  {
+    id: "satisfaction",
+    title: "(I Can't Get No) Satisfaction",
+    artist: "The Rolling Stones",
+    performance: "Selected YouTube video",
+    youtubeVideoId: "nrIPxlFzDi0",
+    key: "E major",
+    sections: [
+      section({
+        id: "main-riff",
+        label: "Main riff",
+        startSeconds: 0,
+        endSeconds: 15,
+        difficulty: "easy",
+        tonicMidi: 52,
+        notes: SATISFACTION_MAIN_RIFF,
+      }),
+    ],
+  },
+  {
+    id: "superstition",
+    title: "Superstition",
+    artist: "Stevie Wonder",
+    performance: "Official audio",
+    youtubeVideoId: "0CFuCYNx-1g",
+    key: "Eb minor",
+    sections: [
+      section({
+        id: "main-riff",
+        label: "Main riff",
+        startSeconds: 13,
+        endSeconds: 28,
+        difficulty: "easy",
+        tonicMidi: 51,
+        notes: SUPERSTITION_MAIN_RIFF,
+      }),
+    ],
+  },
+  {
+    id: "layla",
+    title: "Layla",
+    artist: "Derek and the Dominos",
+    performance: "Selected YouTube video",
+    youtubeVideoId: "uSquiIVLhrQ",
+    key: "D minor",
+    sections: [
+      section({
+        id: "main-riff",
+        label: "Main riff",
+        startSeconds: 0,
+        endSeconds: 15,
+        difficulty: "easy",
+        tonicMidi: 50,
+        notes: LAYLA_MAIN_RIFF,
+      }),
+    ],
+  },
+  {
+    id: "crazy-train",
+    title: "Crazy Train",
+    artist: "Ozzy Osbourne",
+    performance: "Official music video",
+    youtubeVideoId: "tMDFv5m18Pw",
+    key: "F# minor",
+    sections: [
+      section({
+        id: "main-riff",
+        label: "Main riff",
+        startSeconds: 13,
+        endSeconds: 28,
+        difficulty: "easy",
+        tonicMidi: 54,
+        notes: CRAZY_TRAIN_MAIN_RIFF,
+      }),
+    ],
+  },
+  {
+    id: "come-together",
+    title: "Come Together",
+    artist: "The Beatles",
+    performance: "Official music video",
+    youtubeVideoId: "45cYwDMibGo",
+    key: "D minor",
+    sections: [
+      section({
+        id: "main-riff",
+        label: "Main riff",
+        startSeconds: 0,
+        endSeconds: 15,
+        difficulty: "easy",
+        tonicMidi: 50,
+        notes: COME_TOGETHER_MAIN_RIFF,
+      }),
+    ],
+  },
+  {
+    id: "enter-sandman",
+    title: "Enter Sandman",
+    artist: "Metallica",
+    performance: "Official music video",
+    youtubeVideoId: "CD-E-LDc384",
+    key: "E minor",
+    sections: [
+      section({
+        id: "main-riff",
+        label: "Main riff",
+        startSeconds: 0,
+        endSeconds: 30,
+        difficulty: "easy",
+        tonicMidi: 52,
+        notes: ENTER_SANDMAN_MAIN_RIFF,
+      }),
+    ],
+  },
+  {
+    id: "hysteria",
+    title: "Hysteria",
+    artist: "Muse",
+    performance: "Official music video",
+    youtubeVideoId: "3dm_5qWWDV8",
+    key: "A minor",
+    sections: [
+      section({
+        id: "bass-intro",
+        label: "Bass intro",
+        startSeconds: 0,
+        endSeconds: 15,
+        difficulty: "easy",
+        tonicMidi: 57,
+        notes: HYSTERIA_BASS_INTRO,
+      }),
+    ],
+  },
+  {
+    id: "smooth",
+    title: "Smooth",
+    artist: "Santana",
+    performance: "Official music video",
+    youtubeVideoId: "6Whgn_iE5uc",
+    key: "A minor",
+    sections: [
+      section({
+        id: "guitar-intro",
+        label: "Guitar intro",
+        startSeconds: 0,
+        endSeconds: 15,
+        difficulty: "easy",
+        tonicMidi: 57,
+        notes: SMOOTH_GUITAR_INTRO,
+      }),
+    ],
+  },
+  {
+    id: "feel-good-inc",
+    title: "Feel Good Inc.",
+    artist: "Gorillaz",
+    performance: "Official music video",
+    youtubeVideoId: "HyHNuVaZJ-k",
+    key: "Eb minor",
+    sections: [
+      section({
+        id: "bassline",
+        label: "Bassline",
+        startSeconds: 14,
+        endSeconds: 28,
+        difficulty: "easy",
+        tonicMidi: 51,
+        notes: FEEL_GOOD_INC_BASSLINE,
+      }),
+    ],
+  },
+  {
+    id: "do-i-wanna-know",
+    title: "Do I Wanna Know?",
+    artist: "Arctic Monkeys",
+    performance: "Official music video",
+    youtubeVideoId: "pqrUQrAcfo4",
+    key: "G minor",
+    sections: [
+      section({
+        id: "main-riff",
+        label: "Main riff",
+        startSeconds: 0,
+        endSeconds: 15,
+        difficulty: "easy",
+        tonicMidi: 55,
+        notes: DO_I_WANNA_KNOW_MAIN_RIFF,
+      }),
+    ],
+  },
+  {
+    id: "uptown-funk",
+    title: "Uptown Funk",
+    artist: "Mark Ronson ft. Bruno Mars",
+    performance: "Official music video",
+    youtubeVideoId: "OPf0YbXqDm0",
+    key: "D minor",
+    sections: [
+      section({
+        id: "main-riff",
+        label: "Main riff",
+        startSeconds: 15,
+        endSeconds: 30,
+        difficulty: "easy",
+        tonicMidi: 50,
+        notes: UPTOWN_FUNK_MAIN_RIFF,
+      }),
+    ],
+  },
+  {
+    id: "bad-guy",
+    title: "Bad Guy",
+    artist: "Billie Eilish",
+    performance: "Official music video",
+    youtubeVideoId: "DyDfgMOUjCI",
+    key: "G minor",
+    sections: [
+      section({
+        id: "main-riff",
+        label: "Main riff",
+        startSeconds: 0,
+        endSeconds: 15,
+        difficulty: "easy",
+        tonicMidi: 55,
+        notes: BAD_GUY_MAIN_RIFF,
       }),
     ],
   },

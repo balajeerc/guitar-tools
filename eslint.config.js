@@ -147,6 +147,13 @@ export default [
     },
   },
   {
+    files: ["src/features/play-by-ear/catalog.ts"],
+    rules: {
+      // Curated song records are declarative data rather than executable complexity.
+      "max-lines": ["error", { max: 1000, skipBlankLines: true, skipComments: true }],
+    },
+  },
+  {
     files: ["**/*.{js,jsx}"],
     languageOptions: {
       ecmaVersion: 2020,

@@ -379,6 +379,40 @@
     text-align: center;
 }
 
+.play-ear-detected-details {
+    display: flex;
+    align-items: flex-end;
+    justify-self: end;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.play-ear-detected-details > span {
+    max-width: 180px;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: right;
+}
+
+.play-ear-heard-actions {
+    display: flex;
+    gap: 2px;
+}
+
+.play-ear-auto-clear-setting {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-text-muted);
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.play-ear-auto-clear-setting small {
+    font: inherit;
+}
+
 .play-ear-game > .audio-input-panel {
     width: min(100%, 760px);
 }
@@ -421,6 +455,15 @@
 
     .play-ear-transport {
         justify-content: center;
+    }
+
+    .play-ear-detected-details {
+        align-items: center;
+        justify-self: center;
+    }
+
+    .play-ear-detected-details > span {
+        text-align: center;
     }
 
     .play-ear-loop-actions a {

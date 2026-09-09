@@ -1,15 +1,20 @@
 import type { Melody } from "../melodies/catalog";
 import { createMelodyPlayer } from "../melodies/playback";
+import type { SynthTone } from "../melodies/tone";
 import { loadMelodyTone } from "../melodies/toneControl";
 import type { EarTrainingSection, EarTrainingSong } from "./catalog";
 
 export interface SimplifiedVersionPlayer {
   isPlaying: () => boolean;
+  playingSource: () => SimplifiedPlaybackSource;
   play: (song: EarTrainingSong, section: EarTrainingSection) => Promise<void>;
+  playNotes: (notes: readonly number[]) => Promise<void>;
   stop: () => void;
 }
 
-const SIMPLIFIED_VERSION_BPM = 112;
+export type SimplifiedPlaybackSource = "expected" | "heard" | null;
+
+const HEARD_NOTES_BPM = 112;
 
 function asMelody(song: EarTrainingSong, section: EarTrainingSection): Melody {
   return {
@@ -18,33 +23,60 @@ function asMelody(song: EarTrainingSong, section: EarTrainingSection): Melody {
     attribution: song.artist,
     key: song.key,
     difficulty: section.difficulty,
-    bpm: SIMPLIFIED_VERSION_BPM,
-    notes: section.notes.map((midi) => ({ midi, beats: 1 })),
+    bpm: section.bpm,
+    notes: section.notes.map((midi, index) => ({
+      midi,
+      beats: section.rhythm[index],
+      restAfterBeats: section.rests?.[index],
+    })),
     degrees: section.degrees,
+  };
+}
+
+function asHeardNotesMelody(notes: readonly number[]): Melody {
+  return {
+    id: "heard-notes",
+    title: "Heard notes",
+    attribution: "Your input",
+    key: "",
+    difficulty: "easy",
+    bpm: HEARD_NOTES_BPM,
+    notes: notes.map((midi) => ({ midi, beats: 1 })),
+    degrees: [],
   };
 }
 
 export function createSimplifiedVersionPlayer(): SimplifiedVersionPlayer {
   const player = createMelodyPlayer();
-  let playing = false;
+  let source: SimplifiedPlaybackSource = null;
   let playbackId = 0;
 
   function stop(): void {
     playbackId += 1;
-    playing = false;
+    source = null;
     player.stop();
   }
 
-  async function play(song: EarTrainingSong, section: EarTrainingSection): Promise<void> {
-    if (playing) return;
+  async function playMelody(
+    melody: Melody,
+    nextSource: Exclude<SimplifiedPlaybackSource, null>,
+    tone: SynthTone,
+  ): Promise<void> {
+    if (source !== null) return;
     const currentPlaybackId = ++playbackId;
-    playing = true;
+    source = nextSource;
     try {
-      await player.play(asMelody(song, section), loadMelodyTone());
+      await player.play(melody, tone);
     } finally {
-      if (currentPlaybackId === playbackId) playing = false;
+      if (currentPlaybackId === playbackId) source = null;
     }
   }
 
-  return { isPlaying: () => playing, play, stop };
+  return {
+    isPlaying: () => source !== null,
+    playingSource: () => source,
+    play: (song, section) => playMelody(asMelody(song, section), "expected", section.synthTone ?? loadMelodyTone()),
+    playNotes: (notes) => playMelody(asHeardNotesMelody(notes), "heard", loadMelodyTone()),
+    stop,
+  };
 }

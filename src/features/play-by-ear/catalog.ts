@@ -1,4 +1,5 @@
 import { degreesFromTonic } from "../melodies/manualGuess";
+import type { SynthTone } from "../melodies/tone";
 
 export type EarSectionDifficulty = "easy" | "medium" | "hard";
 
@@ -8,7 +9,11 @@ export interface EarTrainingSection {
   startSeconds: number;
   endSeconds: number;
   difficulty: EarSectionDifficulty;
+  bpm: number;
   notes: readonly number[];
+  rhythm: readonly number[];
+  rests?: readonly number[];
+  synthTone?: SynthTone;
   degrees: readonly string[];
 }
 
@@ -28,14 +33,20 @@ interface SectionDefinition extends Omit<EarTrainingSection, "degrees"> {
 
 function section(definition: SectionDefinition): EarTrainingSection {
   const { tonicMidi, ...details } = definition;
+  if (details.notes.length !== details.rhythm.length) {
+    throw new Error(`${details.id} needs one beat value per note`);
+  }
+  if (details.rests && details.notes.length !== details.rests.length) {
+    throw new Error(`${details.id} needs one rest value per note`);
+  }
   return { ...details, degrees: degreesFromTonic(details.notes, tonicMidi) };
 }
 
 const SEVEN_NATION_MAIN_RIFF = [52, 52, 55, 52, 50, 48, 47] as const;
 const MY_GIRL_OPENING_MELODY = [60, 62, 64, 67, 69, 72] as const;
-const SMOKE_ON_THE_WATER_MAIN_RIFF = [55, 58, 60, 55, 58, 61, 60] as const;
-const IRON_MAN_MAIN_RIFF = [47, 47, 50, 50, 52, 52] as const;
-const ANOTHER_ONE_BITES_THE_DUST_BASS_HOOK = [52, 52, 52, 52, 55, 52, 57] as const;
+const SMOKE_ON_THE_WATER_MAIN_RIFF = [55, 58, 60, 55, 58, 61, 60, 55, 58, 60, 58, 55] as const;
+const IRON_MAN_MAIN_RIFF = [59, 62, 62, 64, 64, 67, 66, 67, 66, 67, 66, 62, 62, 64, 64] as const;
+const ANOTHER_ONE_BITES_THE_DUST_BASS_HOOK = [40, 40, 40, 40, 40, 40, 43, 40, 45] as const;
 const BILLIE_JEAN_BASS_HOOK = [54, 61, 64, 66, 64, 61, 59, 61] as const;
 const BEAT_IT_MAIN_HOOK = [51, 54, 56, 59, 58, 54, 51] as const;
 const SWEET_DREAMS_SYNTH_HOOK = [48, 48, 55, 48, 56, 48, 55] as const;
@@ -64,7 +75,8 @@ const POSSESS_YOUR_HEART_BASS_LINE_PART_TWO = [53, 50, 50, 50, 53, 50, 53, 55, 5
 const POSSESS_YOUR_HEART_PIANO_MELODY = [62, 62, 60, 57, 53, 53, 55, 60] as const;
 
 /**
- * Curated by hand: YouTube supplies playback only; answers are stored here.
+ * Curated by hand from the linked performances. Fast songs may use half-time BPM so the
+ * simplified phrase stays useful for learning; the relative rhythm remains unchanged.
  */
 export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
   {
@@ -78,11 +90,13 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
       section({
         id: "opening-guitar-melody",
         label: "Opening guitar melody",
-        startSeconds: 0,
-        endSeconds: 9,
+        startSeconds: 4,
+        endSeconds: 10,
         difficulty: "easy",
         tonicMidi: 60,
+        bpm: 120,
         notes: MY_GIRL_OPENING_MELODY,
+        rhythm: [1.5, 0.5, 0.5, 0.5, 0.5, 0.5],
       }),
     ],
   },
@@ -97,11 +111,13 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
       section({
         id: "main-guitar-riff",
         label: "Main guitar riff",
-        startSeconds: 0,
-        endSeconds: 20,
+        startSeconds: 6.5,
+        endSeconds: 23,
         difficulty: "easy",
         tonicMidi: 55,
+        bpm: 120,
         notes: SMOKE_ON_THE_WATER_MAIN_RIFF,
+        rhythm: [1, 1, 1.5, 1, 1, 0.5, 2, 1, 1, 1.5, 1, 3.5],
       }),
     ],
   },
@@ -116,11 +132,13 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
       section({
         id: "main-guitar-riff",
         label: "Main guitar riff",
-        startSeconds: 24,
-        endSeconds: 40,
+        startSeconds: 28,
+        endSeconds: 41.8,
         difficulty: "easy",
         tonicMidi: 47,
+        bpm: 120,
         notes: IRON_MAN_MAIN_RIFF,
+        rhythm: [2, 2, 1, 1, 2, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1, 1, 1, 2],
       }),
     ],
   },
@@ -135,11 +153,15 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
       section({
         id: "bass-hook",
         label: "Bass hook",
-        startSeconds: 0,
-        endSeconds: 13,
+        startSeconds: 12,
+        endSeconds: 20.5,
         difficulty: "easy",
         tonicMidi: 52,
+        bpm: 110,
         notes: ANOTHER_ONE_BITES_THE_DUST_BASS_HOOK,
+        rhythm: [0.5, 0.5, 0.5, 0.25, 0.5, 0.5, 0.5, 0.25, 0.25],
+        rests: [0.5, 0.5, 1.25, 0, 0, 0, 0, 0, 2],
+        synthTone: "bass",
       }),
     ],
   },
@@ -158,7 +180,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 14,
         difficulty: "easy",
         tonicMidi: 54,
+        bpm: 117,
         notes: BILLIE_JEAN_BASS_HOOK,
+        rhythm: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1],
       }),
     ],
   },
@@ -177,7 +201,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 28,
         difficulty: "easy",
         tonicMidi: 51,
+        bpm: 139,
         notes: BEAT_IT_MAIN_HOOK,
+        rhythm: [0.5, 0.5, 1, 1, 0.5, 0.5, 2],
       }),
     ],
   },
@@ -196,7 +222,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 15,
         difficulty: "easy",
         tonicMidi: 48,
+        bpm: 125,
         notes: SWEET_DREAMS_SYNTH_HOOK,
+        rhythm: [0.5, 0.5, 1, 1, 1, 1, 2],
       }),
     ],
   },
@@ -215,7 +243,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 80,
         difficulty: "easy",
         tonicMidi: 57,
+        bpm: 85,
         notes: TAKE_ON_ME_CHORUS_VOCAL,
+        rhythm: [0.5, 0.5, 1, 1, 2],
       }),
     ],
   },
@@ -234,7 +264,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 15,
         difficulty: "easy",
         tonicMidi: 54,
+        bpm: 120,
         notes: COME_AS_YOU_ARE_OPENING_RIFF,
+        rhythm: [0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 0.5, 1.5],
       }),
     ],
   },
@@ -253,7 +285,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 15,
         difficulty: "easy",
         tonicMidi: 52,
+        bpm: 124,
         notes: SEVEN_NATION_MAIN_RIFF,
+        rhythm: [1, 0.5, 1.5, 0.5, 0.5, 2, 2],
       }),
     ],
   },
@@ -272,7 +306,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 10,
         difficulty: "easy",
         tonicMidi: 48,
+        bpm: 72,
         notes: TOXIC_MAIN_HOOK,
+        rhythm: [0.5, 0.5, 1, 0.5, 0.5, 1, 0.5, 1.5],
       }),
     ],
   },
@@ -291,7 +327,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 15,
         difficulty: "easy",
         tonicMidi: 57,
+        bpm: 119,
         notes: BAD_ROMANCE_VOCAL_HOOK,
+        rhythm: [0.5, 0.5, 1, 0.5, 0.5, 0.5, 2],
       }),
     ],
   },
@@ -310,7 +348,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 15,
         difficulty: "easy",
         tonicMidi: 49,
+        bpm: 96,
         notes: SHAPE_OF_YOU_MAIN_HOOK,
+        rhythm: [0.5, 1, 0.5, 1, 0.5, 0.5, 1, 2],
       }),
     ],
   },
@@ -329,7 +369,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 42,
         difficulty: "easy",
         tonicMidi: 53,
+        bpm: 86,
         notes: BLINDING_LIGHTS_SYNTH_HOOK,
+        rhythm: [0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 1.5],
       }),
     ],
   },
@@ -348,7 +390,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 14,
         difficulty: "easy",
         tonicMidi: 50,
+        bpm: 115,
         notes: SUNSHINE_OF_YOUR_LOVE_MAIN_RIFF,
+        rhythm: [1, 0.5, 0.5, 1, 0.5, 0.5, 1, 1, 0.5, 2],
       }),
     ],
   },
@@ -367,7 +411,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 15,
         difficulty: "easy",
         tonicMidi: 49,
+        bpm: 125,
         notes: SWEET_CHILD_OF_MINE_GUITAR_INTRO,
+        rhythm: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1],
       }),
     ],
   },
@@ -386,7 +432,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 15,
         difficulty: "easy",
         tonicMidi: 52,
+        bpm: 136,
         notes: SATISFACTION_MAIN_RIFF,
+        rhythm: [0.5, 0.5, 1, 0.5, 0.5, 1, 0.5, 1.5],
       }),
     ],
   },
@@ -405,7 +453,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 28,
         difficulty: "easy",
         tonicMidi: 51,
+        bpm: 100,
         notes: SUPERSTITION_MAIN_RIFF,
+        rhythm: [0.5, 0.5, 1, 0.5, 0.5, 1, 2],
       }),
     ],
   },
@@ -424,7 +474,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 15,
         difficulty: "easy",
         tonicMidi: 50,
+        bpm: 116,
         notes: LAYLA_MAIN_RIFF,
+        rhythm: [0.5, 0.5, 0.5, 1, 0.5, 0.5, 2],
       }),
     ],
   },
@@ -443,7 +495,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 28,
         difficulty: "easy",
         tonicMidi: 54,
+        bpm: 138,
         notes: CRAZY_TRAIN_MAIN_RIFF,
+        rhythm: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1],
       }),
     ],
   },
@@ -462,7 +516,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 15,
         difficulty: "easy",
         tonicMidi: 50,
+        bpm: 82,
         notes: COME_TOGETHER_MAIN_RIFF,
+        rhythm: [0.5, 0.5, 1, 1, 1, 2],
       }),
     ],
   },
@@ -481,7 +537,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 30,
         difficulty: "easy",
         tonicMidi: 52,
+        bpm: 123,
         notes: ENTER_SANDMAN_MAIN_RIFF,
+        rhythm: [1, 1, 0.5, 0.5, 1, 2],
       }),
     ],
   },
@@ -500,7 +558,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 15,
         difficulty: "easy",
         tonicMidi: 57,
+        bpm: 93,
         notes: HYSTERIA_BASS_INTRO,
+        rhythm: [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1],
       }),
     ],
   },
@@ -519,7 +579,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 15,
         difficulty: "easy",
         tonicMidi: 57,
+        bpm: 116,
         notes: SMOOTH_GUITAR_INTRO,
+        rhythm: [0.5, 0.5, 1, 0.5, 0.5, 1, 1, 2],
       }),
     ],
   },
@@ -538,7 +600,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 28,
         difficulty: "easy",
         tonicMidi: 51,
+        bpm: 139,
         notes: FEEL_GOOD_INC_BASSLINE,
+        rhythm: [0.5, 0.5, 1, 1, 1, 1, 0.5, 1.5],
       }),
     ],
   },
@@ -557,7 +621,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 15,
         difficulty: "easy",
         tonicMidi: 55,
+        bpm: 85,
         notes: DO_I_WANNA_KNOW_MAIN_RIFF,
+        rhythm: [1, 0.5, 0.5, 1, 0.5, 2],
       }),
     ],
   },
@@ -576,7 +642,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 30,
         difficulty: "easy",
         tonicMidi: 50,
+        bpm: 115,
         notes: UPTOWN_FUNK_MAIN_RIFF,
+        rhythm: [0.5, 0.5, 0.5, 1, 0.5, 0.5, 0.5, 1.5],
       }),
     ],
   },
@@ -595,7 +663,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 15,
         difficulty: "easy",
         tonicMidi: 55,
+        bpm: 135,
         notes: BAD_GUY_MAIN_RIFF,
+        rhythm: [0.5, 0.5, 0.5, 0.5, 1, 0.5, 0.5, 0.5, 0.5, 2],
       }),
     ],
   },
@@ -614,7 +684,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 24.5,
         difficulty: "easy",
         tonicMidi: 50,
+        bpm: 120,
         notes: POSSESS_YOUR_HEART_BASS_LINE_PART_ONE,
+        rhythm: [0.5, 0.5, 0.5, 1, 1, 0.5, 0.5, 0.5, 1, 1.5],
       }),
       section({
         id: "opening-bass-line-part-two",
@@ -623,7 +695,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 28.5,
         difficulty: "easy",
         tonicMidi: 50,
+        bpm: 120,
         notes: POSSESS_YOUR_HEART_BASS_LINE_PART_TWO,
+        rhythm: [0.5, 0.5, 0.5, 1, 0.5, 1, 0.5, 0.5, 2],
       }),
       section({
         id: "piano-melody",
@@ -632,7 +706,9 @@ export const EAR_TRAINING_SONGS: readonly EarTrainingSong[] = [
         endSeconds: 100,
         difficulty: "easy",
         tonicMidi: 62,
+        bpm: 120,
         notes: POSSESS_YOUR_HEART_PIANO_MELODY,
+        rhythm: [1, 0.5, 0.5, 2, 1, 0.5, 0.5, 3],
       }),
     ],
   },

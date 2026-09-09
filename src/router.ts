@@ -72,7 +72,7 @@ export function initRouter(): void {
 
   function handleRoute(): void {
     const hash = window.location.hash.slice(1) || "scales";
-    const route = routes[hash];
+    const route = routes[hash.split("/")[0]];
     if (route) {
       route();
     } else {

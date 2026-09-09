@@ -1,8 +1,8 @@
 import type { Melody } from "./catalog";
-import { melodyToneProfile, type MelodyTone } from "./tone";
+import { melodyToneProfile, type SynthTone } from "./tone";
 
 export interface MelodyPlayer {
-  play: (melody: Melody, tone: MelodyTone) => Promise<void>;
+  play: (melody: Melody, tone: SynthTone) => Promise<void>;
   stop: () => void;
 }
 
@@ -17,7 +17,7 @@ function scheduleNote(
   midi: number,
   start: number,
   duration: number,
-  tone: MelodyTone,
+  tone: SynthTone,
 ): OscillatorNode {
   const profile = melodyToneProfile(tone);
   const oscillator = ctx.createOscillator();
@@ -53,17 +53,17 @@ export function createMelodyPlayer(): MelodyPlayer {
     scheduled = [];
   }
 
-  async function play(melody: Melody, tone: MelodyTone): Promise<void> {
+  async function play(melody: Melody, tone: SynthTone): Promise<void> {
     stop();
     context ??= new AudioContext();
     const ctx = context;
     if (ctx.state === "suspended") await ctx.resume();
     const beatSeconds = 60 / melody.bpm;
     let cursor = ctx.currentTime + START_DELAY_SECONDS;
-    scheduled = melody.notes.map(({ midi, beats }) => {
+    scheduled = melody.notes.map(({ midi, beats, restAfterBeats = 0 }) => {
       const duration = beats * beatSeconds;
       const oscillator = scheduleNote(ctx, midi, cursor, duration * 0.88, tone);
-      cursor += duration;
+      cursor += duration + restAfterBeats * beatSeconds;
       return oscillator;
     });
     await new Promise<void>((resolve) => window.setTimeout(resolve, (cursor - ctx.currentTime) * 1000));

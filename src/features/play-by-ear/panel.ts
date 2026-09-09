@@ -78,11 +78,20 @@ export function playByEarPanelHtml(): string {
           <div class="melodies-detected" aria-live="polite">
             <span class="melodies-detected-label">Heard</span>
             <strong id="playEarDetectedNote">—</strong>
-            <span id="playEarDetectedInterval">Waiting for your guitar</span>
+            <div class="play-ear-detected-details">
+              <span id="playEarDetectedInterval">Waiting for your guitar</span>
+              <div class="play-ear-heard-actions">
+                <button type="button" class="melodies-link-btn" id="playEarResetNotesBtn" disabled>Reset notes</button>
+                <button type="button" class="melodies-link-btn" id="playEarPlayHeardBtn" disabled>Play heard notes</button>
+              </div>
+              <label class="play-ear-auto-clear-setting">
+                <input type="checkbox" id="playEarAutoClearNotes" checked />
+                <small>Auto-clear after 5 seconds</small>
+              </label>
+            </div>
           </div>
           <div class="melodies-actions">
             <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn" disabled>Start playing</button>
-            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarResetNotesBtn" disabled>Reset notes</button>
             <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn">Reveal answer</button>
           </div>
           <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
@@ -95,7 +104,10 @@ export function playByEarPanelHtml(): string {
             <input id="playEarIntervalInput" class="melodies-interval-input" type="text" inputmode="numeric"
               pattern="[1-7]*" autocomplete="off" aria-label="Section scale degrees" />
           </div>
-          <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled>Check intervals</button>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled>Check intervals</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarManualRevealBtn">Reveal answer</button>
+          </div>
         </div>
 
         <div class="melodies-result" id="playEarResult" hidden></div>

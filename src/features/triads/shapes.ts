@@ -3,6 +3,7 @@ import { STRING_BASE_PITCH, TOTAL_FRETS } from "../../shared/constants";
 
 export type TriadDegree = "root" | "third" | "fifth";
 export type TriadInversion = "root" | "first" | "second";
+export type TriadQuality = ScaleType | "diminished";
 export type OrbitDegree = "minorThird" | "majorThird" | "flatSeventh";
 
 export interface TriadStringSet {
@@ -50,7 +51,7 @@ const INVERSIONS: readonly TriadInversion[] = ["root", "first", "second"];
 // These neighboring tones reproduce the compact "blues cluster" surrounding
 // each inversion: R, b3, 3, 5, b7. The b7 is available on both sides of the
 // shape, two frets below the root and three frets above the fifth.
-const ORBIT_RULES: Record<ScaleType, Record<TriadDegree, {
+const ORBIT_RULES: Record<TriadQuality, Record<TriadDegree, {
   readonly degree: OrbitDegree;
   readonly fretOffset: number;
 }>> = {
@@ -64,10 +65,19 @@ const ORBIT_RULES: Record<ScaleType, Record<TriadDegree, {
     third: { degree: "majorThird", fretOffset: 1 },
     fifth: { degree: "flatSeventh", fretOffset: 3 },
   },
+  diminished: {
+    root: { degree: "flatSeventh", fretOffset: -2 },
+    third: { degree: "majorThird", fretOffset: 1 },
+    fifth: { degree: "flatSeventh", fretOffset: 4 },
+  },
 };
 
-function degreeSemitones(scaleType: ScaleType): Record<TriadDegree, number> {
-  return { root: 0, third: scaleType === "major" ? 4 : 3, fifth: 7 };
+function degreeSemitones(quality: TriadQuality): Record<TriadDegree, number> {
+  return {
+    root: 0,
+    third: quality === "major" ? 4 : 3,
+    fifth: quality === "diminished" ? 6 : 7,
+  };
 }
 
 function positiveModulo(value: number, modulus: number): number {
@@ -101,10 +111,10 @@ function createShape(
 
 export function getTriadShapes(
   rootIndex: number,
-  scaleType: ScaleType,
+  quality: TriadQuality,
   stringSet: TriadStringSet,
 ): TriadShape[] {
-  const semitones = degreeSemitones(scaleType);
+  const semitones = degreeSemitones(quality);
   const shapes: TriadShape[] = [];
   const lowestPitch = Math.min(...stringSet.stringIndices.map((i) => STRING_BASE_PITCH[i] + 7));
   const highestPitch = Math.max(...stringSet.stringIndices.map((i) => STRING_BASE_PITCH[i] + 7 + TOTAL_FRETS));
@@ -121,9 +131,9 @@ export function getTriadShapes(
   return shapes.sort((a, b) => a.centerFret - b.centerFret);
 }
 
-export function getOrbitNotes(shape: TriadShape, scaleType: ScaleType): OrbitNotePosition[] {
+export function getOrbitNotes(shape: TriadShape, quality: TriadQuality): OrbitNotePosition[] {
   return shape.notes.flatMap(({ degree, stringIdx, fret }) => {
-    const rule = ORBIT_RULES[scaleType][degree];
+    const rule = ORBIT_RULES[quality][degree];
     const orbitFret = fret + rule.fretOffset;
     if (orbitFret < 0 || orbitFret > TOTAL_FRETS) return [];
     return [{

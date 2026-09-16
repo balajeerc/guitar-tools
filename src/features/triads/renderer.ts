@@ -1,4 +1,5 @@
 import type { ScaleType } from "../../shared/types";
+import { NOTES } from "../../shared/constants";
 import {
   STRING_ORDER,
   STRING_Y_POSITIONS,
@@ -20,8 +21,25 @@ import {
   type OrbitNotePosition,
   type TriadDegree,
   type TriadInversion,
+  type TriadQuality,
   type TriadShape,
+  type TriadStringSet,
 } from "./shapes";
+import {
+  getNearestTriadGroupings,
+  progressionStepLabel,
+  type ProgressionChord,
+} from "./grouping";
+
+export interface TriadsGroupingView {
+  readonly chords: readonly ProgressionChord[];
+  readonly activeStepIndex: number;
+}
+
+interface TriadBoardView {
+  readonly set: TriadStringSet;
+  readonly shapes: readonly TriadShape[];
+}
 
 const INVERSION_LABELS: Record<TriadInversion, { primary: string; secondary: string }> = {
   root: { primary: "R", secondary: "position" },
@@ -80,11 +98,11 @@ function orbitLineCoordinates(note: OrbitNotePosition, config: LayoutConfig): st
 
 function generateOrbitLinesHTML(
   shapes: readonly TriadShape[],
-  scaleType: ScaleType,
+  quality: TriadQuality,
   config: LayoutConfig,
 ): string {
   return shapes.map((shape) => {
-    const lines = getOrbitNotes(shape, scaleType)
+    const lines = getOrbitNotes(shape, quality)
       .map((note) => `<line ${orbitLineCoordinates(note, config)}></line>`)
       .join("");
     return `<svg class="triad-shape-path triad-orbit-path" aria-hidden="true" data-triad-shape="${shape.id}">
@@ -95,12 +113,14 @@ function generateOrbitLinesHTML(
 
 function generateNotesHTML(
   shapes: readonly TriadShape[],
-  scaleType: ScaleType,
+  quality: TriadQuality,
   config: LayoutConfig,
 ): string {
   return shapes.flatMap((shape) => shape.notes.map(({ degree, stringIdx, fret }) => {
     const details = DEGREE_DETAILS[degree];
-    const label = degree === "third" && scaleType === "minor" ? "♭3" : details.label;
+    let label = details.label;
+    if (degree === "third" && quality !== "major") label = "♭3";
+    if (degree === "fifth" && quality === "diminished") label = "♭5";
     const posStyle = `${config.fretAxis}: ${fretCenterPosition(fret, config)}px; ${config.stringAxis}: ${stringPosition(stringIdx, config)}px;`;
     return `<div class="note ${details.className}" style="${posStyle}" data-triad-shape="${shape.id}">${label}</div>`;
   })).join("");
@@ -108,10 +128,10 @@ function generateNotesHTML(
 
 function generateOrbitNotesHTML(
   shapes: readonly TriadShape[],
-  scaleType: ScaleType,
+  quality: TriadQuality,
   config: LayoutConfig,
 ): string {
-  return shapes.flatMap((shape) => getOrbitNotes(shape, scaleType).map(({ degree, stringIdx, fret }) => {
+  return shapes.flatMap((shape) => getOrbitNotes(shape, quality).map(({ degree, stringIdx, fret }) => {
     const posStyle = `${config.fretAxis}: ${fretCenterPosition(fret, config)}px; ${config.stringAxis}: ${stringPosition(stringIdx, config)}px;`;
     return `<div class="note triad-orbit-note" style="${posStyle}" data-triad-shape="${shape.id}" title="Blues cluster note">${ORBIT_LABELS[degree]}</div>`;
   })).join("");
@@ -143,14 +163,39 @@ function attachHeaderHover(header: HTMLElement, board: HTMLElement): void {
   }
 }
 
-export function renderTriads(rootIndex: number, scaleType: ScaleType, showOrbit = false): void {
-  const container = document.getElementById("triadBoards");
-  if (!container) return;
-  const config = getLayoutConfig();
+function qualityLabel(quality: TriadQuality): string {
+  return quality[0].toUpperCase() + quality.slice(1);
+}
 
-  container.innerHTML = TRIAD_STRING_SETS.map((set) => `
-    <section class="triad-string-set">
-      <h2 class="triad-string-set-title">${set.label}<span>${set.tuning}</span></h2>
+function getBoardViews(
+  rootIndex: number,
+  scaleType: ScaleType,
+  grouping?: TriadsGroupingView,
+): TriadBoardView[] {
+  return TRIAD_STRING_SETS.map((set) => {
+    if (!grouping) return { set, shapes: getTriadShapes(rootIndex, scaleType, set) };
+    const groupings = getNearestTriadGroupings(grouping.chords, set);
+    const activeShapes = groupings.flatMap((shapes) => shapes[grouping.activeStepIndex] ?? []);
+    const uniqueShapes = [...new Map(activeShapes.map((shape) => [shape.id, shape])).values()];
+    return { set, shapes: uniqueShapes };
+  });
+}
+
+function chordDetails(chord?: ProgressionChord): string {
+  if (!chord) return "";
+  return ` · ${NOTES[chord.rootIndex]} ${qualityLabel(chord.quality)} (${progressionStepLabel(chord)})`;
+}
+
+function renderBoardShells(
+  boards: readonly TriadBoardView[],
+  config: LayoutConfig,
+  details: string,
+  isGrouping: boolean,
+): string {
+  const groupingClass = isGrouping ? " triad-grouping-step" : "";
+  return boards.map(({ set }) => `
+    <section class="triad-string-set${groupingClass}">
+      <h2 class="triad-string-set-title">${set.label}<span>${set.tuning}${details}</span></h2>
       <div class="fretboard-section">
         <div class="caged-header triad-header" id="${set.id}-header"></div>
         <div class="fretboard-container">
@@ -159,19 +204,42 @@ export function renderTriads(rootIndex: number, scaleType: ScaleType, showOrbit 
         </div>
       </div>
     </section>`).join("");
+}
 
-  for (const set of TRIAD_STRING_SETS) {
-    const header = document.getElementById(`${set.id}-header`);
-    const board = document.getElementById(`${set.id}-board`);
-    if (!header || !board) continue;
-    const shapes = getTriadShapes(rootIndex, scaleType, set);
-    sizeCagedHeader(header, config);
-    header.innerHTML = generateHeaderHTML(shapes, config);
-    board.innerHTML = generateFretLinesHTML(config) + generateDotsHTML(config)
-      + generateStringsHTML(config) + generateShapeLinesHTML(shapes, config)
-      + (showOrbit ? generateOrbitLinesHTML(shapes, scaleType, config) : "")
-      + generateNotesHTML(shapes, scaleType, config)
-      + (showOrbit ? generateOrbitNotesHTML(shapes, scaleType, config) : "");
-    attachHeaderHover(header, board);
-  }
+function populateBoard(
+  boardView: TriadBoardView,
+  quality: TriadQuality,
+  showOrbit: boolean,
+  config: LayoutConfig,
+): void {
+  const { set, shapes } = boardView;
+  const header = document.getElementById(`${set.id}-header`);
+  const board = document.getElementById(`${set.id}-board`);
+  if (!header || !board) return;
+  sizeCagedHeader(header, config);
+  header.innerHTML = generateHeaderHTML(shapes, config);
+  board.innerHTML = generateFretLinesHTML(config) + generateDotsHTML(config)
+    + generateStringsHTML(config) + generateShapeLinesHTML(shapes, config)
+    + (showOrbit ? generateOrbitLinesHTML(shapes, quality, config) : "")
+    + generateNotesHTML(shapes, quality, config)
+    + (showOrbit ? generateOrbitNotesHTML(shapes, quality, config) : "");
+  attachHeaderHover(header, board);
+}
+
+export function renderTriads(
+  rootIndex: number,
+  scaleType: ScaleType,
+  showOrbit = false,
+  grouping?: TriadsGroupingView,
+): void {
+  const container = document.getElementById("triadBoards");
+  if (!container) return;
+  const config = getLayoutConfig();
+  const activeChord = grouping?.chords[grouping.activeStepIndex];
+  const boards = getBoardViews(rootIndex, scaleType, grouping);
+  const quality = activeChord?.quality ?? scaleType;
+
+  container.classList.toggle("triad-boards-grouping", Boolean(grouping));
+  container.innerHTML = renderBoardShells(boards, config, chordDetails(activeChord), Boolean(grouping));
+  for (const board of boards) populateBoard(board, quality, showOrbit, config);
 }

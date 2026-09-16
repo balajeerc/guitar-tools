@@ -879,6 +879,109 @@ body {
 }
 
 /* Triads */
+#triadsControlsPanel {
+    flex-wrap: wrap;
+}
+
+.triads-grouping-controls[hidden],
+.triads-step-status[hidden] {
+    display: none;
+}
+
+.triads-progression-editor {
+    display: inline-flex;
+    gap: 6px;
+    padding: 4px;
+    background: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+
+.triads-progression-slot {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.triads-degree-btn,
+.triads-quality-btn {
+    min-width: 46px;
+    color: var(--color-text-secondary);
+    background: var(--color-surface);
+    border: 0;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    font-family: inherit;
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.triads-degree-btn {
+    min-height: 33px;
+    color: var(--color-primary);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.triads-quality-btn {
+    min-height: 20px;
+    color: var(--color-text-muted);
+    background: transparent;
+    box-shadow: none;
+    font-size: 9px;
+    font-weight: 650;
+}
+
+.triads-degree-btn:hover,
+.triads-quality-btn:hover {
+    color: var(--color-text);
+    background: color-mix(in srgb, var(--color-primary) 9%, var(--color-surface));
+}
+
+.triads-quality-btn.is-minor {
+    color: var(--color-primary);
+}
+
+.triads-step-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    margin: -8px 0 18px;
+}
+
+.triads-active-chord {
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.triads-step-indicator {
+    display: flex;
+    gap: 7px;
+}
+
+.triads-step-dash {
+    width: 30px;
+    height: 5px;
+    padding: 0;
+    background: var(--color-border-strong);
+    border: 0;
+    border-radius: 99px;
+    cursor: pointer;
+    transition: width 180ms ease, background-color 180ms ease, opacity 180ms ease;
+}
+
+.triads-step-dash.active {
+    width: 42px;
+    background: var(--color-primary);
+}
+
+.triads-step-status.is-paused .triads-step-dash:not(.active) {
+    opacity: 0.45;
+}
+
 .triad-boards {
     display: grid;
     gap: 24px;
@@ -936,6 +1039,39 @@ body {
     border: 2px dashed var(--color-orbit-border);
     color: var(--color-orbit-text);
     font-size: 10px;
+}
+
+.triad-grouping-step .note {
+    animation: triad-grouping-note-enter 320ms ease-out both;
+}
+
+.triad-grouping-step .triad-shape-path polyline,
+.triad-grouping-step .triad-orbit-path line {
+    animation: triad-grouping-line-enter 360ms ease-out both;
+}
+
+@keyframes triad-grouping-note-enter {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.72);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes triad-grouping-line-enter {
+    from { opacity: 0; }
+    to { opacity: 0.5; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .triad-grouping-step .note,
+    .triad-grouping-step .triad-shape-path polyline,
+    .triad-grouping-step .triad-orbit-path line {
+        animation: none;
+    }
 }
 
 /* Fretboard */
@@ -1793,6 +1929,23 @@ body {
     .control-group {
         flex-wrap: wrap;
         justify-content: center;
+    }
+
+    .triads-grouping-controls {
+        width: 100%;
+    }
+
+    .triads-progression-editor {
+        gap: 4px;
+    }
+
+    .triads-degree-btn,
+    .triads-quality-btn {
+        min-width: 42px;
+    }
+
+    .triads-step-status {
+        margin: 12px 0 16px;
     }
 
     .highlight-control-group {

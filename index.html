@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B's Guitar Tools</title>
+    <link rel="icon" type="image/png" href="/guitar-tools/favicon.png">
+    <link rel="manifest" href="/guitar-tools/manifest.webmanifest">
+    <meta name="theme-color" content="#667eea">
+    <meta name="color-scheme" content="light dark">
+    <link rel="apple-touch-icon" href="/guitar-tools/icons/apple-touch-icon-180x180.png">
+    <script async src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        (function () {
+            var t = localStorage.getItem('theme');
+            if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme:dark)').matches))
+                document.documentElement.setAttribute('data-theme', 'dark');
+            else
+                document.documentElement.setAttribute('data-theme', 'light');
+        })();
+    </script>
+  <script type="module" crossorigin src="/guitar-tools/assets/index-Cybbva-u.js"></script>
+  <link rel="stylesheet" crossorigin href="/guitar-tools/assets/index-DbeUjupi.css">
+</head>
+
+<body>
+    <!-- Fixed HTML -->
+    <nav class="main-nav">
+        <div class="nav-group">
+            <img src="/guitar-tools/logo-dark.png" alt="Guitar Tools" class="nav-logo" />
+            <div class="nav-container">
+                <a href="#scales" class="nav-link">Scales</a>
+                <a href="#triads" class="nav-link">Triads</a>
+                <a href="#fret-walk" class="nav-link">Fret Walk</a>
+                <a href="#fretboard-discovery" class="nav-link">Fretboard</a>
+                <a href="#circle-of-fifths" class="nav-link">Circle of 5ths</a>
+                <a href="#melodies" class="nav-link">Melodies</a>
+                <a href="#play-by-ear" class="nav-link">Play by Ear</a>
+                <a href="#listener" class="nav-link">Listener</a>
+                <a href="#tuner" class="nav-link">Tuner</a>
+                <a href="#metronome" class="nav-link">Metronome</a>
+                <a href="#beats" class="nav-link">Beats</a>
+            </div>
+        </div>
+
+        <!-- Mobile: logo + hamburger bar (hidden on desktop) -->
+        <div class="mobile-nav-bar">
+            <img src="/guitar-tools/logo-dark.png" alt="Guitar Tools" class="mobile-nav-logo" />
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu">
+                <span class="hamburger-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile sidebar overlay + drawer (hidden on desktop) -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="/guitar-tools/logo-dark.png" alt="Guitar Tools" class="sidebar-logo" />
+            <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close menu">&#10005;</button>
+        </div>
+        <nav class="sidebar-content">
+            <a href="#scales" class="nav-link sidebar-link">Scales</a>
+            <a href="#triads" class="nav-link sidebar-link">Triads</a>
+            <a href="#fret-walk" class="nav-link sidebar-link">Fret Walk</a>
+            <a href="#fretboard-discovery" class="nav-link sidebar-link">Fretboard</a>
+            <a href="#circle-of-fifths" class="nav-link sidebar-link">Circle of 5ths</a>
+            <a href="#melodies" class="nav-link sidebar-link">Melodies</a>
+            <a href="#play-by-ear" class="nav-link sidebar-link">Play by Ear</a>
+            <a href="#listener" class="nav-link sidebar-link">Listener</a>
+            <a href="#tuner" class="nav-link sidebar-link">Tuner</a>
+            <a href="#metronome" class="nav-link sidebar-link">Metronome</a>
+            <a href="#beats" class="nav-link sidebar-link">Beats</a>
+            <div class="sidebar-sound-toggle" id="sidebarSoundToggle"></div>
+            <div class="sidebar-theme-toggle" id="sidebarThemeToggle"></div>
+        </nav>
+    </aside>
+
+    <div class="container">
+        <!-- Scales Feature -->
+        <div id="scales-page" class="page">
+            <!-- Controls Accordion (mobile) / Inline Controls (desktop) -->
+            <div class="controls-wrapper">
+                <button class="controls-accordion-toggle" id="controlsAccordionToggle">
+                    <span class="controls-summary" id="controlsSummary">C Major · Intervals · CAGED</span>
+                    <span class="controls-accordion-arrow">&#9662;</span>
+                </button>
+                <div class="controls" id="controlsPanel">
+                    <div class="controls-row">
+                        <div class="control-group">
+                            <span class="control-label">Root:</span>
+                            <div class="note-selector">
+                                <button class="note-btn" id="prevNote">&#10094;</button>
+                                <div class="note-display" id="currentNote">C</div>
+                                <button class="note-btn" id="nextNote">&#10095;</button>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <span class="control-label">Scale:</span>
+                            <div class="toggle-group">
+                                <button class="toggle-btn active" id="majorBtn" data-scale="major">Major</button>
+                                <button class="toggle-btn" id="minorBtn" data-scale="minor">Minor</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="controls-row">
+                        <div class="control-group">
+                            <span class="control-label">Display:</span>
+                            <div class="toggle-group">
+                                <button class="toggle-btn" id="notesBtn" data-display="notes">Notes</button>
+                                <button class="toggle-btn active" id="intervalsBtn" data-display="intervals">Intervals</button>
+                            </div>
+                        </div>
+
+                        <div class="highlight-control-group">
+                            <span class="control-label">Show:</span>
+                            <div class="highlight-toggle">
+                                <div class="highlight-toggle-options">
+                                    <button class="highlight-toggle-btn active" id="fullHighlightBtn">Full</button>
+                                    <button class="highlight-toggle-btn" id="pentatonicHighlightBtn">Pentatonic</button>
+                                    <button class="highlight-toggle-btn" id="cagedHighlightBtn">CAGED</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fretboard Section (header + fretboard, flex row on mobile) -->
+            <div class="fretboard-section">
+                <!-- CAGED Header -->
+                <div class="caged-header" id="cagedHeader">
+                    <!-- Dynamically populated -->
+                </div>
+
+                <!-- Fretboard -->
+                <div class="fretboard-container">
+                    <div class="fretboard" id="fretboard">
+                        <!-- Dynamically populated -->
+                    </div>
+                    <div class="fret-numbers" id="fretNumbers">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Legend -->
+            <div class="legend">
+                <!-- CAGED Legend Items -->
+                <div id="cagedLegend" class="legend-items">
+                    <div class="legend-item">
+                        <div class="legend-color legend-c"></div>
+                        <span>C Shape</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-a"></div>
+                        <span>A Shape</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-g"></div>
+                        <span>G Shape</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-e"></div>
+                        <span>E Shape</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-d"></div>
+                        <span>D Shape</span>
+                    </div>
+                </div>
+
+                <!-- Pentatonic Legend Items (hidden by default) -->
+                <div id="pentatonicLegend" class="legend-items" style="display: none;">
+                    <div class="legend-item">
+                        <div class="legend-color legend-pos-1"></div>
+                        <span>Position 1</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-pos-2"></div>
+                        <span>Position 2</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-pos-3"></div>
+                        <span>Position 3</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-pos-4"></div>
+                        <span>Position 4</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-pos-5"></div>
+                        <span>Position 5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Triads Feature -->
+        <div id="triads-page" class="page" style="display: none;">
+            <!-- Dynamically populated -->
+        </div>
+
+        <!-- Fretboard Discovery Feature -->
+        <div id="fretboard-discovery-page" class="page" style="display: none;">
+            <!-- Dynamically populated -->
+        </div>
+
+        <!-- Fret Walk Feature -->
+        <div id="fret-walk-page" class="page" style="display: none;">
+            <!-- Dynamically populated -->
+        </div>
+
+        <!-- Circle of Fifths Feature -->
+        <div id="circle-of-fifths-page" class="page" style="display: none;">
+            <!-- Dynamically populated -->
+        </div>
+
+        <!-- Melodies Feature -->
+        <div id="melodies-page" class="page" style="display: none;">
+            <!-- Dynamically populated -->
+        </div>
+
+        <!-- Curated songs ear-training feature -->
+        <div id="play-by-ear-page" class="page" style="display: none;">
+            <!-- Dynamically populated -->
+        </div>
+
+        <!-- Listener Feature -->
+        <div id="listener-page" class="page" style="display: none;">
+            <!-- Controls Accordion (mobile) / Inline Controls (desktop) -->
+            <div class="controls-wrapper">
+                <button class="controls-accordion-toggle" id="listenerControlsAccordionToggle">
+                    <span class="controls-summary" id="listenerControlsSummary">C Major</span>
+                    <span class="controls-accordion-arrow">&#9662;</span>
+                </button>
+                <div class="controls" id="listenerControlsPanel">
+                    <div class="controls-row">
+                        <div class="control-group">
+                            <span class="control-label">Root:</span>
+                            <div class="note-selector">
+                                <button class="note-btn" id="listenerPrevNote">&#10094;</button>
+                                <div class="note-display" id="listenerCurrentNote">C</div>
+                                <button class="note-btn" id="listenerNextNote">&#10095;</button>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <span class="control-label">Scale:</span>
+                            <div class="toggle-group">
+                                <button class="toggle-btn active" id="listenerMajorBtn">Major</button>
+                                <button class="toggle-btn" id="listenerMinorBtn">Minor</button>
+                                <button class="toggle-btn" id="listenerFullBtn">Full</button>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <span class="control-label">Show as:</span>
+                            <div class="toggle-group">
+                                <button class="toggle-btn active" id="listenerSharpBtn">♯</button>
+                                <button class="toggle-btn" id="listenerFlatBtn">♭</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Big detected note display -->
+            <div class="listener-display">
+                <div class="listener-note-row">
+                    <span class="listener-degree-spacer" aria-hidden="true"></span>
+                    <span class="listener-note-name" id="listenerNoteName">-</span>
+                    <span class="listener-degree" id="listenerDegree"></span>
+                </div>
+                <span class="listener-cents" id="listenerCents"></span>
+            </div>
+
+            <!-- Listen / Stop button -->
+            <div class="listener-actions">
+                <button class="note-detection-btn" id="listenerToggleBtn">Start listening</button>
+            </div>
+
+            <!-- Linear scale strip -->
+            <div class="scale-strip">
+                <!-- Dynamically populated -->
+            </div>
+        </div>
+
+        <!-- Metronome Feature -->
+        <div id="metronome-page" class="page" style="display: none;">
+            <!-- Dynamically populated -->
+        </div>
+
+        <!-- Beats Feature -->
+        <div id="beats-page" class="page" style="display: none;">
+            <!-- Dynamically populated -->
+        </div>
+
+        <!-- Tuner Feature -->
+        <div id="tuner-page" class="page" style="display: none;">
+            <!-- Tuner meter display -->
+            <div class="tuner-display">
+                <div class="tuner-meter">
+                    <svg class="tuner-meter-svg" viewBox="0 0 300 170">
+                        <!-- Meter arc segments -->
+                        <g class="tuner-meter-segments" id="tunerMeterSegments">
+                            <!-- Dynamically populated -->
+                        </g>
+                        <!-- Center tick mark -->
+                        <line x1="150" y1="18" x2="150" y2="30" stroke="#4caf50" stroke-width="2.5" />
+                        <!-- -50 / +50 labels -->
+                        <text x="30" y="148" class="tuner-meter-label">-50</text>
+                        <text x="270" y="148" class="tuner-meter-label">+50</text>
+                        <!-- Needle -->
+                        <line class="tuner-needle" id="tunerNeedle" x1="150" y1="155" x2="150" y2="28" />
+                        <!-- Needle pivot -->
+                        <circle cx="150" cy="155" r="5" class="tuner-needle-pivot" />
+                    </svg>
+                </div>
+
+                <!-- Note name + octave -->
+                <div class="tuner-note-display">
+                    <span class="tuner-note-name" id="tunerNoteName">-</span>
+                    <span class="tuner-cents" id="tunerCents"></span>
+                </div>
+            </div>
+
+            <!-- Listen / Stop button -->
+            <div class="tuner-actions">
+                <button class="note-detection-btn" id="tunerToggleBtn">Start listening</button>
+            </div>
+
+            <!-- String selector buttons -->
+            <div class="tuner-strings" id="tunerStrings">
+                <button class="tuner-string-btn" data-string="0">E2</button>
+                <button class="tuner-string-btn" data-string="1">A2</button>
+                <button class="tuner-string-btn" data-string="2">D3</button>
+                <button class="tuner-string-btn" data-string="3">G3</button>
+                <button class="tuner-string-btn" data-string="4">B3</button>
+                <button class="tuner-string-btn" data-string="5">E4</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

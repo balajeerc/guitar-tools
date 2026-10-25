@@ -1,3 +1,5 @@
+import { createScreenWakeLock } from "../../shared/screenWakeLock";
+
 import { createDrumKit, voicesAtStep, type DrumKit } from "./instruments";
 import { STEP_COUNT, type BeatPattern, type TrackLevels } from "./pattern";
 
@@ -28,6 +30,7 @@ export function createBeatsScheduler(
   let context: AudioContext | null = null;
   let drumKit: DrumKit | null = null;
   let timer: number | null = null;
+  const wakeLock = createScreenWakeLock();
   let nextStepTime = 0;
   let step = 0;
 
@@ -52,9 +55,11 @@ export function createBeatsScheduler(
     nextStepTime = context.currentTime + 0.06;
     scheduleDueSteps();
     timer = window.setInterval(scheduleDueSteps, LOOKAHEAD_MS);
+    wakeLock.start();
   }
 
   function stop(): void {
+    wakeLock.stop();
     if (timer !== null) clearInterval(timer);
     timer = null;
     drumKit?.disconnect();

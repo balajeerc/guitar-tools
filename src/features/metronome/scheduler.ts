@@ -1,3 +1,5 @@
+import { createScreenWakeLock } from "../../shared/screenWakeLock";
+
 // Lookahead click scheduler: a coarse JS timer queues clicks slightly ahead of
 // time on the sample-accurate WebAudio clock, so tempo stays rock steady even
 // when the main thread stutters.
@@ -48,6 +50,7 @@ export function createScheduler(
 ): Scheduler {
   let ctx: AudioContext | null = null;
   let timer: number | null = null;
+  const wakeLock = createScreenWakeLock();
   let nextTickTime = 0;
   let beat = 0;
   let subdivision = 0;
@@ -84,9 +87,11 @@ export function createScheduler(
     nextTickTime = ctx.currentTime + 0.06;
     scheduleDue();
     timer = window.setInterval(scheduleDue, LOOKAHEAD_MS);
+    wakeLock.start();
   }
 
   function stop(): void {
+    wakeLock.stop();
     if (timer !== null) {
       clearInterval(timer);
       timer = null;

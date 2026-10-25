@@ -34,6 +34,8 @@ No backend, API keys, or environment variables are required.
 
 Use a modern browser with Web Audio and microphone support. Listening features need permission to access your microphone or audio interface, and require HTTPS or `localhost`.
 
+The metronome, drum loops, and active microphone tools automatically request that the screen stay awake. This requires Screen Wake Lock support and HTTPS or `localhost`. The request is released when the tool stops and renewed when you return to the app. Your browser or device may decline it, for example in power-saving mode.
+
 For reliable pitch detection, use an audio interface when possible, play clean single notes, and keep background noise low. The detector follows one pitch at a time. The fretboard and tuner assume standard six-string guitar tuning (E–A–D–G–B–E).
 
 Audio input is processed in the browser, and preferences are stored locally in your browser. YouTube performances require an internet connection; the videos remain hosted on YouTube.

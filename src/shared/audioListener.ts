@@ -13,6 +13,7 @@ import {
   SILENCE_THRESHOLD,
 } from "./audioUtils";
 import { AUDIO_INPUT_CHANGED_EVENT } from "./audioInput";
+import { createScreenWakeLock } from "./screenWakeLock";
 
 /** EMA smoothing factor: 0 = no smoothing, 1 = no memory. Lower = smoother. */
 const SMOOTHING_ALPHA = 0.15;
@@ -54,6 +55,7 @@ export function createAudioListener(
   let mediaStream: MediaStream | null = null;
   let animationFrameId = 0;
   let listening = false;
+  const wakeLock = createScreenWakeLock();
 
   // Smoothing state
   let smoothedFreq: number | null = null;
@@ -141,12 +143,14 @@ export function createAudioListener(
     analyser = node;
 
     listening = true;
+    wakeLock.start();
     callbacks.onStart?.();
     detectLoop();
   }
 
   function stop(): void {
     listening = false;
+    wakeLock.stop();
     cancelAnimationFrame(animationFrameId);
     releaseAudio();
     resetSmoothing();

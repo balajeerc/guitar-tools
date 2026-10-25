@@ -2,6 +2,8 @@
 
 A browser-based toolkit for learning the guitar fretboard, exploring music theory, training your ear, and practicing rhythm. Built with TypeScript, CSS, and Vite.
 
+[Open B's Guitar Tools](https://balajeerc.github.io/guitar-tools/)
+
 ## Features
 
 - **Scales and triads:** explore major and minor scales, pentatonic positions, CAGED shapes, and triad inversions with note or interval labels.
@@ -46,9 +48,32 @@ pnpm preview  # Preview the production build locally
 
 Run `pnpm check` before submitting changes. To enable the included Git pre-commit hook after installing with scripts disabled, run `pnpm exec husky`.
 
-The app is a static site: serve the contents of `dist/` from the root of an HTTPS host. Navigation uses URL hashes. The production build registers a service worker; development mode disables it to keep cached assets from hiding changes.
+The app is a static site. Navigation uses URL hashes. The production build registers a service worker; development mode disables it to keep cached assets from hiding changes.
 
-### Project layout
+## Deployment
+
+GitHub Pages publishes the built site from the root of the `gh-pages` branch. In repository Settings → Pages, the source is **Deploy from a branch**, using **gh-pages / (root)**.
+
+To publish a release, use an authenticated GitHub CLI with repository write access:
+
+```sh
+./deploy.sh
+```
+
+The script checks the code, builds for the `/guitar-tools/` path, and pushes the assets and license to `gh-pages`. Source code stays on `master`.
+
+The Pages entry URL is **https://balajeerc.github.io/guitar-tools/**. GitHub currently redirects it to **https://www.balajeerc.info/guitar-tools/** because this account's main Pages site uses a custom domain.
+
+To preview the Pages build locally:
+
+```sh
+pnpm build --base /guitar-tools/
+pnpm preview --base /guitar-tools/
+```
+
+Open the preview server's `/guitar-tools/` path. A plain `pnpm build` still creates a build for hosting at a domain's root.
+
+## Project layout
 
 ```text
 index.html       App shell and navigation

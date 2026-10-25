@@ -1,13 +1,14 @@
-const CACHE_NAME = "guitar-tools-v2";
+const CACHE_PREFIX = `guitar-tools:${self.registration.scope}:`;
+const CACHE_NAME = `${CACHE_PREFIX}v3`;
 
 const PRECACHE_URLS = [
-  "/",
-  "/index.html",
-  "/manifest.webmanifest",
-  "/favicon.png",
-  "/icons/icon-192x192.png",
-  "/icons/icon-512x512.png",
-];
+  "./",
+  "index.html",
+  "manifest.webmanifest",
+  "favicon.png",
+  "icons/icon-192x192.png",
+  "icons/icon-512x512.png",
+].map((path) => new URL(path, self.registration.scope).href);
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -21,7 +22,7 @@ self.addEventListener("activate", (event) => {
     caches.keys().then((names) =>
       Promise.all(
         names
-          .filter((name) => name !== CACHE_NAME)
+          .filter((name) => name.startsWith(CACHE_PREFIX) && name !== CACHE_NAME)
           .map((name) => caches.delete(name))
       )
     )

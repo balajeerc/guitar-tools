@@ -9,7 +9,7 @@ A browser-based toolkit for learning the guitar fretboard, exploring music theor
 - **Scales and triads:** explore major and minor scales, pentatonic positions, CAGED shapes, and triad inversions with note or interval labels.
 - **Fretboard exploration:** discover notes across the neck and use Fret Walk to follow scales from a chosen root through successive octaves.
 - **Circle of fifths:** explore keys, scale degrees, and chord relationships.
-- **Ear training:** hear a mystery melody and play it back, or loop phrases from curated YouTube performances in Play by Ear. You can also enter intervals manually.
+- **Ear training:** hear a mystery melody and play it back, use the ear trainer to identify short phrases as scale degrees, or loop phrases from curated YouTube performances in Play by Ear. You can also enter intervals manually.
 - **Listener and tuner:** identify played notes and their scale degrees, or tune a guitar in standard tuning using live pitch detection.
 - **Rhythm practice:** use the metronome and drum loops for accompaniment.
 

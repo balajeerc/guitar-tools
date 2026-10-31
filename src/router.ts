@@ -8,6 +8,7 @@ import { initMetronomeFeature } from "./features/metronome";
 import { initBeatsFeature } from "./features/beats";
 import { initTriadsFeature } from "./features/triads";
 import { initMelodiesFeature } from "./features/melodies";
+import { initEarTrainerFeature } from "./features/ear-trainer";
 import { initPlayByEarFeature } from "./features/play-by-ear";
 
 function showPage(pageId: string): void {
@@ -53,6 +54,9 @@ export function initRouter(): void {
     melodies: () => {
       showPage("melodies-page");
     },
+    "ear-trainer": () => {
+      showPage("ear-trainer-page");
+    },
     "play-by-ear": () => {
       showPage("play-by-ear-page");
     },
@@ -90,6 +94,7 @@ export function initRouter(): void {
   initFretboardDiscoveryFeature();
   initCircleOfFifthsFeature();
   initMelodiesFeature();
+  initEarTrainerFeature();
   initPlayByEarFeature();
   initListenerFeature();
   initTunerFeature();

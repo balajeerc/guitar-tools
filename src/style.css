@@ -3102,6 +3102,288 @@ body {
     }
 }
 
+/* ===== Interval ear trainer ===== */
+
+.ear-trainer-settings {
+    margin: 16px 0 12px;
+}
+
+.ear-trainer-settings-summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    color: var(--color-text-secondary);
+    background: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    font-size: 12px;
+    font-weight: 650;
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+.ear-trainer-settings-summary::-webkit-details-marker {
+    display: none;
+}
+
+.ear-trainer-settings-summary::after {
+    content: "▾";
+    margin-left: auto;
+    color: var(--color-text-muted);
+    font-size: 10px;
+    transition: transform var(--transition-fast);
+}
+
+.ear-trainer-settings-summary:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--color-primary) 28%, transparent);
+    outline-offset: 2px;
+}
+
+.ear-trainer-settings[open] .ear-trainer-settings-summary {
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.ear-trainer-settings[open] .ear-trainer-settings-summary::after {
+    transform: rotate(180deg);
+}
+
+.ear-trainer-settings:not([open]) .ear-trainer-settings-content {
+    display: none;
+}
+
+.ear-trainer-settings-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    background: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-top: 0;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+.ear-trainer-setting-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+}
+
+.ear-trainer-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ear-trainer-direction-options {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+}
+
+.ear-trainer-octave-inputs {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-text-muted);
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.ear-trainer-octave-inputs input {
+    width: 58px;
+    padding: 8px 6px;
+    color: var(--color-text);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.ear-trainer-octave-inputs input:focus {
+    border-color: var(--color-primary);
+    outline: 2px solid color-mix(in srgb, var(--color-primary) 22%, transparent);
+}
+
+.ear-trainer-key {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ear-trainer-key[hidden] {
+    display: none;
+}
+
+.ear-trainer-tone-row {
+    justify-content: space-between;
+}
+
+.ear-trainer-settings-hint {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+.ear-trainer-input-hint {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+.ear-trainer-manual .melodies-interval-box {
+    width: 48px;
+}
+
+.ear-trainer-manual .melodies-accidental-btn {
+    width: 34px;
+}
+
+@media (max-width: 767px) {
+    .ear-trainer .melodies-hero {
+        padding: 4px 8px 12px;
+    }
+
+    .ear-trainer .melodies-intro {
+        margin-top: 8px;
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    .ear-trainer .melodies-card {
+        padding: 14px;
+    }
+
+    .ear-trainer .melodies-round-header {
+        gap: 4px 12px;
+    }
+
+    .ear-trainer .melodies-round {
+        font-size: 12px;
+        line-height: 1.35;
+    }
+
+    .ear-trainer .melodies-timer {
+        min-width: 0;
+        font-size: 14px;
+    }
+
+    .ear-trainer-settings {
+        margin: 10px 0 8px;
+    }
+
+    .ear-trainer-settings-summary {
+        padding: 8px 12px;
+    }
+
+    .ear-trainer-settings-content {
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .ear-trainer-setting-row {
+        align-items: flex-start;
+        gap: 8px 12px;
+    }
+
+    .ear-trainer-direction-field {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .ear-trainer-direction-options {
+        display: flex;
+        gap: 6px;
+    }
+
+    .ear-trainer-direction-options .checkbox-label {
+        padding: 6px 8px;
+    }
+
+    .ear-trainer-range-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: end;
+        gap: 8px 12px;
+    }
+
+    .ear-trainer-range-row .ear-trainer-field,
+    .ear-trainer-range-row .control-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .ear-trainer-tone-row {
+        flex-direction: column;
+    }
+
+    .ear-trainer .melodies-prompt {
+        margin: 12px 0;
+        padding: 12px;
+        gap: 4px 10px;
+    }
+
+    .ear-trainer .melodies-prompt-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+    }
+
+    .ear-trainer-manual {
+        margin: 12px 0;
+        padding: 12px;
+        gap: 10px;
+    }
+
+    .ear-trainer-manual .melodies-interval-box {
+        width: 42px;
+    }
+
+    .ear-trainer .melodies-actions {
+        flex-direction: row;
+        gap: 8px;
+    }
+
+    .ear-trainer .melodies-actions .melodies-btn {
+        width: auto;
+        min-width: 0;
+        flex: 1;
+        padding: 11px 10px;
+    }
+
+    .ear-trainer .melodies-footer-actions {
+        margin-top: 12px;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 340px) {
+    .ear-trainer .melodies-round-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+
+    .ear-trainer .melodies-round {
+        font-size: 11px;
+    }
+
+    .ear-trainer .melodies-timer {
+        font-size: 12px;
+        text-align: left;
+    }
+}
+
 /* ===== Tuner Feature (Fender-style Gauge) ===== */
 
 .tuner-display {

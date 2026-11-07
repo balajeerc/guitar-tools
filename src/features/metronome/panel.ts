@@ -1,18 +1,12 @@
 // Static markup for the metronome page.
 
-import {
-  LARGE_BPM_STEP,
-  MAX_BPM,
-  MIN_BPM,
-  SMALL_BPM_STEP,
-  SUBDIVISIONS,
-} from "./beats";
+import { LARGE_BPM_STEP, MAX_BPM, MIN_BPM, SMALL_BPM_STEP, SUBDIVISIONS } from './beats';
 
 function subdivisionButtons(): string {
   return SUBDIVISIONS.map(
     ({ value, label }) =>
-      `<button class="toggle-btn" id="metronomeSubdiv${value}Btn" data-subdivision="${value}">${label}</button>`,
-  ).join("");
+      `<button class="toggle-btn" id="metronomeSubdiv${value}Btn" data-subdivision="${value}">${label}</button>`
+  ).join('');
 }
 
 export function metronomePanelHtml(summary: string): string {

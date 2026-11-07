@@ -1,30 +1,23 @@
-import {
-  STRING_ORDER,
-  STRING_Y_POSITIONS,
-  TOTAL_FRETS,
-} from "./constants";
-import { fretCenterPosition } from "./fretboardRenderer";
-import { getLayoutConfig } from "./layout";
+import { STRING_ORDER, STRING_Y_POSITIONS, TOTAL_FRETS } from './constants';
+import { fretCenterPosition } from './fretboardRenderer';
+import { getLayoutConfig } from './layout';
+import { requiredAt } from './requiredAt';
 
 export interface FretboardPosition {
-  stringIdx: number;
   fret: number;
+  stringIdx: number;
 }
 
 /** Resolve viewport coordinates to the closest physical string and fret. */
 export function positionFromPoint(
   clientX: number,
   clientY: number,
-  fretboard: HTMLElement,
+  fretboard: HTMLElement
 ): FretboardPosition | null {
   const config = getLayoutConfig();
   const rect = fretboard.getBoundingClientRect();
-  const fretCoord = config.isVertical
-    ? clientY - rect.top
-    : clientX - rect.left;
-  const stringCoord = config.isVertical
-    ? clientX - rect.left
-    : clientY - rect.top;
+  const fretCoord = config.isVertical ? clientY - rect.top : clientX - rect.left;
+  const stringCoord = config.isVertical ? clientX - rect.left : clientY - rect.top;
 
   let bestFret = 0;
   let bestFretDist = Infinity;
@@ -40,12 +33,12 @@ export function positionFromPoint(
   let bestStringDist = Infinity;
   for (let visualIdx = 0; visualIdx < STRING_ORDER.length; visualIdx++) {
     const posIdx = config.isVertical ? 5 - visualIdx : visualIdx;
-    const dist = Math.abs(stringCoord - STRING_Y_POSITIONS[posIdx]);
+    const dist = Math.abs(stringCoord - requiredAt(STRING_Y_POSITIONS, posIdx));
     if (dist < bestStringDist) {
       bestStringDist = dist;
       bestVisual = visualIdx;
     }
   }
 
-  return { stringIdx: STRING_ORDER[bestVisual], fret: bestFret };
+  return { stringIdx: requiredAt(STRING_ORDER, bestVisual), fret: bestFret };
 }

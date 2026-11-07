@@ -1,11 +1,9 @@
-import { MAJOR_SCALE, MINOR_SCALE } from "../../shared/constants";
-import type { ScaleType } from "../../shared/types";
-import {
-  getTriadShapes,
-  type TriadQuality,
-  type TriadShape,
-  type TriadStringSet,
-} from "./shapes";
+import { MAJOR_SCALE, MINOR_SCALE } from '../../shared/constants';
+import { requiredAt } from '../../shared/requiredAt';
+
+import { getTriadShapes, type TriadQuality, type TriadShape, type TriadStringSet } from './shapes';
+
+import type { ScaleType } from '../../shared/types';
 
 export type ProgressionDegree = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
@@ -19,48 +17,50 @@ export interface ProgressionChord extends ProgressionStep {
 }
 
 const ROMAN_NUMERALS: Record<ProgressionDegree, string> = {
-  1: "I",
-  2: "II",
-  3: "III",
-  4: "IV",
-  5: "V",
-  6: "VI",
-  7: "VII",
+  1: 'I',
+  2: 'II',
+  3: 'III',
+  4: 'IV',
+  5: 'V',
+  6: 'VI',
+  7: 'VII',
 };
 
 export function progressionStepLabel(step: ProgressionStep): string {
   const numeral = ROMAN_NUMERALS[step.degree];
-  if (step.quality === "diminished") return `${numeral.toLowerCase()}°`;
-  return step.quality === "minor" ? numeral.toLowerCase() : numeral;
+  if (step.quality === 'diminished') return `${numeral.toLowerCase()}°`;
+  return step.quality === 'minor' ? numeral.toLowerCase() : numeral;
 }
 
 export function getProgressionChord(
   keyRootIndex: number,
   scaleType: ScaleType,
-  step: ProgressionStep,
+  step: ProgressionStep
 ): ProgressionChord {
-  const intervals = scaleType === "major" ? MAJOR_SCALE : MINOR_SCALE;
+  const intervals = scaleType === 'major' ? MAJOR_SCALE : MINOR_SCALE;
   return {
     ...step,
-    rootIndex: (keyRootIndex + intervals[step.degree - 1]) % 12,
+    rootIndex: (keyRootIndex + requiredAt(intervals, step.degree - 1)) % 12,
   };
 }
 
 function shapeDistance(first: TriadShape, second: TriadShape): number {
-  return first.notes.reduce((total, note, index) =>
-    total + Math.abs(note.fret - second.notes[index].fret), 0);
+  return first.notes.reduce(
+    (total, note, index) => total + Math.abs(note.fret - requiredAt(second.notes, index).fret),
+    0
+  );
 }
 
 function groupingCost(shapes: readonly TriadShape[]): number {
   return shapes.reduce((total, shape, index) => {
-    const nextShape = shapes[(index + 1) % shapes.length];
+    const nextShape = requiredAt(shapes, (index + 1) % shapes.length);
     return total + shapeDistance(shape, nextShape);
   }, 0);
 }
 
 function findGroupingForAnchor(
   candidates: readonly TriadShape[][],
-  anchor: TriadShape,
+  anchor: TriadShape
 ): TriadShape[] {
   let bestShapes: TriadShape[] = [];
   let bestCost = Number.POSITIVE_INFINITY;
@@ -74,7 +74,7 @@ function findGroupingForAnchor(
       }
       return;
     }
-    for (const shape of candidates[stepIndex]) {
+    for (const shape of requiredAt(candidates, stepIndex)) {
       selected.push(shape);
       visit(stepIndex + 1, selected);
       selected.pop();
@@ -91,10 +91,11 @@ function findGroupingForAnchor(
  */
 export function getNearestTriadGroupings(
   chords: readonly ProgressionChord[],
-  stringSet: TriadStringSet,
+  stringSet: TriadStringSet
 ): TriadShape[][] {
   const candidates = chords.map((chord) =>
-    getTriadShapes(chord.rootIndex, chord.quality, stringSet));
+    getTriadShapes(chord.rootIndex, chord.quality, stringSet)
+  );
   const anchors = candidates[0] ?? [];
   return anchors.map((anchor) => findGroupingForAnchor(candidates, anchor));
 }

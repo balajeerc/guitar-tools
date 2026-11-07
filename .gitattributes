@@ -1,0 +1,2 @@
+# Lockfiles are generated; retain text diffs for dependency review.
+pnpm-lock.yaml linguist-generated=true

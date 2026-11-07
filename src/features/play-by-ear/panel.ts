@@ -1,4 +1,4 @@
-import { audioInputPanelHtml } from "../../shared/audioInput";
+import { audioInputPanelHtml } from '../../shared/audioInput';
 
 export function playByEarPanelHtml(): string {
   return `<section class="play-ear-game" aria-labelledby="playEarHeading">
@@ -115,8 +115,8 @@ export function playByEarPanelHtml(): string {
     </div>
 
     ${audioInputPanelHtml(
-      "playEar",
-      "To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.",
+      'playEar',
+      'To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.'
     )}
     <p class="melodies-mic-note">Only the selected audio input is analyzed. YouTube audio is never transcribed.</p>
   </section>`;

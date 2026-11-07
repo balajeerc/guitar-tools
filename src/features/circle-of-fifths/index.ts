@@ -1,23 +1,24 @@
+import { loadPersisted, savePersisted } from '../../shared/persist';
 // Circle of Fifths feature: pick a major or relative-minor key on the wheel,
 // then toggle scale degrees to build a chord progression in that key.
+import { requiredAt } from '../../shared/requiredAt';
+import { createResetLink } from '../../shared/resetLink';
 
-import { loadPersisted, savePersisted } from "../../shared/persist";
-import { createResetLink } from "../../shared/resetLink";
-import { CIRCLE_KEYS } from "./constants";
-import { renderPanel } from "./panel";
-import { renderWheel } from "./renderer";
-import { DEGREE_COUNT, type KeyMode } from "./theory";
+import { CIRCLE_KEYS } from './constants';
+import { renderPanel } from './panel';
+import { renderWheel } from './renderer';
+import { DEGREE_COUNT, type KeyMode } from './theory';
 
 interface CircleOfFifthsState {
+  degrees: number[];
   index: number;
   mode: KeyMode;
-  degrees: number[];
 }
 
-const STORAGE_KEY = "circle-of-fifths-state";
+const STORAGE_KEY = 'circle-of-fifths-state';
 const DEFAULTS: CircleOfFifthsState = {
   index: 0,
-  mode: "major",
+  mode: 'major',
   degrees: [0, 3, 4], // I - IV - V
 };
 
@@ -32,8 +33,8 @@ function defaultState(): CircleOfFifthsState {
 
 /** Tonic of the currently selected key, spelled as the wheel spells it. */
 function tonic(): string {
-  const key = CIRCLE_KEYS[state.index];
-  return state.mode === "major" ? key.major : key.minor;
+  const key = requiredAt(CIRCLE_KEYS, state.index);
+  return state.mode === 'major' ? key.major : key.minor;
 }
 
 function resetState(): void {
@@ -46,19 +47,17 @@ function update(): void {
 
   wheelEl.innerHTML = renderWheel(state);
   panelEl.innerHTML = renderPanel(tonic(), state.mode, state.degrees);
-  panelEl
-    .querySelector(".cof-reset-row")
-    ?.appendChild(createResetLink(resetState));
+  panelEl.querySelector('.cof-reset-row')?.appendChild(createResetLink(resetState));
 
   savePersisted(STORAGE_KEY, state);
 }
 
 function handleWheelClick(event: MouseEvent): void {
-  const sector = (event.target as Element).closest(".cof-sector");
+  const sector = (event.target as Element).closest('.cof-sector');
   if (!sector) return;
 
-  const index = Number(sector.getAttribute("data-index"));
-  const mode = sector.getAttribute("data-mode") === "minor" ? "minor" : "major";
+  const index = Number(sector.getAttribute('data-index'));
+  const mode = sector.getAttribute('data-mode') === 'minor' ? 'minor' : 'major';
   if (state.index === index && state.mode === mode) return;
 
   state = { ...state, index, mode };
@@ -66,10 +65,10 @@ function handleWheelClick(event: MouseEvent): void {
 }
 
 function handleDegreeClick(event: MouseEvent): void {
-  const button = (event.target as Element).closest(".cof-degree-btn");
+  const button = (event.target as Element).closest('.cof-degree-btn');
   if (!button) return;
 
-  const degree = Number(button.getAttribute("data-degree"));
+  const degree = Number(button.getAttribute('data-degree'));
   const degrees = state.degrees.includes(degree)
     ? state.degrees.filter((d) => d !== degree)
     : [...state.degrees, degree];
@@ -88,7 +87,7 @@ function loadState(): CircleOfFifthsState {
 
   return {
     index: inRange(saved.index, CIRCLE_KEYS.length) ? saved.index : DEFAULTS.index,
-    mode: saved.mode === "minor" ? "minor" : "major",
+    mode: saved.mode === 'minor' ? 'minor' : 'major',
     degrees: Array.isArray(saved.degrees)
       ? saved.degrees.filter((degree) => inRange(degree, DEGREE_COUNT))
       : [...DEFAULTS.degrees],
@@ -96,7 +95,7 @@ function loadState(): CircleOfFifthsState {
 }
 
 export function initCircleOfFifthsFeature(): void {
-  const container = document.getElementById("circle-of-fifths-page");
+  const container = document.getElementById('circle-of-fifths-page');
   if (!container) return;
 
   state = loadState();
@@ -106,11 +105,11 @@ export function initCircleOfFifthsFeature(): void {
     <div class="cof-panel" id="cofPanel"></div>
   `;
 
-  wheelEl = document.getElementById("cofWheel");
-  panelEl = document.getElementById("cofPanel");
+  wheelEl = document.getElementById('cofWheel');
+  panelEl = document.getElementById('cofPanel');
 
-  wheelEl?.addEventListener("click", handleWheelClick);
-  panelEl?.addEventListener("click", handleDegreeClick);
+  wheelEl?.addEventListener('click', handleWheelClick);
+  panelEl?.addEventListener('click', handleDegreeClick);
 
   update();
 }

@@ -12,16 +12,16 @@ export interface CircleKey {
 // Where a key has two viable spellings, the one needing fewer accidentals wins
 // (B over C♭, D♭ over C♯); the six-and-six tie at F♯/G♭ is spelled flat.
 export const CIRCLE_KEYS: readonly CircleKey[] = [
-  { major: "C", minor: "A" },
-  { major: "G", minor: "E" },
-  { major: "D", minor: "B" },
-  { major: "A", minor: "F♯" },
-  { major: "E", minor: "C♯" },
-  { major: "B", majorAlt: "C♭", minor: "G♯" },
-  { major: "G♭", majorAlt: "F♯", minor: "E♭" },
-  { major: "D♭", majorAlt: "C♯", minor: "B♭" },
-  { major: "A♭", minor: "F" },
-  { major: "E♭", minor: "C" },
-  { major: "B♭", minor: "G" },
-  { major: "F", minor: "D" },
+  { major: 'C', minor: 'A' },
+  { major: 'G', minor: 'E' },
+  { major: 'D', minor: 'B' },
+  { major: 'A', minor: 'F♯' },
+  { major: 'E', minor: 'C♯' },
+  { major: 'B', majorAlt: 'C♭', minor: 'G♯' },
+  { major: 'G♭', majorAlt: 'F♯', minor: 'E♭' },
+  { major: 'D♭', majorAlt: 'C♯', minor: 'B♭' },
+  { major: 'A♭', minor: 'F' },
+  { major: 'E♭', minor: 'C' },
+  { major: 'B♭', minor: 'G' },
+  { major: 'F', minor: 'D' },
 ];

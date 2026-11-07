@@ -4,14 +4,14 @@ import {
   clearSelectedAudioInput,
   getSelectedAudioInputId,
   notifyAudioInputsAvailable,
-} from "./audioInput";
+} from './audioInput';
 
 const BUFFER_SIZE = 2048;
 
 /** RMS amplitude below this is treated as silence */
 export const SILENCE_THRESHOLD = 0.005;
 
-function audioConstraints(deviceId: string | null): MediaTrackConstraints {
+function audioConstraints(deviceId: null | string): MediaTrackConstraints {
   return {
     ...(deviceId ? { deviceId: { exact: deviceId } } : {}),
     // Disable voice-call DSP that mangles instrument audio on phones
@@ -22,8 +22,10 @@ function audioConstraints(deviceId: string | null): MediaTrackConstraints {
 }
 
 function missingDevice(error: unknown): boolean {
-  return error instanceof DOMException
-    && (error.name === "NotFoundError" || error.name === "OverconstrainedError");
+  return (
+    error instanceof DOMException &&
+    (error.name === 'NotFoundError' || error.name === 'OverconstrainedError')
+  );
 }
 
 export async function acquireMic(): Promise<MediaStream> {
@@ -58,7 +60,7 @@ export function setupAudio(stream: MediaStream): {
 
 export function releaseMic(
   mediaStream: MediaStream | null,
-  audioContext: AudioContext | null,
+  audioContext: AudioContext | null
 ): void {
   if (mediaStream) {
     for (const track of mediaStream.getTracks()) track.stop();

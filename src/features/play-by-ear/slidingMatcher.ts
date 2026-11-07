@@ -1,4 +1,6 @@
-import type { MatchResult, MelodyMatcher } from "../melodies/matcher";
+import { requiredAt } from '../../shared/requiredAt';
+
+import type { MatchResult, MelodyMatcher } from '../melodies/matcher';
 
 const SEMITONES_PER_OCTAVE = 12;
 
@@ -8,22 +10,25 @@ interface PrefixMatch {
 }
 
 function pitchClassInterval(midi: number, anchor: number): number {
-  return ((midi - anchor) % SEMITONES_PER_OCTAVE + SEMITONES_PER_OCTAVE) % SEMITONES_PER_OCTAVE;
+  return (((midi - anchor) % SEMITONES_PER_OCTAVE) + SEMITONES_PER_OCTAVE) % SEMITONES_PER_OCTAVE;
 }
 
 function matchesPrefix(
   recentNotes: readonly number[],
   expectedMidi: readonly number[],
-  prefixLength: number,
+  prefixLength: number
 ): boolean {
-  const playedAnchor = recentNotes[0];
-  const expectedAnchor = expectedMidi[0];
+  const playedAnchor = requiredAt(recentNotes, 0);
+  const expectedAnchor = requiredAt(expectedMidi, 0);
   let playedIndex = 0;
   let expectedIndex = 0;
 
   while (playedIndex < recentNotes.length && expectedIndex < prefixLength) {
-    const playedInterval = pitchClassInterval(recentNotes[playedIndex], playedAnchor);
-    const expectedInterval = pitchClassInterval(expectedMidi[expectedIndex], expectedAnchor);
+    const playedInterval = pitchClassInterval(requiredAt(recentNotes, playedIndex), playedAnchor);
+    const expectedInterval = pitchClassInterval(
+      requiredAt(expectedMidi, expectedIndex),
+      expectedAnchor
+    );
     if (playedInterval === expectedInterval) {
       playedIndex += 1;
       expectedIndex += 1;
@@ -39,12 +44,15 @@ function matchesPrefix(
   return playedIndex === recentNotes.length && expectedIndex === prefixLength;
 }
 
-function findBestPrefix(recentNotes: readonly number[], expectedMidi: readonly number[]): PrefixMatch {
+function findBestPrefix(
+  recentNotes: readonly number[],
+  expectedMidi: readonly number[]
+): PrefixMatch {
   for (let prefixLength = expectedMidi.length; prefixLength > 0; prefixLength -= 1) {
     for (let start = 0; start < recentNotes.length; start += 1) {
       const suffix = recentNotes.slice(start);
       if (suffix.length <= prefixLength && matchesPrefix(suffix, expectedMidi, prefixLength)) {
-        return { matchedNotes: prefixLength, playedAnchor: suffix[0] };
+        return { matchedNotes: prefixLength, playedAnchor: requiredAt(suffix, 0) };
       }
     }
   }
@@ -77,7 +85,10 @@ export function createSlidingMelodyMatcher(expectedMidi: readonly number[]): Mel
       matchedNotes,
       totalNotes: expectedMidi.length,
       attemptAccuracy: Math.round((correctAttempts / attempts) * 100),
-      expectedInterval: pitchClassInterval(expectedMidi[expectedIndex] ?? expectedAnchor, expectedAnchor),
+      expectedInterval: pitchClassInterval(
+        expectedMidi[expectedIndex] ?? expectedAnchor,
+        expectedAnchor
+      ),
       playedInterval: pitchClassInterval(midi, bestMatch.playedAnchor),
     };
   }

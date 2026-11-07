@@ -1,20 +1,22 @@
+import { setupAccordionToggle } from '../../shared/accordion';
 // Fret Walk feature: click any position to anchor a root, then see the notes
 // from the previous root to the next root, filtered by a Major/Minor/Full scale.
+import { setButtonActive } from '../../shared/dom';
+import { positionFromPoint } from '../../shared/fretboardPosition';
+import { observeFretboardResize } from '../../shared/layout';
+import { loadPersisted, savePersisted } from '../../shared/persist';
+import { requiredAt } from '../../shared/requiredAt';
+import { createResetLink } from '../../shared/resetLink';
 
-import type { DisplayMode } from "../../shared/types";
-import { observeFretboardResize } from "../../shared/layout";
-import { setupAccordionToggle } from "../../shared/accordion";
-import { loadPersisted, savePersisted } from "../../shared/persist";
-import { createResetLink } from "../../shared/resetLink";
-import { setButtonActive } from "../../shared/dom";
-import { positionFromPoint } from "../../shared/fretboardPosition";
 import {
-  renderFretWalk,
-  describeAnchor,
-  anchorPitch,
   type Anchor,
+  anchorPitch,
+  describeAnchor,
   type FretWalkMode,
-} from "./renderer";
+  renderFretWalk,
+} from './renderer';
+
+import type { DisplayMode } from '../../shared/types';
 
 interface FretWalkState {
   anchors: Anchor[];
@@ -22,18 +24,18 @@ interface FretWalkState {
   mode: FretWalkMode;
 }
 
-const STORAGE_KEY = "fret-walk-state";
+const STORAGE_KEY = 'fret-walk-state';
 const DEFAULTS: FretWalkState = {
   anchors: [],
-  displayMode: "intervals",
-  mode: "major",
+  displayMode: 'intervals',
+  mode: 'major',
 };
 
 let anchors: Anchor[] = [...DEFAULTS.anchors];
 let displayMode: DisplayMode = DEFAULTS.displayMode;
 let mode: FretWalkMode = DEFAULTS.mode;
 
-const FRETBOARD_ID = "fret-walk-fretboard";
+const FRETBOARD_ID = 'fret-walk-fretboard';
 
 function saveState(): void {
   savePersisted(STORAGE_KEY, { anchors, displayMode, mode } satisfies FretWalkState);
@@ -45,35 +47,35 @@ function capitalize(s: string): string {
 
 /** Suffix noting how many extra octaves the walk has been extended by. */
 function octaveSuffix(): string {
-  return anchors.length > 1 ? ` (+${anchors.length - 1} oct)` : "";
+  return anchors.length > 1 ? ` (+${anchors.length - 1} oct)` : '';
 }
 
 function getControlsSummary(): string {
-  if (anchors.length === 0) return "Click a note to walk from";
-  const display = displayMode === "intervals" ? "Intervals" : "Notes";
-  return `${describeAnchor(anchors[0])}${octaveSuffix()} · ${capitalize(mode)} · ${display}`;
+  if (anchors.length === 0) return 'Click a note to walk from';
+  const display = displayMode === 'intervals' ? 'Intervals' : 'Notes';
+  return `${describeAnchor(requiredAt(anchors, 0))}${octaveSuffix()} · ${capitalize(mode)} · ${display}`;
 }
 
 function updateControlsSummary(): void {
-  const summary = document.getElementById("fretWalkControlsSummary");
+  const summary = document.getElementById('fretWalkControlsSummary');
   if (summary) summary.textContent = getControlsSummary();
 }
 
 function updateAnchorInfo(): void {
-  const info = document.getElementById("fretWalkInfo");
+  const info = document.getElementById('fretWalkInfo');
   if (!info) return;
   info.textContent =
     anchors.length === 0
-      ? "Click anywhere on the fretboard to anchor a root — notes from that root up to the next root will appear. Click a top root to walk up another octave."
-      : `Walking from: ${describeAnchor(anchors[0])}${octaveSuffix()}`;
+      ? 'Click anywhere on the fretboard to anchor a root — notes from that root up to the next root will appear. Click a top root to walk up another octave.'
+      : `Walking from: ${describeAnchor(requiredAt(anchors, 0))}${octaveSuffix()}`;
 }
 
 function syncControls(): void {
-  setButtonActive("fretWalkNotesBtn", displayMode === "notes");
-  setButtonActive("fretWalkIntervalsBtn", displayMode === "intervals");
-  setButtonActive("fretWalkMajorBtn", mode === "major");
-  setButtonActive("fretWalkMinorBtn", mode === "minor");
-  setButtonActive("fretWalkFullBtn", mode === "full");
+  setButtonActive('fretWalkNotesBtn', displayMode === 'notes');
+  setButtonActive('fretWalkIntervalsBtn', displayMode === 'intervals');
+  setButtonActive('fretWalkMajorBtn', mode === 'major');
+  setButtonActive('fretWalkMinorBtn', mode === 'minor');
+  setButtonActive('fretWalkFullBtn', mode === 'full');
 }
 
 function updateDisplay(): void {
@@ -91,29 +93,27 @@ function clearSelection(): void {
 }
 
 function setupDisplayModeButtons(): void {
-  document.getElementById("fretWalkNotesBtn")?.addEventListener("click", () => {
-    displayMode = "notes";
+  document.getElementById('fretWalkNotesBtn')?.addEventListener('click', () => {
+    displayMode = 'notes';
     updateDisplay();
   });
-  document
-    .getElementById("fretWalkIntervalsBtn")
-    ?.addEventListener("click", () => {
-      displayMode = "intervals";
-      updateDisplay();
-    });
+  document.getElementById('fretWalkIntervalsBtn')?.addEventListener('click', () => {
+    displayMode = 'intervals';
+    updateDisplay();
+  });
 }
 
 function setupModeButtons(): void {
-  document.getElementById("fretWalkMajorBtn")?.addEventListener("click", () => {
-    mode = "major";
+  document.getElementById('fretWalkMajorBtn')?.addEventListener('click', () => {
+    mode = 'major';
     updateDisplay();
   });
-  document.getElementById("fretWalkMinorBtn")?.addEventListener("click", () => {
-    mode = "minor";
+  document.getElementById('fretWalkMinorBtn')?.addEventListener('click', () => {
+    mode = 'minor';
     updateDisplay();
   });
-  document.getElementById("fretWalkFullBtn")?.addEventListener("click", () => {
-    mode = "full";
+  document.getElementById('fretWalkFullBtn')?.addEventListener('click', () => {
+    mode = 'full';
     updateDisplay();
   });
 }
@@ -135,7 +135,7 @@ function setupFretboardClicks(): void {
   const fretboard = document.getElementById(FRETBOARD_ID);
   if (!fretboard) return;
 
-  fretboard.addEventListener("click", (e: MouseEvent) => {
+  fretboard.addEventListener('click', (e: MouseEvent) => {
     const pos = positionFromPoint(e.clientX, e.clientY, fretboard);
     if (!pos) return;
 
@@ -146,9 +146,7 @@ function setupFretboardClicks(): void {
     }
 
     // Clicking an existing anchor truncates the walk to before it.
-    const idx = anchors.findIndex(
-      (a) => a.stringIdx === pos.stringIdx && a.fret === pos.fret,
-    );
+    const idx = anchors.findIndex((a) => a.stringIdx === pos.stringIdx && a.fret === pos.fret);
     if (idx !== -1) {
       anchors = anchors.slice(0, idx);
       updateDisplay();
@@ -156,7 +154,7 @@ function setupFretboardClicks(): void {
     }
 
     // Clicking the terminating (octave-up) root extends the walk additively.
-    const last = anchors[anchors.length - 1];
+    const last = requiredAt(anchors, anchors.length - 1);
     if (anchorPitch(pos) === anchorPitch(last) + 12) {
       anchors = [...anchors, pos];
       updateDisplay();
@@ -174,22 +172,18 @@ function setupFretboardClicks(): void {
  * selection (equivalent to a reset of the walk).
  */
 function setupOutsideClick(): void {
-  document.addEventListener("click", (e: MouseEvent) => {
+  document.addEventListener('click', (e: MouseEvent) => {
     if (anchors.length === 0) return;
 
-    const page = document.getElementById("fret-walk-page");
+    const page = document.getElementById('fret-walk-page');
     // Ignore while the Fret Walk page isn't the visible route.
-    if (!page || page.style.display === "none") return;
+    if (!page || page.style.display === 'none') return;
 
     const target = e.target as Node | null;
     if (!target) return;
 
-    const insideBoard = page
-      .querySelector(".fretboard-container")
-      ?.contains(target);
-    const insideControls = page
-      .querySelector(".controls-wrapper")
-      ?.contains(target);
+    const insideBoard = page.querySelector('.fretboard-container')?.contains(target);
+    const insideControls = page.querySelector('.controls-wrapper')?.contains(target);
     if (insideBoard || insideControls) return;
 
     clearSelection();
@@ -207,7 +201,7 @@ function resetState(): void {
  * Initialize the Fret Walk feature.
  */
 export function initFretWalkFeature(): void {
-  const container = document.getElementById("fret-walk-page");
+  const container = document.getElementById('fret-walk-page');
   if (!container) return;
 
   const persisted = loadPersisted<FretWalkState>(STORAGE_KEY, DEFAULTS);
@@ -259,15 +253,13 @@ export function initFretWalkFeature(): void {
     </div>
   `;
 
-  document
-    .getElementById("fretWalk-controls")
-    ?.appendChild(createResetLink(resetState));
+  document.getElementById('fretWalk-controls')?.appendChild(createResetLink(resetState));
 
   setupDisplayModeButtons();
   setupModeButtons();
   setupFretboardClicks();
   setupOutsideClick();
-  setupAccordionToggle("fretWalkAccordionToggle");
+  setupAccordionToggle('fretWalkAccordionToggle');
 
   observeFretboardResize(updateDisplay);
 

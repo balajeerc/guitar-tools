@@ -11,6 +11,7 @@ The detection pipeline has three stages: **pitch detection**, **note mapping**, 
 Uses the **YIN algorithm** to estimate the fundamental frequency from raw audio samples.
 
 **Steps:**
+
 1. **Difference function** — For each lag value τ, compute the squared difference between the signal and a delayed copy of itself. The lag where this difference is minimized corresponds to the period of the signal.
 2. **Cumulative mean normalization** — Normalize each difference value by the running average of all previous values. This removes the bias toward τ=0 and produces dip values between 0 and 1.
 3. **Absolute threshold** — Find the first lag where the normalized value drops below 0.15 (the YIN threshold). This avoids locking onto harmonics instead of the fundamental.
@@ -52,11 +53,13 @@ When spectral signatures are unavailable, uses a heuristic: prefer the **lowest 
 The calibration system improves detection accuracy by measuring the player's actual guitar.
 
 **Calibration Wizard (`calibrationWizard.ts`):**
+
 - 6-step process, one per string (low E through high E)
 - User plays each open string and clicks "Next" when satisfied with the reading
 - "Skip" uses the theoretical frequency as a fallback
 
 **Calibration Sampler (`calibrationSampler.ts`):**
+
 - Continuously samples pitch at 60fps using `requestAnimationFrame`
 - Temporarily increases FFT size to 4096 for better low-frequency resolution (important for low E at ~82 Hz)
 - **Harmonic normalization** — If the detector picks up a harmonic (2x or 3x the expected frequency), it divides down to the fundamental. This is common for thick strings where overtones can be stronger than the fundamental.
@@ -64,6 +67,7 @@ The calibration system improves detection accuracy by measuring the player's act
 - Simultaneously captures spectral signatures (averaged across readings)
 
 **Calibration Storage (`calibrationStorage.ts`):**
+
 - Persists frequencies and spectral signatures to `localStorage`
 - Backward-compatible: old calibrations without spectral data still work (frequency-only mode)
 

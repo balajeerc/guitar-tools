@@ -1,14 +1,14 @@
-const PLAY_BY_EAR_ROUTE = "play-by-ear";
+const PLAY_BY_EAR_ROUTE = 'play-by-ear';
 
 function routeParts(hash: string): readonly string[] {
-  return hash.replace(/^#/, "").split("/");
+  return hash.replace(/^#/, '').split('/');
 }
 
 export function isPlayByEarRoute(hash = window.location.hash): boolean {
   return routeParts(hash)[0] === PLAY_BY_EAR_ROUTE;
 }
 
-export function playByEarSongId(hash = window.location.hash): string | null {
+export function playByEarSongId(hash = window.location.hash): null | string {
   const [route, songId] = routeParts(hash);
   return route === PLAY_BY_EAR_ROUTE && songId ? songId : null;
 }
@@ -19,5 +19,5 @@ export function setPlayByEarSongUrl(songId: string): void {
 }
 
 export function replacePlayByEarSongUrl(songId: string): void {
-  window.history.replaceState(null, "", `#${PLAY_BY_EAR_ROUTE}/${songId}`);
+  window.history.replaceState(null, '', `#${PLAY_BY_EAR_ROUTE}/${songId}`);
 }

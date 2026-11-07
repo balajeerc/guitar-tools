@@ -1,6 +1,5 @@
 {
-    "ignoreBinaries": [
-        "fuser"
-    ],
-    "ignore": ["public/sw.js"]
+  "ignoreBinaries": ["fuser"],
+  "entry": ["public/sw.js!"],
+  "project": ["src/**/*.ts!", "!src/**/__fixtures__/**!"]
 }

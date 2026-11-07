@@ -1,18 +1,11 @@
-import {
-  LARGE_BPM_STEP,
-  MAX_BPM,
-  MIN_BPM,
-  SMALL_BPM_STEP,
-} from "../metronome/beats";
-import type { BeatPattern, TrackLevels } from "./pattern";
-import { beatGridHtml, beatMixerHtml } from "./renderer";
-import { MAX_LOOP_NAME_LENGTH } from "./loops";
+import { LARGE_BPM_STEP, MAX_BPM, MIN_BPM, SMALL_BPM_STEP } from '../metronome/beats';
 
-export function beatsPanelHtml(
-  bpm: number,
-  pattern: BeatPattern,
-  levels: TrackLevels,
-): string {
+import { MAX_LOOP_NAME_LENGTH } from './loops';
+import { beatGridHtml, beatMixerHtml } from './renderer';
+
+import type { BeatPattern, TrackLevels } from './pattern';
+
+export function beatsPanelHtml(bpm: number, pattern: BeatPattern, levels: TrackLevels): string {
   return `
     <section class="beats-panel" aria-label="Beats drum machine">
       <div class="beats-toolbar">

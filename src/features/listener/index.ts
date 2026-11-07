@@ -1,26 +1,28 @@
 // Listener feature — standalone audio note detection with scale degree display
 
-import { getNoteName, type AccidentalStyle } from "../../shared/constants";
-import { setupAccordionToggle } from "../../shared/accordion";
-import { createAudioListener, type AudioListenerHandle } from "../../shared/audioListener";
-import { loadPersisted, savePersisted } from "../../shared/persist";
-import { createResetLink } from "../../shared/resetLink";
-import { setButtonActive } from "../../shared/dom";
-import { createAudioInputPanel } from "../../shared/audioInput";
-import { renderScaleStrip, updateListenerDisplay } from "./renderer";
-import type { ListenerScaleMode } from "./types";
+import { setupAccordionToggle } from '../../shared/accordion';
+import { createAudioInputPanel } from '../../shared/audioInput';
+import { type AudioListenerHandle, createAudioListener } from '../../shared/audioListener';
+import { type AccidentalStyle, getNoteName } from '../../shared/constants';
+import { setButtonActive } from '../../shared/dom';
+import { loadPersisted, savePersisted } from '../../shared/persist';
+import { createResetLink } from '../../shared/resetLink';
+
+import { renderScaleStrip, updateListenerDisplay } from './renderer';
+
+import type { ListenerScaleMode } from './types';
 
 interface ListenerState {
-  rootIndex: number;
-  mode: ListenerScaleMode;
   accidental: AccidentalStyle;
+  mode: ListenerScaleMode;
+  rootIndex: number;
 }
 
-const STORAGE_KEY = "listener-state";
+const STORAGE_KEY = 'listener-state';
 const DEFAULTS: ListenerState = {
   rootIndex: 3, // C
-  mode: "major",
-  accidental: "sharp",
+  mode: 'major',
+  accidental: 'sharp',
 };
 
 // Listener-local scale state
@@ -49,10 +51,10 @@ function renderIdleDisplay(): void {
 }
 
 function renderButtonState(listening: boolean): void {
-  const btn = document.getElementById("listenerToggleBtn");
+  const btn = document.getElementById('listenerToggleBtn');
   if (!btn) return;
-  btn.textContent = listening ? "Stop listening" : "Start listening";
-  btn.classList.toggle("active", listening);
+  btn.textContent = listening ? 'Stop listening' : 'Start listening';
+  btn.classList.toggle('active', listening);
 }
 
 function capitalize(s: string): string {
@@ -60,13 +62,13 @@ function capitalize(s: string): string {
 }
 
 function updateControlsSummary(): void {
-  const summary = document.getElementById("listenerControlsSummary");
+  const summary = document.getElementById('listenerControlsSummary');
   if (!summary) return;
   summary.textContent = `${getNoteName(currentRootIndex, currentAccidental)} ${capitalize(currentMode)}`;
 }
 
 function reRenderStrip(): void {
-  const page = document.getElementById("listener-page");
+  const page = document.getElementById('listener-page');
   if (!page) return;
   renderScaleStrip(page, currentRootIndex, currentMode, currentAccidental);
   updateControlsSummary();
@@ -74,23 +76,23 @@ function reRenderStrip(): void {
 }
 
 function updateNoteLabel(): void {
-  const el = document.getElementById("listenerCurrentNote");
+  const el = document.getElementById('listenerCurrentNote');
   if (el) el.textContent = getNoteName(currentRootIndex, currentAccidental);
 }
 
 function setActiveScaleBtn(activeBtn: HTMLElement, allBtns: HTMLElement[]): void {
-  for (const btn of allBtns) btn.classList.remove("active");
-  activeBtn.classList.add("active");
+  for (const btn of allBtns) btn.classList.remove('active');
+  activeBtn.classList.add('active');
 }
 
 /** Sync control buttons to match current state */
 function syncControls(): void {
   updateNoteLabel();
-  setButtonActive("listenerMajorBtn", currentMode === "major");
-  setButtonActive("listenerMinorBtn", currentMode === "minor");
-  setButtonActive("listenerFullBtn", currentMode === "full");
-  setButtonActive("listenerSharpBtn", currentAccidental === "sharp");
-  setButtonActive("listenerFlatBtn", currentAccidental === "flat");
+  setButtonActive('listenerMajorBtn', currentMode === 'major');
+  setButtonActive('listenerMinorBtn', currentMode === 'minor');
+  setButtonActive('listenerFullBtn', currentMode === 'full');
+  setButtonActive('listenerSharpBtn', currentAccidental === 'sharp');
+  setButtonActive('listenerFlatBtn', currentAccidental === 'flat');
 }
 
 function resetState(): void {
@@ -100,60 +102,56 @@ function resetState(): void {
 }
 
 function setupControls(): void {
-  const prevBtn = document.getElementById("listenerPrevNote");
-  const nextBtn = document.getElementById("listenerNextNote");
-  const majorBtn = document.getElementById("listenerMajorBtn");
-  const minorBtn = document.getElementById("listenerMinorBtn");
-  const fullBtn = document.getElementById("listenerFullBtn");
-  const sharpBtn = document.getElementById("listenerSharpBtn");
-  const flatBtn = document.getElementById("listenerFlatBtn");
+  const prevBtn = document.getElementById('listenerPrevNote');
+  const nextBtn = document.getElementById('listenerNextNote');
+  const majorBtn = document.getElementById('listenerMajorBtn');
+  const minorBtn = document.getElementById('listenerMinorBtn');
+  const fullBtn = document.getElementById('listenerFullBtn');
+  const sharpBtn = document.getElementById('listenerSharpBtn');
+  const flatBtn = document.getElementById('listenerFlatBtn');
 
-  const scaleBtns = [majorBtn, minorBtn, fullBtn].filter(
-    (b): b is HTMLElement => b !== null,
-  );
-  const accidentalBtns = [sharpBtn, flatBtn].filter(
-    (b): b is HTMLElement => b !== null,
-  );
+  const scaleBtns = [majorBtn, minorBtn, fullBtn].filter((b): b is HTMLElement => b !== null);
+  const accidentalBtns = [sharpBtn, flatBtn].filter((b): b is HTMLElement => b !== null);
 
-  prevBtn?.addEventListener("click", () => {
+  prevBtn?.addEventListener('click', () => {
     currentRootIndex = (currentRootIndex - 1 + 12) % 12;
     updateNoteLabel();
     reRenderStrip();
   });
 
-  nextBtn?.addEventListener("click", () => {
+  nextBtn?.addEventListener('click', () => {
     currentRootIndex = (currentRootIndex + 1) % 12;
     updateNoteLabel();
     reRenderStrip();
   });
 
-  majorBtn?.addEventListener("click", () => {
-    currentMode = "major";
+  majorBtn?.addEventListener('click', () => {
+    currentMode = 'major';
     setActiveScaleBtn(majorBtn, scaleBtns);
     reRenderStrip();
   });
 
-  minorBtn?.addEventListener("click", () => {
-    currentMode = "minor";
+  minorBtn?.addEventListener('click', () => {
+    currentMode = 'minor';
     setActiveScaleBtn(minorBtn, scaleBtns);
     reRenderStrip();
   });
 
-  fullBtn?.addEventListener("click", () => {
-    currentMode = "full";
+  fullBtn?.addEventListener('click', () => {
+    currentMode = 'full';
     setActiveScaleBtn(fullBtn, scaleBtns);
     reRenderStrip();
   });
 
-  sharpBtn?.addEventListener("click", () => {
-    currentAccidental = "sharp";
+  sharpBtn?.addEventListener('click', () => {
+    currentAccidental = 'sharp';
     setActiveScaleBtn(sharpBtn, accidentalBtns);
     updateNoteLabel();
     reRenderStrip();
   });
 
-  flatBtn?.addEventListener("click", () => {
-    currentAccidental = "flat";
+  flatBtn?.addEventListener('click', () => {
+    currentAccidental = 'flat';
     setActiveScaleBtn(flatBtn, accidentalBtns);
     updateNoteLabel();
     reRenderStrip();
@@ -161,8 +159,8 @@ function setupControls(): void {
 }
 
 function setupToggle(): void {
-  const btn = document.getElementById("listenerToggleBtn");
-  btn?.addEventListener("click", () => {
+  const btn = document.getElementById('listenerToggleBtn');
+  btn?.addEventListener('click', () => {
     if (listener.isListening()) {
       listener.stop();
     } else {
@@ -172,7 +170,7 @@ function setupToggle(): void {
 }
 
 export function initListenerFeature(): void {
-  const page = document.getElementById("listener-page");
+  const page = document.getElementById('listener-page');
   if (!page) return;
 
   applyState(loadPersisted(STORAGE_KEY, DEFAULTS));
@@ -185,7 +183,7 @@ export function initListenerFeature(): void {
           getNoteName(note.noteIndex, currentAccidental),
           note.centsOff,
           currentRootIndex,
-          currentMode,
+          currentMode
         );
       } else {
         renderIdleDisplay();
@@ -202,12 +200,10 @@ export function initListenerFeature(): void {
 
   setupControls();
   setupToggle();
-  setupAccordionToggle("listenerControlsAccordionToggle");
-  page.appendChild(createAudioInputPanel("listener"));
+  setupAccordionToggle('listenerControlsAccordionToggle');
+  page.appendChild(createAudioInputPanel('listener'));
 
-  document
-    .getElementById("listenerControlsPanel")
-    ?.appendChild(createResetLink(resetState));
+  document.getElementById('listenerControlsPanel')?.appendChild(createResetLink(resetState));
 
   syncControls();
   reRenderStrip();

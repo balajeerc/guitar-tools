@@ -1,0 +1,4166 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`curated melody library > preserves the easy tunes, note durations and interval answers 1`] = `
+[
+  {
+    "attribution": "Ludwig van Beethoven",
+    "bpm": 112,
+    "degrees": [
+      "3",
+      "3",
+      "4",
+      "5",
+      "5",
+      "4",
+      "3",
+      "2",
+    ],
+    "difficulty": "easy",
+    "id": "ode-to-joy",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 62,
+      },
+    ],
+    "title": "Ode to Joy",
+  },
+  {
+    "attribution": "Ludwig van Beethoven",
+    "bpm": 108,
+    "degrees": [
+      "5",
+      "5",
+      "5",
+      "b3",
+      "4",
+      "4",
+      "4",
+      "2",
+    ],
+    "difficulty": "easy",
+    "id": "beethovens-fifth",
+    "key": "C minor",
+    "notes": [
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 2,
+        "midi": 63,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 2,
+        "midi": 62,
+      },
+    ],
+    "title": "Symphony No. 5",
+  },
+  {
+    "attribution": "Traditional",
+    "bpm": 104,
+    "degrees": [
+      "1",
+      "1",
+      "5",
+      "5",
+      "6",
+      "6",
+      "5",
+    ],
+    "difficulty": "easy",
+    "id": "twinkle",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 2,
+        "midi": 67,
+      },
+    ],
+    "title": "Twinkle, Twinkle, Little Star",
+  },
+  {
+    "attribution": "Ludwig van Beethoven",
+    "bpm": 96,
+    "degrees": [
+      "5",
+      "b5",
+      "5",
+      "b5",
+      "5",
+      "2",
+      "4",
+      "b3",
+      "1",
+    ],
+    "difficulty": "easy",
+    "id": "fur-elise",
+    "key": "A minor",
+    "notes": [
+      {
+        "beats": 0.5,
+        "midi": 76,
+      },
+      {
+        "beats": 0.5,
+        "midi": 75,
+      },
+      {
+        "beats": 0.5,
+        "midi": 76,
+      },
+      {
+        "beats": 0.5,
+        "midi": 75,
+      },
+      {
+        "beats": 0.5,
+        "midi": 76,
+      },
+      {
+        "beats": 0.5,
+        "midi": 71,
+      },
+      {
+        "beats": 0.5,
+        "midi": 74,
+      },
+      {
+        "beats": 0.5,
+        "midi": 72,
+      },
+      {
+        "beats": 2,
+        "midi": 69,
+      },
+    ],
+    "title": "Für Elise",
+  },
+  {
+    "attribution": "James Lord Pierpont",
+    "bpm": 116,
+    "degrees": [
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "3",
+      "5",
+      "1",
+      "2",
+      "3",
+    ],
+    "difficulty": "easy",
+    "id": "jingle-bells",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 2,
+        "midi": 64,
+      },
+    ],
+    "title": "Jingle Bells",
+  },
+  {
+    "attribution": "Patty Hill and Mildred J. Hill",
+    "bpm": 104,
+    "degrees": [
+      "5",
+      "5",
+      "6",
+      "5",
+      "1",
+      "7",
+    ],
+    "difficulty": "easy",
+    "id": "happy-birthday",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 72,
+      },
+      {
+        "beats": 2,
+        "midi": 71,
+      },
+    ],
+    "title": "Happy Birthday to You",
+  },
+  {
+    "attribution": "Traditional",
+    "bpm": 112,
+    "degrees": [
+      "3",
+      "2",
+      "1",
+      "2",
+      "3",
+      "3",
+      "3",
+    ],
+    "difficulty": "easy",
+    "id": "mary-lamb",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 64,
+      },
+    ],
+    "title": "Mary Had a Little Lamb",
+  },
+  {
+    "attribution": "Traditional",
+    "bpm": 108,
+    "degrees": [
+      "1",
+      "2",
+      "3",
+      "1",
+      "1",
+      "2",
+      "3",
+      "1",
+    ],
+    "difficulty": "easy",
+    "id": "frere-jacques",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 60,
+      },
+    ],
+    "title": "Frère Jacques",
+  },
+  {
+    "attribution": "Traditional",
+    "bpm": 104,
+    "degrees": [
+      "1",
+      "1",
+      "1",
+      "2",
+      "3",
+      "3",
+      "2",
+      "3",
+      "4",
+      "5",
+    ],
+    "difficulty": "easy",
+    "id": "row-your-boat",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 1.5,
+        "midi": 60,
+      },
+      {
+        "beats": 1.5,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 1.5,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 3,
+        "midi": 67,
+      },
+    ],
+    "title": "Row, Row, Row Your Boat",
+  },
+  {
+    "attribution": "Traditional",
+    "bpm": 108,
+    "degrees": [
+      "5",
+      "6",
+      "5",
+      "4",
+      "3",
+      "4",
+      "5",
+      "2",
+      "3",
+      "4",
+      "3",
+      "4",
+      "5",
+    ],
+    "difficulty": "easy",
+    "id": "london-bridge",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 2,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 65,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 2,
+        "midi": 67,
+      },
+    ],
+    "title": "London Bridge Is Falling Down",
+  },
+  {
+    "attribution": "Traditional",
+    "bpm": 84,
+    "degrees": [
+      "5",
+      "1",
+      "3",
+      "1",
+      "3",
+      "2",
+      "1",
+      "6",
+      "5",
+      "5",
+      "1",
+      "3",
+      "1",
+      "3",
+      "2",
+      "5",
+    ],
+    "difficulty": "easy",
+    "id": "amazing-grace",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 2,
+        "midi": 72,
+      },
+      {
+        "beats": 0.5,
+        "midi": 76,
+      },
+      {
+        "beats": 0.5,
+        "midi": 72,
+      },
+      {
+        "beats": 2,
+        "midi": 76,
+      },
+      {
+        "beats": 1,
+        "midi": 74,
+      },
+      {
+        "beats": 2,
+        "midi": 72,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 2,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 72,
+      },
+      {
+        "beats": 2,
+        "midi": 76,
+      },
+      {
+        "beats": 0.5,
+        "midi": 72,
+      },
+      {
+        "beats": 0.5,
+        "midi": 76,
+      },
+      {
+        "beats": 2,
+        "midi": 74,
+      },
+      {
+        "beats": 3,
+        "midi": 79,
+      },
+    ],
+    "title": "Amazing Grace",
+  },
+  {
+    "attribution": "Traditional",
+    "bpm": 112,
+    "degrees": [
+      "1",
+      "3",
+      "4",
+      "5",
+      "1",
+      "3",
+      "4",
+      "5",
+      "1",
+      "3",
+      "4",
+      "5",
+      "3",
+      "1",
+      "3",
+      "2",
+    ],
+    "difficulty": "easy",
+    "id": "when-the-saints",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 2,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 2,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 62,
+      },
+    ],
+    "title": "When the Saints Go Marching In",
+  },
+  {
+    "attribution": "Traditional",
+    "bpm": 100,
+    "degrees": [
+      "3",
+      "2",
+      "1",
+      "3",
+      "2",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "2",
+      "2",
+      "2",
+      "2",
+      "3",
+      "2",
+      "1",
+    ],
+    "difficulty": "easy",
+    "id": "hot-cross-buns",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 2,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 62,
+      },
+      {
+        "beats": 4,
+        "midi": 60,
+      },
+      {
+        "beats": 2,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 62,
+      },
+      {
+        "beats": 4,
+        "midi": 60,
+      },
+      {
+        "beats": 0.5,
+        "midi": 60,
+      },
+      {
+        "beats": 0.5,
+        "midi": 60,
+      },
+      {
+        "beats": 0.5,
+        "midi": 60,
+      },
+      {
+        "beats": 0.5,
+        "midi": 60,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 2,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 62,
+      },
+      {
+        "beats": 4,
+        "midi": 60,
+      },
+    ],
+    "title": "Hot Cross Buns",
+  },
+  {
+    "attribution": "Traditional",
+    "bpm": 112,
+    "degrees": [
+      "1",
+      "1",
+      "1",
+      "5",
+      "6",
+      "6",
+      "5",
+      "3",
+      "3",
+      "2",
+      "2",
+      "1",
+    ],
+    "difficulty": "easy",
+    "id": "old-macdonald",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 2,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 2,
+        "midi": 60,
+      },
+    ],
+    "title": "Old MacDonald Had a Farm",
+  },
+  {
+    "attribution": "Traditional",
+    "bpm": 108,
+    "degrees": [
+      "5",
+      "3",
+      "5",
+      "5",
+      "3",
+      "5",
+      "6",
+      "5",
+      "4",
+      "3",
+      "2",
+      "3",
+      "4",
+      "3",
+    ],
+    "difficulty": "easy",
+    "id": "this-old-man",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 2,
+        "midi": 64,
+      },
+    ],
+    "title": "This Old Man",
+  },
+  {
+    "attribution": "Traditional",
+    "bpm": 116,
+    "degrees": [
+      "1",
+      "1",
+      "2",
+      "2",
+      "3",
+      "5",
+      "3",
+      "1",
+      "1",
+      "2",
+      "2",
+      "3",
+      "1",
+    ],
+    "difficulty": "easy",
+    "id": "pop-goes-the-weasel",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 0.5,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 2,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 0.5,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 60,
+      },
+    ],
+    "title": "Pop Goes the Weasel",
+  },
+  {
+    "attribution": "Stephen Foster",
+    "bpm": 108,
+    "degrees": [
+      "1",
+      "2",
+      "3",
+      "5",
+      "5",
+      "6",
+      "5",
+      "3",
+      "1",
+      "2",
+      "3",
+      "3",
+      "2",
+      "1",
+      "2",
+    ],
+    "difficulty": "easy",
+    "id": "oh-susanna",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 0.5,
+        "midi": 60,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 60,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 2,
+        "midi": 62,
+      },
+    ],
+    "title": "Oh! Susanna",
+  },
+  {
+    "attribution": "Traditional Scottish",
+    "bpm": 92,
+    "degrees": [
+      "5",
+      "1",
+      "1",
+      "1",
+      "3",
+      "2",
+      "1",
+      "2",
+      "3",
+      "1",
+      "1",
+      "3",
+      "5",
+      "6",
+    ],
+    "difficulty": "easy",
+    "id": "auld-lang-syne",
+    "key": "F major",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1.5,
+        "midi": 65,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1.5,
+        "midi": 65,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 72,
+      },
+      {
+        "beats": 2,
+        "midi": 74,
+      },
+    ],
+    "title": "Auld Lang Syne",
+  },
+  {
+    "attribution": "Traditional Welsh",
+    "bpm": 112,
+    "degrees": [
+      "5",
+      "4",
+      "3",
+      "2",
+      "1",
+      "2",
+      "3",
+      "1",
+      "2",
+      "3",
+      "4",
+      "2",
+      "3",
+      "2",
+      "1",
+      "7",
+      "1",
+    ],
+    "difficulty": "easy",
+    "id": "deck-the-halls",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 1.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 60,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 59,
+      },
+      {
+        "beats": 2,
+        "midi": 60,
+      },
+    ],
+    "title": "Deck the Halls",
+  },
+  {
+    "attribution": "Franz Xaver Gruber",
+    "bpm": 76,
+    "degrees": [
+      "5",
+      "6",
+      "5",
+      "3",
+      "5",
+      "6",
+      "5",
+      "3",
+      "2",
+      "2",
+      "7",
+      "1",
+      "1",
+      "5",
+    ],
+    "difficulty": "easy",
+    "id": "silent-night",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 1.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 3,
+        "midi": 64,
+      },
+      {
+        "beats": 1.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 3,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 74,
+      },
+      {
+        "beats": 1,
+        "midi": 74,
+      },
+      {
+        "beats": 3,
+        "midi": 71,
+      },
+      {
+        "beats": 2,
+        "midi": 72,
+      },
+      {
+        "beats": 1,
+        "midi": 72,
+      },
+      {
+        "beats": 3,
+        "midi": 67,
+      },
+    ],
+    "title": "Silent Night",
+  },
+  {
+    "attribution": "Traditional English",
+    "bpm": 112,
+    "degrees": [
+      "5",
+      "1",
+      "1",
+      "2",
+      "1",
+      "7",
+      "6",
+      "6",
+      "2",
+      "2",
+      "3",
+      "2",
+      "1",
+      "7",
+      "5",
+    ],
+    "difficulty": "easy",
+    "id": "we-wish-you",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 72,
+      },
+      {
+        "beats": 0.5,
+        "midi": 72,
+      },
+      {
+        "beats": 0.5,
+        "midi": 74,
+      },
+      {
+        "beats": 0.5,
+        "midi": 72,
+      },
+      {
+        "beats": 1,
+        "midi": 71,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 74,
+      },
+      {
+        "beats": 0.5,
+        "midi": 74,
+      },
+      {
+        "beats": 0.5,
+        "midi": 76,
+      },
+      {
+        "beats": 1,
+        "midi": 74,
+      },
+      {
+        "beats": 1,
+        "midi": 72,
+      },
+      {
+        "beats": 1,
+        "midi": 71,
+      },
+      {
+        "beats": 2,
+        "midi": 67,
+      },
+    ],
+    "title": "We Wish You a Merry Christmas",
+  },
+  {
+    "attribution": "Traditional Mexican",
+    "bpm": 116,
+    "degrees": [
+      "1",
+      "1",
+      "1",
+      "4",
+      "6",
+      "1",
+      "1",
+      "1",
+      "4",
+      "6",
+      "4",
+      "4",
+      "3",
+      "3",
+      "2",
+      "2",
+      "1",
+    ],
+    "difficulty": "easy",
+    "id": "la-cucaracha",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 0.5,
+        "midi": 60,
+      },
+      {
+        "beats": 0.5,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 2,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 60,
+      },
+      {
+        "beats": 0.5,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 2,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 2,
+        "midi": 60,
+      },
+    ],
+    "title": "La Cucaracha",
+  },
+  {
+    "attribution": "Percy Montrose",
+    "bpm": 104,
+    "degrees": [
+      "5",
+      "5",
+      "5",
+      "1",
+      "3",
+      "3",
+      "3",
+      "1",
+      "5",
+      "1",
+      "3",
+      "5",
+      "5",
+      "4",
+      "3",
+      "2",
+    ],
+    "difficulty": "easy",
+    "id": "oh-my-darling",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 2,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 60,
+      },
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 1.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 62,
+      },
+    ],
+    "title": "Oh My Darling, Clementine",
+  },
+  {
+    "attribution": "Traditional German",
+    "bpm": 104,
+    "degrees": [
+      "5",
+      "3",
+      "3",
+      "4",
+      "2",
+      "2",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "5",
+      "5",
+    ],
+    "difficulty": "easy",
+    "id": "lightly-row",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 2,
+        "midi": 62,
+      },
+      {
+        "beats": 2,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 2,
+        "midi": 67,
+      },
+    ],
+    "title": "Lightly Row",
+  },
+]
+`;
+
+exports[`curated melody library > preserves the hard tunes, note durations and interval answers 1`] = `
+[
+  {
+    "attribution": "Scott Joplin",
+    "bpm": 112,
+    "degrees": [
+      "1",
+      "5",
+      "1",
+      "3",
+      "5",
+      "1",
+      "5",
+      "7",
+      "2",
+      "5",
+      "1",
+      "5",
+      "1",
+      "3",
+      "5",
+      "1",
+      "5",
+      "7",
+      "2",
+      "5",
+      "1",
+      "b3",
+      "b6",
+      "5",
+      "1",
+      "b3",
+      "b6",
+      "5",
+    ],
+    "difficulty": "hard",
+    "id": "maple-leaf-rag",
+    "key": "G major",
+    "notes": [
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 74,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 71,
+      },
+      {
+        "beats": 0.5,
+        "midi": 74,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 74,
+      },
+      {
+        "beats": 0.5,
+        "midi": 66,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 74,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 74,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 71,
+      },
+      {
+        "beats": 1,
+        "midi": 74,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 74,
+      },
+      {
+        "beats": 1,
+        "midi": 66,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 74,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 70,
+      },
+      {
+        "beats": 0.5,
+        "midi": 75,
+      },
+      {
+        "beats": 0.5,
+        "midi": 74,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 70,
+      },
+      {
+        "beats": 1,
+        "midi": 75,
+      },
+      {
+        "beats": 2,
+        "midi": 74,
+      },
+    ],
+    "title": "Maple Leaf Rag",
+  },
+  {
+    "attribution": "Johann Sebastian Bach",
+    "bpm": 108,
+    "degrees": [
+      "1",
+      "2",
+      "b3",
+      "2",
+      "1",
+      "7",
+      "1",
+      "2",
+      "5",
+      "6",
+      "b7",
+      "1",
+      "b7",
+      "b6",
+      "5",
+      "4",
+      "b3",
+      "2",
+      "b3",
+      "4",
+    ],
+    "difficulty": "hard",
+    "id": "bourree-in-e-minor",
+    "key": "E minor",
+    "notes": [
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 66,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 66,
+      },
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 63,
+      },
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 66,
+      },
+      {
+        "beats": 0.5,
+        "midi": 59,
+      },
+      {
+        "beats": 0.5,
+        "midi": 61,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 0.5,
+        "midi": 60,
+      },
+      {
+        "beats": 0.5,
+        "midi": 59,
+      },
+      {
+        "beats": 1,
+        "midi": 57,
+      },
+      {
+        "beats": 0.5,
+        "midi": 55,
+      },
+      {
+        "beats": 0.5,
+        "midi": 54,
+      },
+      {
+        "beats": 0.5,
+        "midi": 55,
+      },
+      {
+        "beats": 1.5,
+        "midi": 57,
+      },
+    ],
+    "title": "Bourrée in E minor",
+  },
+  {
+    "attribution": "Scott Joplin",
+    "bpm": 104,
+    "degrees": [
+      "6",
+      "b7",
+      "7",
+      "2",
+      "2",
+      "5",
+      "4",
+      "2",
+      "6",
+      "b7",
+      "7",
+      "3",
+      "3",
+      "2",
+      "6",
+      "7",
+      "1",
+      "5",
+      "6",
+      "7",
+      "1",
+      "#1",
+      "2",
+      "b3",
+      "3",
+      "b3",
+      "3",
+      "6",
+      "6",
+      "5",
+      "2",
+      "3",
+    ],
+    "difficulty": "hard",
+    "id": "easy-winners",
+    "key": "A♭ major",
+    "notes": [
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 0.5,
+        "midi": 66,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 70,
+      },
+      {
+        "beats": 1,
+        "midi": 70,
+      },
+      {
+        "beats": 0.5,
+        "midi": 75,
+      },
+      {
+        "beats": 0.5,
+        "midi": 73,
+      },
+      {
+        "beats": 1,
+        "midi": 70,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 0.5,
+        "midi": 66,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 72,
+      },
+      {
+        "beats": 1,
+        "midi": 72,
+      },
+      {
+        "beats": 0.5,
+        "midi": 70,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 68,
+      },
+      {
+        "beats": 0.5,
+        "midi": 63,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 68,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 70,
+      },
+      {
+        "beats": 0.5,
+        "midi": 71,
+      },
+      {
+        "beats": 1,
+        "midi": 72,
+      },
+      {
+        "beats": 0.5,
+        "midi": 71,
+      },
+      {
+        "beats": 0.5,
+        "midi": 72,
+      },
+      {
+        "beats": 1,
+        "midi": 77,
+      },
+      {
+        "beats": 0.5,
+        "midi": 77,
+      },
+      {
+        "beats": 0.5,
+        "midi": 75,
+      },
+      {
+        "beats": 1,
+        "midi": 70,
+      },
+      {
+        "beats": 2,
+        "midi": 72,
+      },
+    ],
+    "title": "The Easy Winners",
+  },
+  {
+    "attribution": "Scott Joplin",
+    "bpm": 104,
+    "degrees": [
+      "2",
+      "3",
+      "1",
+      "6",
+      "6",
+      "7",
+      "5",
+      "2",
+      "3",
+      "1",
+      "6",
+      "6",
+      "7",
+      "5",
+      "2",
+      "3",
+      "1",
+      "6",
+      "6",
+      "7",
+      "6",
+      "b6",
+      "5",
+    ],
+    "difficulty": "hard",
+    "id": "the-entertainer",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 0.5,
+        "midi": 86,
+      },
+      {
+        "beats": 0.5,
+        "midi": 88,
+      },
+      {
+        "beats": 1,
+        "midi": 84,
+      },
+      {
+        "beats": 0.5,
+        "midi": 81,
+      },
+      {
+        "beats": 0.5,
+        "midi": 81,
+      },
+      {
+        "beats": 1,
+        "midi": 83,
+      },
+      {
+        "beats": 1,
+        "midi": 79,
+      },
+      {
+        "beats": 0.5,
+        "midi": 74,
+      },
+      {
+        "beats": 0.5,
+        "midi": 76,
+      },
+      {
+        "beats": 1,
+        "midi": 72,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 71,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 60,
+      },
+      {
+        "beats": 0.5,
+        "midi": 57,
+      },
+      {
+        "beats": 0.5,
+        "midi": 57,
+      },
+      {
+        "beats": 0.5,
+        "midi": 59,
+      },
+      {
+        "beats": 0.5,
+        "midi": 57,
+      },
+      {
+        "beats": 0.5,
+        "midi": 56,
+      },
+      {
+        "beats": 2,
+        "midi": 55,
+      },
+    ],
+    "title": "The Entertainer",
+  },
+  {
+    "attribution": "Lewis F. Muir",
+    "bpm": 108,
+    "degrees": [
+      "5",
+      "5",
+      "5",
+      "b6",
+      "6",
+      "6",
+      "6",
+      "b6",
+      "5",
+      "b6",
+      "6",
+      "b6",
+      "6",
+      "5",
+      "5",
+      "5",
+      "b6",
+      "6",
+      "6",
+      "6",
+      "5",
+      "b5",
+      "3",
+      "2",
+      "2",
+      "5",
+    ],
+    "difficulty": "hard",
+    "id": "ragtime-cowboy-joe",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 68,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 68,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 68,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 68,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 68,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 66,
+      },
+      {
+        "beats": 0.5,
+        "midi": 76,
+      },
+      {
+        "beats": 0.5,
+        "midi": 74,
+      },
+      {
+        "beats": 1,
+        "midi": 74,
+      },
+      {
+        "beats": 2,
+        "midi": 67,
+      },
+    ],
+    "title": "Ragtime Cowboy Joe",
+  },
+  {
+    "attribution": "Scott Joplin",
+    "bpm": 108,
+    "degrees": [
+      "5",
+      "5",
+      "4",
+      "3",
+      "b3",
+      "2",
+      "b2",
+      "1",
+      "b7",
+      "b7",
+      "6",
+      "b6",
+      "5",
+      "b6",
+      "6",
+      "b7",
+      "6",
+      "b6",
+      "5",
+    ],
+    "difficulty": "hard",
+    "id": "rosebud-march",
+    "key": "G major",
+    "notes": [
+      {
+        "beats": 0.5,
+        "midi": 74,
+      },
+      {
+        "beats": 1,
+        "midi": 74,
+      },
+      {
+        "beats": 0.5,
+        "midi": 72,
+      },
+      {
+        "beats": 0.5,
+        "midi": 71,
+      },
+      {
+        "beats": 0.5,
+        "midi": 70,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 68,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 63,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 0.5,
+        "midi": 63,
+      },
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 63,
+      },
+      {
+        "beats": 2,
+        "midi": 62,
+      },
+    ],
+    "title": "The Rose-bud March",
+  },
+  {
+    "attribution": "Wolfgang Amadeus Mozart",
+    "bpm": 112,
+    "degrees": [
+      "2",
+      "1",
+      "7",
+      "1",
+      "b3",
+      "4",
+      "b3",
+      "2",
+      "b3",
+      "5",
+      "b6",
+      "5",
+      "b5",
+      "5",
+      "2",
+      "1",
+      "7",
+      "1",
+      "2",
+      "1",
+      "b7",
+      "1",
+      "b3",
+      "1",
+      "b3",
+    ],
+    "difficulty": "hard",
+    "id": "rondo-alla-turca",
+    "key": "A minor",
+    "notes": [
+      {
+        "beats": 0.5,
+        "midi": 71,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 68,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 72,
+      },
+      {
+        "beats": 0.5,
+        "midi": 74,
+      },
+      {
+        "beats": 0.5,
+        "midi": 72,
+      },
+      {
+        "beats": 0.5,
+        "midi": 71,
+      },
+      {
+        "beats": 0.5,
+        "midi": 72,
+      },
+      {
+        "beats": 1,
+        "midi": 76,
+      },
+      {
+        "beats": 0.5,
+        "midi": 77,
+      },
+      {
+        "beats": 0.5,
+        "midi": 76,
+      },
+      {
+        "beats": 0.5,
+        "midi": 75,
+      },
+      {
+        "beats": 0.5,
+        "midi": 76,
+      },
+      {
+        "beats": 1,
+        "midi": 83,
+      },
+      {
+        "beats": 0.5,
+        "midi": 81,
+      },
+      {
+        "beats": 0.5,
+        "midi": 80,
+      },
+      {
+        "beats": 0.5,
+        "midi": 81,
+      },
+      {
+        "beats": 0.5,
+        "midi": 83,
+      },
+      {
+        "beats": 1,
+        "midi": 81,
+      },
+      {
+        "beats": 0.5,
+        "midi": 79,
+      },
+      {
+        "beats": 0.5,
+        "midi": 81,
+      },
+      {
+        "beats": 1,
+        "midi": 84,
+      },
+      {
+        "beats": 1,
+        "midi": 81,
+      },
+      {
+        "beats": 2,
+        "midi": 84,
+      },
+    ],
+    "title": "Rondo alla Turca",
+  },
+  {
+    "attribution": "J. Scott Skinner",
+    "bpm": 96,
+    "degrees": [
+      "5",
+      "5",
+      "3",
+      "5",
+      "6",
+      "7",
+      "1",
+      "6",
+      "5",
+      "3",
+      "2",
+      "1",
+      "2",
+      "3",
+      "4",
+      "6",
+      "5",
+      "5",
+      "3",
+      "5",
+      "6",
+      "7",
+      "1",
+      "7",
+      "6",
+      "7",
+      "1",
+      "2",
+      "7",
+      "5",
+      "2",
+      "3",
+      "b5",
+      "5",
+    ],
+    "difficulty": "hard",
+    "id": "warriors-return",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 71,
+      },
+      {
+        "beats": 0.5,
+        "midi": 72,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 0.5,
+        "midi": 60,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 71,
+      },
+      {
+        "beats": 0.5,
+        "midi": 72,
+      },
+      {
+        "beats": 1,
+        "midi": 71,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 71,
+      },
+      {
+        "beats": 0.5,
+        "midi": 72,
+      },
+      {
+        "beats": 0.5,
+        "midi": 74,
+      },
+      {
+        "beats": 1,
+        "midi": 71,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 66,
+      },
+      {
+        "beats": 2,
+        "midi": 67,
+      },
+    ],
+    "title": "The Warrior’s Return",
+  },
+  {
+    "attribution": "J. Scott Skinner",
+    "bpm": 96,
+    "degrees": [
+      "4",
+      "3",
+      "4",
+      "5",
+      "b7",
+      "6",
+      "4",
+      "6",
+      "5",
+      "4",
+      "3",
+      "1",
+      "2",
+      "2",
+      "2",
+      "4",
+      "3",
+      "4",
+      "5",
+      "b7",
+      "6",
+      "4",
+      "6",
+      "5",
+      "1",
+      "7",
+      "2",
+      "1",
+      "1",
+    ],
+    "difficulty": "hard",
+    "id": "my-friend-joe",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 70,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 72,
+      },
+      {
+        "beats": 0.5,
+        "midi": 74,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 70,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 65,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 72,
+      },
+      {
+        "beats": 0.5,
+        "midi": 71,
+      },
+      {
+        "beats": 1,
+        "midi": 74,
+      },
+      {
+        "beats": 1,
+        "midi": 72,
+      },
+      {
+        "beats": 2,
+        "midi": 60,
+      },
+    ],
+    "title": "My Friend Joe",
+  },
+]
+`;
+
+exports[`curated melody library > preserves the medium tunes, note durations and interval answers 1`] = `
+[
+  {
+    "attribution": "Christian Petzold",
+    "bpm": 96,
+    "degrees": [
+      "5",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "1",
+      "1",
+      "6",
+      "4",
+      "5",
+      "6",
+      "7",
+      "1",
+      "1",
+      "1",
+    ],
+    "difficulty": "medium",
+    "id": "minuet-in-g",
+    "key": "G major",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 74,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 71,
+      },
+      {
+        "beats": 0.5,
+        "midi": 72,
+      },
+      {
+        "beats": 1,
+        "midi": 74,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 2,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 76,
+      },
+      {
+        "beats": 0.5,
+        "midi": 72,
+      },
+      {
+        "beats": 0.5,
+        "midi": 74,
+      },
+      {
+        "beats": 0.5,
+        "midi": 76,
+      },
+      {
+        "beats": 0.5,
+        "midi": 78,
+      },
+      {
+        "beats": 1,
+        "midi": 79,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 2,
+        "midi": 67,
+      },
+    ],
+    "title": "Minuet in G major",
+  },
+  {
+    "attribution": "Traditional Japanese",
+    "bpm": 88,
+    "degrees": [
+      "1",
+      "1",
+      "2",
+      "1",
+      "1",
+      "2",
+      "1",
+      "2",
+      "b3",
+      "2",
+      "1",
+      "2",
+      "1",
+      "b6",
+    ],
+    "difficulty": "medium",
+    "id": "sakura",
+    "key": "A minor",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 2,
+        "midi": 71,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 2,
+        "midi": 71,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 71,
+      },
+      {
+        "beats": 1,
+        "midi": 72,
+      },
+      {
+        "beats": 1,
+        "midi": 71,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 71,
+      },
+      {
+        "beats": 2,
+        "midi": 69,
+      },
+      {
+        "beats": 3,
+        "midi": 65,
+      },
+    ],
+    "title": "Sakura Sakura",
+  },
+  {
+    "attribution": "Traditional French",
+    "bpm": 94,
+    "degrees": [
+      "1",
+      "1",
+      "1",
+      "2",
+      "3",
+      "2",
+      "1",
+      "3",
+      "2",
+      "2",
+      "1",
+    ],
+    "difficulty": "medium",
+    "id": "au-clair-de-la-lune",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 2,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 4,
+        "midi": 60,
+      },
+    ],
+    "title": "Au Clair de la Lune",
+  },
+  {
+    "attribution": "Traditional",
+    "bpm": 100,
+    "degrees": [
+      "3",
+      "3",
+      "2",
+      "1",
+      "3",
+      "3",
+      "2",
+      "1",
+      "1",
+      "1",
+      "2",
+      "3",
+      "5",
+      "5",
+      "3",
+      "2",
+      "1",
+    ],
+    "difficulty": "medium",
+    "id": "go-tell-aunt-rhody",
+    "key": "C major",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 2,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 2,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 2,
+        "midi": 60,
+      },
+    ],
+    "title": "Go Tell Aunt Rhody",
+  },
+  {
+    "attribution": "Traditional English",
+    "bpm": 92,
+    "degrees": [
+      "2",
+      "b3",
+      "b3",
+      "b3",
+      "4",
+      "5",
+      "4",
+      "2",
+      "b7",
+      "b7",
+      "1",
+      "2",
+      "b3",
+      "1",
+      "1",
+      "2",
+      "b3",
+    ],
+    "difficulty": "medium",
+    "id": "greensleeves",
+    "key": "A minor",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 71,
+      },
+      {
+        "beats": 1.5,
+        "midi": 72,
+      },
+      {
+        "beats": 0.5,
+        "midi": 72,
+      },
+      {
+        "beats": 1,
+        "midi": 72,
+      },
+      {
+        "beats": 1,
+        "midi": 74,
+      },
+      {
+        "beats": 1,
+        "midi": 76,
+      },
+      {
+        "beats": 2,
+        "midi": 74,
+      },
+      {
+        "beats": 1,
+        "midi": 71,
+      },
+      {
+        "beats": 1.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 71,
+      },
+      {
+        "beats": 1,
+        "midi": 72,
+      },
+      {
+        "beats": 2,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 71,
+      },
+      {
+        "beats": 2,
+        "midi": 72,
+      },
+    ],
+    "title": "Greensleeves",
+  },
+  {
+    "attribution": "Traditional sea shanty",
+    "bpm": 112,
+    "degrees": [
+      "5",
+      "5",
+      "5",
+      "5",
+      "5",
+      "5",
+      "1",
+      "b3",
+      "5",
+      "4",
+      "4",
+      "4",
+      "4",
+      "4",
+      "4",
+      "b7",
+      "2",
+      "4",
+    ],
+    "difficulty": "medium",
+    "id": "drunken-sailor",
+    "key": "D Dorian",
+    "notes": [
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 65,
+      },
+      {
+        "beats": 2,
+        "midi": 69,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 60,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 67,
+      },
+    ],
+    "title": "Drunken Sailor",
+  },
+  {
+    "attribution": "Traditional English",
+    "bpm": 104,
+    "degrees": [
+      "1",
+      "5",
+      "5",
+      "4",
+      "b3",
+      "2",
+      "1",
+      "b7",
+      "1",
+      "2",
+      "b3",
+      "4",
+      "5",
+    ],
+    "difficulty": "medium",
+    "id": "god-rest-ye",
+    "key": "E minor",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1.5,
+        "midi": 71,
+      },
+      {
+        "beats": 0.5,
+        "midi": 71,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 66,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 2,
+        "midi": 62,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 1,
+        "midi": 66,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 2,
+        "midi": 71,
+      },
+    ],
+    "title": "God Rest Ye Merry, Gentlemen",
+  },
+  {
+    "attribution": "Antonín Dvořák",
+    "bpm": 80,
+    "degrees": [
+      "b3",
+      "5",
+      "5",
+      "b3",
+      "2",
+      "1",
+      "2",
+      "b3",
+      "5",
+      "b3",
+      "2",
+      "b3",
+      "5",
+      "5",
+      "b3",
+      "2",
+      "1",
+    ],
+    "difficulty": "medium",
+    "id": "new-world-largo",
+    "key": "D major",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 77,
+      },
+      {
+        "beats": 2,
+        "midi": 81,
+      },
+      {
+        "beats": 1,
+        "midi": 81,
+      },
+      {
+        "beats": 1,
+        "midi": 77,
+      },
+      {
+        "beats": 1,
+        "midi": 76,
+      },
+      {
+        "beats": 2,
+        "midi": 74,
+      },
+      {
+        "beats": 1,
+        "midi": 76,
+      },
+      {
+        "beats": 1,
+        "midi": 77,
+      },
+      {
+        "beats": 2,
+        "midi": 81,
+      },
+      {
+        "beats": 1,
+        "midi": 77,
+      },
+      {
+        "beats": 1,
+        "midi": 76,
+      },
+      {
+        "beats": 1,
+        "midi": 77,
+      },
+      {
+        "beats": 2,
+        "midi": 81,
+      },
+      {
+        "beats": 1,
+        "midi": 81,
+      },
+      {
+        "beats": 1,
+        "midi": 77,
+      },
+      {
+        "beats": 1,
+        "midi": 76,
+      },
+      {
+        "beats": 3,
+        "midi": 74,
+      },
+    ],
+    "title": "New World Symphony — Largo",
+  },
+  {
+    "attribution": "Edvard Grieg",
+    "bpm": 104,
+    "degrees": [
+      "1",
+      "2",
+      "b3",
+      "4",
+      "5",
+      "b3",
+      "5",
+      "b6",
+      "4",
+      "b6",
+      "5",
+      "b3",
+      "5",
+      "1",
+      "7",
+      "5",
+      "7",
+      "1",
+    ],
+    "difficulty": "medium",
+    "id": "hall-mountain-king",
+    "key": "B minor",
+    "notes": [
+      {
+        "beats": 0.5,
+        "midi": 59,
+      },
+      {
+        "beats": 0.5,
+        "midi": 61,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 0.5,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 66,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 0.5,
+        "midi": 66,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 64,
+      },
+      {
+        "beats": 0.5,
+        "midi": 67,
+      },
+      {
+        "beats": 0.5,
+        "midi": 66,
+      },
+      {
+        "beats": 0.5,
+        "midi": 62,
+      },
+      {
+        "beats": 0.5,
+        "midi": 66,
+      },
+      {
+        "beats": 0.5,
+        "midi": 71,
+      },
+      {
+        "beats": 0.5,
+        "midi": 70,
+      },
+      {
+        "beats": 0.5,
+        "midi": 66,
+      },
+      {
+        "beats": 0.5,
+        "midi": 70,
+      },
+      {
+        "beats": 1,
+        "midi": 71,
+      },
+    ],
+    "title": "In the Hall of the Mountain King",
+  },
+  {
+    "attribution": "Traditional English",
+    "bpm": 88,
+    "degrees": [
+      "1",
+      "1",
+      "5",
+      "5",
+      "2",
+      "b3",
+      "2",
+      "1",
+      "b7",
+      "1",
+      "b3",
+      "4",
+      "5",
+      "4",
+      "b3",
+      "2",
+      "b7",
+      "1",
+    ],
+    "difficulty": "medium",
+    "id": "scarborough-fair",
+    "key": "A Dorian",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 2,
+        "midi": 76,
+      },
+      {
+        "beats": 1.5,
+        "midi": 76,
+      },
+      {
+        "beats": 0.5,
+        "midi": 71,
+      },
+      {
+        "beats": 1,
+        "midi": 72,
+      },
+      {
+        "beats": 1,
+        "midi": 71,
+      },
+      {
+        "beats": 2,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 72,
+      },
+      {
+        "beats": 1,
+        "midi": 74,
+      },
+      {
+        "beats": 2,
+        "midi": 76,
+      },
+      {
+        "beats": 1,
+        "midi": 74,
+      },
+      {
+        "beats": 1,
+        "midi": 72,
+      },
+      {
+        "beats": 1,
+        "midi": 71,
+      },
+      {
+        "beats": 1,
+        "midi": 67,
+      },
+      {
+        "beats": 3,
+        "midi": 69,
+      },
+    ],
+    "title": "Scarborough Fair",
+  },
+  {
+    "attribution": "Traditional American",
+    "bpm": 88,
+    "degrees": [
+      "1",
+      "b3",
+      "5",
+      "1",
+      "7",
+      "5",
+      "4",
+      "b3",
+      "1",
+      "b3",
+      "5",
+      "1",
+      "b7",
+      "5",
+      "4",
+      "b3",
+    ],
+    "difficulty": "medium",
+    "id": "house-rising-sun",
+    "key": "A minor",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 72,
+      },
+      {
+        "beats": 1,
+        "midi": 76,
+      },
+      {
+        "beats": 3,
+        "midi": 81,
+      },
+      {
+        "beats": 1,
+        "midi": 80,
+      },
+      {
+        "beats": 1,
+        "midi": 76,
+      },
+      {
+        "beats": 1,
+        "midi": 74,
+      },
+      {
+        "beats": 3,
+        "midi": 72,
+      },
+      {
+        "beats": 1,
+        "midi": 69,
+      },
+      {
+        "beats": 1,
+        "midi": 72,
+      },
+      {
+        "beats": 1,
+        "midi": 76,
+      },
+      {
+        "beats": 3,
+        "midi": 81,
+      },
+      {
+        "beats": 1,
+        "midi": 79,
+      },
+      {
+        "beats": 1,
+        "midi": 76,
+      },
+      {
+        "beats": 1,
+        "midi": 74,
+      },
+      {
+        "beats": 3,
+        "midi": 72,
+      },
+    ],
+    "title": "The House of the Rising Sun",
+  },
+  {
+    "attribution": "Johann Sebastian Bach",
+    "bpm": 96,
+    "degrees": [
+      "1",
+      "7",
+      "1",
+      "2",
+      "b3",
+      "4",
+      "5",
+      "b6",
+      "5",
+      "4",
+      "b3",
+      "2",
+      "1",
+      "7",
+      "1",
+    ],
+    "difficulty": "medium",
+    "id": "toccata-d-minor",
+    "key": "D minor",
+    "notes": [
+      {
+        "beats": 1,
+        "midi": 74,
+      },
+      {
+        "beats": 0.5,
+        "midi": 73,
+      },
+      {
+        "beats": 0.5,
+        "midi": 74,
+      },
+      {
+        "beats": 0.5,
+        "midi": 76,
+      },
+      {
+        "beats": 0.5,
+        "midi": 77,
+      },
+      {
+        "beats": 0.5,
+        "midi": 79,
+      },
+      {
+        "beats": 0.5,
+        "midi": 81,
+      },
+      {
+        "beats": 2,
+        "midi": 82,
+      },
+      {
+        "beats": 0.5,
+        "midi": 81,
+      },
+      {
+        "beats": 0.5,
+        "midi": 79,
+      },
+      {
+        "beats": 0.5,
+        "midi": 77,
+      },
+      {
+        "beats": 0.5,
+        "midi": 76,
+      },
+      {
+        "beats": 1,
+        "midi": 74,
+      },
+      {
+        "beats": 0.5,
+        "midi": 73,
+      },
+      {
+        "beats": 2,
+        "midi": 74,
+      },
+    ],
+    "title": "Toccata in D minor",
+  },
+]
+`;

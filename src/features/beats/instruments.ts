@@ -1,8 +1,10 @@
-import type { DrumVoice, TrackLevels } from "./pattern";
+import { requiredAt } from '../../shared/requiredAt';
+
+import type { DrumVoice, TrackLevels } from './pattern';
 
 export interface DrumKit {
-  play: (voice: DrumVoice, time: number, level: number) => void;
   disconnect: () => void;
+  play: (voice: DrumVoice, time: number, level: number) => void;
 }
 
 function connectEnvelope(
@@ -10,7 +12,7 @@ function connectEnvelope(
   destination: AudioNode,
   time: number,
   peak: number,
-  decay: number,
+  decay: number
 ): GainNode {
   const envelope = ctx.createGain();
   envelope.gain.setValueAtTime(0.0001, time);
@@ -20,15 +22,10 @@ function connectEnvelope(
   return envelope;
 }
 
-function playKick(
-  ctx: AudioContext,
-  destination: AudioNode,
-  time: number,
-  level: number,
-): void {
+function playKick(ctx: AudioContext, destination: AudioNode, time: number, level: number): void {
   const oscillator = ctx.createOscillator();
   const envelope = connectEnvelope(ctx, destination, time, level, 0.32);
-  oscillator.type = "sine";
+  oscillator.type = 'sine';
   oscillator.frequency.setValueAtTime(155, time);
   oscillator.frequency.exponentialRampToValueAtTime(48, time + 0.11);
   oscillator.connect(envelope);
@@ -46,7 +43,7 @@ function createNoiseBuffer(ctx: AudioContext): AudioBuffer {
     crypto.getRandomValues(randomValues.subarray(offset, end));
   }
   for (let index = 0; index < samples.length; index += 1) {
-    samples[index] = (randomValues[index] / 0xffff_ffff) * 2 - 1;
+    samples[index] = (requiredAt(randomValues, index) / 0xffff_ffff) * 2 - 1;
   }
   return buffer;
 }
@@ -55,19 +52,13 @@ function playFilteredNoise(
   ctx: AudioContext,
   destination: AudioNode,
   buffer: AudioBuffer,
-  options: { time: number; level: number; decay: number; frequency: number },
+  options: { decay: number; frequency: number; level: number; time: number }
 ): void {
   const source = ctx.createBufferSource();
   const filter = ctx.createBiquadFilter();
-  const envelope = connectEnvelope(
-    ctx,
-    destination,
-    options.time,
-    options.level,
-    options.decay,
-  );
+  const envelope = connectEnvelope(ctx, destination, options.time, options.level, options.decay);
   source.buffer = buffer;
-  filter.type = "highpass";
+  filter.type = 'highpass';
   filter.frequency.setValueAtTime(options.frequency, options.time);
   source.connect(filter);
   filter.connect(envelope);
@@ -79,11 +70,11 @@ function playSnareBody(
   ctx: AudioContext,
   destination: AudioNode,
   time: number,
-  level: number,
+  level: number
 ): void {
   const oscillator = ctx.createOscillator();
   const envelope = connectEnvelope(ctx, destination, time, level * 0.35, 0.12);
-  oscillator.type = "triangle";
+  oscillator.type = 'triangle';
   oscillator.frequency.setValueAtTime(190, time);
   oscillator.frequency.exponentialRampToValueAtTime(125, time + 0.1);
   oscillator.connect(envelope);
@@ -96,7 +87,7 @@ function playSnare(
   destination: AudioNode,
   buffer: AudioBuffer,
   time: number,
-  level: number,
+  level: number
 ): void {
   playFilteredNoise(ctx, destination, buffer, {
     time,
@@ -112,7 +103,7 @@ function playHihat(
   destination: AudioNode,
   buffer: AudioBuffer,
   time: number,
-  level: number,
+  level: number
 ): void {
   playFilteredNoise(ctx, destination, buffer, {
     time,
@@ -127,7 +118,7 @@ function playCrash(
   destination: AudioNode,
   buffer: AudioBuffer,
   time: number,
-  level: number,
+  level: number
 ): void {
   playFilteredNoise(ctx, destination, buffer, {
     time,
@@ -151,10 +142,10 @@ export function createDrumKit(ctx: AudioContext): DrumKit {
   compressor.connect(ctx.destination);
 
   function play(voice: DrumVoice, time: number, level: number): void {
-    if (voice === "kick") playKick(ctx, master, time, level);
-    if (voice === "snare") playSnare(ctx, master, noise, time, level);
-    if (voice === "hihat") playHihat(ctx, master, noise, time, level);
-    if (voice === "crash") playCrash(ctx, master, noise, time, level);
+    if (voice === 'kick') playKick(ctx, master, time, level);
+    if (voice === 'snare') playSnare(ctx, master, noise, time, level);
+    if (voice === 'hihat') playHihat(ctx, master, noise, time, level);
+    if (voice === 'crash') playCrash(ctx, master, noise, time, level);
   }
 
   function disconnect(): void {
@@ -168,9 +159,9 @@ export function createDrumKit(ctx: AudioContext): DrumKit {
 export function voicesAtStep(
   pattern: Record<DrumVoice, boolean[]>,
   levels: TrackLevels,
-  step: number,
-): { voice: DrumVoice; level: number }[] {
-  const voices: DrumVoice[] = ["kick", "snare", "hihat", "crash"];
+  step: number
+): { level: number; voice: DrumVoice }[] {
+  const voices: DrumVoice[] = ['kick', 'snare', 'hihat', 'crash'];
   return voices
     .filter((voice) => pattern[voice][step])
     .map((voice) => ({ voice, level: levels[voice] }));

@@ -1,6 +1,7 @@
+import { requiredAt } from '../../shared/requiredAt';
 // Pure helpers for metronome beat/accent bookkeeping
 
-export type AccentLevel = "strong" | "weak" | "off";
+export type AccentLevel = 'off' | 'strong' | 'weak';
 
 export const MIN_BPM = 30;
 export const MAX_BPM = 260;
@@ -12,11 +13,11 @@ const MIN_BEATS = 1;
 const MAX_BEATS = 12;
 
 /** Subdivisions per beat offered in the UI, with their labels. */
-export const SUBDIVISIONS: { value: number; label: string }[] = [
-  { value: 1, label: "1" },
-  { value: 2, label: "2" },
-  { value: 3, label: "3" },
-  { value: 4, label: "4" },
+export const SUBDIVISIONS: { label: string; value: number }[] = [
+  { value: 1, label: '1' },
+  { value: 2, label: '2' },
+  { value: 3, label: '3' },
+  { value: 4, label: '4' },
 ];
 
 export function clampBpm(bpm: number): number {
@@ -28,19 +29,16 @@ export function clampBeats(beats: number): number {
 }
 
 export function nextAccent(level: AccentLevel): AccentLevel {
-  if (level === "strong") return "weak";
-  if (level === "weak") return "off";
-  return "strong";
+  if (level === 'strong') return 'weak';
+  if (level === 'weak') return 'off';
+  return 'strong';
 }
 
 /** Grow/shrink an accent pattern to `count` beats, keeping existing choices. */
-export function resizeAccents(
-  accents: AccentLevel[],
-  count: number,
-): AccentLevel[] {
+export function resizeAccents(accents: AccentLevel[], count: number): AccentLevel[] {
   return Array.from({ length: count }, (_, i) => {
-    if (i < accents.length) return accents[i];
-    return i === 0 ? "strong" : "weak";
+    if (i < accents.length) return requiredAt(accents, i);
+    return i === 0 ? 'strong' : 'weak';
   });
 }
 

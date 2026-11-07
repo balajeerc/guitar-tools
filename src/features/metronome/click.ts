@@ -1,12 +1,12 @@
 // Synthesized metronome clicks: a short pitched blip with a fast decay.
 
-export type ClickKind = "strong" | "weak" | "subdivision";
+export type ClickKind = 'strong' | 'subdivision' | 'weak';
 
 interface ClickSpec {
-  frequency: number;
-  gain: number;
   /** Decay time in seconds */
   decay: number;
+  frequency: number;
+  gain: number;
 }
 
 const CLICK_SPECS: Record<ClickKind, ClickSpec> = {
@@ -16,16 +16,12 @@ const CLICK_SPECS: Record<ClickKind, ClickSpec> = {
 };
 
 /** Schedule a click at `time` on the given audio context clock. */
-export function playClick(
-  ctx: AudioContext,
-  kind: ClickKind,
-  time: number,
-): void {
+export function playClick(ctx: AudioContext, kind: ClickKind, time: number): void {
   const spec = CLICK_SPECS[kind];
   const osc = ctx.createOscillator();
   const gain = ctx.createGain();
 
-  osc.type = "square";
+  osc.type = 'square';
   osc.frequency.setValueAtTime(spec.frequency, time);
 
   // Exponential ramps cannot reach zero, so decay to a tiny floor instead.

@@ -1,10 +1,9 @@
-import { loadPersisted, savePersisted } from "../../shared/persist";
-import { isMelodyTone } from "../melodies/tone";
-import {
-  DEFAULT_EAR_TRAINER_SETTINGS, normalizeSettings, type EarTrainerSettings,
-} from "./theory";
+import { loadPersisted, savePersisted } from '../../shared/persist';
+import { isMelodyTone } from '../melodies/tone';
 
-const STORAGE_KEY = "ear-trainer-settings";
+import { DEFAULT_EAR_TRAINER_SETTINGS, type EarTrainerSettings, normalizeSettings } from './theory';
+
+const STORAGE_KEY = 'ear-trainer-settings';
 
 export function loadEarTrainerSettings(): EarTrainerSettings {
   const stored = loadPersisted<Partial<EarTrainerSettings>>(STORAGE_KEY, {});

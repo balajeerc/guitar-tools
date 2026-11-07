@@ -1,17 +1,18 @@
-import { loadPersisted, savePersisted } from "../../shared/persist";
-import { clampBpm } from "../metronome/beats";
+import { loadPersisted, savePersisted } from '../../shared/persist';
+import { clampBpm } from '../metronome/beats';
+
 import {
+  type BeatPattern,
   DRUM_VOICES,
   normalizeLevels,
   normalizePattern,
-  type BeatPattern,
   type TrackLevels,
-} from "./pattern";
+} from './pattern';
 
 export interface BeatLoopState {
   bpm: number;
-  pattern: BeatPattern;
   levels: TrackLevels;
+  pattern: BeatPattern;
 }
 
 export interface SavedBeatLoop extends BeatLoopState {
@@ -19,17 +20,17 @@ export interface SavedBeatLoop extends BeatLoopState {
   name: string;
 }
 
-export interface SaveLoopResult {
+interface SaveLoopResult {
   loops: SavedBeatLoop[];
-  saved: SavedBeatLoop;
   overwritten: boolean;
+  saved: SavedBeatLoop;
 }
 
-const STORAGE_KEY = "beats-saved-loops";
+const STORAGE_KEY = 'beats-saved-loops';
 export const MAX_LOOP_NAME_LENGTH = 40;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null;
+  return typeof value === 'object' && value !== null;
 }
 
 function isBeatPattern(value: unknown): value is BeatPattern {
@@ -39,15 +40,15 @@ function isBeatPattern(value: unknown): value is BeatPattern {
 
 function isTrackLevels(value: unknown): value is TrackLevels {
   if (!isRecord(value)) return false;
-  return DRUM_VOICES.every((voice) => typeof value[voice] === "number");
+  return DRUM_VOICES.every((voice) => typeof value[voice] === 'number');
 }
 
-function normalizeSavedLoop(value: unknown): SavedBeatLoop | null {
+function normalizeSavedLoop(value: unknown): null | SavedBeatLoop {
   if (!isRecord(value)) return null;
-  if (typeof value.id !== "string" || typeof value.name !== "string") {
+  if (typeof value.id !== 'string' || typeof value.name !== 'string') {
     return null;
   }
-  if (typeof value.bpm !== "number") return null;
+  if (typeof value.bpm !== 'number') return null;
   if (!isBeatPattern(value.pattern) || !isTrackLevels(value.levels)) return null;
   const name = value.name.trim().slice(0, MAX_LOOP_NAME_LENGTH);
   if (name.length === 0 || value.id.length === 0) return null;
@@ -71,11 +72,7 @@ export function loadSavedLoops(): SavedBeatLoop[] {
   return loops;
 }
 
-function snapshotLoop(
-  id: string,
-  name: string,
-  state: BeatLoopState,
-): SavedBeatLoop {
+function snapshotLoop(id: string, name: string, state: BeatLoopState): SavedBeatLoop {
   return {
     id,
     name,
@@ -88,18 +85,14 @@ function snapshotLoop(
 export function saveBeatLoop(
   loops: SavedBeatLoop[],
   name: string,
-  state: BeatLoopState,
+  state: BeatLoopState
 ): SaveLoopResult {
   const normalizedName = name.trim().slice(0, MAX_LOOP_NAME_LENGTH);
   const existingIndex = loops.findIndex(
-    (loop) => loop.name.toLocaleLowerCase() === normalizedName.toLocaleLowerCase(),
+    (loop) => loop.name.toLocaleLowerCase() === normalizedName.toLocaleLowerCase()
   );
   const existing = loops[existingIndex];
-  const saved = snapshotLoop(
-    existing?.id ?? `beat-loop-${Date.now()}`,
-    normalizedName,
-    state,
-  );
+  const saved = snapshotLoop(existing?.id ?? `beat-loop-${Date.now()}`, normalizedName, state);
   const nextLoops = [...loops];
   if (existingIndex >= 0) nextLoops[existingIndex] = saved;
   else nextLoops.push(saved);
@@ -107,10 +100,7 @@ export function saveBeatLoop(
   return { loops: nextLoops, saved, overwritten: existingIndex >= 0 };
 }
 
-export function deleteBeatLoop(
-  loops: SavedBeatLoop[],
-  id: string,
-): SavedBeatLoop[] {
+export function deleteBeatLoop(loops: SavedBeatLoop[], id: string): SavedBeatLoop[] {
   const nextLoops = loops.filter((loop) => loop.id !== id);
   savePersisted(STORAGE_KEY, nextLoops);
   return nextLoops;

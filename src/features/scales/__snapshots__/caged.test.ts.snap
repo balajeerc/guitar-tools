@@ -1,0 +1,7029 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CAGED and scale positions > lays out every visible shape for root 0 1`] = `
+{
+  "boundaries": [
+    {
+      "fret": 0,
+      "shape": "A",
+    },
+    {
+      "fret": 2,
+      "shape": "G",
+    },
+    {
+      "fret": 5,
+      "shape": "E",
+    },
+    {
+      "fret": 7,
+      "shape": "D",
+    },
+    {
+      "fret": 9,
+      "shape": "C",
+    },
+    {
+      "fret": 12,
+      "shape": "A",
+    },
+    {
+      "fret": 14,
+      "shape": "G",
+    },
+    {
+      "fret": 17,
+      "shape": "E",
+    },
+    {
+      "fret": 19,
+      "shape": "D",
+    },
+    {
+      "fret": 21,
+      "shape": "C",
+    },
+  ],
+  "chords": [
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+      ],
+      "shape": "C",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "A",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "G",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "E",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "D",
+    },
+  ],
+  "fullMajor": [
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 3,
+      "startFret": 0,
+    },
+    {
+      "endFret": 3,
+      "partial": true,
+      "position": 4,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 5,
+      "startFret": 1,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 1,
+      "startFret": 4,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 2,
+      "startFret": 6,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 3,
+      "startFret": 9,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 4,
+      "startFret": 11,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 5,
+      "startFret": 13,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 1,
+      "startFret": 16,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 2,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 3,
+      "startFret": 21,
+    },
+  ],
+  "fullMinor": [
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 3,
+      "startFret": 0,
+    },
+    {
+      "endFret": 3,
+      "partial": false,
+      "position": 4,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 5,
+      "startFret": 1,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 1,
+      "startFret": 4,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 2,
+      "startFret": 7,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 3,
+      "startFret": 8,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 4,
+      "startFret": 12,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 5,
+      "startFret": 13,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 1,
+      "startFret": 16,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 2,
+      "startFret": 19,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 3,
+      "startFret": 20,
+    },
+  ],
+  "labels": [
+    "A",
+    "A",
+    "G",
+    "G",
+    "G",
+    "E",
+    "E",
+    "D",
+    "D",
+    "C",
+    "C",
+    "C",
+    "A",
+    "A",
+    "G",
+    "G",
+    "G",
+    "E",
+    "E",
+    "D",
+    "D",
+    "C",
+    "C",
+  ],
+  "major": [
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 3,
+      "startFret": 0,
+    },
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 4,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 5,
+      "startFret": 2,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 1,
+      "startFret": 4,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 2,
+      "startFret": 6,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 3,
+      "startFret": 9,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 4,
+      "startFret": 11,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 5,
+      "startFret": 14,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 1,
+      "startFret": 16,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 2,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 3,
+      "startFret": 21,
+    },
+  ],
+  "minor": [
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 3,
+      "startFret": 0,
+    },
+    {
+      "endFret": 3,
+      "partial": false,
+      "position": 4,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 5,
+      "startFret": 2,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 1,
+      "startFret": 5,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 2,
+      "startFret": 7,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 3,
+      "startFret": 9,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 4,
+      "startFret": 12,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 5,
+      "startFret": 14,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 1,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 2,
+      "startFret": 19,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 3,
+      "startFret": 21,
+    },
+  ],
+}
+`;
+
+exports[`CAGED and scale positions > lays out every visible shape for root 1 1`] = `
+{
+  "boundaries": [
+    {
+      "fret": 0,
+      "shape": "C",
+    },
+    {
+      "fret": 1,
+      "shape": "A",
+    },
+    {
+      "fret": 3,
+      "shape": "G",
+    },
+    {
+      "fret": 6,
+      "shape": "E",
+    },
+    {
+      "fret": 8,
+      "shape": "D",
+    },
+    {
+      "fret": 10,
+      "shape": "C",
+    },
+    {
+      "fret": 13,
+      "shape": "A",
+    },
+    {
+      "fret": 15,
+      "shape": "G",
+    },
+    {
+      "fret": 18,
+      "shape": "E",
+    },
+    {
+      "fret": 20,
+      "shape": "D",
+    },
+    {
+      "fret": 22,
+      "shape": "C",
+    },
+  ],
+  "chords": [
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+      ],
+      "shape": "C",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "A",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "G",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "E",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "D",
+    },
+  ],
+  "fullMajor": [
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 3,
+      "startFret": 0,
+    },
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 4,
+      "startFret": 0,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 5,
+      "startFret": 2,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 1,
+      "startFret": 5,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 2,
+      "startFret": 7,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 3,
+      "startFret": 10,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 4,
+      "startFret": 12,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 5,
+      "startFret": 14,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 1,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 2,
+      "startFret": 19,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 3,
+      "startFret": 22,
+    },
+  ],
+  "fullMinor": [
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 3,
+      "startFret": 0,
+    },
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 4,
+      "startFret": 1,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 5,
+      "startFret": 2,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 1,
+      "startFret": 5,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 2,
+      "startFret": 8,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 3,
+      "startFret": 9,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 4,
+      "startFret": 13,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 5,
+      "startFret": 14,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 1,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 2,
+      "startFret": 20,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 3,
+      "startFret": 21,
+    },
+  ],
+  "labels": [
+    "C",
+    "A",
+    "A",
+    "G",
+    "G",
+    "G",
+    "E",
+    "E",
+    "D",
+    "D",
+    "C",
+    "C",
+    "C",
+    "A",
+    "A",
+    "G",
+    "G",
+    "G",
+    "E",
+    "E",
+    "D",
+    "D",
+    "C",
+  ],
+  "major": [
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 3,
+      "startFret": 0,
+    },
+    {
+      "endFret": 3,
+      "partial": false,
+      "position": 4,
+      "startFret": 0,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 5,
+      "startFret": 3,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 1,
+      "startFret": 5,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 2,
+      "startFret": 7,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 3,
+      "startFret": 10,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 4,
+      "startFret": 12,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 5,
+      "startFret": 15,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 1,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 2,
+      "startFret": 19,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 3,
+      "startFret": 22,
+    },
+  ],
+  "minor": [
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 3,
+      "startFret": 0,
+    },
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 4,
+      "startFret": 1,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 5,
+      "startFret": 3,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 1,
+      "startFret": 6,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 2,
+      "startFret": 8,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 3,
+      "startFret": 10,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 4,
+      "startFret": 13,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 5,
+      "startFret": 15,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 1,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 2,
+      "startFret": 20,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 3,
+      "startFret": 22,
+    },
+  ],
+}
+`;
+
+exports[`CAGED and scale positions > lays out every visible shape for root 2 1`] = `
+{
+  "boundaries": [
+    {
+      "fret": 0,
+      "shape": "C",
+    },
+    {
+      "fret": 2,
+      "shape": "A",
+    },
+    {
+      "fret": 4,
+      "shape": "G",
+    },
+    {
+      "fret": 7,
+      "shape": "E",
+    },
+    {
+      "fret": 9,
+      "shape": "D",
+    },
+    {
+      "fret": 11,
+      "shape": "C",
+    },
+    {
+      "fret": 14,
+      "shape": "A",
+    },
+    {
+      "fret": 16,
+      "shape": "G",
+    },
+    {
+      "fret": 19,
+      "shape": "E",
+    },
+    {
+      "fret": 21,
+      "shape": "D",
+    },
+  ],
+  "chords": [
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+      ],
+      "shape": "C",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "A",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "G",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "E",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "D",
+    },
+  ],
+  "fullMajor": [
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 2,
+      "startFret": 0,
+    },
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 3,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 4,
+      "startFret": 1,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 5,
+      "startFret": 3,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 1,
+      "startFret": 6,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 2,
+      "startFret": 8,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 3,
+      "startFret": 11,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 4,
+      "startFret": 13,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 5,
+      "startFret": 15,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 1,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 2,
+      "startFret": 20,
+    },
+  ],
+  "fullMinor": [
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 2,
+      "startFret": 0,
+    },
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 3,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 4,
+      "startFret": 2,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 5,
+      "startFret": 3,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 1,
+      "startFret": 6,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 2,
+      "startFret": 9,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 3,
+      "startFret": 10,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 4,
+      "startFret": 14,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 5,
+      "startFret": 15,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 1,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 2,
+      "startFret": 21,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 3,
+      "startFret": 22,
+    },
+  ],
+  "labels": [
+    "C",
+    "C",
+    "A",
+    "A",
+    "G",
+    "G",
+    "G",
+    "E",
+    "E",
+    "D",
+    "D",
+    "C",
+    "C",
+    "C",
+    "A",
+    "A",
+    "G",
+    "G",
+    "G",
+    "E",
+    "E",
+    "D",
+    "D",
+  ],
+  "major": [
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 2,
+      "startFret": 0,
+    },
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 3,
+      "startFret": 0,
+    },
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 4,
+      "startFret": 1,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 5,
+      "startFret": 4,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 1,
+      "startFret": 6,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 2,
+      "startFret": 8,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 3,
+      "startFret": 11,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 4,
+      "startFret": 13,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 5,
+      "startFret": 16,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 1,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 2,
+      "startFret": 20,
+    },
+  ],
+  "minor": [
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 2,
+      "startFret": 0,
+    },
+    {
+      "endFret": 3,
+      "partial": true,
+      "position": 3,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 4,
+      "startFret": 2,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 5,
+      "startFret": 4,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 1,
+      "startFret": 7,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 2,
+      "startFret": 9,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 3,
+      "startFret": 11,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 4,
+      "startFret": 14,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 5,
+      "startFret": 16,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 1,
+      "startFret": 19,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 2,
+      "startFret": 21,
+    },
+  ],
+}
+`;
+
+exports[`CAGED and scale positions > lays out every visible shape for root 3 1`] = `
+{
+  "boundaries": [
+    {
+      "fret": 0,
+      "shape": "C",
+    },
+    {
+      "fret": 3,
+      "shape": "A",
+    },
+    {
+      "fret": 5,
+      "shape": "G",
+    },
+    {
+      "fret": 8,
+      "shape": "E",
+    },
+    {
+      "fret": 10,
+      "shape": "D",
+    },
+    {
+      "fret": 12,
+      "shape": "C",
+    },
+    {
+      "fret": 15,
+      "shape": "A",
+    },
+    {
+      "fret": 17,
+      "shape": "G",
+    },
+    {
+      "fret": 20,
+      "shape": "E",
+    },
+    {
+      "fret": 22,
+      "shape": "D",
+    },
+  ],
+  "chords": [
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+      ],
+      "shape": "C",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "A",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "G",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "E",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "D",
+    },
+  ],
+  "fullMajor": [
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 2,
+      "startFret": 0,
+    },
+    {
+      "endFret": 3,
+      "partial": false,
+      "position": 3,
+      "startFret": 0,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 4,
+      "startFret": 2,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 5,
+      "startFret": 4,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 1,
+      "startFret": 7,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 2,
+      "startFret": 9,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 3,
+      "startFret": 12,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 4,
+      "startFret": 14,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 5,
+      "startFret": 16,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 1,
+      "startFret": 19,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 2,
+      "startFret": 21,
+    },
+  ],
+  "fullMinor": [
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 2,
+      "startFret": 0,
+    },
+    {
+      "endFret": 3,
+      "partial": true,
+      "position": 3,
+      "startFret": 0,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 4,
+      "startFret": 3,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 5,
+      "startFret": 4,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 1,
+      "startFret": 7,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 2,
+      "startFret": 10,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 3,
+      "startFret": 11,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 4,
+      "startFret": 15,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 5,
+      "startFret": 16,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 1,
+      "startFret": 19,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 2,
+      "startFret": 22,
+    },
+  ],
+  "labels": [
+    "C",
+    "C",
+    "C",
+    "A",
+    "A",
+    "G",
+    "G",
+    "G",
+    "E",
+    "E",
+    "D",
+    "D",
+    "C",
+    "C",
+    "C",
+    "A",
+    "A",
+    "G",
+    "G",
+    "G",
+    "E",
+    "E",
+    "D",
+  ],
+  "major": [
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 2,
+      "startFret": 0,
+    },
+    {
+      "endFret": 3,
+      "partial": false,
+      "position": 3,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 4,
+      "startFret": 2,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 5,
+      "startFret": 5,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 1,
+      "startFret": 7,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 2,
+      "startFret": 9,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 3,
+      "startFret": 12,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 4,
+      "startFret": 14,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 5,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 1,
+      "startFret": 19,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 2,
+      "startFret": 21,
+    },
+  ],
+  "minor": [
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 2,
+      "startFret": 0,
+    },
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 3,
+      "startFret": 0,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 4,
+      "startFret": 3,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 5,
+      "startFret": 5,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 1,
+      "startFret": 8,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 2,
+      "startFret": 10,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 3,
+      "startFret": 12,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 4,
+      "startFret": 15,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 5,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 1,
+      "startFret": 20,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 2,
+      "startFret": 22,
+    },
+  ],
+}
+`;
+
+exports[`CAGED and scale positions > lays out every visible shape for root 4 1`] = `
+{
+  "boundaries": [
+    {
+      "fret": 0,
+      "shape": "D",
+    },
+    {
+      "fret": 1,
+      "shape": "C",
+    },
+    {
+      "fret": 4,
+      "shape": "A",
+    },
+    {
+      "fret": 6,
+      "shape": "G",
+    },
+    {
+      "fret": 9,
+      "shape": "E",
+    },
+    {
+      "fret": 11,
+      "shape": "D",
+    },
+    {
+      "fret": 13,
+      "shape": "C",
+    },
+    {
+      "fret": 16,
+      "shape": "A",
+    },
+    {
+      "fret": 18,
+      "shape": "G",
+    },
+    {
+      "fret": 21,
+      "shape": "E",
+    },
+  ],
+  "chords": [
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+      ],
+      "shape": "C",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "A",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "G",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "E",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "D",
+    },
+  ],
+  "fullMajor": [
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 2,
+      "startFret": 0,
+    },
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 3,
+      "startFret": 1,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 4,
+      "startFret": 3,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 5,
+      "startFret": 5,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 1,
+      "startFret": 8,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 2,
+      "startFret": 10,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 3,
+      "startFret": 13,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 4,
+      "startFret": 15,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 5,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 1,
+      "startFret": 20,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 2,
+      "startFret": 22,
+    },
+  ],
+  "fullMinor": [
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 1,
+      "startFret": 0,
+    },
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 2,
+      "startFret": 0,
+    },
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 3,
+      "startFret": 0,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 4,
+      "startFret": 4,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 5,
+      "startFret": 5,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 1,
+      "startFret": 8,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 2,
+      "startFret": 11,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 3,
+      "startFret": 12,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 4,
+      "startFret": 16,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 5,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 1,
+      "startFret": 20,
+    },
+  ],
+  "labels": [
+    "D",
+    "C",
+    "C",
+    "C",
+    "A",
+    "A",
+    "G",
+    "G",
+    "G",
+    "E",
+    "E",
+    "D",
+    "D",
+    "C",
+    "C",
+    "C",
+    "A",
+    "A",
+    "G",
+    "G",
+    "G",
+    "E",
+    "E",
+  ],
+  "major": [
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 2,
+      "startFret": 0,
+    },
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 3,
+      "startFret": 1,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 4,
+      "startFret": 3,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 5,
+      "startFret": 6,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 1,
+      "startFret": 8,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 2,
+      "startFret": 10,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 3,
+      "startFret": 13,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 4,
+      "startFret": 15,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 5,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 1,
+      "startFret": 20,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 2,
+      "startFret": 22,
+    },
+  ],
+  "minor": [
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 1,
+      "startFret": 0,
+    },
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 2,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 3,
+      "startFret": 1,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 4,
+      "startFret": 4,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 5,
+      "startFret": 6,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 1,
+      "startFret": 9,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 2,
+      "startFret": 11,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 3,
+      "startFret": 13,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 4,
+      "startFret": 16,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 5,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 1,
+      "startFret": 21,
+    },
+  ],
+}
+`;
+
+exports[`CAGED and scale positions > lays out every visible shape for root 5 1`] = `
+{
+  "boundaries": [
+    {
+      "fret": 0,
+      "shape": "D",
+    },
+    {
+      "fret": 2,
+      "shape": "C",
+    },
+    {
+      "fret": 5,
+      "shape": "A",
+    },
+    {
+      "fret": 7,
+      "shape": "G",
+    },
+    {
+      "fret": 10,
+      "shape": "E",
+    },
+    {
+      "fret": 12,
+      "shape": "D",
+    },
+    {
+      "fret": 14,
+      "shape": "C",
+    },
+    {
+      "fret": 17,
+      "shape": "A",
+    },
+    {
+      "fret": 19,
+      "shape": "G",
+    },
+    {
+      "fret": 22,
+      "shape": "E",
+    },
+  ],
+  "chords": [
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+      ],
+      "shape": "C",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "A",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "G",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "E",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "D",
+    },
+  ],
+  "fullMajor": [
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 1,
+      "startFret": 0,
+    },
+    {
+      "endFret": 3,
+      "partial": true,
+      "position": 2,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 3,
+      "startFret": 2,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 4,
+      "startFret": 4,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 5,
+      "startFret": 6,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 1,
+      "startFret": 9,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 2,
+      "startFret": 11,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 3,
+      "startFret": 14,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 4,
+      "startFret": 16,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 5,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 1,
+      "startFret": 21,
+    },
+  ],
+  "fullMinor": [
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 1,
+      "startFret": 0,
+    },
+    {
+      "endFret": 3,
+      "partial": false,
+      "position": 2,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 3,
+      "startFret": 1,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 4,
+      "startFret": 5,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 5,
+      "startFret": 6,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 1,
+      "startFret": 9,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 2,
+      "startFret": 12,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 3,
+      "startFret": 13,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 4,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 5,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 1,
+      "startFret": 21,
+    },
+  ],
+  "labels": [
+    "D",
+    "D",
+    "C",
+    "C",
+    "C",
+    "A",
+    "A",
+    "G",
+    "G",
+    "G",
+    "E",
+    "E",
+    "D",
+    "D",
+    "C",
+    "C",
+    "C",
+    "A",
+    "A",
+    "G",
+    "G",
+    "G",
+    "E",
+  ],
+  "major": [
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 1,
+      "startFret": 0,
+    },
+    {
+      "endFret": 3,
+      "partial": true,
+      "position": 2,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 3,
+      "startFret": 2,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 4,
+      "startFret": 4,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 5,
+      "startFret": 7,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 1,
+      "startFret": 9,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 2,
+      "startFret": 11,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 3,
+      "startFret": 14,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 4,
+      "startFret": 16,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 5,
+      "startFret": 19,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 1,
+      "startFret": 21,
+    },
+  ],
+  "minor": [
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 1,
+      "startFret": 0,
+    },
+    {
+      "endFret": 3,
+      "partial": false,
+      "position": 2,
+      "startFret": 0,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 3,
+      "startFret": 2,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 4,
+      "startFret": 5,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 5,
+      "startFret": 7,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 1,
+      "startFret": 10,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 2,
+      "startFret": 12,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 3,
+      "startFret": 14,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 4,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 5,
+      "startFret": 19,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 1,
+      "startFret": 22,
+    },
+  ],
+}
+`;
+
+exports[`CAGED and scale positions > lays out every visible shape for root 6 1`] = `
+{
+  "boundaries": [
+    {
+      "fret": 0,
+      "shape": "E",
+    },
+    {
+      "fret": 1,
+      "shape": "D",
+    },
+    {
+      "fret": 3,
+      "shape": "C",
+    },
+    {
+      "fret": 6,
+      "shape": "A",
+    },
+    {
+      "fret": 8,
+      "shape": "G",
+    },
+    {
+      "fret": 11,
+      "shape": "E",
+    },
+    {
+      "fret": 13,
+      "shape": "D",
+    },
+    {
+      "fret": 15,
+      "shape": "C",
+    },
+    {
+      "fret": 18,
+      "shape": "A",
+    },
+    {
+      "fret": 20,
+      "shape": "G",
+    },
+  ],
+  "chords": [
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+      ],
+      "shape": "C",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "A",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "G",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "E",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "D",
+    },
+  ],
+  "fullMajor": [
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 1,
+      "startFret": 0,
+    },
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 2,
+      "startFret": 0,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 3,
+      "startFret": 3,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 4,
+      "startFret": 5,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 5,
+      "startFret": 7,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 1,
+      "startFret": 10,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 2,
+      "startFret": 12,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 3,
+      "startFret": 15,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 4,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 5,
+      "startFret": 19,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 1,
+      "startFret": 22,
+    },
+  ],
+  "fullMinor": [
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 1,
+      "startFret": 0,
+    },
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 2,
+      "startFret": 1,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 3,
+      "startFret": 2,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 4,
+      "startFret": 6,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 5,
+      "startFret": 7,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 1,
+      "startFret": 10,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 2,
+      "startFret": 13,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 3,
+      "startFret": 14,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 4,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 5,
+      "startFret": 19,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 1,
+      "startFret": 22,
+    },
+  ],
+  "labels": [
+    "E",
+    "D",
+    "D",
+    "C",
+    "C",
+    "C",
+    "A",
+    "A",
+    "G",
+    "G",
+    "G",
+    "E",
+    "E",
+    "D",
+    "D",
+    "C",
+    "C",
+    "C",
+    "A",
+    "A",
+    "G",
+    "G",
+    "G",
+  ],
+  "major": [
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 1,
+      "startFret": 0,
+    },
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 2,
+      "startFret": 0,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 3,
+      "startFret": 3,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 4,
+      "startFret": 5,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 5,
+      "startFret": 8,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 1,
+      "startFret": 10,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 2,
+      "startFret": 12,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 3,
+      "startFret": 15,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 4,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 5,
+      "startFret": 20,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 1,
+      "startFret": 22,
+    },
+  ],
+  "minor": [
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 1,
+      "startFret": 0,
+    },
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 2,
+      "startFret": 1,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 3,
+      "startFret": 3,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 4,
+      "startFret": 6,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 5,
+      "startFret": 8,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 1,
+      "startFret": 11,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 2,
+      "startFret": 13,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 3,
+      "startFret": 15,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 4,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 5,
+      "startFret": 20,
+    },
+  ],
+}
+`;
+
+exports[`CAGED and scale positions > lays out every visible shape for root 7 1`] = `
+{
+  "boundaries": [
+    {
+      "fret": 0,
+      "shape": "E",
+    },
+    {
+      "fret": 2,
+      "shape": "D",
+    },
+    {
+      "fret": 4,
+      "shape": "C",
+    },
+    {
+      "fret": 7,
+      "shape": "A",
+    },
+    {
+      "fret": 9,
+      "shape": "G",
+    },
+    {
+      "fret": 12,
+      "shape": "E",
+    },
+    {
+      "fret": 14,
+      "shape": "D",
+    },
+    {
+      "fret": 16,
+      "shape": "C",
+    },
+    {
+      "fret": 19,
+      "shape": "A",
+    },
+    {
+      "fret": 21,
+      "shape": "G",
+    },
+  ],
+  "chords": [
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+      ],
+      "shape": "C",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "A",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "G",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "E",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "D",
+    },
+  ],
+  "fullMajor": [
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 1,
+      "startFret": 0,
+    },
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 5,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 2,
+      "startFret": 1,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 3,
+      "startFret": 4,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 4,
+      "startFret": 6,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 5,
+      "startFret": 8,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 1,
+      "startFret": 11,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 2,
+      "startFret": 13,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 3,
+      "startFret": 16,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 4,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 5,
+      "startFret": 20,
+    },
+  ],
+  "fullMinor": [
+    {
+      "endFret": 3,
+      "partial": true,
+      "position": 1,
+      "startFret": 0,
+    },
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 5,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 2,
+      "startFret": 2,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 3,
+      "startFret": 3,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 4,
+      "startFret": 7,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 5,
+      "startFret": 8,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 1,
+      "startFret": 11,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 2,
+      "startFret": 14,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 3,
+      "startFret": 15,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 4,
+      "startFret": 19,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 5,
+      "startFret": 20,
+    },
+  ],
+  "labels": [
+    "E",
+    "E",
+    "D",
+    "D",
+    "C",
+    "C",
+    "C",
+    "A",
+    "A",
+    "G",
+    "G",
+    "G",
+    "E",
+    "E",
+    "D",
+    "D",
+    "C",
+    "C",
+    "C",
+    "A",
+    "A",
+    "G",
+    "G",
+  ],
+  "major": [
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 1,
+      "startFret": 0,
+    },
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 5,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 2,
+      "startFret": 1,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 3,
+      "startFret": 4,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 4,
+      "startFret": 6,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 5,
+      "startFret": 9,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 1,
+      "startFret": 11,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 2,
+      "startFret": 13,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 3,
+      "startFret": 16,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 4,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 5,
+      "startFret": 21,
+    },
+  ],
+  "minor": [
+    {
+      "endFret": 3,
+      "partial": false,
+      "position": 1,
+      "startFret": 0,
+    },
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 5,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 2,
+      "startFret": 2,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 3,
+      "startFret": 4,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 4,
+      "startFret": 7,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 5,
+      "startFret": 9,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 1,
+      "startFret": 12,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 2,
+      "startFret": 14,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 3,
+      "startFret": 16,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 4,
+      "startFret": 19,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 5,
+      "startFret": 21,
+    },
+  ],
+}
+`;
+
+exports[`CAGED and scale positions > lays out every visible shape for root 8 1`] = `
+{
+  "boundaries": [
+    {
+      "fret": 0,
+      "shape": "G",
+    },
+    {
+      "fret": 1,
+      "shape": "E",
+    },
+    {
+      "fret": 3,
+      "shape": "D",
+    },
+    {
+      "fret": 5,
+      "shape": "C",
+    },
+    {
+      "fret": 8,
+      "shape": "A",
+    },
+    {
+      "fret": 10,
+      "shape": "G",
+    },
+    {
+      "fret": 13,
+      "shape": "E",
+    },
+    {
+      "fret": 15,
+      "shape": "D",
+    },
+    {
+      "fret": 17,
+      "shape": "C",
+    },
+    {
+      "fret": 20,
+      "shape": "A",
+    },
+    {
+      "fret": 22,
+      "shape": "G",
+    },
+  ],
+  "chords": [
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+      ],
+      "shape": "C",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "A",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "G",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "E",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "D",
+    },
+  ],
+  "fullMajor": [
+    {
+      "endFret": 3,
+      "partial": false,
+      "position": 1,
+      "startFret": 0,
+    },
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 5,
+      "startFret": 0,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 2,
+      "startFret": 2,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 3,
+      "startFret": 5,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 4,
+      "startFret": 7,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 5,
+      "startFret": 9,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 1,
+      "startFret": 12,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 2,
+      "startFret": 14,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 3,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 4,
+      "startFret": 19,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 5,
+      "startFret": 21,
+    },
+  ],
+  "fullMinor": [
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 1,
+      "startFret": 0,
+    },
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 5,
+      "startFret": 0,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 2,
+      "startFret": 3,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 3,
+      "startFret": 4,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 4,
+      "startFret": 8,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 5,
+      "startFret": 9,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 1,
+      "startFret": 12,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 2,
+      "startFret": 15,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 3,
+      "startFret": 16,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 4,
+      "startFret": 20,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 5,
+      "startFret": 21,
+    },
+  ],
+  "labels": [
+    "G",
+    "E",
+    "E",
+    "D",
+    "D",
+    "C",
+    "C",
+    "C",
+    "A",
+    "A",
+    "G",
+    "G",
+    "G",
+    "E",
+    "E",
+    "D",
+    "D",
+    "C",
+    "C",
+    "C",
+    "A",
+    "A",
+    "G",
+  ],
+  "major": [
+    {
+      "endFret": 3,
+      "partial": false,
+      "position": 1,
+      "startFret": 0,
+    },
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 5,
+      "startFret": 0,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 2,
+      "startFret": 2,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 3,
+      "startFret": 5,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 4,
+      "startFret": 7,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 5,
+      "startFret": 10,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 1,
+      "startFret": 12,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 2,
+      "startFret": 14,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 3,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 4,
+      "startFret": 19,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 5,
+      "startFret": 22,
+    },
+  ],
+  "minor": [
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 5,
+      "startFret": 0,
+    },
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 1,
+      "startFret": 1,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 2,
+      "startFret": 3,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 3,
+      "startFret": 5,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 4,
+      "startFret": 8,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 5,
+      "startFret": 10,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 1,
+      "startFret": 13,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 2,
+      "startFret": 15,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 3,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 4,
+      "startFret": 20,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 5,
+      "startFret": 22,
+    },
+  ],
+}
+`;
+
+exports[`CAGED and scale positions > lays out every visible shape for root 9 1`] = `
+{
+  "boundaries": [
+    {
+      "fret": 0,
+      "shape": "G",
+    },
+    {
+      "fret": 2,
+      "shape": "E",
+    },
+    {
+      "fret": 4,
+      "shape": "D",
+    },
+    {
+      "fret": 6,
+      "shape": "C",
+    },
+    {
+      "fret": 9,
+      "shape": "A",
+    },
+    {
+      "fret": 11,
+      "shape": "G",
+    },
+    {
+      "fret": 14,
+      "shape": "E",
+    },
+    {
+      "fret": 16,
+      "shape": "D",
+    },
+    {
+      "fret": 18,
+      "shape": "C",
+    },
+    {
+      "fret": 21,
+      "shape": "A",
+    },
+  ],
+  "chords": [
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+      ],
+      "shape": "C",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "A",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "G",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "E",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "D",
+    },
+  ],
+  "fullMajor": [
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 4,
+      "startFret": 0,
+    },
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 5,
+      "startFret": 0,
+    },
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 1,
+      "startFret": 1,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 2,
+      "startFret": 3,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 3,
+      "startFret": 6,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 4,
+      "startFret": 8,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 5,
+      "startFret": 10,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 1,
+      "startFret": 13,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 2,
+      "startFret": 15,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 3,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 4,
+      "startFret": 20,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 5,
+      "startFret": 22,
+    },
+  ],
+  "fullMinor": [
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 4,
+      "startFret": 0,
+    },
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 5,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 1,
+      "startFret": 1,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 2,
+      "startFret": 4,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 3,
+      "startFret": 5,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 4,
+      "startFret": 9,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 5,
+      "startFret": 10,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 1,
+      "startFret": 13,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 2,
+      "startFret": 16,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 3,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 4,
+      "startFret": 21,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 5,
+      "startFret": 22,
+    },
+  ],
+  "labels": [
+    "G",
+    "G",
+    "E",
+    "E",
+    "D",
+    "D",
+    "C",
+    "C",
+    "C",
+    "A",
+    "A",
+    "G",
+    "G",
+    "G",
+    "E",
+    "E",
+    "D",
+    "D",
+    "C",
+    "C",
+    "C",
+    "A",
+    "A",
+  ],
+  "major": [
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 5,
+      "startFret": 0,
+    },
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 1,
+      "startFret": 1,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 2,
+      "startFret": 3,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 3,
+      "startFret": 6,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 4,
+      "startFret": 8,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 5,
+      "startFret": 11,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 1,
+      "startFret": 13,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 2,
+      "startFret": 15,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 3,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 4,
+      "startFret": 20,
+    },
+  ],
+  "minor": [
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 4,
+      "startFret": 0,
+    },
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 5,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 1,
+      "startFret": 2,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 2,
+      "startFret": 4,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 3,
+      "startFret": 6,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 4,
+      "startFret": 9,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 5,
+      "startFret": 11,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 1,
+      "startFret": 14,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 2,
+      "startFret": 16,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 3,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 4,
+      "startFret": 21,
+    },
+  ],
+}
+`;
+
+exports[`CAGED and scale positions > lays out every visible shape for root 10 1`] = `
+{
+  "boundaries": [
+    {
+      "fret": 0,
+      "shape": "G",
+    },
+    {
+      "fret": 3,
+      "shape": "E",
+    },
+    {
+      "fret": 5,
+      "shape": "D",
+    },
+    {
+      "fret": 7,
+      "shape": "C",
+    },
+    {
+      "fret": 10,
+      "shape": "A",
+    },
+    {
+      "fret": 12,
+      "shape": "G",
+    },
+    {
+      "fret": 15,
+      "shape": "E",
+    },
+    {
+      "fret": 17,
+      "shape": "D",
+    },
+    {
+      "fret": 19,
+      "shape": "C",
+    },
+    {
+      "fret": 22,
+      "shape": "A",
+    },
+  ],
+  "chords": [
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+      ],
+      "shape": "C",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "A",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "G",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "E",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "D",
+    },
+  ],
+  "fullMajor": [
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 4,
+      "startFret": 0,
+    },
+    {
+      "endFret": 3,
+      "partial": true,
+      "position": 5,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 1,
+      "startFret": 2,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 2,
+      "startFret": 4,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 3,
+      "startFret": 7,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 4,
+      "startFret": 9,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 5,
+      "startFret": 11,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 1,
+      "startFret": 14,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 2,
+      "startFret": 16,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 3,
+      "startFret": 19,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 4,
+      "startFret": 21,
+    },
+  ],
+  "fullMinor": [
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 4,
+      "startFret": 0,
+    },
+    {
+      "endFret": 3,
+      "partial": true,
+      "position": 5,
+      "startFret": 0,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 1,
+      "startFret": 2,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 2,
+      "startFret": 5,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 3,
+      "startFret": 6,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 4,
+      "startFret": 10,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 5,
+      "startFret": 11,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 1,
+      "startFret": 14,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 2,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 3,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 4,
+      "startFret": 22,
+    },
+  ],
+  "labels": [
+    "G",
+    "G",
+    "G",
+    "E",
+    "E",
+    "D",
+    "D",
+    "C",
+    "C",
+    "C",
+    "A",
+    "A",
+    "G",
+    "G",
+    "G",
+    "E",
+    "E",
+    "D",
+    "D",
+    "C",
+    "C",
+    "C",
+    "A",
+  ],
+  "major": [
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 4,
+      "startFret": 0,
+    },
+    {
+      "endFret": 3,
+      "partial": false,
+      "position": 5,
+      "startFret": 0,
+    },
+    {
+      "endFret": 5,
+      "partial": false,
+      "position": 1,
+      "startFret": 2,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 2,
+      "startFret": 4,
+    },
+    {
+      "endFret": 10,
+      "partial": false,
+      "position": 3,
+      "startFret": 7,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 4,
+      "startFret": 9,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 5,
+      "startFret": 12,
+    },
+    {
+      "endFret": 17,
+      "partial": false,
+      "position": 1,
+      "startFret": 14,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 2,
+      "startFret": 16,
+    },
+    {
+      "endFret": 22,
+      "partial": false,
+      "position": 3,
+      "startFret": 19,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 4,
+      "startFret": 21,
+    },
+  ],
+  "minor": [
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 4,
+      "startFret": 0,
+    },
+    {
+      "endFret": 3,
+      "partial": false,
+      "position": 5,
+      "startFret": 0,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 1,
+      "startFret": 3,
+    },
+    {
+      "endFret": 8,
+      "partial": false,
+      "position": 2,
+      "startFret": 5,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 3,
+      "startFret": 7,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 4,
+      "startFret": 10,
+    },
+    {
+      "endFret": 15,
+      "partial": false,
+      "position": 5,
+      "startFret": 12,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 1,
+      "startFret": 15,
+    },
+    {
+      "endFret": 20,
+      "partial": false,
+      "position": 2,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 3,
+      "startFret": 19,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 4,
+      "startFret": 22,
+    },
+  ],
+}
+`;
+
+exports[`CAGED and scale positions > lays out every visible shape for root 11 1`] = `
+{
+  "boundaries": [
+    {
+      "fret": 0,
+      "shape": "A",
+    },
+    {
+      "fret": 1,
+      "shape": "G",
+    },
+    {
+      "fret": 4,
+      "shape": "E",
+    },
+    {
+      "fret": 6,
+      "shape": "D",
+    },
+    {
+      "fret": 8,
+      "shape": "C",
+    },
+    {
+      "fret": 11,
+      "shape": "A",
+    },
+    {
+      "fret": 13,
+      "shape": "G",
+    },
+    {
+      "fret": 16,
+      "shape": "E",
+    },
+    {
+      "fret": 18,
+      "shape": "D",
+    },
+    {
+      "fret": 20,
+      "shape": "C",
+    },
+  ],
+  "chords": [
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+      ],
+      "shape": "C",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "A",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 3,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "G",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 0,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 1,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 0,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "E",
+    },
+    {
+      "major": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 5,
+        },
+      ],
+      "minor": [
+        {
+          "fretOffset": 0,
+          "stringIdx": 2,
+        },
+        {
+          "fretOffset": 2,
+          "stringIdx": 3,
+        },
+        {
+          "fretOffset": 3,
+          "stringIdx": 4,
+        },
+        {
+          "fretOffset": 1,
+          "stringIdx": 5,
+        },
+      ],
+      "shape": "D",
+    },
+  ],
+  "fullMajor": [
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 4,
+      "startFret": 0,
+    },
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 5,
+      "startFret": 0,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 1,
+      "startFret": 3,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 2,
+      "startFret": 5,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 3,
+      "startFret": 8,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 4,
+      "startFret": 10,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 5,
+      "startFret": 12,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 1,
+      "startFret": 15,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 2,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 3,
+      "startFret": 20,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 4,
+      "startFret": 22,
+    },
+  ],
+  "fullMinor": [
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 4,
+      "startFret": 0,
+    },
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 5,
+      "startFret": 0,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 1,
+      "startFret": 3,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 2,
+      "startFret": 6,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 3,
+      "startFret": 7,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 4,
+      "startFret": 11,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 5,
+      "startFret": 12,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 1,
+      "startFret": 15,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 2,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 3,
+      "startFret": 19,
+    },
+  ],
+  "labels": [
+    "A",
+    "G",
+    "G",
+    "G",
+    "E",
+    "E",
+    "D",
+    "D",
+    "C",
+    "C",
+    "C",
+    "A",
+    "A",
+    "G",
+    "G",
+    "G",
+    "E",
+    "E",
+    "D",
+    "D",
+    "C",
+    "C",
+    "C",
+  ],
+  "major": [
+    {
+      "endFret": 1,
+      "partial": true,
+      "position": 4,
+      "startFret": 0,
+    },
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 5,
+      "startFret": 1,
+    },
+    {
+      "endFret": 6,
+      "partial": false,
+      "position": 1,
+      "startFret": 3,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 2,
+      "startFret": 5,
+    },
+    {
+      "endFret": 11,
+      "partial": false,
+      "position": 3,
+      "startFret": 8,
+    },
+    {
+      "endFret": 13,
+      "partial": false,
+      "position": 4,
+      "startFret": 10,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 5,
+      "startFret": 13,
+    },
+    {
+      "endFret": 18,
+      "partial": false,
+      "position": 1,
+      "startFret": 15,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 2,
+      "startFret": 17,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 3,
+      "startFret": 20,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 4,
+      "startFret": 22,
+    },
+  ],
+  "minor": [
+    {
+      "endFret": 0,
+      "partial": true,
+      "position": 3,
+      "startFret": 0,
+    },
+    {
+      "endFret": 2,
+      "partial": true,
+      "position": 4,
+      "startFret": 0,
+    },
+    {
+      "endFret": 4,
+      "partial": false,
+      "position": 5,
+      "startFret": 1,
+    },
+    {
+      "endFret": 7,
+      "partial": false,
+      "position": 1,
+      "startFret": 4,
+    },
+    {
+      "endFret": 9,
+      "partial": false,
+      "position": 2,
+      "startFret": 6,
+    },
+    {
+      "endFret": 12,
+      "partial": false,
+      "position": 3,
+      "startFret": 8,
+    },
+    {
+      "endFret": 14,
+      "partial": false,
+      "position": 4,
+      "startFret": 11,
+    },
+    {
+      "endFret": 16,
+      "partial": false,
+      "position": 5,
+      "startFret": 13,
+    },
+    {
+      "endFret": 19,
+      "partial": false,
+      "position": 1,
+      "startFret": 16,
+    },
+    {
+      "endFret": 21,
+      "partial": false,
+      "position": 2,
+      "startFret": 18,
+    },
+    {
+      "endFret": 22,
+      "partial": true,
+      "position": 3,
+      "startFret": 20,
+    },
+  ],
+}
+`;

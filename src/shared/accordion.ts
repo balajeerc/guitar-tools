@@ -7,13 +7,13 @@ export function setupAccordionToggle(toggleId: string): void {
   const wrapper = toggle?.parentElement;
   if (!toggle || !wrapper) return;
 
-  toggle.addEventListener("click", () => {
-    wrapper.classList.toggle("expanded");
+  toggle.addEventListener('click', () => {
+    wrapper.classList.toggle('expanded');
   });
 
-  document.addEventListener("click", (e: MouseEvent) => {
+  document.addEventListener('click', (e: MouseEvent) => {
     if (!wrapper.contains(e.target as Node)) {
-      wrapper.classList.remove("expanded");
+      wrapper.classList.remove('expanded');
     }
   });
 }

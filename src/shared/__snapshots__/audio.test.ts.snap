@@ -1,0 +1,2808 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`audio-clock scheduling and visual playback > aligns metronome dots and pendulum with the audible beat 1`] = `"<button class="metronome-beat metronome-beat-strong" data-beat="0" aria-label="Beat 1: strong"></button><button class="metronome-beat metronome-beat-weak" data-beat="1" aria-label="Beat 2: weak"></button><button class="metronome-beat metronome-beat-off" data-beat="2" aria-label="Beat 3: off"></button>"`;
+
+exports[`audio-clock scheduling and visual playback > voices the strong and weak beats and their subdivisions at the audio-clock times > audible metronome subdivisions 1`] = `
+{
+  "events": [
+    {
+      "args": [
+        1600,
+        10.06,
+      ],
+      "method": "frequency.set",
+      "node": 1,
+    },
+    {
+      "args": [
+        0.9,
+        10.06,
+      ],
+      "method": "gain.set",
+      "node": 2,
+    },
+    {
+      "args": [
+        0.0001,
+        10.110000000000001,
+      ],
+      "method": "gain.exponential",
+      "node": 2,
+    },
+    {
+      "args": [
+        2,
+      ],
+      "method": "connect",
+      "node": 1,
+    },
+    {
+      "args": [
+        0,
+      ],
+      "method": "connect",
+      "node": 2,
+    },
+    {
+      "args": [
+        10.06,
+      ],
+      "method": "start",
+      "node": 1,
+    },
+    {
+      "args": [
+        10.120000000000001,
+      ],
+      "method": "stop",
+      "node": 1,
+    },
+    {
+      "args": [
+        780,
+        10.31,
+      ],
+      "method": "frequency.set",
+      "node": 3,
+    },
+    {
+      "args": [
+        0.28,
+        10.31,
+      ],
+      "method": "gain.set",
+      "node": 4,
+    },
+    {
+      "args": [
+        0.0001,
+        10.34,
+      ],
+      "method": "gain.exponential",
+      "node": 4,
+    },
+    {
+      "args": [
+        4,
+      ],
+      "method": "connect",
+      "node": 3,
+    },
+    {
+      "args": [
+        0,
+      ],
+      "method": "connect",
+      "node": 4,
+    },
+    {
+      "args": [
+        10.31,
+      ],
+      "method": "start",
+      "node": 3,
+    },
+    {
+      "args": [
+        10.35,
+      ],
+      "method": "stop",
+      "node": 3,
+    },
+    {
+      "args": [
+        1100,
+        10.56,
+      ],
+      "method": "frequency.set",
+      "node": 5,
+    },
+    {
+      "args": [
+        0.55,
+        10.56,
+      ],
+      "method": "gain.set",
+      "node": 6,
+    },
+    {
+      "args": [
+        0.0001,
+        10.6,
+      ],
+      "method": "gain.exponential",
+      "node": 6,
+    },
+    {
+      "args": [
+        6,
+      ],
+      "method": "connect",
+      "node": 5,
+    },
+    {
+      "args": [
+        0,
+      ],
+      "method": "connect",
+      "node": 6,
+    },
+    {
+      "args": [
+        10.56,
+      ],
+      "method": "start",
+      "node": 5,
+    },
+    {
+      "args": [
+        10.61,
+      ],
+      "method": "stop",
+      "node": 5,
+    },
+    {
+      "args": [
+        780,
+        10.81,
+      ],
+      "method": "frequency.set",
+      "node": 7,
+    },
+    {
+      "args": [
+        0.28,
+        10.81,
+      ],
+      "method": "gain.set",
+      "node": 8,
+    },
+    {
+      "args": [
+        0.0001,
+        10.84,
+      ],
+      "method": "gain.exponential",
+      "node": 8,
+    },
+    {
+      "args": [
+        8,
+      ],
+      "method": "connect",
+      "node": 7,
+    },
+    {
+      "args": [
+        0,
+      ],
+      "method": "connect",
+      "node": 8,
+    },
+    {
+      "args": [
+        10.81,
+      ],
+      "method": "start",
+      "node": 7,
+    },
+    {
+      "args": [
+        10.85,
+      ],
+      "method": "stop",
+      "node": 7,
+    },
+    {
+      "args": [
+        1600,
+        11.06,
+      ],
+      "method": "frequency.set",
+      "node": 9,
+    },
+    {
+      "args": [
+        0.9,
+        11.06,
+      ],
+      "method": "gain.set",
+      "node": 10,
+    },
+    {
+      "args": [
+        0.0001,
+        11.110000000000001,
+      ],
+      "method": "gain.exponential",
+      "node": 10,
+    },
+    {
+      "args": [
+        10,
+      ],
+      "method": "connect",
+      "node": 9,
+    },
+    {
+      "args": [
+        0,
+      ],
+      "method": "connect",
+      "node": 10,
+    },
+    {
+      "args": [
+        11.06,
+      ],
+      "method": "start",
+      "node": 9,
+    },
+    {
+      "args": [
+        11.120000000000001,
+      ],
+      "method": "stop",
+      "node": 9,
+    },
+  ],
+  "nodes": [
+    {
+      "kind": "destination",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "square",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "square",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "square",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "square",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "square",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+  ],
+}
+`;
+
+exports[`melody and percussion synthesis > mixes all drum voices with track levels and disconnects the output 1`] = `
+{
+  "events": [
+    {
+      "args": [
+        1,
+      ],
+      "method": "connect",
+      "node": 2,
+    },
+    {
+      "args": [
+        0,
+      ],
+      "method": "connect",
+      "node": 1,
+    },
+    {
+      "args": [
+        0.0001,
+        1,
+      ],
+      "method": "gain.set",
+      "node": 4,
+    },
+    {
+      "args": [
+        0.8,
+        1.002,
+      ],
+      "method": "gain.linear",
+      "node": 4,
+    },
+    {
+      "args": [
+        0.0001,
+        1.32,
+      ],
+      "method": "gain.exponential",
+      "node": 4,
+    },
+    {
+      "args": [
+        2,
+      ],
+      "method": "connect",
+      "node": 4,
+    },
+    {
+      "args": [
+        155,
+        1,
+      ],
+      "method": "frequency.set",
+      "node": 3,
+    },
+    {
+      "args": [
+        48,
+        1.11,
+      ],
+      "method": "frequency.exponential",
+      "node": 3,
+    },
+    {
+      "args": [
+        4,
+      ],
+      "method": "connect",
+      "node": 3,
+    },
+    {
+      "args": [
+        1,
+      ],
+      "method": "start",
+      "node": 3,
+    },
+    {
+      "args": [
+        1.34,
+      ],
+      "method": "stop",
+      "node": 3,
+    },
+    {
+      "args": [
+        0.0001,
+        2,
+      ],
+      "method": "gain.set",
+      "node": 7,
+    },
+    {
+      "args": [
+        0.44999999999999996,
+        2.002,
+      ],
+      "method": "gain.linear",
+      "node": 7,
+    },
+    {
+      "args": [
+        0.0001,
+        2.16,
+      ],
+      "method": "gain.exponential",
+      "node": 7,
+    },
+    {
+      "args": [
+        2,
+      ],
+      "method": "connect",
+      "node": 7,
+    },
+    {
+      "args": [
+        1400,
+        2,
+      ],
+      "method": "frequency.set",
+      "node": 6,
+    },
+    {
+      "args": [
+        6,
+      ],
+      "method": "connect",
+      "node": 5,
+    },
+    {
+      "args": [
+        7,
+      ],
+      "method": "connect",
+      "node": 6,
+    },
+    {
+      "args": [
+        2,
+      ],
+      "method": "start",
+      "node": 5,
+    },
+    {
+      "args": [
+        2.18,
+      ],
+      "method": "stop",
+      "node": 5,
+    },
+    {
+      "args": [
+        0.0001,
+        2,
+      ],
+      "method": "gain.set",
+      "node": 9,
+    },
+    {
+      "args": [
+        0.21,
+        2.002,
+      ],
+      "method": "gain.linear",
+      "node": 9,
+    },
+    {
+      "args": [
+        0.0001,
+        2.12,
+      ],
+      "method": "gain.exponential",
+      "node": 9,
+    },
+    {
+      "args": [
+        2,
+      ],
+      "method": "connect",
+      "node": 9,
+    },
+    {
+      "args": [
+        190,
+        2,
+      ],
+      "method": "frequency.set",
+      "node": 8,
+    },
+    {
+      "args": [
+        125,
+        2.1,
+      ],
+      "method": "frequency.exponential",
+      "node": 8,
+    },
+    {
+      "args": [
+        9,
+      ],
+      "method": "connect",
+      "node": 8,
+    },
+    {
+      "args": [
+        2,
+      ],
+      "method": "start",
+      "node": 8,
+    },
+    {
+      "args": [
+        2.14,
+      ],
+      "method": "stop",
+      "node": 8,
+    },
+    {
+      "args": [
+        0.0001,
+        3,
+      ],
+      "method": "gain.set",
+      "node": 12,
+    },
+    {
+      "args": [
+        0.4,
+        3.002,
+      ],
+      "method": "gain.linear",
+      "node": 12,
+    },
+    {
+      "args": [
+        0.0001,
+        3.055,
+      ],
+      "method": "gain.exponential",
+      "node": 12,
+    },
+    {
+      "args": [
+        2,
+      ],
+      "method": "connect",
+      "node": 12,
+    },
+    {
+      "args": [
+        6800,
+        3,
+      ],
+      "method": "frequency.set",
+      "node": 11,
+    },
+    {
+      "args": [
+        11,
+      ],
+      "method": "connect",
+      "node": 10,
+    },
+    {
+      "args": [
+        12,
+      ],
+      "method": "connect",
+      "node": 11,
+    },
+    {
+      "args": [
+        3,
+      ],
+      "method": "start",
+      "node": 10,
+    },
+    {
+      "args": [
+        3.075,
+      ],
+      "method": "stop",
+      "node": 10,
+    },
+    {
+      "args": [
+        0.0001,
+        4,
+      ],
+      "method": "gain.set",
+      "node": 15,
+    },
+    {
+      "args": [
+        0.2,
+        4.002,
+      ],
+      "method": "gain.linear",
+      "node": 15,
+    },
+    {
+      "args": [
+        0.0001,
+        5.35,
+      ],
+      "method": "gain.exponential",
+      "node": 15,
+    },
+    {
+      "args": [
+        2,
+      ],
+      "method": "connect",
+      "node": 15,
+    },
+    {
+      "args": [
+        3200,
+        4,
+      ],
+      "method": "frequency.set",
+      "node": 14,
+    },
+    {
+      "args": [
+        14,
+      ],
+      "method": "connect",
+      "node": 13,
+    },
+    {
+      "args": [
+        15,
+      ],
+      "method": "connect",
+      "node": 14,
+    },
+    {
+      "args": [
+        4,
+      ],
+      "method": "start",
+      "node": 13,
+    },
+    {
+      "args": [
+        5.369999999999999,
+      ],
+      "method": "stop",
+      "node": 13,
+    },
+  ],
+  "nodes": [
+    {
+      "kind": "destination",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "compressor",
+      "params": {
+        "Q": 0,
+        "attack": 0.003,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 12,
+        "ratio": 6,
+        "release": 0.2,
+        "threshold": -14,
+      },
+      "type": "",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0.72,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "sine",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "bufferSource",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "filter",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "highpass",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "triangle",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "bufferSource",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "filter",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "highpass",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "bufferSource",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "filter",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "highpass",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+  ],
+}
+`;
+
+exports[`melody and percussion synthesis > mixes all drum voices with track levels and disconnects the output 2`] = `
+[
+  {
+    "kind": "destination",
+    "type": "",
+  },
+  {
+    "kind": "compressor",
+    "type": "",
+  },
+  {
+    "kind": "gain",
+    "type": "",
+  },
+  {
+    "kind": "oscillator",
+    "type": "sine",
+  },
+  {
+    "kind": "gain",
+    "type": "",
+  },
+  {
+    "kind": "bufferSource",
+    "type": "",
+  },
+  {
+    "kind": "filter",
+    "type": "highpass",
+  },
+  {
+    "kind": "gain",
+    "type": "",
+  },
+  {
+    "kind": "oscillator",
+    "type": "triangle",
+  },
+  {
+    "kind": "gain",
+    "type": "",
+  },
+  {
+    "kind": "bufferSource",
+    "type": "",
+  },
+  {
+    "kind": "filter",
+    "type": "highpass",
+  },
+  {
+    "kind": "gain",
+    "type": "",
+  },
+  {
+    "kind": "bufferSource",
+    "type": "",
+  },
+  {
+    "kind": "filter",
+    "type": "highpass",
+  },
+  {
+    "kind": "gain",
+    "type": "",
+  },
+]
+`;
+
+exports[`melody and percussion synthesis > schedules a strong click 1`] = `
+{
+  "events": [
+    {
+      "args": [
+        1600,
+        5,
+      ],
+      "method": "frequency.set",
+      "node": 1,
+    },
+    {
+      "args": [
+        0.9,
+        5,
+      ],
+      "method": "gain.set",
+      "node": 2,
+    },
+    {
+      "args": [
+        0.0001,
+        5.05,
+      ],
+      "method": "gain.exponential",
+      "node": 2,
+    },
+    {
+      "args": [
+        2,
+      ],
+      "method": "connect",
+      "node": 1,
+    },
+    {
+      "args": [
+        0,
+      ],
+      "method": "connect",
+      "node": 2,
+    },
+    {
+      "args": [
+        5,
+      ],
+      "method": "start",
+      "node": 1,
+    },
+    {
+      "args": [
+        5.06,
+      ],
+      "method": "stop",
+      "node": 1,
+    },
+  ],
+  "nodes": [
+    {
+      "kind": "destination",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "square",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+  ],
+}
+`;
+
+exports[`melody and percussion synthesis > schedules a subdivision click 1`] = `
+{
+  "events": [
+    {
+      "args": [
+        780,
+        5,
+      ],
+      "method": "frequency.set",
+      "node": 1,
+    },
+    {
+      "args": [
+        0.28,
+        5,
+      ],
+      "method": "gain.set",
+      "node": 2,
+    },
+    {
+      "args": [
+        0.0001,
+        5.03,
+      ],
+      "method": "gain.exponential",
+      "node": 2,
+    },
+    {
+      "args": [
+        2,
+      ],
+      "method": "connect",
+      "node": 1,
+    },
+    {
+      "args": [
+        0,
+      ],
+      "method": "connect",
+      "node": 2,
+    },
+    {
+      "args": [
+        5,
+      ],
+      "method": "start",
+      "node": 1,
+    },
+    {
+      "args": [
+        5.04,
+      ],
+      "method": "stop",
+      "node": 1,
+    },
+  ],
+  "nodes": [
+    {
+      "kind": "destination",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "square",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+  ],
+}
+`;
+
+exports[`melody and percussion synthesis > schedules a weak click 1`] = `
+{
+  "events": [
+    {
+      "args": [
+        1100,
+        5,
+      ],
+      "method": "frequency.set",
+      "node": 1,
+    },
+    {
+      "args": [
+        0.55,
+        5,
+      ],
+      "method": "gain.set",
+      "node": 2,
+    },
+    {
+      "args": [
+        0.0001,
+        5.04,
+      ],
+      "method": "gain.exponential",
+      "node": 2,
+    },
+    {
+      "args": [
+        2,
+      ],
+      "method": "connect",
+      "node": 1,
+    },
+    {
+      "args": [
+        0,
+      ],
+      "method": "connect",
+      "node": 2,
+    },
+    {
+      "args": [
+        5,
+      ],
+      "method": "start",
+      "node": 1,
+    },
+    {
+      "args": [
+        5.05,
+      ],
+      "method": "stop",
+      "node": 1,
+    },
+  ],
+  "nodes": [
+    {
+      "kind": "destination",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "square",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+  ],
+}
+`;
+
+exports[`melody and percussion synthesis > schedules the bass tone with its envelope, pitch, rests and release 1`] = `
+{
+  "events": [
+    {
+      "args": [
+        440,
+        10.08,
+      ],
+      "method": "frequency.set",
+      "node": 1,
+    },
+    {
+      "args": [
+        1200,
+        10.08,
+      ],
+      "method": "frequency.set",
+      "node": 2,
+    },
+    {
+      "args": [
+        0.0001,
+        10.08,
+      ],
+      "method": "gain.set",
+      "node": 3,
+    },
+    {
+      "args": [
+        0.3,
+        10.084,
+      ],
+      "method": "gain.exponential",
+      "node": 3,
+    },
+    {
+      "args": [
+        0.2,
+        10.4232,
+      ],
+      "method": "gain.exponential",
+      "node": 3,
+    },
+    {
+      "args": [
+        0.0001,
+        10.52,
+      ],
+      "method": "gain.exponential",
+      "node": 3,
+    },
+    {
+      "args": [
+        2,
+      ],
+      "method": "connect",
+      "node": 1,
+    },
+    {
+      "args": [
+        3,
+      ],
+      "method": "connect",
+      "node": 2,
+    },
+    {
+      "args": [
+        0,
+      ],
+      "method": "connect",
+      "node": 3,
+    },
+    {
+      "args": [
+        10.08,
+      ],
+      "method": "start",
+      "node": 1,
+    },
+    {
+      "args": [
+        10.54,
+      ],
+      "method": "stop",
+      "node": 1,
+    },
+    {
+      "args": [
+        880,
+        10.83,
+      ],
+      "method": "frequency.set",
+      "node": 4,
+    },
+    {
+      "args": [
+        1200,
+        10.83,
+      ],
+      "method": "frequency.set",
+      "node": 5,
+    },
+    {
+      "args": [
+        0.0001,
+        10.83,
+      ],
+      "method": "gain.set",
+      "node": 6,
+    },
+    {
+      "args": [
+        0.3,
+        10.834,
+      ],
+      "method": "gain.exponential",
+      "node": 6,
+    },
+    {
+      "args": [
+        0.2,
+        10.889999999999999,
+      ],
+      "method": "gain.exponential",
+      "node": 6,
+    },
+    {
+      "args": [
+        0.0001,
+        10.94,
+      ],
+      "method": "gain.exponential",
+      "node": 6,
+    },
+    {
+      "args": [
+        5,
+      ],
+      "method": "connect",
+      "node": 4,
+    },
+    {
+      "args": [
+        6,
+      ],
+      "method": "connect",
+      "node": 5,
+    },
+    {
+      "args": [
+        0,
+      ],
+      "method": "connect",
+      "node": 6,
+    },
+    {
+      "args": [
+        10.83,
+      ],
+      "method": "start",
+      "node": 4,
+    },
+    {
+      "args": [
+        10.959999999999999,
+      ],
+      "method": "stop",
+      "node": 4,
+    },
+  ],
+  "nodes": [
+    {
+      "kind": "destination",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "sawtooth",
+    },
+    {
+      "kind": "filter",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "lowpass",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "sawtooth",
+    },
+    {
+      "kind": "filter",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "lowpass",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+  ],
+}
+`;
+
+exports[`melody and percussion synthesis > schedules the bass tone with its envelope, pitch, rests and release 2`] = `
+{
+  "attackSeconds": 0.004,
+  "filterHz": 1200,
+  "oscillator": "sawtooth",
+  "peakGain": 0.3,
+  "releaseRatio": 0.22,
+  "sustainGain": 0.2,
+}
+`;
+
+exports[`melody and percussion synthesis > schedules the bright tone with its envelope, pitch, rests and release 1`] = `
+{
+  "events": [
+    {
+      "args": [
+        440,
+        10.08,
+      ],
+      "method": "frequency.set",
+      "node": 1,
+    },
+    {
+      "args": [
+        2800,
+        10.08,
+      ],
+      "method": "frequency.set",
+      "node": 2,
+    },
+    {
+      "args": [
+        0.0001,
+        10.08,
+      ],
+      "method": "gain.set",
+      "node": 3,
+    },
+    {
+      "args": [
+        0.17,
+        10.088,
+      ],
+      "method": "gain.exponential",
+      "node": 3,
+    },
+    {
+      "args": [
+        0.11,
+        10.3704,
+      ],
+      "method": "gain.exponential",
+      "node": 3,
+    },
+    {
+      "args": [
+        0.0001,
+        10.52,
+      ],
+      "method": "gain.exponential",
+      "node": 3,
+    },
+    {
+      "args": [
+        2,
+      ],
+      "method": "connect",
+      "node": 1,
+    },
+    {
+      "args": [
+        3,
+      ],
+      "method": "connect",
+      "node": 2,
+    },
+    {
+      "args": [
+        0,
+      ],
+      "method": "connect",
+      "node": 3,
+    },
+    {
+      "args": [
+        10.08,
+      ],
+      "method": "start",
+      "node": 1,
+    },
+    {
+      "args": [
+        10.54,
+      ],
+      "method": "stop",
+      "node": 1,
+    },
+    {
+      "args": [
+        880,
+        10.83,
+      ],
+      "method": "frequency.set",
+      "node": 4,
+    },
+    {
+      "args": [
+        2800,
+        10.83,
+      ],
+      "method": "frequency.set",
+      "node": 5,
+    },
+    {
+      "args": [
+        0.0001,
+        10.83,
+      ],
+      "method": "gain.set",
+      "node": 6,
+    },
+    {
+      "args": [
+        0.17,
+        10.838,
+      ],
+      "method": "gain.exponential",
+      "node": 6,
+    },
+    {
+      "args": [
+        0.11,
+        10.889999999999999,
+      ],
+      "method": "gain.exponential",
+      "node": 6,
+    },
+    {
+      "args": [
+        0.0001,
+        10.94,
+      ],
+      "method": "gain.exponential",
+      "node": 6,
+    },
+    {
+      "args": [
+        5,
+      ],
+      "method": "connect",
+      "node": 4,
+    },
+    {
+      "args": [
+        6,
+      ],
+      "method": "connect",
+      "node": 5,
+    },
+    {
+      "args": [
+        0,
+      ],
+      "method": "connect",
+      "node": 6,
+    },
+    {
+      "args": [
+        10.83,
+      ],
+      "method": "start",
+      "node": 4,
+    },
+    {
+      "args": [
+        10.959999999999999,
+      ],
+      "method": "stop",
+      "node": 4,
+    },
+  ],
+  "nodes": [
+    {
+      "kind": "destination",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "sawtooth",
+    },
+    {
+      "kind": "filter",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "lowpass",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "sawtooth",
+    },
+    {
+      "kind": "filter",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "lowpass",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+  ],
+}
+`;
+
+exports[`melody and percussion synthesis > schedules the bright tone with its envelope, pitch, rests and release 2`] = `
+{
+  "attackSeconds": 0.008,
+  "filterHz": 2800,
+  "oscillator": "sawtooth",
+  "peakGain": 0.17,
+  "releaseRatio": 0.34,
+  "sustainGain": 0.11,
+}
+`;
+
+exports[`melody and percussion synthesis > schedules the pluck tone with its envelope, pitch, rests and release 1`] = `
+{
+  "events": [
+    {
+      "args": [
+        440,
+        10.08,
+      ],
+      "method": "frequency.set",
+      "node": 1,
+    },
+    {
+      "args": [
+        3200,
+        10.08,
+      ],
+      "method": "frequency.set",
+      "node": 2,
+    },
+    {
+      "args": [
+        0.0001,
+        10.08,
+      ],
+      "method": "gain.set",
+      "node": 3,
+    },
+    {
+      "args": [
+        0.34,
+        10.085,
+      ],
+      "method": "gain.exponential",
+      "node": 3,
+    },
+    {
+      "args": [
+        0.045,
+        10.4408,
+      ],
+      "method": "gain.exponential",
+      "node": 3,
+    },
+    {
+      "args": [
+        0.0001,
+        10.52,
+      ],
+      "method": "gain.exponential",
+      "node": 3,
+    },
+    {
+      "args": [
+        2,
+      ],
+      "method": "connect",
+      "node": 1,
+    },
+    {
+      "args": [
+        3,
+      ],
+      "method": "connect",
+      "node": 2,
+    },
+    {
+      "args": [
+        0,
+      ],
+      "method": "connect",
+      "node": 3,
+    },
+    {
+      "args": [
+        10.08,
+      ],
+      "method": "start",
+      "node": 1,
+    },
+    {
+      "args": [
+        10.54,
+      ],
+      "method": "stop",
+      "node": 1,
+    },
+    {
+      "args": [
+        880,
+        10.83,
+      ],
+      "method": "frequency.set",
+      "node": 4,
+    },
+    {
+      "args": [
+        3200,
+        10.83,
+      ],
+      "method": "frequency.set",
+      "node": 5,
+    },
+    {
+      "args": [
+        0.0001,
+        10.83,
+      ],
+      "method": "gain.set",
+      "node": 6,
+    },
+    {
+      "args": [
+        0.34,
+        10.835,
+      ],
+      "method": "gain.exponential",
+      "node": 6,
+    },
+    {
+      "args": [
+        0.045,
+        10.889999999999999,
+      ],
+      "method": "gain.exponential",
+      "node": 6,
+    },
+    {
+      "args": [
+        0.0001,
+        10.94,
+      ],
+      "method": "gain.exponential",
+      "node": 6,
+    },
+    {
+      "args": [
+        5,
+      ],
+      "method": "connect",
+      "node": 4,
+    },
+    {
+      "args": [
+        6,
+      ],
+      "method": "connect",
+      "node": 5,
+    },
+    {
+      "args": [
+        0,
+      ],
+      "method": "connect",
+      "node": 6,
+    },
+    {
+      "args": [
+        10.83,
+      ],
+      "method": "start",
+      "node": 4,
+    },
+    {
+      "args": [
+        10.959999999999999,
+      ],
+      "method": "stop",
+      "node": 4,
+    },
+  ],
+  "nodes": [
+    {
+      "kind": "destination",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "triangle",
+    },
+    {
+      "kind": "filter",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "lowpass",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "triangle",
+    },
+    {
+      "kind": "filter",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "lowpass",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+  ],
+}
+`;
+
+exports[`melody and percussion synthesis > schedules the pluck tone with its envelope, pitch, rests and release 2`] = `
+{
+  "attackSeconds": 0.005,
+  "filterHz": 3200,
+  "oscillator": "triangle",
+  "peakGain": 0.34,
+  "releaseRatio": 0.18,
+  "sustainGain": 0.045,
+}
+`;
+
+exports[`melody and percussion synthesis > schedules the pure tone with its envelope, pitch, rests and release 1`] = `
+{
+  "events": [
+    {
+      "args": [
+        440,
+        10.08,
+      ],
+      "method": "frequency.set",
+      "node": 1,
+    },
+    {
+      "args": [
+        4000,
+        10.08,
+      ],
+      "method": "frequency.set",
+      "node": 2,
+    },
+    {
+      "args": [
+        0.0001,
+        10.08,
+      ],
+      "method": "gain.set",
+      "node": 3,
+    },
+    {
+      "args": [
+        0.3,
+        10.092,
+      ],
+      "method": "gain.exponential",
+      "node": 3,
+    },
+    {
+      "args": [
+        0.27,
+        10.414399999999999,
+      ],
+      "method": "gain.exponential",
+      "node": 3,
+    },
+    {
+      "args": [
+        0.0001,
+        10.52,
+      ],
+      "method": "gain.exponential",
+      "node": 3,
+    },
+    {
+      "args": [
+        2,
+      ],
+      "method": "connect",
+      "node": 1,
+    },
+    {
+      "args": [
+        3,
+      ],
+      "method": "connect",
+      "node": 2,
+    },
+    {
+      "args": [
+        0,
+      ],
+      "method": "connect",
+      "node": 3,
+    },
+    {
+      "args": [
+        10.08,
+      ],
+      "method": "start",
+      "node": 1,
+    },
+    {
+      "args": [
+        10.54,
+      ],
+      "method": "stop",
+      "node": 1,
+    },
+    {
+      "args": [
+        880,
+        10.83,
+      ],
+      "method": "frequency.set",
+      "node": 4,
+    },
+    {
+      "args": [
+        4000,
+        10.83,
+      ],
+      "method": "frequency.set",
+      "node": 5,
+    },
+    {
+      "args": [
+        0.0001,
+        10.83,
+      ],
+      "method": "gain.set",
+      "node": 6,
+    },
+    {
+      "args": [
+        0.3,
+        10.842,
+      ],
+      "method": "gain.exponential",
+      "node": 6,
+    },
+    {
+      "args": [
+        0.27,
+        10.889999999999999,
+      ],
+      "method": "gain.exponential",
+      "node": 6,
+    },
+    {
+      "args": [
+        0.0001,
+        10.94,
+      ],
+      "method": "gain.exponential",
+      "node": 6,
+    },
+    {
+      "args": [
+        5,
+      ],
+      "method": "connect",
+      "node": 4,
+    },
+    {
+      "args": [
+        6,
+      ],
+      "method": "connect",
+      "node": 5,
+    },
+    {
+      "args": [
+        0,
+      ],
+      "method": "connect",
+      "node": 6,
+    },
+    {
+      "args": [
+        10.83,
+      ],
+      "method": "start",
+      "node": 4,
+    },
+    {
+      "args": [
+        10.959999999999999,
+      ],
+      "method": "stop",
+      "node": 4,
+    },
+  ],
+  "nodes": [
+    {
+      "kind": "destination",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "sine",
+    },
+    {
+      "kind": "filter",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "lowpass",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "sine",
+    },
+    {
+      "kind": "filter",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "lowpass",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+  ],
+}
+`;
+
+exports[`melody and percussion synthesis > schedules the pure tone with its envelope, pitch, rests and release 2`] = `
+{
+  "attackSeconds": 0.012,
+  "filterHz": 4000,
+  "oscillator": "sine",
+  "peakGain": 0.3,
+  "releaseRatio": 0.24,
+  "sustainGain": 0.27,
+}
+`;
+
+exports[`melody and percussion synthesis > schedules the warm tone with its envelope, pitch, rests and release 1`] = `
+{
+  "events": [
+    {
+      "args": [
+        440,
+        10.08,
+      ],
+      "method": "frequency.set",
+      "node": 1,
+    },
+    {
+      "args": [
+        2200,
+        10.08,
+      ],
+      "method": "frequency.set",
+      "node": 2,
+    },
+    {
+      "args": [
+        0.0001,
+        10.08,
+      ],
+      "method": "gain.set",
+      "node": 3,
+    },
+    {
+      "args": [
+        0.32,
+        10.095,
+      ],
+      "method": "gain.exponential",
+      "node": 3,
+    },
+    {
+      "args": [
+        0.24,
+        10.388,
+      ],
+      "method": "gain.exponential",
+      "node": 3,
+    },
+    {
+      "args": [
+        0.0001,
+        10.52,
+      ],
+      "method": "gain.exponential",
+      "node": 3,
+    },
+    {
+      "args": [
+        2,
+      ],
+      "method": "connect",
+      "node": 1,
+    },
+    {
+      "args": [
+        3,
+      ],
+      "method": "connect",
+      "node": 2,
+    },
+    {
+      "args": [
+        0,
+      ],
+      "method": "connect",
+      "node": 3,
+    },
+    {
+      "args": [
+        10.08,
+      ],
+      "method": "start",
+      "node": 1,
+    },
+    {
+      "args": [
+        10.54,
+      ],
+      "method": "stop",
+      "node": 1,
+    },
+    {
+      "args": [
+        880,
+        10.83,
+      ],
+      "method": "frequency.set",
+      "node": 4,
+    },
+    {
+      "args": [
+        2200,
+        10.83,
+      ],
+      "method": "frequency.set",
+      "node": 5,
+    },
+    {
+      "args": [
+        0.0001,
+        10.83,
+      ],
+      "method": "gain.set",
+      "node": 6,
+    },
+    {
+      "args": [
+        0.32,
+        10.845,
+      ],
+      "method": "gain.exponential",
+      "node": 6,
+    },
+    {
+      "args": [
+        0.24,
+        10.889999999999999,
+      ],
+      "method": "gain.exponential",
+      "node": 6,
+    },
+    {
+      "args": [
+        0.0001,
+        10.94,
+      ],
+      "method": "gain.exponential",
+      "node": 6,
+    },
+    {
+      "args": [
+        5,
+      ],
+      "method": "connect",
+      "node": 4,
+    },
+    {
+      "args": [
+        6,
+      ],
+      "method": "connect",
+      "node": 5,
+    },
+    {
+      "args": [
+        0,
+      ],
+      "method": "connect",
+      "node": 6,
+    },
+    {
+      "args": [
+        10.83,
+      ],
+      "method": "start",
+      "node": 4,
+    },
+    {
+      "args": [
+        10.959999999999999,
+      ],
+      "method": "stop",
+      "node": 4,
+    },
+  ],
+  "nodes": [
+    {
+      "kind": "destination",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "triangle",
+    },
+    {
+      "kind": "filter",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "lowpass",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+    {
+      "kind": "oscillator",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "triangle",
+    },
+    {
+      "kind": "filter",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "lowpass",
+    },
+    {
+      "kind": "gain",
+      "params": {
+        "Q": 0,
+        "attack": 0,
+        "frequency": 0,
+        "gain": 0,
+        "knee": 0,
+        "ratio": 0,
+        "release": 0,
+        "threshold": 0,
+      },
+      "type": "",
+    },
+  ],
+}
+`;
+
+exports[`melody and percussion synthesis > schedules the warm tone with its envelope, pitch, rests and release 2`] = `
+{
+  "attackSeconds": 0.015,
+  "filterHz": 2200,
+  "oscillator": "triangle",
+  "peakGain": 0.32,
+  "releaseRatio": 0.3,
+  "sustainGain": 0.24,
+}
+`;

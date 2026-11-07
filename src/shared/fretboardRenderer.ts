@@ -1,22 +1,18 @@
-// Common fretboard rendering functions
-
 import {
-  TOTAL_FRETS,
-  STRING_Y_POSITIONS,
-  STRING_THICKNESS,
-  SINGLE_DOT_FRETS,
   DOUBLE_DOT_FRETS,
-} from "./constants";
-import type { LayoutConfig } from "./layout";
+  SINGLE_DOT_FRETS,
+  STRING_THICKNESS,
+  STRING_Y_POSITIONS,
+  TOTAL_FRETS,
+} from './constants';
+// Common fretboard rendering functions
+import { requiredAt } from './requiredAt';
+
+import type { LayoutConfig } from './layout';
 
 /** Pixel position (along the fret axis) of a note centred on the given fret. */
-export function fretCenterPosition(
-  fret: number,
-  config: LayoutConfig,
-): number {
-  return fret === 0
-    ? config.nutPosition / 2
-    : config.nutPosition + (fret - 0.5) * config.fretWidth;
+export function fretCenterPosition(fret: number, config: LayoutConfig): number {
+  return fret === 0 ? config.nutPosition / 2 : config.nutPosition + (fret - 0.5) * config.fretWidth;
 }
 
 /**
@@ -24,36 +20,32 @@ export function fretCenterPosition(
  * layout: a horizontal banner above the board, or a vertical sidebar beside it.
  */
 export function sizeCagedHeader(header: HTMLElement, config: LayoutConfig): void {
-  header.style.position = "relative";
+  header.style.position = 'relative';
   if (config.isVertical) {
-    header.style.height = "";
-    header.style.minWidth = "";
+    header.style.height = '';
+    header.style.minWidth = '';
     header.style.minHeight = `${config.fretboardLength}px`;
-    header.style.width = "60px";
+    header.style.width = '60px';
   } else {
-    header.style.height = "120px";
-    header.style.minWidth =
-      `${config.fretboardLength + config.fretboardContainerPadding}px`;
-    header.style.minHeight = "";
-    header.style.width = "";
+    header.style.height = '120px';
+    header.style.minWidth = `${config.fretboardLength + config.fretboardContainerPadding}px`;
+    header.style.minHeight = '';
+    header.style.width = '';
   }
 }
 
 export function generateFretLinesHTML(config: LayoutConfig): string {
-  let html = "";
+  let html = '';
   for (let fret = 0; fret <= TOTAL_FRETS; fret++) {
-    const pos =
-      fret === 0
-        ? config.nutPosition
-        : config.nutPosition + fret * config.fretWidth;
+    const pos = fret === 0 ? config.nutPosition : config.nutPosition + fret * config.fretWidth;
     const isNut = fret === 0;
-    html += `<div class="fret-line ${isNut ? "nut" : ""}" style="${config.fretAxis}: ${pos}px;"></div>`;
+    html += `<div class="fret-line ${isNut ? 'nut' : ''}" style="${config.fretAxis}: ${pos}px;"></div>`;
   }
   return html;
 }
 
 export function generateDotsHTML(config: LayoutConfig): string {
-  let html = "";
+  let html = '';
   for (const fret of SINGLE_DOT_FRETS) {
     const pos = config.nutPosition + (fret - 0.5) * config.fretWidth;
     html += `<div class="fret-dot single" style="${config.fretAxis}: ${pos}px;"></div>`;
@@ -68,29 +60,25 @@ export function generateDotsHTML(config: LayoutConfig): string {
 }
 
 export function generateStringsHTML(config: LayoutConfig): string {
-  let html = "";
+  let html = '';
   for (let i = 0; i < 6; i++) {
     // In vertical mode, reverse positions so bass strings are on the left (EADGBE)
     const posIdx = config.isVertical ? 5 - i : i;
-    html += `<div class="string-line" style="${config.stringAxis}: ${STRING_Y_POSITIONS[posIdx]}px; ${config.stringThicknessProp}: ${STRING_THICKNESS[i]}px;"></div>`;
+    html += `<div class="string-line" style="${config.stringAxis}: ${requiredAt(STRING_Y_POSITIONS, posIdx)}px; ${config.stringThicknessProp}: ${requiredAt(STRING_THICKNESS, i)}px;"></div>`;
   }
   return html;
 }
 
 export function generateFretNumbersHTML(config: LayoutConfig): string {
-  const openStyle = config.isVertical
-    ? ""
-    : ` style="width: ${config.nutPosition}px;"`;
-  const fretStyle = config.isVertical
-    ? ""
-    : ` style="width: ${config.fretWidth}px;"`;
+  const openStyle = config.isVertical ? '' : ` style="width: ${config.nutPosition}px;"`;
+  const fretStyle = config.isVertical ? '' : ` style="width: ${config.fretWidth}px;"`;
   let numbersHTML = `<div class="fret-number"${openStyle}>Open</div>`;
   for (let fret = 1; fret <= TOTAL_FRETS; fret++) {
-    let markerClass = "";
+    let markerClass = '';
     if (SINGLE_DOT_FRETS.includes(fret)) {
-      markerClass = "marker-single";
+      markerClass = 'marker-single';
     } else if (DOUBLE_DOT_FRETS.includes(fret)) {
-      markerClass = "marker-double";
+      markerClass = 'marker-double';
     }
     numbersHTML += `<div class="fret-number ${markerClass}"${fretStyle}>${fret}</div>`;
   }

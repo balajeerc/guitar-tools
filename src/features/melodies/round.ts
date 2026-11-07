@@ -1,28 +1,29 @@
-import type { Melody, MelodyDifficulty } from "./catalog";
-import type { ManualAnswerBasis } from "./manualGuess";
-import { createMelodyMatcher, type MelodyMatcher } from "./matcher";
-import { createNoteGate, type NoteGate } from "./noteGate";
+import { createMelodyMatcher, type MelodyMatcher } from './matcher';
+import { createNoteGate, type NoteGate } from './noteGate';
 
-export type GuessMethod = "microphone" | "manual";
-type RoundStatus = "ready" | "guessing" | "complete" | "revealed";
+import type { Melody, MelodyDifficulty } from './catalog';
+import type { ManualAnswerBasis } from './manualGuess';
+
+export type GuessMethod = 'manual' | 'microphone';
+type RoundStatus = 'complete' | 'guessing' | 'ready' | 'revealed';
 
 export interface RoundState {
-  melody: Melody;
-  matcher: MelodyMatcher;
-  gate: NoteGate;
-  status: RoundStatus;
-  elapsedMs: number;
-  startedAt: number;
-  round: number;
-  method: GuessMethod;
   difficulty: MelodyDifficulty;
-  micMatchedNotes: number;
-  manualInput: readonly string[];
-  manualJudgement: readonly boolean[] | null;
-  manualAnswerBasis: ManualAnswerBasis;
+  elapsedMs: number;
+  gate: NoteGate;
   hasPlayed: boolean;
+  manualAnswerBasis: ManualAnswerBasis;
+  manualInput: readonly string[];
+  manualJudgement: null | readonly boolean[];
+  matcher: MelodyMatcher;
+  melody: Melody;
+  method: GuessMethod;
+  micMatchedNotes: number;
   microphoneActive: boolean;
   playing: boolean;
+  round: number;
+  startedAt: number;
+  status: RoundStatus;
 }
 
 export function createRound(melody: Melody, round: number, method: GuessMethod): RoundState {
@@ -30,7 +31,7 @@ export function createRound(melody: Melody, round: number, method: GuessMethod):
     melody,
     matcher: createMelodyMatcher(melody.notes.map(({ midi }) => midi)),
     gate: createNoteGate(),
-    status: "ready",
+    status: 'ready',
     elapsedMs: 0,
     startedAt: 0,
     round,

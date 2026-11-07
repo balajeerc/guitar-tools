@@ -1,0 +1,454 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`rhythm practice controls > restores a saved tempo, pattern and individual track levels > restored drum pattern and mixer 1`] = `
+"
+    <section class="beats-panel" aria-label="Beats drum machine">
+      <div class="beats-toolbar">
+        <div class="metronome-tempo">
+          <button class="note-btn" id="beatsBpmDownLarge" aria-label="Decrease tempo by 10">❮❮</button>
+          <button class="note-btn" id="beatsBpmDown" aria-label="Decrease tempo by 1">❮</button>
+          <div class="metronome-bpm">
+            <input class="metronome-bpm-value" id="beatsBpmValue" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" value="75" aria-label="Tempo in beats per minute">
+            <span class="metronome-bpm-unit">BPM</span>
+          </div>
+          <button class="note-btn" id="beatsBpmUp" aria-label="Increase tempo by 1">❯</button>
+          <button class="note-btn" id="beatsBpmUpLarge" aria-label="Increase tempo by 10">❯❯</button>
+        </div>
+        <input class="metronome-slider beats-tempo-slider" id="beatsBpmSlider" type="range" min="30" max="260" step="1" value="75" aria-label="Tempo in beats per minute">
+        <div class="beats-actions">
+          <button class="note-detection-btn" id="beatsToggleBtn">Start</button>
+          <span id="beatsReset"><button type="button" class="reset-link">Reset</button></span>
+        </div>
+      </div>
+      <div class="beats-loop-library" aria-label="Saved beat loops">
+        <label class="beats-loop-field">
+          <span>Loop name</span>
+          <input id="beatsLoopName" type="text" maxlength="40" placeholder="My beat">
+        </label>
+        <label class="beats-loop-field">
+          <span>Saved loops</span>
+          <select id="beatsLoopSelect" aria-label="Saved beat loops"><option value="">Choose a saved loop</option></select>
+        </label>
+        <div class="beats-loop-actions">
+          <button class="beats-loop-btn" id="beatsLoopSave" type="button">Save</button>
+          <button class="beats-loop-btn" id="beatsLoopLoad" type="button" disabled="">Load</button>
+          <button class="beats-loop-btn beats-loop-delete" id="beatsLoopDelete" type="button" disabled="">Delete</button>
+        </div>
+        <span class="beats-loop-status" id="beatsLoopStatus" aria-live="polite"></span>
+      </div>
+      <div class="beats-workspace" id="beatsGrid">
+        <div class="beats-mixer" role="group" aria-label="Track levels">
+      <label class="beats-mixer-control">
+        <span>Kick</span>
+        <input class="beats-level" type="range" min="0" max="1" step="0.01" value="0.11" data-level="kick" aria-label="Kick volume">
+      </label>
+      <label class="beats-mixer-control">
+        <span>Snare</span>
+        <input class="beats-level" type="range" min="0" max="1" step="0.01" value="0.22" data-level="snare" aria-label="Snare volume">
+      </label>
+      <label class="beats-mixer-control">
+        <span>Hi-hat</span>
+        <input class="beats-level" type="range" min="0" max="1" step="0.01" value="0.33" data-level="hihat" aria-label="Hi-hat volume">
+      </label>
+      <label class="beats-mixer-control">
+        <span>Crash</span>
+        <input class="beats-level" type="range" min="0" max="1" step="0.01" value="0.44" data-level="crash" aria-label="Crash volume">
+      </label></div>
+        <div class="beats-grid-scroll"><div class="beats-grid" role="group" aria-label="Drum pattern"><span class="beats-corner" aria-hidden="true"></span><span class="beats-step-label beats-beat-start" style="--beats-row: 2" data-step="0">1</span><span class="beats-step-label" style="--beats-row: 3" data-step="1">e</span><span class="beats-step-label" style="--beats-row: 4" data-step="2">&amp;</span><span class="beats-step-label" style="--beats-row: 5" data-step="3">a</span><span class="beats-step-label beats-beat-start" style="--beats-row: 6" data-step="4">2</span><span class="beats-step-label" style="--beats-row: 7" data-step="5">e</span><span class="beats-step-label" style="--beats-row: 8" data-step="6">&amp;</span><span class="beats-step-label" style="--beats-row: 9" data-step="7">a</span><span class="beats-step-label beats-beat-start" style="--beats-row: 10" data-step="8">3</span><span class="beats-step-label" style="--beats-row: 11" data-step="9">e</span><span class="beats-step-label" style="--beats-row: 12" data-step="10">&amp;</span><span class="beats-step-label" style="--beats-row: 13" data-step="11">a</span><span class="beats-step-label beats-beat-start" style="--beats-row: 14" data-step="12">4</span><span class="beats-step-label" style="--beats-row: 15" data-step="13">e</span><span class="beats-step-label" style="--beats-row: 16" data-step="14">&amp;</span><span class="beats-step-label" style="--beats-row: 17" data-step="15">a</span><span class="beats-track-label" style="--beats-column: 2">Kick</span><button class="beats-cell beats-beat-start" style="--beats-row: 2; --beats-column: 2" data-voice="kick" data-step="0" aria-label="Kick, beat 1 1" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell active" style="--beats-row: 3; --beats-column: 2" data-voice="kick" data-step="1" aria-label="Kick, beat 1 e" aria-pressed="true"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 4; --beats-column: 2" data-voice="kick" data-step="2" aria-label="Kick, beat 1 &amp;" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 5; --beats-column: 2" data-voice="kick" data-step="3" aria-label="Kick, beat 1 a" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell beats-beat-start" style="--beats-row: 6; --beats-column: 2" data-voice="kick" data-step="4" aria-label="Kick, beat 2 2" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 7; --beats-column: 2" data-voice="kick" data-step="5" aria-label="Kick, beat 2 e" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 8; --beats-column: 2" data-voice="kick" data-step="6" aria-label="Kick, beat 2 &amp;" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 9; --beats-column: 2" data-voice="kick" data-step="7" aria-label="Kick, beat 2 a" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell beats-beat-start" style="--beats-row: 10; --beats-column: 2" data-voice="kick" data-step="8" aria-label="Kick, beat 3 3" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 11; --beats-column: 2" data-voice="kick" data-step="9" aria-label="Kick, beat 3 e" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 12; --beats-column: 2" data-voice="kick" data-step="10" aria-label="Kick, beat 3 &amp;" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 13; --beats-column: 2" data-voice="kick" data-step="11" aria-label="Kick, beat 3 a" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell beats-beat-start" style="--beats-row: 14; --beats-column: 2" data-voice="kick" data-step="12" aria-label="Kick, beat 4 4" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 15; --beats-column: 2" data-voice="kick" data-step="13" aria-label="Kick, beat 4 e" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 16; --beats-column: 2" data-voice="kick" data-step="14" aria-label="Kick, beat 4 &amp;" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 17; --beats-column: 2" data-voice="kick" data-step="15" aria-label="Kick, beat 4 a" aria-pressed="false"><span aria-hidden="true"></span></button><span class="beats-track-label" style="--beats-column: 3">Snare</span><button class="beats-cell beats-beat-start" style="--beats-row: 2; --beats-column: 3" data-voice="snare" data-step="0" aria-label="Snare, beat 1 1" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 3; --beats-column: 3" data-voice="snare" data-step="1" aria-label="Snare, beat 1 e" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell active" style="--beats-row: 4; --beats-column: 3" data-voice="snare" data-step="2" aria-label="Snare, beat 1 &amp;" aria-pressed="true"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 5; --beats-column: 3" data-voice="snare" data-step="3" aria-label="Snare, beat 1 a" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell beats-beat-start" style="--beats-row: 6; --beats-column: 3" data-voice="snare" data-step="4" aria-label="Snare, beat 2 2" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 7; --beats-column: 3" data-voice="snare" data-step="5" aria-label="Snare, beat 2 e" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 8; --beats-column: 3" data-voice="snare" data-step="6" aria-label="Snare, beat 2 &amp;" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 9; --beats-column: 3" data-voice="snare" data-step="7" aria-label="Snare, beat 2 a" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell beats-beat-start" style="--beats-row: 10; --beats-column: 3" data-voice="snare" data-step="8" aria-label="Snare, beat 3 3" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 11; --beats-column: 3" data-voice="snare" data-step="9" aria-label="Snare, beat 3 e" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 12; --beats-column: 3" data-voice="snare" data-step="10" aria-label="Snare, beat 3 &amp;" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 13; --beats-column: 3" data-voice="snare" data-step="11" aria-label="Snare, beat 3 a" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell beats-beat-start" style="--beats-row: 14; --beats-column: 3" data-voice="snare" data-step="12" aria-label="Snare, beat 4 4" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 15; --beats-column: 3" data-voice="snare" data-step="13" aria-label="Snare, beat 4 e" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 16; --beats-column: 3" data-voice="snare" data-step="14" aria-label="Snare, beat 4 &amp;" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 17; --beats-column: 3" data-voice="snare" data-step="15" aria-label="Snare, beat 4 a" aria-pressed="false"><span aria-hidden="true"></span></button><span class="beats-track-label" style="--beats-column: 4">Hi-hat</span><button class="beats-cell beats-beat-start" style="--beats-row: 2; --beats-column: 4" data-voice="hihat" data-step="0" aria-label="Hi-hat, beat 1 1" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 3; --beats-column: 4" data-voice="hihat" data-step="1" aria-label="Hi-hat, beat 1 e" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 4; --beats-column: 4" data-voice="hihat" data-step="2" aria-label="Hi-hat, beat 1 &amp;" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell active" style="--beats-row: 5; --beats-column: 4" data-voice="hihat" data-step="3" aria-label="Hi-hat, beat 1 a" aria-pressed="true"><span aria-hidden="true"></span></button><button class="beats-cell beats-beat-start" style="--beats-row: 6; --beats-column: 4" data-voice="hihat" data-step="4" aria-label="Hi-hat, beat 2 2" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 7; --beats-column: 4" data-voice="hihat" data-step="5" aria-label="Hi-hat, beat 2 e" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 8; --beats-column: 4" data-voice="hihat" data-step="6" aria-label="Hi-hat, beat 2 &amp;" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 9; --beats-column: 4" data-voice="hihat" data-step="7" aria-label="Hi-hat, beat 2 a" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell beats-beat-start" style="--beats-row: 10; --beats-column: 4" data-voice="hihat" data-step="8" aria-label="Hi-hat, beat 3 3" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 11; --beats-column: 4" data-voice="hihat" data-step="9" aria-label="Hi-hat, beat 3 e" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 12; --beats-column: 4" data-voice="hihat" data-step="10" aria-label="Hi-hat, beat 3 &amp;" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 13; --beats-column: 4" data-voice="hihat" data-step="11" aria-label="Hi-hat, beat 3 a" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell beats-beat-start" style="--beats-row: 14; --beats-column: 4" data-voice="hihat" data-step="12" aria-label="Hi-hat, beat 4 4" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 15; --beats-column: 4" data-voice="hihat" data-step="13" aria-label="Hi-hat, beat 4 e" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 16; --beats-column: 4" data-voice="hihat" data-step="14" aria-label="Hi-hat, beat 4 &amp;" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 17; --beats-column: 4" data-voice="hihat" data-step="15" aria-label="Hi-hat, beat 4 a" aria-pressed="false"><span aria-hidden="true"></span></button><span class="beats-track-label" style="--beats-column: 5">Crash</span><button class="beats-cell beats-beat-start" style="--beats-row: 2; --beats-column: 5" data-voice="crash" data-step="0" aria-label="Crash, beat 1 1" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 3; --beats-column: 5" data-voice="crash" data-step="1" aria-label="Crash, beat 1 e" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 4; --beats-column: 5" data-voice="crash" data-step="2" aria-label="Crash, beat 1 &amp;" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 5; --beats-column: 5" data-voice="crash" data-step="3" aria-label="Crash, beat 1 a" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell active beats-beat-start" style="--beats-row: 6; --beats-column: 5" data-voice="crash" data-step="4" aria-label="Crash, beat 2 2" aria-pressed="true"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 7; --beats-column: 5" data-voice="crash" data-step="5" aria-label="Crash, beat 2 e" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 8; --beats-column: 5" data-voice="crash" data-step="6" aria-label="Crash, beat 2 &amp;" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 9; --beats-column: 5" data-voice="crash" data-step="7" aria-label="Crash, beat 2 a" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell beats-beat-start" style="--beats-row: 10; --beats-column: 5" data-voice="crash" data-step="8" aria-label="Crash, beat 3 3" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 11; --beats-column: 5" data-voice="crash" data-step="9" aria-label="Crash, beat 3 e" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 12; --beats-column: 5" data-voice="crash" data-step="10" aria-label="Crash, beat 3 &amp;" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 13; --beats-column: 5" data-voice="crash" data-step="11" aria-label="Crash, beat 3 a" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell beats-beat-start" style="--beats-row: 14; --beats-column: 5" data-voice="crash" data-step="12" aria-label="Crash, beat 4 4" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 15; --beats-column: 5" data-voice="crash" data-step="13" aria-label="Crash, beat 4 e" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 16; --beats-column: 5" data-voice="crash" data-step="14" aria-label="Crash, beat 4 &amp;" aria-pressed="false"><span aria-hidden="true"></span></button><button class="beats-cell" style="--beats-row: 17; --beats-column: 5" data-voice="crash" data-step="15" aria-label="Crash, beat 4 a" aria-pressed="false"><span aria-hidden="true"></span></button></div></div>
+      </div>
+      <p class="beats-hint">Tap cells to build a one-bar rhythm. The playhead follows sixteenth notes.</p>
+    </section>
+  "
+`;
+
+exports[`rhythm practice controls > restores metronome settings and synchronizes tempo, meter and subdivision controls > metronomeBeatsDown 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="metronomeAccordionToggle">
+        <span class="controls-summary" id="metronomeControlsSummary">120 BPM · 3/4 · ÷2</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="metronome-controls">
+        <div class="controls-row">
+          <div class="control-group">
+            <span class="control-label">Beats:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="metronomeBeatsDown">❮</button>
+              <div class="note-display" id="metronomeBeatsDisplay">3</div>
+              <button class="note-btn" id="metronomeBeatsUp">❯</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Subdivision:</span>
+            <div class="toggle-group"><button class="toggle-btn" id="metronomeSubdiv1Btn" data-subdivision="1">1</button><button class="toggle-btn active" id="metronomeSubdiv2Btn" data-subdivision="2">2</button><button class="toggle-btn" id="metronomeSubdiv3Btn" data-subdivision="3">3</button><button class="toggle-btn" id="metronomeSubdiv4Btn" data-subdivision="4">4</button></div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+
+    <div class="metronome-display">
+      <div class="metronome-pendulum">
+        <div class="metronome-pendulum-arm" id="metronomePendulumArm">
+          <div class="metronome-pendulum-bob"></div>
+        </div>
+        <div class="metronome-pendulum-pivot"></div>
+      </div>
+
+      <div class="metronome-tempo">
+        <button class="note-btn" id="metronomeBpmDownLarge" aria-label="Decrease tempo by 10">❮❮</button>
+        <button class="note-btn" id="metronomeBpmDown" aria-label="Decrease tempo by 1">❮</button>
+        <div class="metronome-bpm">
+          <input class="metronome-bpm-value" id="metronomeBpmValue" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" value="100" aria-label="Tempo in beats per minute">
+          <span class="metronome-bpm-unit">BPM</span>
+        </div>
+        <button class="note-btn" id="metronomeBpmUp" aria-label="Increase tempo by 1">❯</button>
+        <button class="note-btn" id="metronomeBpmUpLarge" aria-label="Increase tempo by 10">❯❯</button>
+      </div>
+
+      <input class="metronome-slider" id="metronomeBpmSlider" type="range" min="30" max="260" step="1" value="100" aria-label="Tempo in beats per minute">
+
+      <div class="metronome-beats" id="metronomeBeats"><button class="metronome-beat metronome-beat-strong" data-beat="0" aria-label="Beat 1: strong"></button><button class="metronome-beat metronome-beat-off" data-beat="1" aria-label="Beat 2: off"></button><button class="metronome-beat metronome-beat-weak" data-beat="2" aria-label="Beat 3: weak"></button></div>
+      <div class="metronome-hint">Tap a beat dot to cycle its accent: strong → weak → silent</div>
+
+      <div class="metronome-actions">
+        <button class="note-detection-btn" id="metronomeToggleBtn">Start</button>
+      </div>
+    </div>
+  "
+`;
+
+exports[`rhythm practice controls > restores metronome settings and synchronizes tempo, meter and subdivision controls > metronomeBeatsUp 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="metronomeAccordionToggle">
+        <span class="controls-summary" id="metronomeControlsSummary">120 BPM · 4/4 · ÷2</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="metronome-controls">
+        <div class="controls-row">
+          <div class="control-group">
+            <span class="control-label">Beats:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="metronomeBeatsDown">❮</button>
+              <div class="note-display" id="metronomeBeatsDisplay">4</div>
+              <button class="note-btn" id="metronomeBeatsUp">❯</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Subdivision:</span>
+            <div class="toggle-group"><button class="toggle-btn" id="metronomeSubdiv1Btn" data-subdivision="1">1</button><button class="toggle-btn active" id="metronomeSubdiv2Btn" data-subdivision="2">2</button><button class="toggle-btn" id="metronomeSubdiv3Btn" data-subdivision="3">3</button><button class="toggle-btn" id="metronomeSubdiv4Btn" data-subdivision="4">4</button></div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+
+    <div class="metronome-display">
+      <div class="metronome-pendulum">
+        <div class="metronome-pendulum-arm" id="metronomePendulumArm">
+          <div class="metronome-pendulum-bob"></div>
+        </div>
+        <div class="metronome-pendulum-pivot"></div>
+      </div>
+
+      <div class="metronome-tempo">
+        <button class="note-btn" id="metronomeBpmDownLarge" aria-label="Decrease tempo by 10">❮❮</button>
+        <button class="note-btn" id="metronomeBpmDown" aria-label="Decrease tempo by 1">❮</button>
+        <div class="metronome-bpm">
+          <input class="metronome-bpm-value" id="metronomeBpmValue" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" value="100" aria-label="Tempo in beats per minute">
+          <span class="metronome-bpm-unit">BPM</span>
+        </div>
+        <button class="note-btn" id="metronomeBpmUp" aria-label="Increase tempo by 1">❯</button>
+        <button class="note-btn" id="metronomeBpmUpLarge" aria-label="Increase tempo by 10">❯❯</button>
+      </div>
+
+      <input class="metronome-slider" id="metronomeBpmSlider" type="range" min="30" max="260" step="1" value="100" aria-label="Tempo in beats per minute">
+
+      <div class="metronome-beats" id="metronomeBeats"><button class="metronome-beat metronome-beat-strong" data-beat="0" aria-label="Beat 1: strong"></button><button class="metronome-beat metronome-beat-off" data-beat="1" aria-label="Beat 2: off"></button><button class="metronome-beat metronome-beat-weak" data-beat="2" aria-label="Beat 3: weak"></button><button class="metronome-beat metronome-beat-weak" data-beat="3" aria-label="Beat 4: weak"></button></div>
+      <div class="metronome-hint">Tap a beat dot to cycle its accent: strong → weak → silent</div>
+
+      <div class="metronome-actions">
+        <button class="note-detection-btn" id="metronomeToggleBtn">Start</button>
+      </div>
+    </div>
+  "
+`;
+
+exports[`rhythm practice controls > restores metronome settings and synchronizes tempo, meter and subdivision controls > metronomeSubdiv1Btn 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="metronomeAccordionToggle">
+        <span class="controls-summary" id="metronomeControlsSummary">120 BPM · 3/4</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="metronome-controls">
+        <div class="controls-row">
+          <div class="control-group">
+            <span class="control-label">Beats:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="metronomeBeatsDown">❮</button>
+              <div class="note-display" id="metronomeBeatsDisplay">3</div>
+              <button class="note-btn" id="metronomeBeatsUp">❯</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Subdivision:</span>
+            <div class="toggle-group"><button class="toggle-btn active" id="metronomeSubdiv1Btn" data-subdivision="1">1</button><button class="toggle-btn" id="metronomeSubdiv2Btn" data-subdivision="2">2</button><button class="toggle-btn" id="metronomeSubdiv3Btn" data-subdivision="3">3</button><button class="toggle-btn" id="metronomeSubdiv4Btn" data-subdivision="4">4</button></div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+
+    <div class="metronome-display">
+      <div class="metronome-pendulum">
+        <div class="metronome-pendulum-arm" id="metronomePendulumArm">
+          <div class="metronome-pendulum-bob"></div>
+        </div>
+        <div class="metronome-pendulum-pivot"></div>
+      </div>
+
+      <div class="metronome-tempo">
+        <button class="note-btn" id="metronomeBpmDownLarge" aria-label="Decrease tempo by 10">❮❮</button>
+        <button class="note-btn" id="metronomeBpmDown" aria-label="Decrease tempo by 1">❮</button>
+        <div class="metronome-bpm">
+          <input class="metronome-bpm-value" id="metronomeBpmValue" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" value="100" aria-label="Tempo in beats per minute">
+          <span class="metronome-bpm-unit">BPM</span>
+        </div>
+        <button class="note-btn" id="metronomeBpmUp" aria-label="Increase tempo by 1">❯</button>
+        <button class="note-btn" id="metronomeBpmUpLarge" aria-label="Increase tempo by 10">❯❯</button>
+      </div>
+
+      <input class="metronome-slider" id="metronomeBpmSlider" type="range" min="30" max="260" step="1" value="100" aria-label="Tempo in beats per minute">
+
+      <div class="metronome-beats" id="metronomeBeats"><button class="metronome-beat metronome-beat-strong" data-beat="0" aria-label="Beat 1: strong"></button><button class="metronome-beat metronome-beat-off" data-beat="1" aria-label="Beat 2: off"></button><button class="metronome-beat metronome-beat-weak" data-beat="2" aria-label="Beat 3: weak"></button></div>
+      <div class="metronome-hint">Tap a beat dot to cycle its accent: strong → weak → silent</div>
+
+      <div class="metronome-actions">
+        <button class="note-detection-btn" id="metronomeToggleBtn">Start</button>
+      </div>
+    </div>
+  "
+`;
+
+exports[`rhythm practice controls > restores metronome settings and synchronizes tempo, meter and subdivision controls > metronomeSubdiv2Btn 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="metronomeAccordionToggle">
+        <span class="controls-summary" id="metronomeControlsSummary">120 BPM · 3/4 · ÷2</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="metronome-controls">
+        <div class="controls-row">
+          <div class="control-group">
+            <span class="control-label">Beats:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="metronomeBeatsDown">❮</button>
+              <div class="note-display" id="metronomeBeatsDisplay">3</div>
+              <button class="note-btn" id="metronomeBeatsUp">❯</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Subdivision:</span>
+            <div class="toggle-group"><button class="toggle-btn" id="metronomeSubdiv1Btn" data-subdivision="1">1</button><button class="toggle-btn active" id="metronomeSubdiv2Btn" data-subdivision="2">2</button><button class="toggle-btn" id="metronomeSubdiv3Btn" data-subdivision="3">3</button><button class="toggle-btn" id="metronomeSubdiv4Btn" data-subdivision="4">4</button></div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+
+    <div class="metronome-display">
+      <div class="metronome-pendulum">
+        <div class="metronome-pendulum-arm" id="metronomePendulumArm">
+          <div class="metronome-pendulum-bob"></div>
+        </div>
+        <div class="metronome-pendulum-pivot"></div>
+      </div>
+
+      <div class="metronome-tempo">
+        <button class="note-btn" id="metronomeBpmDownLarge" aria-label="Decrease tempo by 10">❮❮</button>
+        <button class="note-btn" id="metronomeBpmDown" aria-label="Decrease tempo by 1">❮</button>
+        <div class="metronome-bpm">
+          <input class="metronome-bpm-value" id="metronomeBpmValue" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" value="100" aria-label="Tempo in beats per minute">
+          <span class="metronome-bpm-unit">BPM</span>
+        </div>
+        <button class="note-btn" id="metronomeBpmUp" aria-label="Increase tempo by 1">❯</button>
+        <button class="note-btn" id="metronomeBpmUpLarge" aria-label="Increase tempo by 10">❯❯</button>
+      </div>
+
+      <input class="metronome-slider" id="metronomeBpmSlider" type="range" min="30" max="260" step="1" value="100" aria-label="Tempo in beats per minute">
+
+      <div class="metronome-beats" id="metronomeBeats"><button class="metronome-beat metronome-beat-strong" data-beat="0" aria-label="Beat 1: strong"></button><button class="metronome-beat metronome-beat-off" data-beat="1" aria-label="Beat 2: off"></button><button class="metronome-beat metronome-beat-weak" data-beat="2" aria-label="Beat 3: weak"></button></div>
+      <div class="metronome-hint">Tap a beat dot to cycle its accent: strong → weak → silent</div>
+
+      <div class="metronome-actions">
+        <button class="note-detection-btn" id="metronomeToggleBtn">Start</button>
+      </div>
+    </div>
+  "
+`;
+
+exports[`rhythm practice controls > restores metronome settings and synchronizes tempo, meter and subdivision controls > metronomeSubdiv3Btn 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="metronomeAccordionToggle">
+        <span class="controls-summary" id="metronomeControlsSummary">120 BPM · 3/4 · ÷3</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="metronome-controls">
+        <div class="controls-row">
+          <div class="control-group">
+            <span class="control-label">Beats:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="metronomeBeatsDown">❮</button>
+              <div class="note-display" id="metronomeBeatsDisplay">3</div>
+              <button class="note-btn" id="metronomeBeatsUp">❯</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Subdivision:</span>
+            <div class="toggle-group"><button class="toggle-btn" id="metronomeSubdiv1Btn" data-subdivision="1">1</button><button class="toggle-btn" id="metronomeSubdiv2Btn" data-subdivision="2">2</button><button class="toggle-btn active" id="metronomeSubdiv3Btn" data-subdivision="3">3</button><button class="toggle-btn" id="metronomeSubdiv4Btn" data-subdivision="4">4</button></div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+
+    <div class="metronome-display">
+      <div class="metronome-pendulum">
+        <div class="metronome-pendulum-arm" id="metronomePendulumArm">
+          <div class="metronome-pendulum-bob"></div>
+        </div>
+        <div class="metronome-pendulum-pivot"></div>
+      </div>
+
+      <div class="metronome-tempo">
+        <button class="note-btn" id="metronomeBpmDownLarge" aria-label="Decrease tempo by 10">❮❮</button>
+        <button class="note-btn" id="metronomeBpmDown" aria-label="Decrease tempo by 1">❮</button>
+        <div class="metronome-bpm">
+          <input class="metronome-bpm-value" id="metronomeBpmValue" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" value="100" aria-label="Tempo in beats per minute">
+          <span class="metronome-bpm-unit">BPM</span>
+        </div>
+        <button class="note-btn" id="metronomeBpmUp" aria-label="Increase tempo by 1">❯</button>
+        <button class="note-btn" id="metronomeBpmUpLarge" aria-label="Increase tempo by 10">❯❯</button>
+      </div>
+
+      <input class="metronome-slider" id="metronomeBpmSlider" type="range" min="30" max="260" step="1" value="100" aria-label="Tempo in beats per minute">
+
+      <div class="metronome-beats" id="metronomeBeats"><button class="metronome-beat metronome-beat-strong" data-beat="0" aria-label="Beat 1: strong"></button><button class="metronome-beat metronome-beat-off" data-beat="1" aria-label="Beat 2: off"></button><button class="metronome-beat metronome-beat-weak" data-beat="2" aria-label="Beat 3: weak"></button></div>
+      <div class="metronome-hint">Tap a beat dot to cycle its accent: strong → weak → silent</div>
+
+      <div class="metronome-actions">
+        <button class="note-detection-btn" id="metronomeToggleBtn">Start</button>
+      </div>
+    </div>
+  "
+`;
+
+exports[`rhythm practice controls > restores metronome settings and synchronizes tempo, meter and subdivision controls > metronomeSubdiv4Btn 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="metronomeAccordionToggle">
+        <span class="controls-summary" id="metronomeControlsSummary">120 BPM · 3/4 · ÷4</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="metronome-controls">
+        <div class="controls-row">
+          <div class="control-group">
+            <span class="control-label">Beats:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="metronomeBeatsDown">❮</button>
+              <div class="note-display" id="metronomeBeatsDisplay">3</div>
+              <button class="note-btn" id="metronomeBeatsUp">❯</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Subdivision:</span>
+            <div class="toggle-group"><button class="toggle-btn" id="metronomeSubdiv1Btn" data-subdivision="1">1</button><button class="toggle-btn" id="metronomeSubdiv2Btn" data-subdivision="2">2</button><button class="toggle-btn" id="metronomeSubdiv3Btn" data-subdivision="3">3</button><button class="toggle-btn active" id="metronomeSubdiv4Btn" data-subdivision="4">4</button></div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+
+    <div class="metronome-display">
+      <div class="metronome-pendulum">
+        <div class="metronome-pendulum-arm" id="metronomePendulumArm">
+          <div class="metronome-pendulum-bob"></div>
+        </div>
+        <div class="metronome-pendulum-pivot"></div>
+      </div>
+
+      <div class="metronome-tempo">
+        <button class="note-btn" id="metronomeBpmDownLarge" aria-label="Decrease tempo by 10">❮❮</button>
+        <button class="note-btn" id="metronomeBpmDown" aria-label="Decrease tempo by 1">❮</button>
+        <div class="metronome-bpm">
+          <input class="metronome-bpm-value" id="metronomeBpmValue" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" value="100" aria-label="Tempo in beats per minute">
+          <span class="metronome-bpm-unit">BPM</span>
+        </div>
+        <button class="note-btn" id="metronomeBpmUp" aria-label="Increase tempo by 1">❯</button>
+        <button class="note-btn" id="metronomeBpmUpLarge" aria-label="Increase tempo by 10">❯❯</button>
+      </div>
+
+      <input class="metronome-slider" id="metronomeBpmSlider" type="range" min="30" max="260" step="1" value="100" aria-label="Tempo in beats per minute">
+
+      <div class="metronome-beats" id="metronomeBeats"><button class="metronome-beat metronome-beat-strong" data-beat="0" aria-label="Beat 1: strong"></button><button class="metronome-beat metronome-beat-off" data-beat="1" aria-label="Beat 2: off"></button><button class="metronome-beat metronome-beat-weak" data-beat="2" aria-label="Beat 3: weak"></button></div>
+      <div class="metronome-hint">Tap a beat dot to cycle its accent: strong → weak → silent</div>
+
+      <div class="metronome-actions">
+        <button class="note-detection-btn" id="metronomeToggleBtn">Start</button>
+      </div>
+    </div>
+  "
+`;
+
+exports[`rhythm practice controls > restores metronome settings and synchronizes tempo, meter and subdivision controls > restored metronome 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="metronomeAccordionToggle">
+        <span class="controls-summary" id="metronomeControlsSummary">120 BPM · 3/4 · ÷2</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="metronome-controls">
+        <div class="controls-row">
+          <div class="control-group">
+            <span class="control-label">Beats:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="metronomeBeatsDown">❮</button>
+              <div class="note-display" id="metronomeBeatsDisplay">3</div>
+              <button class="note-btn" id="metronomeBeatsUp">❯</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Subdivision:</span>
+            <div class="toggle-group"><button class="toggle-btn" id="metronomeSubdiv1Btn" data-subdivision="1">1</button><button class="toggle-btn active" id="metronomeSubdiv2Btn" data-subdivision="2">2</button><button class="toggle-btn" id="metronomeSubdiv3Btn" data-subdivision="3">3</button><button class="toggle-btn" id="metronomeSubdiv4Btn" data-subdivision="4">4</button></div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+
+    <div class="metronome-display">
+      <div class="metronome-pendulum">
+        <div class="metronome-pendulum-arm" id="metronomePendulumArm">
+          <div class="metronome-pendulum-bob"></div>
+        </div>
+        <div class="metronome-pendulum-pivot"></div>
+      </div>
+
+      <div class="metronome-tempo">
+        <button class="note-btn" id="metronomeBpmDownLarge" aria-label="Decrease tempo by 10">❮❮</button>
+        <button class="note-btn" id="metronomeBpmDown" aria-label="Decrease tempo by 1">❮</button>
+        <div class="metronome-bpm">
+          <input class="metronome-bpm-value" id="metronomeBpmValue" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" value="100" aria-label="Tempo in beats per minute">
+          <span class="metronome-bpm-unit">BPM</span>
+        </div>
+        <button class="note-btn" id="metronomeBpmUp" aria-label="Increase tempo by 1">❯</button>
+        <button class="note-btn" id="metronomeBpmUpLarge" aria-label="Increase tempo by 10">❯❯</button>
+      </div>
+
+      <input class="metronome-slider" id="metronomeBpmSlider" type="range" min="30" max="260" step="1" value="100" aria-label="Tempo in beats per minute">
+
+      <div class="metronome-beats" id="metronomeBeats"><button class="metronome-beat metronome-beat-strong" data-beat="0" aria-label="Beat 1: strong"></button><button class="metronome-beat metronome-beat-off" data-beat="1" aria-label="Beat 2: off"></button><button class="metronome-beat metronome-beat-weak" data-beat="2" aria-label="Beat 3: weak"></button></div>
+      <div class="metronome-hint">Tap a beat dot to cycle its accent: strong → weak → silent</div>
+
+      <div class="metronome-actions">
+        <button class="note-detection-btn" id="metronomeToggleBtn">Start</button>
+      </div>
+    </div>
+  "
+`;

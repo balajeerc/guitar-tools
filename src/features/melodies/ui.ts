@@ -1,4 +1,4 @@
-export type Accidental = "" | "b" | "#";
+type Accidental = '#' | '' | 'b';
 
 export function setText(id: string, text: string): void {
   const element = document.getElementById(id);
@@ -17,8 +17,8 @@ export function setHidden(id: string, hidden: boolean): void {
 
 export function setPressed(id: string, pressed: boolean): void {
   const button = document.getElementById(id);
-  button?.classList.toggle("active", pressed);
-  button?.setAttribute("aria-pressed", String(pressed));
+  button?.classList.toggle('active', pressed);
+  button?.setAttribute('aria-pressed', String(pressed));
 }
 
 export function formatTime(milliseconds: number): string {
@@ -26,59 +26,62 @@ export function formatTime(milliseconds: number): string {
   const totalSeconds = Math.floor(milliseconds / 1000);
   const seconds = totalSeconds % 60;
   const minutes = Math.floor(totalSeconds / 60);
-  return `${minutes}:${String(seconds).padStart(2, "0")}.${tenths}`;
+  return `${minutes}:${String(seconds).padStart(2, '0')}.${tenths}`;
 }
 
 export function formatDegree(degree: string): string {
-  return degree.replace("b", "♭").replace("#", "♯");
+  return degree.replace('b', '♭').replace('#', '♯');
 }
 
 function accidentalSymbol(degree: string): string {
-  if (degree.startsWith("b")) return "♭";
-  if (degree.startsWith("#")) return "♯";
-  return "";
+  if (degree.startsWith('b')) return '♭';
+  if (degree.startsWith('#')) return '♯';
+  return '';
 }
 
 function accidentalName(degree: string): string {
-  if (degree.startsWith("b")) return "flat";
-  if (degree.startsWith("#")) return "sharp";
-  return "natural";
+  if (degree.startsWith('b')) return 'flat';
+  if (degree.startsWith('#')) return 'sharp';
+  return 'natural';
 }
 
 export function accidentalPrefix(degree: string): Accidental {
-  if (degree.startsWith("b")) return "b";
-  if (degree.startsWith("#")) return "#";
-  return "";
+  if (degree.startsWith('b')) return 'b';
+  if (degree.startsWith('#')) return '#';
+  return '';
 }
 
 export function nextDegreeAccidental(degree: string): Accidental {
-  if (degree.startsWith("b")) return "#";
-  if (degree.startsWith("#")) return "";
-  return "b";
+  if (degree.startsWith('b')) return '#';
+  if (degree.startsWith('#')) return '';
+  return 'b';
 }
 
 interface DegreeBoxesOptions {
-  expectedLength: number;
-  values: readonly string[];
-  judgement: readonly boolean[] | null;
   disabled: boolean;
+  expectedLength: number;
   idPrefix: string;
+  judgement: null | readonly boolean[];
+  values: readonly string[];
 }
 
 export function degreeBoxesHtml(options: DegreeBoxesOptions): string {
   return Array.from({ length: options.expectedLength }, (_, index) => {
-    const degree = options.values[index] ?? "";
-    const classes = ["melodies-interval-box"];
-    if (degree.length > 0) classes.push("filled");
-    if (options.judgement?.[index] === true) classes.push("correct");
-    if (options.judgement?.[index] === false) classes.push("incorrect");
+    const degree = options.values[index] ?? '';
+    const classes = ['melodies-interval-box'];
+    if (degree.length > 0) classes.push('filled');
+    if (options.judgement?.[index] === true) classes.push('correct');
+    if (options.judgement?.[index] === false) classes.push('incorrect');
     const buttonDisabled = degree.length === 0 || options.disabled;
     const label = `Interval ${index + 1} is ${accidentalName(degree)}; change accidental`;
-    return `<span class="melodies-interval-slot"><span class="${classes.join(" ")}">${formatDegree(degree)}</span><button type="button" class="melodies-accidental-btn" data-${options.idPrefix}-accidental="${index}" aria-label="${label}" ${buttonDisabled ? "disabled" : ""}>${accidentalSymbol(degree)}</button></span>`;
-  }).join("");
+    return `<span class="melodies-interval-slot"><span class="${classes.join(' ')}">${formatDegree(degree)}</span><button type="button" class="melodies-accidental-btn" data-${options.idPrefix}-accidental="${index}" aria-label="${label}" ${buttonDisabled ? 'disabled' : ''}>${accidentalSymbol(degree)}</button></span>`;
+  }).join('');
 }
 
-export function intervalAnswerHtml(degrees: readonly string[], label = "Correct intervals"): string {
+export function intervalAnswerHtml(
+  degrees: readonly string[],
+  label = 'Correct intervals'
+): string {
   const boxes = degrees
     .map((degree) => `<span>${formatDegree(degree)}</span>`)
     .join('<i aria-hidden="true">–</i>');

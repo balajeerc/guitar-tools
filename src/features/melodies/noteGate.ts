@@ -1,4 +1,4 @@
-import type { DetectedNote } from "../note-detection/noteMapper";
+import type { DetectedNote } from '../note-detection/noteMapper';
 
 const DEFAULT_STABLE_NOTE_MS = 110;
 
@@ -7,8 +7,8 @@ interface NoteGateOptions {
 }
 
 export interface NoteGate {
-  update: (note: DetectedNote | null, now: number) => DetectedNote | null;
   reset: () => void;
+  update: (note: DetectedNote | null, now: number) => DetectedNote | null;
 }
 
 /** Turns frame-by-frame pitch readings into one event per deliberately played note. */
@@ -16,7 +16,7 @@ export function createNoteGate(options: NoteGateOptions = {}): NoteGate {
   const stableNoteMs = options.stableNoteMs ?? DEFAULT_STABLE_NOTE_MS;
   let candidate: DetectedNote | null = null;
   let candidateSince = 0;
-  let emittedMidi: number | null = null;
+  let emittedMidi: null | number = null;
 
   function reset(): void {
     candidate = null;

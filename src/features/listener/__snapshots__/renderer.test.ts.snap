@@ -1,0 +1,811 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`listener note presentation > renders roles, tuning and fading for the full strip > cleared display 1`] = `
+"<div class="listener-display fading"><span id="listenerNoteName">-</span><span id="listenerCents" class="listener-cents"></span><span id="listenerDegree"></span></div><div class="scale-strip"><div class="scale-strip-note root" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="0">
+          <span class="strip-note-name">A</span>
+          <span class="strip-note-degree">b2</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note minor-third" data-note-index="2">
+          <span class="strip-note-name">B</span>
+          <span class="strip-note-degree">b3</span>
+        </div><div class="scale-strip-note major-third" data-note-index="3">
+          <span class="strip-note-name">C</span>
+          <span class="strip-note-degree">3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note plain" data-note-index="5">
+          <span class="strip-note-name">D</span>
+          <span class="strip-note-degree">b5</span>
+        </div><div class="scale-strip-note fifth" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="7">
+          <span class="strip-note-name">E</span>
+          <span class="strip-note-degree">b6</span>
+        </div><div class="scale-strip-note plain" data-note-index="8">
+          <span class="strip-note-name">F</span>
+          <span class="strip-note-degree">6</span>
+        </div><div class="scale-strip-note plain" data-note-index="9">
+          <span class="strip-note-name">Gb</span>
+          <span class="strip-note-degree">b7</span>
+        </div><div class="scale-strip-note plain" data-note-index="10">
+          <span class="strip-note-name">G</span>
+          <span class="strip-note-degree">7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the full strip > fading display 1`] = `
+"<div class="listener-display fading"><span id="listenerNoteName">-</span><span id="listenerCents" class="listener-cents"></span><span id="listenerDegree">4</span></div><div class="scale-strip"><div class="scale-strip-note root fading" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain fading" data-note-index="0">
+          <span class="strip-note-name">A</span>
+          <span class="strip-note-degree">b2</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note minor-third fading" data-note-index="2">
+          <span class="strip-note-name">B</span>
+          <span class="strip-note-degree">b3</span>
+        </div><div class="scale-strip-note major-third fading" data-note-index="3">
+          <span class="strip-note-name">C</span>
+          <span class="strip-note-degree">3</span>
+        </div><div class="scale-strip-note plain fading" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note plain" data-note-index="5">
+          <span class="strip-note-name">D</span>
+          <span class="strip-note-degree">b5</span>
+        </div><div class="scale-strip-note fifth fading" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="7">
+          <span class="strip-note-name">E</span>
+          <span class="strip-note-degree">b6</span>
+        </div><div class="scale-strip-note plain" data-note-index="8">
+          <span class="strip-note-name">F</span>
+          <span class="strip-note-degree">6</span>
+        </div><div class="scale-strip-note plain" data-note-index="9">
+          <span class="strip-note-name">Gb</span>
+          <span class="strip-note-degree">b7</span>
+        </div><div class="scale-strip-note plain" data-note-index="10">
+          <span class="strip-note-name">G</span>
+          <span class="strip-note-degree">7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the full strip > note 0 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">A</span><span id="listenerCents" class="listener-cents in-tune">+5¢</span><span id="listenerDegree">b2</span></div><div class="scale-strip"><div class="scale-strip-note root fading" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain active" data-note-index="0">
+          <span class="strip-note-name">A</span>
+          <span class="strip-note-degree">b2</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note minor-third" data-note-index="2">
+          <span class="strip-note-name">B</span>
+          <span class="strip-note-degree">b3</span>
+        </div><div class="scale-strip-note major-third" data-note-index="3">
+          <span class="strip-note-name">C</span>
+          <span class="strip-note-degree">3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note plain" data-note-index="5">
+          <span class="strip-note-name">D</span>
+          <span class="strip-note-degree">b5</span>
+        </div><div class="scale-strip-note fifth" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="7">
+          <span class="strip-note-name">E</span>
+          <span class="strip-note-degree">b6</span>
+        </div><div class="scale-strip-note plain" data-note-index="8">
+          <span class="strip-note-name">F</span>
+          <span class="strip-note-degree">6</span>
+        </div><div class="scale-strip-note plain" data-note-index="9">
+          <span class="strip-note-name">Gb</span>
+          <span class="strip-note-degree">b7</span>
+        </div><div class="scale-strip-note plain" data-note-index="10">
+          <span class="strip-note-name">G</span>
+          <span class="strip-note-degree">7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the full strip > note 2 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">B</span><span id="listenerCents" class="listener-cents out-of-tune">-6¢</span><span id="listenerDegree">b3</span></div><div class="scale-strip"><div class="scale-strip-note root fading" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain fading" data-note-index="0">
+          <span class="strip-note-name">A</span>
+          <span class="strip-note-degree">b2</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note minor-third active" data-note-index="2">
+          <span class="strip-note-name">B</span>
+          <span class="strip-note-degree">b3</span>
+        </div><div class="scale-strip-note major-third" data-note-index="3">
+          <span class="strip-note-name">C</span>
+          <span class="strip-note-degree">3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note plain" data-note-index="5">
+          <span class="strip-note-name">D</span>
+          <span class="strip-note-degree">b5</span>
+        </div><div class="scale-strip-note fifth" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="7">
+          <span class="strip-note-name">E</span>
+          <span class="strip-note-degree">b6</span>
+        </div><div class="scale-strip-note plain" data-note-index="8">
+          <span class="strip-note-name">F</span>
+          <span class="strip-note-degree">6</span>
+        </div><div class="scale-strip-note plain" data-note-index="9">
+          <span class="strip-note-name">Gb</span>
+          <span class="strip-note-degree">b7</span>
+        </div><div class="scale-strip-note plain" data-note-index="10">
+          <span class="strip-note-name">G</span>
+          <span class="strip-note-degree">7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the full strip > note 3 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">C</span><span id="listenerCents" class="listener-cents"></span><span id="listenerDegree">3</span></div><div class="scale-strip"><div class="scale-strip-note root fading" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain fading" data-note-index="0">
+          <span class="strip-note-name">A</span>
+          <span class="strip-note-degree">b2</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note minor-third fading" data-note-index="2">
+          <span class="strip-note-name">B</span>
+          <span class="strip-note-degree">b3</span>
+        </div><div class="scale-strip-note major-third active" data-note-index="3">
+          <span class="strip-note-name">C</span>
+          <span class="strip-note-degree">3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note plain" data-note-index="5">
+          <span class="strip-note-name">D</span>
+          <span class="strip-note-degree">b5</span>
+        </div><div class="scale-strip-note fifth" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="7">
+          <span class="strip-note-name">E</span>
+          <span class="strip-note-degree">b6</span>
+        </div><div class="scale-strip-note plain" data-note-index="8">
+          <span class="strip-note-name">F</span>
+          <span class="strip-note-degree">6</span>
+        </div><div class="scale-strip-note plain" data-note-index="9">
+          <span class="strip-note-name">Gb</span>
+          <span class="strip-note-degree">b7</span>
+        </div><div class="scale-strip-note plain" data-note-index="10">
+          <span class="strip-note-name">G</span>
+          <span class="strip-note-degree">7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the full strip > note 4 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">-</span><span id="listenerCents" class="listener-cents"></span><span id="listenerDegree">4</span></div><div class="scale-strip"><div class="scale-strip-note root fading" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain fading" data-note-index="0">
+          <span class="strip-note-name">A</span>
+          <span class="strip-note-degree">b2</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note minor-third fading" data-note-index="2">
+          <span class="strip-note-name">B</span>
+          <span class="strip-note-degree">b3</span>
+        </div><div class="scale-strip-note major-third fading" data-note-index="3">
+          <span class="strip-note-name">C</span>
+          <span class="strip-note-degree">3</span>
+        </div><div class="scale-strip-note plain active" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note plain" data-note-index="5">
+          <span class="strip-note-name">D</span>
+          <span class="strip-note-degree">b5</span>
+        </div><div class="scale-strip-note fifth fading" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="7">
+          <span class="strip-note-name">E</span>
+          <span class="strip-note-degree">b6</span>
+        </div><div class="scale-strip-note plain" data-note-index="8">
+          <span class="strip-note-name">F</span>
+          <span class="strip-note-degree">6</span>
+        </div><div class="scale-strip-note plain" data-note-index="9">
+          <span class="strip-note-name">Gb</span>
+          <span class="strip-note-degree">b7</span>
+        </div><div class="scale-strip-note plain" data-note-index="10">
+          <span class="strip-note-name">G</span>
+          <span class="strip-note-degree">7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the full strip > note 6 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">Eb</span><span id="listenerCents" class="listener-cents out-of-tune">+20¢</span><span id="listenerDegree">5</span></div><div class="scale-strip"><div class="scale-strip-note root fading" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain fading" data-note-index="0">
+          <span class="strip-note-name">A</span>
+          <span class="strip-note-degree">b2</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note minor-third fading" data-note-index="2">
+          <span class="strip-note-name">B</span>
+          <span class="strip-note-degree">b3</span>
+        </div><div class="scale-strip-note major-third fading" data-note-index="3">
+          <span class="strip-note-name">C</span>
+          <span class="strip-note-degree">3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note plain" data-note-index="5">
+          <span class="strip-note-name">D</span>
+          <span class="strip-note-degree">b5</span>
+        </div><div class="scale-strip-note fifth active" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="7">
+          <span class="strip-note-name">E</span>
+          <span class="strip-note-degree">b6</span>
+        </div><div class="scale-strip-note plain" data-note-index="8">
+          <span class="strip-note-name">F</span>
+          <span class="strip-note-degree">6</span>
+        </div><div class="scale-strip-note plain" data-note-index="9">
+          <span class="strip-note-name">Gb</span>
+          <span class="strip-note-degree">b7</span>
+        </div><div class="scale-strip-note plain" data-note-index="10">
+          <span class="strip-note-name">G</span>
+          <span class="strip-note-degree">7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the full strip > note 11 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">Ab</span><span id="listenerCents" class="listener-cents in-tune">+0¢</span><span id="listenerDegree">1</span></div><div class="scale-strip"><div class="scale-strip-note root active" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="0">
+          <span class="strip-note-name">A</span>
+          <span class="strip-note-degree">b2</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note minor-third" data-note-index="2">
+          <span class="strip-note-name">B</span>
+          <span class="strip-note-degree">b3</span>
+        </div><div class="scale-strip-note major-third" data-note-index="3">
+          <span class="strip-note-name">C</span>
+          <span class="strip-note-degree">3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note plain" data-note-index="5">
+          <span class="strip-note-name">D</span>
+          <span class="strip-note-degree">b5</span>
+        </div><div class="scale-strip-note fifth" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="7">
+          <span class="strip-note-name">E</span>
+          <span class="strip-note-degree">b6</span>
+        </div><div class="scale-strip-note plain" data-note-index="8">
+          <span class="strip-note-name">F</span>
+          <span class="strip-note-degree">6</span>
+        </div><div class="scale-strip-note plain" data-note-index="9">
+          <span class="strip-note-name">Gb</span>
+          <span class="strip-note-degree">b7</span>
+        </div><div class="scale-strip-note plain" data-note-index="10">
+          <span class="strip-note-name">G</span>
+          <span class="strip-note-degree">7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the full strip > recovered display 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">Ab</span><span id="listenerCents" class="listener-cents in-tune">+0¢</span><span id="listenerDegree">1</span></div><div class="scale-strip"><div class="scale-strip-note root active" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="0">
+          <span class="strip-note-name">A</span>
+          <span class="strip-note-degree">b2</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note minor-third" data-note-index="2">
+          <span class="strip-note-name">B</span>
+          <span class="strip-note-degree">b3</span>
+        </div><div class="scale-strip-note major-third" data-note-index="3">
+          <span class="strip-note-name">C</span>
+          <span class="strip-note-degree">3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note plain" data-note-index="5">
+          <span class="strip-note-name">D</span>
+          <span class="strip-note-degree">b5</span>
+        </div><div class="scale-strip-note fifth" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="7">
+          <span class="strip-note-name">E</span>
+          <span class="strip-note-degree">b6</span>
+        </div><div class="scale-strip-note plain" data-note-index="8">
+          <span class="strip-note-name">F</span>
+          <span class="strip-note-degree">6</span>
+        </div><div class="scale-strip-note plain" data-note-index="9">
+          <span class="strip-note-name">Gb</span>
+          <span class="strip-note-degree">b7</span>
+        </div><div class="scale-strip-note plain" data-note-index="10">
+          <span class="strip-note-name">G</span>
+          <span class="strip-note-degree">7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the major strip > cleared display 1`] = `
+"<div class="listener-display fading"><span id="listenerNoteName">-</span><span id="listenerCents" class="listener-cents"></span><span id="listenerDegree" class=""></span></div><div class="scale-strip"><div class="scale-strip-note root" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note major-third" data-note-index="3">
+          <span class="strip-note-name">C</span>
+          <span class="strip-note-degree">3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note fifth" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="8">
+          <span class="strip-note-name">F</span>
+          <span class="strip-note-degree">6</span>
+        </div><div class="scale-strip-note plain" data-note-index="10">
+          <span class="strip-note-name">G</span>
+          <span class="strip-note-degree">7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the major strip > fading display 1`] = `
+"<div class="listener-display fading"><span id="listenerNoteName">-</span><span id="listenerCents" class="listener-cents"></span><span id="listenerDegree" class="">4</span></div><div class="scale-strip"><div class="scale-strip-note root fading" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note major-third fading" data-note-index="3">
+          <span class="strip-note-name">C</span>
+          <span class="strip-note-degree">3</span>
+        </div><div class="scale-strip-note plain fading" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note fifth fading" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="8">
+          <span class="strip-note-name">F</span>
+          <span class="strip-note-degree">6</span>
+        </div><div class="scale-strip-note plain" data-note-index="10">
+          <span class="strip-note-name">G</span>
+          <span class="strip-note-degree">7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the major strip > note 0 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">A</span><span id="listenerCents" class="listener-cents in-tune">+5¢</span><span id="listenerDegree" class="out-of-scale">?</span></div><div class="scale-strip"><div class="scale-strip-note root fading" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note major-third" data-note-index="3">
+          <span class="strip-note-name">C</span>
+          <span class="strip-note-degree">3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note fifth" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="8">
+          <span class="strip-note-name">F</span>
+          <span class="strip-note-degree">6</span>
+        </div><div class="scale-strip-note plain" data-note-index="10">
+          <span class="strip-note-name">G</span>
+          <span class="strip-note-degree">7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the major strip > note 2 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">B</span><span id="listenerCents" class="listener-cents out-of-tune">-6¢</span><span id="listenerDegree" class="out-of-scale">?</span></div><div class="scale-strip"><div class="scale-strip-note root fading" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note major-third" data-note-index="3">
+          <span class="strip-note-name">C</span>
+          <span class="strip-note-degree">3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note fifth" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="8">
+          <span class="strip-note-name">F</span>
+          <span class="strip-note-degree">6</span>
+        </div><div class="scale-strip-note plain" data-note-index="10">
+          <span class="strip-note-name">G</span>
+          <span class="strip-note-degree">7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the major strip > note 3 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">C</span><span id="listenerCents" class="listener-cents"></span><span id="listenerDegree" class="">3</span></div><div class="scale-strip"><div class="scale-strip-note root fading" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note major-third active" data-note-index="3">
+          <span class="strip-note-name">C</span>
+          <span class="strip-note-degree">3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note fifth" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="8">
+          <span class="strip-note-name">F</span>
+          <span class="strip-note-degree">6</span>
+        </div><div class="scale-strip-note plain" data-note-index="10">
+          <span class="strip-note-name">G</span>
+          <span class="strip-note-degree">7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the major strip > note 4 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">-</span><span id="listenerCents" class="listener-cents"></span><span id="listenerDegree" class="">4</span></div><div class="scale-strip"><div class="scale-strip-note root fading" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note major-third fading" data-note-index="3">
+          <span class="strip-note-name">C</span>
+          <span class="strip-note-degree">3</span>
+        </div><div class="scale-strip-note plain active" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note fifth fading" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="8">
+          <span class="strip-note-name">F</span>
+          <span class="strip-note-degree">6</span>
+        </div><div class="scale-strip-note plain" data-note-index="10">
+          <span class="strip-note-name">G</span>
+          <span class="strip-note-degree">7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the major strip > note 6 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">Eb</span><span id="listenerCents" class="listener-cents out-of-tune">+20¢</span><span id="listenerDegree" class="">5</span></div><div class="scale-strip"><div class="scale-strip-note root fading" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note major-third fading" data-note-index="3">
+          <span class="strip-note-name">C</span>
+          <span class="strip-note-degree">3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note fifth active" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="8">
+          <span class="strip-note-name">F</span>
+          <span class="strip-note-degree">6</span>
+        </div><div class="scale-strip-note plain" data-note-index="10">
+          <span class="strip-note-name">G</span>
+          <span class="strip-note-degree">7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the major strip > note 11 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">Ab</span><span id="listenerCents" class="listener-cents in-tune">+0¢</span><span id="listenerDegree">1</span></div><div class="scale-strip"><div class="scale-strip-note root active" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note major-third" data-note-index="3">
+          <span class="strip-note-name">C</span>
+          <span class="strip-note-degree">3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note fifth" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="8">
+          <span class="strip-note-name">F</span>
+          <span class="strip-note-degree">6</span>
+        </div><div class="scale-strip-note plain" data-note-index="10">
+          <span class="strip-note-name">G</span>
+          <span class="strip-note-degree">7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the major strip > recovered display 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">Ab</span><span id="listenerCents" class="listener-cents in-tune">+0¢</span><span id="listenerDegree" class="">1</span></div><div class="scale-strip"><div class="scale-strip-note root active" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note major-third" data-note-index="3">
+          <span class="strip-note-name">C</span>
+          <span class="strip-note-degree">3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note fifth" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="8">
+          <span class="strip-note-name">F</span>
+          <span class="strip-note-degree">6</span>
+        </div><div class="scale-strip-note plain" data-note-index="10">
+          <span class="strip-note-name">G</span>
+          <span class="strip-note-degree">7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the minor strip > cleared display 1`] = `
+"<div class="listener-display fading"><span id="listenerNoteName">-</span><span id="listenerCents" class="listener-cents"></span><span id="listenerDegree" class=""></span></div><div class="scale-strip"><div class="scale-strip-note root" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note minor-third" data-note-index="2">
+          <span class="strip-note-name">B</span>
+          <span class="strip-note-degree">b3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note fifth" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="7">
+          <span class="strip-note-name">E</span>
+          <span class="strip-note-degree">b6</span>
+        </div><div class="scale-strip-note plain" data-note-index="9">
+          <span class="strip-note-name">Gb</span>
+          <span class="strip-note-degree">b7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the minor strip > fading display 1`] = `
+"<div class="listener-display fading"><span id="listenerNoteName">-</span><span id="listenerCents" class="listener-cents"></span><span id="listenerDegree" class="">4</span></div><div class="scale-strip"><div class="scale-strip-note root fading" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note minor-third fading" data-note-index="2">
+          <span class="strip-note-name">B</span>
+          <span class="strip-note-degree">b3</span>
+        </div><div class="scale-strip-note plain fading" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note fifth fading" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="7">
+          <span class="strip-note-name">E</span>
+          <span class="strip-note-degree">b6</span>
+        </div><div class="scale-strip-note plain" data-note-index="9">
+          <span class="strip-note-name">Gb</span>
+          <span class="strip-note-degree">b7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the minor strip > note 0 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">A</span><span id="listenerCents" class="listener-cents in-tune">+5¢</span><span id="listenerDegree" class="out-of-scale">?</span></div><div class="scale-strip"><div class="scale-strip-note root fading" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note minor-third" data-note-index="2">
+          <span class="strip-note-name">B</span>
+          <span class="strip-note-degree">b3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note fifth" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="7">
+          <span class="strip-note-name">E</span>
+          <span class="strip-note-degree">b6</span>
+        </div><div class="scale-strip-note plain" data-note-index="9">
+          <span class="strip-note-name">Gb</span>
+          <span class="strip-note-degree">b7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the minor strip > note 2 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">B</span><span id="listenerCents" class="listener-cents out-of-tune">-6¢</span><span id="listenerDegree" class="">b3</span></div><div class="scale-strip"><div class="scale-strip-note root fading" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note minor-third active" data-note-index="2">
+          <span class="strip-note-name">B</span>
+          <span class="strip-note-degree">b3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note fifth" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="7">
+          <span class="strip-note-name">E</span>
+          <span class="strip-note-degree">b6</span>
+        </div><div class="scale-strip-note plain" data-note-index="9">
+          <span class="strip-note-name">Gb</span>
+          <span class="strip-note-degree">b7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the minor strip > note 3 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">C</span><span id="listenerCents" class="listener-cents"></span><span id="listenerDegree" class="out-of-scale">?</span></div><div class="scale-strip"><div class="scale-strip-note root fading" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note minor-third fading" data-note-index="2">
+          <span class="strip-note-name">B</span>
+          <span class="strip-note-degree">b3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note fifth" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="7">
+          <span class="strip-note-name">E</span>
+          <span class="strip-note-degree">b6</span>
+        </div><div class="scale-strip-note plain" data-note-index="9">
+          <span class="strip-note-name">Gb</span>
+          <span class="strip-note-degree">b7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the minor strip > note 4 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">-</span><span id="listenerCents" class="listener-cents"></span><span id="listenerDegree" class="">4</span></div><div class="scale-strip"><div class="scale-strip-note root fading" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note minor-third fading" data-note-index="2">
+          <span class="strip-note-name">B</span>
+          <span class="strip-note-degree">b3</span>
+        </div><div class="scale-strip-note plain active" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note fifth fading" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="7">
+          <span class="strip-note-name">E</span>
+          <span class="strip-note-degree">b6</span>
+        </div><div class="scale-strip-note plain" data-note-index="9">
+          <span class="strip-note-name">Gb</span>
+          <span class="strip-note-degree">b7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the minor strip > note 6 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">Eb</span><span id="listenerCents" class="listener-cents out-of-tune">+20¢</span><span id="listenerDegree" class="">5</span></div><div class="scale-strip"><div class="scale-strip-note root fading" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note minor-third fading" data-note-index="2">
+          <span class="strip-note-name">B</span>
+          <span class="strip-note-degree">b3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note fifth active" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="7">
+          <span class="strip-note-name">E</span>
+          <span class="strip-note-degree">b6</span>
+        </div><div class="scale-strip-note plain" data-note-index="9">
+          <span class="strip-note-name">Gb</span>
+          <span class="strip-note-degree">b7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the minor strip > note 11 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">Ab</span><span id="listenerCents" class="listener-cents in-tune">+0¢</span><span id="listenerDegree">1</span></div><div class="scale-strip"><div class="scale-strip-note root active" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note minor-third" data-note-index="2">
+          <span class="strip-note-name">B</span>
+          <span class="strip-note-degree">b3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note fifth" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="7">
+          <span class="strip-note-name">E</span>
+          <span class="strip-note-degree">b6</span>
+        </div><div class="scale-strip-note plain" data-note-index="9">
+          <span class="strip-note-name">Gb</span>
+          <span class="strip-note-degree">b7</span>
+        </div></div>"
+`;
+
+exports[`listener note presentation > renders roles, tuning and fading for the minor strip > recovered display 1`] = `
+"<div class="listener-display"><span id="listenerNoteName">Ab</span><span id="listenerCents" class="listener-cents in-tune">+0¢</span><span id="listenerDegree" class="">1</span></div><div class="scale-strip"><div class="scale-strip-note root active" data-note-index="11">
+          <span class="strip-note-name">Ab</span>
+          <span class="strip-note-degree">1</span>
+        </div><div class="scale-strip-note plain" data-note-index="1">
+          <span class="strip-note-name">Bb</span>
+          <span class="strip-note-degree">2</span>
+        </div><div class="scale-strip-note minor-third" data-note-index="2">
+          <span class="strip-note-name">B</span>
+          <span class="strip-note-degree">b3</span>
+        </div><div class="scale-strip-note plain" data-note-index="4">
+          <span class="strip-note-name">Db</span>
+          <span class="strip-note-degree">4</span>
+        </div><div class="scale-strip-note fifth" data-note-index="6">
+          <span class="strip-note-name">Eb</span>
+          <span class="strip-note-degree">5</span>
+        </div><div class="scale-strip-note plain" data-note-index="7">
+          <span class="strip-note-name">E</span>
+          <span class="strip-note-degree">b6</span>
+        </div><div class="scale-strip-note plain" data-note-index="9">
+          <span class="strip-note-name">Gb</span>
+          <span class="strip-note-degree">b7</span>
+        </div></div>"
+`;

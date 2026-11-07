@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`melody tone controls > shows the selected tone, persists every choice and notifies playback 1`] = `"<fieldset class="melodies-tone"><legend>Tone</legend><div class="melodies-tone-options"><button type="button" class="melodies-tone-btn" id="melodiesTonewarmBtn" aria-pressed="false">Warm</button><button type="button" class="melodies-tone-btn" id="melodiesTonepureBtn" aria-pressed="false">Pure</button><button type="button" class="melodies-tone-btn" id="melodiesTonebrightBtn" aria-pressed="false">Bright</button><button type="button" class="melodies-tone-btn" id="melodiesTonepluckBtn" aria-pressed="false">Pluck</button></div></fieldset>"`;

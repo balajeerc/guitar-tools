@@ -1,21 +1,21 @@
-import { loadPersisted, savePersisted } from "./persist";
+import { loadPersisted, savePersisted } from './persist';
 
-const STORAGE_KEY = "audio-input-device";
-export const AUDIO_INPUT_CHANGED_EVENT = "guitar-tools:audio-input-changed";
-const AUDIO_INPUTS_AVAILABLE_EVENT = "guitar-tools:audio-inputs-available";
+const STORAGE_KEY = 'audio-input-device';
+export const AUDIO_INPUT_CHANGED_EVENT = 'guitar-tools:audio-input-changed';
+const AUDIO_INPUTS_AVAILABLE_EVENT = 'guitar-tools:audio-inputs-available';
 
 const DEFAULT_NOTICE =
-  "Note detection works best when your guitar is connected directly through an audio interface. Built-in microphones may be less accurate.";
+  'Note detection works best when your guitar is connected directly through an audio interface. Built-in microphones may be less accurate.';
 
-export function getSelectedAudioInputId(): string | null {
-  return loadPersisted<string | null>(STORAGE_KEY, null);
+export function getSelectedAudioInputId(): null | string {
+  return loadPersisted<null | string>(STORAGE_KEY, null);
 }
 
 export function clearSelectedAudioInput(): void {
   savePersisted(STORAGE_KEY, null);
 }
 
-function setSelectedAudioInputId(deviceId: string | null): void {
+function setSelectedAudioInputId(deviceId: null | string): void {
   savePersisted(STORAGE_KEY, deviceId);
   window.dispatchEvent(new CustomEvent(AUDIO_INPUT_CHANGED_EVENT));
 }
@@ -41,39 +41,39 @@ export function audioInputPanelHtml(scope: string, notice = DEFAULT_NOTICE): str
 }
 
 export function createAudioInputPanel(scope: string, notice = DEFAULT_NOTICE): HTMLElement {
-  const template = document.createElement("template");
+  const template = document.createElement('template');
   template.innerHTML = audioInputPanelHtml(scope, notice).trim();
   const panel = template.content.firstElementChild;
-  if (!(panel instanceof HTMLElement)) throw new Error("Audio input panel could not be created");
+  if (!(panel instanceof HTMLElement)) throw new Error('Audio input panel could not be created');
   return panel;
 }
 
 async function getAudioInputs(): Promise<MediaDeviceInfo[]> {
-  if (!navigator.mediaDevices?.enumerateDevices) return [];
+  if (!('mediaDevices' in navigator)) return [];
   const devices = await navigator.mediaDevices.enumerateDevices();
-  return devices.filter(({ kind, deviceId }) => kind === "audioinput" && deviceId !== "default");
+  return devices.filter(({ kind, deviceId }) => kind === 'audioinput' && deviceId !== 'default');
 }
 
 function renderSelector(select: HTMLSelectElement, devices: readonly MediaDeviceInfo[]): boolean {
   const namedDevices = devices.filter(({ label }) => label.trim().length > 0);
   if (namedDevices.length === 0) {
-    select.replaceChildren(new Option("Allow audio access first", ""));
+    select.replaceChildren(new Option('Allow audio access first', ''));
     select.disabled = true;
     return false;
   }
 
-  const selectedId = getSelectedAudioInputId() ?? "";
-  select.replaceChildren(new Option("System default", ""));
+  const selectedId = getSelectedAudioInputId() ?? '';
+  select.replaceChildren(new Option('System default', ''));
   for (const device of namedDevices) {
     select.add(new Option(device.label, device.deviceId));
   }
-  select.value = namedDevices.some(({ deviceId }) => deviceId === selectedId) ? selectedId : "";
+  select.value = namedDevices.some(({ deviceId }) => deviceId === selectedId) ? selectedId : '';
   select.disabled = false;
   return true;
 }
 
 async function refreshAudioInputControls(): Promise<void> {
-  const selects = document.querySelectorAll<HTMLSelectElement>("[data-audio-input-select]");
+  const selects = document.querySelectorAll<HTMLSelectElement>('[data-audio-input-select]');
   if (selects.length === 0) return;
   try {
     const devices = await getAudioInputs();
@@ -81,7 +81,7 @@ async function refreshAudioInputControls(): Promise<void> {
     for (const select of selects) {
       hasLabels = renderSelector(select, devices) || hasLabels;
     }
-    for (const help of document.querySelectorAll<HTMLElement>("[data-audio-input-help]")) {
+    for (const help of document.querySelectorAll<HTMLElement>('[data-audio-input-help]')) {
       help.hidden = hasLabels;
     }
   } catch {
@@ -92,16 +92,18 @@ async function refreshAudioInputControls(): Promise<void> {
 function handleSelection(event: Event): void {
   const select = event.target as HTMLSelectElement;
   setSelectedAudioInputId(select.value || null);
-  for (const peer of document.querySelectorAll<HTMLSelectElement>("[data-audio-input-select]")) {
+  for (const peer of document.querySelectorAll<HTMLSelectElement>('[data-audio-input-select]')) {
     peer.value = select.value;
   }
 }
 
 export function initAudioInputControls(): void {
-  for (const select of document.querySelectorAll<HTMLSelectElement>("[data-audio-input-select]")) {
-    select.addEventListener("change", handleSelection);
+  for (const select of document.querySelectorAll<HTMLSelectElement>('[data-audio-input-select]')) {
+    select.addEventListener('change', handleSelection);
   }
   window.addEventListener(AUDIO_INPUTS_AVAILABLE_EVENT, () => void refreshAudioInputControls());
-  navigator.mediaDevices?.addEventListener("devicechange", () => void refreshAudioInputControls());
+  if ('mediaDevices' in navigator) {
+    navigator.mediaDevices.addEventListener('devicechange', () => void refreshAudioInputControls());
+  }
   void refreshAudioInputControls();
 }

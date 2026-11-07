@@ -1,43 +1,44 @@
+import { requiredAt } from './requiredAt';
 // Musical constants and CAGED pattern data
 
-import type { CAGEDShape, PentatonicPosition } from "./types";
+import type { CAGEDShape, PentatonicPosition } from './types';
 
 // Musical notes (sharp notation)
 export const NOTES: readonly string[] = [
-  "A",
-  "A#",
-  "B",
-  "C",
-  "C#",
-  "D",
-  "D#",
-  "E",
-  "F",
-  "F#",
-  "G",
-  "G#",
+  'A',
+  'A#',
+  'B',
+  'C',
+  'C#',
+  'D',
+  'D#',
+  'E',
+  'F',
+  'F#',
+  'G',
+  'G#',
 ];
 
 // Musical notes (flat notation)
 const NOTES_FLAT: readonly string[] = [
-  "A",
-  "Bb",
-  "B",
-  "C",
-  "Db",
-  "D",
-  "Eb",
-  "E",
-  "F",
-  "Gb",
-  "G",
-  "Ab",
+  'A',
+  'Bb',
+  'B',
+  'C',
+  'Db',
+  'D',
+  'Eb',
+  'E',
+  'F',
+  'Gb',
+  'G',
+  'Ab',
 ];
 
-export type AccidentalStyle = "sharp" | "flat";
+export type AccidentalStyle = 'flat' | 'sharp';
 
 export function getNoteName(noteIndex: number, style: AccidentalStyle): string {
-  return style === "flat" ? NOTES_FLAT[noteIndex] : NOTES[noteIndex];
+  return style === 'flat' ? requiredAt(NOTES_FLAT, noteIndex) : requiredAt(NOTES, noteIndex);
 }
 
 // Standard tuning (low to high): E A D G B E
@@ -70,29 +71,29 @@ export const PATTERN_NUMBERS: Record<CAGEDShape, number> = {
 
 // Line colors for header display
 export const LINE_COLORS: Record<CAGEDShape, string> = {
-  C: "#e91e63",
-  A: "#9c27b0",
-  G: "#4caf50",
-  E: "#ff9800",
-  D: "#2196f3",
+  C: '#e91e63',
+  A: '#9c27b0',
+  G: '#4caf50',
+  E: '#ff9800',
+  D: '#2196f3',
 };
 
 // Pentatonic position labels
 export const POSITION_LABELS: Record<PentatonicPosition, string> = {
-  1: "1",
-  2: "2",
-  3: "3",
-  4: "4",
-  5: "5",
+  1: '1',
+  2: '2',
+  3: '3',
+  4: '4',
+  5: '5',
 };
 
 // Line colors for pentatonic position header display
 export const POSITION_LINE_COLORS: Record<PentatonicPosition, string> = {
-  1: "#e91e63",
-  2: "#9c27b0",
-  3: "#4caf50",
-  4: "#ff9800",
-  5: "#2196f3",
+  1: '#e91e63',
+  2: '#9c27b0',
+  3: '#4caf50',
+  4: '#ff9800',
+  5: '#2196f3',
 };
 
 // Fretboard layout constants

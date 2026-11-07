@@ -11,17 +11,21 @@ async function unregisterInDev(): Promise<void> {
   await Promise.all(cacheNames.map((name) => caches.delete(name)));
 }
 
+async function registerInProduction(): Promise<void> {
+  try {
+    await navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`);
+  } catch (error) {
+    console.error('Service worker registration failed:', error);
+  }
+}
+
 export function registerServiceWorker(): void {
-  if (!("serviceWorker" in navigator)) return;
+  if (!('serviceWorker' in navigator)) return;
 
   if (import.meta.env.DEV) {
     void unregisterInDev();
     return;
   }
 
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`).catch((error: unknown) => {
-      console.error("Service worker registration failed:", error);
-    });
-  });
+  window.addEventListener('load', () => void registerInProduction());
 }

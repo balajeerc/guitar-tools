@@ -1,13 +1,13 @@
 const SEMITONES_PER_OCTAVE = 12;
 
 export interface MatchResult {
-  matched: boolean;
-  complete: boolean;
-  matchedNotes: number;
-  totalNotes: number;
   attemptAccuracy: number;
+  complete: boolean;
   expectedInterval: number;
+  matched: boolean;
+  matchedNotes: number;
   playedInterval: number;
+  totalNotes: number;
 }
 
 export interface MelodyMatcher {
@@ -16,11 +16,11 @@ export interface MelodyMatcher {
 }
 
 function pitchClassInterval(midi: number, anchor: number): number {
-  return ((midi - anchor) % SEMITONES_PER_OCTAVE + SEMITONES_PER_OCTAVE) % SEMITONES_PER_OCTAVE;
+  return (((midi - anchor) % SEMITONES_PER_OCTAVE) + SEMITONES_PER_OCTAVE) % SEMITONES_PER_OCTAVE;
 }
 
 export function createMelodyMatcher(expectedMidi: readonly number[]): MelodyMatcher {
-  let playedAnchor: number | null = null;
+  let playedAnchor: null | number = null;
   let matchedNotes = 0;
   let attempts = 0;
   let correctAttempts = 0;

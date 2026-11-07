@@ -1,0 +1,2009 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ear trainer user flow > checks complete played answers, preserves the input caret and cancels stale playback > incorrect exercise 1`] = `
+"<section class="melodies-game ear-trainer" aria-labelledby="earTrainerHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Scale degree ear training</p>
+      <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
+      <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+    </header>
+
+    <div class="melodies-card">
+      <div class="melodies-round-header">
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Asc + desc</span>
+        <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
+      </div>
+
+      <details class="ear-trainer-settings" id="earTrainerSettings" open="">
+        <summary class="ear-trainer-settings-summary">Settings</summary>
+        <div class="ear-trainer-settings-content">
+        <div class="ear-trainer-setting-row ear-trainer-range-row">
+          <div class="ear-trainer-field">
+            <span class="control-label">Octaves:</span>
+            <span class="ear-trainer-octave-inputs">
+              <input id="earTrainerOctaveStart" type="number" min="0" max="8" step="1" inputmode="numeric" value="2" aria-label="Lowest octave">
+              <span>to</span>
+              <input id="earTrainerOctaveEnd" type="number" min="0" max="8" step="1" inputmode="numeric" value="3" aria-label="Highest octave">
+            </span>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Notes:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerNotesDown" aria-label="Fewer notes">❮</button>
+              <div class="note-display" id="earTrainerNotesDisplay">3</div>
+              <button class="note-btn" id="earTrainerNotesUp" aria-label="More notes">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerPlayRootFirst">
+            <span>Play root first</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerFixKey">
+            <span>Fix key</span>
+          </label>
+          <div class="ear-trainer-key" id="earTrainerKeyControl" hidden="">
+            <span class="control-label">Key:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerKeyPrev" aria-label="Previous key">❮</button>
+              <div class="note-display" id="earTrainerKeyDisplay">C</div>
+              <button class="note-btn" id="earTrainerKeyNext" aria-label="Next key">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <div class="ear-trainer-field ear-trainer-direction-field" role="group" aria-labelledby="earTrainerDirectionLabel">
+            <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
+            <span class="ear-trainer-direction-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerAscending" checked="">
+                <span>Ascending</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerDescending" checked="">
+                <span>Descending</span>
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row ear-trainer-tone-row">
+          <fieldset class="melodies-tone">
+            <legend>Tone</legend>
+            <div class="melodies-tone-options"><button type="button" class="melodies-tone-btn" id="earTrainerTonewarmBtn" aria-pressed="false">Warm</button><button type="button" class="melodies-tone-btn" id="earTrainerTonepureBtn" aria-pressed="false">Pure</button><button type="button" class="melodies-tone-btn" id="earTrainerTonebrightBtn" aria-pressed="false">Bright</button><button type="button" class="melodies-tone-btn active" id="earTrainerTonepluckBtn" aria-pressed="true">Pluck</button></div>
+          </fieldset>
+          <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
+        </div>
+
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is random. Key changes each exercise.</p>
+        </div>
+      </details>
+
+      <div class="melodies-prompt" id="earTrainerPrompt">
+        <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+        <strong id="earTrainerStatus">0 of 3 notes correct</strong>
+        <span id="earTrainerHint">Highlighted notes need another listen. Change them and check again.</span>
+      </div>
+
+      <div class="melodies-manual ear-trainer-manual">
+        <label class="melodies-manual-label" for="earTrainerDegreeInput">
+          Enter each note as a scale degree of the key (1–7)
+        </label>
+        <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
+          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled incorrect">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled incorrect">2</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled incorrect">3</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental"></button></span></div>
+          <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <p class="ear-trainer-input-hint">
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
+        </p>
+      </div>
+
+      <div class="melodies-actions">
+        <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn">
+          Check answer
+        </button>
+      </div>
+
+      <div class="melodies-result" id="earTrainerResult" hidden=""></div>
+      <div class="melodies-footer-actions">
+        <button type="button" class="melodies-link-btn" id="earTrainerRevealBtn">Reveal answer</button>
+        <button type="button" class="melodies-link-btn" id="earTrainerNewBtn">New exercise</button>
+      </div>
+    </div>
+  </section>"
+`;
+
+exports[`ear trainer user flow > checks complete played answers, preserves the input caret and cancels stale playback > playing exercise 1`] = `
+"<section class="melodies-game ear-trainer" aria-labelledby="earTrainerHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Scale degree ear training</p>
+      <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
+      <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+    </header>
+
+    <div class="melodies-card">
+      <div class="melodies-round-header">
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Asc + desc</span>
+        <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
+      </div>
+
+      <details class="ear-trainer-settings" id="earTrainerSettings" open="">
+        <summary class="ear-trainer-settings-summary">Settings</summary>
+        <div class="ear-trainer-settings-content">
+        <div class="ear-trainer-setting-row ear-trainer-range-row">
+          <div class="ear-trainer-field">
+            <span class="control-label">Octaves:</span>
+            <span class="ear-trainer-octave-inputs">
+              <input id="earTrainerOctaveStart" type="number" min="0" max="8" step="1" inputmode="numeric" value="2" aria-label="Lowest octave">
+              <span>to</span>
+              <input id="earTrainerOctaveEnd" type="number" min="0" max="8" step="1" inputmode="numeric" value="3" aria-label="Highest octave">
+            </span>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Notes:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerNotesDown" aria-label="Fewer notes">❮</button>
+              <div class="note-display" id="earTrainerNotesDisplay">3</div>
+              <button class="note-btn" id="earTrainerNotesUp" aria-label="More notes">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerPlayRootFirst">
+            <span>Play root first</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerFixKey">
+            <span>Fix key</span>
+          </label>
+          <div class="ear-trainer-key" id="earTrainerKeyControl" hidden="">
+            <span class="control-label">Key:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerKeyPrev" aria-label="Previous key">❮</button>
+              <div class="note-display" id="earTrainerKeyDisplay">C</div>
+              <button class="note-btn" id="earTrainerKeyNext" aria-label="Next key">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <div class="ear-trainer-field ear-trainer-direction-field" role="group" aria-labelledby="earTrainerDirectionLabel">
+            <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
+            <span class="ear-trainer-direction-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerAscending" checked="">
+                <span>Ascending</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerDescending" checked="">
+                <span>Descending</span>
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row ear-trainer-tone-row">
+          <fieldset class="melodies-tone">
+            <legend>Tone</legend>
+            <div class="melodies-tone-options"><button type="button" class="melodies-tone-btn" id="earTrainerTonewarmBtn" aria-pressed="false">Warm</button><button type="button" class="melodies-tone-btn" id="earTrainerTonepureBtn" aria-pressed="false">Pure</button><button type="button" class="melodies-tone-btn" id="earTrainerTonebrightBtn" aria-pressed="false">Bright</button><button type="button" class="melodies-tone-btn active" id="earTrainerTonepluckBtn" aria-pressed="true">Pluck</button></div>
+          </fieldset>
+          <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
+        </div>
+
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is random. Key changes each exercise.</p>
+        </div>
+      </details>
+
+      <div class="melodies-prompt" id="earTrainerPrompt">
+        <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+        <strong id="earTrainerStatus">Listen carefully…</strong>
+        <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
+      </div>
+
+      <div class="melodies-manual ear-trainer-manual">
+        <label class="melodies-manual-label" for="earTrainerDegreeInput">
+          Enter each note as a scale degree of the key (1–7)
+        </label>
+        <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
+          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled">2</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled">3</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental"></button></span></div>
+          <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <p class="ear-trainer-input-hint">
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
+        </p>
+      </div>
+
+      <div class="melodies-actions">
+        <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn" disabled="">♪ Playing…</button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
+          Check answer
+        </button>
+      </div>
+
+      <div class="melodies-result" id="earTrainerResult" hidden=""></div>
+      <div class="melodies-footer-actions">
+        <button type="button" class="melodies-link-btn" id="earTrainerRevealBtn">Reveal answer</button>
+        <button type="button" class="melodies-link-btn" id="earTrainerNewBtn">New exercise</button>
+      </div>
+    </div>
+  </section>"
+`;
+
+exports[`ear trainer user flow > persists settings, constrains ranges, plays exercises and checks or reveals answers > completed exercise 1`] = `
+"<section class="melodies-game ear-trainer" aria-labelledby="earTrainerHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Scale degree ear training</p>
+      <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
+      <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+    </header>
+
+    <div class="melodies-card">
+      <div class="melodies-round-header">
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Root first · Ascending</span>
+        <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
+      </div>
+
+      <details class="ear-trainer-settings" id="earTrainerSettings" open="">
+        <summary class="ear-trainer-settings-summary">Settings</summary>
+        <div class="ear-trainer-settings-content">
+        <div class="ear-trainer-setting-row ear-trainer-range-row">
+          <div class="ear-trainer-field">
+            <span class="control-label">Octaves:</span>
+            <span class="ear-trainer-octave-inputs">
+              <input id="earTrainerOctaveStart" type="number" min="0" max="8" step="1" inputmode="numeric" value="2" aria-label="Lowest octave">
+              <span>to</span>
+              <input id="earTrainerOctaveEnd" type="number" min="0" max="8" step="1" inputmode="numeric" value="3" aria-label="Highest octave">
+            </span>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Notes:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerNotesDown" aria-label="Fewer notes">❮</button>
+              <div class="note-display" id="earTrainerNotesDisplay">3</div>
+              <button class="note-btn" id="earTrainerNotesUp" aria-label="More notes">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerPlayRootFirst">
+            <span>Play root first</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerFixKey">
+            <span>Fix key</span>
+          </label>
+          <div class="ear-trainer-key" id="earTrainerKeyControl">
+            <span class="control-label">Key:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerKeyPrev" aria-label="Previous key">❮</button>
+              <div class="note-display" id="earTrainerKeyDisplay">C</div>
+              <button class="note-btn" id="earTrainerKeyNext" aria-label="Next key">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <div class="ear-trainer-field ear-trainer-direction-field" role="group" aria-labelledby="earTrainerDirectionLabel">
+            <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
+            <span class="ear-trainer-direction-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerAscending" checked="">
+                <span>Ascending</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerDescending" checked="">
+                <span>Descending</span>
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row ear-trainer-tone-row">
+          <fieldset class="melodies-tone">
+            <legend>Tone</legend>
+            <div class="melodies-tone-options"><button type="button" class="melodies-tone-btn" id="earTrainerTonewarmBtn" aria-pressed="false">Warm</button><button type="button" class="melodies-tone-btn" id="earTrainerTonepureBtn" aria-pressed="false">Pure</button><button type="button" class="melodies-tone-btn" id="earTrainerTonebrightBtn" aria-pressed="false">Bright</button><button type="button" class="melodies-tone-btn active" id="earTrainerTonepluckBtn" aria-pressed="true">Pluck</button></div>
+          </fieldset>
+          <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
+        </div>
+
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases only ascend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
+        </div>
+      </details>
+
+      <div class="melodies-prompt" id="earTrainerPrompt">
+        <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+        <strong id="earTrainerStatus">You got it!</strong>
+        <span id="earTrainerHint">Every scale degree matched.</span>
+      </div>
+
+      <div class="melodies-manual ear-trainer-manual">
+        <label class="melodies-manual-label" for="earTrainerDegreeInput">
+          Enter each note as a scale degree of the key (1–7)
+        </label>
+        <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
+          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled correct">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled correct">♭2</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is flat; change accidental" disabled="">♭</button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled correct">2</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
+          <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3" disabled="">
+        </div>
+        <p class="ear-trainer-input-hint">
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
+        </p>
+      </div>
+
+      <div class="melodies-actions">
+        <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
+          Check answer
+        </button>
+      </div>
+
+      <div class="melodies-result" id="earTrainerResult"><strong>You got it!</strong><span>C2 ↑ C#2 ↑ D2</span><div class="melodies-answer"><b>Scale degrees</b><div><span>1</span><i aria-hidden="true">–</i><span>♭2</span><i aria-hidden="true">–</i><span>2</span></div></div><div class="melodies-answer"><b>Intervals</b><div><span>m2</span><i aria-hidden="true">–</i><span>m2</span></div></div><small>Every note matched. Key C · root C2. Direction is not scored.</small></div>
+      <div class="melodies-footer-actions">
+        <button type="button" class="melodies-link-btn" id="earTrainerRevealBtn" disabled="">Reveal answer</button>
+        <button type="button" class="melodies-link-btn" id="earTrainerNewBtn">New exercise</button>
+      </div>
+    </div>
+  </section>"
+`;
+
+exports[`ear trainer user flow > persists settings, constrains ranges, plays exercises and checks or reveals answers > correct exercise 1`] = `"<strong>You got it!</strong><span>C2 ↑ C#2 ↑ D2</span><div class="melodies-answer"><b>Scale degrees</b><div><span>1</span><i aria-hidden="true">–</i><span>♭2</span><i aria-hidden="true">–</i><span>2</span></div></div><div class="melodies-answer"><b>Intervals</b><div><span>m2</span><i aria-hidden="true">–</i><span>m2</span></div></div><small>Every note matched. Key C · root C2. Direction is not scored.</small>"`;
+
+exports[`ear trainer user flow > updates settings and round affordances after every individual selection > earTrainerAscending 1`] = `
+"<section class="melodies-game ear-trainer" aria-labelledby="earTrainerHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Scale degree ear training</p>
+      <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
+      <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+    </header>
+
+    <div class="melodies-card">
+      <div class="melodies-round-header">
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Root first · Ascending</span>
+        <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
+      </div>
+
+      <details class="ear-trainer-settings" id="earTrainerSettings" open="">
+        <summary class="ear-trainer-settings-summary">Settings</summary>
+        <div class="ear-trainer-settings-content">
+        <div class="ear-trainer-setting-row ear-trainer-range-row">
+          <div class="ear-trainer-field">
+            <span class="control-label">Octaves:</span>
+            <span class="ear-trainer-octave-inputs">
+              <input id="earTrainerOctaveStart" type="number" min="0" max="8" step="1" inputmode="numeric" value="2" aria-label="Lowest octave">
+              <span>to</span>
+              <input id="earTrainerOctaveEnd" type="number" min="0" max="8" step="1" inputmode="numeric" value="3" aria-label="Highest octave">
+            </span>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Notes:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerNotesDown" aria-label="Fewer notes">❮</button>
+              <div class="note-display" id="earTrainerNotesDisplay">3</div>
+              <button class="note-btn" id="earTrainerNotesUp" aria-label="More notes">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerPlayRootFirst">
+            <span>Play root first</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerFixKey">
+            <span>Fix key</span>
+          </label>
+          <div class="ear-trainer-key" id="earTrainerKeyControl">
+            <span class="control-label">Key:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerKeyPrev" aria-label="Previous key">❮</button>
+              <div class="note-display" id="earTrainerKeyDisplay">C</div>
+              <button class="note-btn" id="earTrainerKeyNext" aria-label="Next key">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <div class="ear-trainer-field ear-trainer-direction-field" role="group" aria-labelledby="earTrainerDirectionLabel">
+            <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
+            <span class="ear-trainer-direction-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerAscending" checked="">
+                <span>Ascending</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerDescending" checked="">
+                <span>Descending</span>
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row ear-trainer-tone-row">
+          <fieldset class="melodies-tone">
+            <legend>Tone</legend>
+            <div class="melodies-tone-options"><button type="button" class="melodies-tone-btn" id="earTrainerTonewarmBtn" aria-pressed="false">Warm</button><button type="button" class="melodies-tone-btn" id="earTrainerTonepureBtn" aria-pressed="false">Pure</button><button type="button" class="melodies-tone-btn" id="earTrainerTonebrightBtn" aria-pressed="false">Bright</button><button type="button" class="melodies-tone-btn active" id="earTrainerTonepluckBtn" aria-pressed="true">Pluck</button></div>
+          </fieldset>
+          <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
+        </div>
+
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases only ascend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
+        </div>
+      </details>
+
+      <div class="melodies-prompt" id="earTrainerPrompt">
+        <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+        <strong id="earTrainerStatus">Press play to listen</strong>
+        <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
+      </div>
+
+      <div class="melodies-manual ear-trainer-manual">
+        <label class="melodies-manual-label" for="earTrainerDegreeInput">
+          Enter each note as a scale degree of the key (1–7)
+        </label>
+        <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
+          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
+          <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <p class="ear-trainer-input-hint">
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
+        </p>
+      </div>
+
+      <div class="melodies-actions">
+        <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
+          Check answer
+        </button>
+      </div>
+
+      <div class="melodies-result" id="earTrainerResult" hidden=""></div>
+      <div class="melodies-footer-actions">
+        <button type="button" class="melodies-link-btn" id="earTrainerRevealBtn">Reveal answer</button>
+        <button type="button" class="melodies-link-btn" id="earTrainerNewBtn">New exercise</button>
+      </div>
+    </div>
+  </section>"
+`;
+
+exports[`ear trainer user flow > updates settings and round affordances after every individual selection > earTrainerDescending 1`] = `
+"<section class="melodies-game ear-trainer" aria-labelledby="earTrainerHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Scale degree ear training</p>
+      <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
+      <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+    </header>
+
+    <div class="melodies-card">
+      <div class="melodies-round-header">
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Root first · Ascending</span>
+        <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
+      </div>
+
+      <details class="ear-trainer-settings" id="earTrainerSettings" open="">
+        <summary class="ear-trainer-settings-summary">Settings</summary>
+        <div class="ear-trainer-settings-content">
+        <div class="ear-trainer-setting-row ear-trainer-range-row">
+          <div class="ear-trainer-field">
+            <span class="control-label">Octaves:</span>
+            <span class="ear-trainer-octave-inputs">
+              <input id="earTrainerOctaveStart" type="number" min="0" max="8" step="1" inputmode="numeric" value="2" aria-label="Lowest octave">
+              <span>to</span>
+              <input id="earTrainerOctaveEnd" type="number" min="0" max="8" step="1" inputmode="numeric" value="3" aria-label="Highest octave">
+            </span>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Notes:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerNotesDown" aria-label="Fewer notes">❮</button>
+              <div class="note-display" id="earTrainerNotesDisplay">3</div>
+              <button class="note-btn" id="earTrainerNotesUp" aria-label="More notes">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerPlayRootFirst">
+            <span>Play root first</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerFixKey">
+            <span>Fix key</span>
+          </label>
+          <div class="ear-trainer-key" id="earTrainerKeyControl">
+            <span class="control-label">Key:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerKeyPrev" aria-label="Previous key">❮</button>
+              <div class="note-display" id="earTrainerKeyDisplay">C</div>
+              <button class="note-btn" id="earTrainerKeyNext" aria-label="Next key">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <div class="ear-trainer-field ear-trainer-direction-field" role="group" aria-labelledby="earTrainerDirectionLabel">
+            <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
+            <span class="ear-trainer-direction-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerAscending" checked="">
+                <span>Ascending</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerDescending" checked="">
+                <span>Descending</span>
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row ear-trainer-tone-row">
+          <fieldset class="melodies-tone">
+            <legend>Tone</legend>
+            <div class="melodies-tone-options"><button type="button" class="melodies-tone-btn" id="earTrainerTonewarmBtn" aria-pressed="false">Warm</button><button type="button" class="melodies-tone-btn" id="earTrainerTonepureBtn" aria-pressed="false">Pure</button><button type="button" class="melodies-tone-btn" id="earTrainerTonebrightBtn" aria-pressed="false">Bright</button><button type="button" class="melodies-tone-btn active" id="earTrainerTonepluckBtn" aria-pressed="true">Pluck</button></div>
+          </fieldset>
+          <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
+        </div>
+
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases only ascend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
+        </div>
+      </details>
+
+      <div class="melodies-prompt" id="earTrainerPrompt">
+        <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+        <strong id="earTrainerStatus">Press play to listen</strong>
+        <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
+      </div>
+
+      <div class="melodies-manual ear-trainer-manual">
+        <label class="melodies-manual-label" for="earTrainerDegreeInput">
+          Enter each note as a scale degree of the key (1–7)
+        </label>
+        <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
+          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
+          <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <p class="ear-trainer-input-hint">
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
+        </p>
+      </div>
+
+      <div class="melodies-actions">
+        <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
+          Check answer
+        </button>
+      </div>
+
+      <div class="melodies-result" id="earTrainerResult" hidden=""></div>
+      <div class="melodies-footer-actions">
+        <button type="button" class="melodies-link-btn" id="earTrainerRevealBtn">Reveal answer</button>
+        <button type="button" class="melodies-link-btn" id="earTrainerNewBtn">New exercise</button>
+      </div>
+    </div>
+  </section>"
+`;
+
+exports[`ear trainer user flow > updates settings and round affordances after every individual selection > earTrainerFixKey 1`] = `
+"<section class="melodies-game ear-trainer" aria-labelledby="earTrainerHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Scale degree ear training</p>
+      <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
+      <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+    </header>
+
+    <div class="melodies-card">
+      <div class="melodies-round-header">
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Asc + desc</span>
+        <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
+      </div>
+
+      <details class="ear-trainer-settings" id="earTrainerSettings" open="">
+        <summary class="ear-trainer-settings-summary">Settings</summary>
+        <div class="ear-trainer-settings-content">
+        <div class="ear-trainer-setting-row ear-trainer-range-row">
+          <div class="ear-trainer-field">
+            <span class="control-label">Octaves:</span>
+            <span class="ear-trainer-octave-inputs">
+              <input id="earTrainerOctaveStart" type="number" min="0" max="8" step="1" inputmode="numeric" value="2" aria-label="Lowest octave">
+              <span>to</span>
+              <input id="earTrainerOctaveEnd" type="number" min="0" max="8" step="1" inputmode="numeric" value="3" aria-label="Highest octave">
+            </span>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Notes:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerNotesDown" aria-label="Fewer notes">❮</button>
+              <div class="note-display" id="earTrainerNotesDisplay">3</div>
+              <button class="note-btn" id="earTrainerNotesUp" aria-label="More notes">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerPlayRootFirst">
+            <span>Play root first</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerFixKey">
+            <span>Fix key</span>
+          </label>
+          <div class="ear-trainer-key" id="earTrainerKeyControl">
+            <span class="control-label">Key:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerKeyPrev" aria-label="Previous key">❮</button>
+              <div class="note-display" id="earTrainerKeyDisplay">C</div>
+              <button class="note-btn" id="earTrainerKeyNext" aria-label="Next key">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <div class="ear-trainer-field ear-trainer-direction-field" role="group" aria-labelledby="earTrainerDirectionLabel">
+            <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
+            <span class="ear-trainer-direction-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerAscending" checked="">
+                <span>Ascending</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerDescending" checked="">
+                <span>Descending</span>
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row ear-trainer-tone-row">
+          <fieldset class="melodies-tone">
+            <legend>Tone</legend>
+            <div class="melodies-tone-options"><button type="button" class="melodies-tone-btn" id="earTrainerTonewarmBtn" aria-pressed="false">Warm</button><button type="button" class="melodies-tone-btn" id="earTrainerTonepureBtn" aria-pressed="false">Pure</button><button type="button" class="melodies-tone-btn" id="earTrainerTonebrightBtn" aria-pressed="false">Bright</button><button type="button" class="melodies-tone-btn active" id="earTrainerTonepluckBtn" aria-pressed="true">Pluck</button></div>
+          </fieldset>
+          <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
+        </div>
+
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is random. Key fixed to C.</p>
+        </div>
+      </details>
+
+      <div class="melodies-prompt" id="earTrainerPrompt">
+        <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+        <strong id="earTrainerStatus">Press play to listen</strong>
+        <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
+      </div>
+
+      <div class="melodies-manual ear-trainer-manual">
+        <label class="melodies-manual-label" for="earTrainerDegreeInput">
+          Enter each note as a scale degree of the key (1–7)
+        </label>
+        <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
+          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
+          <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <p class="ear-trainer-input-hint">
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
+        </p>
+      </div>
+
+      <div class="melodies-actions">
+        <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
+          Check answer
+        </button>
+      </div>
+
+      <div class="melodies-result" id="earTrainerResult" hidden=""></div>
+      <div class="melodies-footer-actions">
+        <button type="button" class="melodies-link-btn" id="earTrainerRevealBtn">Reveal answer</button>
+        <button type="button" class="melodies-link-btn" id="earTrainerNewBtn">New exercise</button>
+      </div>
+    </div>
+  </section>"
+`;
+
+exports[`ear trainer user flow > updates settings and round affordances after every individual selection > earTrainerKeyNext 1`] = `
+"<section class="melodies-game ear-trainer" aria-labelledby="earTrainerHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Scale degree ear training</p>
+      <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
+      <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+    </header>
+
+    <div class="melodies-card">
+      <div class="melodies-round-header">
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Asc + desc</span>
+        <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
+      </div>
+
+      <details class="ear-trainer-settings" id="earTrainerSettings" open="">
+        <summary class="ear-trainer-settings-summary">Settings</summary>
+        <div class="ear-trainer-settings-content">
+        <div class="ear-trainer-setting-row ear-trainer-range-row">
+          <div class="ear-trainer-field">
+            <span class="control-label">Octaves:</span>
+            <span class="ear-trainer-octave-inputs">
+              <input id="earTrainerOctaveStart" type="number" min="0" max="8" step="1" inputmode="numeric" value="2" aria-label="Lowest octave">
+              <span>to</span>
+              <input id="earTrainerOctaveEnd" type="number" min="0" max="8" step="1" inputmode="numeric" value="3" aria-label="Highest octave">
+            </span>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Notes:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerNotesDown" aria-label="Fewer notes">❮</button>
+              <div class="note-display" id="earTrainerNotesDisplay">3</div>
+              <button class="note-btn" id="earTrainerNotesUp" aria-label="More notes">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerPlayRootFirst">
+            <span>Play root first</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerFixKey">
+            <span>Fix key</span>
+          </label>
+          <div class="ear-trainer-key" id="earTrainerKeyControl">
+            <span class="control-label">Key:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerKeyPrev" aria-label="Previous key">❮</button>
+              <div class="note-display" id="earTrainerKeyDisplay">C</div>
+              <button class="note-btn" id="earTrainerKeyNext" aria-label="Next key">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <div class="ear-trainer-field ear-trainer-direction-field" role="group" aria-labelledby="earTrainerDirectionLabel">
+            <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
+            <span class="ear-trainer-direction-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerAscending" checked="">
+                <span>Ascending</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerDescending" checked="">
+                <span>Descending</span>
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row ear-trainer-tone-row">
+          <fieldset class="melodies-tone">
+            <legend>Tone</legend>
+            <div class="melodies-tone-options"><button type="button" class="melodies-tone-btn" id="earTrainerTonewarmBtn" aria-pressed="false">Warm</button><button type="button" class="melodies-tone-btn" id="earTrainerTonepureBtn" aria-pressed="false">Pure</button><button type="button" class="melodies-tone-btn" id="earTrainerTonebrightBtn" aria-pressed="false">Bright</button><button type="button" class="melodies-tone-btn active" id="earTrainerTonepluckBtn" aria-pressed="true">Pluck</button></div>
+          </fieldset>
+          <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
+        </div>
+
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is random. Key fixed to C.</p>
+        </div>
+      </details>
+
+      <div class="melodies-prompt" id="earTrainerPrompt">
+        <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+        <strong id="earTrainerStatus">Press play to listen</strong>
+        <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
+      </div>
+
+      <div class="melodies-manual ear-trainer-manual">
+        <label class="melodies-manual-label" for="earTrainerDegreeInput">
+          Enter each note as a scale degree of the key (1–7)
+        </label>
+        <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
+          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
+          <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <p class="ear-trainer-input-hint">
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
+        </p>
+      </div>
+
+      <div class="melodies-actions">
+        <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
+          Check answer
+        </button>
+      </div>
+
+      <div class="melodies-result" id="earTrainerResult" hidden=""></div>
+      <div class="melodies-footer-actions">
+        <button type="button" class="melodies-link-btn" id="earTrainerRevealBtn">Reveal answer</button>
+        <button type="button" class="melodies-link-btn" id="earTrainerNewBtn">New exercise</button>
+      </div>
+    </div>
+  </section>"
+`;
+
+exports[`ear trainer user flow > updates settings and round affordances after every individual selection > earTrainerKeyPrev 1`] = `
+"<section class="melodies-game ear-trainer" aria-labelledby="earTrainerHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Scale degree ear training</p>
+      <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
+      <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+    </header>
+
+    <div class="melodies-card">
+      <div class="melodies-round-header">
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key B · Asc + desc</span>
+        <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
+      </div>
+
+      <details class="ear-trainer-settings" id="earTrainerSettings" open="">
+        <summary class="ear-trainer-settings-summary">Settings</summary>
+        <div class="ear-trainer-settings-content">
+        <div class="ear-trainer-setting-row ear-trainer-range-row">
+          <div class="ear-trainer-field">
+            <span class="control-label">Octaves:</span>
+            <span class="ear-trainer-octave-inputs">
+              <input id="earTrainerOctaveStart" type="number" min="0" max="8" step="1" inputmode="numeric" value="2" aria-label="Lowest octave">
+              <span>to</span>
+              <input id="earTrainerOctaveEnd" type="number" min="0" max="8" step="1" inputmode="numeric" value="3" aria-label="Highest octave">
+            </span>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Notes:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerNotesDown" aria-label="Fewer notes">❮</button>
+              <div class="note-display" id="earTrainerNotesDisplay">3</div>
+              <button class="note-btn" id="earTrainerNotesUp" aria-label="More notes">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerPlayRootFirst">
+            <span>Play root first</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerFixKey">
+            <span>Fix key</span>
+          </label>
+          <div class="ear-trainer-key" id="earTrainerKeyControl">
+            <span class="control-label">Key:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerKeyPrev" aria-label="Previous key">❮</button>
+              <div class="note-display" id="earTrainerKeyDisplay">B</div>
+              <button class="note-btn" id="earTrainerKeyNext" aria-label="Next key">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <div class="ear-trainer-field ear-trainer-direction-field" role="group" aria-labelledby="earTrainerDirectionLabel">
+            <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
+            <span class="ear-trainer-direction-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerAscending" checked="">
+                <span>Ascending</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerDescending" checked="">
+                <span>Descending</span>
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row ear-trainer-tone-row">
+          <fieldset class="melodies-tone">
+            <legend>Tone</legend>
+            <div class="melodies-tone-options"><button type="button" class="melodies-tone-btn" id="earTrainerTonewarmBtn" aria-pressed="false">Warm</button><button type="button" class="melodies-tone-btn" id="earTrainerTonepureBtn" aria-pressed="false">Pure</button><button type="button" class="melodies-tone-btn" id="earTrainerTonebrightBtn" aria-pressed="false">Bright</button><button type="button" class="melodies-tone-btn active" id="earTrainerTonepluckBtn" aria-pressed="true">Pluck</button></div>
+          </fieldset>
+          <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
+        </div>
+
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is random. Key fixed to B.</p>
+        </div>
+      </details>
+
+      <div class="melodies-prompt" id="earTrainerPrompt">
+        <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+        <strong id="earTrainerStatus">Press play to listen</strong>
+        <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
+      </div>
+
+      <div class="melodies-manual ear-trainer-manual">
+        <label class="melodies-manual-label" for="earTrainerDegreeInput">
+          Enter each note as a scale degree of the key (1–7)
+        </label>
+        <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
+          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
+          <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <p class="ear-trainer-input-hint">
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
+        </p>
+      </div>
+
+      <div class="melodies-actions">
+        <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
+          Check answer
+        </button>
+      </div>
+
+      <div class="melodies-result" id="earTrainerResult" hidden=""></div>
+      <div class="melodies-footer-actions">
+        <button type="button" class="melodies-link-btn" id="earTrainerRevealBtn">Reveal answer</button>
+        <button type="button" class="melodies-link-btn" id="earTrainerNewBtn">New exercise</button>
+      </div>
+    </div>
+  </section>"
+`;
+
+exports[`ear trainer user flow > updates settings and round affordances after every individual selection > earTrainerNotesDown 1`] = `
+"<section class="melodies-game ear-trainer" aria-labelledby="earTrainerHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Scale degree ear training</p>
+      <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
+      <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+    </header>
+
+    <div class="melodies-card">
+      <div class="melodies-round-header">
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Asc + desc</span>
+        <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
+      </div>
+
+      <details class="ear-trainer-settings" id="earTrainerSettings" open="">
+        <summary class="ear-trainer-settings-summary">Settings</summary>
+        <div class="ear-trainer-settings-content">
+        <div class="ear-trainer-setting-row ear-trainer-range-row">
+          <div class="ear-trainer-field">
+            <span class="control-label">Octaves:</span>
+            <span class="ear-trainer-octave-inputs">
+              <input id="earTrainerOctaveStart" type="number" min="0" max="8" step="1" inputmode="numeric" value="2" aria-label="Lowest octave">
+              <span>to</span>
+              <input id="earTrainerOctaveEnd" type="number" min="0" max="8" step="1" inputmode="numeric" value="3" aria-label="Highest octave">
+            </span>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Notes:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerNotesDown" aria-label="Fewer notes">❮</button>
+              <div class="note-display" id="earTrainerNotesDisplay">3</div>
+              <button class="note-btn" id="earTrainerNotesUp" aria-label="More notes">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerPlayRootFirst">
+            <span>Play root first</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerFixKey">
+            <span>Fix key</span>
+          </label>
+          <div class="ear-trainer-key" id="earTrainerKeyControl" hidden="">
+            <span class="control-label">Key:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerKeyPrev" aria-label="Previous key">❮</button>
+              <div class="note-display" id="earTrainerKeyDisplay">C</div>
+              <button class="note-btn" id="earTrainerKeyNext" aria-label="Next key">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <div class="ear-trainer-field ear-trainer-direction-field" role="group" aria-labelledby="earTrainerDirectionLabel">
+            <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
+            <span class="ear-trainer-direction-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerAscending" checked="">
+                <span>Ascending</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerDescending" checked="">
+                <span>Descending</span>
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row ear-trainer-tone-row">
+          <fieldset class="melodies-tone">
+            <legend>Tone</legend>
+            <div class="melodies-tone-options"><button type="button" class="melodies-tone-btn" id="earTrainerTonewarmBtn" aria-pressed="false">Warm</button><button type="button" class="melodies-tone-btn" id="earTrainerTonepureBtn" aria-pressed="false">Pure</button><button type="button" class="melodies-tone-btn" id="earTrainerTonebrightBtn" aria-pressed="false">Bright</button><button type="button" class="melodies-tone-btn active" id="earTrainerTonepluckBtn" aria-pressed="true">Pluck</button></div>
+          </fieldset>
+          <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
+        </div>
+
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is random. Key changes each exercise.</p>
+        </div>
+      </details>
+
+      <div class="melodies-prompt" id="earTrainerPrompt">
+        <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+        <strong id="earTrainerStatus">Press play to listen</strong>
+        <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
+      </div>
+
+      <div class="melodies-manual ear-trainer-manual">
+        <label class="melodies-manual-label" for="earTrainerDegreeInput">
+          Enter each note as a scale degree of the key (1–7)
+        </label>
+        <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
+          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
+          <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <p class="ear-trainer-input-hint">
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
+        </p>
+      </div>
+
+      <div class="melodies-actions">
+        <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
+          Check answer
+        </button>
+      </div>
+
+      <div class="melodies-result" id="earTrainerResult" hidden=""></div>
+      <div class="melodies-footer-actions">
+        <button type="button" class="melodies-link-btn" id="earTrainerRevealBtn">Reveal answer</button>
+        <button type="button" class="melodies-link-btn" id="earTrainerNewBtn">New exercise</button>
+      </div>
+    </div>
+  </section>"
+`;
+
+exports[`ear trainer user flow > updates settings and round affordances after every individual selection > earTrainerNotesUp 1`] = `
+"<section class="melodies-game ear-trainer" aria-labelledby="earTrainerHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Scale degree ear training</p>
+      <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
+      <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+    </header>
+
+    <div class="melodies-card">
+      <div class="melodies-round-header">
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Asc + desc</span>
+        <span class="melodies-timer" id="earTrainerRoundDetail">4 notes · 3 intervals</span>
+      </div>
+
+      <details class="ear-trainer-settings" id="earTrainerSettings" open="">
+        <summary class="ear-trainer-settings-summary">Settings</summary>
+        <div class="ear-trainer-settings-content">
+        <div class="ear-trainer-setting-row ear-trainer-range-row">
+          <div class="ear-trainer-field">
+            <span class="control-label">Octaves:</span>
+            <span class="ear-trainer-octave-inputs">
+              <input id="earTrainerOctaveStart" type="number" min="0" max="8" step="1" inputmode="numeric" value="2" aria-label="Lowest octave">
+              <span>to</span>
+              <input id="earTrainerOctaveEnd" type="number" min="0" max="8" step="1" inputmode="numeric" value="3" aria-label="Highest octave">
+            </span>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Notes:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerNotesDown" aria-label="Fewer notes">❮</button>
+              <div class="note-display" id="earTrainerNotesDisplay">4</div>
+              <button class="note-btn" id="earTrainerNotesUp" aria-label="More notes">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerPlayRootFirst">
+            <span>Play root first</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerFixKey">
+            <span>Fix key</span>
+          </label>
+          <div class="ear-trainer-key" id="earTrainerKeyControl" hidden="">
+            <span class="control-label">Key:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerKeyPrev" aria-label="Previous key">❮</button>
+              <div class="note-display" id="earTrainerKeyDisplay">C</div>
+              <button class="note-btn" id="earTrainerKeyNext" aria-label="Next key">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <div class="ear-trainer-field ear-trainer-direction-field" role="group" aria-labelledby="earTrainerDirectionLabel">
+            <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
+            <span class="ear-trainer-direction-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerAscending" checked="">
+                <span>Ascending</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerDescending" checked="">
+                <span>Descending</span>
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row ear-trainer-tone-row">
+          <fieldset class="melodies-tone">
+            <legend>Tone</legend>
+            <div class="melodies-tone-options"><button type="button" class="melodies-tone-btn" id="earTrainerTonewarmBtn" aria-pressed="false">Warm</button><button type="button" class="melodies-tone-btn" id="earTrainerTonepureBtn" aria-pressed="false">Pure</button><button type="button" class="melodies-tone-btn" id="earTrainerTonebrightBtn" aria-pressed="false">Bright</button><button type="button" class="melodies-tone-btn active" id="earTrainerTonepluckBtn" aria-pressed="true">Pluck</button></div>
+          </fieldset>
+          <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
+        </div>
+
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is random. Key changes each exercise.</p>
+        </div>
+      </details>
+
+      <div class="melodies-prompt" id="earTrainerPrompt">
+        <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+        <strong id="earTrainerStatus">Press play to listen</strong>
+        <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
+      </div>
+
+      <div class="melodies-manual ear-trainer-manual">
+        <label class="melodies-manual-label" for="earTrainerDegreeInput">
+          Enter each note as a scale degree of the key (1–7)
+        </label>
+        <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
+          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="3" aria-label="Interval 4 is natural; change accidental" disabled=""></button></span></div>
+          <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="4">
+        </div>
+        <p class="ear-trainer-input-hint">
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
+        </p>
+      </div>
+
+      <div class="melodies-actions">
+        <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
+          Check answer
+        </button>
+      </div>
+
+      <div class="melodies-result" id="earTrainerResult" hidden=""></div>
+      <div class="melodies-footer-actions">
+        <button type="button" class="melodies-link-btn" id="earTrainerRevealBtn">Reveal answer</button>
+        <button type="button" class="melodies-link-btn" id="earTrainerNewBtn">New exercise</button>
+      </div>
+    </div>
+  </section>"
+`;
+
+exports[`ear trainer user flow > updates settings and round affordances after every individual selection > earTrainerPlayRootFirst 1`] = `
+"<section class="melodies-game ear-trainer" aria-labelledby="earTrainerHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Scale degree ear training</p>
+      <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
+      <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+    </header>
+
+    <div class="melodies-card">
+      <div class="melodies-round-header">
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Root first · Asc + desc</span>
+        <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
+      </div>
+
+      <details class="ear-trainer-settings" id="earTrainerSettings" open="">
+        <summary class="ear-trainer-settings-summary">Settings</summary>
+        <div class="ear-trainer-settings-content">
+        <div class="ear-trainer-setting-row ear-trainer-range-row">
+          <div class="ear-trainer-field">
+            <span class="control-label">Octaves:</span>
+            <span class="ear-trainer-octave-inputs">
+              <input id="earTrainerOctaveStart" type="number" min="0" max="8" step="1" inputmode="numeric" value="2" aria-label="Lowest octave">
+              <span>to</span>
+              <input id="earTrainerOctaveEnd" type="number" min="0" max="8" step="1" inputmode="numeric" value="3" aria-label="Highest octave">
+            </span>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Notes:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerNotesDown" aria-label="Fewer notes">❮</button>
+              <div class="note-display" id="earTrainerNotesDisplay">3</div>
+              <button class="note-btn" id="earTrainerNotesUp" aria-label="More notes">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerPlayRootFirst">
+            <span>Play root first</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerFixKey">
+            <span>Fix key</span>
+          </label>
+          <div class="ear-trainer-key" id="earTrainerKeyControl">
+            <span class="control-label">Key:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerKeyPrev" aria-label="Previous key">❮</button>
+              <div class="note-display" id="earTrainerKeyDisplay">C</div>
+              <button class="note-btn" id="earTrainerKeyNext" aria-label="Next key">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <div class="ear-trainer-field ear-trainer-direction-field" role="group" aria-labelledby="earTrainerDirectionLabel">
+            <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
+            <span class="ear-trainer-direction-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerAscending" checked="">
+                <span>Ascending</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerDescending" checked="">
+                <span>Descending</span>
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row ear-trainer-tone-row">
+          <fieldset class="melodies-tone">
+            <legend>Tone</legend>
+            <div class="melodies-tone-options"><button type="button" class="melodies-tone-btn" id="earTrainerTonewarmBtn" aria-pressed="false">Warm</button><button type="button" class="melodies-tone-btn" id="earTrainerTonepureBtn" aria-pressed="false">Pure</button><button type="button" class="melodies-tone-btn" id="earTrainerTonebrightBtn" aria-pressed="false">Bright</button><button type="button" class="melodies-tone-btn active" id="earTrainerTonepluckBtn" aria-pressed="true">Pluck</button></div>
+          </fieldset>
+          <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
+        </div>
+
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
+        </div>
+      </details>
+
+      <div class="melodies-prompt" id="earTrainerPrompt">
+        <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+        <strong id="earTrainerStatus">Press play to listen</strong>
+        <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
+      </div>
+
+      <div class="melodies-manual ear-trainer-manual">
+        <label class="melodies-manual-label" for="earTrainerDegreeInput">
+          Enter each note as a scale degree of the key (1–7)
+        </label>
+        <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
+          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
+          <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <p class="ear-trainer-input-hint">
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
+        </p>
+      </div>
+
+      <div class="melodies-actions">
+        <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
+          Check answer
+        </button>
+      </div>
+
+      <div class="melodies-result" id="earTrainerResult" hidden=""></div>
+      <div class="melodies-footer-actions">
+        <button type="button" class="melodies-link-btn" id="earTrainerRevealBtn">Reveal answer</button>
+        <button type="button" class="melodies-link-btn" id="earTrainerNewBtn">New exercise</button>
+      </div>
+    </div>
+  </section>"
+`;
+
+exports[`ear trainer user flow > updates settings and round affordances after every individual selection > earTrainerTonebrightBtn 1`] = `
+"<section class="melodies-game ear-trainer" aria-labelledby="earTrainerHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Scale degree ear training</p>
+      <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
+      <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+    </header>
+
+    <div class="melodies-card">
+      <div class="melodies-round-header">
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Root first · Asc + desc</span>
+        <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
+      </div>
+
+      <details class="ear-trainer-settings" id="earTrainerSettings" open="">
+        <summary class="ear-trainer-settings-summary">Settings</summary>
+        <div class="ear-trainer-settings-content">
+        <div class="ear-trainer-setting-row ear-trainer-range-row">
+          <div class="ear-trainer-field">
+            <span class="control-label">Octaves:</span>
+            <span class="ear-trainer-octave-inputs">
+              <input id="earTrainerOctaveStart" type="number" min="0" max="8" step="1" inputmode="numeric" value="2" aria-label="Lowest octave">
+              <span>to</span>
+              <input id="earTrainerOctaveEnd" type="number" min="0" max="8" step="1" inputmode="numeric" value="3" aria-label="Highest octave">
+            </span>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Notes:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerNotesDown" aria-label="Fewer notes">❮</button>
+              <div class="note-display" id="earTrainerNotesDisplay">3</div>
+              <button class="note-btn" id="earTrainerNotesUp" aria-label="More notes">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerPlayRootFirst">
+            <span>Play root first</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerFixKey">
+            <span>Fix key</span>
+          </label>
+          <div class="ear-trainer-key" id="earTrainerKeyControl">
+            <span class="control-label">Key:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerKeyPrev" aria-label="Previous key">❮</button>
+              <div class="note-display" id="earTrainerKeyDisplay">C</div>
+              <button class="note-btn" id="earTrainerKeyNext" aria-label="Next key">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <div class="ear-trainer-field ear-trainer-direction-field" role="group" aria-labelledby="earTrainerDirectionLabel">
+            <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
+            <span class="ear-trainer-direction-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerAscending" checked="">
+                <span>Ascending</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerDescending" checked="">
+                <span>Descending</span>
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row ear-trainer-tone-row">
+          <fieldset class="melodies-tone">
+            <legend>Tone</legend>
+            <div class="melodies-tone-options"><button type="button" class="melodies-tone-btn" id="earTrainerTonewarmBtn" aria-pressed="false">Warm</button><button type="button" class="melodies-tone-btn" id="earTrainerTonepureBtn" aria-pressed="false">Pure</button><button type="button" class="melodies-tone-btn active" id="earTrainerTonebrightBtn" aria-pressed="true">Bright</button><button type="button" class="melodies-tone-btn" id="earTrainerTonepluckBtn" aria-pressed="false">Pluck</button></div>
+          </fieldset>
+          <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
+        </div>
+
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
+        </div>
+      </details>
+
+      <div class="melodies-prompt" id="earTrainerPrompt">
+        <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+        <strong id="earTrainerStatus">Press play to listen</strong>
+        <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
+      </div>
+
+      <div class="melodies-manual ear-trainer-manual">
+        <label class="melodies-manual-label" for="earTrainerDegreeInput">
+          Enter each note as a scale degree of the key (1–7)
+        </label>
+        <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
+          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
+          <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <p class="ear-trainer-input-hint">
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
+        </p>
+      </div>
+
+      <div class="melodies-actions">
+        <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
+          Check answer
+        </button>
+      </div>
+
+      <div class="melodies-result" id="earTrainerResult" hidden=""></div>
+      <div class="melodies-footer-actions">
+        <button type="button" class="melodies-link-btn" id="earTrainerRevealBtn">Reveal answer</button>
+        <button type="button" class="melodies-link-btn" id="earTrainerNewBtn">New exercise</button>
+      </div>
+    </div>
+  </section>"
+`;
+
+exports[`ear trainer user flow > updates settings and round affordances after every individual selection > earTrainerTonepluckBtn 1`] = `
+"<section class="melodies-game ear-trainer" aria-labelledby="earTrainerHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Scale degree ear training</p>
+      <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
+      <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+    </header>
+
+    <div class="melodies-card">
+      <div class="melodies-round-header">
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Root first · Asc + desc</span>
+        <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
+      </div>
+
+      <details class="ear-trainer-settings" id="earTrainerSettings" open="">
+        <summary class="ear-trainer-settings-summary">Settings</summary>
+        <div class="ear-trainer-settings-content">
+        <div class="ear-trainer-setting-row ear-trainer-range-row">
+          <div class="ear-trainer-field">
+            <span class="control-label">Octaves:</span>
+            <span class="ear-trainer-octave-inputs">
+              <input id="earTrainerOctaveStart" type="number" min="0" max="8" step="1" inputmode="numeric" value="2" aria-label="Lowest octave">
+              <span>to</span>
+              <input id="earTrainerOctaveEnd" type="number" min="0" max="8" step="1" inputmode="numeric" value="3" aria-label="Highest octave">
+            </span>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Notes:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerNotesDown" aria-label="Fewer notes">❮</button>
+              <div class="note-display" id="earTrainerNotesDisplay">3</div>
+              <button class="note-btn" id="earTrainerNotesUp" aria-label="More notes">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerPlayRootFirst">
+            <span>Play root first</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerFixKey">
+            <span>Fix key</span>
+          </label>
+          <div class="ear-trainer-key" id="earTrainerKeyControl">
+            <span class="control-label">Key:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerKeyPrev" aria-label="Previous key">❮</button>
+              <div class="note-display" id="earTrainerKeyDisplay">C</div>
+              <button class="note-btn" id="earTrainerKeyNext" aria-label="Next key">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <div class="ear-trainer-field ear-trainer-direction-field" role="group" aria-labelledby="earTrainerDirectionLabel">
+            <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
+            <span class="ear-trainer-direction-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerAscending" checked="">
+                <span>Ascending</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerDescending" checked="">
+                <span>Descending</span>
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row ear-trainer-tone-row">
+          <fieldset class="melodies-tone">
+            <legend>Tone</legend>
+            <div class="melodies-tone-options"><button type="button" class="melodies-tone-btn" id="earTrainerTonewarmBtn" aria-pressed="false">Warm</button><button type="button" class="melodies-tone-btn" id="earTrainerTonepureBtn" aria-pressed="false">Pure</button><button type="button" class="melodies-tone-btn" id="earTrainerTonebrightBtn" aria-pressed="false">Bright</button><button type="button" class="melodies-tone-btn active" id="earTrainerTonepluckBtn" aria-pressed="true">Pluck</button></div>
+          </fieldset>
+          <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
+        </div>
+
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
+        </div>
+      </details>
+
+      <div class="melodies-prompt" id="earTrainerPrompt">
+        <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+        <strong id="earTrainerStatus">Press play to listen</strong>
+        <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
+      </div>
+
+      <div class="melodies-manual ear-trainer-manual">
+        <label class="melodies-manual-label" for="earTrainerDegreeInput">
+          Enter each note as a scale degree of the key (1–7)
+        </label>
+        <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
+          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
+          <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <p class="ear-trainer-input-hint">
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
+        </p>
+      </div>
+
+      <div class="melodies-actions">
+        <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
+          Check answer
+        </button>
+      </div>
+
+      <div class="melodies-result" id="earTrainerResult" hidden=""></div>
+      <div class="melodies-footer-actions">
+        <button type="button" class="melodies-link-btn" id="earTrainerRevealBtn">Reveal answer</button>
+        <button type="button" class="melodies-link-btn" id="earTrainerNewBtn">New exercise</button>
+      </div>
+    </div>
+  </section>"
+`;
+
+exports[`ear trainer user flow > updates settings and round affordances after every individual selection > earTrainerTonepureBtn 1`] = `
+"<section class="melodies-game ear-trainer" aria-labelledby="earTrainerHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Scale degree ear training</p>
+      <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
+      <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+    </header>
+
+    <div class="melodies-card">
+      <div class="melodies-round-header">
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Root first · Asc + desc</span>
+        <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
+      </div>
+
+      <details class="ear-trainer-settings" id="earTrainerSettings" open="">
+        <summary class="ear-trainer-settings-summary">Settings</summary>
+        <div class="ear-trainer-settings-content">
+        <div class="ear-trainer-setting-row ear-trainer-range-row">
+          <div class="ear-trainer-field">
+            <span class="control-label">Octaves:</span>
+            <span class="ear-trainer-octave-inputs">
+              <input id="earTrainerOctaveStart" type="number" min="0" max="8" step="1" inputmode="numeric" value="2" aria-label="Lowest octave">
+              <span>to</span>
+              <input id="earTrainerOctaveEnd" type="number" min="0" max="8" step="1" inputmode="numeric" value="3" aria-label="Highest octave">
+            </span>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Notes:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerNotesDown" aria-label="Fewer notes">❮</button>
+              <div class="note-display" id="earTrainerNotesDisplay">3</div>
+              <button class="note-btn" id="earTrainerNotesUp" aria-label="More notes">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerPlayRootFirst">
+            <span>Play root first</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerFixKey">
+            <span>Fix key</span>
+          </label>
+          <div class="ear-trainer-key" id="earTrainerKeyControl">
+            <span class="control-label">Key:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerKeyPrev" aria-label="Previous key">❮</button>
+              <div class="note-display" id="earTrainerKeyDisplay">C</div>
+              <button class="note-btn" id="earTrainerKeyNext" aria-label="Next key">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <div class="ear-trainer-field ear-trainer-direction-field" role="group" aria-labelledby="earTrainerDirectionLabel">
+            <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
+            <span class="ear-trainer-direction-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerAscending" checked="">
+                <span>Ascending</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerDescending" checked="">
+                <span>Descending</span>
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row ear-trainer-tone-row">
+          <fieldset class="melodies-tone">
+            <legend>Tone</legend>
+            <div class="melodies-tone-options"><button type="button" class="melodies-tone-btn" id="earTrainerTonewarmBtn" aria-pressed="false">Warm</button><button type="button" class="melodies-tone-btn active" id="earTrainerTonepureBtn" aria-pressed="true">Pure</button><button type="button" class="melodies-tone-btn" id="earTrainerTonebrightBtn" aria-pressed="false">Bright</button><button type="button" class="melodies-tone-btn" id="earTrainerTonepluckBtn" aria-pressed="false">Pluck</button></div>
+          </fieldset>
+          <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
+        </div>
+
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
+        </div>
+      </details>
+
+      <div class="melodies-prompt" id="earTrainerPrompt">
+        <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+        <strong id="earTrainerStatus">Press play to listen</strong>
+        <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
+      </div>
+
+      <div class="melodies-manual ear-trainer-manual">
+        <label class="melodies-manual-label" for="earTrainerDegreeInput">
+          Enter each note as a scale degree of the key (1–7)
+        </label>
+        <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
+          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
+          <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <p class="ear-trainer-input-hint">
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
+        </p>
+      </div>
+
+      <div class="melodies-actions">
+        <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
+          Check answer
+        </button>
+      </div>
+
+      <div class="melodies-result" id="earTrainerResult" hidden=""></div>
+      <div class="melodies-footer-actions">
+        <button type="button" class="melodies-link-btn" id="earTrainerRevealBtn">Reveal answer</button>
+        <button type="button" class="melodies-link-btn" id="earTrainerNewBtn">New exercise</button>
+      </div>
+    </div>
+  </section>"
+`;
+
+exports[`ear trainer user flow > updates settings and round affordances after every individual selection > earTrainerTonewarmBtn 1`] = `
+"<section class="melodies-game ear-trainer" aria-labelledby="earTrainerHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Scale degree ear training</p>
+      <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
+      <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+    </header>
+
+    <div class="melodies-card">
+      <div class="melodies-round-header">
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Root first · Asc + desc</span>
+        <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
+      </div>
+
+      <details class="ear-trainer-settings" id="earTrainerSettings" open="">
+        <summary class="ear-trainer-settings-summary">Settings</summary>
+        <div class="ear-trainer-settings-content">
+        <div class="ear-trainer-setting-row ear-trainer-range-row">
+          <div class="ear-trainer-field">
+            <span class="control-label">Octaves:</span>
+            <span class="ear-trainer-octave-inputs">
+              <input id="earTrainerOctaveStart" type="number" min="0" max="8" step="1" inputmode="numeric" value="2" aria-label="Lowest octave">
+              <span>to</span>
+              <input id="earTrainerOctaveEnd" type="number" min="0" max="8" step="1" inputmode="numeric" value="3" aria-label="Highest octave">
+            </span>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Notes:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerNotesDown" aria-label="Fewer notes">❮</button>
+              <div class="note-display" id="earTrainerNotesDisplay">3</div>
+              <button class="note-btn" id="earTrainerNotesUp" aria-label="More notes">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerPlayRootFirst">
+            <span>Play root first</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerFixKey">
+            <span>Fix key</span>
+          </label>
+          <div class="ear-trainer-key" id="earTrainerKeyControl">
+            <span class="control-label">Key:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerKeyPrev" aria-label="Previous key">❮</button>
+              <div class="note-display" id="earTrainerKeyDisplay">C</div>
+              <button class="note-btn" id="earTrainerKeyNext" aria-label="Next key">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <div class="ear-trainer-field ear-trainer-direction-field" role="group" aria-labelledby="earTrainerDirectionLabel">
+            <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
+            <span class="ear-trainer-direction-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerAscending" checked="">
+                <span>Ascending</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerDescending" checked="">
+                <span>Descending</span>
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row ear-trainer-tone-row">
+          <fieldset class="melodies-tone">
+            <legend>Tone</legend>
+            <div class="melodies-tone-options"><button type="button" class="melodies-tone-btn active" id="earTrainerTonewarmBtn" aria-pressed="true">Warm</button><button type="button" class="melodies-tone-btn" id="earTrainerTonepureBtn" aria-pressed="false">Pure</button><button type="button" class="melodies-tone-btn" id="earTrainerTonebrightBtn" aria-pressed="false">Bright</button><button type="button" class="melodies-tone-btn" id="earTrainerTonepluckBtn" aria-pressed="false">Pluck</button></div>
+          </fieldset>
+          <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
+        </div>
+
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
+        </div>
+      </details>
+
+      <div class="melodies-prompt" id="earTrainerPrompt">
+        <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+        <strong id="earTrainerStatus">Press play to listen</strong>
+        <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
+      </div>
+
+      <div class="melodies-manual ear-trainer-manual">
+        <label class="melodies-manual-label" for="earTrainerDegreeInput">
+          Enter each note as a scale degree of the key (1–7)
+        </label>
+        <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
+          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
+          <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <p class="ear-trainer-input-hint">
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
+        </p>
+      </div>
+
+      <div class="melodies-actions">
+        <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
+          Check answer
+        </button>
+      </div>
+
+      <div class="melodies-result" id="earTrainerResult" hidden=""></div>
+      <div class="melodies-footer-actions">
+        <button type="button" class="melodies-link-btn" id="earTrainerRevealBtn">Reveal answer</button>
+        <button type="button" class="melodies-link-btn" id="earTrainerNewBtn">New exercise</button>
+      </div>
+    </div>
+  </section>"
+`;
+
+exports[`ear trainer user flow > updates settings and round affordances after every individual selection > initial ear trainer 1`] = `
+"<section class="melodies-game ear-trainer" aria-labelledby="earTrainerHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Scale degree ear training</p>
+      <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
+      <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+    </header>
+
+    <div class="melodies-card">
+      <div class="melodies-round-header">
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Asc + desc</span>
+        <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
+      </div>
+
+      <details class="ear-trainer-settings" id="earTrainerSettings" open="">
+        <summary class="ear-trainer-settings-summary">Settings</summary>
+        <div class="ear-trainer-settings-content">
+        <div class="ear-trainer-setting-row ear-trainer-range-row">
+          <div class="ear-trainer-field">
+            <span class="control-label">Octaves:</span>
+            <span class="ear-trainer-octave-inputs">
+              <input id="earTrainerOctaveStart" type="number" min="0" max="8" step="1" inputmode="numeric" value="2" aria-label="Lowest octave">
+              <span>to</span>
+              <input id="earTrainerOctaveEnd" type="number" min="0" max="8" step="1" inputmode="numeric" value="3" aria-label="Highest octave">
+            </span>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Notes:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerNotesDown" aria-label="Fewer notes">❮</button>
+              <div class="note-display" id="earTrainerNotesDisplay">3</div>
+              <button class="note-btn" id="earTrainerNotesUp" aria-label="More notes">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerPlayRootFirst">
+            <span>Play root first</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerFixKey">
+            <span>Fix key</span>
+          </label>
+          <div class="ear-trainer-key" id="earTrainerKeyControl" hidden="">
+            <span class="control-label">Key:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerKeyPrev" aria-label="Previous key">❮</button>
+              <div class="note-display" id="earTrainerKeyDisplay">C</div>
+              <button class="note-btn" id="earTrainerKeyNext" aria-label="Next key">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <div class="ear-trainer-field ear-trainer-direction-field" role="group" aria-labelledby="earTrainerDirectionLabel">
+            <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
+            <span class="ear-trainer-direction-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerAscending" checked="">
+                <span>Ascending</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerDescending" checked="">
+                <span>Descending</span>
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row ear-trainer-tone-row">
+          <fieldset class="melodies-tone">
+            <legend>Tone</legend>
+            <div class="melodies-tone-options"><button type="button" class="melodies-tone-btn" id="earTrainerTonewarmBtn" aria-pressed="false">Warm</button><button type="button" class="melodies-tone-btn" id="earTrainerTonepureBtn" aria-pressed="false">Pure</button><button type="button" class="melodies-tone-btn" id="earTrainerTonebrightBtn" aria-pressed="false">Bright</button><button type="button" class="melodies-tone-btn active" id="earTrainerTonepluckBtn" aria-pressed="true">Pluck</button></div>
+          </fieldset>
+          <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
+        </div>
+
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is random. Key changes each exercise.</p>
+        </div>
+      </details>
+
+      <div class="melodies-prompt" id="earTrainerPrompt">
+        <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+        <strong id="earTrainerStatus">Press play to listen</strong>
+        <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
+      </div>
+
+      <div class="melodies-manual ear-trainer-manual">
+        <label class="melodies-manual-label" for="earTrainerDegreeInput">
+          Enter each note as a scale degree of the key (1–7)
+        </label>
+        <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
+          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
+          <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <p class="ear-trainer-input-hint">
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
+        </p>
+      </div>
+
+      <div class="melodies-actions">
+        <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
+          Check answer
+        </button>
+      </div>
+
+      <div class="melodies-result" id="earTrainerResult" hidden=""></div>
+      <div class="melodies-footer-actions">
+        <button type="button" class="melodies-link-btn" id="earTrainerRevealBtn">Reveal answer</button>
+        <button type="button" class="melodies-link-btn" id="earTrainerNewBtn">New exercise</button>
+      </div>
+    </div>
+  </section>"
+`;
+
+exports[`ear trainer user flow > updates settings and round affordances after every individual selection > revealed exercise 1`] = `
+"<section class="melodies-game ear-trainer" aria-labelledby="earTrainerHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Scale degree ear training</p>
+      <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
+      <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+    </header>
+
+    <div class="melodies-card">
+      <div class="melodies-round-header">
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Root first · Ascending</span>
+        <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
+      </div>
+
+      <details class="ear-trainer-settings" id="earTrainerSettings" open="">
+        <summary class="ear-trainer-settings-summary">Settings</summary>
+        <div class="ear-trainer-settings-content">
+        <div class="ear-trainer-setting-row ear-trainer-range-row">
+          <div class="ear-trainer-field">
+            <span class="control-label">Octaves:</span>
+            <span class="ear-trainer-octave-inputs">
+              <input id="earTrainerOctaveStart" type="number" min="0" max="8" step="1" inputmode="numeric" value="2" aria-label="Lowest octave">
+              <span>to</span>
+              <input id="earTrainerOctaveEnd" type="number" min="0" max="8" step="1" inputmode="numeric" value="3" aria-label="Highest octave">
+            </span>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Notes:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerNotesDown" aria-label="Fewer notes">❮</button>
+              <div class="note-display" id="earTrainerNotesDisplay">3</div>
+              <button class="note-btn" id="earTrainerNotesUp" aria-label="More notes">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerPlayRootFirst">
+            <span>Play root first</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerFixKey">
+            <span>Fix key</span>
+          </label>
+          <div class="ear-trainer-key" id="earTrainerKeyControl">
+            <span class="control-label">Key:</span>
+            <div class="note-selector">
+              <button class="note-btn" id="earTrainerKeyPrev" aria-label="Previous key">❮</button>
+              <div class="note-display" id="earTrainerKeyDisplay">C</div>
+              <button class="note-btn" id="earTrainerKeyNext" aria-label="Next key">❯</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row">
+          <div class="ear-trainer-field ear-trainer-direction-field" role="group" aria-labelledby="earTrainerDirectionLabel">
+            <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
+            <span class="ear-trainer-direction-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerAscending" checked="">
+                <span>Ascending</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="earTrainerDescending" checked="">
+                <span>Descending</span>
+              </label>
+            </span>
+          </div>
+        </div>
+
+        <div class="ear-trainer-setting-row ear-trainer-tone-row">
+          <fieldset class="melodies-tone">
+            <legend>Tone</legend>
+            <div class="melodies-tone-options"><button type="button" class="melodies-tone-btn" id="earTrainerTonewarmBtn" aria-pressed="false">Warm</button><button type="button" class="melodies-tone-btn" id="earTrainerTonepureBtn" aria-pressed="false">Pure</button><button type="button" class="melodies-tone-btn" id="earTrainerTonebrightBtn" aria-pressed="false">Bright</button><button type="button" class="melodies-tone-btn active" id="earTrainerTonepluckBtn" aria-pressed="true">Pluck</button></div>
+          </fieldset>
+          <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
+        </div>
+
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases only ascend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
+        </div>
+      </details>
+
+      <div class="melodies-prompt" id="earTrainerPrompt">
+        <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+        <strong id="earTrainerStatus">Answer revealed</strong>
+        <span id="earTrainerHint">Listen once more and notice the note degrees.</span>
+      </div>
+
+      <div class="melodies-manual ear-trainer-manual">
+        <label class="melodies-manual-label" for="earTrainerDegreeInput">
+          Enter each note as a scale degree of the key (1–7)
+        </label>
+        <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
+          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled correct">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled correct">♭2</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is flat; change accidental" disabled="">♭</button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled correct">2</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
+          <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3" disabled="">
+        </div>
+        <p class="ear-trainer-input-hint">
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
+        </p>
+      </div>
+
+      <div class="melodies-actions">
+        <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
+          Check answer
+        </button>
+      </div>
+
+      <div class="melodies-result" id="earTrainerResult"><strong>Answer revealed</strong><span>C2 ↑ C#2 ↑ D2</span><div class="melodies-answer"><b>Scale degrees</b><div><span>1</span><i aria-hidden="true">–</i><span>♭2</span><i aria-hidden="true">–</i><span>2</span></div></div><div class="melodies-answer"><b>Intervals</b><div><span>m2</span><i aria-hidden="true">–</i><span>m2</span></div></div><small>Listen again and notice the scale degrees. Key C · root C2. Direction is not scored.</small></div>
+      <div class="melodies-footer-actions">
+        <button type="button" class="melodies-link-btn" id="earTrainerRevealBtn" disabled="">Reveal answer</button>
+        <button type="button" class="melodies-link-btn" id="earTrainerNewBtn">New exercise</button>
+      </div>
+    </div>
+  </section>"
+`;

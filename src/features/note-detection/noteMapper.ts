@@ -1,6 +1,6 @@
+import { NOTES } from '../../shared/constants';
 // Map detected frequency to the nearest musical note
-
-import { NOTES } from "../../shared/constants";
+import { requiredAt } from '../../shared/requiredAt';
 
 /** A4 reference frequency in Hz */
 const A4_FREQUENCY = 440;
@@ -18,14 +18,14 @@ const MIN_FREQUENCY = 75;
 const MAX_FREQUENCY = 1400;
 
 export interface DetectedNote {
+  /** How many cents off from the exact note (-50 to +50) */
+  centsOff: number;
+  /** MIDI note number (encodes both note name and octave) */
+  midiNote: number;
   /** Note name (e.g. "A", "C#") */
   name: string;
   /** Note index in the NOTES array (0-11) */
   noteIndex: number;
-  /** MIDI note number (encodes both note name and octave) */
-  midiNote: number;
-  /** How many cents off from the exact note (-50 to +50) */
-  centsOff: number;
 }
 
 /**
@@ -34,7 +34,8 @@ export interface DetectedNote {
  * @returns The closest note, or null if frequency is out of guitar range
  */
 export function frequencyToNote(frequency: number): DetectedNote | null {
-  if (frequency < MIN_FREQUENCY || frequency > MAX_FREQUENCY) return null;
+  if (!Number.isFinite(frequency) || frequency < MIN_FREQUENCY || frequency > MAX_FREQUENCY)
+    return null;
 
   // Number of semitones from A4
   const semitonesFromA4 = 12 * Math.log2(frequency / A4_FREQUENCY);
@@ -46,13 +47,13 @@ export function frequencyToNote(frequency: number): DetectedNote | null {
   const centsOff = Math.round((semitonesFromA4 - roundedSemitones) * 100);
 
   // Map to note index (0-11), wrapping into our NOTES array
-  const noteIndex = ((roundedSemitones + A_NOTE_INDEX) % 12 + 12) % 12;
+  const noteIndex = (((roundedSemitones + A_NOTE_INDEX) % 12) + 12) % 12;
 
   // MIDI note number (A4 = 69)
   const midiNote = A4_MIDI + roundedSemitones;
 
   return {
-    name: NOTES[noteIndex],
+    name: requiredAt(NOTES, noteIndex),
     noteIndex,
     midiNote,
     centsOff,

@@ -1,18 +1,19 @@
-import type { Melody } from "../melodies/catalog";
-import { createMelodyPlayer } from "../melodies/playback";
-import type { SynthTone } from "../melodies/tone";
-import { loadMelodyTone } from "../melodies/toneControl";
-import type { EarTrainingSection, EarTrainingSong } from "./catalog";
+import { createMelodyPlayer } from '../melodies/playback';
+import { loadMelodyTone } from '../melodies/toneControl';
 
-export interface SimplifiedVersionPlayer {
+import type { Melody } from '../melodies/catalog';
+import type { SynthTone } from '../melodies/tone';
+import type { EarTrainingSection, EarTrainingSong } from './catalog';
+
+interface SimplifiedVersionPlayer {
   isPlaying: () => boolean;
-  playingSource: () => SimplifiedPlaybackSource;
   play: (song: EarTrainingSong, section: EarTrainingSection) => Promise<void>;
+  playingSource: () => SimplifiedPlaybackSource;
   playNotes: (notes: readonly number[]) => Promise<void>;
   stop: () => void;
 }
 
-export type SimplifiedPlaybackSource = "expected" | "heard" | null;
+export type SimplifiedPlaybackSource = 'expected' | 'heard' | null;
 
 const HEARD_NOTES_BPM = 112;
 
@@ -26,8 +27,8 @@ function asMelody(song: EarTrainingSong, section: EarTrainingSection): Melody {
     bpm: section.bpm,
     notes: section.notes.map((midi, index) => ({
       midi,
-      beats: section.rhythm[index],
-      restAfterBeats: section.rests?.[index],
+      beats: section.rhythm[index] ?? 1,
+      restAfterBeats: section.rests?.[index] ?? 0,
     })),
     degrees: section.degrees,
   };
@@ -35,11 +36,11 @@ function asMelody(song: EarTrainingSong, section: EarTrainingSection): Melody {
 
 function asHeardNotesMelody(notes: readonly number[]): Melody {
   return {
-    id: "heard-notes",
-    title: "Heard notes",
-    attribution: "Your input",
-    key: "",
-    difficulty: "easy",
+    id: 'heard-notes',
+    title: 'Heard notes',
+    attribution: 'Your input',
+    key: '',
+    difficulty: 'easy',
     bpm: HEARD_NOTES_BPM,
     notes: notes.map((midi) => ({ midi, beats: 1 })),
     degrees: [],
@@ -60,7 +61,7 @@ export function createSimplifiedVersionPlayer(): SimplifiedVersionPlayer {
   async function playMelody(
     melody: Melody,
     nextSource: Exclude<SimplifiedPlaybackSource, null>,
-    tone: SynthTone,
+    tone: SynthTone
   ): Promise<void> {
     if (source !== null) return;
     const currentPlaybackId = ++playbackId;
@@ -75,8 +76,9 @@ export function createSimplifiedVersionPlayer(): SimplifiedVersionPlayer {
   return {
     isPlaying: () => source !== null,
     playingSource: () => source,
-    play: (song, section) => playMelody(asMelody(song, section), "expected", section.synthTone ?? loadMelodyTone()),
-    playNotes: (notes) => playMelody(asHeardNotesMelody(notes), "heard", loadMelodyTone()),
+    play: (song, section) =>
+      playMelody(asMelody(song, section), 'expected', section.synthTone ?? loadMelodyTone()),
+    playNotes: (notes) => playMelody(asHeardNotesMelody(notes), 'heard', loadMelodyTone()),
     stop,
   };
 }

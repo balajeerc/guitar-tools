@@ -1,31 +1,31 @@
-import { createScreenWakeLock } from "../../shared/screenWakeLock";
+import { createScreenWakeLock } from '../../shared/screenWakeLock';
 
 // Lookahead click scheduler: a coarse JS timer queues clicks slightly ahead of
 // time on the sample-accurate WebAudio clock, so tempo stays rock steady even
 // when the main thread stutters.
+import { type ClickKind, playClick } from './click';
 
-import type { AccentLevel } from "./beats";
-import { playClick, type ClickKind } from "./click";
+import type { AccentLevel } from './beats';
 
 export interface SchedulerConfig {
-  bpm: number;
-  beats: number;
-  subdivisions: number;
   accents: AccentLevel[];
+  beats: number;
+  bpm: number;
+  subdivisions: number;
 }
 
 export interface Tick {
-  /** AudioContext time at which this tick sounds */
-  time: number;
   beat: number;
   subdivision: number;
+  /** AudioContext time at which this tick sounds */
+  time: number;
 }
 
-export interface Scheduler {
-  start: () => Promise<void>;
-  stop: () => void;
+interface Scheduler {
   /** Current audio clock time, for comparing against queued tick times. */
   now: () => number;
+  start: () => Promise<void>;
+  stop: () => void;
 }
 
 /** How often the JS timer wakes up to top up the schedule. */
@@ -34,8 +34,8 @@ const LOOKAHEAD_MS = 25;
 const SCHEDULE_AHEAD_S = 0.12;
 
 function kindFor(accent: AccentLevel, subdivision: number): ClickKind {
-  if (subdivision > 0) return "subdivision";
-  return accent === "strong" ? "strong" : "weak";
+  if (subdivision > 0) return 'subdivision';
+  return accent === 'strong' ? 'strong' : 'weak';
 }
 
 /**
@@ -46,10 +46,10 @@ function kindFor(accent: AccentLevel, subdivision: number): ClickKind {
  */
 export function createScheduler(
   getConfig: () => SchedulerConfig,
-  onTick: (tick: Tick) => void,
+  onTick: (tick: Tick) => void
 ): Scheduler {
   let ctx: AudioContext | null = null;
-  let timer: number | null = null;
+  let timer: null | number = null;
   const wakeLock = createScreenWakeLock();
   let nextTickTime = 0;
   let beat = 0;
@@ -61,8 +61,8 @@ export function createScheduler(
       const { bpm, beats, subdivisions, accents } = getConfig();
       if (beat >= beats) beat = 0;
 
-      const accent = accents[beat] ?? "weak";
-      if (accent !== "off" || subdivision > 0) {
+      const accent = accents[beat] ?? 'weak';
+      if (accent !== 'off' || subdivision > 0) {
         playClick(ctx, kindFor(accent, subdivision), nextTickTime);
       }
       onTick({ time: nextTickTime, beat, subdivision });
@@ -79,7 +79,7 @@ export function createScheduler(
   async function start(): Promise<void> {
     if (timer !== null) return;
     ctx ??= new AudioContext();
-    if (ctx.state === "suspended") await ctx.resume();
+    if (ctx.state === 'suspended') await ctx.resume();
 
     beat = 0;
     subdivision = 0;

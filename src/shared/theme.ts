@@ -1,8 +1,8 @@
 // Theme management: dark/light mode toggle with localStorage persistence
 
-type Theme = "light" | "dark";
+type Theme = 'dark' | 'light';
 
-const STORAGE_KEY = "theme";
+const STORAGE_KEY = 'theme';
 
 const SUN_ICON = `<svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <circle cx="12" cy="12" r="5"></circle>
@@ -20,49 +20,45 @@ const MOON_ICON = `<svg class="icon-moon" width="18" height="18" viewBox="0 0 24
   <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
 </svg>`;
 
-function getStoredTheme(): Theme | null {
+function getStoredTheme(): null | Theme {
   const stored = localStorage.getItem(STORAGE_KEY);
-  if (stored === "light" || stored === "dark") return stored;
+  if (stored === 'light' || stored === 'dark') return stored;
   return null;
 }
 
 function getSystemTheme(): Theme {
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
-function resolveTheme(stored: Theme | null, system: Theme): Theme {
+function resolveTheme(stored: null | Theme, system: Theme): Theme {
   return stored ?? system;
 }
 
 function updateMetaThemeColor(theme: Theme): void {
-  const meta = document.querySelector<HTMLMetaElement>(
-    'meta[name="theme-color"]',
-  );
+  const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
   if (meta) {
-    meta.content = theme === "dark" ? "#1a1a2e" : "#667eea";
+    meta.content = theme === 'dark' ? '#1a1a2e' : '#667eea';
   }
 }
 
 function applyTheme(theme: Theme): void {
-  document.documentElement.dataset["theme"] = theme;
+  document.documentElement.dataset.theme = theme;
   updateMetaThemeColor(theme);
 }
 
 function toggleTheme(): void {
-  const current = document.documentElement.dataset["theme"] as Theme;
-  const next: Theme = current === "dark" ? "light" : "dark";
+  const current = document.documentElement.dataset.theme as Theme;
+  const next: Theme = current === 'dark' ? 'light' : 'dark';
   applyTheme(next);
   localStorage.setItem(STORAGE_KEY, next);
 }
 
 export function createThemeToggleButton(): HTMLButtonElement {
-  const button = document.createElement("button");
-  button.className = "theme-toggle";
-  button.setAttribute("aria-label", "Toggle theme");
+  const button = document.createElement('button');
+  button.className = 'theme-toggle';
+  button.setAttribute('aria-label', 'Toggle theme');
   button.innerHTML = SUN_ICON + MOON_ICON;
-  button.addEventListener("click", toggleTheme);
+  button.addEventListener('click', toggleTheme);
   return button;
 }
 
@@ -70,17 +66,15 @@ export function initTheme(): void {
   const theme = resolveTheme(getStoredTheme(), getSystemTheme());
   applyTheme(theme);
 
-  const navContainer = document.querySelector(".nav-container");
+  const navContainer = document.querySelector('.nav-container');
   if (navContainer) {
     navContainer.appendChild(createThemeToggleButton());
   }
 
   // Follow system preference changes when no stored preference
-  window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", (e) => {
-      if (getStoredTheme() === null) {
-        applyTheme(e.matches ? "dark" : "light");
-      }
-    });
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (getStoredTheme() === null) {
+      applyTheme(e.matches ? 'dark' : 'light');
+    }
+  });
 }

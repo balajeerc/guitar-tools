@@ -1,0 +1,26 @@
+# Refuse dependencies published within the last 30 days (in minutes).
+minimumReleaseAge: 43200
+blockExoticSubdeps: true
+trustPolicy: no-downgrade
+verifyDepsBeforeRun: warn
+
+# Exact versions approved for the Vitest 5 runner fix and audited security fixes.
+minimumReleaseAgeExclude:
+  - '@stryker-mutator/api@10.1.1'
+  - '@stryker-mutator/core@10.1.1'
+  - '@stryker-mutator/instrumenter@10.1.1'
+  - '@stryker-mutator/typescript-checker@10.1.1'
+  - '@stryker-mutator/util@10.1.1'
+  - '@stryker-mutator/vitest-runner@10.1.1'
+  - qs@6.16.1
+  - zod@4.6.6
+  - fast-uri@3.1.9
+  - minimatch@11.0.1
+  - '@isaacs/nonrecursive-glob-match@1.0.1'
+
+overrides:
+  'qs@<6.16.1': 6.16.1
+  'zod@>=4 <4.6.6': 4.6.6
+  'fast-uri@>=3 <3.1.9': 3.1.9
+  'minimatch@>=7 <11.0.1': 11.0.1
+  '@isaacs/nonrecursive-glob-match': 1.0.1

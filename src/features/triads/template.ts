@@ -38,11 +38,15 @@ export function renderTriadsPageTemplate(): string {
         <div class="control-group triads-grouping-controls" id="triadsProgressionControls" hidden>
           <span class="control-label">Progression:</span>
           <div class="triads-progression-editor" aria-label="Chord progression">
-            ${[0, 1, 2, 3].map((index) => `
+            ${[0, 1, 2, 3]
+              .map(
+                (index) => `
               <div class="triads-progression-slot">
                 <button class="triads-degree-btn" type="button" data-progression-degree="${index}" aria-label="Change progression step ${index + 1}">I</button>
                 <button class="triads-quality-btn" type="button" data-progression-quality="${index}" aria-label="Make progression step ${index + 1} minor">Major</button>
-              </div>`).join("")}
+              </div>`
+              )
+              .join('')}
           </div>
         </div>
       </div>
@@ -50,8 +54,12 @@ export function renderTriadsPageTemplate(): string {
     <div class="triads-step-status" id="triadsStepStatus" hidden>
       <span class="triads-active-chord" id="triadsActiveChord" aria-live="polite"></span>
       <div class="triads-step-indicator" aria-label="Progression playback position">
-        ${[0, 1, 2, 3].map((index) => `
-          <button class="triads-step-dash" type="button" data-triad-step="${index}" aria-label="Pause on progression step ${index + 1}"></button>`).join("")}
+        ${[0, 1, 2, 3]
+          .map(
+            (index) => `
+          <button class="triads-step-dash" type="button" data-triad-step="${index}" aria-label="Pause on progression step ${index + 1}"></button>`
+          )
+          .join('')}
       </div>
     </div>
     <div class="triad-boards" id="triadBoards"></div>

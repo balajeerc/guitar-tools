@@ -1,4 +1,4 @@
-import type { Melody } from "./catalog";
+import type { Melody } from './catalog';
 
 export interface MelodyHistory {
   entries: Melody[];

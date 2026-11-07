@@ -1,6 +1,6 @@
 export const STEP_COUNT = 16;
 
-export const DRUM_VOICES = ["kick", "snare", "hihat", "crash"] as const;
+export const DRUM_VOICES = ['kick', 'snare', 'hihat', 'crash'] as const;
 
 export type DrumVoice = (typeof DRUM_VOICES)[number];
 export type BeatPattern = Record<DrumVoice, boolean[]>;
@@ -12,10 +12,10 @@ interface DrumVoiceInfo {
 }
 
 export const DRUM_VOICE_INFO: DrumVoiceInfo[] = [
-  { id: "kick", label: "Kick" },
-  { id: "snare", label: "Snare" },
-  { id: "hihat", label: "Hi-hat" },
-  { id: "crash", label: "Crash" },
+  { id: 'kick', label: 'Kick' },
+  { id: 'snare', label: 'Snare' },
+  { id: 'hihat', label: 'Hi-hat' },
+  { id: 'crash', label: 'Crash' },
 ];
 
 export const DEFAULT_LEVELS: TrackLevels = {
@@ -33,9 +33,7 @@ const DEFAULT_ACTIVE_STEPS: Record<DrumVoice, number[]> = {
 };
 
 function stepsFrom(activeSteps: number[]): boolean[] {
-  return Array.from({ length: STEP_COUNT }, (_, step) =>
-    activeSteps.includes(step),
-  );
+  return Array.from({ length: STEP_COUNT }, (_, step) => activeSteps.includes(step));
 }
 
 export function createDefaultPattern(): BeatPattern {
@@ -59,10 +57,7 @@ export function normalizePattern(pattern: BeatPattern): BeatPattern {
 
 function normalizeSteps(steps: boolean[], fallback: boolean[]): boolean[] {
   if (!Array.isArray(steps)) return fallback;
-  return Array.from(
-    { length: STEP_COUNT },
-    (_, step) => steps[step] === true,
-  );
+  return Array.from({ length: STEP_COUNT }, (_, step) => steps[step] === true);
 }
 
 export function normalizeLevels(levels: TrackLevels): TrackLevels {

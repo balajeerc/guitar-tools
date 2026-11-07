@@ -4,54 +4,55 @@ interface YouTubePlayerEvent {
 
 interface YouTubePlayer {
   cueVideoById(options: VideoOptions): void;
-  loadVideoById(options: VideoOptions): void;
+  destroy(): void;
   getAvailablePlaybackRates(): number[];
   getPlaybackRate(): number;
-  setPlaybackRate(rate: number): void;
+  loadVideoById(options: VideoOptions): void;
   pauseVideo(): void;
-  destroy(): void;
+  setPlaybackRate(rate: number): void;
 }
 
 interface VideoOptions {
-  videoId: string;
-  startSeconds: number;
   endSeconds: number;
+  startSeconds: number;
+  videoId: string;
 }
 
 interface YouTubeApi {
   Player: new (elementId: string, options: Record<string, unknown>) => YouTubePlayer;
-  PlayerState: { ENDED: number; PLAYING: number; PAUSED: number; CUED: number };
+  PlayerState: { CUED: number; ENDED: number; PAUSED: number; PLAYING: number };
 }
 
-type YouTubeWindow = Window & typeof globalThis & {
-  YT?: YouTubeApi;
-  onYouTubeIframeAPIReady?: () => void;
-};
+type YouTubeWindow = Window &
+  typeof globalThis & {
+    onYouTubeIframeAPIReady?: () => void;
+    YT?: YouTubeApi;
+  };
 
 export interface YouTubeSection {
-  videoId: string;
-  startSeconds: number;
   endSeconds: number;
+  startSeconds: number;
+  videoId: string;
 }
 
 export interface YouTubeSectionPlayer {
   cue: (section: YouTubeSection) => void;
-  playLoop: (section: YouTubeSection) => void;
+  destroy: () => void;
   getAvailablePlaybackRates: () => readonly number[];
   getPlaybackRate: () => number;
-  setPlaybackRate: (rate: number) => void;
   pause: () => void;
-  destroy: () => void;
+  playLoop: (section: YouTubeSection) => void;
+  setPlaybackRate: (rate: number) => void;
 }
 
 interface PlayerCallbacks {
-  onPlaying: () => void;
+  onError: (message: string) => void;
   onPaused: () => void;
   onPlaybackRateChange: (rate: number) => void;
-  onError: (message: string) => void;
+  onPlaying: () => void;
 }
 
-let apiPromise: Promise<YouTubeApi> | null = null;
+let apiPromise: null | Promise<YouTubeApi> = null;
 
 function loadYouTubeApi(): Promise<YouTubeApi> {
   const youtubeWindow = window as YouTubeWindow;
@@ -62,24 +63,26 @@ function loadYouTubeApi(): Promise<YouTubeApi> {
     youtubeWindow.onYouTubeIframeAPIReady = (): void => {
       previousReady?.();
       if (youtubeWindow.YT) resolve(youtubeWindow.YT);
-      else reject(new Error("YouTube player API did not load"));
+      else reject(new Error('YouTube player API did not load'));
     };
-    window.setTimeout(() => reject(new Error("YouTube player API is unavailable")), 15_000);
+    window.setTimeout(() => {
+      reject(new Error('YouTube player API is unavailable'));
+    }, 15_000);
   });
   return apiPromise;
 }
 
 function playerErrorMessage(code: number): string {
-  if (code === 100) return "This video has been removed or made private.";
-  if (code === 101 || code === 150) return "This video does not allow embedded playback.";
-  if (code === 153) return "YouTube could not identify this embedded player.";
-  return "This video could not be played here.";
+  if (code === 100) return 'This video has been removed or made private.';
+  if (code === 101 || code === 150) return 'This video does not allow embedded playback.';
+  if (code === 153) return 'YouTube could not identify this embedded player.';
+  return 'This video could not be played here.';
 }
 
 export async function createYouTubeSectionPlayer(
   elementId: string,
   initialSection: YouTubeSection,
-  callbacks: PlayerCallbacks,
+  callbacks: PlayerCallbacks
 ): Promise<YouTubeSectionPlayer> {
   const api = await loadYouTubeApi();
   let activeSection = initialSection;
@@ -94,8 +97,8 @@ export async function createYouTubeSectionPlayer(
 
   const player = await new Promise<YouTubePlayer>((resolve) => {
     const instance = new api.Player(elementId, {
-      width: "100%",
-      height: "100%",
+      width: '100%',
+      height: '100%',
       videoId: initialSection.videoId,
       playerVars: {
         playsinline: 1,
@@ -103,7 +106,9 @@ export async function createYouTubeSectionPlayer(
         origin: window.location.origin,
       },
       events: {
-        onReady: (): void => resolve(instance),
+        onReady: (): void => {
+          resolve(instance);
+        },
         onStateChange: (event: YouTubePlayerEvent): void => {
           switch (event.data) {
             case api.PlayerState.ENDED:
@@ -124,7 +129,9 @@ export async function createYouTubeSectionPlayer(
         onPlaybackRateChange: (event: YouTubePlayerEvent): void => {
           callbacks.onPlaybackRateChange(event.data);
         },
-        onError: (event: YouTubePlayerEvent): void => callbacks.onError(playerErrorMessage(event.data)),
+        onError: (event: YouTubePlayerEvent): void => {
+          callbacks.onError(playerErrorMessage(event.data));
+        },
       },
     });
   });

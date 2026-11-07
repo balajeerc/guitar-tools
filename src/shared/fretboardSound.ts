@@ -1,14 +1,11 @@
-import {
-  STRING_BASE_PITCH,
-  STRING_ORDER,
-  STRING_Y_POSITIONS,
-} from "./constants";
-import { fretCenterPosition } from "./fretboardRenderer";
-import { positionFromPoint, type FretboardPosition } from "./fretboardPosition";
-import { getLayoutConfig } from "./layout";
-import { loadPersisted, savePersisted } from "./persist";
+import { STRING_BASE_PITCH, STRING_ORDER, STRING_Y_POSITIONS } from './constants';
+import { type FretboardPosition, positionFromPoint } from './fretboardPosition';
+import { fretCenterPosition } from './fretboardRenderer';
+import { getLayoutConfig } from './layout';
+import { loadPersisted, savePersisted } from './persist';
+import { requiredAt } from './requiredAt';
 
-const STORAGE_KEY = "fretboard-sound-enabled";
+const STORAGE_KEY = 'fretboard-sound-enabled';
 const LOW_E_FREQUENCY = 82.4069;
 const SOUND_ICON = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
   <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
@@ -27,7 +24,7 @@ function getAudioContext(): AudioContext {
 }
 
 function frequencyAt(position: FretboardPosition): number {
-  const semitones = STRING_BASE_PITCH[position.stringIdx] + position.fret;
+  const semitones = requiredAt(STRING_BASE_PITCH, position.stringIdx) + position.fret;
   return LOW_E_FREQUENCY * 2 ** (semitones / 12);
 }
 
@@ -35,7 +32,7 @@ function frequencyAt(position: FretboardPosition): number {
 function createPluckBuffer(ctx: AudioContext, frequency: number): AudioBuffer {
   const duration = 2.4;
   const frameCount = Math.ceil(ctx.sampleRate * duration);
-  const period = Math.max(2, Math.round(ctx.sampleRate / frequency - 0.5));
+  const period = Math.max(2, Math.round(ctx.sampleRate / frequency + 0.5));
   const buffer = ctx.createBuffer(1, frameCount, ctx.sampleRate);
   const samples = buffer.getChannelData(0);
   const string = new Float32Array(period);
@@ -45,9 +42,9 @@ function createPluckBuffer(ctx: AudioContext, frequency: number): AudioBuffer {
   // full-band white noise, avoiding the sharp metallic transient.
   let previous = 0;
   for (let i = 0; i < period; i++) {
-    const random = (noise[i] / 0xffffffff) * 2 - 1;
+    const random = (requiredAt(noise, i) / 0xffffffff) * 2 - 1;
     string[i] = random * 0.35 + previous * 0.65;
-    previous = string[i];
+    previous = requiredAt(string, i);
   }
 
   const cycles = frequency * duration;
@@ -56,7 +53,7 @@ function createPluckBuffer(ctx: AudioContext, frequency: number): AudioBuffer {
   for (let i = 0; i < frameCount; i++) {
     const index = i % period;
     const nextIndex = (index + 1) % period;
-    const value = (string[index] + string[nextIndex]) * 0.5 * decayPerCycle;
+    const value = (requiredAt(string, index) + requiredAt(string, nextIndex)) * 0.5 * decayPerCycle;
     string[index] = value;
     samples[i] = value * Math.min(1, i / attackFrames);
   }
@@ -67,7 +64,7 @@ function createPluckBuffer(ctx: AudioContext, frequency: number): AudioBuffer {
 /** Play the modeled string through a subtle wooden-body tone shape. */
 function pluck(position: FretboardPosition): void {
   const ctx = getAudioContext();
-  if (ctx.state === "suspended") void ctx.resume();
+  if (ctx.state === 'suspended') void ctx.resume();
 
   const frequency = frequencyAt(position);
   const startedAt = ctx.currentTime;
@@ -78,14 +75,14 @@ function pluck(position: FretboardPosition): void {
   const output = ctx.createGain();
 
   source.buffer = createPluckBuffer(ctx, frequency);
-  warmth.type = "lowpass";
+  warmth.type = 'lowpass';
   warmth.frequency.value = Math.min(3800, 2400 + frequency * 1.5);
   warmth.Q.value = 0.55;
-  body.type = "peaking";
+  body.type = 'peaking';
   body.frequency.value = 190;
   body.Q.value = 0.9;
   body.gain.value = 4;
-  soften.type = "highshelf";
+  soften.type = 'highshelf';
   soften.frequency.value = 1400;
   soften.gain.value = -7;
   output.gain.setValueAtTime(0.58, startedAt);
@@ -112,29 +109,34 @@ function showTap(board: HTMLElement, position: FretboardPosition): void {
   const config = getLayoutConfig();
   const visualIdx = STRING_ORDER.indexOf(position.stringIdx);
   const posIdx = config.isVertical ? 5 - visualIdx : visualIdx;
-  const marker = document.createElement("span");
-  marker.className = "fretboard-sound-tap";
-  marker.style[config.fretAxis] =
-    `${fretCenterPosition(position.fret, config)}px`;
-  marker.style[config.stringAxis] = `${STRING_Y_POSITIONS[posIdx]}px`;
+  const marker = document.createElement('span');
+  marker.className = 'fretboard-sound-tap';
+  marker.style[config.fretAxis] = `${fretCenterPosition(position.fret, config)}px`;
+  marker.style[config.stringAxis] = `${requiredAt(STRING_Y_POSITIONS, posIdx)}px`;
   board.appendChild(marker);
-  marker.addEventListener("animationend", () => marker.remove(), { once: true });
+  marker.addEventListener(
+    'animationend',
+    () => {
+      marker.remove();
+    },
+    { once: true }
+  );
 }
 
 function syncButtons(): void {
-  for (const button of document.querySelectorAll<HTMLButtonElement>(".sound-toggle")) {
-    button.classList.toggle("sound-off", !enabled);
-    button.setAttribute("aria-pressed", String(enabled));
-    button.setAttribute("aria-label", `Fretboard sound ${enabled ? "on" : "off"}`);
-    button.title = `Fretboard sound: ${enabled ? "on" : "off"}`;
+  for (const button of document.querySelectorAll<HTMLButtonElement>('.sound-toggle')) {
+    button.classList.toggle('sound-off', !enabled);
+    button.setAttribute('aria-pressed', String(enabled));
+    button.setAttribute('aria-label', `Fretboard sound ${enabled ? 'on' : 'off'}`);
+    button.title = `Fretboard sound: ${enabled ? 'on' : 'off'}`;
   }
 }
 
 function createSoundToggleButton(): HTMLButtonElement {
-  const button = document.createElement("button");
-  button.className = "sound-toggle";
+  const button = document.createElement('button');
+  button.className = 'sound-toggle';
   button.innerHTML = SOUND_ICON;
-  button.addEventListener("click", () => {
+  button.addEventListener('click', () => {
     enabled = !enabled;
     savePersisted(STORAGE_KEY, enabled);
     syncButtons();
@@ -146,7 +148,7 @@ function handleFretboardTap(event: MouseEvent): void {
   if (!enabled) return;
   const target = event.target;
   if (!(target instanceof Element)) return;
-  const board = target.closest<HTMLElement>(".fretboard");
+  const board = target.closest<HTMLElement>('.fretboard');
   if (!board) return;
   const position = positionFromPoint(event.clientX, event.clientY, board);
   if (!position) return;
@@ -156,8 +158,8 @@ function handleFretboardTap(event: MouseEvent): void {
 
 export function initFretboardSound(): void {
   enabled = loadPersisted(STORAGE_KEY, true);
-  document.querySelector(".nav-container")?.appendChild(createSoundToggleButton());
-  document.getElementById("sidebarSoundToggle")?.appendChild(createSoundToggleButton());
+  document.querySelector('.nav-container')?.appendChild(createSoundToggleButton());
+  document.getElementById('sidebarSoundToggle')?.appendChild(createSoundToggleButton());
   syncButtons();
-  document.addEventListener("click", handleFretboardTap);
+  document.addEventListener('click', handleFretboardTap);
 }

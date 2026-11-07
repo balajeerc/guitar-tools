@@ -124,3 +124,8 @@ Thumbs.db
 # Vite
 dist-ssr
 *.local
+
+# Quality tooling output
+reports/
+.stryker-tmp/
+.tools/

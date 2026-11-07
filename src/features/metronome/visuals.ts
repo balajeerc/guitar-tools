@@ -1,29 +1,23 @@
 // Beat dots and pendulum rendering for the metronome.
 
-import type { AccentLevel } from "./beats";
+import type { AccentLevel } from './beats';
 
 /** Maximum pendulum deflection from vertical, in degrees. */
 const MAX_ANGLE = 30;
 
-export function renderBeatDots(
-  container: HTMLElement,
-  accents: AccentLevel[],
-): void {
+export function renderBeatDots(container: HTMLElement, accents: AccentLevel[]): void {
   container.innerHTML = accents
     .map(
       (accent, i) =>
-        `<button class="metronome-beat metronome-beat-${accent}" data-beat="${i}" aria-label="Beat ${i + 1}: ${accent}"></button>`,
+        `<button class="metronome-beat metronome-beat-${accent}" data-beat="${i}" aria-label="Beat ${i + 1}: ${accent}"></button>`
     )
-    .join("");
+    .join('');
 }
 
-export function highlightBeat(
-  container: HTMLElement,
-  beat: number | null,
-): void {
-  const dots = container.querySelectorAll(".metronome-beat");
+export function highlightBeat(container: HTMLElement, beat: null | number): void {
+  const dots = container.querySelectorAll('.metronome-beat');
   for (const [i, dot] of dots.entries()) {
-    dot.classList.toggle("current", i === beat);
+    dot.classList.toggle('current', i === beat);
   }
 }
 

@@ -1,16 +1,17 @@
-import type { Melody } from "./catalog";
-import { isKeyGuessCorrect, type ManualAnswerBasis } from "./manualGuess";
-import type { MatchResult } from "./matcher";
-import { formatTime, intervalAnswerHtml } from "./ui";
+import { isKeyGuessCorrect, type ManualAnswerBasis } from './manualGuess';
+import { formatTime, intervalAnswerHtml } from './ui';
+
+import type { Melody } from './catalog';
+import type { MatchResult } from './matcher';
 
 interface MelodyResultOptions {
+  answerBasis: ManualAnswerBasis;
+  elapsedMs: number;
+  keyGuess: string;
+  manual: boolean;
   melody: Melody;
   result: MatchResult;
   revealed: boolean;
-  elapsedMs: number;
-  manual: boolean;
-  answerBasis: ManualAnswerBasis;
-  keyGuess: string;
 }
 
 function calculateScore(result: MatchResult, elapsedMs: number): number {
@@ -19,8 +20,8 @@ function calculateScore(result: MatchResult, elapsedMs: number): number {
 }
 
 function resultDetails(options: MelodyResultOptions): string {
-  if (options.revealed) return "Answer revealed — try another when you’re ready.";
-  const accuracyLabel = options.manual ? "interval accuracy" : "note accuracy";
+  if (options.revealed) return 'Answer revealed — try another when you’re ready.';
+  const accuracyLabel = options.manual ? 'interval accuracy' : 'note accuracy';
   const score = calculateScore(options.result, options.elapsedMs);
   let details = `${formatTime(options.elapsedMs)} · ${options.result.attemptAccuracy}% ${accuracyLabel} · ${score} points`;
   const keyCorrect = isKeyGuessCorrect(options.keyGuess, options.melody.key);
@@ -31,11 +32,13 @@ function resultDetails(options: MelodyResultOptions): string {
 
 export function melodyResultHtml(options: MelodyResultOptions): string {
   const { melody, answerBasis } = options;
-  const firstNoteAccepted = answerBasis === "first-note";
+  const firstNoteAccepted = answerBasis === 'first-note';
   const caveat = firstNoteAccepted
     ? '<p class="melodies-answer-caveat"><b>Accepted:</b> you treated the first heard note as 1.</p>'
-    : "";
-  const answerLabel = firstNoteAccepted ? `In the original key (${melody.key})` : "Correct intervals";
+    : '';
+  const answerLabel = firstNoteAccepted
+    ? `In the original key (${melody.key})`
+    : 'Correct intervals';
   const answer = intervalAnswerHtml(melody.degrees, answerLabel);
   return `<strong>${melody.title}</strong><span>${melody.attribution} · ${melody.key}</span>${caveat}${answer}<small>${resultDetails(options)}</small>`;
 }

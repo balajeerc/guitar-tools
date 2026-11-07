@@ -1,82 +1,90 @@
-import type { ScaleType } from "../../shared/types";
-import { STRING_BASE_PITCH, TOTAL_FRETS } from "../../shared/constants";
+import { STRING_BASE_PITCH, TOTAL_FRETS } from '../../shared/constants';
+import { requiredAt } from '../../shared/requiredAt';
 
-export type TriadDegree = "root" | "third" | "fifth";
-export type TriadInversion = "root" | "first" | "second";
-export type TriadQuality = ScaleType | "diminished";
-export type OrbitDegree = "minorThird" | "majorThird" | "flatSeventh";
+import type { ScaleType } from '../../shared/types';
+
+export type TriadDegree = 'fifth' | 'root' | 'third';
+export type TriadInversion = 'first' | 'root' | 'second';
+export type TriadQuality = 'diminished' | ScaleType;
+export type OrbitDegree = 'flatSeventh' | 'majorThird' | 'minorThird';
 
 export interface TriadStringSet {
   readonly id: string;
   readonly label: string;
-  readonly tuning: string;
   readonly stringIndices: readonly [number, number, number];
+  readonly tuning: string;
 }
 
 export interface TriadNotePosition {
   readonly degree: TriadDegree;
-  readonly stringIdx: number;
   readonly fret: number;
+  readonly stringIdx: number;
 }
 
 export interface TriadShape {
+  readonly centerFret: number;
   readonly id: string;
   readonly inversion: TriadInversion;
   readonly notes: readonly TriadNotePosition[];
-  readonly centerFret: number;
 }
 
 export interface OrbitNotePosition {
   readonly degree: OrbitDegree;
-  readonly stringIdx: number;
   readonly fret: number;
   readonly sourceFret: number;
+  readonly stringIdx: number;
 }
 
 export const TRIAD_STRING_SETS: readonly TriadStringSet[] = [
-  { id: "strings-1-3", label: "Strings 1–3", tuning: "G–B–E", stringIndices: [3, 4, 5] },
-  { id: "strings-2-4", label: "Strings 2–4", tuning: "D–G–B", stringIndices: [2, 3, 4] },
-  { id: "strings-3-5", label: "Strings 3–5", tuning: "A–D–G", stringIndices: [1, 2, 3] },
-  { id: "strings-4-6", label: "Strings 4–6", tuning: "E–A–D", stringIndices: [0, 1, 2] },
+  { id: 'strings-1-3', label: 'Strings 1–3', tuning: 'G–B–E', stringIndices: [3, 4, 5] },
+  { id: 'strings-2-4', label: 'Strings 2–4', tuning: 'D–G–B', stringIndices: [2, 3, 4] },
+  { id: 'strings-3-5', label: 'Strings 3–5', tuning: 'A–D–G', stringIndices: [1, 2, 3] },
+  { id: 'strings-4-6', label: 'Strings 4–6', tuning: 'E–A–D', stringIndices: [0, 1, 2] },
 ];
 
 const DEGREE_ORDERS: Record<TriadInversion, readonly TriadDegree[]> = {
-  root: ["root", "third", "fifth"],
-  first: ["third", "fifth", "root"],
-  second: ["fifth", "root", "third"],
+  root: ['root', 'third', 'fifth'],
+  first: ['third', 'fifth', 'root'],
+  second: ['fifth', 'root', 'third'],
 };
 
-const INVERSIONS: readonly TriadInversion[] = ["root", "first", "second"];
+const INVERSIONS: readonly TriadInversion[] = ['root', 'first', 'second'];
 
 // These neighboring tones reproduce the compact "blues cluster" surrounding
 // each inversion: R, b3, 3, 5, b7. The b7 is available on both sides of the
 // shape, two frets below the root and three frets above the fifth.
-const ORBIT_RULES: Record<TriadQuality, Record<TriadDegree, {
-  readonly degree: OrbitDegree;
-  readonly fretOffset: number;
-}>> = {
+const ORBIT_RULES: Record<
+  TriadQuality,
+  Record<
+    TriadDegree,
+    {
+      readonly degree: OrbitDegree;
+      readonly fretOffset: number;
+    }
+  >
+> = {
   major: {
-    root: { degree: "flatSeventh", fretOffset: -2 },
-    third: { degree: "minorThird", fretOffset: -1 },
-    fifth: { degree: "flatSeventh", fretOffset: 3 },
+    root: { degree: 'flatSeventh', fretOffset: -2 },
+    third: { degree: 'minorThird', fretOffset: -1 },
+    fifth: { degree: 'flatSeventh', fretOffset: 3 },
   },
   minor: {
-    root: { degree: "flatSeventh", fretOffset: -2 },
-    third: { degree: "majorThird", fretOffset: 1 },
-    fifth: { degree: "flatSeventh", fretOffset: 3 },
+    root: { degree: 'flatSeventh', fretOffset: -2 },
+    third: { degree: 'majorThird', fretOffset: 1 },
+    fifth: { degree: 'flatSeventh', fretOffset: 3 },
   },
   diminished: {
-    root: { degree: "flatSeventh", fretOffset: -2 },
-    third: { degree: "majorThird", fretOffset: 1 },
-    fifth: { degree: "flatSeventh", fretOffset: 4 },
+    root: { degree: 'flatSeventh', fretOffset: -2 },
+    third: { degree: 'majorThird', fretOffset: 1 },
+    fifth: { degree: 'flatSeventh', fretOffset: 4 },
   },
 };
 
 function degreeSemitones(quality: TriadQuality): Record<TriadDegree, number> {
   return {
     root: 0,
-    third: quality === "major" ? 4 : 3,
-    fifth: quality === "diminished" ? 6 : 7,
+    third: quality === 'major' ? 4 : 3,
+    fifth: quality === 'diminished' ? 6 : 7,
   };
 }
 
@@ -88,14 +96,18 @@ function createShape(
   bassPitch: number,
   inversion: TriadInversion,
   stringSet: TriadStringSet,
-  semitones: Record<TriadDegree, number>,
-): TriadShape | null {
+  semitones: Record<TriadDegree, number>
+): null | TriadShape {
   const order = DEGREE_ORDERS[inversion];
-  const bassSemitones = semitones[order[0]];
+  const bassSemitones = semitones[requiredAt(order, 0)];
   const notes = order.map((degree, index) => {
     const targetPitch = bassPitch + positiveModulo(semitones[degree] - bassSemitones, 12);
-    const stringIdx = stringSet.stringIndices[index];
-    return { degree, stringIdx, fret: targetPitch - (STRING_BASE_PITCH[stringIdx] + 7) };
+    const stringIdx = requiredAt(stringSet.stringIndices, index);
+    return {
+      degree,
+      stringIdx,
+      fret: targetPitch - (requiredAt(STRING_BASE_PITCH, stringIdx) + 7),
+    };
   });
 
   if (notes.some(({ fret }) => fret < 0 || fret > TOTAL_FRETS)) return null;
@@ -112,15 +124,19 @@ function createShape(
 export function getTriadShapes(
   rootIndex: number,
   quality: TriadQuality,
-  stringSet: TriadStringSet,
+  stringSet: TriadStringSet
 ): TriadShape[] {
   const semitones = degreeSemitones(quality);
   const shapes: TriadShape[] = [];
-  const lowestPitch = Math.min(...stringSet.stringIndices.map((i) => STRING_BASE_PITCH[i] + 7));
-  const highestPitch = Math.max(...stringSet.stringIndices.map((i) => STRING_BASE_PITCH[i] + 7 + TOTAL_FRETS));
+  const lowestPitch = Math.min(
+    ...stringSet.stringIndices.map((i) => requiredAt(STRING_BASE_PITCH, i) + 7)
+  );
+  const highestPitch = Math.max(
+    ...stringSet.stringIndices.map((i) => requiredAt(STRING_BASE_PITCH, i) + 7 + TOTAL_FRETS)
+  );
 
   for (const inversion of INVERSIONS) {
-    const bassPitchClass = (rootIndex + semitones[DEGREE_ORDERS[inversion][0]]) % 12;
+    const bassPitchClass = (rootIndex + semitones[requiredAt(DEGREE_ORDERS[inversion], 0)]) % 12;
     for (let bassPitch = bassPitchClass; bassPitch <= highestPitch; bassPitch += 12) {
       if (bassPitch < lowestPitch - 12) continue;
       const shape = createShape(bassPitch, inversion, stringSet, semitones);
@@ -136,11 +152,13 @@ export function getOrbitNotes(shape: TriadShape, quality: TriadQuality): OrbitNo
     const rule = ORBIT_RULES[quality][degree];
     const orbitFret = fret + rule.fretOffset;
     if (orbitFret < 0 || orbitFret > TOTAL_FRETS) return [];
-    return [{
-      degree: rule.degree,
-      stringIdx,
-      fret: orbitFret,
-      sourceFret: fret,
-    }];
+    return [
+      {
+        degree: rule.degree,
+        stringIdx,
+        fret: orbitFret,
+        sourceFret: fret,
+      },
+    ];
   });
 }

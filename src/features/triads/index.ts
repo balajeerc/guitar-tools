@@ -1,131 +1,138 @@
-import type { ScaleType } from "../../shared/types";
-import { NOTES } from "../../shared/constants";
-import { observeFretboardResize } from "../../shared/layout";
-import { setupAccordionToggle } from "../../shared/accordion";
-import { setButtonActive } from "../../shared/dom";
-import { loadPersisted, savePersisted } from "../../shared/persist";
-import { createResetLink } from "../../shared/resetLink";
+import { setupAccordionToggle } from '../../shared/accordion';
+import { NOTES } from '../../shared/constants';
+import { setButtonActive } from '../../shared/dom';
+import { observeFretboardResize } from '../../shared/layout';
+import { loadPersisted, savePersisted } from '../../shared/persist';
+import { requiredAt } from '../../shared/requiredAt';
+import { createResetLink } from '../../shared/resetLink';
+
 import {
   getProgressionChord,
-  progressionStepLabel,
-  type ProgressionDegree,
   type ProgressionChord,
+  type ProgressionDegree,
   type ProgressionStep,
-} from "./grouping";
-import { renderTriads } from "./renderer";
-import { renderTriadsPageTemplate } from "./template";
+  progressionStepLabel,
+} from './grouping';
+import { renderTriads } from './renderer';
+import { renderTriadsPageTemplate } from './template';
 
-type TriadsViewMode = "static" | "groupings";
+import type { ScaleType } from '../../shared/types';
+
+type TriadsViewMode = 'groupings' | 'static';
 
 interface TriadsState {
+  progression: ProgressionStep[];
   rootIndex: number;
   scaleType: ScaleType;
   showOrbit: boolean;
   viewMode: TriadsViewMode;
-  progression: ProgressionStep[];
 }
 
-const STORAGE_KEY = "triads-state";
+const STORAGE_KEY = 'triads-state';
 const STEP_DURATION_MS = 2000;
 const INACTIVITY_RESUME_MS = 60_000;
 
 function createDefaultState(): TriadsState {
   return {
     rootIndex: 3,
-    scaleType: "major",
+    scaleType: 'major',
     showOrbit: false,
-    viewMode: "static",
+    viewMode: 'static',
     progression: [
-      { degree: 1, quality: "major" },
-      { degree: 4, quality: "major" },
-      { degree: 5, quality: "major" },
-      { degree: 1, quality: "major" },
+      { degree: 1, quality: 'major' },
+      { degree: 4, quality: 'major' },
+      { degree: 5, quality: 'major' },
+      { degree: 1, quality: 'major' },
     ],
   };
 }
 
 let state = createDefaultState();
 let activeStepIndex = 0;
-let animationTimer: number | null = null;
-let resumeTimer: number | null = null;
+let animationTimer: null | number = null;
+let resumeTimer: null | number = null;
 
 function getChords(): ProgressionChord[] {
   return state.progression.map((step) =>
-    getProgressionChord(state.rootIndex, state.scaleType, step));
+    getProgressionChord(state.rootIndex, state.scaleType, step)
+  );
 }
 
 function scaleLabel(): string {
-  return state.scaleType === "major" ? "Major" : "Minor";
+  return state.scaleType === 'major' ? 'Major' : 'Minor';
 }
 
 function updateSummary(isGrouping: boolean): void {
-  const summary = document.getElementById("triadsControlsSummary");
+  const summary = document.getElementById('triadsControlsSummary');
   if (!summary) return;
-  const orbit = state.showOrbit ? " · Orbit" : "";
-  const base = `${NOTES[state.rootIndex]} ${scaleLabel()}`;
+  const orbit = state.showOrbit ? ' · Orbit' : '';
+  const base = `${requiredAt(NOTES, state.rootIndex)} ${scaleLabel()}`;
   if (!isGrouping) {
     summary.textContent = `${base}${orbit}`;
     return;
   }
-  const progression = state.progression.map(progressionStepLabel).join("–");
+  const progression = state.progression.map(progressionStepLabel).join('–');
   summary.textContent = `${base} · ${progression} · Groupings${orbit}`;
 }
 
 function setPressed(id: string, pressed: boolean): void {
   setButtonActive(id, pressed);
-  document.getElementById(id)?.setAttribute("aria-pressed", String(pressed));
+  document.getElementById(id)?.setAttribute('aria-pressed', String(pressed));
 }
 
 function updateToggleControls(isGrouping: boolean): void {
-  setPressed("triadsMajorBtn", state.scaleType === "major");
-  setPressed("triadsMinorBtn", state.scaleType === "minor");
-  setPressed("triadsOrbitOffBtn", !state.showOrbit);
-  setPressed("triadsOrbitOnBtn", state.showOrbit);
-  setPressed("triadsStaticViewBtn", !isGrouping);
-  setPressed("triadsGroupingsViewBtn", isGrouping);
+  setPressed('triadsMajorBtn', state.scaleType === 'major');
+  setPressed('triadsMinorBtn', state.scaleType === 'minor');
+  setPressed('triadsOrbitOffBtn', !state.showOrbit);
+  setPressed('triadsOrbitOnBtn', state.showOrbit);
+  setPressed('triadsStaticViewBtn', !isGrouping);
+  setPressed('triadsGroupingsViewBtn', isGrouping);
 }
 
 function updateProgressionControls(): void {
-  for (const button of document.querySelectorAll<HTMLButtonElement>("[data-progression-degree]")) {
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-progression-degree]')) {
     const index = Number(button.dataset.progressionDegree);
-    button.textContent = progressionStepLabel(state.progression[index]);
+    button.textContent = progressionStepLabel(requiredAt(state.progression, index));
   }
-  for (const button of document.querySelectorAll<HTMLButtonElement>("[data-progression-quality]")) {
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-progression-quality]')) {
     const index = Number(button.dataset.progressionQuality);
-    const quality = state.progression[index].quality;
-    const isMinor = quality === "minor";
-    button.textContent = isMinor ? "minor" : "Major";
-    button.classList.toggle("is-minor", isMinor);
-    button.setAttribute("aria-label", `Make progression step ${index + 1} ${isMinor ? "major" : "minor"}`);
+    const quality = requiredAt(state.progression, index).quality;
+    const isMinor = quality === 'minor';
+    button.textContent = isMinor ? 'minor' : 'Major';
+    button.classList.toggle('is-minor', isMinor);
+    button.setAttribute(
+      'aria-label',
+      `Make progression step ${index + 1} ${isMinor ? 'major' : 'minor'}`
+    );
   }
 }
 
 function updateStepStatus(): void {
-  const status = document.getElementById("triadsStepStatus");
-  const activeChord = document.getElementById("triadsActiveChord");
-  const isGrouping = state.viewMode === "groupings";
+  const status = document.getElementById('triadsStepStatus');
+  const activeChord = document.getElementById('triadsActiveChord');
+  const isGrouping = state.viewMode === 'groupings';
   if (status) {
     status.hidden = !isGrouping;
-    status.classList.toggle("is-paused", isGrouping && animationTimer === null);
+    status.classList.toggle('is-paused', isGrouping && animationTimer === null);
   }
   const chord = getChords()[activeStepIndex];
   if (activeChord && chord) {
-    const quality = chord.quality[0].toUpperCase() + chord.quality.slice(1);
-    activeChord.textContent = `${progressionStepLabel(chord)} · ${NOTES[chord.rootIndex]} ${quality}`;
+    const quality = requiredAt(chord.quality, 0).toUpperCase() + chord.quality.slice(1);
+    activeChord.textContent = `${progressionStepLabel(chord)} · ${requiredAt(NOTES, chord.rootIndex)} ${quality}`;
   }
-  for (const dash of document.querySelectorAll<HTMLButtonElement>("[data-triad-step]")) {
+  for (const dash of document.querySelectorAll<HTMLButtonElement>('[data-triad-step]')) {
     const index = Number(dash.dataset.triadStep);
     const isActive = index === activeStepIndex;
-    dash.classList.toggle("active", isActive);
-    dash.setAttribute("aria-current", isActive ? "step" : "false");
+    dash.classList.toggle('active', isActive);
+    dash.setAttribute('aria-current', isActive ? 'step' : 'false');
   }
 }
 
 function updateDisplay(persist = true): void {
-  const currentNote = document.getElementById("triadsCurrentNote");
-  const progressionControls = document.getElementById("triadsProgressionControls");
-  const isGrouping = state.viewMode === "groupings";
-  if (currentNote) currentNote.textContent = NOTES[state.rootIndex];
+  const currentNote = document.getElementById('triadsCurrentNote');
+  const progressionControls = document.getElementById('triadsProgressionControls');
+  const isGrouping = state.viewMode === 'groupings';
+  if (currentNote) currentNote.textContent = requiredAt(NOTES, state.rootIndex);
   if (progressionControls) progressionControls.hidden = !isGrouping;
   updateSummary(isGrouping);
   updateToggleControls(isGrouping);
@@ -135,7 +142,7 @@ function updateDisplay(persist = true): void {
     state.rootIndex,
     state.scaleType,
     state.showOrbit,
-    isGrouping ? { chords: getChords(), activeStepIndex } : undefined,
+    isGrouping ? { chords: getChords(), activeStepIndex } : undefined
   );
   if (persist) savePersisted(STORAGE_KEY, state);
 }
@@ -149,7 +156,7 @@ function clearPlaybackTimers(): void {
 
 function startAutoplay(): void {
   clearPlaybackTimers();
-  if (state.viewMode !== "groupings") return;
+  if (state.viewMode !== 'groupings') return;
   animationTimer = window.setInterval(() => {
     activeStepIndex = (activeStepIndex + 1) % state.progression.length;
     updateDisplay(false);
@@ -182,7 +189,8 @@ function updateProgressionStep(index: number, update: Partial<ProgressionStep>):
   state = {
     ...state,
     progression: state.progression.map((step, stepIndex) =>
-      stepIndex === index ? { ...step, ...update } : step),
+      stepIndex === index ? { ...step, ...update } : step
+    ),
   };
   activeStepIndex = index;
   updateDisplay();
@@ -190,53 +198,63 @@ function updateProgressionStep(index: number, update: Partial<ProgressionStep>):
 }
 
 function setupProgressionControls(): void {
-  for (const button of document.querySelectorAll<HTMLButtonElement>("[data-progression-degree]")) {
-    button.addEventListener("click", () => {
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-progression-degree]')) {
+    button.addEventListener('click', () => {
       const index = Number(button.dataset.progressionDegree);
-      const currentDegree = state.progression[index].degree;
-      const degree = (currentDegree % 7 + 1) as ProgressionDegree;
+      const currentDegree = requiredAt(state.progression, index).degree;
+      const degree = ((currentDegree % 7) + 1) as ProgressionDegree;
       updateProgressionStep(index, { degree });
     });
   }
-  for (const button of document.querySelectorAll<HTMLButtonElement>("[data-progression-quality]")) {
-    button.addEventListener("click", () => {
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-progression-quality]')) {
+    button.addEventListener('click', () => {
       const index = Number(button.dataset.progressionQuality);
-      const quality = state.progression[index].quality === "minor" ? "major" : "minor";
+      const quality = requiredAt(state.progression, index).quality === 'minor' ? 'major' : 'minor';
       updateProgressionStep(index, { quality });
     });
   }
-  for (const dash of document.querySelectorAll<HTMLButtonElement>("[data-triad-step]")) {
-    dash.addEventListener("click", () => freezeAtStep(Number(dash.dataset.triadStep)));
+  for (const dash of document.querySelectorAll<HTMLButtonElement>('[data-triad-step]')) {
+    dash.addEventListener('click', () => {
+      freezeAtStep(Number(dash.dataset.triadStep));
+    });
   }
 }
 
 function setupControls(): void {
-  document.getElementById("triadsPrevNote")?.addEventListener("click", () => moveRoot(-1));
-  document.getElementById("triadsNextNote")?.addEventListener("click", () => moveRoot(1));
-  document.getElementById("triadsMajorBtn")?.addEventListener("click", () => {
-    state = { ...state, scaleType: "major" };
+  document.getElementById('triadsPrevNote')?.addEventListener('click', () => {
+    moveRoot(-1);
+  });
+  document.getElementById('triadsNextNote')?.addEventListener('click', () => {
+    moveRoot(1);
+  });
+  document.getElementById('triadsMajorBtn')?.addEventListener('click', () => {
+    state = { ...state, scaleType: 'major' };
     updateDisplay();
   });
-  document.getElementById("triadsMinorBtn")?.addEventListener("click", () => {
-    state = { ...state, scaleType: "minor" };
+  document.getElementById('triadsMinorBtn')?.addEventListener('click', () => {
+    state = { ...state, scaleType: 'minor' };
     updateDisplay();
   });
-  document.getElementById("triadsOrbitOffBtn")?.addEventListener("click", () => {
+  document.getElementById('triadsOrbitOffBtn')?.addEventListener('click', () => {
     state = { ...state, showOrbit: false };
     updateDisplay();
   });
-  document.getElementById("triadsOrbitOnBtn")?.addEventListener("click", () => {
+  document.getElementById('triadsOrbitOnBtn')?.addEventListener('click', () => {
     state = { ...state, showOrbit: true };
     updateDisplay();
   });
-  document.getElementById("triadsStaticViewBtn")?.addEventListener("click", () => setViewMode("static"));
-  document.getElementById("triadsGroupingsViewBtn")?.addEventListener("click", () => setViewMode("groupings"));
+  document.getElementById('triadsStaticViewBtn')?.addEventListener('click', () => {
+    setViewMode('static');
+  });
+  document.getElementById('triadsGroupingsViewBtn')?.addEventListener('click', () => {
+    setViewMode('groupings');
+  });
   setupProgressionControls();
-  document.addEventListener("keydown", (event) => {
-    const page = document.getElementById("triads-page");
-    if (!page || page.style.display === "none") return;
-    if (event.key === "ArrowLeft") moveRoot(-1);
-    if (event.key === "ArrowRight") moveRoot(1);
+  document.addEventListener('keydown', (event) => {
+    const page = document.getElementById('triads-page');
+    if (!page || page.style.display === 'none') return;
+    if (event.key === 'ArrowLeft') moveRoot(-1);
+    if (event.key === 'ArrowRight') moveRoot(1);
   });
 }
 
@@ -250,21 +268,24 @@ function resetState(): void {
 function loadState(): TriadsState {
   const defaults = createDefaultState();
   const persisted = loadPersisted<Partial<TriadsState>>(STORAGE_KEY, defaults);
-  const progression = Array.isArray(persisted.progression) && persisted.progression.length === 4
-    ? persisted.progression
-    : defaults.progression;
+  const progression =
+    Array.isArray(persisted.progression) && persisted.progression.length === 4
+      ? persisted.progression
+      : defaults.progression;
   return { ...defaults, ...persisted, progression };
 }
 
 export function initTriadsFeature(): void {
-  const page = document.getElementById("triads-page");
+  const page = document.getElementById('triads-page');
   if (!page) return;
   state = loadState();
   page.innerHTML = renderTriadsPageTemplate();
   setupControls();
-  setupAccordionToggle("triadsAccordionToggle");
-  document.getElementById("triadsControlsPanel")?.appendChild(createResetLink(resetState));
-  observeFretboardResize(() => updateDisplay(false));
+  setupAccordionToggle('triadsAccordionToggle');
+  document.getElementById('triadsControlsPanel')?.appendChild(createResetLink(resetState));
+  observeFretboardResize(() => {
+    updateDisplay(false);
+  });
   updateDisplay();
   startAutoplay();
 }

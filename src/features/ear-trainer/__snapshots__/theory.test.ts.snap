@@ -1,0 +1,681 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`exercise generation > bounds nonzero crypto values before using them as selection indices 1`] = `
+{
+  "intervals": [
+    8,
+    3,
+  ],
+  "keyIndex": 3,
+  "notes": [
+    51,
+    43,
+    40,
+  ],
+  "rootMidi": null,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 0 1`] = `
+{
+  "intervals": [
+    12,
+    1,
+    1,
+  ],
+  "keyIndex": 0,
+  "notes": [
+    57,
+    69,
+    70,
+    71,
+  ],
+  "rootMidi": 57,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 1 1`] = `
+{
+  "intervals": [
+    11,
+    1,
+    1,
+  ],
+  "keyIndex": 1,
+  "notes": [
+    58,
+    69,
+    70,
+    71,
+  ],
+  "rootMidi": 58,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 2 1`] = `
+{
+  "intervals": [
+    10,
+    1,
+    1,
+  ],
+  "keyIndex": 2,
+  "notes": [
+    59,
+    69,
+    70,
+    71,
+  ],
+  "rootMidi": 59,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 3 1`] = `
+{
+  "intervals": [
+    9,
+    1,
+    1,
+  ],
+  "keyIndex": 3,
+  "notes": [
+    60,
+    69,
+    70,
+    71,
+  ],
+  "rootMidi": 60,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 4 1`] = `
+{
+  "intervals": [
+    8,
+    1,
+    1,
+  ],
+  "keyIndex": 4,
+  "notes": [
+    61,
+    69,
+    70,
+    71,
+  ],
+  "rootMidi": 61,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 5 1`] = `
+{
+  "intervals": [
+    7,
+    1,
+    1,
+  ],
+  "keyIndex": 5,
+  "notes": [
+    62,
+    69,
+    70,
+    71,
+  ],
+  "rootMidi": 62,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 6 1`] = `
+{
+  "intervals": [
+    6,
+    1,
+    1,
+  ],
+  "keyIndex": 6,
+  "notes": [
+    63,
+    69,
+    70,
+    71,
+  ],
+  "rootMidi": 63,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 7 1`] = `
+{
+  "intervals": [
+    5,
+    1,
+    1,
+  ],
+  "keyIndex": 7,
+  "notes": [
+    64,
+    69,
+    70,
+    71,
+  ],
+  "rootMidi": 64,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 8 1`] = `
+{
+  "intervals": [
+    4,
+    1,
+    1,
+  ],
+  "keyIndex": 8,
+  "notes": [
+    65,
+    69,
+    70,
+    71,
+  ],
+  "rootMidi": 65,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 9 1`] = `
+{
+  "intervals": [
+    3,
+    1,
+    1,
+  ],
+  "keyIndex": 9,
+  "notes": [
+    66,
+    69,
+    70,
+    71,
+  ],
+  "rootMidi": 66,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 10 1`] = `
+{
+  "intervals": [
+    2,
+    1,
+    1,
+  ],
+  "keyIndex": 10,
+  "notes": [
+    67,
+    69,
+    70,
+    71,
+  ],
+  "rootMidi": 67,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 11 1`] = `
+{
+  "intervals": [
+    1,
+    1,
+    1,
+  ],
+  "keyIndex": 11,
+  "notes": [
+    68,
+    69,
+    70,
+    71,
+  ],
+  "rootMidi": 68,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending', 'descending' ]) > key 0 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    12,
+  ],
+  "keyIndex": 0,
+  "notes": [
+    69,
+    57,
+    45,
+    57,
+  ],
+  "rootMidi": 69,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending', 'descending' ]) > key 1 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    12,
+  ],
+  "keyIndex": 1,
+  "notes": [
+    70,
+    58,
+    46,
+    58,
+  ],
+  "rootMidi": 70,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending', 'descending' ]) > key 2 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    12,
+  ],
+  "keyIndex": 2,
+  "notes": [
+    71,
+    59,
+    47,
+    59,
+  ],
+  "rootMidi": 71,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending', 'descending' ]) > key 3 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    12,
+  ],
+  "keyIndex": 3,
+  "notes": [
+    60,
+    48,
+    36,
+    48,
+  ],
+  "rootMidi": 60,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending', 'descending' ]) > key 4 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    12,
+  ],
+  "keyIndex": 4,
+  "notes": [
+    61,
+    49,
+    37,
+    49,
+  ],
+  "rootMidi": 61,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending', 'descending' ]) > key 5 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    12,
+  ],
+  "keyIndex": 5,
+  "notes": [
+    62,
+    50,
+    38,
+    50,
+  ],
+  "rootMidi": 62,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending', 'descending' ]) > key 6 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    12,
+  ],
+  "keyIndex": 6,
+  "notes": [
+    63,
+    51,
+    39,
+    51,
+  ],
+  "rootMidi": 63,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending', 'descending' ]) > key 7 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    12,
+  ],
+  "keyIndex": 7,
+  "notes": [
+    64,
+    52,
+    40,
+    52,
+  ],
+  "rootMidi": 64,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending', 'descending' ]) > key 8 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    12,
+  ],
+  "keyIndex": 8,
+  "notes": [
+    65,
+    53,
+    41,
+    53,
+  ],
+  "rootMidi": 65,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending', 'descending' ]) > key 9 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    12,
+  ],
+  "keyIndex": 9,
+  "notes": [
+    66,
+    54,
+    42,
+    54,
+  ],
+  "rootMidi": 66,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending', 'descending' ]) > key 10 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    12,
+  ],
+  "keyIndex": 10,
+  "notes": [
+    67,
+    55,
+    43,
+    55,
+  ],
+  "rootMidi": 67,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending', 'descending' ]) > key 11 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    12,
+  ],
+  "keyIndex": 11,
+  "notes": [
+    68,
+    56,
+    44,
+    56,
+  ],
+  "rootMidi": 68,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'descending' ]) > key 0 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    9,
+  ],
+  "keyIndex": 0,
+  "notes": [
+    69,
+    57,
+    45,
+    36,
+  ],
+  "rootMidi": 69,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'descending' ]) > key 1 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    10,
+  ],
+  "keyIndex": 1,
+  "notes": [
+    70,
+    58,
+    46,
+    36,
+  ],
+  "rootMidi": 70,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'descending' ]) > key 2 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    11,
+  ],
+  "keyIndex": 2,
+  "notes": [
+    71,
+    59,
+    47,
+    36,
+  ],
+  "rootMidi": 71,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'descending' ]) > key 3 1`] = `
+{
+  "intervals": [
+    12,
+    11,
+    1,
+  ],
+  "keyIndex": 3,
+  "notes": [
+    60,
+    48,
+    37,
+    36,
+  ],
+  "rootMidi": 60,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'descending' ]) > key 4 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    1,
+  ],
+  "keyIndex": 4,
+  "notes": [
+    61,
+    49,
+    37,
+    36,
+  ],
+  "rootMidi": 61,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'descending' ]) > key 5 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    2,
+  ],
+  "keyIndex": 5,
+  "notes": [
+    62,
+    50,
+    38,
+    36,
+  ],
+  "rootMidi": 62,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'descending' ]) > key 6 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    3,
+  ],
+  "keyIndex": 6,
+  "notes": [
+    63,
+    51,
+    39,
+    36,
+  ],
+  "rootMidi": 63,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'descending' ]) > key 7 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    4,
+  ],
+  "keyIndex": 7,
+  "notes": [
+    64,
+    52,
+    40,
+    36,
+  ],
+  "rootMidi": 64,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'descending' ]) > key 8 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    5,
+  ],
+  "keyIndex": 8,
+  "notes": [
+    65,
+    53,
+    41,
+    36,
+  ],
+  "rootMidi": 65,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'descending' ]) > key 9 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    6,
+  ],
+  "keyIndex": 9,
+  "notes": [
+    66,
+    54,
+    42,
+    36,
+  ],
+  "rootMidi": 66,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'descending' ]) > key 10 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    7,
+  ],
+  "keyIndex": 10,
+  "notes": [
+    67,
+    55,
+    43,
+    36,
+  ],
+  "rootMidi": 67,
+}
+`;
+
+exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'descending' ]) > key 11 1`] = `
+{
+  "intervals": [
+    12,
+    12,
+    8,
+  ],
+  "keyIndex": 11,
+  "notes": [
+    68,
+    56,
+    44,
+    36,
+  ],
+  "rootMidi": 68,
+}
+`;
+
+exports[`exercise settings > preserves the default exercise preferences 1`] = `
+{
+  "directions": [
+    "ascending",
+    "descending",
+  ],
+  "fixedKey": false,
+  "keyIndex": 3,
+  "noteCount": 3,
+  "octaveEnd": 3,
+  "octaveStart": 2,
+  "playRootFirst": false,
+  "tone": "pluck",
+}
+`;

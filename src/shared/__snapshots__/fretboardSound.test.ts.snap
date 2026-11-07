@@ -1,0 +1,90 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`fretboard plucked-string sound > plays the selected octave at the expected pitch and releases every audio node > low E octave tone graph 1`] = `
+[
+  {
+    "kind": "destination",
+    "params": {
+      "Q": 0,
+      "attack": 0,
+      "frequency": 0,
+      "gain": 0,
+      "knee": 0,
+      "ratio": 0,
+      "release": 0,
+      "threshold": 0,
+    },
+    "type": "",
+  },
+  {
+    "kind": "bufferSource",
+    "params": {
+      "Q": 0,
+      "attack": 0,
+      "frequency": 0,
+      "gain": 0,
+      "knee": 0,
+      "ratio": 0,
+      "release": 0,
+      "threshold": 0,
+    },
+    "type": "",
+  },
+  {
+    "kind": "filter",
+    "params": {
+      "Q": 0.55,
+      "attack": 0,
+      "frequency": 2647.2207,
+      "gain": 0,
+      "knee": 0,
+      "ratio": 0,
+      "release": 0,
+      "threshold": 0,
+    },
+    "type": "lowpass",
+  },
+  {
+    "kind": "filter",
+    "params": {
+      "Q": 0.9,
+      "attack": 0,
+      "frequency": 190,
+      "gain": 4,
+      "knee": 0,
+      "ratio": 0,
+      "release": 0,
+      "threshold": 0,
+    },
+    "type": "peaking",
+  },
+  {
+    "kind": "filter",
+    "params": {
+      "Q": 0,
+      "attack": 0,
+      "frequency": 1400,
+      "gain": -7,
+      "knee": 0,
+      "ratio": 0,
+      "release": 0,
+      "threshold": 0,
+    },
+    "type": "highshelf",
+  },
+  {
+    "kind": "gain",
+    "params": {
+      "Q": 0,
+      "attack": 0,
+      "frequency": 0,
+      "gain": 0,
+      "knee": 0,
+      "ratio": 0,
+      "release": 0,
+      "threshold": 0,
+    },
+    "type": "",
+  },
+]
+`;

@@ -1,11 +1,12 @@
-import type { PentatonicPosition, ScaleType } from "../../shared/types";
-import { TOTAL_FRETS } from "../../shared/constants";
+import { TOTAL_FRETS } from '../../shared/constants';
+
+import type { PentatonicPosition, ScaleType } from '../../shared/types';
 
 export interface ScalePositionExtent {
-  readonly position: PentatonicPosition;
-  readonly startFret: number;
   readonly endFret: number;
   readonly partial: boolean;
+  readonly position: PentatonicPosition;
+  readonly startFret: number;
 }
 
 /**
@@ -37,7 +38,7 @@ const G_POSITION_EXTENTS: Record<
 /** Return the five full-scale position extents visible on the fretboard. */
 export function getFullScaleExtentsOnFretboard(
   rootIndex: number,
-  scaleType: ScaleType,
+  scaleType: ScaleType
 ): ScalePositionExtent[] {
   const rootOffset = (rootIndex - G_ROOT_INDEX + 12) % 12;
   const result: ScalePositionExtent[] = [];

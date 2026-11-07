@@ -1,8 +1,6 @@
-import {
-  createBeatsScheduler,
-  type BeatsSchedulerConfig,
-  type ScheduledStep,
-} from "./scheduler";
+import { requiredAt } from '../../shared/requiredAt';
+
+import { type BeatsSchedulerConfig, createBeatsScheduler, type ScheduledStep } from './scheduler';
 
 export interface BeatsPlayback {
   start: () => Promise<void>;
@@ -11,17 +9,17 @@ export interface BeatsPlayback {
 
 export function createBeatsPlayback(
   getConfig: () => BeatsSchedulerConfig,
-  onStep: (step: number | null) => void,
+  onStep: (step: null | number) => void
 ): BeatsPlayback {
   const pending: ScheduledStep[] = [];
-  let frame: number | null = null;
+  let frame: null | number = null;
   const scheduler = createBeatsScheduler(getConfig, (step) => {
     pending.push(step);
   });
 
   function updatePlayhead(): void {
     const now = scheduler.now();
-    while (pending.length > 0 && pending[0].time <= now) {
+    while (pending.length > 0 && requiredAt(pending, 0).time <= now) {
       const scheduled = pending.shift();
       if (scheduled) onStep(scheduled.step);
     }

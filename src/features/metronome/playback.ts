@@ -1,14 +1,16 @@
+import { requiredAt } from '../../shared/requiredAt';
 // Ties the audio scheduler to the on-screen beat dots and pendulum. Ticks are
 // queued when scheduled and only surfaced visually once the audio clock reaches
 // them, so what you see lines up with what you hear.
 
-import type { SchedulerConfig, Tick } from "./scheduler";
-import { createScheduler } from "./scheduler";
-import { pendulumAngle } from "./visuals";
+import { createScheduler } from './scheduler';
+import { pendulumAngle } from './visuals';
 
-export interface PlaybackHandlers {
-  onBeat: (beat: number | null) => void;
+import type { SchedulerConfig, Tick } from './scheduler';
+
+interface PlaybackHandlers {
   onAngle: (angle: number) => void;
+  onBeat: (beat: null | number) => void;
 }
 
 export interface Playback {
@@ -18,21 +20,21 @@ export interface Playback {
 
 export function createPlayback(
   getConfig: () => SchedulerConfig,
-  handlers: PlaybackHandlers,
+  handlers: PlaybackHandlers
 ): Playback {
   const pending: Tick[] = [];
   /** Monotonic beat counter driving which way the pendulum swings. */
   let swings = -1;
   /** 0 until the first beat has sounded; the arm hangs still until then. */
   let currentBeatTime = 0;
-  let frame: number | null = null;
+  let frame: null | number = null;
 
   const scheduler = createScheduler(getConfig, (tick) => {
     if (tick.subdivision === 0) pending.push(tick);
   });
 
   function drain(now: number): void {
-    while (pending.length > 0 && pending[0].time <= now) {
+    while (pending.length > 0 && requiredAt(pending, 0).time <= now) {
       const tick = pending.shift();
       if (!tick) break;
       currentBeatTime = tick.time;

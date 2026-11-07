@@ -1,0 +1,14 @@
+dist
+node_modules
+coverage
+reports
+.stryker-tmp
+.git
+.husky
+*.log
+pnpm-lock.yaml
+# no extension -> Prettier cannot infer a parser
+LICENSE
+
+.tools
+public/icons

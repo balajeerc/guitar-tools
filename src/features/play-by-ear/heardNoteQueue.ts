@@ -10,11 +10,11 @@ export function createHeardNoteQueue(
   capacity: number,
   clearDelayMs: number,
   initiallyAutoClear: boolean,
-  onAutoClear: () => void,
+  onAutoClear: () => void
 ): HeardNoteQueue {
   const notes: number[] = [];
   let autoClear = initiallyAutoClear;
-  let timeoutId: number | null = null;
+  let timeoutId: null | number = null;
 
   function cancelTimer(): void {
     if (timeoutId !== null) window.clearTimeout(timeoutId);

@@ -1,33 +1,33 @@
 import {
+  type BeatLoopState,
   deleteBeatLoop,
   loadSavedLoops,
   saveBeatLoop,
-  type BeatLoopState,
   type SavedBeatLoop,
-} from "./loops";
+} from './loops';
 
 interface LoopLibraryHandlers {
   getCurrentState: () => BeatLoopState;
-  onLoad: (loop: SavedBeatLoop) => void;
   initialSelectedId?: string;
+  onLoad: (loop: SavedBeatLoop) => void;
 }
 
 interface LoopLibraryElements {
-  name: HTMLInputElement;
-  select: HTMLSelectElement;
-  save: HTMLButtonElement;
   load: HTMLButtonElement;
+  name: HTMLInputElement;
   remove: HTMLButtonElement;
+  save: HTMLButtonElement;
+  select: HTMLSelectElement;
   status: HTMLElement;
 }
 
 function getElements(): LoopLibraryElements | null {
-  const name = document.getElementById("beatsLoopName") as HTMLInputElement | null;
-  const select = document.getElementById("beatsLoopSelect") as HTMLSelectElement | null;
-  const save = document.getElementById("beatsLoopSave") as HTMLButtonElement | null;
-  const load = document.getElementById("beatsLoopLoad") as HTMLButtonElement | null;
-  const remove = document.getElementById("beatsLoopDelete") as HTMLButtonElement | null;
-  const status = document.getElementById("beatsLoopStatus");
+  const name = document.getElementById('beatsLoopName') as HTMLInputElement | null;
+  const select = document.getElementById('beatsLoopSelect') as HTMLSelectElement | null;
+  const save = document.getElementById('beatsLoopSave') as HTMLButtonElement | null;
+  const load = document.getElementById('beatsLoopLoad') as HTMLButtonElement | null;
+  const remove = document.getElementById('beatsLoopDelete') as HTMLButtonElement | null;
+  const status = document.getElementById('beatsLoopStatus');
   if (!name || !select || !save || !load || !remove || !status) return null;
   return { name, select, save, load, remove, status };
 }
@@ -39,9 +39,9 @@ function findLoop(loops: SavedBeatLoop[], id: string): SavedBeatLoop | undefined
 function renderOptions(
   elements: LoopLibraryElements,
   loops: SavedBeatLoop[],
-  selectedId: string,
+  selectedId: string
 ): void {
-  const placeholder = new Option("Choose a saved loop", "");
+  const placeholder = new Option('Choose a saved loop', '');
   elements.select.replaceChildren(placeholder);
   for (const loop of loops) {
     elements.select.add(new Option(loop.name, loop.id));
@@ -61,7 +61,7 @@ export function setupLoopLibrary(handlers: LoopLibraryHandlers): void {
   if (!foundElements) return;
   const elements = foundElements;
   let loops = loadSavedLoops();
-  let selectedId = handlers.initialSelectedId ?? "";
+  let selectedId = handlers.initialSelectedId ?? '';
   const initialSelection = findLoop(loops, selectedId);
   if (initialSelection) elements.name.value = initialSelection.name;
   renderOptions(elements, loops, selectedId);
@@ -69,7 +69,7 @@ export function setupLoopLibrary(handlers: LoopLibraryHandlers): void {
   function saveCurrentLoop(): void {
     const name = elements.name.value.trim();
     if (name.length === 0) {
-      setStatus(elements, "Enter a loop name first.");
+      setStatus(elements, 'Enter a loop name first.');
       elements.name.focus();
       return;
     }
@@ -78,31 +78,31 @@ export function setupLoopLibrary(handlers: LoopLibraryHandlers): void {
     selectedId = result.saved.id;
     elements.name.value = result.saved.name;
     renderOptions(elements, loops, selectedId);
-    setStatus(elements, result.overwritten ? "Loop updated." : "Loop saved.");
+    setStatus(elements, result.overwritten ? 'Loop updated.' : 'Loop saved.');
   }
 
-  elements.select.addEventListener("change", () => {
+  elements.select.addEventListener('change', () => {
     selectedId = elements.select.value;
     const selected = findLoop(loops, selectedId);
     if (selected) elements.name.value = selected.name;
     renderOptions(elements, loops, selectedId);
-    setStatus(elements, "");
+    setStatus(elements, '');
   });
-  elements.save.addEventListener("click", saveCurrentLoop);
-  elements.name.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") saveCurrentLoop();
+  elements.save.addEventListener('click', saveCurrentLoop);
+  elements.name.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') saveCurrentLoop();
   });
-  elements.load.addEventListener("click", () => {
+  elements.load.addEventListener('click', () => {
     const selected = findLoop(loops, selectedId);
     if (selected) handlers.onLoad(selected);
   });
-  elements.remove.addEventListener("click", () => {
+  elements.remove.addEventListener('click', () => {
     const selected = findLoop(loops, selectedId);
     if (!selected || !window.confirm(`Delete the loop “${selected.name}”?`)) return;
     loops = deleteBeatLoop(loops, selected.id);
-    selectedId = "";
-    elements.name.value = "";
+    selectedId = '';
+    elements.name.value = '';
     renderOptions(elements, loops, selectedId);
-    setStatus(elements, "Loop deleted.");
+    setStatus(elements, 'Loop deleted.');
   });
 }

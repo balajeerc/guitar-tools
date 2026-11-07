@@ -1,3 +1,4 @@
+import { requiredAt } from '../../shared/requiredAt';
 // YIN pitch detection algorithm
 // Reference: de Cheveigné, A., & Kawahara, H. (2002). YIN, a fundamental frequency estimator
 
@@ -11,7 +12,7 @@ function difference(buffer: Float32Array, halfLen: number, result: Float32Array)
   for (let tau = 0; tau < halfLen; tau++) {
     let sum = 0;
     for (let i = 0; i < halfLen; i++) {
-      const delta = buffer[i] - buffer[i + tau];
+      const delta = requiredAt(buffer, i) - requiredAt(buffer, i + tau);
       sum += delta * delta;
     }
     result[tau] = sum;
@@ -26,8 +27,8 @@ function cumulativeMeanNormalize(diff: Float32Array, halfLen: number): void {
   diff[0] = 1;
   let runningSum = 0;
   for (let tau = 1; tau < halfLen; tau++) {
-    runningSum += diff[tau];
-    diff[tau] *= tau / runningSum;
+    runningSum += requiredAt(diff, tau);
+    diff[tau] = (requiredAt(diff, tau) * tau) / runningSum;
   }
 }
 
@@ -37,10 +38,10 @@ function cumulativeMeanNormalize(diff: Float32Array, halfLen: number): void {
  */
 function absoluteThreshold(diff: Float32Array, halfLen: number): number {
   for (let tau = 2; tau < halfLen; tau++) {
-    if (diff[tau] < YIN_THRESHOLD) {
+    if (requiredAt(diff, tau) < YIN_THRESHOLD) {
       // Find the local minimum of this dip
       let minTau = tau;
-      for (let j = tau + 1; j < halfLen && diff[j] < diff[j - 1]; j++) {
+      for (let j = tau + 1; j < halfLen && requiredAt(diff, j) < requiredAt(diff, j - 1); j++) {
         minTau = j;
       }
       return minTau;
@@ -55,9 +56,9 @@ function absoluteThreshold(diff: Float32Array, halfLen: number): number {
 function parabolicInterpolation(diff: Float32Array, tau: number, halfLen: number): number {
   if (tau <= 0 || tau >= halfLen - 1) return tau;
 
-  const s0 = diff[tau - 1];
-  const s1 = diff[tau];
-  const s2 = diff[tau + 1];
+  const s0 = requiredAt(diff, tau - 1);
+  const s1 = requiredAt(diff, tau);
+  const s2 = requiredAt(diff, tau + 1);
   const adjustment = (s2 - s0) / (2 * (2 * s1 - s2 - s0));
 
   return tau + adjustment;
@@ -69,7 +70,7 @@ function parabolicInterpolation(diff: Float32Array, tau: number, halfLen: number
  * @param sampleRate - Audio sample rate in Hz
  * @returns Detected frequency in Hz, or null if no clear pitch
  */
-export function detectPitch(buffer: Float32Array, sampleRate: number): number | null {
+export function detectPitch(buffer: Float32Array, sampleRate: number): null | number {
   const halfLen = Math.floor(buffer.length / 2);
   const diff = new Float32Array(halfLen);
 

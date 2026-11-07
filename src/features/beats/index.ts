@@ -1,32 +1,30 @@
-import { setButtonActive } from "../../shared/dom";
-import { loadPersisted, savePersisted } from "../../shared/persist";
-import { createResetLink } from "../../shared/resetLink";
-import {
-  clampBpm,
-  LARGE_BPM_STEP,
-  SMALL_BPM_STEP,
-} from "../metronome/beats";
-import { beatsPanelHtml } from "./panel";
-import { setupLoopLibrary } from "./loopLibrary";
-import type { BeatLoopState, SavedBeatLoop } from "./loops";
+import { setButtonActive } from '../../shared/dom';
+import { loadPersisted, savePersisted } from '../../shared/persist';
+import { createResetLink } from '../../shared/resetLink';
+import { clampBpm, LARGE_BPM_STEP, SMALL_BPM_STEP } from '../metronome/beats';
+
+import { setupLoopLibrary } from './loopLibrary';
+import { beatsPanelHtml } from './panel';
 import {
   createDefaultPattern,
   DEFAULT_LEVELS,
   DRUM_VOICES,
+  type DrumVoice,
   normalizeLevels,
   normalizePattern,
-  type DrumVoice,
-} from "./pattern";
-import { createBeatsPlayback, type BeatsPlayback } from "./playback";
-import { highlightGridStep, updateBeatCell } from "./renderer";
+} from './pattern';
+import { type BeatsPlayback, createBeatsPlayback } from './playback';
+import { highlightGridStep, updateBeatCell } from './renderer';
 
-const STORAGE_KEY = "beats-state";
+import type { BeatLoopState, SavedBeatLoop } from './loops';
+
+const STORAGE_KEY = 'beats-state';
 const DEFAULT_BPM = 100;
 
 let state = createDefaultState();
 let running = false;
 let playback: BeatsPlayback | null = null;
-let activeLoopId = "";
+let activeLoopId = '';
 
 function createDefaultState(): BeatLoopState {
   return {
@@ -45,9 +43,9 @@ function saveState(): void {
 }
 
 function updateTempoDisplay(): void {
-  const field = getInput("beatsBpmValue");
+  const field = getInput('beatsBpmValue');
   if (field && document.activeElement !== field) field.value = String(state.bpm);
-  const slider = getInput("beatsBpmSlider");
+  const slider = getInput('beatsBpmSlider');
   if (slider) slider.value = String(state.bpm);
   saveState();
 }
@@ -58,9 +56,9 @@ function setBpm(bpm: number): void {
 }
 
 function setupStepButton(id: string, delta: number): void {
-  document
-    .getElementById(id)
-    ?.addEventListener("click", () => setBpm(state.bpm + delta));
+  document.getElementById(id)?.addEventListener('click', () => {
+    setBpm(state.bpm + delta);
+  });
 }
 
 function commitBpmField(field: HTMLInputElement): void {
@@ -70,18 +68,22 @@ function commitBpmField(field: HTMLInputElement): void {
 }
 
 function setupTempoControls(): void {
-  setupStepButton("beatsBpmDownLarge", -LARGE_BPM_STEP);
-  setupStepButton("beatsBpmDown", -SMALL_BPM_STEP);
-  setupStepButton("beatsBpmUp", SMALL_BPM_STEP);
-  setupStepButton("beatsBpmUpLarge", LARGE_BPM_STEP);
-  getInput("beatsBpmSlider")?.addEventListener("input", (event) => {
+  setupStepButton('beatsBpmDownLarge', -LARGE_BPM_STEP);
+  setupStepButton('beatsBpmDown', -SMALL_BPM_STEP);
+  setupStepButton('beatsBpmUp', SMALL_BPM_STEP);
+  setupStepButton('beatsBpmUpLarge', LARGE_BPM_STEP);
+  getInput('beatsBpmSlider')?.addEventListener('input', (event) => {
     setBpm(Number((event.target as HTMLInputElement).value));
   });
-  const field = getInput("beatsBpmValue");
-  field?.addEventListener("focus", () => field.select());
-  field?.addEventListener("blur", () => commitBpmField(field));
-  field?.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") field.blur();
+  const field = getInput('beatsBpmValue');
+  field?.addEventListener('focus', () => {
+    field.select();
+  });
+  field?.addEventListener('blur', () => {
+    commitBpmField(field);
+  });
+  field?.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') field.blur();
   });
 }
 
@@ -107,24 +109,20 @@ function setTrackLevel(input: HTMLInputElement): void {
 }
 
 function setupGrid(grid: HTMLElement): void {
-  grid.addEventListener("click", (event) => {
-    const cell = (event.target as HTMLElement).closest<HTMLElement>(
-      ".beats-cell",
-    );
+  grid.addEventListener('click', (event) => {
+    const cell = (event.target as HTMLElement).closest<HTMLElement>('.beats-cell');
     if (cell) toggleCell(grid, cell);
   });
-  grid.addEventListener("input", (event) => {
-    const input = (event.target as HTMLElement).closest<HTMLInputElement>(
-      ".beats-level",
-    );
+  grid.addEventListener('input', (event) => {
+    const input = (event.target as HTMLElement).closest<HTMLInputElement>('.beats-level');
     if (input) setTrackLevel(input);
   });
 }
 
 function updateRunningDisplay(): void {
-  setButtonActive("beatsToggleBtn", running);
-  const button = document.getElementById("beatsToggleBtn");
-  if (button) button.textContent = running ? "Stop" : "Start";
+  setButtonActive('beatsToggleBtn', running);
+  const button = document.getElementById('beatsToggleBtn');
+  if (button) button.textContent = running ? 'Stop' : 'Start';
 }
 
 async function togglePlayback(): Promise<void> {
@@ -141,7 +139,7 @@ async function togglePlayback(): Promise<void> {
 
 function resetState(container: HTMLElement): void {
   stopPlayback();
-  activeLoopId = "";
+  activeLoopId = '';
   state = createDefaultState();
   renderFeature(container);
 }
@@ -164,33 +162,39 @@ function loadLoop(container: HTMLElement, loop: SavedBeatLoop): void {
 }
 
 function setupRouteStop(): void {
-  window.addEventListener("hashchange", () => {
-    if (running && window.location.hash.slice(1) !== "beats") {
+  window.addEventListener('hashchange', () => {
+    if (running && window.location.hash.slice(1) !== 'beats') {
       void togglePlayback();
     }
   });
 }
 
 function setupFeatureElements(container: HTMLElement): void {
-  const grid = document.getElementById("beatsGrid");
+  const grid = document.getElementById('beatsGrid');
   if (!grid) return;
   playback = createBeatsPlayback(
     () => state,
-    (step) => highlightGridStep(grid, step),
+    (step) => {
+      highlightGridStep(grid, step);
+    }
   );
   setupTempoControls();
   setupGrid(grid);
   setupLoopLibrary({
     getCurrentState: () => state,
-    onLoad: (loop) => loadLoop(container, loop),
+    onLoad: (loop) => {
+      loadLoop(container, loop);
+    },
     initialSelectedId: activeLoopId,
   });
-  document.getElementById("beatsToggleBtn")?.addEventListener("click", () => {
+  document.getElementById('beatsToggleBtn')?.addEventListener('click', () => {
     void togglePlayback();
   });
-  document
-    .getElementById("beatsReset")
-    ?.appendChild(createResetLink(() => resetState(container)));
+  document.getElementById('beatsReset')?.appendChild(
+    createResetLink(() => {
+      resetState(container);
+    })
+  );
   updateRunningDisplay();
 }
 
@@ -201,7 +205,7 @@ function renderFeature(container: HTMLElement): void {
 }
 
 export function initBeatsFeature(): void {
-  const container = document.getElementById("beats-page");
+  const container = document.getElementById('beats-page');
   if (!container) return;
   const persisted = loadPersisted<BeatLoopState>(STORAGE_KEY, createDefaultState());
   state = {

@@ -1,0 +1,2345 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Play by Ear user flow > loops video sections, changes speed, checks intervals and remembers completed sections > matched section 1`] = `"<strong>Opening guitar melody</strong><span>My Girl · C major</span><div class="melodies-answer"><b>Correct intervals</b><div><span>1</span><i aria-hidden="true">–</i><span>2</span><i aria-hidden="true">–</i><span>3</span><i aria-hidden="true">–</i><span>5</span><i aria-hidden="true">–</i><span>6</span><i aria-hidden="true">–</i><span>1</span></div></div><small>Relative interval sequence matched; key and rhythm were not scored.</small>"`;
+
+exports[`Play by Ear user flow > playback failure feedback > shows heard-note progress and explains failed heard-note playback > heard-note controls 1`] = `
+"<section class="play-ear-game" aria-labelledby="playEarHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Real songs · by ear</p>
+      <h1 id="playEarHeading">Hear the phrase. Find it on your guitar.</h1>
+      <p class="melodies-intro">Loop a short section from a curated performance, then reproduce its notes in any key or enter the intervals.</p>
+    </header>
+
+    <div class="play-ear-layout">
+      <section class="play-ear-media-card" aria-labelledby="playEarSongTitle">
+        <label class="play-ear-song-field" for="playEarSongSelect">
+          <span>Song</span><select id="playEarSongSelect"><option value="my-girl">My Girl</option><option value="smoke-on-the-water">Smoke on the Water</option><option value="iron-man">Iron Man</option><option value="another-one-bites-the-dust">Another One Bites the Dust</option><option value="billie-jean">Billie Jean</option><option value="beat-it">Beat It</option><option value="sweet-dreams">Sweet Dreams (Are Made of This)</option><option value="take-on-me">Take On Me</option><option value="come-as-you-are">Come As You Are</option><option value="seven-nation-army">Seven Nation Army</option><option value="toxic">Toxic</option><option value="bad-romance">Bad Romance</option><option value="shape-of-you">Shape of You</option><option value="blinding-lights">Blinding Lights</option><option value="sunshine-of-your-love">Sunshine of Your Love</option><option value="sweet-child-of-mine">Sweet Child O' Mine</option><option value="satisfaction">(I Can't Get No) Satisfaction</option><option value="superstition">Superstition</option><option value="layla">Layla</option><option value="crazy-train">Crazy Train</option><option value="come-together">Come Together</option><option value="enter-sandman">Enter Sandman</option><option value="hysteria">Hysteria</option><option value="smooth">Smooth</option><option value="feel-good-inc">Feel Good Inc.</option><option value="do-i-wanna-know">Do I Wanna Know?</option><option value="uptown-funk">Uptown Funk</option><option value="bad-guy">Bad Guy</option><option value="i-will-possess-your-heart">I Will Possess Your Heart</option></select>
+        </label>
+        <div class="play-ear-song-heading">
+          <div><h2 id="playEarSongTitle">My Girl</h2><p id="playEarPerformance">Official lyric video</p></div>
+          <span id="playEarSongKey">C major</span>
+        </div>
+        <div class="play-ear-video-shell">
+          <div id="playEarYoutubePlayer" class="play-ear-video-placeholder">
+            <span aria-hidden="true">▶</span><p>The video loads when you play the first loop.</p>
+          </div>
+        </div>
+        <p class="play-ear-video-status" id="playEarVideoStatus" aria-live="polite">Choose a section, then play the loop.</p>
+        <div class="play-ear-loop-actions">
+          <div class="play-ear-transport">
+            <button type="button" class="play-ear-loop-btn" id="playEarLoopBtn" aria-label="Play loop" title="Play loop">▶</button>
+            <div class="play-ear-speed-control" aria-label="Playback speed">
+              <span>Speed</span>
+              <button type="button" id="playEarSlowerBtn" aria-label="Slow down" title="Slow down" disabled="">−</button>
+              <output id="playEarPlaybackRate" aria-live="polite">1×</output>
+              <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up" disabled="">+</button>
+            </div>
+            <button type="button" class="melodies-link-btn play-ear-simplified-btn" id="playEarSimplifiedBtn">Play simplified version</button>
+          </div>
+          <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=y3KJ7d2qBoA">Open on YouTube ↗</a>
+        </div>
+      </section>
+
+      <section class="melodies-card play-ear-guess-card">
+        <div class="play-ear-section-heading">
+          <span>Section</span><strong id="playEarSectionCounter">1 of 2 · easy</strong>
+        </div>
+        <div class="play-ear-section-tabs" id="playEarSectionTabs"><button type="button" class="play-ear-section-btn active" data-section-index="0" aria-pressed="true"><span>Opening guitar melody</span><small>6 notes · easy</small></button><button type="button" class="play-ear-section-btn" data-section-index="1" aria-pressed="false"><span>Second phrase</span><small>6 notes · easy</small></button></div>
+        <nav class="play-ear-section-navigation" aria-label="Section navigation">
+          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn" disabled="">← Previous section</button>
+          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn">Next section →</button>
+        </nav>
+
+        <div class="melodies-prompt">
+          <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+          <strong id="playEarStatus">1 notes matched</strong>
+          <span id="playEarHint">Keep following the phrase.</span>
+        </div>
+
+        <label class="play-ear-pause-setting">
+          <input type="checkbox" id="playEarPauseWhileGuessing" checked="">
+          <span><strong>Pause video while guessing</strong><small>Turn this off when using an audio interface or headphones.</small></span>
+        </label>
+
+        <fieldset class="melodies-method">
+          <legend>How do you want to guess?</legend>
+          <button type="button" class="melodies-method-btn active" id="playEarMicMethodBtn" aria-pressed="true">
+            <strong>Play it</strong><span>Use selected audio input</span>
+          </button>
+          <button type="button" class="melodies-method-btn" id="playEarManualMethodBtn" aria-pressed="false">
+            <strong>Enter intervals</strong><span>No listening required</span>
+          </button>
+        </fieldset>
+
+        <div class="melodies-progress" aria-label="Section progress">
+          <div class="melodies-progress-track"><span id="playEarProgressBar" style="width: 16.666666666666664%;"></span></div>
+          <span id="playEarProgressText">1 of 6 notes</span>
+        </div>
+
+        <div id="playEarMicrophonePanel">
+          <div class="melodies-detected" aria-live="polite">
+            <span class="melodies-detected-label">Heard</span>
+            <strong id="playEarDetectedNote">C4</strong>
+            <div class="play-ear-detected-details">
+              <span id="playEarDetectedInterval">1 notes matched so far</span>
+              <div class="play-ear-heard-actions">
+                <button type="button" class="melodies-link-btn" id="playEarResetNotesBtn">Reset notes</button>
+                <button type="button" class="melodies-link-btn" id="playEarPlayHeardBtn">Play heard notes</button>
+              </div>
+              <label class="play-ear-auto-clear-setting">
+                <input type="checkbox" id="playEarAutoClearNotes" checked="">
+                <small>Auto-clear after 5 seconds</small>
+              </label>
+            </div>
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn">Stop playing</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn">Reveal answer</button>
+          </div>
+          <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
+        </div>
+
+        <div class="melodies-manual" id="playEarManualPanel" hidden="">
+          <label class="melodies-manual-label" for="playEarIntervalInput">Treat the first heard note as 1, or use degrees from the song key.</label>
+          <div class="melodies-interval-entry" id="playEarIntervalEntry">
+            <div class="melodies-interval-boxes" id="playEarIntervalBoxes"></div>
+            <input id="playEarIntervalInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Section scale degrees" maxlength="6" disabled="">
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled="">Check intervals</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarManualRevealBtn">Reveal answer</button>
+          </div>
+        </div>
+
+        <div class="melodies-result" id="playEarResult" hidden=""></div>
+      </section>
+    </div>
+
+    <aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.</span>
+    </div>
+    <label class="audio-input-field" for="playEarAudioInput">
+      <span>Audio input</span>
+      <select id="playEarAudioInput" data-audio-input-select="" disabled="">
+        <option value="">Allow audio access first</option>
+      </select>
+    </label>
+    <small data-audio-input-help="">Allow audio access once to see device names.</small>
+  </aside>
+    <p class="melodies-mic-note">Only the selected audio input is analyzed. YouTube audio is never transcribed.</p>
+  </section>"
+`;
+
+exports[`Play by Ear user flow > reflects looping, heard playback, incorrect notes and a completed microphone attempt > completed microphone practice 1`] = `
+"<section class="play-ear-game" aria-labelledby="playEarHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Real songs · by ear</p>
+      <h1 id="playEarHeading">Hear the phrase. Find it on your guitar.</h1>
+      <p class="melodies-intro">Loop a short section from a curated performance, then reproduce its notes in any key or enter the intervals.</p>
+    </header>
+
+    <div class="play-ear-layout">
+      <section class="play-ear-media-card" aria-labelledby="playEarSongTitle">
+        <label class="play-ear-song-field" for="playEarSongSelect">
+          <span>Song</span><select id="playEarSongSelect"><option value="my-girl">My Girl</option><option value="smoke-on-the-water">Smoke on the Water</option><option value="iron-man">Iron Man</option><option value="another-one-bites-the-dust">Another One Bites the Dust</option><option value="billie-jean">Billie Jean</option><option value="beat-it">Beat It</option><option value="sweet-dreams">Sweet Dreams (Are Made of This)</option><option value="take-on-me">Take On Me</option><option value="come-as-you-are">Come As You Are</option><option value="seven-nation-army">Seven Nation Army</option><option value="toxic">Toxic</option><option value="bad-romance">Bad Romance</option><option value="shape-of-you">Shape of You</option><option value="blinding-lights">Blinding Lights</option><option value="sunshine-of-your-love">Sunshine of Your Love</option><option value="sweet-child-of-mine">Sweet Child O' Mine</option><option value="satisfaction">(I Can't Get No) Satisfaction</option><option value="superstition">Superstition</option><option value="layla">Layla</option><option value="crazy-train">Crazy Train</option><option value="come-together">Come Together</option><option value="enter-sandman">Enter Sandman</option><option value="hysteria">Hysteria</option><option value="smooth">Smooth</option><option value="feel-good-inc">Feel Good Inc.</option><option value="do-i-wanna-know">Do I Wanna Know?</option><option value="uptown-funk">Uptown Funk</option><option value="bad-guy">Bad Guy</option><option value="i-will-possess-your-heart">I Will Possess Your Heart</option></select>
+        </label>
+        <div class="play-ear-song-heading">
+          <div><h2 id="playEarSongTitle">My Girl</h2><p id="playEarPerformance">Official lyric video</p></div>
+          <span id="playEarSongKey">C major</span>
+        </div>
+        <div class="play-ear-video-shell">
+          <div id="playEarYoutubePlayer" class="play-ear-video-placeholder">
+            <span aria-hidden="true">▶</span><p>The video loads when you play the first loop.</p>
+          </div>
+        </div>
+        <p class="play-ear-video-status" id="playEarVideoStatus" aria-live="polite">Loop paused</p>
+        <div class="play-ear-loop-actions">
+          <div class="play-ear-transport">
+            <button type="button" class="play-ear-loop-btn" id="playEarLoopBtn" aria-label="Play loop" title="Play loop">▶</button>
+            <div class="play-ear-speed-control" aria-label="Playback speed">
+              <span>Speed</span>
+              <button type="button" id="playEarSlowerBtn" aria-label="Slow down" title="Slow down" disabled="">−</button>
+              <output id="playEarPlaybackRate" aria-live="polite">0.5×</output>
+              <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up">+</button>
+            </div>
+            <button type="button" class="melodies-link-btn play-ear-simplified-btn" id="playEarSimplifiedBtn">Play simplified version</button>
+          </div>
+          <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=y3KJ7d2qBoA">Open on YouTube ↗</a>
+        </div>
+      </section>
+
+      <section class="melodies-card play-ear-guess-card">
+        <div class="play-ear-section-heading">
+          <span>Section</span><strong id="playEarSectionCounter">1 of 2 · easy</strong>
+        </div>
+        <div class="play-ear-section-tabs" id="playEarSectionTabs"><button type="button" class="play-ear-section-btn active" data-section-index="0" aria-pressed="true"><span>✓ Opening guitar melody</span><small>6 notes · easy</small></button><button type="button" class="play-ear-section-btn" data-section-index="1" aria-pressed="false"><span>Second phrase</span><small>6 notes · easy</small></button></div>
+        <nav class="play-ear-section-navigation" aria-label="Section navigation">
+          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn" disabled="">← Previous section</button>
+          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn">Next section →</button>
+        </nav>
+
+        <div class="melodies-prompt">
+          <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+          <strong id="playEarStatus">You got it!</strong>
+          <span id="playEarHint">100% note accuracy for this attempt.</span>
+        </div>
+
+        <label class="play-ear-pause-setting">
+          <input type="checkbox" id="playEarPauseWhileGuessing" checked="">
+          <span><strong>Pause video while guessing</strong><small>Turn this off when using an audio interface or headphones.</small></span>
+        </label>
+
+        <fieldset class="melodies-method">
+          <legend>How do you want to guess?</legend>
+          <button type="button" class="melodies-method-btn active" id="playEarMicMethodBtn" aria-pressed="true" disabled="">
+            <strong>Play it</strong><span>Use selected audio input</span>
+          </button>
+          <button type="button" class="melodies-method-btn" id="playEarManualMethodBtn" aria-pressed="false" disabled="">
+            <strong>Enter intervals</strong><span>No listening required</span>
+          </button>
+        </fieldset>
+
+        <div class="melodies-progress" aria-label="Section progress">
+          <div class="melodies-progress-track"><span id="playEarProgressBar" style="width: 100%;"></span></div>
+          <span id="playEarProgressText">6 of 6 notes</span>
+        </div>
+
+        <div id="playEarMicrophonePanel">
+          <div class="melodies-detected" aria-live="polite">
+            <span class="melodies-detected-label">Heard</span>
+            <strong id="playEarDetectedNote">C5</strong>
+            <div class="play-ear-detected-details">
+              <span id="playEarDetectedInterval">6 notes matched so far</span>
+              <div class="play-ear-heard-actions">
+                <button type="button" class="melodies-link-btn" id="playEarResetNotesBtn" disabled="">Reset notes</button>
+                <button type="button" class="melodies-link-btn" id="playEarPlayHeardBtn" disabled="">Play heard notes</button>
+              </div>
+              <label class="play-ear-auto-clear-setting">
+                <input type="checkbox" id="playEarAutoClearNotes" checked="" disabled="">
+                <small>Auto-clear after 5 seconds</small>
+              </label>
+            </div>
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn" disabled="">Start playing</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn" disabled="">Reveal answer</button>
+          </div>
+          <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
+        </div>
+
+        <div class="melodies-manual" id="playEarManualPanel" hidden="">
+          <label class="melodies-manual-label" for="playEarIntervalInput">Treat the first heard note as 1, or use degrees from the song key.</label>
+          <div class="melodies-interval-entry" id="playEarIntervalEntry">
+            <div class="melodies-interval-boxes" id="playEarIntervalBoxes"></div>
+            <input id="playEarIntervalInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Section scale degrees" maxlength="6" disabled="">
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled="">Check intervals</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarManualRevealBtn" disabled="">Reveal answer</button>
+          </div>
+        </div>
+
+        <div class="melodies-result" id="playEarResult"><strong>Opening guitar melody</strong><span>My Girl · C major</span><div class="melodies-answer"><b>Correct intervals</b><div><span>1</span><i aria-hidden="true">–</i><span>2</span><i aria-hidden="true">–</i><span>3</span><i aria-hidden="true">–</i><span>5</span><i aria-hidden="true">–</i><span>6</span><i aria-hidden="true">–</i><span>1</span></div></div><small>Relative interval sequence matched; key and rhythm were not scored.</small></div>
+      </section>
+    </div>
+
+    <aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.</span>
+    </div>
+    <label class="audio-input-field" for="playEarAudioInput">
+      <span>Audio input</span>
+      <select id="playEarAudioInput" data-audio-input-select="" disabled="">
+        <option value="">Allow audio access first</option>
+      </select>
+    </label>
+    <small data-audio-input-help="">Allow audio access once to see device names.</small>
+  </aside>
+    <p class="melodies-mic-note">Only the selected audio input is analyzed. YouTube audio is never transcribed.</p>
+  </section>"
+`;
+
+exports[`Play by Ear user flow > reflects looping, heard playback, incorrect notes and a completed microphone attempt > looping practice 1`] = `
+"<section class="play-ear-game" aria-labelledby="playEarHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Real songs · by ear</p>
+      <h1 id="playEarHeading">Hear the phrase. Find it on your guitar.</h1>
+      <p class="melodies-intro">Loop a short section from a curated performance, then reproduce its notes in any key or enter the intervals.</p>
+    </header>
+
+    <div class="play-ear-layout">
+      <section class="play-ear-media-card" aria-labelledby="playEarSongTitle">
+        <label class="play-ear-song-field" for="playEarSongSelect">
+          <span>Song</span><select id="playEarSongSelect"><option value="my-girl">My Girl</option><option value="smoke-on-the-water">Smoke on the Water</option><option value="iron-man">Iron Man</option><option value="another-one-bites-the-dust">Another One Bites the Dust</option><option value="billie-jean">Billie Jean</option><option value="beat-it">Beat It</option><option value="sweet-dreams">Sweet Dreams (Are Made of This)</option><option value="take-on-me">Take On Me</option><option value="come-as-you-are">Come As You Are</option><option value="seven-nation-army">Seven Nation Army</option><option value="toxic">Toxic</option><option value="bad-romance">Bad Romance</option><option value="shape-of-you">Shape of You</option><option value="blinding-lights">Blinding Lights</option><option value="sunshine-of-your-love">Sunshine of Your Love</option><option value="sweet-child-of-mine">Sweet Child O' Mine</option><option value="satisfaction">(I Can't Get No) Satisfaction</option><option value="superstition">Superstition</option><option value="layla">Layla</option><option value="crazy-train">Crazy Train</option><option value="come-together">Come Together</option><option value="enter-sandman">Enter Sandman</option><option value="hysteria">Hysteria</option><option value="smooth">Smooth</option><option value="feel-good-inc">Feel Good Inc.</option><option value="do-i-wanna-know">Do I Wanna Know?</option><option value="uptown-funk">Uptown Funk</option><option value="bad-guy">Bad Guy</option><option value="i-will-possess-your-heart">I Will Possess Your Heart</option></select>
+        </label>
+        <div class="play-ear-song-heading">
+          <div><h2 id="playEarSongTitle">My Girl</h2><p id="playEarPerformance">Official lyric video</p></div>
+          <span id="playEarSongKey">C major</span>
+        </div>
+        <div class="play-ear-video-shell">
+          <div id="playEarYoutubePlayer" class="play-ear-video-placeholder">
+            <span aria-hidden="true">▶</span><p>The video loads when you play the first loop.</p>
+          </div>
+        </div>
+        <p class="play-ear-video-status" id="playEarVideoStatus" aria-live="polite">Looping Opening guitar melody</p>
+        <div class="play-ear-loop-actions">
+          <div class="play-ear-transport">
+            <button type="button" class="play-ear-loop-btn" id="playEarLoopBtn" aria-label="Restart loop" title="Restart loop">↻</button>
+            <div class="play-ear-speed-control" aria-label="Playback speed">
+              <span>Speed</span>
+              <button type="button" id="playEarSlowerBtn" aria-label="Slow down" title="Slow down">−</button>
+              <output id="playEarPlaybackRate" aria-live="polite">1×</output>
+              <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up">+</button>
+            </div>
+            <button type="button" class="melodies-link-btn play-ear-simplified-btn" id="playEarSimplifiedBtn">Play simplified version</button>
+          </div>
+          <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=y3KJ7d2qBoA">Open on YouTube ↗</a>
+        </div>
+      </section>
+
+      <section class="melodies-card play-ear-guess-card">
+        <div class="play-ear-section-heading">
+          <span>Section</span><strong id="playEarSectionCounter">1 of 2 · easy</strong>
+        </div>
+        <div class="play-ear-section-tabs" id="playEarSectionTabs"><button type="button" class="play-ear-section-btn active" data-section-index="0" aria-pressed="true"><span>Opening guitar melody</span><small>6 notes · easy</small></button><button type="button" class="play-ear-section-btn" data-section-index="1" aria-pressed="false"><span>Second phrase</span><small>6 notes · easy</small></button></div>
+        <nav class="play-ear-section-navigation" aria-label="Section navigation">
+          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn" disabled="">← Previous section</button>
+          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn">Next section →</button>
+        </nav>
+
+        <div class="melodies-prompt">
+          <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+          <strong id="playEarStatus">Listen for the shape of the phrase</strong>
+          <span id="playEarHint">When ready, play it back or enter the intervals.</span>
+        </div>
+
+        <label class="play-ear-pause-setting">
+          <input type="checkbox" id="playEarPauseWhileGuessing" checked="">
+          <span><strong>Pause video while guessing</strong><small>Turn this off when using an audio interface or headphones.</small></span>
+        </label>
+
+        <fieldset class="melodies-method">
+          <legend>How do you want to guess?</legend>
+          <button type="button" class="melodies-method-btn active" id="playEarMicMethodBtn" aria-pressed="true">
+            <strong>Play it</strong><span>Use selected audio input</span>
+          </button>
+          <button type="button" class="melodies-method-btn" id="playEarManualMethodBtn" aria-pressed="false">
+            <strong>Enter intervals</strong><span>No listening required</span>
+          </button>
+        </fieldset>
+
+        <div class="melodies-progress" aria-label="Section progress">
+          <div class="melodies-progress-track"><span id="playEarProgressBar" style="width: 0%;"></span></div>
+          <span id="playEarProgressText">0 of 6 notes</span>
+        </div>
+
+        <div id="playEarMicrophonePanel">
+          <div class="melodies-detected" aria-live="polite">
+            <span class="melodies-detected-label">Heard</span>
+            <strong id="playEarDetectedNote">—</strong>
+            <div class="play-ear-detected-details">
+              <span id="playEarDetectedInterval">Waiting for your guitar</span>
+              <div class="play-ear-heard-actions">
+                <button type="button" class="melodies-link-btn" id="playEarResetNotesBtn" disabled="">Reset notes</button>
+                <button type="button" class="melodies-link-btn" id="playEarPlayHeardBtn" disabled="">Play heard notes</button>
+              </div>
+              <label class="play-ear-auto-clear-setting">
+                <input type="checkbox" id="playEarAutoClearNotes" checked="">
+                <small>Auto-clear after 5 seconds</small>
+              </label>
+            </div>
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn">Start playing</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn">Reveal answer</button>
+          </div>
+          <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
+        </div>
+
+        <div class="melodies-manual" id="playEarManualPanel" hidden="">
+          <label class="melodies-manual-label" for="playEarIntervalInput">Treat the first heard note as 1, or use degrees from the song key.</label>
+          <div class="melodies-interval-entry" id="playEarIntervalEntry">
+            <div class="melodies-interval-boxes" id="playEarIntervalBoxes"></div>
+            <input id="playEarIntervalInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Section scale degrees" maxlength="6">
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled="">Check intervals</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarManualRevealBtn">Reveal answer</button>
+          </div>
+        </div>
+
+        <div class="melodies-result" id="playEarResult" hidden=""></div>
+      </section>
+    </div>
+
+    <aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.</span>
+    </div>
+    <label class="audio-input-field" for="playEarAudioInput">
+      <span>Audio input</span>
+      <select id="playEarAudioInput" data-audio-input-select="" disabled="">
+        <option value="">Allow audio access first</option>
+      </select>
+    </label>
+    <small data-audio-input-help="">Allow audio access once to see device names.</small>
+  </aside>
+    <p class="melodies-mic-note">Only the selected audio input is analyzed. YouTube audio is never transcribed.</p>
+  </section>"
+`;
+
+exports[`Play by Ear user flow > reflects looping, heard playback, incorrect notes and a completed microphone attempt > microphone while video paused 1`] = `
+"<section class="play-ear-game" aria-labelledby="playEarHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Real songs · by ear</p>
+      <h1 id="playEarHeading">Hear the phrase. Find it on your guitar.</h1>
+      <p class="melodies-intro">Loop a short section from a curated performance, then reproduce its notes in any key or enter the intervals.</p>
+    </header>
+
+    <div class="play-ear-layout">
+      <section class="play-ear-media-card" aria-labelledby="playEarSongTitle">
+        <label class="play-ear-song-field" for="playEarSongSelect">
+          <span>Song</span><select id="playEarSongSelect"><option value="my-girl">My Girl</option><option value="smoke-on-the-water">Smoke on the Water</option><option value="iron-man">Iron Man</option><option value="another-one-bites-the-dust">Another One Bites the Dust</option><option value="billie-jean">Billie Jean</option><option value="beat-it">Beat It</option><option value="sweet-dreams">Sweet Dreams (Are Made of This)</option><option value="take-on-me">Take On Me</option><option value="come-as-you-are">Come As You Are</option><option value="seven-nation-army">Seven Nation Army</option><option value="toxic">Toxic</option><option value="bad-romance">Bad Romance</option><option value="shape-of-you">Shape of You</option><option value="blinding-lights">Blinding Lights</option><option value="sunshine-of-your-love">Sunshine of Your Love</option><option value="sweet-child-of-mine">Sweet Child O' Mine</option><option value="satisfaction">(I Can't Get No) Satisfaction</option><option value="superstition">Superstition</option><option value="layla">Layla</option><option value="crazy-train">Crazy Train</option><option value="come-together">Come Together</option><option value="enter-sandman">Enter Sandman</option><option value="hysteria">Hysteria</option><option value="smooth">Smooth</option><option value="feel-good-inc">Feel Good Inc.</option><option value="do-i-wanna-know">Do I Wanna Know?</option><option value="uptown-funk">Uptown Funk</option><option value="bad-guy">Bad Guy</option><option value="i-will-possess-your-heart">I Will Possess Your Heart</option></select>
+        </label>
+        <div class="play-ear-song-heading">
+          <div><h2 id="playEarSongTitle">My Girl</h2><p id="playEarPerformance">Official lyric video</p></div>
+          <span id="playEarSongKey">C major</span>
+        </div>
+        <div class="play-ear-video-shell">
+          <div id="playEarYoutubePlayer" class="play-ear-video-placeholder">
+            <span aria-hidden="true">▶</span><p>The video loads when you play the first loop.</p>
+          </div>
+        </div>
+        <p class="play-ear-video-status" id="playEarVideoStatus" aria-live="polite">Loop paused</p>
+        <div class="play-ear-loop-actions">
+          <div class="play-ear-transport">
+            <button type="button" class="play-ear-loop-btn" id="playEarLoopBtn" aria-label="Play loop" title="Play loop">▶</button>
+            <div class="play-ear-speed-control" aria-label="Playback speed">
+              <span>Speed</span>
+              <button type="button" id="playEarSlowerBtn" aria-label="Slow down" title="Slow down" disabled="">−</button>
+              <output id="playEarPlaybackRate" aria-live="polite">0.5×</output>
+              <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up">+</button>
+            </div>
+            <button type="button" class="melodies-link-btn play-ear-simplified-btn" id="playEarSimplifiedBtn">Play simplified version</button>
+          </div>
+          <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=y3KJ7d2qBoA">Open on YouTube ↗</a>
+        </div>
+      </section>
+
+      <section class="melodies-card play-ear-guess-card">
+        <div class="play-ear-section-heading">
+          <span>Section</span><strong id="playEarSectionCounter">1 of 2 · easy</strong>
+        </div>
+        <div class="play-ear-section-tabs" id="playEarSectionTabs"><button type="button" class="play-ear-section-btn active" data-section-index="0" aria-pressed="true"><span>Opening guitar melody</span><small>6 notes · easy</small></button><button type="button" class="play-ear-section-btn" data-section-index="1" aria-pressed="false"><span>Second phrase</span><small>6 notes · easy</small></button></div>
+        <nav class="play-ear-section-navigation" aria-label="Section navigation">
+          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn" disabled="">← Previous section</button>
+          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn">Next section →</button>
+        </nav>
+
+        <div class="melodies-prompt">
+          <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+          <strong id="playEarStatus">Play the section back</strong>
+          <span id="playEarHint">Start on any note; only the relative interval shape is scored.</span>
+        </div>
+
+        <label class="play-ear-pause-setting">
+          <input type="checkbox" id="playEarPauseWhileGuessing" checked="">
+          <span><strong>Pause video while guessing</strong><small>Turn this off when using an audio interface or headphones.</small></span>
+        </label>
+
+        <fieldset class="melodies-method">
+          <legend>How do you want to guess?</legend>
+          <button type="button" class="melodies-method-btn active" id="playEarMicMethodBtn" aria-pressed="true">
+            <strong>Play it</strong><span>Use selected audio input</span>
+          </button>
+          <button type="button" class="melodies-method-btn" id="playEarManualMethodBtn" aria-pressed="false">
+            <strong>Enter intervals</strong><span>No listening required</span>
+          </button>
+        </fieldset>
+
+        <div class="melodies-progress" aria-label="Section progress">
+          <div class="melodies-progress-track"><span id="playEarProgressBar" style="width: 0%;"></span></div>
+          <span id="playEarProgressText">0 of 6 notes</span>
+        </div>
+
+        <div id="playEarMicrophonePanel">
+          <div class="melodies-detected" aria-live="polite">
+            <span class="melodies-detected-label">Heard</span>
+            <strong id="playEarDetectedNote">—</strong>
+            <div class="play-ear-detected-details">
+              <span id="playEarDetectedInterval">Waiting for your guitar</span>
+              <div class="play-ear-heard-actions">
+                <button type="button" class="melodies-link-btn" id="playEarResetNotesBtn" disabled="">Reset notes</button>
+                <button type="button" class="melodies-link-btn" id="playEarPlayHeardBtn" disabled="">Play heard notes</button>
+              </div>
+              <label class="play-ear-auto-clear-setting">
+                <input type="checkbox" id="playEarAutoClearNotes" checked="">
+                <small>Auto-clear after 5 seconds</small>
+              </label>
+            </div>
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn">Stop playing</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn">Reveal answer</button>
+          </div>
+          <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
+        </div>
+
+        <div class="melodies-manual" id="playEarManualPanel" hidden="">
+          <label class="melodies-manual-label" for="playEarIntervalInput">Treat the first heard note as 1, or use degrees from the song key.</label>
+          <div class="melodies-interval-entry" id="playEarIntervalEntry">
+            <div class="melodies-interval-boxes" id="playEarIntervalBoxes"></div>
+            <input id="playEarIntervalInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Section scale degrees" maxlength="6">
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled="">Check intervals</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarManualRevealBtn">Reveal answer</button>
+          </div>
+        </div>
+
+        <div class="melodies-result" id="playEarResult" hidden=""></div>
+      </section>
+    </div>
+
+    <aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.</span>
+    </div>
+    <label class="audio-input-field" for="playEarAudioInput">
+      <span>Audio input</span>
+      <select id="playEarAudioInput" data-audio-input-select="" disabled="">
+        <option value="">Allow audio access first</option>
+      </select>
+    </label>
+    <small data-audio-input-help="">Allow audio access once to see device names.</small>
+  </aside>
+    <p class="melodies-mic-note">Only the selected audio input is analyzed. YouTube audio is never transcribed.</p>
+  </section>"
+`;
+
+exports[`Play by Ear user flow > reflects looping, heard playback, incorrect notes and a completed microphone attempt > next section after completion 1`] = `
+"<section class="play-ear-game" aria-labelledby="playEarHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Real songs · by ear</p>
+      <h1 id="playEarHeading">Hear the phrase. Find it on your guitar.</h1>
+      <p class="melodies-intro">Loop a short section from a curated performance, then reproduce its notes in any key or enter the intervals.</p>
+    </header>
+
+    <div class="play-ear-layout">
+      <section class="play-ear-media-card" aria-labelledby="playEarSongTitle">
+        <label class="play-ear-song-field" for="playEarSongSelect">
+          <span>Song</span><select id="playEarSongSelect"><option value="my-girl">My Girl</option><option value="smoke-on-the-water">Smoke on the Water</option><option value="iron-man">Iron Man</option><option value="another-one-bites-the-dust">Another One Bites the Dust</option><option value="billie-jean">Billie Jean</option><option value="beat-it">Beat It</option><option value="sweet-dreams">Sweet Dreams (Are Made of This)</option><option value="take-on-me">Take On Me</option><option value="come-as-you-are">Come As You Are</option><option value="seven-nation-army">Seven Nation Army</option><option value="toxic">Toxic</option><option value="bad-romance">Bad Romance</option><option value="shape-of-you">Shape of You</option><option value="blinding-lights">Blinding Lights</option><option value="sunshine-of-your-love">Sunshine of Your Love</option><option value="sweet-child-of-mine">Sweet Child O' Mine</option><option value="satisfaction">(I Can't Get No) Satisfaction</option><option value="superstition">Superstition</option><option value="layla">Layla</option><option value="crazy-train">Crazy Train</option><option value="come-together">Come Together</option><option value="enter-sandman">Enter Sandman</option><option value="hysteria">Hysteria</option><option value="smooth">Smooth</option><option value="feel-good-inc">Feel Good Inc.</option><option value="do-i-wanna-know">Do I Wanna Know?</option><option value="uptown-funk">Uptown Funk</option><option value="bad-guy">Bad Guy</option><option value="i-will-possess-your-heart">I Will Possess Your Heart</option></select>
+        </label>
+        <div class="play-ear-song-heading">
+          <div><h2 id="playEarSongTitle">My Girl</h2><p id="playEarPerformance">Official lyric video</p></div>
+          <span id="playEarSongKey">C major</span>
+        </div>
+        <div class="play-ear-video-shell">
+          <div id="playEarYoutubePlayer" class="play-ear-video-placeholder">
+            <span aria-hidden="true">▶</span><p>The video loads when you play the first loop.</p>
+          </div>
+        </div>
+        <p class="play-ear-video-status" id="playEarVideoStatus" aria-live="polite">Loop paused</p>
+        <div class="play-ear-loop-actions">
+          <div class="play-ear-transport">
+            <button type="button" class="play-ear-loop-btn" id="playEarLoopBtn" aria-label="Play loop" title="Play loop">▶</button>
+            <div class="play-ear-speed-control" aria-label="Playback speed">
+              <span>Speed</span>
+              <button type="button" id="playEarSlowerBtn" aria-label="Slow down" title="Slow down" disabled="">−</button>
+              <output id="playEarPlaybackRate" aria-live="polite">0.5×</output>
+              <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up">+</button>
+            </div>
+            <button type="button" class="melodies-link-btn play-ear-simplified-btn" id="playEarSimplifiedBtn">Play simplified version</button>
+          </div>
+          <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=y3KJ7d2qBoA">Open on YouTube ↗</a>
+        </div>
+      </section>
+
+      <section class="melodies-card play-ear-guess-card">
+        <div class="play-ear-section-heading">
+          <span>Section</span><strong id="playEarSectionCounter">2 of 2 · easy</strong>
+        </div>
+        <div class="play-ear-section-tabs" id="playEarSectionTabs"><button type="button" class="play-ear-section-btn" data-section-index="0" aria-pressed="false"><span>✓ Opening guitar melody</span><small>6 notes · easy</small></button><button type="button" class="play-ear-section-btn active" data-section-index="1" aria-pressed="true"><span>Second phrase</span><small>6 notes · easy</small></button></div>
+        <nav class="play-ear-section-navigation" aria-label="Section navigation">
+          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn">← Previous section</button>
+          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn" disabled="">Next section →</button>
+        </nav>
+
+        <div class="melodies-prompt">
+          <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+          <strong id="playEarStatus">Listen to the section first</strong>
+          <span id="playEarHint">Replay it as many times as you need.</span>
+        </div>
+
+        <label class="play-ear-pause-setting">
+          <input type="checkbox" id="playEarPauseWhileGuessing" checked="">
+          <span><strong>Pause video while guessing</strong><small>Turn this off when using an audio interface or headphones.</small></span>
+        </label>
+
+        <fieldset class="melodies-method">
+          <legend>How do you want to guess?</legend>
+          <button type="button" class="melodies-method-btn active" id="playEarMicMethodBtn" aria-pressed="true">
+            <strong>Play it</strong><span>Use selected audio input</span>
+          </button>
+          <button type="button" class="melodies-method-btn" id="playEarManualMethodBtn" aria-pressed="false">
+            <strong>Enter intervals</strong><span>No listening required</span>
+          </button>
+        </fieldset>
+
+        <div class="melodies-progress" aria-label="Section progress">
+          <div class="melodies-progress-track"><span id="playEarProgressBar" style="width: 0%;"></span></div>
+          <span id="playEarProgressText">0 of 6 notes</span>
+        </div>
+
+        <div id="playEarMicrophonePanel">
+          <div class="melodies-detected" aria-live="polite">
+            <span class="melodies-detected-label">Heard</span>
+            <strong id="playEarDetectedNote">—</strong>
+            <div class="play-ear-detected-details">
+              <span id="playEarDetectedInterval">Waiting for your guitar</span>
+              <div class="play-ear-heard-actions">
+                <button type="button" class="melodies-link-btn" id="playEarResetNotesBtn" disabled="">Reset notes</button>
+                <button type="button" class="melodies-link-btn" id="playEarPlayHeardBtn" disabled="">Play heard notes</button>
+              </div>
+              <label class="play-ear-auto-clear-setting">
+                <input type="checkbox" id="playEarAutoClearNotes" checked="">
+                <small>Auto-clear after 5 seconds</small>
+              </label>
+            </div>
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn">Start playing</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn">Reveal answer</button>
+          </div>
+          <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
+        </div>
+
+        <div class="melodies-manual" id="playEarManualPanel" hidden="">
+          <label class="melodies-manual-label" for="playEarIntervalInput">Treat the first heard note as 1, or use degrees from the song key.</label>
+          <div class="melodies-interval-entry" id="playEarIntervalEntry">
+            <div class="melodies-interval-boxes" id="playEarIntervalBoxes"></div>
+            <input id="playEarIntervalInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Section scale degrees" maxlength="6" disabled="">
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled="">Check intervals</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarManualRevealBtn">Reveal answer</button>
+          </div>
+        </div>
+
+        <div class="melodies-result" id="playEarResult" hidden=""><strong>Opening guitar melody</strong><span>My Girl · C major</span><div class="melodies-answer"><b>Correct intervals</b><div><span>1</span><i aria-hidden="true">–</i><span>2</span><i aria-hidden="true">–</i><span>3</span><i aria-hidden="true">–</i><span>5</span><i aria-hidden="true">–</i><span>6</span><i aria-hidden="true">–</i><span>1</span></div></div><small>Relative interval sequence matched; key and rhythm were not scored.</small></div>
+      </section>
+    </div>
+
+    <aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.</span>
+    </div>
+    <label class="audio-input-field" for="playEarAudioInput">
+      <span>Audio input</span>
+      <select id="playEarAudioInput" data-audio-input-select="" disabled="">
+        <option value="">Allow audio access first</option>
+      </select>
+    </label>
+    <small data-audio-input-help="">Allow audio access once to see device names.</small>
+  </aside>
+    <p class="melodies-mic-note">Only the selected audio input is analyzed. YouTube audio is never transcribed.</p>
+  </section>"
+`;
+
+exports[`Play by Ear user flow > reflects looping, heard playback, incorrect notes and a completed microphone attempt > playing simplified practice 1`] = `
+"<section class="play-ear-game" aria-labelledby="playEarHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Real songs · by ear</p>
+      <h1 id="playEarHeading">Hear the phrase. Find it on your guitar.</h1>
+      <p class="melodies-intro">Loop a short section from a curated performance, then reproduce its notes in any key or enter the intervals.</p>
+    </header>
+
+    <div class="play-ear-layout">
+      <section class="play-ear-media-card" aria-labelledby="playEarSongTitle">
+        <label class="play-ear-song-field" for="playEarSongSelect">
+          <span>Song</span><select id="playEarSongSelect"><option value="my-girl">My Girl</option><option value="smoke-on-the-water">Smoke on the Water</option><option value="iron-man">Iron Man</option><option value="another-one-bites-the-dust">Another One Bites the Dust</option><option value="billie-jean">Billie Jean</option><option value="beat-it">Beat It</option><option value="sweet-dreams">Sweet Dreams (Are Made of This)</option><option value="take-on-me">Take On Me</option><option value="come-as-you-are">Come As You Are</option><option value="seven-nation-army">Seven Nation Army</option><option value="toxic">Toxic</option><option value="bad-romance">Bad Romance</option><option value="shape-of-you">Shape of You</option><option value="blinding-lights">Blinding Lights</option><option value="sunshine-of-your-love">Sunshine of Your Love</option><option value="sweet-child-of-mine">Sweet Child O' Mine</option><option value="satisfaction">(I Can't Get No) Satisfaction</option><option value="superstition">Superstition</option><option value="layla">Layla</option><option value="crazy-train">Crazy Train</option><option value="come-together">Come Together</option><option value="enter-sandman">Enter Sandman</option><option value="hysteria">Hysteria</option><option value="smooth">Smooth</option><option value="feel-good-inc">Feel Good Inc.</option><option value="do-i-wanna-know">Do I Wanna Know?</option><option value="uptown-funk">Uptown Funk</option><option value="bad-guy">Bad Guy</option><option value="i-will-possess-your-heart">I Will Possess Your Heart</option></select>
+        </label>
+        <div class="play-ear-song-heading">
+          <div><h2 id="playEarSongTitle">My Girl</h2><p id="playEarPerformance">Official lyric video</p></div>
+          <span id="playEarSongKey">C major</span>
+        </div>
+        <div class="play-ear-video-shell">
+          <div id="playEarYoutubePlayer" class="play-ear-video-placeholder">
+            <span aria-hidden="true">▶</span><p>The video loads when you play the first loop.</p>
+          </div>
+        </div>
+        <p class="play-ear-video-status" id="playEarVideoStatus" aria-live="polite">Choose a section, then play the loop.</p>
+        <div class="play-ear-loop-actions">
+          <div class="play-ear-transport">
+            <button type="button" class="play-ear-loop-btn" id="playEarLoopBtn" aria-label="Play loop" title="Play loop">▶</button>
+            <div class="play-ear-speed-control" aria-label="Playback speed">
+              <span>Speed</span>
+              <button type="button" id="playEarSlowerBtn" aria-label="Slow down" title="Slow down" disabled="">−</button>
+              <output id="playEarPlaybackRate" aria-live="polite">1×</output>
+              <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up" disabled="">+</button>
+            </div>
+            <button type="button" class="melodies-link-btn play-ear-simplified-btn" id="playEarSimplifiedBtn" disabled="">♪ Playing…</button>
+          </div>
+          <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=y3KJ7d2qBoA">Open on YouTube ↗</a>
+        </div>
+      </section>
+
+      <section class="melodies-card play-ear-guess-card">
+        <div class="play-ear-section-heading">
+          <span>Section</span><strong id="playEarSectionCounter">1 of 2 · easy</strong>
+        </div>
+        <div class="play-ear-section-tabs" id="playEarSectionTabs"><button type="button" class="play-ear-section-btn active" data-section-index="0" aria-pressed="true"><span>Opening guitar melody</span><small>6 notes · easy</small></button><button type="button" class="play-ear-section-btn" data-section-index="1" aria-pressed="false"><span>Second phrase</span><small>6 notes · easy</small></button></div>
+        <nav class="play-ear-section-navigation" aria-label="Section navigation">
+          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn" disabled="">← Previous section</button>
+          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn">Next section →</button>
+        </nav>
+
+        <div class="melodies-prompt">
+          <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+          <strong id="playEarStatus">Listen to the section first</strong>
+          <span id="playEarHint">Replay it as many times as you need.</span>
+        </div>
+
+        <label class="play-ear-pause-setting">
+          <input type="checkbox" id="playEarPauseWhileGuessing" checked="">
+          <span><strong>Pause video while guessing</strong><small>Turn this off when using an audio interface or headphones.</small></span>
+        </label>
+
+        <fieldset class="melodies-method">
+          <legend>How do you want to guess?</legend>
+          <button type="button" class="melodies-method-btn active" id="playEarMicMethodBtn" aria-pressed="true">
+            <strong>Play it</strong><span>Use selected audio input</span>
+          </button>
+          <button type="button" class="melodies-method-btn" id="playEarManualMethodBtn" aria-pressed="false">
+            <strong>Enter intervals</strong><span>No listening required</span>
+          </button>
+        </fieldset>
+
+        <div class="melodies-progress" aria-label="Section progress">
+          <div class="melodies-progress-track"><span id="playEarProgressBar" style="width: 0%;"></span></div>
+          <span id="playEarProgressText">0 of 6 notes</span>
+        </div>
+
+        <div id="playEarMicrophonePanel">
+          <div class="melodies-detected" aria-live="polite">
+            <span class="melodies-detected-label">Heard</span>
+            <strong id="playEarDetectedNote">—</strong>
+            <div class="play-ear-detected-details">
+              <span id="playEarDetectedInterval">Waiting for your guitar</span>
+              <div class="play-ear-heard-actions">
+                <button type="button" class="melodies-link-btn" id="playEarResetNotesBtn" disabled="">Reset notes</button>
+                <button type="button" class="melodies-link-btn" id="playEarPlayHeardBtn" disabled="">Play heard notes</button>
+              </div>
+              <label class="play-ear-auto-clear-setting">
+                <input type="checkbox" id="playEarAutoClearNotes" checked="">
+                <small>Auto-clear after 5 seconds</small>
+              </label>
+            </div>
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn">Start playing</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn">Reveal answer</button>
+          </div>
+          <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
+        </div>
+
+        <div class="melodies-manual" id="playEarManualPanel" hidden="">
+          <label class="melodies-manual-label" for="playEarIntervalInput">Treat the first heard note as 1, or use degrees from the song key.</label>
+          <div class="melodies-interval-entry" id="playEarIntervalEntry">
+            <div class="melodies-interval-boxes" id="playEarIntervalBoxes"></div>
+            <input id="playEarIntervalInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Section scale degrees" maxlength="6" disabled="">
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled="">Check intervals</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarManualRevealBtn">Reveal answer</button>
+          </div>
+        </div>
+
+        <div class="melodies-result" id="playEarResult" hidden=""></div>
+      </section>
+    </div>
+
+    <aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.</span>
+    </div>
+    <label class="audio-input-field" for="playEarAudioInput">
+      <span>Audio input</span>
+      <select id="playEarAudioInput" data-audio-input-select="" disabled="">
+        <option value="">Allow audio access first</option>
+      </select>
+    </label>
+    <small data-audio-input-help="">Allow audio access once to see device names.</small>
+  </aside>
+    <p class="melodies-mic-note">Only the selected audio input is analyzed. YouTube audio is never transcribed.</p>
+  </section>"
+`;
+
+exports[`Play by Ear user flow > reflects looping, heard playback, incorrect notes and a completed microphone attempt > playing the heard attempt 1`] = `
+"<section class="play-ear-game" aria-labelledby="playEarHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Real songs · by ear</p>
+      <h1 id="playEarHeading">Hear the phrase. Find it on your guitar.</h1>
+      <p class="melodies-intro">Loop a short section from a curated performance, then reproduce its notes in any key or enter the intervals.</p>
+    </header>
+
+    <div class="play-ear-layout">
+      <section class="play-ear-media-card" aria-labelledby="playEarSongTitle">
+        <label class="play-ear-song-field" for="playEarSongSelect">
+          <span>Song</span><select id="playEarSongSelect"><option value="my-girl">My Girl</option><option value="smoke-on-the-water">Smoke on the Water</option><option value="iron-man">Iron Man</option><option value="another-one-bites-the-dust">Another One Bites the Dust</option><option value="billie-jean">Billie Jean</option><option value="beat-it">Beat It</option><option value="sweet-dreams">Sweet Dreams (Are Made of This)</option><option value="take-on-me">Take On Me</option><option value="come-as-you-are">Come As You Are</option><option value="seven-nation-army">Seven Nation Army</option><option value="toxic">Toxic</option><option value="bad-romance">Bad Romance</option><option value="shape-of-you">Shape of You</option><option value="blinding-lights">Blinding Lights</option><option value="sunshine-of-your-love">Sunshine of Your Love</option><option value="sweet-child-of-mine">Sweet Child O' Mine</option><option value="satisfaction">(I Can't Get No) Satisfaction</option><option value="superstition">Superstition</option><option value="layla">Layla</option><option value="crazy-train">Crazy Train</option><option value="come-together">Come Together</option><option value="enter-sandman">Enter Sandman</option><option value="hysteria">Hysteria</option><option value="smooth">Smooth</option><option value="feel-good-inc">Feel Good Inc.</option><option value="do-i-wanna-know">Do I Wanna Know?</option><option value="uptown-funk">Uptown Funk</option><option value="bad-guy">Bad Guy</option><option value="i-will-possess-your-heart">I Will Possess Your Heart</option></select>
+        </label>
+        <div class="play-ear-song-heading">
+          <div><h2 id="playEarSongTitle">My Girl</h2><p id="playEarPerformance">Official lyric video</p></div>
+          <span id="playEarSongKey">C major</span>
+        </div>
+        <div class="play-ear-video-shell">
+          <div id="playEarYoutubePlayer" class="play-ear-video-placeholder">
+            <span aria-hidden="true">▶</span><p>The video loads when you play the first loop.</p>
+          </div>
+        </div>
+        <p class="play-ear-video-status" id="playEarVideoStatus" aria-live="polite">Loop paused</p>
+        <div class="play-ear-loop-actions">
+          <div class="play-ear-transport">
+            <button type="button" class="play-ear-loop-btn" id="playEarLoopBtn" aria-label="Play loop" title="Play loop">▶</button>
+            <div class="play-ear-speed-control" aria-label="Playback speed">
+              <span>Speed</span>
+              <button type="button" id="playEarSlowerBtn" aria-label="Slow down" title="Slow down" disabled="">−</button>
+              <output id="playEarPlaybackRate" aria-live="polite">0.5×</output>
+              <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up">+</button>
+            </div>
+            <button type="button" class="melodies-link-btn play-ear-simplified-btn" id="playEarSimplifiedBtn" disabled="">Play simplified version</button>
+          </div>
+          <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=y3KJ7d2qBoA">Open on YouTube ↗</a>
+        </div>
+      </section>
+
+      <section class="melodies-card play-ear-guess-card">
+        <div class="play-ear-section-heading">
+          <span>Section</span><strong id="playEarSectionCounter">1 of 2 · easy</strong>
+        </div>
+        <div class="play-ear-section-tabs" id="playEarSectionTabs"><button type="button" class="play-ear-section-btn active" data-section-index="0" aria-pressed="true"><span>Opening guitar melody</span><small>6 notes · easy</small></button><button type="button" class="play-ear-section-btn" data-section-index="1" aria-pressed="false"><span>Second phrase</span><small>6 notes · easy</small></button></div>
+        <nav class="play-ear-section-navigation" aria-label="Section navigation">
+          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn" disabled="">← Previous section</button>
+          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn">Next section →</button>
+        </nav>
+
+        <div class="melodies-prompt">
+          <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+          <strong id="playEarStatus">1 notes matched</strong>
+          <span id="playEarHint">Keep following the phrase.</span>
+        </div>
+
+        <label class="play-ear-pause-setting">
+          <input type="checkbox" id="playEarPauseWhileGuessing" checked="">
+          <span><strong>Pause video while guessing</strong><small>Turn this off when using an audio interface or headphones.</small></span>
+        </label>
+
+        <fieldset class="melodies-method">
+          <legend>How do you want to guess?</legend>
+          <button type="button" class="melodies-method-btn active" id="playEarMicMethodBtn" aria-pressed="true">
+            <strong>Play it</strong><span>Use selected audio input</span>
+          </button>
+          <button type="button" class="melodies-method-btn" id="playEarManualMethodBtn" aria-pressed="false">
+            <strong>Enter intervals</strong><span>No listening required</span>
+          </button>
+        </fieldset>
+
+        <div class="melodies-progress" aria-label="Section progress">
+          <div class="melodies-progress-track"><span id="playEarProgressBar" style="width: 16.666666666666664%;"></span></div>
+          <span id="playEarProgressText">1 of 6 notes</span>
+        </div>
+
+        <div id="playEarMicrophonePanel">
+          <div class="melodies-detected" aria-live="polite">
+            <span class="melodies-detected-label">Heard</span>
+            <strong id="playEarDetectedNote">C4</strong>
+            <div class="play-ear-detected-details">
+              <span id="playEarDetectedInterval">1 notes matched so far</span>
+              <div class="play-ear-heard-actions">
+                <button type="button" class="melodies-link-btn" id="playEarResetNotesBtn">Reset notes</button>
+                <button type="button" class="melodies-link-btn" id="playEarPlayHeardBtn" disabled="">♪ Playing…</button>
+              </div>
+              <label class="play-ear-auto-clear-setting">
+                <input type="checkbox" id="playEarAutoClearNotes" checked="">
+                <small>Auto-clear after 5 seconds</small>
+              </label>
+            </div>
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn">Stop playing</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn">Reveal answer</button>
+          </div>
+          <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
+        </div>
+
+        <div class="melodies-manual" id="playEarManualPanel" hidden="">
+          <label class="melodies-manual-label" for="playEarIntervalInput">Treat the first heard note as 1, or use degrees from the song key.</label>
+          <div class="melodies-interval-entry" id="playEarIntervalEntry">
+            <div class="melodies-interval-boxes" id="playEarIntervalBoxes"></div>
+            <input id="playEarIntervalInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Section scale degrees" maxlength="6">
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled="">Check intervals</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarManualRevealBtn">Reveal answer</button>
+          </div>
+        </div>
+
+        <div class="melodies-result" id="playEarResult" hidden=""></div>
+      </section>
+    </div>
+
+    <aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.</span>
+    </div>
+    <label class="audio-input-field" for="playEarAudioInput">
+      <span>Audio input</span>
+      <select id="playEarAudioInput" data-audio-input-select="" disabled="">
+        <option value="">Allow audio access first</option>
+      </select>
+    </label>
+    <small data-audio-input-help="">Allow audio access once to see device names.</small>
+  </aside>
+    <p class="melodies-mic-note">Only the selected audio input is analyzed. YouTube audio is never transcribed.</p>
+  </section>"
+`;
+
+exports[`Play by Ear user flow > reflects looping, heard playback, incorrect notes and a completed microphone attempt > reset microphone practice 1`] = `
+"<section class="play-ear-game" aria-labelledby="playEarHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Real songs · by ear</p>
+      <h1 id="playEarHeading">Hear the phrase. Find it on your guitar.</h1>
+      <p class="melodies-intro">Loop a short section from a curated performance, then reproduce its notes in any key or enter the intervals.</p>
+    </header>
+
+    <div class="play-ear-layout">
+      <section class="play-ear-media-card" aria-labelledby="playEarSongTitle">
+        <label class="play-ear-song-field" for="playEarSongSelect">
+          <span>Song</span><select id="playEarSongSelect"><option value="my-girl">My Girl</option><option value="smoke-on-the-water">Smoke on the Water</option><option value="iron-man">Iron Man</option><option value="another-one-bites-the-dust">Another One Bites the Dust</option><option value="billie-jean">Billie Jean</option><option value="beat-it">Beat It</option><option value="sweet-dreams">Sweet Dreams (Are Made of This)</option><option value="take-on-me">Take On Me</option><option value="come-as-you-are">Come As You Are</option><option value="seven-nation-army">Seven Nation Army</option><option value="toxic">Toxic</option><option value="bad-romance">Bad Romance</option><option value="shape-of-you">Shape of You</option><option value="blinding-lights">Blinding Lights</option><option value="sunshine-of-your-love">Sunshine of Your Love</option><option value="sweet-child-of-mine">Sweet Child O' Mine</option><option value="satisfaction">(I Can't Get No) Satisfaction</option><option value="superstition">Superstition</option><option value="layla">Layla</option><option value="crazy-train">Crazy Train</option><option value="come-together">Come Together</option><option value="enter-sandman">Enter Sandman</option><option value="hysteria">Hysteria</option><option value="smooth">Smooth</option><option value="feel-good-inc">Feel Good Inc.</option><option value="do-i-wanna-know">Do I Wanna Know?</option><option value="uptown-funk">Uptown Funk</option><option value="bad-guy">Bad Guy</option><option value="i-will-possess-your-heart">I Will Possess Your Heart</option></select>
+        </label>
+        <div class="play-ear-song-heading">
+          <div><h2 id="playEarSongTitle">My Girl</h2><p id="playEarPerformance">Official lyric video</p></div>
+          <span id="playEarSongKey">C major</span>
+        </div>
+        <div class="play-ear-video-shell">
+          <div id="playEarYoutubePlayer" class="play-ear-video-placeholder">
+            <span aria-hidden="true">▶</span><p>The video loads when you play the first loop.</p>
+          </div>
+        </div>
+        <p class="play-ear-video-status" id="playEarVideoStatus" aria-live="polite">Loop paused</p>
+        <div class="play-ear-loop-actions">
+          <div class="play-ear-transport">
+            <button type="button" class="play-ear-loop-btn" id="playEarLoopBtn" aria-label="Play loop" title="Play loop">▶</button>
+            <div class="play-ear-speed-control" aria-label="Playback speed">
+              <span>Speed</span>
+              <button type="button" id="playEarSlowerBtn" aria-label="Slow down" title="Slow down" disabled="">−</button>
+              <output id="playEarPlaybackRate" aria-live="polite">0.5×</output>
+              <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up">+</button>
+            </div>
+            <button type="button" class="melodies-link-btn play-ear-simplified-btn" id="playEarSimplifiedBtn">Play simplified version</button>
+          </div>
+          <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=y3KJ7d2qBoA">Open on YouTube ↗</a>
+        </div>
+      </section>
+
+      <section class="melodies-card play-ear-guess-card">
+        <div class="play-ear-section-heading">
+          <span>Section</span><strong id="playEarSectionCounter">1 of 2 · easy</strong>
+        </div>
+        <div class="play-ear-section-tabs" id="playEarSectionTabs"><button type="button" class="play-ear-section-btn active" data-section-index="0" aria-pressed="true"><span>Opening guitar melody</span><small>6 notes · easy</small></button><button type="button" class="play-ear-section-btn" data-section-index="1" aria-pressed="false"><span>Second phrase</span><small>6 notes · easy</small></button></div>
+        <nav class="play-ear-section-navigation" aria-label="Section navigation">
+          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn" disabled="">← Previous section</button>
+          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn">Next section →</button>
+        </nav>
+
+        <div class="melodies-prompt">
+          <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+          <strong id="playEarStatus">Recognized notes cleared</strong>
+          <span id="playEarHint">Play the phrase again from its first note.</span>
+        </div>
+
+        <label class="play-ear-pause-setting">
+          <input type="checkbox" id="playEarPauseWhileGuessing" checked="">
+          <span><strong>Pause video while guessing</strong><small>Turn this off when using an audio interface or headphones.</small></span>
+        </label>
+
+        <fieldset class="melodies-method">
+          <legend>How do you want to guess?</legend>
+          <button type="button" class="melodies-method-btn active" id="playEarMicMethodBtn" aria-pressed="true">
+            <strong>Play it</strong><span>Use selected audio input</span>
+          </button>
+          <button type="button" class="melodies-method-btn" id="playEarManualMethodBtn" aria-pressed="false">
+            <strong>Enter intervals</strong><span>No listening required</span>
+          </button>
+        </fieldset>
+
+        <div class="melodies-progress" aria-label="Section progress">
+          <div class="melodies-progress-track"><span id="playEarProgressBar" style="width: 0%;"></span></div>
+          <span id="playEarProgressText">0 of 6 notes</span>
+        </div>
+
+        <div id="playEarMicrophonePanel">
+          <div class="melodies-detected" aria-live="polite">
+            <span class="melodies-detected-label">Heard</span>
+            <strong id="playEarDetectedNote">—</strong>
+            <div class="play-ear-detected-details">
+              <span id="playEarDetectedInterval">Waiting for your guitar</span>
+              <div class="play-ear-heard-actions">
+                <button type="button" class="melodies-link-btn" id="playEarResetNotesBtn" disabled="">Reset notes</button>
+                <button type="button" class="melodies-link-btn" id="playEarPlayHeardBtn" disabled="">Play heard notes</button>
+              </div>
+              <label class="play-ear-auto-clear-setting">
+                <input type="checkbox" id="playEarAutoClearNotes" checked="">
+                <small>Auto-clear after 5 seconds</small>
+              </label>
+            </div>
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn">Stop playing</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn">Reveal answer</button>
+          </div>
+          <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
+        </div>
+
+        <div class="melodies-manual" id="playEarManualPanel" hidden="">
+          <label class="melodies-manual-label" for="playEarIntervalInput">Treat the first heard note as 1, or use degrees from the song key.</label>
+          <div class="melodies-interval-entry" id="playEarIntervalEntry">
+            <div class="melodies-interval-boxes" id="playEarIntervalBoxes"></div>
+            <input id="playEarIntervalInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Section scale degrees" maxlength="6">
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled="">Check intervals</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarManualRevealBtn">Reveal answer</button>
+          </div>
+        </div>
+
+        <div class="melodies-result" id="playEarResult" hidden=""></div>
+      </section>
+    </div>
+
+    <aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.</span>
+    </div>
+    <label class="audio-input-field" for="playEarAudioInput">
+      <span>Audio input</span>
+      <select id="playEarAudioInput" data-audio-input-select="" disabled="">
+        <option value="">Allow audio access first</option>
+      </select>
+    </label>
+    <small data-audio-input-help="">Allow audio access once to see device names.</small>
+  </aside>
+    <p class="melodies-mic-note">Only the selected audio input is analyzed. YouTube audio is never transcribed.</p>
+  </section>"
+`;
+
+exports[`Play by Ear user flow > reflects looping, heard playback, incorrect notes and a completed microphone attempt > retrying a completed section 1`] = `
+"<section class="play-ear-game" aria-labelledby="playEarHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Real songs · by ear</p>
+      <h1 id="playEarHeading">Hear the phrase. Find it on your guitar.</h1>
+      <p class="melodies-intro">Loop a short section from a curated performance, then reproduce its notes in any key or enter the intervals.</p>
+    </header>
+
+    <div class="play-ear-layout">
+      <section class="play-ear-media-card" aria-labelledby="playEarSongTitle">
+        <label class="play-ear-song-field" for="playEarSongSelect">
+          <span>Song</span><select id="playEarSongSelect"><option value="my-girl">My Girl</option><option value="smoke-on-the-water">Smoke on the Water</option><option value="iron-man">Iron Man</option><option value="another-one-bites-the-dust">Another One Bites the Dust</option><option value="billie-jean">Billie Jean</option><option value="beat-it">Beat It</option><option value="sweet-dreams">Sweet Dreams (Are Made of This)</option><option value="take-on-me">Take On Me</option><option value="come-as-you-are">Come As You Are</option><option value="seven-nation-army">Seven Nation Army</option><option value="toxic">Toxic</option><option value="bad-romance">Bad Romance</option><option value="shape-of-you">Shape of You</option><option value="blinding-lights">Blinding Lights</option><option value="sunshine-of-your-love">Sunshine of Your Love</option><option value="sweet-child-of-mine">Sweet Child O' Mine</option><option value="satisfaction">(I Can't Get No) Satisfaction</option><option value="superstition">Superstition</option><option value="layla">Layla</option><option value="crazy-train">Crazy Train</option><option value="come-together">Come Together</option><option value="enter-sandman">Enter Sandman</option><option value="hysteria">Hysteria</option><option value="smooth">Smooth</option><option value="feel-good-inc">Feel Good Inc.</option><option value="do-i-wanna-know">Do I Wanna Know?</option><option value="uptown-funk">Uptown Funk</option><option value="bad-guy">Bad Guy</option><option value="i-will-possess-your-heart">I Will Possess Your Heart</option></select>
+        </label>
+        <div class="play-ear-song-heading">
+          <div><h2 id="playEarSongTitle">My Girl</h2><p id="playEarPerformance">Official lyric video</p></div>
+          <span id="playEarSongKey">C major</span>
+        </div>
+        <div class="play-ear-video-shell">
+          <div id="playEarYoutubePlayer" class="play-ear-video-placeholder">
+            <span aria-hidden="true">▶</span><p>The video loads when you play the first loop.</p>
+          </div>
+        </div>
+        <p class="play-ear-video-status" id="playEarVideoStatus" aria-live="polite">Loop paused</p>
+        <div class="play-ear-loop-actions">
+          <div class="play-ear-transport">
+            <button type="button" class="play-ear-loop-btn" id="playEarLoopBtn" aria-label="Play loop" title="Play loop">▶</button>
+            <div class="play-ear-speed-control" aria-label="Playback speed">
+              <span>Speed</span>
+              <button type="button" id="playEarSlowerBtn" aria-label="Slow down" title="Slow down" disabled="">−</button>
+              <output id="playEarPlaybackRate" aria-live="polite">0.5×</output>
+              <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up">+</button>
+            </div>
+            <button type="button" class="melodies-link-btn play-ear-simplified-btn" id="playEarSimplifiedBtn">Play simplified version</button>
+          </div>
+          <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=y3KJ7d2qBoA">Open on YouTube ↗</a>
+        </div>
+      </section>
+
+      <section class="melodies-card play-ear-guess-card">
+        <div class="play-ear-section-heading">
+          <span>Section</span><strong id="playEarSectionCounter">1 of 2 · easy</strong>
+        </div>
+        <div class="play-ear-section-tabs" id="playEarSectionTabs"><button type="button" class="play-ear-section-btn active" data-section-index="0" aria-pressed="true"><span>✓ Opening guitar melody</span><small>6 notes · easy</small></button><button type="button" class="play-ear-section-btn" data-section-index="1" aria-pressed="false"><span>Second phrase</span><small>6 notes · easy</small></button></div>
+        <nav class="play-ear-section-navigation" aria-label="Section navigation">
+          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn" disabled="">← Previous section</button>
+          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn">Next section →</button>
+        </nav>
+
+        <div class="melodies-prompt">
+          <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+          <strong id="playEarStatus">Listen to the section first</strong>
+          <span id="playEarHint">Replay it as many times as you need.</span>
+        </div>
+
+        <label class="play-ear-pause-setting">
+          <input type="checkbox" id="playEarPauseWhileGuessing" checked="">
+          <span><strong>Pause video while guessing</strong><small>Turn this off when using an audio interface or headphones.</small></span>
+        </label>
+
+        <fieldset class="melodies-method">
+          <legend>How do you want to guess?</legend>
+          <button type="button" class="melodies-method-btn active" id="playEarMicMethodBtn" aria-pressed="true">
+            <strong>Play it</strong><span>Use selected audio input</span>
+          </button>
+          <button type="button" class="melodies-method-btn" id="playEarManualMethodBtn" aria-pressed="false">
+            <strong>Enter intervals</strong><span>No listening required</span>
+          </button>
+        </fieldset>
+
+        <div class="melodies-progress" aria-label="Section progress">
+          <div class="melodies-progress-track"><span id="playEarProgressBar" style="width: 0%;"></span></div>
+          <span id="playEarProgressText">0 of 6 notes</span>
+        </div>
+
+        <div id="playEarMicrophonePanel">
+          <div class="melodies-detected" aria-live="polite">
+            <span class="melodies-detected-label">Heard</span>
+            <strong id="playEarDetectedNote">—</strong>
+            <div class="play-ear-detected-details">
+              <span id="playEarDetectedInterval">Waiting for your guitar</span>
+              <div class="play-ear-heard-actions">
+                <button type="button" class="melodies-link-btn" id="playEarResetNotesBtn" disabled="">Reset notes</button>
+                <button type="button" class="melodies-link-btn" id="playEarPlayHeardBtn" disabled="">Play heard notes</button>
+              </div>
+              <label class="play-ear-auto-clear-setting">
+                <input type="checkbox" id="playEarAutoClearNotes" checked="">
+                <small>Auto-clear after 5 seconds</small>
+              </label>
+            </div>
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn">Start playing</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn">Reveal answer</button>
+          </div>
+          <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
+        </div>
+
+        <div class="melodies-manual" id="playEarManualPanel" hidden="">
+          <label class="melodies-manual-label" for="playEarIntervalInput">Treat the first heard note as 1, or use degrees from the song key.</label>
+          <div class="melodies-interval-entry" id="playEarIntervalEntry">
+            <div class="melodies-interval-boxes" id="playEarIntervalBoxes"></div>
+            <input id="playEarIntervalInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Section scale degrees" maxlength="6" disabled="">
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled="">Check intervals</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarManualRevealBtn">Reveal answer</button>
+          </div>
+        </div>
+
+        <div class="melodies-result" id="playEarResult" hidden=""><strong>Opening guitar melody</strong><span>My Girl · C major</span><div class="melodies-answer"><b>Correct intervals</b><div><span>1</span><i aria-hidden="true">–</i><span>2</span><i aria-hidden="true">–</i><span>3</span><i aria-hidden="true">–</i><span>5</span><i aria-hidden="true">–</i><span>6</span><i aria-hidden="true">–</i><span>1</span></div></div><small>Relative interval sequence matched; key and rhythm were not scored.</small></div>
+      </section>
+    </div>
+
+    <aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.</span>
+    </div>
+    <label class="audio-input-field" for="playEarAudioInput">
+      <span>Audio input</span>
+      <select id="playEarAudioInput" data-audio-input-select="" disabled="">
+        <option value="">Allow audio access first</option>
+      </select>
+    </label>
+    <small data-audio-input-help="">Allow audio access once to see device names.</small>
+  </aside>
+    <p class="melodies-mic-note">Only the selected audio input is analyzed. YouTube audio is never transcribed.</p>
+  </section>"
+`;
+
+exports[`Play by Ear user flow > reflects looping, heard playback, incorrect notes and a completed microphone attempt > slower looping practice 1`] = `
+"<section class="play-ear-game" aria-labelledby="playEarHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Real songs · by ear</p>
+      <h1 id="playEarHeading">Hear the phrase. Find it on your guitar.</h1>
+      <p class="melodies-intro">Loop a short section from a curated performance, then reproduce its notes in any key or enter the intervals.</p>
+    </header>
+
+    <div class="play-ear-layout">
+      <section class="play-ear-media-card" aria-labelledby="playEarSongTitle">
+        <label class="play-ear-song-field" for="playEarSongSelect">
+          <span>Song</span><select id="playEarSongSelect"><option value="my-girl">My Girl</option><option value="smoke-on-the-water">Smoke on the Water</option><option value="iron-man">Iron Man</option><option value="another-one-bites-the-dust">Another One Bites the Dust</option><option value="billie-jean">Billie Jean</option><option value="beat-it">Beat It</option><option value="sweet-dreams">Sweet Dreams (Are Made of This)</option><option value="take-on-me">Take On Me</option><option value="come-as-you-are">Come As You Are</option><option value="seven-nation-army">Seven Nation Army</option><option value="toxic">Toxic</option><option value="bad-romance">Bad Romance</option><option value="shape-of-you">Shape of You</option><option value="blinding-lights">Blinding Lights</option><option value="sunshine-of-your-love">Sunshine of Your Love</option><option value="sweet-child-of-mine">Sweet Child O' Mine</option><option value="satisfaction">(I Can't Get No) Satisfaction</option><option value="superstition">Superstition</option><option value="layla">Layla</option><option value="crazy-train">Crazy Train</option><option value="come-together">Come Together</option><option value="enter-sandman">Enter Sandman</option><option value="hysteria">Hysteria</option><option value="smooth">Smooth</option><option value="feel-good-inc">Feel Good Inc.</option><option value="do-i-wanna-know">Do I Wanna Know?</option><option value="uptown-funk">Uptown Funk</option><option value="bad-guy">Bad Guy</option><option value="i-will-possess-your-heart">I Will Possess Your Heart</option></select>
+        </label>
+        <div class="play-ear-song-heading">
+          <div><h2 id="playEarSongTitle">My Girl</h2><p id="playEarPerformance">Official lyric video</p></div>
+          <span id="playEarSongKey">C major</span>
+        </div>
+        <div class="play-ear-video-shell">
+          <div id="playEarYoutubePlayer" class="play-ear-video-placeholder">
+            <span aria-hidden="true">▶</span><p>The video loads when you play the first loop.</p>
+          </div>
+        </div>
+        <p class="play-ear-video-status" id="playEarVideoStatus" aria-live="polite">Looping Opening guitar melody</p>
+        <div class="play-ear-loop-actions">
+          <div class="play-ear-transport">
+            <button type="button" class="play-ear-loop-btn" id="playEarLoopBtn" aria-label="Restart loop" title="Restart loop">↻</button>
+            <div class="play-ear-speed-control" aria-label="Playback speed">
+              <span>Speed</span>
+              <button type="button" id="playEarSlowerBtn" aria-label="Slow down" title="Slow down" disabled="">−</button>
+              <output id="playEarPlaybackRate" aria-live="polite">0.5×</output>
+              <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up">+</button>
+            </div>
+            <button type="button" class="melodies-link-btn play-ear-simplified-btn" id="playEarSimplifiedBtn">Play simplified version</button>
+          </div>
+          <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=y3KJ7d2qBoA">Open on YouTube ↗</a>
+        </div>
+      </section>
+
+      <section class="melodies-card play-ear-guess-card">
+        <div class="play-ear-section-heading">
+          <span>Section</span><strong id="playEarSectionCounter">1 of 2 · easy</strong>
+        </div>
+        <div class="play-ear-section-tabs" id="playEarSectionTabs"><button type="button" class="play-ear-section-btn active" data-section-index="0" aria-pressed="true"><span>Opening guitar melody</span><small>6 notes · easy</small></button><button type="button" class="play-ear-section-btn" data-section-index="1" aria-pressed="false"><span>Second phrase</span><small>6 notes · easy</small></button></div>
+        <nav class="play-ear-section-navigation" aria-label="Section navigation">
+          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn" disabled="">← Previous section</button>
+          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn">Next section →</button>
+        </nav>
+
+        <div class="melodies-prompt">
+          <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+          <strong id="playEarStatus">Listen for the shape of the phrase</strong>
+          <span id="playEarHint">When ready, play it back or enter the intervals.</span>
+        </div>
+
+        <label class="play-ear-pause-setting">
+          <input type="checkbox" id="playEarPauseWhileGuessing" checked="">
+          <span><strong>Pause video while guessing</strong><small>Turn this off when using an audio interface or headphones.</small></span>
+        </label>
+
+        <fieldset class="melodies-method">
+          <legend>How do you want to guess?</legend>
+          <button type="button" class="melodies-method-btn active" id="playEarMicMethodBtn" aria-pressed="true">
+            <strong>Play it</strong><span>Use selected audio input</span>
+          </button>
+          <button type="button" class="melodies-method-btn" id="playEarManualMethodBtn" aria-pressed="false">
+            <strong>Enter intervals</strong><span>No listening required</span>
+          </button>
+        </fieldset>
+
+        <div class="melodies-progress" aria-label="Section progress">
+          <div class="melodies-progress-track"><span id="playEarProgressBar" style="width: 0%;"></span></div>
+          <span id="playEarProgressText">0 of 6 notes</span>
+        </div>
+
+        <div id="playEarMicrophonePanel">
+          <div class="melodies-detected" aria-live="polite">
+            <span class="melodies-detected-label">Heard</span>
+            <strong id="playEarDetectedNote">—</strong>
+            <div class="play-ear-detected-details">
+              <span id="playEarDetectedInterval">Waiting for your guitar</span>
+              <div class="play-ear-heard-actions">
+                <button type="button" class="melodies-link-btn" id="playEarResetNotesBtn" disabled="">Reset notes</button>
+                <button type="button" class="melodies-link-btn" id="playEarPlayHeardBtn" disabled="">Play heard notes</button>
+              </div>
+              <label class="play-ear-auto-clear-setting">
+                <input type="checkbox" id="playEarAutoClearNotes" checked="">
+                <small>Auto-clear after 5 seconds</small>
+              </label>
+            </div>
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn">Start playing</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn">Reveal answer</button>
+          </div>
+          <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
+        </div>
+
+        <div class="melodies-manual" id="playEarManualPanel" hidden="">
+          <label class="melodies-manual-label" for="playEarIntervalInput">Treat the first heard note as 1, or use degrees from the song key.</label>
+          <div class="melodies-interval-entry" id="playEarIntervalEntry">
+            <div class="melodies-interval-boxes" id="playEarIntervalBoxes"></div>
+            <input id="playEarIntervalInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Section scale degrees" maxlength="6">
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled="">Check intervals</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarManualRevealBtn">Reveal answer</button>
+          </div>
+        </div>
+
+        <div class="melodies-result" id="playEarResult" hidden=""></div>
+      </section>
+    </div>
+
+    <aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.</span>
+    </div>
+    <label class="audio-input-field" for="playEarAudioInput">
+      <span>Audio input</span>
+      <select id="playEarAudioInput" data-audio-input-select="" disabled="">
+        <option value="">Allow audio access first</option>
+      </select>
+    </label>
+    <small data-audio-input-help="">Allow audio access once to see device names.</small>
+  </aside>
+    <p class="melodies-mic-note">Only the selected audio input is analyzed. YouTube audio is never transcribed.</p>
+  </section>"
+`;
+
+exports[`Play by Ear user flow > reflects manual progress, accidentals, method changes and revealed answers > changed accidental 1`] = `"<span class="melodies-interval-slot"><span class="melodies-interval-box filled">♭1</span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="0" aria-label="Interval 1 is flat; change accidental">♭</button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled">2</span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="1" aria-label="Interval 2 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled">3</span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="2" aria-label="Interval 3 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="3" aria-label="Interval 4 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="4" aria-label="Interval 5 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="5" aria-label="Interval 6 is natural; change accidental" disabled=""></button></span>"`;
+
+exports[`Play by Ear user flow > reflects manual progress, accidentals, method changes and revealed answers > initial practice controls 1`] = `
+"<section class="play-ear-game" aria-labelledby="playEarHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Real songs · by ear</p>
+      <h1 id="playEarHeading">Hear the phrase. Find it on your guitar.</h1>
+      <p class="melodies-intro">Loop a short section from a curated performance, then reproduce its notes in any key or enter the intervals.</p>
+    </header>
+
+    <div class="play-ear-layout">
+      <section class="play-ear-media-card" aria-labelledby="playEarSongTitle">
+        <label class="play-ear-song-field" for="playEarSongSelect">
+          <span>Song</span><select id="playEarSongSelect"><option value="my-girl">My Girl</option><option value="smoke-on-the-water">Smoke on the Water</option><option value="iron-man">Iron Man</option><option value="another-one-bites-the-dust">Another One Bites the Dust</option><option value="billie-jean">Billie Jean</option><option value="beat-it">Beat It</option><option value="sweet-dreams">Sweet Dreams (Are Made of This)</option><option value="take-on-me">Take On Me</option><option value="come-as-you-are">Come As You Are</option><option value="seven-nation-army">Seven Nation Army</option><option value="toxic">Toxic</option><option value="bad-romance">Bad Romance</option><option value="shape-of-you">Shape of You</option><option value="blinding-lights">Blinding Lights</option><option value="sunshine-of-your-love">Sunshine of Your Love</option><option value="sweet-child-of-mine">Sweet Child O' Mine</option><option value="satisfaction">(I Can't Get No) Satisfaction</option><option value="superstition">Superstition</option><option value="layla">Layla</option><option value="crazy-train">Crazy Train</option><option value="come-together">Come Together</option><option value="enter-sandman">Enter Sandman</option><option value="hysteria">Hysteria</option><option value="smooth">Smooth</option><option value="feel-good-inc">Feel Good Inc.</option><option value="do-i-wanna-know">Do I Wanna Know?</option><option value="uptown-funk">Uptown Funk</option><option value="bad-guy">Bad Guy</option><option value="i-will-possess-your-heart">I Will Possess Your Heart</option></select>
+        </label>
+        <div class="play-ear-song-heading">
+          <div><h2 id="playEarSongTitle">My Girl</h2><p id="playEarPerformance">Official lyric video</p></div>
+          <span id="playEarSongKey">C major</span>
+        </div>
+        <div class="play-ear-video-shell">
+          <div id="playEarYoutubePlayer" class="play-ear-video-placeholder">
+            <span aria-hidden="true">▶</span><p>The video loads when you play the first loop.</p>
+          </div>
+        </div>
+        <p class="play-ear-video-status" id="playEarVideoStatus" aria-live="polite">Choose a section, then play the loop.</p>
+        <div class="play-ear-loop-actions">
+          <div class="play-ear-transport">
+            <button type="button" class="play-ear-loop-btn" id="playEarLoopBtn" aria-label="Play loop" title="Play loop">▶</button>
+            <div class="play-ear-speed-control" aria-label="Playback speed">
+              <span>Speed</span>
+              <button type="button" id="playEarSlowerBtn" aria-label="Slow down" title="Slow down" disabled="">−</button>
+              <output id="playEarPlaybackRate" aria-live="polite">1×</output>
+              <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up" disabled="">+</button>
+            </div>
+            <button type="button" class="melodies-link-btn play-ear-simplified-btn" id="playEarSimplifiedBtn">Play simplified version</button>
+          </div>
+          <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=y3KJ7d2qBoA">Open on YouTube ↗</a>
+        </div>
+      </section>
+
+      <section class="melodies-card play-ear-guess-card">
+        <div class="play-ear-section-heading">
+          <span>Section</span><strong id="playEarSectionCounter">1 of 2 · easy</strong>
+        </div>
+        <div class="play-ear-section-tabs" id="playEarSectionTabs"><button type="button" class="play-ear-section-btn active" data-section-index="0" aria-pressed="true"><span>Opening guitar melody</span><small>6 notes · easy</small></button><button type="button" class="play-ear-section-btn" data-section-index="1" aria-pressed="false"><span>Second phrase</span><small>6 notes · easy</small></button></div>
+        <nav class="play-ear-section-navigation" aria-label="Section navigation">
+          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn" disabled="">← Previous section</button>
+          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn">Next section →</button>
+        </nav>
+
+        <div class="melodies-prompt">
+          <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+          <strong id="playEarStatus">Listen to the section first</strong>
+          <span id="playEarHint">Replay it as many times as you need.</span>
+        </div>
+
+        <label class="play-ear-pause-setting">
+          <input type="checkbox" id="playEarPauseWhileGuessing" checked="">
+          <span><strong>Pause video while guessing</strong><small>Turn this off when using an audio interface or headphones.</small></span>
+        </label>
+
+        <fieldset class="melodies-method">
+          <legend>How do you want to guess?</legend>
+          <button type="button" class="melodies-method-btn active" id="playEarMicMethodBtn" aria-pressed="true">
+            <strong>Play it</strong><span>Use selected audio input</span>
+          </button>
+          <button type="button" class="melodies-method-btn" id="playEarManualMethodBtn" aria-pressed="false">
+            <strong>Enter intervals</strong><span>No listening required</span>
+          </button>
+        </fieldset>
+
+        <div class="melodies-progress" aria-label="Section progress">
+          <div class="melodies-progress-track"><span id="playEarProgressBar" style="width: 0%;"></span></div>
+          <span id="playEarProgressText">0 of 6 notes</span>
+        </div>
+
+        <div id="playEarMicrophonePanel">
+          <div class="melodies-detected" aria-live="polite">
+            <span class="melodies-detected-label">Heard</span>
+            <strong id="playEarDetectedNote">—</strong>
+            <div class="play-ear-detected-details">
+              <span id="playEarDetectedInterval">Waiting for your guitar</span>
+              <div class="play-ear-heard-actions">
+                <button type="button" class="melodies-link-btn" id="playEarResetNotesBtn" disabled="">Reset notes</button>
+                <button type="button" class="melodies-link-btn" id="playEarPlayHeardBtn" disabled="">Play heard notes</button>
+              </div>
+              <label class="play-ear-auto-clear-setting">
+                <input type="checkbox" id="playEarAutoClearNotes" checked="">
+                <small>Auto-clear after 5 seconds</small>
+              </label>
+            </div>
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn">Start playing</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn">Reveal answer</button>
+          </div>
+          <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
+        </div>
+
+        <div class="melodies-manual" id="playEarManualPanel" hidden="">
+          <label class="melodies-manual-label" for="playEarIntervalInput">Treat the first heard note as 1, or use degrees from the song key.</label>
+          <div class="melodies-interval-entry" id="playEarIntervalEntry">
+            <div class="melodies-interval-boxes" id="playEarIntervalBoxes"></div>
+            <input id="playEarIntervalInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Section scale degrees" maxlength="6" disabled="">
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled="">Check intervals</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarManualRevealBtn">Reveal answer</button>
+          </div>
+        </div>
+
+        <div class="melodies-result" id="playEarResult" hidden=""></div>
+      </section>
+    </div>
+
+    <aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.</span>
+    </div>
+    <label class="audio-input-field" for="playEarAudioInput">
+      <span>Audio input</span>
+      <select id="playEarAudioInput" data-audio-input-select="" disabled="">
+        <option value="">Allow audio access first</option>
+      </select>
+    </label>
+    <small data-audio-input-help="">Allow audio access once to see device names.</small>
+  </aside>
+    <p class="melodies-mic-note">Only the selected audio input is analyzed. YouTube audio is never transcribed.</p>
+  </section>"
+`;
+
+exports[`Play by Ear user flow > reflects manual progress, accidentals, method changes and revealed answers > manual practice 1`] = `
+"<section class="play-ear-game" aria-labelledby="playEarHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Real songs · by ear</p>
+      <h1 id="playEarHeading">Hear the phrase. Find it on your guitar.</h1>
+      <p class="melodies-intro">Loop a short section from a curated performance, then reproduce its notes in any key or enter the intervals.</p>
+    </header>
+
+    <div class="play-ear-layout">
+      <section class="play-ear-media-card" aria-labelledby="playEarSongTitle">
+        <label class="play-ear-song-field" for="playEarSongSelect">
+          <span>Song</span><select id="playEarSongSelect"><option value="my-girl">My Girl</option><option value="smoke-on-the-water">Smoke on the Water</option><option value="iron-man">Iron Man</option><option value="another-one-bites-the-dust">Another One Bites the Dust</option><option value="billie-jean">Billie Jean</option><option value="beat-it">Beat It</option><option value="sweet-dreams">Sweet Dreams (Are Made of This)</option><option value="take-on-me">Take On Me</option><option value="come-as-you-are">Come As You Are</option><option value="seven-nation-army">Seven Nation Army</option><option value="toxic">Toxic</option><option value="bad-romance">Bad Romance</option><option value="shape-of-you">Shape of You</option><option value="blinding-lights">Blinding Lights</option><option value="sunshine-of-your-love">Sunshine of Your Love</option><option value="sweet-child-of-mine">Sweet Child O' Mine</option><option value="satisfaction">(I Can't Get No) Satisfaction</option><option value="superstition">Superstition</option><option value="layla">Layla</option><option value="crazy-train">Crazy Train</option><option value="come-together">Come Together</option><option value="enter-sandman">Enter Sandman</option><option value="hysteria">Hysteria</option><option value="smooth">Smooth</option><option value="feel-good-inc">Feel Good Inc.</option><option value="do-i-wanna-know">Do I Wanna Know?</option><option value="uptown-funk">Uptown Funk</option><option value="bad-guy">Bad Guy</option><option value="i-will-possess-your-heart">I Will Possess Your Heart</option></select>
+        </label>
+        <div class="play-ear-song-heading">
+          <div><h2 id="playEarSongTitle">My Girl</h2><p id="playEarPerformance">Official lyric video</p></div>
+          <span id="playEarSongKey">C major</span>
+        </div>
+        <div class="play-ear-video-shell">
+          <div id="playEarYoutubePlayer" class="play-ear-video-placeholder">
+            <span aria-hidden="true">▶</span><p>The video loads when you play the first loop.</p>
+          </div>
+        </div>
+        <p class="play-ear-video-status" id="playEarVideoStatus" aria-live="polite">Choose a section, then play the loop.</p>
+        <div class="play-ear-loop-actions">
+          <div class="play-ear-transport">
+            <button type="button" class="play-ear-loop-btn" id="playEarLoopBtn" aria-label="Play loop" title="Play loop">▶</button>
+            <div class="play-ear-speed-control" aria-label="Playback speed">
+              <span>Speed</span>
+              <button type="button" id="playEarSlowerBtn" aria-label="Slow down" title="Slow down" disabled="">−</button>
+              <output id="playEarPlaybackRate" aria-live="polite">1×</output>
+              <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up" disabled="">+</button>
+            </div>
+            <button type="button" class="melodies-link-btn play-ear-simplified-btn" id="playEarSimplifiedBtn">Play simplified version</button>
+          </div>
+          <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=y3KJ7d2qBoA">Open on YouTube ↗</a>
+        </div>
+      </section>
+
+      <section class="melodies-card play-ear-guess-card">
+        <div class="play-ear-section-heading">
+          <span>Section</span><strong id="playEarSectionCounter">1 of 2 · easy</strong>
+        </div>
+        <div class="play-ear-section-tabs" id="playEarSectionTabs"><button type="button" class="play-ear-section-btn active" data-section-index="0" aria-pressed="true"><span>Opening guitar melody</span><small>6 notes · easy</small></button><button type="button" class="play-ear-section-btn" data-section-index="1" aria-pressed="false"><span>Second phrase</span><small>6 notes · easy</small></button></div>
+        <nav class="play-ear-section-navigation" aria-label="Section navigation">
+          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn" disabled="">← Previous section</button>
+          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn">Next section →</button>
+        </nav>
+
+        <div class="melodies-prompt">
+          <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+          <strong id="playEarStatus">Enter the interval pattern</strong>
+          <span id="playEarHint">Replay it as many times as you need.</span>
+        </div>
+
+        <label class="play-ear-pause-setting">
+          <input type="checkbox" id="playEarPauseWhileGuessing" checked="">
+          <span><strong>Pause video while guessing</strong><small>Turn this off when using an audio interface or headphones.</small></span>
+        </label>
+
+        <fieldset class="melodies-method">
+          <legend>How do you want to guess?</legend>
+          <button type="button" class="melodies-method-btn" id="playEarMicMethodBtn" aria-pressed="false">
+            <strong>Play it</strong><span>Use selected audio input</span>
+          </button>
+          <button type="button" class="melodies-method-btn active" id="playEarManualMethodBtn" aria-pressed="true">
+            <strong>Enter intervals</strong><span>No listening required</span>
+          </button>
+        </fieldset>
+
+        <div class="melodies-progress" aria-label="Section progress">
+          <div class="melodies-progress-track"><span id="playEarProgressBar" style="width: 0%;"></span></div>
+          <span id="playEarProgressText">0 of 6 entered</span>
+        </div>
+
+        <div id="playEarMicrophonePanel" hidden="">
+          <div class="melodies-detected" aria-live="polite">
+            <span class="melodies-detected-label">Heard</span>
+            <strong id="playEarDetectedNote">—</strong>
+            <div class="play-ear-detected-details">
+              <span id="playEarDetectedInterval">Waiting for your guitar</span>
+              <div class="play-ear-heard-actions">
+                <button type="button" class="melodies-link-btn" id="playEarResetNotesBtn" disabled="">Reset notes</button>
+                <button type="button" class="melodies-link-btn" id="playEarPlayHeardBtn" disabled="">Play heard notes</button>
+              </div>
+              <label class="play-ear-auto-clear-setting">
+                <input type="checkbox" id="playEarAutoClearNotes" checked="">
+                <small>Auto-clear after 5 seconds</small>
+              </label>
+            </div>
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn">Start playing</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn">Reveal answer</button>
+          </div>
+          <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
+        </div>
+
+        <div class="melodies-manual" id="playEarManualPanel">
+          <label class="melodies-manual-label" for="playEarIntervalInput">Treat the first heard note as 1, or use degrees from the song key.</label>
+          <div class="melodies-interval-entry" id="playEarIntervalEntry">
+            <div class="melodies-interval-boxes" id="playEarIntervalBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="0" aria-label="Interval 1 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="3" aria-label="Interval 4 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="4" aria-label="Interval 5 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="5" aria-label="Interval 6 is natural; change accidental" disabled=""></button></span></div>
+            <input id="playEarIntervalInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Section scale degrees" maxlength="6" disabled="">
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled="">Check intervals</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarManualRevealBtn">Reveal answer</button>
+          </div>
+        </div>
+
+        <div class="melodies-result" id="playEarResult" hidden=""></div>
+      </section>
+    </div>
+
+    <aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.</span>
+    </div>
+    <label class="audio-input-field" for="playEarAudioInput">
+      <span>Audio input</span>
+      <select id="playEarAudioInput" data-audio-input-select="" disabled="">
+        <option value="">Allow audio access first</option>
+      </select>
+    </label>
+    <small data-audio-input-help="">Allow audio access once to see device names.</small>
+  </aside>
+    <p class="melodies-mic-note">Only the selected audio input is analyzed. YouTube audio is never transcribed.</p>
+  </section>"
+`;
+
+exports[`Play by Ear user flow > reflects manual progress, accidentals, method changes and revealed answers > microphone practice 1`] = `
+"<section class="play-ear-game" aria-labelledby="playEarHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Real songs · by ear</p>
+      <h1 id="playEarHeading">Hear the phrase. Find it on your guitar.</h1>
+      <p class="melodies-intro">Loop a short section from a curated performance, then reproduce its notes in any key or enter the intervals.</p>
+    </header>
+
+    <div class="play-ear-layout">
+      <section class="play-ear-media-card" aria-labelledby="playEarSongTitle">
+        <label class="play-ear-song-field" for="playEarSongSelect">
+          <span>Song</span><select id="playEarSongSelect"><option value="my-girl">My Girl</option><option value="smoke-on-the-water">Smoke on the Water</option><option value="iron-man">Iron Man</option><option value="another-one-bites-the-dust">Another One Bites the Dust</option><option value="billie-jean">Billie Jean</option><option value="beat-it">Beat It</option><option value="sweet-dreams">Sweet Dreams (Are Made of This)</option><option value="take-on-me">Take On Me</option><option value="come-as-you-are">Come As You Are</option><option value="seven-nation-army">Seven Nation Army</option><option value="toxic">Toxic</option><option value="bad-romance">Bad Romance</option><option value="shape-of-you">Shape of You</option><option value="blinding-lights">Blinding Lights</option><option value="sunshine-of-your-love">Sunshine of Your Love</option><option value="sweet-child-of-mine">Sweet Child O' Mine</option><option value="satisfaction">(I Can't Get No) Satisfaction</option><option value="superstition">Superstition</option><option value="layla">Layla</option><option value="crazy-train">Crazy Train</option><option value="come-together">Come Together</option><option value="enter-sandman">Enter Sandman</option><option value="hysteria">Hysteria</option><option value="smooth">Smooth</option><option value="feel-good-inc">Feel Good Inc.</option><option value="do-i-wanna-know">Do I Wanna Know?</option><option value="uptown-funk">Uptown Funk</option><option value="bad-guy">Bad Guy</option><option value="i-will-possess-your-heart">I Will Possess Your Heart</option></select>
+        </label>
+        <div class="play-ear-song-heading">
+          <div><h2 id="playEarSongTitle">My Girl</h2><p id="playEarPerformance">Official lyric video</p></div>
+          <span id="playEarSongKey">C major</span>
+        </div>
+        <div class="play-ear-video-shell">
+          <div id="playEarYoutubePlayer" class="play-ear-video-placeholder">
+            <span aria-hidden="true">▶</span><p>The video loads when you play the first loop.</p>
+          </div>
+        </div>
+        <p class="play-ear-video-status" id="playEarVideoStatus" aria-live="polite">Choose a section, then play the loop.</p>
+        <div class="play-ear-loop-actions">
+          <div class="play-ear-transport">
+            <button type="button" class="play-ear-loop-btn" id="playEarLoopBtn" aria-label="Play loop" title="Play loop">▶</button>
+            <div class="play-ear-speed-control" aria-label="Playback speed">
+              <span>Speed</span>
+              <button type="button" id="playEarSlowerBtn" aria-label="Slow down" title="Slow down" disabled="">−</button>
+              <output id="playEarPlaybackRate" aria-live="polite">1×</output>
+              <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up" disabled="">+</button>
+            </div>
+            <button type="button" class="melodies-link-btn play-ear-simplified-btn" id="playEarSimplifiedBtn">Play simplified version</button>
+          </div>
+          <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=y3KJ7d2qBoA">Open on YouTube ↗</a>
+        </div>
+      </section>
+
+      <section class="melodies-card play-ear-guess-card">
+        <div class="play-ear-section-heading">
+          <span>Section</span><strong id="playEarSectionCounter">1 of 2 · easy</strong>
+        </div>
+        <div class="play-ear-section-tabs" id="playEarSectionTabs"><button type="button" class="play-ear-section-btn active" data-section-index="0" aria-pressed="true"><span>Opening guitar melody</span><small>6 notes · easy</small></button><button type="button" class="play-ear-section-btn" data-section-index="1" aria-pressed="false"><span>Second phrase</span><small>6 notes · easy</small></button></div>
+        <nav class="play-ear-section-navigation" aria-label="Section navigation">
+          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn" disabled="">← Previous section</button>
+          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn">Next section →</button>
+        </nav>
+
+        <div class="melodies-prompt">
+          <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+          <strong id="playEarStatus">Play the section back</strong>
+          <span id="playEarHint">Interval 1 changed to ♭1.</span>
+        </div>
+
+        <label class="play-ear-pause-setting">
+          <input type="checkbox" id="playEarPauseWhileGuessing" checked="">
+          <span><strong>Pause video while guessing</strong><small>Turn this off when using an audio interface or headphones.</small></span>
+        </label>
+
+        <fieldset class="melodies-method">
+          <legend>How do you want to guess?</legend>
+          <button type="button" class="melodies-method-btn active" id="playEarMicMethodBtn" aria-pressed="true">
+            <strong>Play it</strong><span>Use selected audio input</span>
+          </button>
+          <button type="button" class="melodies-method-btn" id="playEarManualMethodBtn" aria-pressed="false">
+            <strong>Enter intervals</strong><span>No listening required</span>
+          </button>
+        </fieldset>
+
+        <div class="melodies-progress" aria-label="Section progress">
+          <div class="melodies-progress-track"><span id="playEarProgressBar" style="width: 0%;"></span></div>
+          <span id="playEarProgressText">0 of 6 notes</span>
+        </div>
+
+        <div id="playEarMicrophonePanel">
+          <div class="melodies-detected" aria-live="polite">
+            <span class="melodies-detected-label">Heard</span>
+            <strong id="playEarDetectedNote">—</strong>
+            <div class="play-ear-detected-details">
+              <span id="playEarDetectedInterval">Waiting for your guitar</span>
+              <div class="play-ear-heard-actions">
+                <button type="button" class="melodies-link-btn" id="playEarResetNotesBtn" disabled="">Reset notes</button>
+                <button type="button" class="melodies-link-btn" id="playEarPlayHeardBtn" disabled="">Play heard notes</button>
+              </div>
+              <label class="play-ear-auto-clear-setting">
+                <input type="checkbox" id="playEarAutoClearNotes" checked="">
+                <small>Auto-clear after 5 seconds</small>
+              </label>
+            </div>
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn">Start playing</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn">Reveal answer</button>
+          </div>
+          <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
+        </div>
+
+        <div class="melodies-manual" id="playEarManualPanel" hidden="">
+          <label class="melodies-manual-label" for="playEarIntervalInput">Treat the first heard note as 1, or use degrees from the song key.</label>
+          <div class="melodies-interval-entry" id="playEarIntervalEntry">
+            <div class="melodies-interval-boxes" id="playEarIntervalBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled">♭1</span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="0" aria-label="Interval 1 is flat; change accidental">♭</button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled">2</span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="1" aria-label="Interval 2 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled">3</span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="2" aria-label="Interval 3 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="3" aria-label="Interval 4 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="4" aria-label="Interval 5 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="5" aria-label="Interval 6 is natural; change accidental" disabled=""></button></span></div>
+            <input id="playEarIntervalInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Section scale degrees" maxlength="6" disabled="">
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled="">Check intervals</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarManualRevealBtn">Reveal answer</button>
+          </div>
+        </div>
+
+        <div class="melodies-result" id="playEarResult" hidden=""></div>
+      </section>
+    </div>
+
+    <aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.</span>
+    </div>
+    <label class="audio-input-field" for="playEarAudioInput">
+      <span>Audio input</span>
+      <select id="playEarAudioInput" data-audio-input-select="" disabled="">
+        <option value="">Allow audio access first</option>
+      </select>
+    </label>
+    <small data-audio-input-help="">Allow audio access once to see device names.</small>
+  </aside>
+    <p class="melodies-mic-note">Only the selected audio input is analyzed. YouTube audio is never transcribed.</p>
+  </section>"
+`;
+
+exports[`Play by Ear user flow > reflects manual progress, accidentals, method changes and revealed answers > next practice section 1`] = `
+"<section class="play-ear-game" aria-labelledby="playEarHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Real songs · by ear</p>
+      <h1 id="playEarHeading">Hear the phrase. Find it on your guitar.</h1>
+      <p class="melodies-intro">Loop a short section from a curated performance, then reproduce its notes in any key or enter the intervals.</p>
+    </header>
+
+    <div class="play-ear-layout">
+      <section class="play-ear-media-card" aria-labelledby="playEarSongTitle">
+        <label class="play-ear-song-field" for="playEarSongSelect">
+          <span>Song</span><select id="playEarSongSelect"><option value="my-girl">My Girl</option><option value="smoke-on-the-water">Smoke on the Water</option><option value="iron-man">Iron Man</option><option value="another-one-bites-the-dust">Another One Bites the Dust</option><option value="billie-jean">Billie Jean</option><option value="beat-it">Beat It</option><option value="sweet-dreams">Sweet Dreams (Are Made of This)</option><option value="take-on-me">Take On Me</option><option value="come-as-you-are">Come As You Are</option><option value="seven-nation-army">Seven Nation Army</option><option value="toxic">Toxic</option><option value="bad-romance">Bad Romance</option><option value="shape-of-you">Shape of You</option><option value="blinding-lights">Blinding Lights</option><option value="sunshine-of-your-love">Sunshine of Your Love</option><option value="sweet-child-of-mine">Sweet Child O' Mine</option><option value="satisfaction">(I Can't Get No) Satisfaction</option><option value="superstition">Superstition</option><option value="layla">Layla</option><option value="crazy-train">Crazy Train</option><option value="come-together">Come Together</option><option value="enter-sandman">Enter Sandman</option><option value="hysteria">Hysteria</option><option value="smooth">Smooth</option><option value="feel-good-inc">Feel Good Inc.</option><option value="do-i-wanna-know">Do I Wanna Know?</option><option value="uptown-funk">Uptown Funk</option><option value="bad-guy">Bad Guy</option><option value="i-will-possess-your-heart">I Will Possess Your Heart</option></select>
+        </label>
+        <div class="play-ear-song-heading">
+          <div><h2 id="playEarSongTitle">My Girl</h2><p id="playEarPerformance">Official lyric video</p></div>
+          <span id="playEarSongKey">C major</span>
+        </div>
+        <div class="play-ear-video-shell">
+          <div id="playEarYoutubePlayer" class="play-ear-video-placeholder">
+            <span aria-hidden="true">▶</span><p>The video loads when you play the first loop.</p>
+          </div>
+        </div>
+        <p class="play-ear-video-status" id="playEarVideoStatus" aria-live="polite">Choose a section, then play the loop.</p>
+        <div class="play-ear-loop-actions">
+          <div class="play-ear-transport">
+            <button type="button" class="play-ear-loop-btn" id="playEarLoopBtn" aria-label="Play loop" title="Play loop">▶</button>
+            <div class="play-ear-speed-control" aria-label="Playback speed">
+              <span>Speed</span>
+              <button type="button" id="playEarSlowerBtn" aria-label="Slow down" title="Slow down" disabled="">−</button>
+              <output id="playEarPlaybackRate" aria-live="polite">1×</output>
+              <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up" disabled="">+</button>
+            </div>
+            <button type="button" class="melodies-link-btn play-ear-simplified-btn" id="playEarSimplifiedBtn">Play simplified version</button>
+          </div>
+          <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=y3KJ7d2qBoA">Open on YouTube ↗</a>
+        </div>
+      </section>
+
+      <section class="melodies-card play-ear-guess-card">
+        <div class="play-ear-section-heading">
+          <span>Section</span><strong id="playEarSectionCounter">2 of 2 · easy</strong>
+        </div>
+        <div class="play-ear-section-tabs" id="playEarSectionTabs"><button type="button" class="play-ear-section-btn" data-section-index="0" aria-pressed="false"><span>Opening guitar melody</span><small>6 notes · easy</small></button><button type="button" class="play-ear-section-btn active" data-section-index="1" aria-pressed="true"><span>Second phrase</span><small>6 notes · easy</small></button></div>
+        <nav class="play-ear-section-navigation" aria-label="Section navigation">
+          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn">← Previous section</button>
+          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn" disabled="">Next section →</button>
+        </nav>
+
+        <div class="melodies-prompt">
+          <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+          <strong id="playEarStatus">Listen to the section first</strong>
+          <span id="playEarHint">Replay it as many times as you need.</span>
+        </div>
+
+        <label class="play-ear-pause-setting">
+          <input type="checkbox" id="playEarPauseWhileGuessing" checked="">
+          <span><strong>Pause video while guessing</strong><small>Turn this off when using an audio interface or headphones.</small></span>
+        </label>
+
+        <fieldset class="melodies-method">
+          <legend>How do you want to guess?</legend>
+          <button type="button" class="melodies-method-btn" id="playEarMicMethodBtn" aria-pressed="false">
+            <strong>Play it</strong><span>Use selected audio input</span>
+          </button>
+          <button type="button" class="melodies-method-btn active" id="playEarManualMethodBtn" aria-pressed="true">
+            <strong>Enter intervals</strong><span>No listening required</span>
+          </button>
+        </fieldset>
+
+        <div class="melodies-progress" aria-label="Section progress">
+          <div class="melodies-progress-track"><span id="playEarProgressBar" style="width: 0%;"></span></div>
+          <span id="playEarProgressText">0 of 6 entered</span>
+        </div>
+
+        <div id="playEarMicrophonePanel" hidden="">
+          <div class="melodies-detected" aria-live="polite">
+            <span class="melodies-detected-label">Heard</span>
+            <strong id="playEarDetectedNote">—</strong>
+            <div class="play-ear-detected-details">
+              <span id="playEarDetectedInterval">Waiting for your guitar</span>
+              <div class="play-ear-heard-actions">
+                <button type="button" class="melodies-link-btn" id="playEarResetNotesBtn" disabled="">Reset notes</button>
+                <button type="button" class="melodies-link-btn" id="playEarPlayHeardBtn" disabled="">Play heard notes</button>
+              </div>
+              <label class="play-ear-auto-clear-setting">
+                <input type="checkbox" id="playEarAutoClearNotes" checked="">
+                <small>Auto-clear after 5 seconds</small>
+              </label>
+            </div>
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn">Start playing</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn">Reveal answer</button>
+          </div>
+          <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
+        </div>
+
+        <div class="melodies-manual" id="playEarManualPanel">
+          <label class="melodies-manual-label" for="playEarIntervalInput">Treat the first heard note as 1, or use degrees from the song key.</label>
+          <div class="melodies-interval-entry" id="playEarIntervalEntry">
+            <div class="melodies-interval-boxes" id="playEarIntervalBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="0" aria-label="Interval 1 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="3" aria-label="Interval 4 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="4" aria-label="Interval 5 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="5" aria-label="Interval 6 is natural; change accidental" disabled=""></button></span></div>
+            <input id="playEarIntervalInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Section scale degrees" maxlength="6" disabled="">
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled="">Check intervals</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarManualRevealBtn">Reveal answer</button>
+          </div>
+        </div>
+
+        <div class="melodies-result" id="playEarResult" hidden=""><strong>Opening guitar melody</strong><span>My Girl · C major</span><div class="melodies-answer"><b>Correct intervals</b><div><span>1</span><i aria-hidden="true">–</i><span>2</span><i aria-hidden="true">–</i><span>3</span><i aria-hidden="true">–</i><span>5</span><i aria-hidden="true">–</i><span>6</span><i aria-hidden="true">–</i><span>1</span></div></div><small>Listen again and notice the interval shape.</small></div>
+      </section>
+    </div>
+
+    <aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.</span>
+    </div>
+    <label class="audio-input-field" for="playEarAudioInput">
+      <span>Audio input</span>
+      <select id="playEarAudioInput" data-audio-input-select="" disabled="">
+        <option value="">Allow audio access first</option>
+      </select>
+    </label>
+    <small data-audio-input-help="">Allow audio access once to see device names.</small>
+  </aside>
+    <p class="melodies-mic-note">Only the selected audio input is analyzed. YouTube audio is never transcribed.</p>
+  </section>"
+`;
+
+exports[`Play by Ear user flow > reflects manual progress, accidentals, method changes and revealed answers > partially entered intervals 1`] = `
+"<section class="play-ear-game" aria-labelledby="playEarHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Real songs · by ear</p>
+      <h1 id="playEarHeading">Hear the phrase. Find it on your guitar.</h1>
+      <p class="melodies-intro">Loop a short section from a curated performance, then reproduce its notes in any key or enter the intervals.</p>
+    </header>
+
+    <div class="play-ear-layout">
+      <section class="play-ear-media-card" aria-labelledby="playEarSongTitle">
+        <label class="play-ear-song-field" for="playEarSongSelect">
+          <span>Song</span><select id="playEarSongSelect"><option value="my-girl">My Girl</option><option value="smoke-on-the-water">Smoke on the Water</option><option value="iron-man">Iron Man</option><option value="another-one-bites-the-dust">Another One Bites the Dust</option><option value="billie-jean">Billie Jean</option><option value="beat-it">Beat It</option><option value="sweet-dreams">Sweet Dreams (Are Made of This)</option><option value="take-on-me">Take On Me</option><option value="come-as-you-are">Come As You Are</option><option value="seven-nation-army">Seven Nation Army</option><option value="toxic">Toxic</option><option value="bad-romance">Bad Romance</option><option value="shape-of-you">Shape of You</option><option value="blinding-lights">Blinding Lights</option><option value="sunshine-of-your-love">Sunshine of Your Love</option><option value="sweet-child-of-mine">Sweet Child O' Mine</option><option value="satisfaction">(I Can't Get No) Satisfaction</option><option value="superstition">Superstition</option><option value="layla">Layla</option><option value="crazy-train">Crazy Train</option><option value="come-together">Come Together</option><option value="enter-sandman">Enter Sandman</option><option value="hysteria">Hysteria</option><option value="smooth">Smooth</option><option value="feel-good-inc">Feel Good Inc.</option><option value="do-i-wanna-know">Do I Wanna Know?</option><option value="uptown-funk">Uptown Funk</option><option value="bad-guy">Bad Guy</option><option value="i-will-possess-your-heart">I Will Possess Your Heart</option></select>
+        </label>
+        <div class="play-ear-song-heading">
+          <div><h2 id="playEarSongTitle">My Girl</h2><p id="playEarPerformance">Official lyric video</p></div>
+          <span id="playEarSongKey">C major</span>
+        </div>
+        <div class="play-ear-video-shell">
+          <div id="playEarYoutubePlayer" class="play-ear-video-placeholder">
+            <span aria-hidden="true">▶</span><p>The video loads when you play the first loop.</p>
+          </div>
+        </div>
+        <p class="play-ear-video-status" id="playEarVideoStatus" aria-live="polite">Choose a section, then play the loop.</p>
+        <div class="play-ear-loop-actions">
+          <div class="play-ear-transport">
+            <button type="button" class="play-ear-loop-btn" id="playEarLoopBtn" aria-label="Play loop" title="Play loop">▶</button>
+            <div class="play-ear-speed-control" aria-label="Playback speed">
+              <span>Speed</span>
+              <button type="button" id="playEarSlowerBtn" aria-label="Slow down" title="Slow down" disabled="">−</button>
+              <output id="playEarPlaybackRate" aria-live="polite">1×</output>
+              <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up" disabled="">+</button>
+            </div>
+            <button type="button" class="melodies-link-btn play-ear-simplified-btn" id="playEarSimplifiedBtn">Play simplified version</button>
+          </div>
+          <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=y3KJ7d2qBoA">Open on YouTube ↗</a>
+        </div>
+      </section>
+
+      <section class="melodies-card play-ear-guess-card">
+        <div class="play-ear-section-heading">
+          <span>Section</span><strong id="playEarSectionCounter">1 of 2 · easy</strong>
+        </div>
+        <div class="play-ear-section-tabs" id="playEarSectionTabs"><button type="button" class="play-ear-section-btn active" data-section-index="0" aria-pressed="true"><span>Opening guitar melody</span><small>6 notes · easy</small></button><button type="button" class="play-ear-section-btn" data-section-index="1" aria-pressed="false"><span>Second phrase</span><small>6 notes · easy</small></button></div>
+        <nav class="play-ear-section-navigation" aria-label="Section navigation">
+          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn" disabled="">← Previous section</button>
+          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn">Next section →</button>
+        </nav>
+
+        <div class="melodies-prompt">
+          <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+          <strong id="playEarStatus">3 intervals entered</strong>
+          <span id="playEarHint">Replay it as many times as you need.</span>
+        </div>
+
+        <label class="play-ear-pause-setting">
+          <input type="checkbox" id="playEarPauseWhileGuessing" checked="">
+          <span><strong>Pause video while guessing</strong><small>Turn this off when using an audio interface or headphones.</small></span>
+        </label>
+
+        <fieldset class="melodies-method">
+          <legend>How do you want to guess?</legend>
+          <button type="button" class="melodies-method-btn" id="playEarMicMethodBtn" aria-pressed="false">
+            <strong>Play it</strong><span>Use selected audio input</span>
+          </button>
+          <button type="button" class="melodies-method-btn active" id="playEarManualMethodBtn" aria-pressed="true">
+            <strong>Enter intervals</strong><span>No listening required</span>
+          </button>
+        </fieldset>
+
+        <div class="melodies-progress" aria-label="Section progress">
+          <div class="melodies-progress-track"><span id="playEarProgressBar" style="width: 50%;"></span></div>
+          <span id="playEarProgressText">3 of 6 entered</span>
+        </div>
+
+        <div id="playEarMicrophonePanel" hidden="">
+          <div class="melodies-detected" aria-live="polite">
+            <span class="melodies-detected-label">Heard</span>
+            <strong id="playEarDetectedNote">—</strong>
+            <div class="play-ear-detected-details">
+              <span id="playEarDetectedInterval">Waiting for your guitar</span>
+              <div class="play-ear-heard-actions">
+                <button type="button" class="melodies-link-btn" id="playEarResetNotesBtn" disabled="">Reset notes</button>
+                <button type="button" class="melodies-link-btn" id="playEarPlayHeardBtn" disabled="">Play heard notes</button>
+              </div>
+              <label class="play-ear-auto-clear-setting">
+                <input type="checkbox" id="playEarAutoClearNotes" checked="">
+                <small>Auto-clear after 5 seconds</small>
+              </label>
+            </div>
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn">Start playing</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn">Reveal answer</button>
+          </div>
+          <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
+        </div>
+
+        <div class="melodies-manual" id="playEarManualPanel">
+          <label class="melodies-manual-label" for="playEarIntervalInput">Treat the first heard note as 1, or use degrees from the song key.</label>
+          <div class="melodies-interval-entry" id="playEarIntervalEntry">
+            <div class="melodies-interval-boxes" id="playEarIntervalBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled">1</span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled">2</span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="1" aria-label="Interval 2 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled">3</span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="2" aria-label="Interval 3 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="3" aria-label="Interval 4 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="4" aria-label="Interval 5 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="5" aria-label="Interval 6 is natural; change accidental" disabled=""></button></span></div>
+            <input id="playEarIntervalInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Section scale degrees" maxlength="6" disabled="">
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled="">Check intervals</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarManualRevealBtn">Reveal answer</button>
+          </div>
+        </div>
+
+        <div class="melodies-result" id="playEarResult" hidden=""></div>
+      </section>
+    </div>
+
+    <aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.</span>
+    </div>
+    <label class="audio-input-field" for="playEarAudioInput">
+      <span>Audio input</span>
+      <select id="playEarAudioInput" data-audio-input-select="" disabled="">
+        <option value="">Allow audio access first</option>
+      </select>
+    </label>
+    <small data-audio-input-help="">Allow audio access once to see device names.</small>
+  </aside>
+    <p class="melodies-mic-note">Only the selected audio input is analyzed. YouTube audio is never transcribed.</p>
+  </section>"
+`;
+
+exports[`Play by Ear user flow > reflects manual progress, accidentals, method changes and revealed answers > revealed practice 1`] = `
+"<section class="play-ear-game" aria-labelledby="playEarHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Real songs · by ear</p>
+      <h1 id="playEarHeading">Hear the phrase. Find it on your guitar.</h1>
+      <p class="melodies-intro">Loop a short section from a curated performance, then reproduce its notes in any key or enter the intervals.</p>
+    </header>
+
+    <div class="play-ear-layout">
+      <section class="play-ear-media-card" aria-labelledby="playEarSongTitle">
+        <label class="play-ear-song-field" for="playEarSongSelect">
+          <span>Song</span><select id="playEarSongSelect"><option value="my-girl">My Girl</option><option value="smoke-on-the-water">Smoke on the Water</option><option value="iron-man">Iron Man</option><option value="another-one-bites-the-dust">Another One Bites the Dust</option><option value="billie-jean">Billie Jean</option><option value="beat-it">Beat It</option><option value="sweet-dreams">Sweet Dreams (Are Made of This)</option><option value="take-on-me">Take On Me</option><option value="come-as-you-are">Come As You Are</option><option value="seven-nation-army">Seven Nation Army</option><option value="toxic">Toxic</option><option value="bad-romance">Bad Romance</option><option value="shape-of-you">Shape of You</option><option value="blinding-lights">Blinding Lights</option><option value="sunshine-of-your-love">Sunshine of Your Love</option><option value="sweet-child-of-mine">Sweet Child O' Mine</option><option value="satisfaction">(I Can't Get No) Satisfaction</option><option value="superstition">Superstition</option><option value="layla">Layla</option><option value="crazy-train">Crazy Train</option><option value="come-together">Come Together</option><option value="enter-sandman">Enter Sandman</option><option value="hysteria">Hysteria</option><option value="smooth">Smooth</option><option value="feel-good-inc">Feel Good Inc.</option><option value="do-i-wanna-know">Do I Wanna Know?</option><option value="uptown-funk">Uptown Funk</option><option value="bad-guy">Bad Guy</option><option value="i-will-possess-your-heart">I Will Possess Your Heart</option></select>
+        </label>
+        <div class="play-ear-song-heading">
+          <div><h2 id="playEarSongTitle">My Girl</h2><p id="playEarPerformance">Official lyric video</p></div>
+          <span id="playEarSongKey">C major</span>
+        </div>
+        <div class="play-ear-video-shell">
+          <div id="playEarYoutubePlayer" class="play-ear-video-placeholder">
+            <span aria-hidden="true">▶</span><p>The video loads when you play the first loop.</p>
+          </div>
+        </div>
+        <p class="play-ear-video-status" id="playEarVideoStatus" aria-live="polite">Choose a section, then play the loop.</p>
+        <div class="play-ear-loop-actions">
+          <div class="play-ear-transport">
+            <button type="button" class="play-ear-loop-btn" id="playEarLoopBtn" aria-label="Play loop" title="Play loop">▶</button>
+            <div class="play-ear-speed-control" aria-label="Playback speed">
+              <span>Speed</span>
+              <button type="button" id="playEarSlowerBtn" aria-label="Slow down" title="Slow down" disabled="">−</button>
+              <output id="playEarPlaybackRate" aria-live="polite">1×</output>
+              <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up" disabled="">+</button>
+            </div>
+            <button type="button" class="melodies-link-btn play-ear-simplified-btn" id="playEarSimplifiedBtn">Play simplified version</button>
+          </div>
+          <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=y3KJ7d2qBoA">Open on YouTube ↗</a>
+        </div>
+      </section>
+
+      <section class="melodies-card play-ear-guess-card">
+        <div class="play-ear-section-heading">
+          <span>Section</span><strong id="playEarSectionCounter">1 of 2 · easy</strong>
+        </div>
+        <div class="play-ear-section-tabs" id="playEarSectionTabs"><button type="button" class="play-ear-section-btn active" data-section-index="0" aria-pressed="true"><span>Opening guitar melody</span><small>6 notes · easy</small></button><button type="button" class="play-ear-section-btn" data-section-index="1" aria-pressed="false"><span>Second phrase</span><small>6 notes · easy</small></button></div>
+        <nav class="play-ear-section-navigation" aria-label="Section navigation">
+          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn" disabled="">← Previous section</button>
+          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn">Next section →</button>
+        </nav>
+
+        <div class="melodies-prompt">
+          <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+          <strong id="playEarStatus">Answer revealed</strong>
+          <span id="playEarHint">Move to another section when you’re ready.</span>
+        </div>
+
+        <label class="play-ear-pause-setting">
+          <input type="checkbox" id="playEarPauseWhileGuessing" checked="">
+          <span><strong>Pause video while guessing</strong><small>Turn this off when using an audio interface or headphones.</small></span>
+        </label>
+
+        <fieldset class="melodies-method">
+          <legend>How do you want to guess?</legend>
+          <button type="button" class="melodies-method-btn" id="playEarMicMethodBtn" aria-pressed="false" disabled="">
+            <strong>Play it</strong><span>Use selected audio input</span>
+          </button>
+          <button type="button" class="melodies-method-btn active" id="playEarManualMethodBtn" aria-pressed="true" disabled="">
+            <strong>Enter intervals</strong><span>No listening required</span>
+          </button>
+        </fieldset>
+
+        <div class="melodies-progress" aria-label="Section progress">
+          <div class="melodies-progress-track"><span id="playEarProgressBar" style="width: 50%;"></span></div>
+          <span id="playEarProgressText">3 of 6 entered</span>
+        </div>
+
+        <div id="playEarMicrophonePanel" hidden="">
+          <div class="melodies-detected" aria-live="polite">
+            <span class="melodies-detected-label">Heard</span>
+            <strong id="playEarDetectedNote">—</strong>
+            <div class="play-ear-detected-details">
+              <span id="playEarDetectedInterval">Waiting for your guitar</span>
+              <div class="play-ear-heard-actions">
+                <button type="button" class="melodies-link-btn" id="playEarResetNotesBtn" disabled="">Reset notes</button>
+                <button type="button" class="melodies-link-btn" id="playEarPlayHeardBtn" disabled="">Play heard notes</button>
+              </div>
+              <label class="play-ear-auto-clear-setting">
+                <input type="checkbox" id="playEarAutoClearNotes" checked="" disabled="">
+                <small>Auto-clear after 5 seconds</small>
+              </label>
+            </div>
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn" disabled="">Start playing</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn" disabled="">Reveal answer</button>
+          </div>
+          <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
+        </div>
+
+        <div class="melodies-manual" id="playEarManualPanel">
+          <label class="melodies-manual-label" for="playEarIntervalInput">Treat the first heard note as 1, or use degrees from the song key.</label>
+          <div class="melodies-interval-entry" id="playEarIntervalEntry">
+            <div class="melodies-interval-boxes" id="playEarIntervalBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled">♭1</span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="0" aria-label="Interval 1 is flat; change accidental">♭</button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled">2</span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="1" aria-label="Interval 2 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled">3</span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="2" aria-label="Interval 3 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="3" aria-label="Interval 4 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="4" aria-label="Interval 5 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="5" aria-label="Interval 6 is natural; change accidental" disabled=""></button></span></div>
+            <input id="playEarIntervalInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Section scale degrees" maxlength="6" disabled="">
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled="">Check intervals</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarManualRevealBtn" disabled="">Reveal answer</button>
+          </div>
+        </div>
+
+        <div class="melodies-result" id="playEarResult"><strong>Opening guitar melody</strong><span>My Girl · C major</span><div class="melodies-answer"><b>Correct intervals</b><div><span>1</span><i aria-hidden="true">–</i><span>2</span><i aria-hidden="true">–</i><span>3</span><i aria-hidden="true">–</i><span>5</span><i aria-hidden="true">–</i><span>6</span><i aria-hidden="true">–</i><span>1</span></div></div><small>Listen again and notice the interval shape.</small></div>
+      </section>
+    </div>
+
+    <aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.</span>
+    </div>
+    <label class="audio-input-field" for="playEarAudioInput">
+      <span>Audio input</span>
+      <select id="playEarAudioInput" data-audio-input-select="" disabled="">
+        <option value="">Allow audio access first</option>
+      </select>
+    </label>
+    <small data-audio-input-help="">Allow audio access once to see device names.</small>
+  </aside>
+    <p class="melodies-mic-note">Only the selected audio input is analyzed. YouTube audio is never transcribed.</p>
+  </section>"
+`;
+
+exports[`Play by Ear user flow > restores manual mode, listening preferences and completed sections > restored manual practice preferences 1`] = `
+"<section class="play-ear-game" aria-labelledby="playEarHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Real songs · by ear</p>
+      <h1 id="playEarHeading">Hear the phrase. Find it on your guitar.</h1>
+      <p class="melodies-intro">Loop a short section from a curated performance, then reproduce its notes in any key or enter the intervals.</p>
+    </header>
+
+    <div class="play-ear-layout">
+      <section class="play-ear-media-card" aria-labelledby="playEarSongTitle">
+        <label class="play-ear-song-field" for="playEarSongSelect">
+          <span>Song</span><select id="playEarSongSelect"><option value="my-girl">My Girl</option><option value="smoke-on-the-water">Smoke on the Water</option><option value="iron-man">Iron Man</option><option value="another-one-bites-the-dust">Another One Bites the Dust</option><option value="billie-jean">Billie Jean</option><option value="beat-it">Beat It</option><option value="sweet-dreams">Sweet Dreams (Are Made of This)</option><option value="take-on-me">Take On Me</option><option value="come-as-you-are">Come As You Are</option><option value="seven-nation-army">Seven Nation Army</option><option value="toxic">Toxic</option><option value="bad-romance">Bad Romance</option><option value="shape-of-you">Shape of You</option><option value="blinding-lights">Blinding Lights</option><option value="sunshine-of-your-love">Sunshine of Your Love</option><option value="sweet-child-of-mine">Sweet Child O' Mine</option><option value="satisfaction">(I Can't Get No) Satisfaction</option><option value="superstition">Superstition</option><option value="layla">Layla</option><option value="crazy-train">Crazy Train</option><option value="come-together">Come Together</option><option value="enter-sandman">Enter Sandman</option><option value="hysteria">Hysteria</option><option value="smooth">Smooth</option><option value="feel-good-inc">Feel Good Inc.</option><option value="do-i-wanna-know">Do I Wanna Know?</option><option value="uptown-funk">Uptown Funk</option><option value="bad-guy">Bad Guy</option><option value="i-will-possess-your-heart">I Will Possess Your Heart</option></select>
+        </label>
+        <div class="play-ear-song-heading">
+          <div><h2 id="playEarSongTitle">My Girl</h2><p id="playEarPerformance">Official lyric video</p></div>
+          <span id="playEarSongKey">C major</span>
+        </div>
+        <div class="play-ear-video-shell">
+          <div id="playEarYoutubePlayer" class="play-ear-video-placeholder">
+            <span aria-hidden="true">▶</span><p>The video loads when you play the first loop.</p>
+          </div>
+        </div>
+        <p class="play-ear-video-status" id="playEarVideoStatus" aria-live="polite">Choose a section, then play the loop.</p>
+        <div class="play-ear-loop-actions">
+          <div class="play-ear-transport">
+            <button type="button" class="play-ear-loop-btn" id="playEarLoopBtn" aria-label="Play loop" title="Play loop">▶</button>
+            <div class="play-ear-speed-control" aria-label="Playback speed">
+              <span>Speed</span>
+              <button type="button" id="playEarSlowerBtn" aria-label="Slow down" title="Slow down" disabled="">−</button>
+              <output id="playEarPlaybackRate" aria-live="polite">1×</output>
+              <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up" disabled="">+</button>
+            </div>
+            <button type="button" class="melodies-link-btn play-ear-simplified-btn" id="playEarSimplifiedBtn">Play simplified version</button>
+          </div>
+          <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=y3KJ7d2qBoA">Open on YouTube ↗</a>
+        </div>
+      </section>
+
+      <section class="melodies-card play-ear-guess-card">
+        <div class="play-ear-section-heading">
+          <span>Section</span><strong id="playEarSectionCounter">1 of 2 · easy</strong>
+        </div>
+        <div class="play-ear-section-tabs" id="playEarSectionTabs"><button type="button" class="play-ear-section-btn active" data-section-index="0" aria-pressed="true"><span>✓ Opening guitar melody</span><small>6 notes · easy</small></button><button type="button" class="play-ear-section-btn" data-section-index="1" aria-pressed="false"><span>Second phrase</span><small>6 notes · easy</small></button></div>
+        <nav class="play-ear-section-navigation" aria-label="Section navigation">
+          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn" disabled="">← Previous section</button>
+          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn">Next section →</button>
+        </nav>
+
+        <div class="melodies-prompt">
+          <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+          <strong id="playEarStatus">Listen to the section first</strong>
+          <span id="playEarHint">Replay it as many times as you need.</span>
+        </div>
+
+        <label class="play-ear-pause-setting">
+          <input type="checkbox" id="playEarPauseWhileGuessing" checked="">
+          <span><strong>Pause video while guessing</strong><small>Turn this off when using an audio interface or headphones.</small></span>
+        </label>
+
+        <fieldset class="melodies-method">
+          <legend>How do you want to guess?</legend>
+          <button type="button" class="melodies-method-btn" id="playEarMicMethodBtn" aria-pressed="false">
+            <strong>Play it</strong><span>Use selected audio input</span>
+          </button>
+          <button type="button" class="melodies-method-btn active" id="playEarManualMethodBtn" aria-pressed="true">
+            <strong>Enter intervals</strong><span>No listening required</span>
+          </button>
+        </fieldset>
+
+        <div class="melodies-progress" aria-label="Section progress">
+          <div class="melodies-progress-track"><span id="playEarProgressBar" style="width: 0%;"></span></div>
+          <span id="playEarProgressText">0 of 6 entered</span>
+        </div>
+
+        <div id="playEarMicrophonePanel" hidden="">
+          <div class="melodies-detected" aria-live="polite">
+            <span class="melodies-detected-label">Heard</span>
+            <strong id="playEarDetectedNote">—</strong>
+            <div class="play-ear-detected-details">
+              <span id="playEarDetectedInterval">Waiting for your guitar</span>
+              <div class="play-ear-heard-actions">
+                <button type="button" class="melodies-link-btn" id="playEarResetNotesBtn" disabled="">Reset notes</button>
+                <button type="button" class="melodies-link-btn" id="playEarPlayHeardBtn" disabled="">Play heard notes</button>
+              </div>
+              <label class="play-ear-auto-clear-setting">
+                <input type="checkbox" id="playEarAutoClearNotes" checked="">
+                <small>Auto-clear after 5 seconds</small>
+              </label>
+            </div>
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn">Start playing</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn">Reveal answer</button>
+          </div>
+          <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
+        </div>
+
+        <div class="melodies-manual" id="playEarManualPanel">
+          <label class="melodies-manual-label" for="playEarIntervalInput">Treat the first heard note as 1, or use degrees from the song key.</label>
+          <div class="melodies-interval-entry" id="playEarIntervalEntry">
+            <div class="melodies-interval-boxes" id="playEarIntervalBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="0" aria-label="Interval 1 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="3" aria-label="Interval 4 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="4" aria-label="Interval 5 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-play-ear-accidental="5" aria-label="Interval 6 is natural; change accidental" disabled=""></button></span></div>
+            <input id="playEarIntervalInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Section scale degrees" maxlength="6" disabled="">
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled="">Check intervals</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarManualRevealBtn">Reveal answer</button>
+          </div>
+        </div>
+
+        <div class="melodies-result" id="playEarResult" hidden=""></div>
+      </section>
+    </div>
+
+    <aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.</span>
+    </div>
+    <label class="audio-input-field" for="playEarAudioInput">
+      <span>Audio input</span>
+      <select id="playEarAudioInput" data-audio-input-select="" disabled="">
+        <option value="">Allow audio access first</option>
+      </select>
+    </label>
+    <small data-audio-input-help="">Allow audio access once to see device names.</small>
+  </aside>
+    <p class="melodies-mic-note">Only the selected audio input is analyzed. YouTube audio is never transcribed.</p>
+  </section>"
+`;
+
+exports[`Play by Ear user flow > retains heard notes with auto-clear disabled and clears them when re-enabled > re-enabled note auto-clear 1`] = `
+"<section class="play-ear-game" aria-labelledby="playEarHeading">
+    <header class="melodies-hero">
+      <p class="melodies-eyebrow">Real songs · by ear</p>
+      <h1 id="playEarHeading">Hear the phrase. Find it on your guitar.</h1>
+      <p class="melodies-intro">Loop a short section from a curated performance, then reproduce its notes in any key or enter the intervals.</p>
+    </header>
+
+    <div class="play-ear-layout">
+      <section class="play-ear-media-card" aria-labelledby="playEarSongTitle">
+        <label class="play-ear-song-field" for="playEarSongSelect">
+          <span>Song</span><select id="playEarSongSelect"><option value="my-girl">My Girl</option><option value="smoke-on-the-water">Smoke on the Water</option><option value="iron-man">Iron Man</option><option value="another-one-bites-the-dust">Another One Bites the Dust</option><option value="billie-jean">Billie Jean</option><option value="beat-it">Beat It</option><option value="sweet-dreams">Sweet Dreams (Are Made of This)</option><option value="take-on-me">Take On Me</option><option value="come-as-you-are">Come As You Are</option><option value="seven-nation-army">Seven Nation Army</option><option value="toxic">Toxic</option><option value="bad-romance">Bad Romance</option><option value="shape-of-you">Shape of You</option><option value="blinding-lights">Blinding Lights</option><option value="sunshine-of-your-love">Sunshine of Your Love</option><option value="sweet-child-of-mine">Sweet Child O' Mine</option><option value="satisfaction">(I Can't Get No) Satisfaction</option><option value="superstition">Superstition</option><option value="layla">Layla</option><option value="crazy-train">Crazy Train</option><option value="come-together">Come Together</option><option value="enter-sandman">Enter Sandman</option><option value="hysteria">Hysteria</option><option value="smooth">Smooth</option><option value="feel-good-inc">Feel Good Inc.</option><option value="do-i-wanna-know">Do I Wanna Know?</option><option value="uptown-funk">Uptown Funk</option><option value="bad-guy">Bad Guy</option><option value="i-will-possess-your-heart">I Will Possess Your Heart</option></select>
+        </label>
+        <div class="play-ear-song-heading">
+          <div><h2 id="playEarSongTitle">My Girl</h2><p id="playEarPerformance">Official lyric video</p></div>
+          <span id="playEarSongKey">C major</span>
+        </div>
+        <div class="play-ear-video-shell">
+          <div id="playEarYoutubePlayer" class="play-ear-video-placeholder">
+            <span aria-hidden="true">▶</span><p>The video loads when you play the first loop.</p>
+          </div>
+        </div>
+        <p class="play-ear-video-status" id="playEarVideoStatus" aria-live="polite">Choose a section, then play the loop.</p>
+        <div class="play-ear-loop-actions">
+          <div class="play-ear-transport">
+            <button type="button" class="play-ear-loop-btn" id="playEarLoopBtn" aria-label="Play loop" title="Play loop">▶</button>
+            <div class="play-ear-speed-control" aria-label="Playback speed">
+              <span>Speed</span>
+              <button type="button" id="playEarSlowerBtn" aria-label="Slow down" title="Slow down" disabled="">−</button>
+              <output id="playEarPlaybackRate" aria-live="polite">1×</output>
+              <button type="button" id="playEarFasterBtn" aria-label="Speed up" title="Speed up" disabled="">+</button>
+            </div>
+            <button type="button" class="melodies-link-btn play-ear-simplified-btn" id="playEarSimplifiedBtn">Play simplified version</button>
+          </div>
+          <a id="playEarYoutubeLink" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=y3KJ7d2qBoA">Open on YouTube ↗</a>
+        </div>
+      </section>
+
+      <section class="melodies-card play-ear-guess-card">
+        <div class="play-ear-section-heading">
+          <span>Section</span><strong id="playEarSectionCounter">1 of 2 · easy</strong>
+        </div>
+        <div class="play-ear-section-tabs" id="playEarSectionTabs"><button type="button" class="play-ear-section-btn active" data-section-index="0" aria-pressed="true"><span>Opening guitar melody</span><small>6 notes · easy</small></button><button type="button" class="play-ear-section-btn" data-section-index="1" aria-pressed="false"><span>Second phrase</span><small>6 notes · easy</small></button></div>
+        <nav class="play-ear-section-navigation" aria-label="Section navigation">
+          <button type="button" class="melodies-link-btn" id="playEarPreviousSectionBtn" disabled="">← Previous section</button>
+          <button type="button" class="melodies-link-btn" id="playEarNextSectionBtn">Next section →</button>
+        </nav>
+
+        <div class="melodies-prompt">
+          <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
+          <strong id="playEarStatus">Recognized notes cleared after 5 seconds</strong>
+          <span id="playEarHint">Play again, or turn off auto-clear.</span>
+        </div>
+
+        <label class="play-ear-pause-setting">
+          <input type="checkbox" id="playEarPauseWhileGuessing" checked="">
+          <span><strong>Pause video while guessing</strong><small>Turn this off when using an audio interface or headphones.</small></span>
+        </label>
+
+        <fieldset class="melodies-method">
+          <legend>How do you want to guess?</legend>
+          <button type="button" class="melodies-method-btn active" id="playEarMicMethodBtn" aria-pressed="true">
+            <strong>Play it</strong><span>Use selected audio input</span>
+          </button>
+          <button type="button" class="melodies-method-btn" id="playEarManualMethodBtn" aria-pressed="false">
+            <strong>Enter intervals</strong><span>No listening required</span>
+          </button>
+        </fieldset>
+
+        <div class="melodies-progress" aria-label="Section progress">
+          <div class="melodies-progress-track"><span id="playEarProgressBar" style="width: 0%;"></span></div>
+          <span id="playEarProgressText">0 of 6 notes</span>
+        </div>
+
+        <div id="playEarMicrophonePanel">
+          <div class="melodies-detected" aria-live="polite">
+            <span class="melodies-detected-label">Heard</span>
+            <strong id="playEarDetectedNote">—</strong>
+            <div class="play-ear-detected-details">
+              <span id="playEarDetectedInterval">Waiting for your guitar</span>
+              <div class="play-ear-heard-actions">
+                <button type="button" class="melodies-link-btn" id="playEarResetNotesBtn" disabled="">Reset notes</button>
+                <button type="button" class="melodies-link-btn" id="playEarPlayHeardBtn" disabled="">Play heard notes</button>
+              </div>
+              <label class="play-ear-auto-clear-setting">
+                <input type="checkbox" id="playEarAutoClearNotes" checked="">
+                <small>Auto-clear after 5 seconds</small>
+              </label>
+            </div>
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary" id="playEarGuessBtn">Stop playing</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarRevealBtn">Reveal answer</button>
+          </div>
+          <p class="play-ear-detection-hint">For reliable recognition, play clean single notes and let each one sound briefly.</p>
+        </div>
+
+        <div class="melodies-manual" id="playEarManualPanel" hidden="">
+          <label class="melodies-manual-label" for="playEarIntervalInput">Treat the first heard note as 1, or use degrees from the song key.</label>
+          <div class="melodies-interval-entry" id="playEarIntervalEntry">
+            <div class="melodies-interval-boxes" id="playEarIntervalBoxes"></div>
+            <input id="playEarIntervalInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Section scale degrees" maxlength="6" disabled="">
+          </div>
+          <div class="melodies-actions">
+            <button type="button" class="melodies-btn melodies-btn-primary melodies-check-btn" id="playEarCheckBtn" disabled="">Check intervals</button>
+            <button type="button" class="melodies-btn melodies-btn-secondary" id="playEarManualRevealBtn">Reveal answer</button>
+          </div>
+        </div>
+
+        <div class="melodies-result" id="playEarResult" hidden=""></div>
+      </section>
+    </div>
+
+    <aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>To play along while the video loops, connect your guitar through an audio interface. Otherwise, pause the video while guessing.</span>
+    </div>
+    <label class="audio-input-field" for="playEarAudioInput">
+      <span>Audio input</span>
+      <select id="playEarAudioInput" data-audio-input-select="" disabled="">
+        <option value="">Allow audio access first</option>
+      </select>
+    </label>
+    <small data-audio-input-help="">Allow audio access once to see device names.</small>
+  </aside>
+    <p class="melodies-mic-note">Only the selected audio input is analyzed. YouTube audio is never transcribed.</p>
+  </section>"
+`;

@@ -1,18 +1,16 @@
+import { requiredAt } from '../../shared/requiredAt';
 // Renders the progression panel below the wheel: degree toggles plus the chords
 // they resolve to in the selected key.
 
-import { getDiatonicChords, type Chord, type KeyMode } from "./theory";
+import { type Chord, getDiatonicChords, type KeyMode } from './theory';
 
-function degreeButtons(
-  chords: readonly Chord[],
-  degrees: readonly number[],
-): string {
+function degreeButtons(chords: readonly Chord[], degrees: readonly number[]): string {
   return chords
     .map((chord, degree) => {
-      const active = degrees.includes(degree) ? " active" : "";
+      const active = degrees.includes(degree) ? ' active' : '';
       return `<button type="button" class="cof-degree-btn${active}" data-degree="${degree}">${chord.numeral}</button>`;
     })
-    .join("");
+    .join('');
 }
 
 function chordCard(chord: Chord): string {
@@ -25,17 +23,13 @@ function progression(chords: readonly Chord[], degrees: readonly number[]): stri
   }
   return [...degrees]
     .sort((a, b) => a - b)
-    .map((degree) => chordCard(chords[degree]))
+    .map((degree) => chordCard(requiredAt(chords, degree)))
     .join(`<span class="cof-chord-sep">–</span>`);
 }
 
-export function renderPanel(
-  tonic: string,
-  mode: KeyMode,
-  degrees: readonly number[],
-): string {
+export function renderPanel(tonic: string, mode: KeyMode, degrees: readonly number[]): string {
   const chords = getDiatonicChords(tonic, mode);
-  const modeName = mode === "major" ? "Major" : "Minor";
+  const modeName = mode === 'major' ? 'Major' : 'Minor';
 
   return `
     <div class="cof-panel-header">

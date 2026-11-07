@@ -17,7 +17,7 @@ The app includes light and dark themes, mobile layouts, and an installable progr
 
 ## Run locally
 
-Use Node.js 22.12 or newer and pnpm 10.28.2 (the version pinned in `package.json`).
+Use Node.js 22.18+ or 24.11+ and pnpm 10.28.2 (the version pinned in `package.json`).
 
 ```sh
 git clone https://github.com/balajeerc/guitar-tools.git
@@ -43,12 +43,32 @@ Audio input is processed in the browser, and preferences are stored locally in y
 ## Development
 
 ```sh
-pnpm check    # TypeScript, lint, duplication, and unused-code checks
+pnpm check    # Types, format, lint, unused code, duplication, dependencies, and coverage
 pnpm build    # Production assets in dist/
 pnpm preview  # Preview the production build locally
 ```
 
-Run `pnpm check` before submitting changes. To enable the included Git pre-commit hook after installing with scripts disabled, run `pnpm exec husky`.
+Run `pnpm check` before submitting changes. After installing with scripts disabled, enable the Git hooks and install the pinned secret scanner:
+
+```sh
+pnpm hooks:install
+pnpm tools:install
+```
+
+The pre-commit hook runs `pnpm check`. The commit-message hook enforces Conventional Commits, for example `chore: add quality checks`. The pre-push hook scans Git history for secrets, audits dependencies at moderate severity or higher, builds the app, and runs mutation tests. These are local hooks; this repository has no CI workflow.
+
+```sh
+pnpm fix                    # ESLint autofixes and Prettier formatting
+pnpm test:watch             # Watch unit tests
+pnpm test:coverage          # Run tests and enforce coverage
+pnpm test:mutation          # Check that tests catch changes to source behavior
+pnpm check:vulnerabilities  # Audit installed dependencies
+pnpm scan:secrets           # Scan Git history with gitleaks
+```
+
+The test gate covers every TypeScript source module and the offline service worker matched by `test-scope.json`, excluding tests and test fixtures. Coverage must meet 80% for statements, branches, functions, and lines; mutation score must meet 90%. Both coverage and mutation testing read that same source list.
+
+Prettier enforces 100-column formatting. pnpm refuses dependencies newer than 30 days and publisher-trust downgrades; those settings live in `pnpm-workspace.yaml`. Exact-version age exceptions cover the Stryker/Vitest compatibility fix and audited security patches documented in the quality rules.
 
 The app is a static site. Navigation uses URL hashes. The production build registers a service worker; development mode disables it to keep cached assets from hiding changes.
 

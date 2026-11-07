@@ -1,23 +1,23 @@
 interface BeforeInstallPromptEvent extends Event {
   prompt(): Promise<void>;
-  userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
+  userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
 }
 
-const DISMISS_KEY = "pwa-install-dismissed";
+const DISMISS_KEY = 'pwa-install-dismissed';
 let deferredPrompt: BeforeInstallPromptEvent | null = null;
 
 function isDismissed(): boolean {
-  return localStorage.getItem(DISMISS_KEY) === "true";
+  return localStorage.getItem(DISMISS_KEY) === 'true';
 }
 
 function removeBanner(): void {
-  const banner = document.querySelector("#pwa-install-banner");
+  const banner = document.querySelector('#pwa-install-banner');
   if (banner) banner.remove();
   deferredPrompt = null;
 }
 
 function dismissBanner(): void {
-  localStorage.setItem(DISMISS_KEY, "true");
+  localStorage.setItem(DISMISS_KEY, 'true');
   removeBanner();
 }
 
@@ -27,7 +27,7 @@ async function handleInstallClick(): Promise<void> {
   await deferredPrompt.prompt();
   const { outcome } = await deferredPrompt.userChoice;
 
-  if (outcome === "accepted") {
+  if (outcome === 'accepted') {
     dismissBanner();
   }
 
@@ -35,29 +35,29 @@ async function handleInstallClick(): Promise<void> {
 }
 
 function createBanner(): HTMLElement {
-  const banner = document.createElement("div");
-  banner.id = "pwa-install-banner";
-  banner.className = "pwa-install-banner";
+  const banner = document.createElement('div');
+  banner.id = 'pwa-install-banner';
+  banner.className = 'pwa-install-banner';
 
-  const text = document.createElement("span");
-  text.className = "pwa-install-text";
-  text.textContent = "Install this app for offline use";
+  const text = document.createElement('span');
+  text.className = 'pwa-install-text';
+  text.textContent = 'Install this app for offline use';
 
-  const actions = document.createElement("div");
-  actions.className = "pwa-install-actions";
+  const actions = document.createElement('div');
+  actions.className = 'pwa-install-actions';
 
-  const installBtn = document.createElement("button");
-  installBtn.className = "pwa-install-btn";
-  installBtn.textContent = "Install";
-  installBtn.addEventListener("click", () => {
+  const installBtn = document.createElement('button');
+  installBtn.className = 'pwa-install-btn';
+  installBtn.textContent = 'Install';
+  installBtn.addEventListener('click', () => {
     void handleInstallClick();
   });
 
-  const dismissBtn = document.createElement("button");
-  dismissBtn.className = "pwa-dismiss-btn";
-  dismissBtn.textContent = "\u2715";
-  dismissBtn.setAttribute("aria-label", "Dismiss install prompt");
-  dismissBtn.addEventListener("click", dismissBanner);
+  const dismissBtn = document.createElement('button');
+  dismissBtn.className = 'pwa-dismiss-btn';
+  dismissBtn.textContent = '\u2715';
+  dismissBtn.setAttribute('aria-label', 'Dismiss install prompt');
+  dismissBtn.addEventListener('click', dismissBanner);
 
   actions.append(installBtn, dismissBtn);
   banner.append(text, actions);
@@ -65,17 +65,17 @@ function createBanner(): HTMLElement {
 }
 
 function isMobileOrTablet(): boolean {
-  return window.matchMedia("(max-width: 1024px)").matches;
+  return window.matchMedia('(max-width: 1024px)').matches;
 }
 
 function showBanner(): void {
   if (!isMobileOrTablet()) return;
-  if (document.querySelector("#pwa-install-banner")) return;
+  if (document.querySelector('#pwa-install-banner')) return;
   document.body.append(createBanner());
 }
 
 export function initInstallPrompt(): void {
-  window.addEventListener("beforeinstallprompt", (event) => {
+  window.addEventListener('beforeinstallprompt', (event) => {
     event.preventDefault();
     deferredPrompt = event as BeforeInstallPromptEvent;
 
@@ -84,5 +84,5 @@ export function initInstallPrompt(): void {
     }
   });
 
-  window.addEventListener("appinstalled", removeBanner);
+  window.addEventListener('appinstalled', removeBanner);
 }

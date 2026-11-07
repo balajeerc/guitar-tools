@@ -1,0 +1,1955 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`fretboard controls > reflects every walk mode and label selection immediately > fretWalkFullBtn 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="fretWalkAccordionToggle">
+        <span class="controls-summary" id="fretWalkControlsSummary">E · Low E string · open · Full · Notes</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="fretWalk-controls">
+        <div class="controls-row">
+          <div class="control-group">
+            <span class="control-label">Scale:</span>
+            <div class="toggle-group">
+              <button class="toggle-btn" id="fretWalkMajorBtn">Major</button>
+              <button class="toggle-btn" id="fretWalkMinorBtn">Minor</button>
+              <button class="toggle-btn active" id="fretWalkFullBtn">Full</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Display:</span>
+            <div class="toggle-group">
+              <button class="toggle-btn active" id="fretWalkNotesBtn">Notes</button>
+              <button class="toggle-btn" id="fretWalkIntervalsBtn">Intervals</button>
+            </div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+
+    <div class="chord-info" id="fretWalkInfo">Walking from: E · Low E string · open</div>
+
+    <div class="fretboard-section fret-walk-board">
+      <div class="caged-header" id="fret-walk-header">
+        <!-- Dynamically populated -->
+      </div>
+      <div class="fretboard-container">
+        <div class="fretboard" id="fret-walk-fretboard">
+          <!-- Dynamically populated -->
+        </div>
+        <div class="fret-numbers" id="fret-walk-fretNumbers">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+  "
+`;
+
+exports[`fretboard controls > reflects every walk mode and label selection immediately > fretWalkIntervalsBtn 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="fretWalkAccordionToggle">
+        <span class="controls-summary" id="fretWalkControlsSummary">E · Low E string · open · Minor · Intervals</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="fretWalk-controls">
+        <div class="controls-row">
+          <div class="control-group">
+            <span class="control-label">Scale:</span>
+            <div class="toggle-group">
+              <button class="toggle-btn" id="fretWalkMajorBtn">Major</button>
+              <button class="toggle-btn active" id="fretWalkMinorBtn">Minor</button>
+              <button class="toggle-btn" id="fretWalkFullBtn">Full</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Display:</span>
+            <div class="toggle-group">
+              <button class="toggle-btn" id="fretWalkNotesBtn">Notes</button>
+              <button class="toggle-btn active" id="fretWalkIntervalsBtn">Intervals</button>
+            </div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+
+    <div class="chord-info" id="fretWalkInfo">Walking from: E · Low E string · open</div>
+
+    <div class="fretboard-section fret-walk-board">
+      <div class="caged-header" id="fret-walk-header">
+        <!-- Dynamically populated -->
+      </div>
+      <div class="fretboard-container">
+        <div class="fretboard" id="fret-walk-fretboard">
+          <!-- Dynamically populated -->
+        </div>
+        <div class="fret-numbers" id="fret-walk-fretNumbers">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+  "
+`;
+
+exports[`fretboard controls > reflects every walk mode and label selection immediately > fretWalkMajorBtn 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="fretWalkAccordionToggle">
+        <span class="controls-summary" id="fretWalkControlsSummary">E · Low E string · open · Major · Notes</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="fretWalk-controls">
+        <div class="controls-row">
+          <div class="control-group">
+            <span class="control-label">Scale:</span>
+            <div class="toggle-group">
+              <button class="toggle-btn active" id="fretWalkMajorBtn">Major</button>
+              <button class="toggle-btn" id="fretWalkMinorBtn">Minor</button>
+              <button class="toggle-btn" id="fretWalkFullBtn">Full</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Display:</span>
+            <div class="toggle-group">
+              <button class="toggle-btn active" id="fretWalkNotesBtn">Notes</button>
+              <button class="toggle-btn" id="fretWalkIntervalsBtn">Intervals</button>
+            </div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+
+    <div class="chord-info" id="fretWalkInfo">Walking from: E · Low E string · open</div>
+
+    <div class="fretboard-section fret-walk-board">
+      <div class="caged-header" id="fret-walk-header">
+        <!-- Dynamically populated -->
+      </div>
+      <div class="fretboard-container">
+        <div class="fretboard" id="fret-walk-fretboard">
+          <!-- Dynamically populated -->
+        </div>
+        <div class="fret-numbers" id="fret-walk-fretNumbers">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+  "
+`;
+
+exports[`fretboard controls > reflects every walk mode and label selection immediately > fretWalkMinorBtn 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="fretWalkAccordionToggle">
+        <span class="controls-summary" id="fretWalkControlsSummary">E · Low E string · open · Minor · Notes</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="fretWalk-controls">
+        <div class="controls-row">
+          <div class="control-group">
+            <span class="control-label">Scale:</span>
+            <div class="toggle-group">
+              <button class="toggle-btn" id="fretWalkMajorBtn">Major</button>
+              <button class="toggle-btn active" id="fretWalkMinorBtn">Minor</button>
+              <button class="toggle-btn" id="fretWalkFullBtn">Full</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Display:</span>
+            <div class="toggle-group">
+              <button class="toggle-btn active" id="fretWalkNotesBtn">Notes</button>
+              <button class="toggle-btn" id="fretWalkIntervalsBtn">Intervals</button>
+            </div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+
+    <div class="chord-info" id="fretWalkInfo">Walking from: E · Low E string · open</div>
+
+    <div class="fretboard-section fret-walk-board">
+      <div class="caged-header" id="fret-walk-header">
+        <!-- Dynamically populated -->
+      </div>
+      <div class="fretboard-container">
+        <div class="fretboard" id="fret-walk-fretboard">
+          <!-- Dynamically populated -->
+        </div>
+        <div class="fret-numbers" id="fret-walk-fretNumbers">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+  "
+`;
+
+exports[`fretboard controls > reflects every walk mode and label selection immediately > fretWalkNotesBtn 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="fretWalkAccordionToggle">
+        <span class="controls-summary" id="fretWalkControlsSummary">E · Low E string · open · Minor · Notes</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="fretWalk-controls">
+        <div class="controls-row">
+          <div class="control-group">
+            <span class="control-label">Scale:</span>
+            <div class="toggle-group">
+              <button class="toggle-btn" id="fretWalkMajorBtn">Major</button>
+              <button class="toggle-btn active" id="fretWalkMinorBtn">Minor</button>
+              <button class="toggle-btn" id="fretWalkFullBtn">Full</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Display:</span>
+            <div class="toggle-group">
+              <button class="toggle-btn active" id="fretWalkNotesBtn">Notes</button>
+              <button class="toggle-btn" id="fretWalkIntervalsBtn">Intervals</button>
+            </div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+
+    <div class="chord-info" id="fretWalkInfo">Walking from: E · Low E string · open</div>
+
+    <div class="fretboard-section fret-walk-board">
+      <div class="caged-header" id="fret-walk-header">
+        <!-- Dynamically populated -->
+      </div>
+      <div class="fretboard-container">
+        <div class="fretboard" id="fret-walk-fretboard">
+          <!-- Dynamically populated -->
+        </div>
+        <div class="fret-numbers" id="fret-walk-fretNumbers">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+  "
+`;
+
+exports[`fretboard controls > reflects every walk mode and label selection immediately > restored walk controls 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="fretWalkAccordionToggle">
+        <span class="controls-summary" id="fretWalkControlsSummary">E · Low E string · open · Minor · Notes</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="fretWalk-controls">
+        <div class="controls-row">
+          <div class="control-group">
+            <span class="control-label">Scale:</span>
+            <div class="toggle-group">
+              <button class="toggle-btn" id="fretWalkMajorBtn">Major</button>
+              <button class="toggle-btn active" id="fretWalkMinorBtn">Minor</button>
+              <button class="toggle-btn" id="fretWalkFullBtn">Full</button>
+            </div>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Display:</span>
+            <div class="toggle-group">
+              <button class="toggle-btn active" id="fretWalkNotesBtn">Notes</button>
+              <button class="toggle-btn" id="fretWalkIntervalsBtn">Intervals</button>
+            </div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+
+    <div class="chord-info" id="fretWalkInfo">Walking from: E · Low E string · open</div>
+
+    <div class="fretboard-section fret-walk-board">
+      <div class="caged-header" id="fret-walk-header">
+        <!-- Dynamically populated -->
+      </div>
+      <div class="fretboard-container">
+        <div class="fretboard" id="fret-walk-fretboard">
+          <!-- Dynamically populated -->
+        </div>
+        <div class="fret-numbers" id="fret-walk-fretNumbers">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+  "
+`;
+
+exports[`fretboard controls > reflects triad view, orbit and scale controls independently > initial triad controls 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="triadsAccordionToggle" type="button">
+        <span class="controls-summary" id="triadsControlsSummary">C Major</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="triadsControlsPanel">
+        <div class="control-group">
+          <span class="control-label">Root:</span>
+          <div class="note-selector">
+            <button class="note-btn" id="triadsPrevNote" type="button" aria-label="Previous root">❮</button>
+            <div class="note-display" id="triadsCurrentNote">C</div>
+            <button class="note-btn" id="triadsNextNote" type="button" aria-label="Next root">❯</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">Triad:</span>
+          <div class="toggle-group">
+            <button class="toggle-btn active" id="triadsMajorBtn" type="button" aria-pressed="true">Major</button>
+            <button class="toggle-btn" id="triadsMinorBtn" type="button" aria-pressed="false">Minor</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">Orbit:</span>
+          <div class="toggle-group" title="Show the surrounding R–♭3–3–5–♭7 blues cluster">
+            <button class="toggle-btn active" id="triadsOrbitOffBtn" type="button" aria-pressed="true">Off</button>
+            <button class="toggle-btn" id="triadsOrbitOnBtn" type="button" aria-pressed="false">On</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">View:</span>
+          <div class="toggle-group">
+            <button class="toggle-btn active" id="triadsStaticViewBtn" type="button" aria-pressed="true">Static</button>
+            <button class="toggle-btn" id="triadsGroupingsViewBtn" type="button" aria-pressed="false">Groupings</button>
+          </div>
+        </div>
+        <div class="control-group triads-grouping-controls" id="triadsProgressionControls" hidden="">
+          <span class="control-label">Progression:</span>
+          <div class="triads-progression-editor" aria-label="Chord progression">
+            
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="0" aria-label="Change progression step 1">I</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="0" aria-label="Make progression step 1 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="1" aria-label="Change progression step 2">IV</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="1" aria-label="Make progression step 2 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="2" aria-label="Change progression step 3">V</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="2" aria-label="Make progression step 3 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="3" aria-label="Change progression step 4">I</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="3" aria-label="Make progression step 4 minor">Major</button>
+              </div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+    <div class="triads-step-status" id="triadsStepStatus" hidden="">
+      <span class="triads-active-chord" id="triadsActiveChord" aria-live="polite">I · C Major</span>
+      <div class="triads-step-indicator" aria-label="Progression playback position">
+        
+          <button class="triads-step-dash active" type="button" data-triad-step="0" aria-label="Pause on progression step 1" aria-current="step"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="1" aria-label="Pause on progression step 2" aria-current="false"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="2" aria-label="Pause on progression step 3" aria-current="false"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="3" aria-label="Pause on progression step 4" aria-current="false"></button>
+      </div>
+    </div>
+    <div class="triad-boards" id="triadBoards"></div>
+  "
+`;
+
+exports[`fretboard controls > reflects triad view, orbit and scale controls independently > triadsGroupingsViewBtn 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="triadsAccordionToggle" type="button">
+        <span class="controls-summary" id="triadsControlsSummary">C Major · I–IV–V–I · Groupings</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="triadsControlsPanel">
+        <div class="control-group">
+          <span class="control-label">Root:</span>
+          <div class="note-selector">
+            <button class="note-btn" id="triadsPrevNote" type="button" aria-label="Previous root">❮</button>
+            <div class="note-display" id="triadsCurrentNote">C</div>
+            <button class="note-btn" id="triadsNextNote" type="button" aria-label="Next root">❯</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">Triad:</span>
+          <div class="toggle-group">
+            <button class="toggle-btn active" id="triadsMajorBtn" type="button" aria-pressed="true">Major</button>
+            <button class="toggle-btn" id="triadsMinorBtn" type="button" aria-pressed="false">Minor</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">Orbit:</span>
+          <div class="toggle-group" title="Show the surrounding R–♭3–3–5–♭7 blues cluster">
+            <button class="toggle-btn active" id="triadsOrbitOffBtn" type="button" aria-pressed="true">Off</button>
+            <button class="toggle-btn" id="triadsOrbitOnBtn" type="button" aria-pressed="false">On</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">View:</span>
+          <div class="toggle-group">
+            <button class="toggle-btn" id="triadsStaticViewBtn" type="button" aria-pressed="false">Static</button>
+            <button class="toggle-btn active" id="triadsGroupingsViewBtn" type="button" aria-pressed="true">Groupings</button>
+          </div>
+        </div>
+        <div class="control-group triads-grouping-controls" id="triadsProgressionControls">
+          <span class="control-label">Progression:</span>
+          <div class="triads-progression-editor" aria-label="Chord progression">
+            
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="0" aria-label="Change progression step 1">I</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="0" aria-label="Make progression step 1 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="1" aria-label="Change progression step 2">IV</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="1" aria-label="Make progression step 2 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="2" aria-label="Change progression step 3">V</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="2" aria-label="Make progression step 3 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="3" aria-label="Change progression step 4">I</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="3" aria-label="Make progression step 4 minor">Major</button>
+              </div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+    <div class="triads-step-status" id="triadsStepStatus">
+      <span class="triads-active-chord" id="triadsActiveChord" aria-live="polite">I · C Major</span>
+      <div class="triads-step-indicator" aria-label="Progression playback position">
+        
+          <button class="triads-step-dash active" type="button" data-triad-step="0" aria-label="Pause on progression step 1" aria-current="step"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="1" aria-label="Pause on progression step 2" aria-current="false"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="2" aria-label="Pause on progression step 3" aria-current="false"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="3" aria-label="Pause on progression step 4" aria-current="false"></button>
+      </div>
+    </div>
+    <div class="triad-boards" id="triadBoards"></div>
+  "
+`;
+
+exports[`fretboard controls > reflects triad view, orbit and scale controls independently > triadsMajorBtn 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="triadsAccordionToggle" type="button">
+        <span class="controls-summary" id="triadsControlsSummary">C Major</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="triadsControlsPanel">
+        <div class="control-group">
+          <span class="control-label">Root:</span>
+          <div class="note-selector">
+            <button class="note-btn" id="triadsPrevNote" type="button" aria-label="Previous root">❮</button>
+            <div class="note-display" id="triadsCurrentNote">C</div>
+            <button class="note-btn" id="triadsNextNote" type="button" aria-label="Next root">❯</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">Triad:</span>
+          <div class="toggle-group">
+            <button class="toggle-btn active" id="triadsMajorBtn" type="button" aria-pressed="true">Major</button>
+            <button class="toggle-btn" id="triadsMinorBtn" type="button" aria-pressed="false">Minor</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">Orbit:</span>
+          <div class="toggle-group" title="Show the surrounding R–♭3–3–5–♭7 blues cluster">
+            <button class="toggle-btn active" id="triadsOrbitOffBtn" type="button" aria-pressed="true">Off</button>
+            <button class="toggle-btn" id="triadsOrbitOnBtn" type="button" aria-pressed="false">On</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">View:</span>
+          <div class="toggle-group">
+            <button class="toggle-btn active" id="triadsStaticViewBtn" type="button" aria-pressed="true">Static</button>
+            <button class="toggle-btn" id="triadsGroupingsViewBtn" type="button" aria-pressed="false">Groupings</button>
+          </div>
+        </div>
+        <div class="control-group triads-grouping-controls" id="triadsProgressionControls" hidden="">
+          <span class="control-label">Progression:</span>
+          <div class="triads-progression-editor" aria-label="Chord progression">
+            
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="0" aria-label="Change progression step 1">I</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="0" aria-label="Make progression step 1 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="1" aria-label="Change progression step 2">IV</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="1" aria-label="Make progression step 2 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="2" aria-label="Change progression step 3">V</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="2" aria-label="Make progression step 3 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="3" aria-label="Change progression step 4">I</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="3" aria-label="Make progression step 4 minor">Major</button>
+              </div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+    <div class="triads-step-status" id="triadsStepStatus" hidden="">
+      <span class="triads-active-chord" id="triadsActiveChord" aria-live="polite">I · C Major</span>
+      <div class="triads-step-indicator" aria-label="Progression playback position">
+        
+          <button class="triads-step-dash active" type="button" data-triad-step="0" aria-label="Pause on progression step 1" aria-current="step"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="1" aria-label="Pause on progression step 2" aria-current="false"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="2" aria-label="Pause on progression step 3" aria-current="false"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="3" aria-label="Pause on progression step 4" aria-current="false"></button>
+      </div>
+    </div>
+    <div class="triad-boards" id="triadBoards"></div>
+  "
+`;
+
+exports[`fretboard controls > reflects triad view, orbit and scale controls independently > triadsMinorBtn 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="triadsAccordionToggle" type="button">
+        <span class="controls-summary" id="triadsControlsSummary">C Minor</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="triadsControlsPanel">
+        <div class="control-group">
+          <span class="control-label">Root:</span>
+          <div class="note-selector">
+            <button class="note-btn" id="triadsPrevNote" type="button" aria-label="Previous root">❮</button>
+            <div class="note-display" id="triadsCurrentNote">C</div>
+            <button class="note-btn" id="triadsNextNote" type="button" aria-label="Next root">❯</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">Triad:</span>
+          <div class="toggle-group">
+            <button class="toggle-btn" id="triadsMajorBtn" type="button" aria-pressed="false">Major</button>
+            <button class="toggle-btn active" id="triadsMinorBtn" type="button" aria-pressed="true">Minor</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">Orbit:</span>
+          <div class="toggle-group" title="Show the surrounding R–♭3–3–5–♭7 blues cluster">
+            <button class="toggle-btn active" id="triadsOrbitOffBtn" type="button" aria-pressed="true">Off</button>
+            <button class="toggle-btn" id="triadsOrbitOnBtn" type="button" aria-pressed="false">On</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">View:</span>
+          <div class="toggle-group">
+            <button class="toggle-btn active" id="triadsStaticViewBtn" type="button" aria-pressed="true">Static</button>
+            <button class="toggle-btn" id="triadsGroupingsViewBtn" type="button" aria-pressed="false">Groupings</button>
+          </div>
+        </div>
+        <div class="control-group triads-grouping-controls" id="triadsProgressionControls" hidden="">
+          <span class="control-label">Progression:</span>
+          <div class="triads-progression-editor" aria-label="Chord progression">
+            
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="0" aria-label="Change progression step 1">I</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="0" aria-label="Make progression step 1 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="1" aria-label="Change progression step 2">IV</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="1" aria-label="Make progression step 2 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="2" aria-label="Change progression step 3">V</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="2" aria-label="Make progression step 3 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="3" aria-label="Change progression step 4">I</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="3" aria-label="Make progression step 4 minor">Major</button>
+              </div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+    <div class="triads-step-status" id="triadsStepStatus" hidden="">
+      <span class="triads-active-chord" id="triadsActiveChord" aria-live="polite">I · C Major</span>
+      <div class="triads-step-indicator" aria-label="Progression playback position">
+        
+          <button class="triads-step-dash active" type="button" data-triad-step="0" aria-label="Pause on progression step 1" aria-current="step"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="1" aria-label="Pause on progression step 2" aria-current="false"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="2" aria-label="Pause on progression step 3" aria-current="false"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="3" aria-label="Pause on progression step 4" aria-current="false"></button>
+      </div>
+    </div>
+    <div class="triad-boards" id="triadBoards"></div>
+  "
+`;
+
+exports[`fretboard controls > reflects triad view, orbit and scale controls independently > triadsOrbitOffBtn 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="triadsAccordionToggle" type="button">
+        <span class="controls-summary" id="triadsControlsSummary">C Major</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="triadsControlsPanel">
+        <div class="control-group">
+          <span class="control-label">Root:</span>
+          <div class="note-selector">
+            <button class="note-btn" id="triadsPrevNote" type="button" aria-label="Previous root">❮</button>
+            <div class="note-display" id="triadsCurrentNote">C</div>
+            <button class="note-btn" id="triadsNextNote" type="button" aria-label="Next root">❯</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">Triad:</span>
+          <div class="toggle-group">
+            <button class="toggle-btn active" id="triadsMajorBtn" type="button" aria-pressed="true">Major</button>
+            <button class="toggle-btn" id="triadsMinorBtn" type="button" aria-pressed="false">Minor</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">Orbit:</span>
+          <div class="toggle-group" title="Show the surrounding R–♭3–3–5–♭7 blues cluster">
+            <button class="toggle-btn active" id="triadsOrbitOffBtn" type="button" aria-pressed="true">Off</button>
+            <button class="toggle-btn" id="triadsOrbitOnBtn" type="button" aria-pressed="false">On</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">View:</span>
+          <div class="toggle-group">
+            <button class="toggle-btn active" id="triadsStaticViewBtn" type="button" aria-pressed="true">Static</button>
+            <button class="toggle-btn" id="triadsGroupingsViewBtn" type="button" aria-pressed="false">Groupings</button>
+          </div>
+        </div>
+        <div class="control-group triads-grouping-controls" id="triadsProgressionControls" hidden="">
+          <span class="control-label">Progression:</span>
+          <div class="triads-progression-editor" aria-label="Chord progression">
+            
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="0" aria-label="Change progression step 1">I</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="0" aria-label="Make progression step 1 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="1" aria-label="Change progression step 2">IV</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="1" aria-label="Make progression step 2 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="2" aria-label="Change progression step 3">V</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="2" aria-label="Make progression step 3 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="3" aria-label="Change progression step 4">I</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="3" aria-label="Make progression step 4 minor">Major</button>
+              </div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+    <div class="triads-step-status" id="triadsStepStatus" hidden="">
+      <span class="triads-active-chord" id="triadsActiveChord" aria-live="polite">I · C Major</span>
+      <div class="triads-step-indicator" aria-label="Progression playback position">
+        
+          <button class="triads-step-dash active" type="button" data-triad-step="0" aria-label="Pause on progression step 1" aria-current="step"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="1" aria-label="Pause on progression step 2" aria-current="false"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="2" aria-label="Pause on progression step 3" aria-current="false"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="3" aria-label="Pause on progression step 4" aria-current="false"></button>
+      </div>
+    </div>
+    <div class="triad-boards" id="triadBoards"></div>
+  "
+`;
+
+exports[`fretboard controls > reflects triad view, orbit and scale controls independently > triadsOrbitOnBtn 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="triadsAccordionToggle" type="button">
+        <span class="controls-summary" id="triadsControlsSummary">C Major · Orbit</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="triadsControlsPanel">
+        <div class="control-group">
+          <span class="control-label">Root:</span>
+          <div class="note-selector">
+            <button class="note-btn" id="triadsPrevNote" type="button" aria-label="Previous root">❮</button>
+            <div class="note-display" id="triadsCurrentNote">C</div>
+            <button class="note-btn" id="triadsNextNote" type="button" aria-label="Next root">❯</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">Triad:</span>
+          <div class="toggle-group">
+            <button class="toggle-btn active" id="triadsMajorBtn" type="button" aria-pressed="true">Major</button>
+            <button class="toggle-btn" id="triadsMinorBtn" type="button" aria-pressed="false">Minor</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">Orbit:</span>
+          <div class="toggle-group" title="Show the surrounding R–♭3–3–5–♭7 blues cluster">
+            <button class="toggle-btn" id="triadsOrbitOffBtn" type="button" aria-pressed="false">Off</button>
+            <button class="toggle-btn active" id="triadsOrbitOnBtn" type="button" aria-pressed="true">On</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">View:</span>
+          <div class="toggle-group">
+            <button class="toggle-btn active" id="triadsStaticViewBtn" type="button" aria-pressed="true">Static</button>
+            <button class="toggle-btn" id="triadsGroupingsViewBtn" type="button" aria-pressed="false">Groupings</button>
+          </div>
+        </div>
+        <div class="control-group triads-grouping-controls" id="triadsProgressionControls" hidden="">
+          <span class="control-label">Progression:</span>
+          <div class="triads-progression-editor" aria-label="Chord progression">
+            
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="0" aria-label="Change progression step 1">I</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="0" aria-label="Make progression step 1 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="1" aria-label="Change progression step 2">IV</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="1" aria-label="Make progression step 2 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="2" aria-label="Change progression step 3">V</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="2" aria-label="Make progression step 3 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="3" aria-label="Change progression step 4">I</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="3" aria-label="Make progression step 4 minor">Major</button>
+              </div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+    <div class="triads-step-status" id="triadsStepStatus" hidden="">
+      <span class="triads-active-chord" id="triadsActiveChord" aria-live="polite">I · C Major</span>
+      <div class="triads-step-indicator" aria-label="Progression playback position">
+        
+          <button class="triads-step-dash active" type="button" data-triad-step="0" aria-label="Pause on progression step 1" aria-current="step"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="1" aria-label="Pause on progression step 2" aria-current="false"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="2" aria-label="Pause on progression step 3" aria-current="false"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="3" aria-label="Pause on progression step 4" aria-current="false"></button>
+      </div>
+    </div>
+    <div class="triad-boards" id="triadBoards"></div>
+  "
+`;
+
+exports[`fretboard controls > reflects triad view, orbit and scale controls independently > triadsStaticViewBtn 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="triadsAccordionToggle" type="button">
+        <span class="controls-summary" id="triadsControlsSummary">C Major</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="triadsControlsPanel">
+        <div class="control-group">
+          <span class="control-label">Root:</span>
+          <div class="note-selector">
+            <button class="note-btn" id="triadsPrevNote" type="button" aria-label="Previous root">❮</button>
+            <div class="note-display" id="triadsCurrentNote">C</div>
+            <button class="note-btn" id="triadsNextNote" type="button" aria-label="Next root">❯</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">Triad:</span>
+          <div class="toggle-group">
+            <button class="toggle-btn active" id="triadsMajorBtn" type="button" aria-pressed="true">Major</button>
+            <button class="toggle-btn" id="triadsMinorBtn" type="button" aria-pressed="false">Minor</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">Orbit:</span>
+          <div class="toggle-group" title="Show the surrounding R–♭3–3–5–♭7 blues cluster">
+            <button class="toggle-btn active" id="triadsOrbitOffBtn" type="button" aria-pressed="true">Off</button>
+            <button class="toggle-btn" id="triadsOrbitOnBtn" type="button" aria-pressed="false">On</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">View:</span>
+          <div class="toggle-group">
+            <button class="toggle-btn active" id="triadsStaticViewBtn" type="button" aria-pressed="true">Static</button>
+            <button class="toggle-btn" id="triadsGroupingsViewBtn" type="button" aria-pressed="false">Groupings</button>
+          </div>
+        </div>
+        <div class="control-group triads-grouping-controls" id="triadsProgressionControls" hidden="">
+          <span class="control-label">Progression:</span>
+          <div class="triads-progression-editor" aria-label="Chord progression">
+            
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="0" aria-label="Change progression step 1">I</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="0" aria-label="Make progression step 1 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="1" aria-label="Change progression step 2">IV</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="1" aria-label="Make progression step 2 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="2" aria-label="Change progression step 3">V</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="2" aria-label="Make progression step 3 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="3" aria-label="Change progression step 4">I</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="3" aria-label="Make progression step 4 minor">Major</button>
+              </div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+    <div class="triads-step-status" id="triadsStepStatus" hidden="">
+      <span class="triads-active-chord" id="triadsActiveChord" aria-live="polite">I · C Major</span>
+      <div class="triads-step-indicator" aria-label="Progression playback position">
+        
+          <button class="triads-step-dash active" type="button" data-triad-step="0" aria-label="Pause on progression step 1" aria-current="step"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="1" aria-label="Pause on progression step 2" aria-current="false"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="2" aria-label="Pause on progression step 3" aria-current="false"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="3" aria-label="Pause on progression step 4" aria-current="false"></button>
+      </div>
+    </div>
+    <div class="triad-boards" id="triadBoards"></div>
+  "
+`;
+
+exports[`fretboard controls > restores a valid minor circle key and selected degrees > restored minor circle progression 1`] = `
+"
+    <div class="cof-panel-header">
+      <span class="cof-panel-label">Progression</span>
+      <span class="cof-key-name">F♯ Minor</span>
+    </div>
+    <span class="cof-panel-label">Degrees</span>
+    <div class="cof-degrees"><button type="button" class="cof-degree-btn" data-degree="0">i</button><button type="button" class="cof-degree-btn active" data-degree="1">ii°</button><button type="button" class="cof-degree-btn" data-degree="2">III</button><button type="button" class="cof-degree-btn" data-degree="3">iv</button><button type="button" class="cof-degree-btn" data-degree="4">v</button><button type="button" class="cof-degree-btn active" data-degree="5">VI</button><button type="button" class="cof-degree-btn active" data-degree="6">VII</button></div>
+    <div class="cof-progression"><div class="cof-chord"><span class="cof-chord-numeral">ii°</span><span class="cof-chord-name">G♯dim</span></div><span class="cof-chord-sep">–</span><div class="cof-chord"><span class="cof-chord-numeral">VI</span><span class="cof-chord-name">D</span></div><span class="cof-chord-sep">–</span><div class="cof-chord"><span class="cof-chord-numeral">VII</span><span class="cof-chord-name">E</span></div></div>
+    <div class="cof-reset-row"><button type="button" class="reset-link">Reset</button></div>
+  "
+`;
+
+exports[`fretboard controls > restores a valid minor circle key and selected degrees > restored minor circle selection 1`] = `
+"
+    <svg class="cof-wheel" viewBox="0 0 400 400" role="img" aria-label="Circle of fifths">
+      <g class="cof-sectors"><path class="cof-sector" data-index="0" data-mode="major" d="M150.82,16.47 A190,190 0 0,1 249.18,16.47 L230.02,87.95 A116,116 0 0,0 169.98,87.95 Z"></path><path class="cof-sector" data-index="0" data-mode="minor" d="M169.98,87.95 A116,116 0 0,1 230.02,87.95 L216.05,140.11 A62,62 0 0,0 183.95,140.11 Z"></path><path class="cof-sector" data-index="1" data-mode="major" d="M249.18,16.47 A190,190 0 0,1 334.35,65.65 L282.02,117.98 A116,116 0 0,0 230.02,87.95 Z"></path><path class="cof-sector" data-index="1" data-mode="minor" d="M230.02,87.95 A116,116 0 0,1 282.02,117.98 L243.84,156.16 A62,62 0 0,0 216.05,140.11 Z"></path><path class="cof-sector" data-index="2" data-mode="major" d="M334.35,65.65 A190,190 0 0,1 383.53,150.82 L312.05,169.98 A116,116 0 0,0 282.02,117.98 Z"></path><path class="cof-sector" data-index="2" data-mode="minor" d="M282.02,117.98 A116,116 0 0,1 312.05,169.98 L259.89,183.95 A62,62 0 0,0 243.84,156.16 Z"></path><path class="cof-sector" data-index="3" data-mode="major" d="M383.53,150.82 A190,190 0 0,1 383.53,249.18 L312.05,230.02 A116,116 0 0,0 312.05,169.98 Z"></path><path class="cof-sector selected" data-index="3" data-mode="minor" d="M312.05,169.98 A116,116 0 0,1 312.05,230.02 L259.89,216.05 A62,62 0 0,0 259.89,183.95 Z"></path><path class="cof-sector" data-index="4" data-mode="major" d="M383.53,249.18 A190,190 0 0,1 334.35,334.35 L282.02,282.02 A116,116 0 0,0 312.05,230.02 Z"></path><path class="cof-sector" data-index="4" data-mode="minor" d="M312.05,230.02 A116,116 0 0,1 282.02,282.02 L243.84,243.84 A62,62 0 0,0 259.89,216.05 Z"></path><path class="cof-sector" data-index="5" data-mode="major" d="M334.35,334.35 A190,190 0 0,1 249.18,383.53 L230.02,312.05 A116,116 0 0,0 282.02,282.02 Z"></path><path class="cof-sector" data-index="5" data-mode="minor" d="M282.02,282.02 A116,116 0 0,1 230.02,312.05 L216.05,259.89 A62,62 0 0,0 243.84,243.84 Z"></path><path class="cof-sector" data-index="6" data-mode="major" d="M249.18,383.53 A190,190 0 0,1 150.82,383.53 L169.98,312.05 A116,116 0 0,0 230.02,312.05 Z"></path><path class="cof-sector" data-index="6" data-mode="minor" d="M230.02,312.05 A116,116 0 0,1 169.98,312.05 L183.95,259.89 A62,62 0 0,0 216.05,259.89 Z"></path><path class="cof-sector" data-index="7" data-mode="major" d="M150.82,383.53 A190,190 0 0,1 65.65,334.35 L117.98,282.02 A116,116 0 0,0 169.98,312.05 Z"></path><path class="cof-sector" data-index="7" data-mode="minor" d="M169.98,312.05 A116,116 0 0,1 117.98,282.02 L156.16,243.84 A62,62 0 0,0 183.95,259.89 Z"></path><path class="cof-sector" data-index="8" data-mode="major" d="M65.65,334.35 A190,190 0 0,1 16.47,249.18 L87.95,230.02 A116,116 0 0,0 117.98,282.02 Z"></path><path class="cof-sector" data-index="8" data-mode="minor" d="M117.98,282.02 A116,116 0 0,1 87.95,230.02 L140.11,216.05 A62,62 0 0,0 156.16,243.84 Z"></path><path class="cof-sector" data-index="9" data-mode="major" d="M16.47,249.18 A190,190 0 0,1 16.47,150.82 L87.95,169.98 A116,116 0 0,0 87.95,230.02 Z"></path><path class="cof-sector" data-index="9" data-mode="minor" d="M87.95,230.02 A116,116 0 0,1 87.95,169.98 L140.11,183.95 A62,62 0 0,0 140.11,216.05 Z"></path><path class="cof-sector" data-index="10" data-mode="major" d="M16.47,150.82 A190,190 0 0,1 65.65,65.65 L117.98,117.98 A116,116 0 0,0 87.95,169.98 Z"></path><path class="cof-sector" data-index="10" data-mode="minor" d="M87.95,169.98 A116,116 0 0,1 117.98,117.98 L156.16,156.16 A62,62 0 0,0 140.11,183.95 Z"></path><path class="cof-sector" data-index="11" data-mode="major" d="M65.65,65.65 A190,190 0 0,1 150.82,16.47 L169.98,87.95 A116,116 0 0,0 117.98,117.98 Z"></path><path class="cof-sector" data-index="11" data-mode="minor" d="M117.98,117.98 A116,116 0 0,1 169.98,87.95 L183.95,140.11 A62,62 0 0,0 156.16,156.16 Z"></path></g>
+      <circle class="cof-hub" cx="200" cy="200" r="62"></circle>
+      <g class="cof-rings">
+        <circle cx="200" cy="200" r="190"></circle>
+        <circle cx="200" cy="200" r="116"></circle>
+        <circle cx="200" cy="200" r="62"></circle>
+      </g>
+      <g class="cof-labels"><text class="cof-label cof-label-major" x="200.00" y="48.00">C</text><text class="cof-label cof-label-minor" x="200.00" y="112.00">Am</text><text class="cof-label cof-label-major" x="276.00" y="68.36">G</text><text class="cof-label cof-label-minor" x="244.00" y="123.79">Em</text><text class="cof-label cof-label-major" x="331.64" y="124.00">D</text><text class="cof-numeral cof-numeral-major" x="331.64" y="143.00">VI</text><text class="cof-label cof-label-minor" x="276.21" y="156.00">Bm</text><text class="cof-label cof-label-major" x="352.00" y="200.00">A</text><text class="cof-label cof-label-minor selected" x="288.00" y="200.00">F♯m</text><text class="cof-label cof-label-major" x="331.64" y="276.00">E</text><text class="cof-numeral cof-numeral-major" x="331.64" y="295.00">VII</text><text class="cof-label cof-label-minor" x="276.21" y="244.00">C♯m</text><text class="cof-label cof-label-alt" x="265.50" y="313.45">C♭</text><text class="cof-label cof-label-major" x="276.00" y="331.64">B</text><text class="cof-label cof-label-minor" x="244.00" y="276.21">G♯m</text><text class="cof-label cof-label-alt" x="200.00" y="331.00">F♯</text><text class="cof-label cof-label-major" x="200.00" y="352.00">G♭</text><text class="cof-label cof-label-minor" x="200.00" y="288.00">E♭m</text><text class="cof-label cof-label-alt" x="134.50" y="313.45">C♯</text><text class="cof-label cof-label-major" x="124.00" y="331.64">D♭</text><text class="cof-label cof-label-minor" x="156.00" y="276.21">B♭m</text><text class="cof-label cof-label-major" x="68.36" y="276.00">A♭</text><text class="cof-label cof-label-minor" x="123.79" y="244.00">Fm</text><text class="cof-label cof-label-major" x="48.00" y="200.00">E♭</text><text class="cof-label cof-label-minor" x="112.00" y="200.00">Cm</text><text class="cof-label cof-label-major" x="68.36" y="124.00">B♭</text><text class="cof-label cof-label-minor" x="123.79" y="156.00">Gm</text><text class="cof-label cof-label-major" x="124.00" y="68.36">F</text><text class="cof-label cof-label-minor" x="156.00" y="123.79">Dm</text></g>
+      <text class="cof-hub-label" x="200" y="200">F♯m</text>
+    </svg>
+  "
+`;
+
+exports[`fretboard controls > restores and reflects scale display and highlighting choices > cagedHighlightBtn 1`] = `
+"
+        <!-- Controls Accordion (mobile) / Inline Controls (desktop) -->
+        <div class="controls-wrapper">
+          <button class="controls-accordion-toggle" id="controlsAccordionToggle">
+            <span class="controls-summary" id="controlsSummary">D Minor · Notes · CAGED</span>
+            <span class="controls-accordion-arrow">▾</span>
+          </button>
+          <div class="controls" id="controlsPanel">
+            <div class="controls-row">
+              <div class="control-group">
+                <span class="control-label">Root:</span>
+                <div class="note-selector">
+                  <button class="note-btn" id="prevNote">❮</button>
+                  <div class="note-display" id="currentNote">D</div>
+                  <button class="note-btn" id="nextNote">❯</button>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <span class="control-label">Scale:</span>
+                <div class="toggle-group">
+                  <button class="toggle-btn" id="majorBtn" data-scale="major">Major</button>
+                  <button class="toggle-btn active" id="minorBtn" data-scale="minor">Minor</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="controls-row">
+              <div class="control-group">
+                <span class="control-label">Display:</span>
+                <div class="toggle-group">
+                  <button class="toggle-btn active" id="notesBtn" data-display="notes">Notes</button>
+                  <button class="toggle-btn" id="intervalsBtn" data-display="intervals">
+                    Intervals
+                  </button>
+                </div>
+              </div>
+
+              <div class="highlight-control-group">
+                <span class="control-label">Show:</span>
+                <div class="highlight-toggle">
+                  <div class="highlight-toggle-options">
+                    <button class="highlight-toggle-btn" id="fullHighlightBtn">Full</button>
+                    <button class="highlight-toggle-btn" id="pentatonicHighlightBtn">
+                      Pentatonic
+                    </button>
+                    <button class="highlight-toggle-btn active" id="cagedHighlightBtn">CAGED</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <button type="button" class="reset-link">Reset</button></div>
+        </div>
+
+        <!-- Fretboard Section (header + fretboard, flex row on mobile) -->
+        <div class="fretboard-section">
+          <!-- CAGED Header -->
+          <div class="caged-header" id="cagedHeader">
+            <!-- Dynamically populated -->
+          </div>
+
+          <!-- Fretboard -->
+          <div class="fretboard-container">
+            <div class="fretboard" id="fretboard">
+              <!-- Dynamically populated -->
+            </div>
+            <div class="fret-numbers" id="fretNumbers">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+          <!-- CAGED Legend Items -->
+          <div id="cagedLegend" class="legend-items" style="display: flex;">
+            <div class="legend-item">
+              <div class="legend-color legend-c"></div>
+              <span>C Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-a"></div>
+              <span>A Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-g"></div>
+              <span>G Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-e"></div>
+              <span>E Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-d"></div>
+              <span>D Shape</span>
+            </div>
+          </div>
+
+          <!-- Pentatonic Legend Items (hidden by default) -->
+          <div id="pentatonicLegend" class="legend-items" style="display: none;">
+            <div class="legend-item">
+              <div class="legend-color legend-pos-1"></div>
+              <span>Position 1</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-2"></div>
+              <span>Position 2</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-3"></div>
+              <span>Position 3</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-4"></div>
+              <span>Position 4</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-5"></div>
+              <span>Position 5</span>
+            </div>
+          </div>
+        </div>
+      "
+`;
+
+exports[`fretboard controls > restores and reflects scale display and highlighting choices > fullHighlightBtn 1`] = `
+"
+        <!-- Controls Accordion (mobile) / Inline Controls (desktop) -->
+        <div class="controls-wrapper">
+          <button class="controls-accordion-toggle" id="controlsAccordionToggle">
+            <span class="controls-summary" id="controlsSummary">D Minor · Notes · Full</span>
+            <span class="controls-accordion-arrow">▾</span>
+          </button>
+          <div class="controls" id="controlsPanel">
+            <div class="controls-row">
+              <div class="control-group">
+                <span class="control-label">Root:</span>
+                <div class="note-selector">
+                  <button class="note-btn" id="prevNote">❮</button>
+                  <div class="note-display" id="currentNote">D</div>
+                  <button class="note-btn" id="nextNote">❯</button>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <span class="control-label">Scale:</span>
+                <div class="toggle-group">
+                  <button class="toggle-btn" id="majorBtn" data-scale="major">Major</button>
+                  <button class="toggle-btn active" id="minorBtn" data-scale="minor">Minor</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="controls-row">
+              <div class="control-group">
+                <span class="control-label">Display:</span>
+                <div class="toggle-group">
+                  <button class="toggle-btn active" id="notesBtn" data-display="notes">Notes</button>
+                  <button class="toggle-btn" id="intervalsBtn" data-display="intervals">
+                    Intervals
+                  </button>
+                </div>
+              </div>
+
+              <div class="highlight-control-group">
+                <span class="control-label">Show:</span>
+                <div class="highlight-toggle">
+                  <div class="highlight-toggle-options">
+                    <button class="highlight-toggle-btn active" id="fullHighlightBtn">Full</button>
+                    <button class="highlight-toggle-btn" id="pentatonicHighlightBtn">
+                      Pentatonic
+                    </button>
+                    <button class="highlight-toggle-btn" id="cagedHighlightBtn">CAGED</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <button type="button" class="reset-link">Reset</button></div>
+        </div>
+
+        <!-- Fretboard Section (header + fretboard, flex row on mobile) -->
+        <div class="fretboard-section">
+          <!-- CAGED Header -->
+          <div class="caged-header" id="cagedHeader">
+            <!-- Dynamically populated -->
+          </div>
+
+          <!-- Fretboard -->
+          <div class="fretboard-container">
+            <div class="fretboard" id="fretboard">
+              <!-- Dynamically populated -->
+            </div>
+            <div class="fret-numbers" id="fretNumbers">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+          <!-- CAGED Legend Items -->
+          <div id="cagedLegend" class="legend-items" style="display: none;">
+            <div class="legend-item">
+              <div class="legend-color legend-c"></div>
+              <span>C Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-a"></div>
+              <span>A Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-g"></div>
+              <span>G Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-e"></div>
+              <span>E Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-d"></div>
+              <span>D Shape</span>
+            </div>
+          </div>
+
+          <!-- Pentatonic Legend Items (hidden by default) -->
+          <div id="pentatonicLegend" class="legend-items" style="display: flex;">
+            <div class="legend-item">
+              <div class="legend-color legend-pos-1"></div>
+              <span>Position 1</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-2"></div>
+              <span>Position 2</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-3"></div>
+              <span>Position 3</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-4"></div>
+              <span>Position 4</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-5"></div>
+              <span>Position 5</span>
+            </div>
+          </div>
+        </div>
+      "
+`;
+
+exports[`fretboard controls > restores and reflects scale display and highlighting choices > intervalsBtn 1`] = `
+"
+        <!-- Controls Accordion (mobile) / Inline Controls (desktop) -->
+        <div class="controls-wrapper">
+          <button class="controls-accordion-toggle" id="controlsAccordionToggle">
+            <span class="controls-summary" id="controlsSummary">D Minor · Intervals · CAGED</span>
+            <span class="controls-accordion-arrow">▾</span>
+          </button>
+          <div class="controls" id="controlsPanel">
+            <div class="controls-row">
+              <div class="control-group">
+                <span class="control-label">Root:</span>
+                <div class="note-selector">
+                  <button class="note-btn" id="prevNote">❮</button>
+                  <div class="note-display" id="currentNote">D</div>
+                  <button class="note-btn" id="nextNote">❯</button>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <span class="control-label">Scale:</span>
+                <div class="toggle-group">
+                  <button class="toggle-btn" id="majorBtn" data-scale="major">Major</button>
+                  <button class="toggle-btn active" id="minorBtn" data-scale="minor">Minor</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="controls-row">
+              <div class="control-group">
+                <span class="control-label">Display:</span>
+                <div class="toggle-group">
+                  <button class="toggle-btn" id="notesBtn" data-display="notes">Notes</button>
+                  <button class="toggle-btn active" id="intervalsBtn" data-display="intervals">
+                    Intervals
+                  </button>
+                </div>
+              </div>
+
+              <div class="highlight-control-group">
+                <span class="control-label">Show:</span>
+                <div class="highlight-toggle">
+                  <div class="highlight-toggle-options">
+                    <button class="highlight-toggle-btn" id="fullHighlightBtn">Full</button>
+                    <button class="highlight-toggle-btn" id="pentatonicHighlightBtn">
+                      Pentatonic
+                    </button>
+                    <button class="highlight-toggle-btn active" id="cagedHighlightBtn">CAGED</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <button type="button" class="reset-link">Reset</button></div>
+        </div>
+
+        <!-- Fretboard Section (header + fretboard, flex row on mobile) -->
+        <div class="fretboard-section">
+          <!-- CAGED Header -->
+          <div class="caged-header" id="cagedHeader">
+            <!-- Dynamically populated -->
+          </div>
+
+          <!-- Fretboard -->
+          <div class="fretboard-container">
+            <div class="fretboard" id="fretboard">
+              <!-- Dynamically populated -->
+            </div>
+            <div class="fret-numbers" id="fretNumbers">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+          <!-- CAGED Legend Items -->
+          <div id="cagedLegend" class="legend-items" style="display: flex;">
+            <div class="legend-item">
+              <div class="legend-color legend-c"></div>
+              <span>C Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-a"></div>
+              <span>A Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-g"></div>
+              <span>G Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-e"></div>
+              <span>E Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-d"></div>
+              <span>D Shape</span>
+            </div>
+          </div>
+
+          <!-- Pentatonic Legend Items (hidden by default) -->
+          <div id="pentatonicLegend" class="legend-items" style="display: none">
+            <div class="legend-item">
+              <div class="legend-color legend-pos-1"></div>
+              <span>Position 1</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-2"></div>
+              <span>Position 2</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-3"></div>
+              <span>Position 3</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-4"></div>
+              <span>Position 4</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-5"></div>
+              <span>Position 5</span>
+            </div>
+          </div>
+        </div>
+      "
+`;
+
+exports[`fretboard controls > restores and reflects scale display and highlighting choices > majorBtn 1`] = `
+"
+        <!-- Controls Accordion (mobile) / Inline Controls (desktop) -->
+        <div class="controls-wrapper">
+          <button class="controls-accordion-toggle" id="controlsAccordionToggle">
+            <span class="controls-summary" id="controlsSummary">D Major · Notes · CAGED</span>
+            <span class="controls-accordion-arrow">▾</span>
+          </button>
+          <div class="controls" id="controlsPanel">
+            <div class="controls-row">
+              <div class="control-group">
+                <span class="control-label">Root:</span>
+                <div class="note-selector">
+                  <button class="note-btn" id="prevNote">❮</button>
+                  <div class="note-display" id="currentNote">D</div>
+                  <button class="note-btn" id="nextNote">❯</button>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <span class="control-label">Scale:</span>
+                <div class="toggle-group">
+                  <button class="toggle-btn active" id="majorBtn" data-scale="major">Major</button>
+                  <button class="toggle-btn" id="minorBtn" data-scale="minor">Minor</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="controls-row">
+              <div class="control-group">
+                <span class="control-label">Display:</span>
+                <div class="toggle-group">
+                  <button class="toggle-btn active" id="notesBtn" data-display="notes">Notes</button>
+                  <button class="toggle-btn" id="intervalsBtn" data-display="intervals">
+                    Intervals
+                  </button>
+                </div>
+              </div>
+
+              <div class="highlight-control-group">
+                <span class="control-label">Show:</span>
+                <div class="highlight-toggle">
+                  <div class="highlight-toggle-options">
+                    <button class="highlight-toggle-btn" id="fullHighlightBtn">Full</button>
+                    <button class="highlight-toggle-btn" id="pentatonicHighlightBtn">
+                      Pentatonic
+                    </button>
+                    <button class="highlight-toggle-btn active" id="cagedHighlightBtn">CAGED</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <button type="button" class="reset-link">Reset</button></div>
+        </div>
+
+        <!-- Fretboard Section (header + fretboard, flex row on mobile) -->
+        <div class="fretboard-section">
+          <!-- CAGED Header -->
+          <div class="caged-header" id="cagedHeader">
+            <!-- Dynamically populated -->
+          </div>
+
+          <!-- Fretboard -->
+          <div class="fretboard-container">
+            <div class="fretboard" id="fretboard">
+              <!-- Dynamically populated -->
+            </div>
+            <div class="fret-numbers" id="fretNumbers">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+          <!-- CAGED Legend Items -->
+          <div id="cagedLegend" class="legend-items" style="display: flex;">
+            <div class="legend-item">
+              <div class="legend-color legend-c"></div>
+              <span>C Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-a"></div>
+              <span>A Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-g"></div>
+              <span>G Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-e"></div>
+              <span>E Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-d"></div>
+              <span>D Shape</span>
+            </div>
+          </div>
+
+          <!-- Pentatonic Legend Items (hidden by default) -->
+          <div id="pentatonicLegend" class="legend-items" style="display: none">
+            <div class="legend-item">
+              <div class="legend-color legend-pos-1"></div>
+              <span>Position 1</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-2"></div>
+              <span>Position 2</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-3"></div>
+              <span>Position 3</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-4"></div>
+              <span>Position 4</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-5"></div>
+              <span>Position 5</span>
+            </div>
+          </div>
+        </div>
+      "
+`;
+
+exports[`fretboard controls > restores and reflects scale display and highlighting choices > minorBtn 1`] = `
+"
+        <!-- Controls Accordion (mobile) / Inline Controls (desktop) -->
+        <div class="controls-wrapper">
+          <button class="controls-accordion-toggle" id="controlsAccordionToggle">
+            <span class="controls-summary" id="controlsSummary">D Minor · Notes · CAGED</span>
+            <span class="controls-accordion-arrow">▾</span>
+          </button>
+          <div class="controls" id="controlsPanel">
+            <div class="controls-row">
+              <div class="control-group">
+                <span class="control-label">Root:</span>
+                <div class="note-selector">
+                  <button class="note-btn" id="prevNote">❮</button>
+                  <div class="note-display" id="currentNote">D</div>
+                  <button class="note-btn" id="nextNote">❯</button>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <span class="control-label">Scale:</span>
+                <div class="toggle-group">
+                  <button class="toggle-btn" id="majorBtn" data-scale="major">Major</button>
+                  <button class="toggle-btn active" id="minorBtn" data-scale="minor">Minor</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="controls-row">
+              <div class="control-group">
+                <span class="control-label">Display:</span>
+                <div class="toggle-group">
+                  <button class="toggle-btn active" id="notesBtn" data-display="notes">Notes</button>
+                  <button class="toggle-btn" id="intervalsBtn" data-display="intervals">
+                    Intervals
+                  </button>
+                </div>
+              </div>
+
+              <div class="highlight-control-group">
+                <span class="control-label">Show:</span>
+                <div class="highlight-toggle">
+                  <div class="highlight-toggle-options">
+                    <button class="highlight-toggle-btn" id="fullHighlightBtn">Full</button>
+                    <button class="highlight-toggle-btn" id="pentatonicHighlightBtn">
+                      Pentatonic
+                    </button>
+                    <button class="highlight-toggle-btn active" id="cagedHighlightBtn">CAGED</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <button type="button" class="reset-link">Reset</button></div>
+        </div>
+
+        <!-- Fretboard Section (header + fretboard, flex row on mobile) -->
+        <div class="fretboard-section">
+          <!-- CAGED Header -->
+          <div class="caged-header" id="cagedHeader">
+            <!-- Dynamically populated -->
+          </div>
+
+          <!-- Fretboard -->
+          <div class="fretboard-container">
+            <div class="fretboard" id="fretboard">
+              <!-- Dynamically populated -->
+            </div>
+            <div class="fret-numbers" id="fretNumbers">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+          <!-- CAGED Legend Items -->
+          <div id="cagedLegend" class="legend-items" style="display: flex;">
+            <div class="legend-item">
+              <div class="legend-color legend-c"></div>
+              <span>C Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-a"></div>
+              <span>A Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-g"></div>
+              <span>G Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-e"></div>
+              <span>E Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-d"></div>
+              <span>D Shape</span>
+            </div>
+          </div>
+
+          <!-- Pentatonic Legend Items (hidden by default) -->
+          <div id="pentatonicLegend" class="legend-items" style="display: none">
+            <div class="legend-item">
+              <div class="legend-color legend-pos-1"></div>
+              <span>Position 1</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-2"></div>
+              <span>Position 2</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-3"></div>
+              <span>Position 3</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-4"></div>
+              <span>Position 4</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-5"></div>
+              <span>Position 5</span>
+            </div>
+          </div>
+        </div>
+      "
+`;
+
+exports[`fretboard controls > restores and reflects scale display and highlighting choices > notesBtn 1`] = `
+"
+        <!-- Controls Accordion (mobile) / Inline Controls (desktop) -->
+        <div class="controls-wrapper">
+          <button class="controls-accordion-toggle" id="controlsAccordionToggle">
+            <span class="controls-summary" id="controlsSummary">D Minor · Notes · CAGED</span>
+            <span class="controls-accordion-arrow">▾</span>
+          </button>
+          <div class="controls" id="controlsPanel">
+            <div class="controls-row">
+              <div class="control-group">
+                <span class="control-label">Root:</span>
+                <div class="note-selector">
+                  <button class="note-btn" id="prevNote">❮</button>
+                  <div class="note-display" id="currentNote">D</div>
+                  <button class="note-btn" id="nextNote">❯</button>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <span class="control-label">Scale:</span>
+                <div class="toggle-group">
+                  <button class="toggle-btn" id="majorBtn" data-scale="major">Major</button>
+                  <button class="toggle-btn active" id="minorBtn" data-scale="minor">Minor</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="controls-row">
+              <div class="control-group">
+                <span class="control-label">Display:</span>
+                <div class="toggle-group">
+                  <button class="toggle-btn active" id="notesBtn" data-display="notes">Notes</button>
+                  <button class="toggle-btn" id="intervalsBtn" data-display="intervals">
+                    Intervals
+                  </button>
+                </div>
+              </div>
+
+              <div class="highlight-control-group">
+                <span class="control-label">Show:</span>
+                <div class="highlight-toggle">
+                  <div class="highlight-toggle-options">
+                    <button class="highlight-toggle-btn" id="fullHighlightBtn">Full</button>
+                    <button class="highlight-toggle-btn" id="pentatonicHighlightBtn">
+                      Pentatonic
+                    </button>
+                    <button class="highlight-toggle-btn active" id="cagedHighlightBtn">CAGED</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <button type="button" class="reset-link">Reset</button></div>
+        </div>
+
+        <!-- Fretboard Section (header + fretboard, flex row on mobile) -->
+        <div class="fretboard-section">
+          <!-- CAGED Header -->
+          <div class="caged-header" id="cagedHeader">
+            <!-- Dynamically populated -->
+          </div>
+
+          <!-- Fretboard -->
+          <div class="fretboard-container">
+            <div class="fretboard" id="fretboard">
+              <!-- Dynamically populated -->
+            </div>
+            <div class="fret-numbers" id="fretNumbers">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+          <!-- CAGED Legend Items -->
+          <div id="cagedLegend" class="legend-items" style="display: flex;">
+            <div class="legend-item">
+              <div class="legend-color legend-c"></div>
+              <span>C Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-a"></div>
+              <span>A Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-g"></div>
+              <span>G Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-e"></div>
+              <span>E Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-d"></div>
+              <span>D Shape</span>
+            </div>
+          </div>
+
+          <!-- Pentatonic Legend Items (hidden by default) -->
+          <div id="pentatonicLegend" class="legend-items" style="display: none">
+            <div class="legend-item">
+              <div class="legend-color legend-pos-1"></div>
+              <span>Position 1</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-2"></div>
+              <span>Position 2</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-3"></div>
+              <span>Position 3</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-4"></div>
+              <span>Position 4</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-5"></div>
+              <span>Position 5</span>
+            </div>
+          </div>
+        </div>
+      "
+`;
+
+exports[`fretboard controls > restores and reflects scale display and highlighting choices > pentatonicHighlightBtn 1`] = `
+"
+        <!-- Controls Accordion (mobile) / Inline Controls (desktop) -->
+        <div class="controls-wrapper">
+          <button class="controls-accordion-toggle" id="controlsAccordionToggle">
+            <span class="controls-summary" id="controlsSummary">D Minor · Notes · Pentatonic</span>
+            <span class="controls-accordion-arrow">▾</span>
+          </button>
+          <div class="controls" id="controlsPanel">
+            <div class="controls-row">
+              <div class="control-group">
+                <span class="control-label">Root:</span>
+                <div class="note-selector">
+                  <button class="note-btn" id="prevNote">❮</button>
+                  <div class="note-display" id="currentNote">D</div>
+                  <button class="note-btn" id="nextNote">❯</button>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <span class="control-label">Scale:</span>
+                <div class="toggle-group">
+                  <button class="toggle-btn" id="majorBtn" data-scale="major">Major</button>
+                  <button class="toggle-btn active" id="minorBtn" data-scale="minor">Minor</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="controls-row">
+              <div class="control-group">
+                <span class="control-label">Display:</span>
+                <div class="toggle-group">
+                  <button class="toggle-btn active" id="notesBtn" data-display="notes">Notes</button>
+                  <button class="toggle-btn" id="intervalsBtn" data-display="intervals">
+                    Intervals
+                  </button>
+                </div>
+              </div>
+
+              <div class="highlight-control-group">
+                <span class="control-label">Show:</span>
+                <div class="highlight-toggle">
+                  <div class="highlight-toggle-options">
+                    <button class="highlight-toggle-btn" id="fullHighlightBtn">Full</button>
+                    <button class="highlight-toggle-btn active" id="pentatonicHighlightBtn">
+                      Pentatonic
+                    </button>
+                    <button class="highlight-toggle-btn" id="cagedHighlightBtn">CAGED</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <button type="button" class="reset-link">Reset</button></div>
+        </div>
+
+        <!-- Fretboard Section (header + fretboard, flex row on mobile) -->
+        <div class="fretboard-section">
+          <!-- CAGED Header -->
+          <div class="caged-header" id="cagedHeader">
+            <!-- Dynamically populated -->
+          </div>
+
+          <!-- Fretboard -->
+          <div class="fretboard-container">
+            <div class="fretboard" id="fretboard">
+              <!-- Dynamically populated -->
+            </div>
+            <div class="fret-numbers" id="fretNumbers">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+          <!-- CAGED Legend Items -->
+          <div id="cagedLegend" class="legend-items" style="display: none;">
+            <div class="legend-item">
+              <div class="legend-color legend-c"></div>
+              <span>C Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-a"></div>
+              <span>A Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-g"></div>
+              <span>G Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-e"></div>
+              <span>E Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-d"></div>
+              <span>D Shape</span>
+            </div>
+          </div>
+
+          <!-- Pentatonic Legend Items (hidden by default) -->
+          <div id="pentatonicLegend" class="legend-items" style="display: flex;">
+            <div class="legend-item">
+              <div class="legend-color legend-pos-1"></div>
+              <span>Position 1</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-2"></div>
+              <span>Position 2</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-3"></div>
+              <span>Position 3</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-4"></div>
+              <span>Position 4</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-5"></div>
+              <span>Position 5</span>
+            </div>
+          </div>
+        </div>
+      "
+`;
+
+exports[`fretboard controls > restores and reflects scale display and highlighting choices > restored scales 1`] = `
+"
+        <!-- Controls Accordion (mobile) / Inline Controls (desktop) -->
+        <div class="controls-wrapper">
+          <button class="controls-accordion-toggle" id="controlsAccordionToggle">
+            <span class="controls-summary" id="controlsSummary">D Minor · Notes · CAGED</span>
+            <span class="controls-accordion-arrow">▾</span>
+          </button>
+          <div class="controls" id="controlsPanel">
+            <div class="controls-row">
+              <div class="control-group">
+                <span class="control-label">Root:</span>
+                <div class="note-selector">
+                  <button class="note-btn" id="prevNote">❮</button>
+                  <div class="note-display" id="currentNote">D</div>
+                  <button class="note-btn" id="nextNote">❯</button>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <span class="control-label">Scale:</span>
+                <div class="toggle-group">
+                  <button class="toggle-btn" id="majorBtn" data-scale="major">Major</button>
+                  <button class="toggle-btn active" id="minorBtn" data-scale="minor">Minor</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="controls-row">
+              <div class="control-group">
+                <span class="control-label">Display:</span>
+                <div class="toggle-group">
+                  <button class="toggle-btn active" id="notesBtn" data-display="notes">Notes</button>
+                  <button class="toggle-btn" id="intervalsBtn" data-display="intervals">
+                    Intervals
+                  </button>
+                </div>
+              </div>
+
+              <div class="highlight-control-group">
+                <span class="control-label">Show:</span>
+                <div class="highlight-toggle">
+                  <div class="highlight-toggle-options">
+                    <button class="highlight-toggle-btn" id="fullHighlightBtn">Full</button>
+                    <button class="highlight-toggle-btn" id="pentatonicHighlightBtn">
+                      Pentatonic
+                    </button>
+                    <button class="highlight-toggle-btn active" id="cagedHighlightBtn">CAGED</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <button type="button" class="reset-link">Reset</button></div>
+        </div>
+
+        <!-- Fretboard Section (header + fretboard, flex row on mobile) -->
+        <div class="fretboard-section">
+          <!-- CAGED Header -->
+          <div class="caged-header" id="cagedHeader">
+            <!-- Dynamically populated -->
+          </div>
+
+          <!-- Fretboard -->
+          <div class="fretboard-container">
+            <div class="fretboard" id="fretboard">
+              <!-- Dynamically populated -->
+            </div>
+            <div class="fret-numbers" id="fretNumbers">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+          <!-- CAGED Legend Items -->
+          <div id="cagedLegend" class="legend-items" style="display: flex;">
+            <div class="legend-item">
+              <div class="legend-color legend-c"></div>
+              <span>C Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-a"></div>
+              <span>A Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-g"></div>
+              <span>G Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-e"></div>
+              <span>E Shape</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-d"></div>
+              <span>D Shape</span>
+            </div>
+          </div>
+
+          <!-- Pentatonic Legend Items (hidden by default) -->
+          <div id="pentatonicLegend" class="legend-items" style="display: none">
+            <div class="legend-item">
+              <div class="legend-color legend-pos-1"></div>
+              <span>Position 1</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-2"></div>
+              <span>Position 2</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-3"></div>
+              <span>Position 3</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-4"></div>
+              <span>Position 4</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color legend-pos-5"></div>
+              <span>Position 5</span>
+            </div>
+          </div>
+        </div>
+      "
+`;
+
+exports[`fretboard controls > restores discovery selections and keeps checkboxes and grouping controls in sync > reset discovery controls 1`] = `
+"
+        <!-- Controls will be inserted here -->
+      <div class="control-group"><span class="control-label">Notes:</span><button class="select-all-btn">Deselect All</button><div class="checkbox-group"><label class="checkbox-label"><input type="checkbox" value="A"><span>A</span></label><label class="checkbox-label"><input type="checkbox" value="A#"><span>A#</span></label><label class="checkbox-label"><input type="checkbox" value="B"><span>B</span></label><label class="checkbox-label"><input type="checkbox" value="C"><span>C</span></label><label class="checkbox-label"><input type="checkbox" value="C#"><span>C#</span></label><label class="checkbox-label"><input type="checkbox" value="D"><span>D</span></label><label class="checkbox-label"><input type="checkbox" value="D#"><span>D#</span></label><label class="checkbox-label"><input type="checkbox" value="E"><span>E</span></label><label class="checkbox-label"><input type="checkbox" value="F"><span>F</span></label><label class="checkbox-label"><input type="checkbox" value="F#"><span>F#</span></label><label class="checkbox-label"><input type="checkbox" value="G"><span>G</span></label><label class="checkbox-label"><input type="checkbox" value="G#"><span>G#</span></label></div></div><div class="control-group"><span class="control-label">Strings:</span><button class="select-all-btn">Deselect All</button><div class="checkbox-group"><label class="checkbox-label"><input type="checkbox" value="1"><span>1</span></label><label class="checkbox-label"><input type="checkbox" value="2"><span>2</span></label><label class="checkbox-label"><input type="checkbox" value="3"><span>3</span></label><label class="checkbox-label"><input type="checkbox" value="4"><span>4</span></label><label class="checkbox-label"><input type="checkbox" value="5"><span>5</span></label><label class="checkbox-label"><input type="checkbox" value="6"><span>6</span></label></div></div><div class="control-group"><span class="control-label">Grouping:</span><div class="toggle-group"><button type="button" class="toggle-btn active">Off</button><button type="button" class="toggle-btn">On</button></div><div class="group-legend" style="display: none;"><span class="legend-item"><span class="legend-color group-abc"></span>A · B · C</span><span class="legend-item"><span class="legend-color group-def"></span>D · E · F</span></div></div><button type="button" class="reset-link">Reset</button>"
+`;
+
+exports[`fretboard controls > restores discovery selections and keeps checkboxes and grouping controls in sync > restored discovery controls 1`] = `
+"
+        <!-- Controls will be inserted here -->
+      <div class="control-group"><span class="control-label">Notes:</span><button class="select-all-btn">Select All</button><div class="checkbox-group"><label class="checkbox-label"><input type="checkbox" value="A"><span>A</span></label><label class="checkbox-label"><input type="checkbox" value="A#"><span>A#</span></label><label class="checkbox-label"><input type="checkbox" value="B"><span>B</span></label><label class="checkbox-label"><input type="checkbox" value="C"><span>C</span></label><label class="checkbox-label"><input type="checkbox" value="C#"><span>C#</span></label><label class="checkbox-label"><input type="checkbox" value="D"><span>D</span></label><label class="checkbox-label"><input type="checkbox" value="D#"><span>D#</span></label><label class="checkbox-label"><input type="checkbox" value="E"><span>E</span></label><label class="checkbox-label"><input type="checkbox" value="F"><span>F</span></label><label class="checkbox-label"><input type="checkbox" value="F#"><span>F#</span></label><label class="checkbox-label"><input type="checkbox" value="G"><span>G</span></label><label class="checkbox-label"><input type="checkbox" value="G#"><span>G#</span></label></div></div><div class="control-group"><span class="control-label">Strings:</span><button class="select-all-btn">Select All</button><div class="checkbox-group"><label class="checkbox-label"><input type="checkbox" value="1"><span>1</span></label><label class="checkbox-label"><input type="checkbox" value="2"><span>2</span></label><label class="checkbox-label"><input type="checkbox" value="3"><span>3</span></label><label class="checkbox-label"><input type="checkbox" value="4"><span>4</span></label><label class="checkbox-label"><input type="checkbox" value="5"><span>5</span></label><label class="checkbox-label"><input type="checkbox" value="6"><span>6</span></label></div></div><div class="control-group"><span class="control-label">Grouping:</span><div class="toggle-group"><button type="button" class="toggle-btn">Off</button><button type="button" class="toggle-btn active">On</button></div><div class="group-legend" style="display: flex;"><span class="legend-item"><span class="legend-color group-abc"></span>A · B · C</span><span class="legend-item"><span class="legend-color group-def"></span>D · E · F</span></div></div><button type="button" class="reset-link">Reset</button>"
+`;
+
+exports[`fretboard controls > restores the selected triad key, orbit and custom progression > restored custom triad progression 1`] = `
+"
+    <div class="controls-wrapper">
+      <button class="controls-accordion-toggle" id="triadsAccordionToggle" type="button">
+        <span class="controls-summary" id="triadsControlsSummary">D Minor · ii°–iv–V–i · Groupings · Orbit</span>
+        <span class="controls-accordion-arrow">▾</span>
+      </button>
+      <div class="controls" id="triadsControlsPanel">
+        <div class="control-group">
+          <span class="control-label">Root:</span>
+          <div class="note-selector">
+            <button class="note-btn" id="triadsPrevNote" type="button" aria-label="Previous root">❮</button>
+            <div class="note-display" id="triadsCurrentNote">D</div>
+            <button class="note-btn" id="triadsNextNote" type="button" aria-label="Next root">❯</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">Triad:</span>
+          <div class="toggle-group">
+            <button class="toggle-btn" id="triadsMajorBtn" type="button" aria-pressed="false">Major</button>
+            <button class="toggle-btn active" id="triadsMinorBtn" type="button" aria-pressed="true">Minor</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">Orbit:</span>
+          <div class="toggle-group" title="Show the surrounding R–♭3–3–5–♭7 blues cluster">
+            <button class="toggle-btn" id="triadsOrbitOffBtn" type="button" aria-pressed="false">Off</button>
+            <button class="toggle-btn active" id="triadsOrbitOnBtn" type="button" aria-pressed="true">On</button>
+          </div>
+        </div>
+        <div class="control-group">
+          <span class="control-label">View:</span>
+          <div class="toggle-group">
+            <button class="toggle-btn" id="triadsStaticViewBtn" type="button" aria-pressed="false">Static</button>
+            <button class="toggle-btn active" id="triadsGroupingsViewBtn" type="button" aria-pressed="true">Groupings</button>
+          </div>
+        </div>
+        <div class="control-group triads-grouping-controls" id="triadsProgressionControls">
+          <span class="control-label">Progression:</span>
+          <div class="triads-progression-editor" aria-label="Chord progression">
+            
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="0" aria-label="Change progression step 1">ii°</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="0" aria-label="Make progression step 1 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="1" aria-label="Change progression step 2">iv</button>
+                <button class="triads-quality-btn is-minor" type="button" data-progression-quality="1" aria-label="Make progression step 2 major">minor</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="2" aria-label="Change progression step 3">V</button>
+                <button class="triads-quality-btn" type="button" data-progression-quality="2" aria-label="Make progression step 3 minor">Major</button>
+              </div>
+              <div class="triads-progression-slot">
+                <button class="triads-degree-btn" type="button" data-progression-degree="3" aria-label="Change progression step 4">i</button>
+                <button class="triads-quality-btn is-minor" type="button" data-progression-quality="3" aria-label="Make progression step 4 major">minor</button>
+              </div>
+          </div>
+        </div>
+      <button type="button" class="reset-link">Reset</button></div>
+    </div>
+    <div class="triads-step-status" id="triadsStepStatus">
+      <span class="triads-active-chord" id="triadsActiveChord" aria-live="polite">ii° · E Diminished</span>
+      <div class="triads-step-indicator" aria-label="Progression playback position">
+        
+          <button class="triads-step-dash active" type="button" data-triad-step="0" aria-label="Pause on progression step 1" aria-current="step"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="1" aria-label="Pause on progression step 2" aria-current="false"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="2" aria-label="Pause on progression step 3" aria-current="false"></button>
+          <button class="triads-step-dash" type="button" data-triad-step="3" aria-label="Pause on progression step 4" aria-current="false"></button>
+      </div>
+    </div>
+    <div class="triad-boards" id="triadBoards"></div>
+  "
+`;
+
+exports[`fretboard controls > selects circle keys and degrees and rejects corrupt persisted indices 1`] = `
+"
+    <div class="cof-panel-header">
+      <span class="cof-panel-label">Progression</span>
+      <span class="cof-key-name">C Major</span>
+    </div>
+    <span class="cof-panel-label">Degrees</span>
+    <div class="cof-degrees"><button type="button" class="cof-degree-btn active" data-degree="0">I</button><button type="button" class="cof-degree-btn" data-degree="1">ii</button><button type="button" class="cof-degree-btn" data-degree="2">iii</button><button type="button" class="cof-degree-btn active" data-degree="3">IV</button><button type="button" class="cof-degree-btn active" data-degree="4">V</button><button type="button" class="cof-degree-btn" data-degree="5">vi</button><button type="button" class="cof-degree-btn" data-degree="6">vii°</button></div>
+    <div class="cof-progression"><div class="cof-chord"><span class="cof-chord-numeral">I</span><span class="cof-chord-name">C</span></div><span class="cof-chord-sep">–</span><div class="cof-chord"><span class="cof-chord-numeral">IV</span><span class="cof-chord-name">F</span></div><span class="cof-chord-sep">–</span><div class="cof-chord"><span class="cof-chord-numeral">V</span><span class="cof-chord-name">G</span></div></div>
+    <div class="cof-reset-row"><button type="button" class="reset-link">Reset</button></div>
+  "
+`;
+
+exports[`fretboard controls > selects circle keys and degrees and rejects corrupt persisted indices 2`] = `
+"
+    <svg class="cof-wheel" viewBox="0 0 400 400" role="img" aria-label="Circle of fifths">
+      <g class="cof-sectors"><path class="cof-sector selected" data-index="0" data-mode="major" d="M150.82,16.47 A190,190 0 0,1 249.18,16.47 L230.02,87.95 A116,116 0 0,0 169.98,87.95 Z"></path><path class="cof-sector" data-index="0" data-mode="minor" d="M169.98,87.95 A116,116 0 0,1 230.02,87.95 L216.05,140.11 A62,62 0 0,0 183.95,140.11 Z"></path><path class="cof-sector" data-index="1" data-mode="major" d="M249.18,16.47 A190,190 0 0,1 334.35,65.65 L282.02,117.98 A116,116 0 0,0 230.02,87.95 Z"></path><path class="cof-sector" data-index="1" data-mode="minor" d="M230.02,87.95 A116,116 0 0,1 282.02,117.98 L243.84,156.16 A62,62 0 0,0 216.05,140.11 Z"></path><path class="cof-sector" data-index="2" data-mode="major" d="M334.35,65.65 A190,190 0 0,1 383.53,150.82 L312.05,169.98 A116,116 0 0,0 282.02,117.98 Z"></path><path class="cof-sector" data-index="2" data-mode="minor" d="M282.02,117.98 A116,116 0 0,1 312.05,169.98 L259.89,183.95 A62,62 0 0,0 243.84,156.16 Z"></path><path class="cof-sector" data-index="3" data-mode="major" d="M383.53,150.82 A190,190 0 0,1 383.53,249.18 L312.05,230.02 A116,116 0 0,0 312.05,169.98 Z"></path><path class="cof-sector" data-index="3" data-mode="minor" d="M312.05,169.98 A116,116 0 0,1 312.05,230.02 L259.89,216.05 A62,62 0 0,0 259.89,183.95 Z"></path><path class="cof-sector" data-index="4" data-mode="major" d="M383.53,249.18 A190,190 0 0,1 334.35,334.35 L282.02,282.02 A116,116 0 0,0 312.05,230.02 Z"></path><path class="cof-sector" data-index="4" data-mode="minor" d="M312.05,230.02 A116,116 0 0,1 282.02,282.02 L243.84,243.84 A62,62 0 0,0 259.89,216.05 Z"></path><path class="cof-sector" data-index="5" data-mode="major" d="M334.35,334.35 A190,190 0 0,1 249.18,383.53 L230.02,312.05 A116,116 0 0,0 282.02,282.02 Z"></path><path class="cof-sector" data-index="5" data-mode="minor" d="M282.02,282.02 A116,116 0 0,1 230.02,312.05 L216.05,259.89 A62,62 0 0,0 243.84,243.84 Z"></path><path class="cof-sector" data-index="6" data-mode="major" d="M249.18,383.53 A190,190 0 0,1 150.82,383.53 L169.98,312.05 A116,116 0 0,0 230.02,312.05 Z"></path><path class="cof-sector" data-index="6" data-mode="minor" d="M230.02,312.05 A116,116 0 0,1 169.98,312.05 L183.95,259.89 A62,62 0 0,0 216.05,259.89 Z"></path><path class="cof-sector" data-index="7" data-mode="major" d="M150.82,383.53 A190,190 0 0,1 65.65,334.35 L117.98,282.02 A116,116 0 0,0 169.98,312.05 Z"></path><path class="cof-sector" data-index="7" data-mode="minor" d="M169.98,312.05 A116,116 0 0,1 117.98,282.02 L156.16,243.84 A62,62 0 0,0 183.95,259.89 Z"></path><path class="cof-sector" data-index="8" data-mode="major" d="M65.65,334.35 A190,190 0 0,1 16.47,249.18 L87.95,230.02 A116,116 0 0,0 117.98,282.02 Z"></path><path class="cof-sector" data-index="8" data-mode="minor" d="M117.98,282.02 A116,116 0 0,1 87.95,230.02 L140.11,216.05 A62,62 0 0,0 156.16,243.84 Z"></path><path class="cof-sector" data-index="9" data-mode="major" d="M16.47,249.18 A190,190 0 0,1 16.47,150.82 L87.95,169.98 A116,116 0 0,0 87.95,230.02 Z"></path><path class="cof-sector" data-index="9" data-mode="minor" d="M87.95,230.02 A116,116 0 0,1 87.95,169.98 L140.11,183.95 A62,62 0 0,0 140.11,216.05 Z"></path><path class="cof-sector" data-index="10" data-mode="major" d="M16.47,150.82 A190,190 0 0,1 65.65,65.65 L117.98,117.98 A116,116 0 0,0 87.95,169.98 Z"></path><path class="cof-sector" data-index="10" data-mode="minor" d="M87.95,169.98 A116,116 0 0,1 117.98,117.98 L156.16,156.16 A62,62 0 0,0 140.11,183.95 Z"></path><path class="cof-sector" data-index="11" data-mode="major" d="M65.65,65.65 A190,190 0 0,1 150.82,16.47 L169.98,87.95 A116,116 0 0,0 117.98,117.98 Z"></path><path class="cof-sector" data-index="11" data-mode="minor" d="M117.98,117.98 A116,116 0 0,1 169.98,87.95 L183.95,140.11 A62,62 0 0,0 156.16,156.16 Z"></path></g>
+      <circle class="cof-hub" cx="200" cy="200" r="62"></circle>
+      <g class="cof-rings">
+        <circle cx="200" cy="200" r="190"></circle>
+        <circle cx="200" cy="200" r="116"></circle>
+        <circle cx="200" cy="200" r="62"></circle>
+      </g>
+      <g class="cof-labels"><text class="cof-label cof-label-major selected" x="200.00" y="48.00">C</text><text class="cof-numeral cof-numeral-major selected" x="200.00" y="67.00">I</text><text class="cof-label cof-label-minor" x="200.00" y="112.00">Am</text><text class="cof-label cof-label-major" x="276.00" y="68.36">G</text><text class="cof-numeral cof-numeral-major" x="276.00" y="87.36">V</text><text class="cof-label cof-label-minor" x="244.00" y="123.79">Em</text><text class="cof-label cof-label-major" x="331.64" y="124.00">D</text><text class="cof-label cof-label-minor" x="276.21" y="156.00">Bm</text><text class="cof-label cof-label-major" x="352.00" y="200.00">A</text><text class="cof-label cof-label-minor" x="288.00" y="200.00">F♯m</text><text class="cof-label cof-label-major" x="331.64" y="276.00">E</text><text class="cof-label cof-label-minor" x="276.21" y="244.00">C♯m</text><text class="cof-label cof-label-alt" x="265.50" y="313.45">C♭</text><text class="cof-label cof-label-major" x="276.00" y="331.64">B</text><text class="cof-label cof-label-minor" x="244.00" y="276.21">G♯m</text><text class="cof-label cof-label-alt" x="200.00" y="331.00">F♯</text><text class="cof-label cof-label-major" x="200.00" y="352.00">G♭</text><text class="cof-label cof-label-minor" x="200.00" y="288.00">E♭m</text><text class="cof-label cof-label-alt" x="134.50" y="313.45">C♯</text><text class="cof-label cof-label-major" x="124.00" y="331.64">D♭</text><text class="cof-label cof-label-minor" x="156.00" y="276.21">B♭m</text><text class="cof-label cof-label-major" x="68.36" y="276.00">A♭</text><text class="cof-label cof-label-minor" x="123.79" y="244.00">Fm</text><text class="cof-label cof-label-major" x="48.00" y="200.00">E♭</text><text class="cof-label cof-label-minor" x="112.00" y="200.00">Cm</text><text class="cof-label cof-label-major" x="68.36" y="124.00">B♭</text><text class="cof-label cof-label-minor" x="123.79" y="156.00">Gm</text><text class="cof-label cof-label-major" x="124.00" y="68.36">F</text><text class="cof-numeral cof-numeral-major" x="124.00" y="87.36">IV</text><text class="cof-label cof-label-minor" x="156.00" y="123.79">Dm</text></g>
+      <text class="cof-hub-label" x="200" y="200">C</text>
+    </svg>
+  "
+`;

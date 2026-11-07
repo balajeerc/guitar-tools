@@ -1,29 +1,29 @@
+import { NOTES, STRING_ORDER, TOTAL_FRETS } from '../../shared/constants';
 // Pure logic for note grouping bands on the discovery fretboard.
 //
 // Natural notes are split into two groups: A-B-C and D-E-F. When grouping is
 // enabled the renderer draws a coloured band along each string segment that
 // connects consecutive notes belonging to the same group. G and all
 // sharps/flats are intentionally left ungrouped.
+import { getNoteAtPosition } from '../../shared/musicTheory';
+import { requiredAt } from '../../shared/requiredAt';
 
-import { NOTES, TOTAL_FRETS, STRING_ORDER } from "../../shared/constants";
-import { getNoteAtPosition } from "../../shared/musicTheory";
-
-export type NoteGroup = "abc" | "def";
+export type NoteGroup = 'abc' | 'def';
 
 // Pitch-class index (A=0, A#=1, B=2, C=3, ...) -> group
 const GROUP_BY_PITCH_CLASS: Readonly<Record<number, NoteGroup>> = {
-  0: "abc", // A
-  2: "abc", // B
-  3: "abc", // C
-  5: "def", // D
-  7: "def", // E
-  8: "def", // F
+  0: 'abc', // A
+  2: 'abc', // B
+  3: 'abc', // C
+  5: 'def', // D
+  7: 'def', // E
+  8: 'def', // F
 };
 
 // Display label for each group's legend entry
 export const GROUP_LABELS: Readonly<Record<NoteGroup, string>> = {
-  abc: "A · B · C",
-  def: "D · E · F",
+  abc: 'A · B · C',
+  def: 'D · E · F',
 };
 
 // Largest fret gap (in semitones) that still connects two same-group notes.
@@ -36,12 +36,12 @@ function getNoteGroup(pitchClass: number): NoteGroup | null {
   return GROUP_BY_PITCH_CLASS[pitchClass] ?? null;
 }
 
-export interface GroupBand {
-  /** Visual string index, 0 = high E (top), 5 = low E (bottom) */
-  readonly visualStringIndex: number;
+interface GroupBand {
+  readonly endFret: number;
   readonly group: NoteGroup;
   readonly startFret: number;
-  readonly endFret: number;
+  /** Visual string index, 0 = high E (top), 5 = low E (bottom) */
+  readonly visualStringIndex: number;
 }
 
 interface GroupNote {
@@ -50,14 +50,11 @@ interface GroupNote {
 }
 
 /** Collect the selected, grouped notes along a single string, low fret first. */
-function collectGroupNotes(
-  stringIdx: number,
-  selectedNotes: Set<string>,
-): GroupNote[] {
+function collectGroupNotes(stringIdx: number, selectedNotes: Set<string>): GroupNote[] {
   const notes: GroupNote[] = [];
   for (let fret = 0; fret <= TOTAL_FRETS; fret++) {
     const pitchClass = getNoteAtPosition(stringIdx, fret);
-    if (!selectedNotes.has(NOTES[pitchClass])) continue;
+    if (!selectedNotes.has(requiredAt(NOTES, pitchClass))) continue;
     const group = getNoteGroup(pitchClass);
     if (group) notes.push({ fret, group });
   }
@@ -65,22 +62,19 @@ function collectGroupNotes(
 }
 
 /** Merge a string's grouped notes into bands of consecutive same-group runs. */
-function bandsForString(
-  visualStringIndex: number,
-  groupNotes: GroupNote[],
-): GroupBand[] {
+function bandsForString(visualStringIndex: number, groupNotes: GroupNote[]): GroupBand[] {
   const bands: GroupBand[] = [];
   let i = 0;
   while (i < groupNotes.length) {
-    const start = groupNotes[i];
+    const start = requiredAt(groupNotes, i);
     let end = start;
     let j = i + 1;
     while (
       j < groupNotes.length &&
-      groupNotes[j].group === start.group &&
-      groupNotes[j].fret - end.fret <= MAX_GROUP_FRET_GAP
+      requiredAt(groupNotes, j).group === start.group &&
+      requiredAt(groupNotes, j).fret - end.fret <= MAX_GROUP_FRET_GAP
     ) {
-      end = groupNotes[j];
+      end = requiredAt(groupNotes, j);
       j++;
     }
     // A band needs at least two notes to connect.
@@ -103,7 +97,7 @@ function bandsForString(
  */
 export function computeGroupBands(
   selectedNotes: Set<string>,
-  selectedStrings: Set<number>,
+  selectedStrings: Set<number>
 ): GroupBand[] {
   const bands: GroupBand[] = [];
   for (const [visualIdx, stringIdx] of STRING_ORDER.entries()) {

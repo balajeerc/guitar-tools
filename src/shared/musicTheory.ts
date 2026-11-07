@@ -1,13 +1,14 @@
-// Music theory utility functions
-
-import type { ScaleType } from "./types";
 import {
-  OPEN_STRINGS,
   MAJOR_PENTATONIC,
-  MINOR_PENTATONIC,
   MAJOR_SCALE,
+  MINOR_PENTATONIC,
   MINOR_SCALE,
-} from "./constants";
+  OPEN_STRINGS,
+} from './constants';
+// Music theory utility functions
+import { requiredAt } from './requiredAt';
+
+import type { ScaleType } from './types';
 
 /**
  * Get the note index at a specific fret on a specific string
@@ -16,15 +17,15 @@ import {
  * @returns The note index (0-11, where 0 = A)
  */
 export function getNoteAtPosition(stringIndex: number, fret: number): number {
-  const openNote = OPEN_STRINGS[stringIndex];
+  const openNote = requiredAt(OPEN_STRINGS, stringIndex);
   return (openNote + fret) % 12;
 }
 
 function getIntervals(scaleType: ScaleType, useFullScale: boolean): readonly number[] {
   if (useFullScale) {
-    return scaleType === "major" ? MAJOR_SCALE : MINOR_SCALE;
+    return scaleType === 'major' ? MAJOR_SCALE : MINOR_SCALE;
   }
-  return scaleType === "major" ? MAJOR_PENTATONIC : MINOR_PENTATONIC;
+  return scaleType === 'major' ? MAJOR_PENTATONIC : MINOR_PENTATONIC;
 }
 
 /**
@@ -39,7 +40,7 @@ export function isInScale(
   noteIndex: number,
   rootIndex: number,
   scaleType: ScaleType,
-  useFullScale = false,
+  useFullScale = false
 ): boolean {
   const intervals = getIntervals(scaleType, useFullScale);
   const relativeNote = (noteIndex - rootIndex + 12) % 12;
@@ -58,7 +59,7 @@ export function getScaleDegree(
   noteIndex: number,
   rootIndex: number,
   scaleType: ScaleType,
-  useFullScale = false,
+  useFullScale = false
 ): number {
   const intervals = getIntervals(scaleType, useFullScale);
   const relativeNote = (noteIndex - rootIndex + 12) % 12;

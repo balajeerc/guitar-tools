@@ -1,33 +1,34 @@
+import { setupAccordionToggle } from '../../shared/accordion';
 // Metronome feature: tempo, meter with per-beat accents, subdivisions,
 // tap tempo and a swinging pendulum.
+import { setButtonActive } from '../../shared/dom';
+import { loadPersisted, savePersisted } from '../../shared/persist';
+import { requiredAt } from '../../shared/requiredAt';
+import { createResetLink } from '../../shared/resetLink';
 
-import { setupAccordionToggle } from "../../shared/accordion";
-import { loadPersisted, savePersisted } from "../../shared/persist";
-import { createResetLink } from "../../shared/resetLink";
-import { setButtonActive } from "../../shared/dom";
 import {
+  type AccentLevel,
   clampBeats,
   clampBpm,
   defaultAccents,
+  LARGE_BPM_STEP,
   nextAccent,
   resizeAccents,
-  LARGE_BPM_STEP,
   SMALL_BPM_STEP,
   SUBDIVISIONS,
-  type AccentLevel,
-} from "./beats";
-import { metronomePanelHtml } from "./panel";
-import { createPlayback, type Playback } from "./playback";
-import { highlightBeat, renderBeatDots, setPendulumAngle } from "./visuals";
+} from './beats';
+import { metronomePanelHtml } from './panel';
+import { createPlayback, type Playback } from './playback';
+import { highlightBeat, renderBeatDots, setPendulumAngle } from './visuals';
 
 interface MetronomeState {
-  bpm: number;
-  beats: number;
-  subdivisions: number;
   accents: AccentLevel[];
+  beats: number;
+  bpm: number;
+  subdivisions: number;
 }
 
-const STORAGE_KEY = "metronome-state";
+const STORAGE_KEY = 'metronome-state';
 const DEFAULTS: MetronomeState = {
   bpm: 100,
   beats: 4,
@@ -37,14 +38,14 @@ const DEFAULTS: MetronomeState = {
 
 let state: MetronomeState = { ...DEFAULTS };
 let running = false;
-let playback: Playback | null = null;
+let playback: null | Playback = null;
 
 function saveState(): void {
   savePersisted(STORAGE_KEY, state);
 }
 
 function getSummary(): string {
-  const sub = state.subdivisions > 1 ? ` · ÷${state.subdivisions}` : "";
+  const sub = state.subdivisions > 1 ? ` · ÷${state.subdivisions}` : '';
   return `${state.bpm} BPM · ${state.beats}/4${sub}`;
 }
 
@@ -58,27 +59,27 @@ function getInput(id: string): HTMLInputElement | null {
 }
 
 function updateDisplay(): void {
-  setText("metronomeControlsSummary", getSummary());
-  setText("metronomeBeatsDisplay", String(state.beats));
+  setText('metronomeControlsSummary', getSummary());
+  setText('metronomeBeatsDisplay', String(state.beats));
 
-  const bpmField = getInput("metronomeBpmValue");
+  const bpmField = getInput('metronomeBpmValue');
   // Don't fight the user while they're mid-edit in the BPM field.
   if (bpmField && document.activeElement !== bpmField) {
     bpmField.value = String(state.bpm);
   }
 
-  const slider = getInput("metronomeBpmSlider");
+  const slider = getInput('metronomeBpmSlider');
   if (slider) slider.value = String(state.bpm);
 
   for (const { value } of SUBDIVISIONS) {
     setButtonActive(`metronomeSubdiv${value}Btn`, state.subdivisions === value);
   }
 
-  const beatsEl = document.getElementById("metronomeBeats");
+  const beatsEl = document.getElementById('metronomeBeats');
   if (beatsEl) renderBeatDots(beatsEl, state.accents);
 
-  setButtonActive("metronomeToggleBtn", running);
-  setText("metronomeToggleBtn", running ? "Stop" : "Start");
+  setButtonActive('metronomeToggleBtn', running);
+  setText('metronomeToggleBtn', running ? 'Stop' : 'Start');
   saveState();
 }
 
@@ -117,62 +118,62 @@ function commitBpmField(field: HTMLInputElement): void {
 }
 
 function setupBpmField(): void {
-  const field = getInput("metronomeBpmValue");
+  const field = getInput('metronomeBpmValue');
   if (!field) return;
 
   // Tapping the number selects it, so the numeric keypad overwrites cleanly.
-  field.addEventListener("focus", () => field.select());
-  field.addEventListener("blur", () => commitBpmField(field));
-  field.addEventListener("keydown", (e: KeyboardEvent) => {
-    if (e.key === "Enter") field.blur();
+  field.addEventListener('focus', () => {
+    field.select();
+  });
+  field.addEventListener('blur', () => {
+    commitBpmField(field);
+  });
+  field.addEventListener('keydown', (e: KeyboardEvent) => {
+    if (e.key === 'Enter') field.blur();
   });
 }
 
 function setupStepButton(id: string, delta: number): void {
-  document
-    .getElementById(id)
-    ?.addEventListener("click", () => setBpm(state.bpm + delta));
+  document.getElementById(id)?.addEventListener('click', () => {
+    setBpm(state.bpm + delta);
+  });
 }
 
 function setupTempoControls(): void {
-  setupStepButton("metronomeBpmDownLarge", -LARGE_BPM_STEP);
-  setupStepButton("metronomeBpmDown", -SMALL_BPM_STEP);
-  setupStepButton("metronomeBpmUp", SMALL_BPM_STEP);
-  setupStepButton("metronomeBpmUpLarge", LARGE_BPM_STEP);
+  setupStepButton('metronomeBpmDownLarge', -LARGE_BPM_STEP);
+  setupStepButton('metronomeBpmDown', -SMALL_BPM_STEP);
+  setupStepButton('metronomeBpmUp', SMALL_BPM_STEP);
+  setupStepButton('metronomeBpmUpLarge', LARGE_BPM_STEP);
 
-  document
-    .getElementById("metronomeBpmSlider")
-    ?.addEventListener("input", (e) => {
-      setBpm(Number((e.target as HTMLInputElement).value));
-    });
+  document.getElementById('metronomeBpmSlider')?.addEventListener('input', (e) => {
+    setBpm(Number((e.target as HTMLInputElement).value));
+  });
 
   setupBpmField();
 }
 
 function setupMeterControls(): void {
-  document
-    .getElementById("metronomeBeatsDown")
-    ?.addEventListener("click", () => setBeats(state.beats - 1));
-  document
-    .getElementById("metronomeBeatsUp")
-    ?.addEventListener("click", () => setBeats(state.beats + 1));
+  document.getElementById('metronomeBeatsDown')?.addEventListener('click', () => {
+    setBeats(state.beats - 1);
+  });
+  document.getElementById('metronomeBeatsUp')?.addEventListener('click', () => {
+    setBeats(state.beats + 1);
+  });
 
   for (const { value } of SUBDIVISIONS) {
-    document
-      .getElementById(`metronomeSubdiv${value}Btn`)
-      ?.addEventListener("click", () => {
-        state.subdivisions = value;
-        updateDisplay();
-      });
+    document.getElementById(`metronomeSubdiv${value}Btn`)?.addEventListener('click', () => {
+      state.subdivisions = value;
+      updateDisplay();
+    });
   }
 
   // Beat dots are re-rendered on every update, so accents are handled by
   // delegation from their stable container.
-  document.getElementById("metronomeBeats")?.addEventListener("click", (e) => {
-    const dot = (e.target as HTMLElement).closest(".metronome-beat");
-    const index = Number(dot?.getAttribute("data-beat"));
+  document.getElementById('metronomeBeats')?.addEventListener('click', (e) => {
+    const dot = (e.target as HTMLElement).closest('.metronome-beat');
+    const index = Number(dot?.getAttribute('data-beat'));
     if (!dot || Number.isNaN(index)) return;
-    state.accents[index] = nextAccent(state.accents[index]);
+    state.accents[index] = nextAccent(requiredAt(state.accents, index));
     updateDisplay();
   });
 }
@@ -185,15 +186,15 @@ function resetState(): void {
 
 /** Stop the clicks when the metronome page is navigated away from. */
 function setupRouteStop(): void {
-  window.addEventListener("hashchange", () => {
-    if (running && window.location.hash.slice(1) !== "metronome") {
+  window.addEventListener('hashchange', () => {
+    if (running && window.location.hash.slice(1) !== 'metronome') {
       togglePlayback();
     }
   });
 }
 
 export function initMetronomeFeature(): void {
-  const container = document.getElementById("metronome-page");
+  const container = document.getElementById('metronome-page');
   if (!container) return;
 
   const persisted = loadPersisted<MetronomeState>(STORAGE_KEY, DEFAULTS);
@@ -203,17 +204,15 @@ export function initMetronomeFeature(): void {
     subdivisions: persisted.subdivisions,
     accents: resizeAccents(
       Array.isArray(persisted.accents) ? persisted.accents : [],
-      clampBeats(persisted.beats),
+      clampBeats(persisted.beats)
     ),
   };
 
   container.innerHTML = metronomePanelHtml(getSummary());
-  document
-    .getElementById("metronome-controls")
-    ?.appendChild(createResetLink(resetState));
+  document.getElementById('metronome-controls')?.appendChild(createResetLink(resetState));
 
-  const beatsEl = document.getElementById("metronomeBeats");
-  const arm = document.getElementById("metronomePendulumArm");
+  const beatsEl = document.getElementById('metronomeBeats');
+  const arm = document.getElementById('metronomePendulumArm');
   playback = createPlayback(() => state, {
     onBeat: (beat) => {
       if (beatsEl) highlightBeat(beatsEl, beat);
@@ -226,10 +225,10 @@ export function initMetronomeFeature(): void {
   setupTempoControls();
   setupMeterControls();
   setupRouteStop();
-  document.getElementById("metronomeToggleBtn")?.addEventListener("click", () => {
+  document.getElementById('metronomeToggleBtn')?.addEventListener('click', () => {
     togglePlayback();
   });
-  setupAccordionToggle("metronomeAccordionToggle");
+  setupAccordionToggle('metronomeAccordionToggle');
 
   updateDisplay();
 }

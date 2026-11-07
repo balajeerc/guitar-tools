@@ -24,3 +24,15 @@
 
 - Use `git mv` instead of `mv` as far as possible
   - If former is not possible, then you may use `mv`
+
+## Quality checks
+
+- Read `03_quality_checks.md` for the check commands, thresholds, and test scope.
+- Run `pnpm fix` for mechanical ESLint and formatting changes.
+- Keep strict compiler settings enabled. Guard optional reads and use `requiredAt` only when the domain requires an entry to exist.
+- Use inline type imports. Keep switches over unions exhaustive.
+- Date deferred work with an expiry, for example `TODO [2026-12-01]: review this workaround`.
+- Tests live beside their source as `*.test.ts`. Keep external-service tests in `*.integration.test.ts`; the default suite excludes them.
+- Never commit focused, skipped, or assertion-free tests. Test lint rules enforce this.
+- Grow `test-scope.json` when adding coverage; do not shrink it or lower thresholds to pass a gate.
+- Use Conventional Commits. The `commit-msg` hook validates messages.

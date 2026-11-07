@@ -3,17 +3,12 @@
 // Applies exponential moving average smoothing on detected frequency
 // to reduce flickering from natural pitch wobble.
 
-import { detectPitch } from "../features/note-detection/pitchDetector";
-import { frequencyToNote, type DetectedNote } from "../features/note-detection/noteMapper";
-import {
-  acquireMic,
-  setupAudio,
-  releaseMic,
-  computeRms,
-  SILENCE_THRESHOLD,
-} from "./audioUtils";
-import { AUDIO_INPUT_CHANGED_EVENT } from "./audioInput";
-import { createScreenWakeLock } from "./screenWakeLock";
+import { type DetectedNote, frequencyToNote } from '../features/note-detection/noteMapper';
+import { detectPitch } from '../features/note-detection/pitchDetector';
+
+import { AUDIO_INPUT_CHANGED_EVENT } from './audioInput';
+import { acquireMic, computeRms, releaseMic, setupAudio, SILENCE_THRESHOLD } from './audioUtils';
+import { createScreenWakeLock } from './screenWakeLock';
 
 /** EMA smoothing factor: 0 = no smoothing, 1 = no memory. Lower = smoother. */
 const SMOOTHING_ALPHA = 0.15;
@@ -26,30 +21,28 @@ function freqToSemitone(freq: number): number {
   return Math.round(12 * Math.log2(freq / 440));
 }
 
-export interface AudioListenerCallbacks {
+interface AudioListenerCallbacks {
+  /** Called when an active input cannot be opened */
+  onError?: () => void;
   /** Called each frame with a detected note, or null if silent / no pitch */
   onNote: (note: DetectedNote | null) => void;
   /** Called when listening starts */
   onStart?: () => void;
   /** Called when listening stops */
   onStop?: () => void;
-  /** Called when an active input cannot be opened */
-  onError?: () => void;
 }
 
 export interface AudioListenerHandle {
+  isListening: () => boolean;
   start: () => Promise<void>;
   stop: () => void;
-  isListening: () => boolean;
 }
 
 /**
  * Create an audio listener that manages mic → pitch detection → callback.
  * Each feature gets its own independent handle with start/stop.
  */
-export function createAudioListener(
-  callbacks: AudioListenerCallbacks,
-): AudioListenerHandle {
+export function createAudioListener(callbacks: AudioListenerCallbacks): AudioListenerHandle {
   let audioContext: AudioContext | null = null;
   let analyser: AnalyserNode | null = null;
   let mediaStream: MediaStream | null = null;
@@ -58,8 +51,8 @@ export function createAudioListener(
   const wakeLock = createScreenWakeLock();
 
   // Smoothing state
-  let smoothedFreq: number | null = null;
-  let lastSemitone: number | null = null;
+  let smoothedFreq: null | number = null;
+  let lastSemitone: null | number = null;
 
   // Attack blanking state: ignore noisy transient right after a pluck
   let wasSilent = true;

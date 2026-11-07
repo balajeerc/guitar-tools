@@ -1,23 +1,23 @@
-import { createScreenWakeLock } from "../../shared/screenWakeLock";
+import { createScreenWakeLock } from '../../shared/screenWakeLock';
 
-import { createDrumKit, voicesAtStep, type DrumKit } from "./instruments";
-import { STEP_COUNT, type BeatPattern, type TrackLevels } from "./pattern";
+import { createDrumKit, type DrumKit, voicesAtStep } from './instruments';
+import { type BeatPattern, STEP_COUNT, type TrackLevels } from './pattern';
 
 export interface BeatsSchedulerConfig {
   bpm: number;
-  pattern: BeatPattern;
   levels: TrackLevels;
+  pattern: BeatPattern;
 }
 
 export interface ScheduledStep {
-  time: number;
   step: number;
+  time: number;
 }
 
-export interface BeatsScheduler {
+interface BeatsScheduler {
+  now: () => number;
   start: () => Promise<void>;
   stop: () => void;
-  now: () => number;
 }
 
 const LOOKAHEAD_MS = 25;
@@ -25,11 +25,11 @@ const SCHEDULE_AHEAD_SECONDS = 0.12;
 
 export function createBeatsScheduler(
   getConfig: () => BeatsSchedulerConfig,
-  onStep: (step: ScheduledStep) => void,
+  onStep: (step: ScheduledStep) => void
 ): BeatsScheduler {
   let context: AudioContext | null = null;
   let drumKit: DrumKit | null = null;
-  let timer: number | null = null;
+  let timer: null | number = null;
   const wakeLock = createScreenWakeLock();
   let nextStepTime = 0;
   let step = 0;
@@ -50,7 +50,7 @@ export function createBeatsScheduler(
     if (timer !== null) return;
     context = new AudioContext();
     drumKit = createDrumKit(context);
-    if (context.state === "suspended") await context.resume();
+    if (context.state === 'suspended') await context.resume();
     step = 0;
     nextStepTime = context.currentTime + 0.06;
     scheduleDueSteps();

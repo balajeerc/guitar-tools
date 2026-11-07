@@ -1,21 +1,22 @@
-import { NOTES } from "../../shared/constants";
-import { renderFretboard } from "./renderer";
-import { GROUP_LABELS, type NoteGroup } from "./grouping";
-import { observeFretboardResize } from "../../shared/layout";
-import { setupAccordionToggle } from "../../shared/accordion";
-import { loadPersisted, savePersisted } from "../../shared/persist";
-import { createResetLink } from "../../shared/resetLink";
+import { setupAccordionToggle } from '../../shared/accordion';
+import { NOTES } from '../../shared/constants';
+import { observeFretboardResize } from '../../shared/layout';
+import { loadPersisted, savePersisted } from '../../shared/persist';
+import { createResetLink } from '../../shared/resetLink';
+
+import { GROUP_LABELS, type NoteGroup } from './grouping';
+import { renderFretboard } from './renderer';
 
 // LocalStorage keys
-const STORAGE_KEY_NOTES = "fretboard-discovery-notes";
-const STORAGE_KEY_STRINGS = "fretboard-discovery-strings";
-const STORAGE_KEY_GROUPING = "fretboard-discovery-grouping";
+const STORAGE_KEY_NOTES = 'fretboard-discovery-notes';
+const STORAGE_KEY_STRINGS = 'fretboard-discovery-strings';
+const STORAGE_KEY_GROUPING = 'fretboard-discovery-grouping';
 
 // Application state
 const ALL_STRINGS = [1, 2, 3, 4, 5, 6];
 const DEFAULT_GROUPING = false;
-let selectedNotes: Set<string> = new Set(NOTES);
-let selectedStrings: Set<number> = new Set([1, 2, 3, 4, 5, 6]);
+let selectedNotes = new Set<string>(NOTES);
+let selectedStrings = new Set<number>([1, 2, 3, 4, 5, 6]);
 let groupingEnabled = DEFAULT_GROUPING;
 
 // References to grouping controls, set up in createGroupingControls()
@@ -27,16 +28,13 @@ let groupingLegend: HTMLElement | null = null;
  * Load selections from localStorage
  */
 function loadSelectionsFromStorage(): void {
-  const notes = loadPersisted<string[] | null>(STORAGE_KEY_NOTES, null);
+  const notes = loadPersisted<null | string[]>(STORAGE_KEY_NOTES, null);
   if (notes) selectedNotes = new Set(notes);
 
-  const strings = loadPersisted<number[] | null>(STORAGE_KEY_STRINGS, null);
+  const strings = loadPersisted<null | number[]>(STORAGE_KEY_STRINGS, null);
   if (strings) selectedStrings = new Set(strings);
 
-  groupingEnabled = loadPersisted<boolean>(
-    STORAGE_KEY_GROUPING,
-    DEFAULT_GROUPING,
-  );
+  groupingEnabled = loadPersisted<boolean>(STORAGE_KEY_GROUPING, DEFAULT_GROUPING);
 }
 
 /**
@@ -60,17 +58,13 @@ function resetSelections(): void {
 
   groupingEnabled = DEFAULT_GROUPING;
 
-  const controls = document.getElementById("discovery-controls");
+  const controls = document.getElementById('discovery-controls');
   if (controls) {
-    for (const cb of controls.querySelectorAll<HTMLInputElement>(
-      'input[type="checkbox"]',
-    )) {
+    for (const cb of controls.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')) {
       cb.checked = true;
     }
-    for (const btn of controls.querySelectorAll<HTMLButtonElement>(
-      ".select-all-btn",
-    )) {
-      btn.textContent = "Deselect All";
+    for (const btn of controls.querySelectorAll<HTMLButtonElement>('.select-all-btn')) {
+      btn.textContent = 'Deselect All';
     }
   }
   syncGroupingControls();
@@ -85,13 +79,9 @@ function resetSelections(): void {
 function getControlsSummary(): string {
   const noteCount = selectedNotes.size;
   const stringCount = selectedStrings.size;
-  const notesPart =
-    noteCount === NOTES.length ? "All notes" : `${noteCount} notes`;
-  const stringsPart =
-    stringCount === ALL_STRINGS.length
-      ? "All strings"
-      : `${stringCount} strings`;
-  const groupingPart = groupingEnabled ? " · Grouped" : "";
+  const notesPart = noteCount === NOTES.length ? 'All notes' : `${noteCount} notes`;
+  const stringsPart = stringCount === ALL_STRINGS.length ? 'All strings' : `${stringCount} strings`;
+  const groupingPart = groupingEnabled ? ' · Grouped' : '';
   return `${notesPart} · ${stringsPart}${groupingPart}`;
 }
 
@@ -99,7 +89,7 @@ function getControlsSummary(): string {
  * Update the accordion summary text
  */
 function updateControlsSummary(): void {
-  const summary = document.getElementById("discoveryControlsSummary");
+  const summary = document.getElementById('discoveryControlsSummary');
   if (summary) {
     summary.textContent = getControlsSummary();
   }
@@ -119,23 +109,21 @@ function updateDisplay(): void {
 function createToggleAllButton<T>(
   allItems: T[],
   selectedItems: Set<T>,
-  checkboxGroup: HTMLElement,
+  checkboxGroup: HTMLElement
 ): { button: HTMLButtonElement; updateLabel: () => void } {
-  const button = document.createElement("button");
-  button.className = "select-all-btn";
+  const button = document.createElement('button');
+  button.className = 'select-all-btn';
 
   function updateLabel(): void {
     const allSelected = allItems.every((item) => selectedItems.has(item));
-    button.textContent = allSelected ? "Deselect All" : "Select All";
+    button.textContent = allSelected ? 'Deselect All' : 'Select All';
   }
 
   updateLabel();
 
-  button.addEventListener("click", () => {
+  button.addEventListener('click', () => {
     const allSelected = allItems.every((item) => selectedItems.has(item));
-    const checkboxes = checkboxGroup.querySelectorAll<HTMLInputElement>(
-      'input[type="checkbox"]',
-    );
+    const checkboxes = checkboxGroup.querySelectorAll<HTMLInputElement>('input[type="checkbox"]');
 
     if (allSelected) {
       selectedItems.clear();
@@ -163,34 +151,34 @@ function createToggleAllButton<T>(
  * Create multi-select control for notes
  */
 function createNoteControls(): HTMLElement {
-  const container = document.createElement("div");
-  container.className = "control-group";
+  const container = document.createElement('div');
+  container.className = 'control-group';
 
-  const label = document.createElement("span");
-  label.className = "control-label";
-  label.textContent = "Notes:";
+  const label = document.createElement('span');
+  label.className = 'control-label';
+  label.textContent = 'Notes:';
   container.appendChild(label);
 
-  const checkboxGroup = document.createElement("div");
-  checkboxGroup.className = "checkbox-group";
+  const checkboxGroup = document.createElement('div');
+  checkboxGroup.className = 'checkbox-group';
 
   const { button: toggleBtn, updateLabel } = createToggleAllButton(
     [...NOTES],
     selectedNotes,
-    checkboxGroup,
+    checkboxGroup
   );
   container.appendChild(toggleBtn);
 
   for (const note of NOTES) {
-    const checkboxWrapper = document.createElement("label");
-    checkboxWrapper.className = "checkbox-label";
+    const checkboxWrapper = document.createElement('label');
+    checkboxWrapper.className = 'checkbox-label';
 
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
     checkbox.value = note;
     checkbox.checked = selectedNotes.has(note);
 
-    checkbox.addEventListener("change", () => {
+    checkbox.addEventListener('change', () => {
       if (checkbox.checked) {
         selectedNotes.add(note);
       } else {
@@ -201,7 +189,7 @@ function createNoteControls(): HTMLElement {
       updateLabel();
     });
 
-    const labelText = document.createElement("span");
+    const labelText = document.createElement('span');
     labelText.textContent = note;
 
     checkboxWrapper.appendChild(checkbox);
@@ -217,34 +205,34 @@ function createNoteControls(): HTMLElement {
  * Create multi-select control for strings
  */
 function createStringControls(): HTMLElement {
-  const container = document.createElement("div");
-  container.className = "control-group";
+  const container = document.createElement('div');
+  container.className = 'control-group';
 
-  const label = document.createElement("span");
-  label.className = "control-label";
-  label.textContent = "Strings:";
+  const label = document.createElement('span');
+  label.className = 'control-label';
+  label.textContent = 'Strings:';
   container.appendChild(label);
 
-  const checkboxGroup = document.createElement("div");
-  checkboxGroup.className = "checkbox-group";
+  const checkboxGroup = document.createElement('div');
+  checkboxGroup.className = 'checkbox-group';
 
   const { button: toggleBtn, updateLabel } = createToggleAllButton(
     ALL_STRINGS,
     selectedStrings,
-    checkboxGroup,
+    checkboxGroup
   );
   container.appendChild(toggleBtn);
 
   for (let stringNumber = 1; stringNumber <= 6; stringNumber++) {
-    const checkboxWrapper = document.createElement("label");
-    checkboxWrapper.className = "checkbox-label";
+    const checkboxWrapper = document.createElement('label');
+    checkboxWrapper.className = 'checkbox-label';
 
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
     checkbox.value = stringNumber.toString();
     checkbox.checked = selectedStrings.has(stringNumber);
 
-    checkbox.addEventListener("change", () => {
+    checkbox.addEventListener('change', () => {
       if (checkbox.checked) {
         selectedStrings.add(stringNumber);
       } else {
@@ -255,7 +243,7 @@ function createStringControls(): HTMLElement {
       updateLabel();
     });
 
-    const labelText = document.createElement("span");
+    const labelText = document.createElement('span');
     labelText.textContent = stringNumber.toString();
 
     checkboxWrapper.appendChild(checkbox);
@@ -271,10 +259,10 @@ function createStringControls(): HTMLElement {
  * Sync the grouping toggle buttons and legend to the current state
  */
 function syncGroupingControls(): void {
-  groupingOffBtn?.classList.toggle("active", !groupingEnabled);
-  groupingOnBtn?.classList.toggle("active", groupingEnabled);
+  groupingOffBtn?.classList.toggle('active', !groupingEnabled);
+  groupingOnBtn?.classList.toggle('active', groupingEnabled);
   if (groupingLegend) {
-    groupingLegend.style.display = groupingEnabled ? "flex" : "none";
+    groupingLegend.style.display = groupingEnabled ? 'flex' : 'none';
   }
 }
 
@@ -282,12 +270,12 @@ function syncGroupingControls(): void {
  * Build the legend explaining the grouping band colours
  */
 function createGroupingLegend(): HTMLElement {
-  const legend = document.createElement("div");
-  legend.className = "group-legend";
+  const legend = document.createElement('div');
+  legend.className = 'group-legend';
 
-  for (const group of ["abc", "def"] as NoteGroup[]) {
-    const item = document.createElement("span");
-    item.className = "legend-item";
+  for (const group of ['abc', 'def'] as NoteGroup[]) {
+    const item = document.createElement('span');
+    item.className = 'legend-item';
     item.innerHTML = `<span class="legend-color group-${group}"></span>${GROUP_LABELS[group]}`;
     legend.appendChild(item);
   }
@@ -299,23 +287,23 @@ function createGroupingLegend(): HTMLElement {
  * Create the note-grouping on/off toggle control
  */
 function createGroupingControls(): HTMLElement {
-  const container = document.createElement("div");
-  container.className = "control-group";
+  const container = document.createElement('div');
+  container.className = 'control-group';
 
-  const label = document.createElement("span");
-  label.className = "control-label";
-  label.textContent = "Grouping:";
+  const label = document.createElement('span');
+  label.className = 'control-label';
+  label.textContent = 'Grouping:';
   container.appendChild(label);
 
-  const toggleGroup = document.createElement("div");
-  toggleGroup.className = "toggle-group";
+  const toggleGroup = document.createElement('div');
+  toggleGroup.className = 'toggle-group';
 
   function makeBtn(text: string, enabled: boolean): HTMLButtonElement {
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "toggle-btn";
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'toggle-btn';
     btn.textContent = text;
-    btn.addEventListener("click", () => {
+    btn.addEventListener('click', () => {
       if (groupingEnabled === enabled) return;
       groupingEnabled = enabled;
       syncGroupingControls();
@@ -325,8 +313,8 @@ function createGroupingControls(): HTMLElement {
     return btn;
   }
 
-  groupingOffBtn = makeBtn("Off", false);
-  groupingOnBtn = makeBtn("On", true);
+  groupingOffBtn = makeBtn('Off', false);
+  groupingOnBtn = makeBtn('On', true);
   toggleGroup.appendChild(groupingOffBtn);
   toggleGroup.appendChild(groupingOnBtn);
   container.appendChild(toggleGroup);
@@ -342,7 +330,7 @@ function createGroupingControls(): HTMLElement {
  * Initialize the Fretboard Discovery feature
  */
 export function initFretboardDiscoveryFeature(): void {
-  const container = document.getElementById("fretboard-discovery-page");
+  const container = document.getElementById('fretboard-discovery-page');
   if (!container) return;
 
   // Load saved selections from localStorage
@@ -373,7 +361,7 @@ export function initFretboardDiscoveryFeature(): void {
   `;
 
   // Add controls
-  const controlsContainer = document.getElementById("discovery-controls");
+  const controlsContainer = document.getElementById('discovery-controls');
   if (controlsContainer) {
     controlsContainer.appendChild(createNoteControls());
     controlsContainer.appendChild(createStringControls());
@@ -382,7 +370,7 @@ export function initFretboardDiscoveryFeature(): void {
   }
 
   // Set up accordion toggle
-  setupAccordionToggle("discoveryAccordionToggle");
+  setupAccordionToggle('discoveryAccordionToggle');
 
   observeFretboardResize(updateDisplay);
 

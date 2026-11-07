@@ -1,11 +1,12 @@
-import { MELODY_TONES } from "../melodies/tone";
-import { MAX_OCTAVE, MIN_OCTAVE } from "./theory";
+import { MELODY_TONES } from '../melodies/tone';
+
+import { MAX_OCTAVE, MIN_OCTAVE } from './theory';
 
 function toneButtonsHtml(): string {
   return MELODY_TONES.map(
     ({ value, label }) =>
-      `<button type="button" class="melodies-tone-btn" id="earTrainerTone${value}Btn" aria-pressed="false">${label}</button>`,
-  ).join("");
+      `<button type="button" class="melodies-tone-btn" id="earTrainerTone${value}Btn" aria-pressed="false">${label}</button>`
+  ).join('');
 }
 
 export function earTrainerPanelHtml(): string {

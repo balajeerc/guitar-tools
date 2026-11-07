@@ -1,11 +1,8 @@
+import { TOTAL_FRETS } from '../../shared/constants';
 // CAGED system logic for guitar fretboard
+import { requiredAt } from '../../shared/requiredAt';
 
-import type {
-  CAGEDShape,
-  ScaleType,
-  PentatonicPosition,
-} from "../../shared/types";
-import { TOTAL_FRETS } from "../../shared/constants";
+import type { CAGEDShape, PentatonicPosition, ScaleType } from '../../shared/types';
 
 /**
  * Chord shape finger positions for each CAGED shape
@@ -15,10 +12,11 @@ import { TOTAL_FRETS } from "../../shared/constants";
  *
  * For minor chords, we use the minor versions of each shape
  */
-const MAJOR_CHORD_SHAPES: Record<
-  CAGEDShape,
-  Array<{ stringIdx: number; fretOffset: number }>
-> = {
+function eChordShape(thirdFret: number): { fretOffset: number; stringIdx: number }[] {
+  return [0, 2, 2, thirdFret, 0, 0].map((fretOffset, stringIdx) => ({ fretOffset, stringIdx }));
+}
+
+const MAJOR_CHORD_SHAPES: Record<CAGEDShape, { fretOffset: number; stringIdx: number }[]> = {
   // C shape major chord: x32010 (offsets relative to shape start fret)
   // When C shape starts at fret 0: A=3, D=2, G=0, B=1, E=0
   C: [
@@ -49,14 +47,7 @@ const MAJOR_CHORD_SHAPES: Record<
   ],
   // E shape major chord: 022100 (offsets relative to shape start fret)
   // When E shape starts at fret 0: E=0, A=2, D=2, G=1, B=0, E=0
-  E: [
-    { stringIdx: 0, fretOffset: 0 }, // Low E: open
-    { stringIdx: 1, fretOffset: 2 }, // A string: fret 2
-    { stringIdx: 2, fretOffset: 2 }, // D string: fret 2
-    { stringIdx: 3, fretOffset: 1 }, // G string: fret 1
-    { stringIdx: 4, fretOffset: 0 }, // B string: open
-    { stringIdx: 5, fretOffset: 0 }, // High E: open
-  ],
+  E: eChordShape(1),
   // D shape major chord: xx0232 (offsets relative to shape start fret)
   // When D shape starts at fret 0: D=0, G=2, B=3, E=2
   D: [
@@ -67,10 +58,7 @@ const MAJOR_CHORD_SHAPES: Record<
   ],
 };
 
-const MINOR_CHORD_SHAPES: Record<
-  CAGEDShape,
-  Array<{ stringIdx: number; fretOffset: number }>
-> = {
+const MINOR_CHORD_SHAPES: Record<CAGEDShape, { fretOffset: number; stringIdx: number }[]> = {
   // Cm shape: x35543 (mini barre chord, relative offsets)
   // When Cm shape starts at fret 0 (actually played as barre at fret 3)
   // Simplified: A=3, D=1, G=0, B=1
@@ -101,14 +89,7 @@ const MINOR_CHORD_SHAPES: Record<
   ],
   // Em shape: 022000 (offsets relative to shape start fret)
   // When Em shape starts at fret 0: E=0, A=2, D=2, G=0, B=0, E=0
-  E: [
-    { stringIdx: 0, fretOffset: 0 }, // Low E: root
-    { stringIdx: 1, fretOffset: 2 }, // A string: 5th
-    { stringIdx: 2, fretOffset: 2 }, // D string: root
-    { stringIdx: 3, fretOffset: 0 }, // G string: b3
-    { stringIdx: 4, fretOffset: 0 }, // B string: 5th
-    { stringIdx: 5, fretOffset: 0 }, // High E: root
-  ],
+  E: eChordShape(0),
   // Dm shape: xx0231 (offsets relative to shape start fret)
   // When Dm shape starts at fret 0: D=0, G=2, B=3, E=1
   D: [
@@ -127,11 +108,9 @@ const MINOR_CHORD_SHAPES: Record<
  */
 export function getChordShapePositions(
   shape: CAGEDShape,
-  scaleType: ScaleType,
-): Array<{ stringIdx: number; fretOffset: number }> {
-  return scaleType === "major"
-    ? MAJOR_CHORD_SHAPES[shape]
-    : MINOR_CHORD_SHAPES[shape];
+  scaleType: ScaleType
+): { fretOffset: number; stringIdx: number }[] {
+  return scaleType === 'major' ? MAJOR_CHORD_SHAPES[shape] : MINOR_CHORD_SHAPES[shape];
 }
 
 /**
@@ -148,11 +127,11 @@ export function getShapeAtFret(rootIndex: number, fret: number): CAGEDShape {
   const offsetFromC = (rootIndex - 3 + 12) % 12;
   const posInCycle = (fret - offsetFromC + 120) % 12;
 
-  if (posInCycle >= 0 && posInCycle < 3) return "C";
-  if (posInCycle >= 3 && posInCycle < 5) return "A";
-  if (posInCycle >= 5 && posInCycle < 8) return "G";
-  if (posInCycle >= 8 && posInCycle < 10) return "E";
-  return "D"; // 10, 11
+  if (posInCycle >= 0 && posInCycle < 3) return 'C';
+  if (posInCycle >= 3 && posInCycle < 5) return 'A';
+  if (posInCycle >= 5 && posInCycle < 8) return 'G';
+  if (posInCycle >= 8 && posInCycle < 10) return 'E';
+  return 'D'; // 10, 11
 }
 
 /**
@@ -163,9 +142,9 @@ export function getShapeAtFret(rootIndex: number, fret: number): CAGEDShape {
  */
 export function getShapeBoundaries(
   rootIndex: number,
-  totalFrets: number,
-): { shape: CAGEDShape; fret: number }[] {
-  const shapes: { shape: CAGEDShape; fret: number }[] = [];
+  totalFrets: number
+): { fret: number; shape: CAGEDShape }[] {
+  const shapes: { fret: number; shape: CAGEDShape }[] = [];
   let prevShape: CAGEDShape | null = null;
 
   for (let fret = 0; fret <= totalFrets; fret++) {
@@ -250,20 +229,20 @@ const PENTATONIC_POSITION_TABLE: Record<
  */
 export function getPentatonicExtentsOnFretboard(
   rootIndex: number,
-  scaleType: ScaleType,
-): Array<{
-  position: PentatonicPosition;
-  startFret: number;
+  scaleType: ScaleType
+): {
   endFret: number;
   partial: boolean;
-}> {
-  const positionExtents = PENTATONIC_POSITION_TABLE[rootIndex][scaleType];
-  const result: Array<{
-    position: PentatonicPosition;
-    startFret: number;
+  position: PentatonicPosition;
+  startFret: number;
+}[] {
+  const positionExtents = requiredAt(PENTATONIC_POSITION_TABLE, rootIndex)[scaleType];
+  const result: {
     endFret: number;
     partial: boolean;
-  }> = [];
+    position: PentatonicPosition;
+    startFret: number;
+  }[] = [];
 
   for (const posStr of Object.keys(positionExtents)) {
     const position = Number(posStr) as PentatonicPosition;

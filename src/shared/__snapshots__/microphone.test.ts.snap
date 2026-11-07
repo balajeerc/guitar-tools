@@ -1,0 +1,63 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`audio device selection > keeps permission guidance visible when the browser has no media-device API > unsupported audio input 1`] = `
+"<aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>Note detection works best when your guitar is connected directly through an audio interface. Built-in microphones may be less accurate.</span>
+    </div>
+    <label class="audio-input-field" for="unsupportedAudioInput">
+      <span>Audio input</span>
+      <select id="unsupportedAudioInput" data-audio-input-select="" disabled=""><option value="">Allow audio access first</option></select>
+    </label>
+    <small data-audio-input-help="">Allow audio access once to see device names.</small>
+  </aside>"
+`;
+
+exports[`audio device selection > restores the selected device and renders useful notices and named choices > default audio device selected 1`] = `
+"<aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>Note detection works best when your guitar is connected directly through an audio interface. Built-in microphones may be less accurate.</span>
+    </div>
+    <label class="audio-input-field" for="oneAudioInput">
+      <span>Audio input</span>
+      <select id="oneAudioInput" data-audio-input-select=""><option value="">System default</option><option value="interface">Guitar interface</option></select>
+    </label>
+    <small data-audio-input-help="" hidden="">Allow audio access once to see device names.</small>
+  </aside><aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>Choose your guitar input.</span>
+    </div>
+    <label class="audio-input-field" for="twoAudioInput">
+      <span>Audio input</span>
+      <select id="twoAudioInput" data-audio-input-select=""><option value="">System default</option><option value="interface">Guitar interface</option></select>
+    </label>
+    <small data-audio-input-help="" hidden="">Allow audio access once to see device names.</small>
+  </aside>"
+`;
+
+exports[`audio device selection > restores the selected device and renders useful notices and named choices > restored audio devices 1`] = `
+"<aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>Note detection works best when your guitar is connected directly through an audio interface. Built-in microphones may be less accurate.</span>
+    </div>
+    <label class="audio-input-field" for="oneAudioInput">
+      <span>Audio input</span>
+      <select id="oneAudioInput" data-audio-input-select=""><option value="">System default</option><option value="interface">Guitar interface</option></select>
+    </label>
+    <small data-audio-input-help="" hidden="">Allow audio access once to see device names.</small>
+  </aside><aside class="audio-input-panel">
+    <div class="audio-input-notice">
+      <strong>Audio interface recommended</strong>
+      <span>Choose your guitar input.</span>
+    </div>
+    <label class="audio-input-field" for="twoAudioInput">
+      <span>Audio input</span>
+      <select id="twoAudioInput" data-audio-input-select=""><option value="">System default</option><option value="interface">Guitar interface</option></select>
+    </label>
+    <small data-audio-input-help="" hidden="">Allow audio access once to see device names.</small>
+  </aside>"
+`;

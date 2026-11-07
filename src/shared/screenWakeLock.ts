@@ -2,7 +2,7 @@
 export function createScreenWakeLock(): { start: () => void; stop: () => void } {
   let active = false;
   let requesting = false;
-  let sentinel: WakeLockSentinel | null = null;
+  let sentinel: null | WakeLockSentinel = null;
 
   async function release(lock: WakeLockSentinel): Promise<void> {
     try {
@@ -12,20 +12,28 @@ export function createScreenWakeLock(): { start: () => void; stop: () => void } 
     }
   }
 
+  function shouldRelease(): boolean {
+    return !active || document.visibilityState !== 'visible';
+  }
+
   async function request(): Promise<void> {
-    if (!active || requesting || sentinel || document.visibilityState !== "visible") return;
-    if (!("wakeLock" in navigator)) return;
+    if (!active || requesting || sentinel || document.visibilityState !== 'visible') return;
+    if (!('wakeLock' in navigator)) return;
     requesting = true;
     try {
-      const lock = await navigator.wakeLock.request("screen");
-      if (!active || document.visibilityState !== "visible") {
+      const lock = await navigator.wakeLock.request('screen');
+      if (shouldRelease()) {
         await release(lock);
         return;
       }
       sentinel = lock;
-      lock.addEventListener("release", () => {
-        if (sentinel === lock) sentinel = null;
-      }, { once: true });
+      lock.addEventListener(
+        'release',
+        () => {
+          if (sentinel === lock) sentinel = null;
+        },
+        { once: true }
+      );
     } catch {
       // Unsupported devices, power saving, or permissions must not interrupt audio.
     } finally {
@@ -39,13 +47,13 @@ export function createScreenWakeLock(): { start: () => void; stop: () => void } 
 
   function start(): void {
     active = true;
-    document.addEventListener("visibilitychange", onVisibilityChange);
+    document.addEventListener('visibilitychange', onVisibilityChange);
     void request();
   }
 
   function stop(): void {
     active = false;
-    document.removeEventListener("visibilitychange", onVisibilityChange);
+    document.removeEventListener('visibilitychange', onVisibilityChange);
     const lock = sentinel;
     sentinel = null;
     if (lock) void release(lock);

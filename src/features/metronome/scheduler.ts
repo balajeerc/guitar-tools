@@ -1,8 +1,7 @@
-import { createScreenWakeLock } from '../../shared/screenWakeLock';
+import { createLookaheadScheduler, type LookaheadScheduler } from '../../shared/lookaheadScheduler';
 
-// Lookahead click scheduler: a coarse JS timer queues clicks slightly ahead of
-// time on the sample-accurate WebAudio clock, so tempo stays rock steady even
-// when the main thread stutters.
+// Audio-clock scheduling lives in shared/lookaheadScheduler; this defines what a
+// "step" means for the metronome — one subdivision of the bar.
 import { type ClickKind, playClick } from './click';
 
 import type { AccentLevel } from './beats';
@@ -21,18 +20,6 @@ export interface Tick {
   time: number;
 }
 
-interface Scheduler {
-  /** Current audio clock time, for comparing against queued tick times. */
-  now: () => number;
-  start: () => Promise<void>;
-  stop: () => void;
-}
-
-/** How often the JS timer wakes up to top up the schedule. */
-const LOOKAHEAD_MS = 25;
-/** How far ahead of the audio clock clicks are queued. */
-const SCHEDULE_AHEAD_S = 0.12;
-
 function kindFor(accent: AccentLevel, subdivision: number): ClickKind {
   if (subdivision > 0) return 'subdivision';
   return accent === 'strong' ? 'strong' : 'weak';
@@ -47,60 +34,30 @@ function kindFor(accent: AccentLevel, subdivision: number): ClickKind {
 export function createScheduler(
   getConfig: () => SchedulerConfig,
   onTick: (tick: Tick) => void
-): Scheduler {
-  let ctx: AudioContext | null = null;
-  let timer: null | number = null;
-  const wakeLock = createScreenWakeLock();
-  let nextTickTime = 0;
+): LookaheadScheduler {
   let beat = 0;
   let subdivision = 0;
 
-  function scheduleDue(): void {
-    if (!ctx) return;
-    while (nextTickTime < ctx.currentTime + SCHEDULE_AHEAD_S) {
-      const { bpm, beats, subdivisions, accents } = getConfig();
+  return createLookaheadScheduler({
+    stepDuration: () => {
+      const { bpm, subdivisions } = getConfig();
+      return 60 / bpm / subdivisions;
+    },
+    onStep: (context, time) => {
+      const { accents, beats, subdivisions } = getConfig();
       if (beat >= beats) beat = 0;
 
       const accent = accents[beat] ?? 'weak';
       if (accent !== 'off' || subdivision > 0) {
-        playClick(ctx, kindFor(accent, subdivision), nextTickTime);
+        playClick(context, kindFor(accent, subdivision), time);
       }
-      onTick({ time: nextTickTime, beat, subdivision });
+      onTick({ time, beat, subdivision });
 
-      nextTickTime += 60 / bpm / subdivisions;
       subdivision += 1;
       if (subdivision >= subdivisions) {
         subdivision = 0;
         beat = (beat + 1) % beats;
       }
-    }
-  }
-
-  async function start(): Promise<void> {
-    if (timer !== null) return;
-    ctx ??= new AudioContext();
-    if (ctx.state === 'suspended') await ctx.resume();
-
-    beat = 0;
-    subdivision = 0;
-    // Small offset so the first click is comfortably inside the lookahead.
-    nextTickTime = ctx.currentTime + 0.06;
-    scheduleDue();
-    timer = window.setInterval(scheduleDue, LOOKAHEAD_MS);
-    wakeLock.start();
-  }
-
-  function stop(): void {
-    wakeLock.stop();
-    if (timer !== null) {
-      clearInterval(timer);
-      timer = null;
-    }
-    if (ctx) {
-      void ctx.close();
-      ctx = null;
-    }
-  }
-
-  return { start, stop, now: () => ctx?.currentTime ?? 0 };
+    },
+  });
 }

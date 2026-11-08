@@ -10,7 +10,7 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
 
     <div class="melodies-card">
       <div class="melodies-round-header">
-        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Asc + desc</span>
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key A · Asc + desc</span>
         <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
       </div>
 
@@ -128,7 +128,7 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
 
     <div class="melodies-card">
       <div class="melodies-round-header">
-        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Asc + desc</span>
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key A · Asc + desc</span>
         <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
       </div>
 
@@ -956,7 +956,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
 
     <div class="melodies-card">
       <div class="melodies-round-header">
-        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Asc + desc</span>
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key A · Asc + desc</span>
         <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
       </div>
 
@@ -1074,7 +1074,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
 
     <div class="melodies-card">
       <div class="melodies-round-header">
-        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Asc + desc</span>
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key A · Asc + desc</span>
         <span class="melodies-timer" id="earTrainerRoundDetail">4 notes · 3 intervals</span>
       </div>
 
@@ -1782,7 +1782,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
 
     <div class="melodies-card">
       <div class="melodies-round-header">
-        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key C · Asc + desc</span>
+        <span class="melodies-round" id="earTrainerRoundLabel">Oct 2–3 · Key A · Asc + desc</span>
         <span class="melodies-timer" id="earTrainerRoundDetail">3 notes · 2 intervals</span>
       </div>
 

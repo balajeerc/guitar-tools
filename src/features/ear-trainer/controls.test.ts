@@ -12,6 +12,53 @@ describe('ear trainer user flow', () => {
     vi.resetModules();
     ({ initEarTrainerFeature } = await import('./index'));
   });
+  it('labels a random-key phrase with the key actually played, including a lower flat seventh', async () => {
+    vi.useFakeTimers();
+    const audio = audioHarness();
+    const random = vi.spyOn(crypto, 'getRandomValues').mockImplementation((array) => {
+      (array as Uint32Array).fill(0);
+      return array;
+    });
+    mountApp();
+    saveEarTrainerSettings({
+      ...DEFAULT_EAR_TRAINER_SETTINGS,
+      octaveStart: 3,
+      octaveEnd: 3,
+      playRootFirst: true,
+    });
+    initEarTrainerFeature();
+    for (const value of [10, 0, 3, 10]) {
+      random.mockImplementationOnce((array) => {
+        (array as Uint32Array).fill(value);
+        return array;
+      });
+    }
+    click('#earTrainerNewBtn');
+    expect(element('#earTrainerRoundLabel').textContent).toBe(
+      'Oct 3–3 · Key G · Root first · Asc + desc'
+    );
+    click('#earTrainerPlayBtn');
+    await settle();
+    const frequencies = audio.events
+      .filter(
+        (event) =>
+          event.method === 'frequency.set' && audio.nodes[event.node]?.kind === 'oscillator'
+      )
+      .map((event) => event.args[0]);
+    expect(frequencies).toEqual([55, 53, 59].map((midi) => 440 * 2 ** ((midi - 69) / 12)));
+    await vi.advanceTimersByTimeAsync(10_000);
+    change('#earTrainerDegreeInput', '173');
+    click('[data-ear-trainer-accidental="1"]');
+    click('#earTrainerCheckBtn');
+    expect(element('#earTrainerStatus').textContent).toBe('You got it!');
+    expect(element('#earTrainerResult').textContent).toContain('G3 ↓ F3 ↑ B3');
+    expect(element('#earTrainerResult').textContent).toContain('Key G · root G3.');
+    expect(loadEarTrainerSettings().keyIndex).toBe(3);
+    click('#earTrainerNewBtn');
+    expect(element('#earTrainerRoundLabel').textContent).toContain('Key A ·');
+    click('#earTrainerFixKey');
+    expect(element('#earTrainerRoundLabel').textContent).toContain('Key C ·');
+  });
   it('checks complete played answers, preserves the input caret and cancels stale playback', async () => {
     vi.useFakeTimers();
     const audio = audioHarness();

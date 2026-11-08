@@ -64,9 +64,9 @@ function settingsHint(settings: EarTrainerSettings): string {
   return `${range} ${directionHint(settings)} ${start} ${key}`;
 }
 
-function roundLabel(settings: EarTrainerSettings): string {
+function roundLabel(settings: EarTrainerSettings, keyIndex: number): string {
   const range = `Oct ${settings.octaveStart}–${settings.octaveEnd}`;
-  const key = `Key ${keyName(settings.keyIndex)}`;
+  const key = `Key ${keyName(keyIndex)}`;
   const rootFirst = settings.playRootFirst ? ' · Root first' : '';
   return `${range} · ${key}${rootFirst} · ${directionLabel(settings)}`;
 }
@@ -97,7 +97,7 @@ export function renderExercise(
   status: string,
   hint: string
 ): void {
-  setText('earTrainerRoundLabel', roundLabel(settings));
+  setText('earTrainerRoundLabel', roundLabel(settings, exercise.keyIndex));
   setText(
     'earTrainerRoundDetail',
     `${noteCountLabel(exercise.notes.length, 'note', 'notes')} · ${noteCountLabel(exercise.intervals.length, 'interval', 'intervals')}`

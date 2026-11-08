@@ -78,6 +78,22 @@ describe('exercise settings', () => {
     ]);
   });
   it.each([
+    { playRootFirst: false, directions: ['descending'] },
+    { playRootFirst: true, directions: ['ascending', 'descending'] },
+  ] as const)(
+    'keeps ascending available when root-first is $playRootFirst',
+    ({ playRootFirst, directions }) => {
+      expect(normalizeSettings({ directions: ['descending'], playRootFirst }).directions).toEqual(
+        directions
+      );
+    }
+  );
+  it('normalizes descending-only legacy root-first settings', () => {
+    expect(
+      normalizeSettings({ directions: ['descending'], alwaysPlayRoot: true } as never).directions
+    ).toEqual(['ascending', 'descending']);
+  });
+  it.each([
     ['1', 0],
     ['2', 2],
     ['3', 4],
@@ -138,15 +154,16 @@ describe('exercise generation', () => {
               true
             );
             expect(exercise.rootMidi).toBe(playRootFirst ? exercise.notes[0] : null);
+            expect(exercise.rootMidi).toBe(playRootFirst ? lowerRoot : null);
           }
         }
       }
     }
   );
   it.each([
-    { root: 'lower', random: () => 0, notes: [55, 56, 57] },
-    { root: 'upper', random: (length: number) => length - 1, notes: [67, 55, 67] },
-  ])('can start on the $root boundary root without leaving the range', ({ random, notes }) => {
+    { selection: 'first', random: () => 0, notes: [55, 56, 57] },
+    { selection: 'last', random: (length: number) => length - 1, notes: [55, 67, 55] },
+  ])('starts on the lowest root with the $selection random choice', ({ random, notes }) => {
     const exercise = createExercise(
       {
         ...DEFAULT_EAR_TRAINER_SETTINGS,
@@ -185,6 +202,7 @@ describe('exercise generation', () => {
         );
         expect(exercise.notes).toHaveLength(4);
         const root = 36 + ((keyIndex + 9) % 12);
+        expect(exercise.notes[0]).toBe(root);
         expect(exercise.notes.every((note) => note >= root && note <= root + 36)).toBe(true);
         expect(exercise.intervals.every((interval) => interval >= 1 && interval <= 12)).toBe(true);
         expect(exercise.rootMidi).toBe(exercise.notes[0]);
@@ -224,7 +242,7 @@ describe('exercise generation', () => {
   );
   it.each([
     ['ascending', 2, [59, 60, 61]],
-    ['descending', 3, [60, 59, 58]],
+    ['descending', 3, [48, 49, 50]],
     ['ascending', 3, [48, 49, 50]],
   ] as const)('finds a root with space in a one-octave %s range', (direction, keyIndex, notes) => {
     expect(

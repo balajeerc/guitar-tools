@@ -104,7 +104,8 @@ function normalizedDirections(value: null | Partial<EarTrainerSettings>): EarTra
   const stored = value?.directions;
   if (!Array.isArray(stored)) return [...DIRECTIONS];
   const directions = DIRECTIONS.filter((direction) => stored.includes(direction));
-  return directions.length > 0 ? directions : [...DIRECTIONS];
+  const ascendingRequired = normalizedPlayRootFirst(value) && !directions.includes('ascending');
+  return directions.length === 0 || ascendingRequired ? [...DIRECTIONS] : directions;
 }
 
 function normalizedPlayRootFirst(value: null | Partial<EarTrainerSettings>): boolean {
@@ -199,12 +200,6 @@ function rootMidiForOctave(keyIndex: number, octave: number): number {
   return (octave + 1) * 12 + keyPitchClass(keyIndex);
 }
 
-function rootMidis(keyIndex: number, octaveStart: number, octaveEnd: number): number[] {
-  return Array.from({ length: octaveEnd - octaveStart + 1 }, (_, index) =>
-    rootMidiForOctave(keyIndex, octaveStart + index)
-  );
-}
-
 function randomNote(low: number, high: number, random: RandomIndex): number {
   return low + random(high - low + 1);
 }
@@ -222,26 +217,8 @@ function startLimits(
   };
 }
 
-function chooseRoot(
-  settings: EarTrainerSettings,
-  keyIndex: number,
-  range: NoteBounds,
-  random: RandomIndex
-): number {
-  const limits = startLimits(range, settings.directions, settings.noteCount);
-  const roots = rootMidis(keyIndex, settings.octaveStart, settings.octaveEnd + 1).filter(
-    (root) => root >= limits.low && root <= limits.high
-  );
-  return requiredAt(roots, random(roots.length));
-}
-
-function chooseStart(
-  settings: EarTrainerSettings,
-  keyIndex: number,
-  range: NoteBounds,
-  random: RandomIndex
-): number {
-  if (settings.playRootFirst) return chooseRoot(settings, keyIndex, range, random);
+function chooseStart(settings: EarTrainerSettings, range: NoteBounds, random: RandomIndex): number {
+  if (settings.playRootFirst) return range.low;
   const limits = startLimits(range, settings.directions, settings.noteCount);
   return randomNote(limits.low, limits.high, random);
 }
@@ -280,11 +257,10 @@ function nextNote(
 
 function buildNotes(
   settings: EarTrainerSettings,
-  keyIndex: number,
   range: NoteBounds,
   random: RandomIndex
 ): number[] {
-  const start = chooseStart(settings, keyIndex, range, random);
+  const start = chooseStart(settings, range, random);
   const notes = [start];
   while (notes.length < settings.noteCount) {
     const remaining = settings.noteCount - notes.length - 1;
@@ -295,12 +271,13 @@ function buildNotes(
 }
 
 export function createExercise(
-  settings: EarTrainerSettings,
+  preferences: EarTrainerSettings,
   random: RandomIndex = randomIndex
 ): EarTrainerExercise {
+  const settings = normalizeSettings(preferences);
   const keyIndex = settings.fixedKey ? settings.keyIndex : random(12);
   const range = octaveRange(settings.octaveStart, settings.octaveEnd, keyIndex);
-  const notes = buildNotes(settings, keyIndex, range, random);
+  const notes = buildNotes(settings, range, random);
 
   return {
     notes,

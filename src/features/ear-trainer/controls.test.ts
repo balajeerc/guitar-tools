@@ -12,6 +12,31 @@ describe('ear trainer user flow', () => {
     vi.resetModules();
     ({ initEarTrainerFeature } = await import('./index'));
   });
+  it('keeps ascending enabled for root-first and restores direction editing when it is off', () => {
+    mountApp();
+    saveEarTrainerSettings({
+      ...DEFAULT_EAR_TRAINER_SETTINGS,
+      playRootFirst: true,
+      directions: ['descending'],
+    });
+    initEarTrainerFeature();
+    const ascending = element('#earTrainerAscending') as HTMLInputElement;
+    expect(ascending.checked).toBe(true);
+    expect(ascending.disabled).toBe(true);
+    click('#earTrainerAscending');
+    expect(loadEarTrainerSettings().directions).toEqual(['ascending', 'descending']);
+    expect(element('#earTrainerSettingsHint').textContent).toContain(
+      'The first note is the lowest root'
+    );
+    click('#earTrainerPlayRootFirst');
+    expect(ascending.disabled).toBe(false);
+    click('#earTrainerAscending');
+    expect(loadEarTrainerSettings().directions).toEqual(['descending']);
+    click('#earTrainerPlayRootFirst');
+    expect(ascending.checked).toBe(true);
+    expect(ascending.disabled).toBe(true);
+    expect(loadEarTrainerSettings().directions).toEqual(['ascending', 'descending']);
+  });
   it('plays and labels a random-key phrase within the selected root-to-root range', async () => {
     vi.useFakeTimers();
     const audio = audioHarness();
@@ -27,7 +52,7 @@ describe('ear trainer user flow', () => {
       playRootFirst: true,
     });
     initEarTrainerFeature();
-    for (const value of [10, 0, 9, 7]) {
+    for (const value of [10, 9, 7]) {
       random.mockImplementationOnce((array) => {
         (array as Uint32Array).fill(value);
         return array;
@@ -198,10 +223,12 @@ describe('ear trainer user flow', () => {
     expect((element('#earTrainerOctaveStart') as HTMLInputElement).value).toBe('2');
     click('#earTrainerDescending');
     click('#earTrainerAscending');
+    expect(loadEarTrainerSettings().directions).toEqual(['ascending', 'descending']);
+    click('#earTrainerPlayRootFirst');
+    click('#earTrainerAscending');
     expect(loadEarTrainerSettings().directions).toEqual(['descending']);
     click('#earTrainerDescending');
     expect((element('#earTrainerDescending') as HTMLInputElement).checked).toBe(true);
-    click('#earTrainerPlayRootFirst');
     click('#earTrainerFixKey');
     for (const tone of ['warm', 'pure', 'bright', 'pluck']) click(`#earTrainerTone${tone}Btn`);
     click('#earTrainerDegreeEntry');

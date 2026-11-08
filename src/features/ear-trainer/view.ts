@@ -56,7 +56,7 @@ function directionLabel(settings: EarTrainerSettings): string {
 function settingsHint(settings: EarTrainerSettings): string {
   const range = `Notes stay from the key's root in octave ${settings.octaveStart} through its root in octave ${settings.octaveEnd + 1}, inclusive.`;
   const start = settings.playRootFirst
-    ? 'The first note is the root, so its box starts at 1.'
+    ? 'The first note is the lowest root, so its box starts at 1. Ascending stays enabled to allow movement from this root.'
     : 'The first note is random.';
   const key = settings.fixedKey
     ? `Key fixed to ${keyName(settings.keyIndex)}.`
@@ -80,6 +80,7 @@ export function renderSettings(settings: EarTrainerSettings): void {
   setInputValue('earTrainerOctaveEnd', settings.octaveEnd);
   setText('earTrainerNotesDisplay', String(settings.noteCount));
   setChecked('earTrainerAscending', settings.directions.includes('ascending'));
+  setDisabled('earTrainerAscending', settings.playRootFirst);
   setChecked('earTrainerDescending', settings.directions.includes('descending'));
   setChecked('earTrainerPlayRootFirst', settings.playRootFirst);
   setChecked('earTrainerFixKey', settings.fixedKey);

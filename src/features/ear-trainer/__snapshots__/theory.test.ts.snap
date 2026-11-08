@@ -19,216 +19,216 @@ exports[`exercise generation > bounds nonzero crypto values before using them as
 exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 0 1`] = `
 {
   "intervals": [
-    10,
-    1,
-    1,
+    12,
+    12,
+    12,
   ],
   "keyIndex": 0,
   "notes": [
+    45,
+    57,
     69,
-    79,
-    80,
     81,
   ],
-  "rootMidi": 69,
+  "rootMidi": 45,
 }
 `;
 
 exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 1 1`] = `
 {
   "intervals": [
-    10,
-    1,
-    1,
+    12,
+    12,
+    12,
   ],
   "keyIndex": 1,
   "notes": [
+    46,
+    58,
     70,
-    80,
-    81,
     82,
   ],
-  "rootMidi": 70,
+  "rootMidi": 46,
 }
 `;
 
 exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 2 1`] = `
 {
   "intervals": [
-    10,
-    1,
-    1,
+    12,
+    12,
+    12,
   ],
   "keyIndex": 2,
   "notes": [
+    47,
+    59,
     71,
-    81,
-    82,
     83,
   ],
-  "rootMidi": 71,
+  "rootMidi": 47,
 }
 `;
 
 exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 3 1`] = `
 {
   "intervals": [
-    10,
-    1,
-    1,
+    12,
+    12,
+    12,
   ],
   "keyIndex": 3,
   "notes": [
+    36,
+    48,
     60,
-    70,
-    71,
     72,
   ],
-  "rootMidi": 60,
+  "rootMidi": 36,
 }
 `;
 
 exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 4 1`] = `
 {
   "intervals": [
-    10,
-    1,
-    1,
+    12,
+    12,
+    12,
   ],
   "keyIndex": 4,
   "notes": [
+    37,
+    49,
     61,
-    71,
-    72,
     73,
   ],
-  "rootMidi": 61,
+  "rootMidi": 37,
 }
 `;
 
 exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 5 1`] = `
 {
   "intervals": [
-    10,
-    1,
-    1,
+    12,
+    12,
+    12,
   ],
   "keyIndex": 5,
   "notes": [
+    38,
+    50,
     62,
-    72,
-    73,
     74,
   ],
-  "rootMidi": 62,
+  "rootMidi": 38,
 }
 `;
 
 exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 6 1`] = `
 {
   "intervals": [
-    10,
-    1,
-    1,
+    12,
+    12,
+    12,
   ],
   "keyIndex": 6,
   "notes": [
+    39,
+    51,
     63,
-    73,
-    74,
     75,
   ],
-  "rootMidi": 63,
+  "rootMidi": 39,
 }
 `;
 
 exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 7 1`] = `
 {
   "intervals": [
-    10,
-    1,
-    1,
+    12,
+    12,
+    12,
   ],
   "keyIndex": 7,
   "notes": [
+    40,
+    52,
     64,
-    74,
-    75,
     76,
   ],
-  "rootMidi": 64,
+  "rootMidi": 40,
 }
 `;
 
 exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 8 1`] = `
 {
   "intervals": [
-    10,
-    1,
-    1,
+    12,
+    12,
+    12,
   ],
   "keyIndex": 8,
   "notes": [
+    41,
+    53,
     65,
-    75,
-    76,
     77,
   ],
-  "rootMidi": 65,
+  "rootMidi": 41,
 }
 `;
 
 exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 9 1`] = `
 {
   "intervals": [
-    10,
-    1,
-    1,
+    12,
+    12,
+    12,
   ],
   "keyIndex": 9,
   "notes": [
+    42,
+    54,
     66,
-    76,
-    77,
     78,
   ],
-  "rootMidi": 66,
+  "rootMidi": 42,
 }
 `;
 
 exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 10 1`] = `
 {
   "intervals": [
-    10,
-    1,
-    1,
+    12,
+    12,
+    12,
   ],
   "keyIndex": 10,
   "notes": [
+    43,
+    55,
     67,
-    77,
-    78,
     79,
   ],
-  "rootMidi": 67,
+  "rootMidi": 43,
 }
 `;
 
 exports[`exercise generation > keeps rooted phrases within the selected multi-octave range ([ 'ascending' ]) > key 11 1`] = `
 {
   "intervals": [
-    10,
-    1,
-    1,
+    12,
+    12,
+    12,
   ],
   "keyIndex": 11,
   "notes": [
+    44,
+    56,
     68,
-    78,
-    79,
     80,
   ],
-  "rootMidi": 68,
+  "rootMidi": 44,
 }
 `;
 
@@ -241,12 +241,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 0,
   "notes": [
-    81,
-    69,
+    45,
     57,
     45,
+    57,
   ],
-  "rootMidi": 81,
+  "rootMidi": 45,
 }
 `;
 
@@ -259,12 +259,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 1,
   "notes": [
-    82,
-    70,
+    46,
     58,
     46,
+    58,
   ],
-  "rootMidi": 82,
+  "rootMidi": 46,
 }
 `;
 
@@ -277,12 +277,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 2,
   "notes": [
-    83,
-    71,
+    47,
     59,
     47,
+    59,
   ],
-  "rootMidi": 83,
+  "rootMidi": 47,
 }
 `;
 
@@ -295,12 +295,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 3,
   "notes": [
-    72,
-    60,
+    36,
     48,
     36,
+    48,
   ],
-  "rootMidi": 72,
+  "rootMidi": 36,
 }
 `;
 
@@ -313,12 +313,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 4,
   "notes": [
-    73,
-    61,
+    37,
     49,
     37,
+    49,
   ],
-  "rootMidi": 73,
+  "rootMidi": 37,
 }
 `;
 
@@ -331,12 +331,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 5,
   "notes": [
-    74,
-    62,
+    38,
     50,
     38,
+    50,
   ],
-  "rootMidi": 74,
+  "rootMidi": 38,
 }
 `;
 
@@ -349,12 +349,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 6,
   "notes": [
-    75,
-    63,
+    39,
     51,
     39,
+    51,
   ],
-  "rootMidi": 75,
+  "rootMidi": 39,
 }
 `;
 
@@ -367,12 +367,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 7,
   "notes": [
-    76,
-    64,
+    40,
     52,
     40,
+    52,
   ],
-  "rootMidi": 76,
+  "rootMidi": 40,
 }
 `;
 
@@ -385,12 +385,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 8,
   "notes": [
-    77,
-    65,
+    41,
     53,
     41,
+    53,
   ],
-  "rootMidi": 77,
+  "rootMidi": 41,
 }
 `;
 
@@ -403,12 +403,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 9,
   "notes": [
-    78,
-    66,
+    42,
     54,
     42,
+    54,
   ],
-  "rootMidi": 78,
+  "rootMidi": 42,
 }
 `;
 
@@ -421,12 +421,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 10,
   "notes": [
-    79,
-    67,
+    43,
     55,
     43,
+    55,
   ],
-  "rootMidi": 79,
+  "rootMidi": 43,
 }
 `;
 
@@ -439,12 +439,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 11,
   "notes": [
-    80,
-    68,
+    44,
     56,
     44,
+    56,
   ],
-  "rootMidi": 80,
+  "rootMidi": 44,
 }
 `;
 
@@ -457,12 +457,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 0,
   "notes": [
-    81,
-    69,
+    45,
     57,
     45,
+    57,
   ],
-  "rootMidi": 81,
+  "rootMidi": 45,
 }
 `;
 
@@ -475,12 +475,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 1,
   "notes": [
-    82,
-    70,
+    46,
     58,
     46,
+    58,
   ],
-  "rootMidi": 82,
+  "rootMidi": 46,
 }
 `;
 
@@ -493,12 +493,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 2,
   "notes": [
-    83,
-    71,
+    47,
     59,
     47,
+    59,
   ],
-  "rootMidi": 83,
+  "rootMidi": 47,
 }
 `;
 
@@ -511,12 +511,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 3,
   "notes": [
-    72,
-    60,
+    36,
     48,
     36,
+    48,
   ],
-  "rootMidi": 72,
+  "rootMidi": 36,
 }
 `;
 
@@ -529,12 +529,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 4,
   "notes": [
-    73,
-    61,
+    37,
     49,
     37,
+    49,
   ],
-  "rootMidi": 73,
+  "rootMidi": 37,
 }
 `;
 
@@ -547,12 +547,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 5,
   "notes": [
-    74,
-    62,
+    38,
     50,
     38,
+    50,
   ],
-  "rootMidi": 74,
+  "rootMidi": 38,
 }
 `;
 
@@ -565,12 +565,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 6,
   "notes": [
-    75,
-    63,
+    39,
     51,
     39,
+    51,
   ],
-  "rootMidi": 75,
+  "rootMidi": 39,
 }
 `;
 
@@ -583,12 +583,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 7,
   "notes": [
-    76,
-    64,
+    40,
     52,
     40,
+    52,
   ],
-  "rootMidi": 76,
+  "rootMidi": 40,
 }
 `;
 
@@ -601,12 +601,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 8,
   "notes": [
-    77,
-    65,
+    41,
     53,
     41,
+    53,
   ],
-  "rootMidi": 77,
+  "rootMidi": 41,
 }
 `;
 
@@ -619,12 +619,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 9,
   "notes": [
-    78,
-    66,
+    42,
     54,
     42,
+    54,
   ],
-  "rootMidi": 78,
+  "rootMidi": 42,
 }
 `;
 
@@ -637,12 +637,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 10,
   "notes": [
-    79,
-    67,
+    43,
     55,
     43,
+    55,
   ],
-  "rootMidi": 79,
+  "rootMidi": 43,
 }
 `;
 
@@ -655,12 +655,12 @@ exports[`exercise generation > keeps rooted phrases within the selected multi-oc
   ],
   "keyIndex": 11,
   "notes": [
-    80,
-    68,
+    44,
     56,
     44,
+    56,
   ],
-  "rootMidi": 80,
+  "rootMidi": 44,
 }
 `;
 

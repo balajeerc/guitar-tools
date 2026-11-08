@@ -54,7 +54,7 @@ function directionLabel(settings: EarTrainerSettings): string {
 }
 
 function settingsHint(settings: EarTrainerSettings): string {
-  const range = `Notes stay between octave ${settings.octaveStart} and ${settings.octaveEnd}.`;
+  const range = `Notes stay from the key's root in octave ${settings.octaveStart} through its root in octave ${settings.octaveEnd + 1}, inclusive.`;
   const start = settings.playRootFirst
     ? 'The first note is the root, so its box starts at 1.'
     : 'The first note is random.';

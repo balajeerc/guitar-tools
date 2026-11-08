@@ -105,6 +105,62 @@ describe('exercise settings', () => {
 });
 
 describe('exercise generation', () => {
+  it.each(
+    ([['ascending'], ['descending'], ['ascending', 'descending']] as const).flatMap((directions) =>
+      [false, true].map((playRootFirst) => ({ directions, playRootFirst }))
+    )
+  )(
+    'keeps one-octave phrases inside the key roots ($directions, root first: $playRootFirst)',
+    ({ directions, playRootFirst }) => {
+      expect.hasAssertions();
+      const lowerRoots = [57, 58, 59, 48, 49, 50, 51, 52, 53, 54, 55, 56];
+      for (const [keyIndex, lowerRoot] of lowerRoots.entries()) {
+        for (const noteCount of [2, 3, 4]) {
+          for (const random of [() => 0, (length: number) => length - 1]) {
+            const exercise = createExercise(
+              {
+                ...DEFAULT_EAR_TRAINER_SETTINGS,
+                octaveStart: 3,
+                octaveEnd: 3,
+                directions,
+                fixedKey: true,
+                keyIndex,
+                noteCount,
+                playRootFirst,
+              },
+              random
+            );
+            expect(exercise.notes).toHaveLength(noteCount);
+            expect(
+              exercise.notes.every((note) => note >= lowerRoot && note <= lowerRoot + 12)
+            ).toBe(true);
+            expect(exercise.intervals.every((interval) => interval >= 1 && interval <= 12)).toBe(
+              true
+            );
+            expect(exercise.rootMidi).toBe(playRootFirst ? exercise.notes[0] : null);
+          }
+        }
+      }
+    }
+  );
+  it.each([
+    { root: 'lower', random: () => 0, notes: [55, 56, 57] },
+    { root: 'upper', random: (length: number) => length - 1, notes: [67, 55, 67] },
+  ])('can start on the $root boundary root without leaving the range', ({ random, notes }) => {
+    const exercise = createExercise(
+      {
+        ...DEFAULT_EAR_TRAINER_SETTINGS,
+        octaveStart: 3,
+        octaveEnd: 3,
+        fixedKey: true,
+        keyIndex: 10,
+        playRootFirst: true,
+      },
+      random
+    );
+    expect(exercise.notes).toEqual(notes);
+    expect(exercise.rootMidi).toBe(notes[0]);
+  });
   it.each([
     { directions: ['ascending'] },
     { directions: ['descending'] },
@@ -128,7 +184,8 @@ describe('exercise generation', () => {
           (length) => length - 1
         );
         expect(exercise.notes).toHaveLength(4);
-        expect(exercise.notes.every((note) => note >= 36 && note <= 71)).toBe(true);
+        const root = 36 + ((keyIndex + 9) % 12);
+        expect(exercise.notes.every((note) => note >= root && note <= root + 36)).toBe(true);
         expect(exercise.intervals.every((interval) => interval >= 1 && interval <= 12)).toBe(true);
         expect(exercise.rootMidi).toBe(exercise.notes[0]);
         expect(exercise).toMatchSnapshot(`key ${keyIndex}`);
@@ -142,7 +199,7 @@ describe('exercise generation', () => {
     });
     const exercise = createExercise(DEFAULT_EAR_TRAINER_SETTINGS);
     expect(exercise.keyIndex).toBe(3);
-    expect(exercise.notes.every((note) => note >= 36 && note <= 59)).toBe(true);
+    expect(exercise.notes.every((note) => note >= 36 && note <= 60)).toBe(true);
     expect(exercise).toMatchSnapshot();
   });
 
@@ -166,7 +223,7 @@ describe('exercise generation', () => {
     }
   );
   it.each([
-    ['ascending', 2, [47, 48, 49]],
+    ['ascending', 2, [59, 60, 61]],
     ['descending', 3, [60, 59, 58]],
     ['ascending', 3, [48, 49, 50]],
   ] as const)('finds a root with space in a one-octave %s range', (direction, keyIndex, notes) => {
@@ -189,7 +246,7 @@ describe('exercise generation', () => {
     const exercise = createExercise(DEFAULT_EAR_TRAINER_SETTINGS, (length) => length - 1);
     expect(exercise).toEqual({
       keyIndex: 11,
-      notes: [59, 47, 59],
+      notes: [68, 56, 44],
       intervals: [12, 12],
       rootMidi: null,
     });
@@ -201,7 +258,7 @@ describe('exercise generation', () => {
     });
     expect(createExercise(DEFAULT_EAR_TRAINER_SETTINGS)).toEqual({
       keyIndex: 0,
-      notes: [36, 37, 38],
+      notes: [45, 46, 47],
       intervals: [1, 1],
       rootMidi: null,
     });

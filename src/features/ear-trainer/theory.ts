@@ -186,8 +186,8 @@ function keyPitchClass(keyIndex: number): number {
   return (keyIndex + 9) % 12;
 }
 
-function octaveRange(start: number, end: number): { high: number; low: number } {
-  return { low: (start + 1) * 12, high: (end + 1) * 12 + 11 };
+function octaveRange(start: number, end: number, keyIndex: number): NoteBounds {
+  return { low: rootMidiForOctave(keyIndex, start), high: rootMidiForOctave(keyIndex, end + 1) };
 }
 
 interface NoteBounds {
@@ -227,29 +227,12 @@ function chooseRoot(
   keyIndex: number,
   range: NoteBounds,
   random: RandomIndex
-): { bounds: NoteBounds; start: number } {
+): number {
   const limits = startLimits(range, settings.directions, settings.noteCount);
-  const roots = rootMidis(keyIndex, settings.octaveStart, settings.octaveEnd).filter(
+  const roots = rootMidis(keyIndex, settings.octaveStart, settings.octaveEnd + 1).filter(
     (root) => root >= limits.low && root <= limits.high
   );
-  if (roots.length > 0) {
-    return { start: requiredAt(roots, random(roots.length)), bounds: range };
-  }
-  // A one-octave range can leave no root with room to move in the chosen direction.
-  // Use the adjacent root octave so the phrase still starts on the root and moves correctly.
-  const ascendingOnly = settings.directions.length === 1 && settings.directions[0] === 'ascending';
-  const fallbackOctave = ascendingOnly ? settings.octaveStart - 1 : settings.octaveEnd + 1;
-  const fallbackRoots = rootMidis(keyIndex, fallbackOctave, fallbackOctave).filter(
-    (root) => root >= 0 && root <= 127
-  );
-  const start =
-    fallbackRoots.length > 0
-      ? requiredAt(fallbackRoots, random(fallbackRoots.length))
-      : randomNote(limits.low, limits.high, random);
-  return {
-    start,
-    bounds: { low: Math.min(range.low, start), high: Math.max(range.high, start) },
-  };
+  return requiredAt(roots, random(roots.length));
 }
 
 function chooseStart(
@@ -257,10 +240,10 @@ function chooseStart(
   keyIndex: number,
   range: NoteBounds,
   random: RandomIndex
-): { bounds: NoteBounds; start: number } {
+): number {
   if (settings.playRootFirst) return chooseRoot(settings, keyIndex, range, random);
   const limits = startLimits(range, settings.directions, settings.noteCount);
-  return { start: randomNote(limits.low, limits.high, random), bounds: range };
+  return randomNote(limits.low, limits.high, random);
 }
 
 function nextNoteChoices(
@@ -301,12 +284,12 @@ function buildNotes(
   range: NoteBounds,
   random: RandomIndex
 ): number[] {
-  const { start, bounds } = chooseStart(settings, keyIndex, range, random);
+  const start = chooseStart(settings, keyIndex, range, random);
   const notes = [start];
   while (notes.length < settings.noteCount) {
     const remaining = settings.noteCount - notes.length - 1;
     const current = requiredAt(notes, notes.length - 1);
-    notes.push(nextNote(current, bounds, settings.directions, remaining, random));
+    notes.push(nextNote(current, range, settings.directions, remaining, random));
   }
   return notes;
 }
@@ -315,8 +298,8 @@ export function createExercise(
   settings: EarTrainerSettings,
   random: RandomIndex = randomIndex
 ): EarTrainerExercise {
-  const range = octaveRange(settings.octaveStart, settings.octaveEnd);
   const keyIndex = settings.fixedKey ? settings.keyIndex : random(12);
+  const range = octaveRange(settings.octaveStart, settings.octaveEnd, keyIndex);
   const notes = buildNotes(settings, keyIndex, range, random);
 
   return {

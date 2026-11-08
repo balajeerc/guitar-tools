@@ -12,7 +12,7 @@ describe('ear trainer user flow', () => {
     vi.resetModules();
     ({ initEarTrainerFeature } = await import('./index'));
   });
-  it('labels a random-key phrase with the key actually played, including a lower flat seventh', async () => {
+  it('plays and labels a random-key phrase within the selected root-to-root range', async () => {
     vi.useFakeTimers();
     const audio = audioHarness();
     const random = vi.spyOn(crypto, 'getRandomValues').mockImplementation((array) => {
@@ -27,7 +27,7 @@ describe('ear trainer user flow', () => {
       playRootFirst: true,
     });
     initEarTrainerFeature();
-    for (const value of [10, 0, 3, 10]) {
+    for (const value of [10, 0, 9, 7]) {
       random.mockImplementationOnce((array) => {
         (array as Uint32Array).fill(value);
         return array;
@@ -37,6 +37,9 @@ describe('ear trainer user flow', () => {
     expect(element('#earTrainerRoundLabel').textContent).toBe(
       'Oct 3–3 · Key G · Root first · Asc + desc'
     );
+    expect(element('#earTrainerSettingsHint').textContent).toContain(
+      "Notes stay from the key's root in octave 3 through its root in octave 4, inclusive."
+    );
     click('#earTrainerPlayBtn');
     await settle();
     const frequencies = audio.events
@@ -45,13 +48,13 @@ describe('ear trainer user flow', () => {
           event.method === 'frequency.set' && audio.nodes[event.node]?.kind === 'oscillator'
       )
       .map((event) => event.args[0]);
-    expect(frequencies).toEqual([55, 53, 59].map((midi) => 440 * 2 ** ((midi - 69) / 12)));
+    expect(frequencies).toEqual([55, 65, 59].map((midi) => 440 * 2 ** ((midi - 69) / 12)));
     await vi.advanceTimersByTimeAsync(10_000);
     change('#earTrainerDegreeInput', '173');
     click('[data-ear-trainer-accidental="1"]');
     click('#earTrainerCheckBtn');
     expect(element('#earTrainerStatus').textContent).toBe('You got it!');
-    expect(element('#earTrainerResult').textContent).toContain('G3 ↓ F3 ↑ B3');
+    expect(element('#earTrainerResult').textContent).toContain('G3 ↑ F4 ↓ B3');
     expect(element('#earTrainerResult').textContent).toContain('Key G · root G3.');
     expect(loadEarTrainerSettings().keyIndex).toBe(3);
     click('#earTrainerNewBtn');

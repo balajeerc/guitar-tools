@@ -79,13 +79,13 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is random. Key changes each exercise.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is random. Key changes each exercise.</p>
         </div>
       </details>
 
       <div class="melodies-prompt" id="earTrainerPrompt">
         <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
-        <strong id="earTrainerStatus">0 of 3 notes correct</strong>
+        <strong id="earTrainerStatus">1 of 3 notes correct</strong>
         <span id="earTrainerHint">Highlighted notes need another listen. Change them and check again.</span>
       </div>
 
@@ -94,7 +94,7 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
           Enter each note as a scale degree of the key (1–7)
         </label>
         <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
-          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled incorrect">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled incorrect">2</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled incorrect">3</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental"></button></span></div>
+          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled correct">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled incorrect">2</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled incorrect">3</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental"></button></span></div>
           <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
         </div>
         <p class="ear-trainer-input-hint">
@@ -197,7 +197,7 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is random. Key changes each exercise.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is random. Key changes each exercise.</p>
         </div>
       </details>
 
@@ -315,7 +315,7 @@ exports[`ear trainer user flow > persists settings, constrains ranges, plays exe
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases only ascend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases only ascend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
         </div>
       </details>
 
@@ -435,7 +435,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases only ascend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases only ascend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
         </div>
       </details>
 
@@ -553,7 +553,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases only ascend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases only ascend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
         </div>
       </details>
 
@@ -671,7 +671,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is random. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is random. Key fixed to C.</p>
         </div>
       </details>
 
@@ -789,7 +789,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is random. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is random. Key fixed to C.</p>
         </div>
       </details>
 
@@ -907,7 +907,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is random. Key fixed to B.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is random. Key fixed to B.</p>
         </div>
       </details>
 
@@ -1025,7 +1025,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is random. Key changes each exercise.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is random. Key changes each exercise.</p>
         </div>
       </details>
 
@@ -1143,7 +1143,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is random. Key changes each exercise.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is random. Key changes each exercise.</p>
         </div>
       </details>
 
@@ -1261,7 +1261,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
         </div>
       </details>
 
@@ -1379,7 +1379,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
         </div>
       </details>
 
@@ -1497,7 +1497,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
         </div>
       </details>
 
@@ -1615,7 +1615,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
         </div>
       </details>
 
@@ -1733,7 +1733,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
         </div>
       </details>
 
@@ -1851,7 +1851,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases may ascend or descend. The first note is random. Key changes each exercise.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is random. Key changes each exercise.</p>
         </div>
       </details>
 
@@ -1969,7 +1969,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay between octave 2 and 3. Phrases only ascend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases only ascend. The first note is the root, so its box starts at 1. Key fixed to C.</p>
         </div>
       </details>
 

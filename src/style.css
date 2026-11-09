@@ -3193,6 +3193,20 @@ body {
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
 }
 
+.ear-trainer-constraints {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.ear-trainer-constraints legend {
+  margin-bottom: 8px;
+  padding: 0;
+}
+
 .ear-trainer-setting-row {
   display: flex;
   align-items: center;

@@ -36,6 +36,8 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
           </div>
         </div>
 
+        <fieldset class="ear-trainer-constraints">
+          <legend class="control-label">Constraints</legend>
         <div class="ear-trainer-setting-row">
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerPlayRootFirst">
@@ -44,6 +46,10 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerFixKey">
             <span>Fix key</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerMajorMinorOnly">
+            <span>Major/minor notes only</span>
           </label>
           <div class="ear-trainer-key" id="earTrainerKeyControl" hidden="">
             <span class="control-label">Key:</span>
@@ -70,13 +76,7 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
             </span>
           </div>
         </div>
-
-        <div class="ear-trainer-setting-row">
-          <label class="checkbox-label">
-            <input type="checkbox" id="earTrainerMajorMinorOnly">
-            <span>Major/minor notes only</span>
-          </label>
-        </div>
+        </fieldset>
 
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">
@@ -161,6 +161,8 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
           </div>
         </div>
 
+        <fieldset class="ear-trainer-constraints">
+          <legend class="control-label">Constraints</legend>
         <div class="ear-trainer-setting-row">
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerPlayRootFirst">
@@ -169,6 +171,10 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerFixKey">
             <span>Fix key</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerMajorMinorOnly">
+            <span>Major/minor notes only</span>
           </label>
           <div class="ear-trainer-key" id="earTrainerKeyControl" hidden="">
             <span class="control-label">Key:</span>
@@ -195,13 +201,7 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
             </span>
           </div>
         </div>
-
-        <div class="ear-trainer-setting-row">
-          <label class="checkbox-label">
-            <input type="checkbox" id="earTrainerMajorMinorOnly">
-            <span>Major/minor notes only</span>
-          </label>
-        </div>
+        </fieldset>
 
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">
@@ -286,6 +286,8 @@ exports[`ear trainer user flow > persists settings, constrains ranges, plays exe
           </div>
         </div>
 
+        <fieldset class="ear-trainer-constraints">
+          <legend class="control-label">Constraints</legend>
         <div class="ear-trainer-setting-row">
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerPlayRootFirst">
@@ -294,6 +296,10 @@ exports[`ear trainer user flow > persists settings, constrains ranges, plays exe
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerFixKey">
             <span>Fix key</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerMajorMinorOnly">
+            <span>Major/minor notes only</span>
           </label>
           <div class="ear-trainer-key" id="earTrainerKeyControl">
             <span class="control-label">Key:</span>
@@ -320,13 +326,7 @@ exports[`ear trainer user flow > persists settings, constrains ranges, plays exe
             </span>
           </div>
         </div>
-
-        <div class="ear-trainer-setting-row">
-          <label class="checkbox-label">
-            <input type="checkbox" id="earTrainerMajorMinorOnly">
-            <span>Major/minor notes only</span>
-          </label>
-        </div>
+        </fieldset>
 
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">
@@ -413,6 +413,8 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           </div>
         </div>
 
+        <fieldset class="ear-trainer-constraints">
+          <legend class="control-label">Constraints</legend>
         <div class="ear-trainer-setting-row">
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerPlayRootFirst">
@@ -421,6 +423,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerFixKey">
             <span>Fix key</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerMajorMinorOnly">
+            <span>Major/minor notes only</span>
           </label>
           <div class="ear-trainer-key" id="earTrainerKeyControl">
             <span class="control-label">Key:</span>
@@ -447,13 +453,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             </span>
           </div>
         </div>
-
-        <div class="ear-trainer-setting-row">
-          <label class="checkbox-label">
-            <input type="checkbox" id="earTrainerMajorMinorOnly">
-            <span>Major/minor notes only</span>
-          </label>
-        </div>
+        </fieldset>
 
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">
@@ -538,6 +538,8 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           </div>
         </div>
 
+        <fieldset class="ear-trainer-constraints">
+          <legend class="control-label">Constraints</legend>
         <div class="ear-trainer-setting-row">
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerPlayRootFirst">
@@ -546,6 +548,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerFixKey">
             <span>Fix key</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerMajorMinorOnly">
+            <span>Major/minor notes only</span>
           </label>
           <div class="ear-trainer-key" id="earTrainerKeyControl">
             <span class="control-label">Key:</span>
@@ -572,13 +578,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             </span>
           </div>
         </div>
-
-        <div class="ear-trainer-setting-row">
-          <label class="checkbox-label">
-            <input type="checkbox" id="earTrainerMajorMinorOnly">
-            <span>Major/minor notes only</span>
-          </label>
-        </div>
+        </fieldset>
 
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">
@@ -663,6 +663,8 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           </div>
         </div>
 
+        <fieldset class="ear-trainer-constraints">
+          <legend class="control-label">Constraints</legend>
         <div class="ear-trainer-setting-row">
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerPlayRootFirst">
@@ -671,6 +673,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerFixKey">
             <span>Fix key</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerMajorMinorOnly">
+            <span>Major/minor notes only</span>
           </label>
           <div class="ear-trainer-key" id="earTrainerKeyControl">
             <span class="control-label">Key:</span>
@@ -697,13 +703,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             </span>
           </div>
         </div>
-
-        <div class="ear-trainer-setting-row">
-          <label class="checkbox-label">
-            <input type="checkbox" id="earTrainerMajorMinorOnly">
-            <span>Major/minor notes only</span>
-          </label>
-        </div>
+        </fieldset>
 
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">
@@ -788,6 +788,8 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           </div>
         </div>
 
+        <fieldset class="ear-trainer-constraints">
+          <legend class="control-label">Constraints</legend>
         <div class="ear-trainer-setting-row">
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerPlayRootFirst">
@@ -796,6 +798,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerFixKey">
             <span>Fix key</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerMajorMinorOnly">
+            <span>Major/minor notes only</span>
           </label>
           <div class="ear-trainer-key" id="earTrainerKeyControl">
             <span class="control-label">Key:</span>
@@ -822,13 +828,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             </span>
           </div>
         </div>
-
-        <div class="ear-trainer-setting-row">
-          <label class="checkbox-label">
-            <input type="checkbox" id="earTrainerMajorMinorOnly">
-            <span>Major/minor notes only</span>
-          </label>
-        </div>
+        </fieldset>
 
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">
@@ -913,6 +913,8 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           </div>
         </div>
 
+        <fieldset class="ear-trainer-constraints">
+          <legend class="control-label">Constraints</legend>
         <div class="ear-trainer-setting-row">
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerPlayRootFirst">
@@ -921,6 +923,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerFixKey">
             <span>Fix key</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerMajorMinorOnly">
+            <span>Major/minor notes only</span>
           </label>
           <div class="ear-trainer-key" id="earTrainerKeyControl">
             <span class="control-label">Key:</span>
@@ -947,13 +953,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             </span>
           </div>
         </div>
-
-        <div class="ear-trainer-setting-row">
-          <label class="checkbox-label">
-            <input type="checkbox" id="earTrainerMajorMinorOnly">
-            <span>Major/minor notes only</span>
-          </label>
-        </div>
+        </fieldset>
 
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">
@@ -1038,6 +1038,8 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           </div>
         </div>
 
+        <fieldset class="ear-trainer-constraints">
+          <legend class="control-label">Constraints</legend>
         <div class="ear-trainer-setting-row">
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerPlayRootFirst">
@@ -1046,6 +1048,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerFixKey">
             <span>Fix key</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerMajorMinorOnly">
+            <span>Major/minor notes only</span>
           </label>
           <div class="ear-trainer-key" id="earTrainerKeyControl" hidden="">
             <span class="control-label">Key:</span>
@@ -1072,13 +1078,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             </span>
           </div>
         </div>
-
-        <div class="ear-trainer-setting-row">
-          <label class="checkbox-label">
-            <input type="checkbox" id="earTrainerMajorMinorOnly">
-            <span>Major/minor notes only</span>
-          </label>
-        </div>
+        </fieldset>
 
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">
@@ -1163,6 +1163,8 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           </div>
         </div>
 
+        <fieldset class="ear-trainer-constraints">
+          <legend class="control-label">Constraints</legend>
         <div class="ear-trainer-setting-row">
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerPlayRootFirst">
@@ -1171,6 +1173,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerFixKey">
             <span>Fix key</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerMajorMinorOnly">
+            <span>Major/minor notes only</span>
           </label>
           <div class="ear-trainer-key" id="earTrainerKeyControl" hidden="">
             <span class="control-label">Key:</span>
@@ -1197,13 +1203,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             </span>
           </div>
         </div>
-
-        <div class="ear-trainer-setting-row">
-          <label class="checkbox-label">
-            <input type="checkbox" id="earTrainerMajorMinorOnly">
-            <span>Major/minor notes only</span>
-          </label>
-        </div>
+        </fieldset>
 
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">
@@ -1288,6 +1288,8 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           </div>
         </div>
 
+        <fieldset class="ear-trainer-constraints">
+          <legend class="control-label">Constraints</legend>
         <div class="ear-trainer-setting-row">
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerPlayRootFirst">
@@ -1296,6 +1298,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerFixKey">
             <span>Fix key</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerMajorMinorOnly">
+            <span>Major/minor notes only</span>
           </label>
           <div class="ear-trainer-key" id="earTrainerKeyControl">
             <span class="control-label">Key:</span>
@@ -1322,13 +1328,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             </span>
           </div>
         </div>
-
-        <div class="ear-trainer-setting-row">
-          <label class="checkbox-label">
-            <input type="checkbox" id="earTrainerMajorMinorOnly">
-            <span>Major/minor notes only</span>
-          </label>
-        </div>
+        </fieldset>
 
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">
@@ -1413,6 +1413,8 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           </div>
         </div>
 
+        <fieldset class="ear-trainer-constraints">
+          <legend class="control-label">Constraints</legend>
         <div class="ear-trainer-setting-row">
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerPlayRootFirst">
@@ -1421,6 +1423,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerFixKey">
             <span>Fix key</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerMajorMinorOnly">
+            <span>Major/minor notes only</span>
           </label>
           <div class="ear-trainer-key" id="earTrainerKeyControl">
             <span class="control-label">Key:</span>
@@ -1447,13 +1453,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             </span>
           </div>
         </div>
-
-        <div class="ear-trainer-setting-row">
-          <label class="checkbox-label">
-            <input type="checkbox" id="earTrainerMajorMinorOnly">
-            <span>Major/minor notes only</span>
-          </label>
-        </div>
+        </fieldset>
 
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">
@@ -1538,6 +1538,8 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           </div>
         </div>
 
+        <fieldset class="ear-trainer-constraints">
+          <legend class="control-label">Constraints</legend>
         <div class="ear-trainer-setting-row">
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerPlayRootFirst">
@@ -1546,6 +1548,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerFixKey">
             <span>Fix key</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerMajorMinorOnly">
+            <span>Major/minor notes only</span>
           </label>
           <div class="ear-trainer-key" id="earTrainerKeyControl">
             <span class="control-label">Key:</span>
@@ -1572,13 +1578,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             </span>
           </div>
         </div>
-
-        <div class="ear-trainer-setting-row">
-          <label class="checkbox-label">
-            <input type="checkbox" id="earTrainerMajorMinorOnly">
-            <span>Major/minor notes only</span>
-          </label>
-        </div>
+        </fieldset>
 
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">
@@ -1663,6 +1663,8 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           </div>
         </div>
 
+        <fieldset class="ear-trainer-constraints">
+          <legend class="control-label">Constraints</legend>
         <div class="ear-trainer-setting-row">
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerPlayRootFirst">
@@ -1671,6 +1673,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerFixKey">
             <span>Fix key</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerMajorMinorOnly">
+            <span>Major/minor notes only</span>
           </label>
           <div class="ear-trainer-key" id="earTrainerKeyControl">
             <span class="control-label">Key:</span>
@@ -1697,13 +1703,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             </span>
           </div>
         </div>
-
-        <div class="ear-trainer-setting-row">
-          <label class="checkbox-label">
-            <input type="checkbox" id="earTrainerMajorMinorOnly">
-            <span>Major/minor notes only</span>
-          </label>
-        </div>
+        </fieldset>
 
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">
@@ -1788,6 +1788,8 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           </div>
         </div>
 
+        <fieldset class="ear-trainer-constraints">
+          <legend class="control-label">Constraints</legend>
         <div class="ear-trainer-setting-row">
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerPlayRootFirst">
@@ -1796,6 +1798,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerFixKey">
             <span>Fix key</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerMajorMinorOnly">
+            <span>Major/minor notes only</span>
           </label>
           <div class="ear-trainer-key" id="earTrainerKeyControl">
             <span class="control-label">Key:</span>
@@ -1822,13 +1828,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             </span>
           </div>
         </div>
-
-        <div class="ear-trainer-setting-row">
-          <label class="checkbox-label">
-            <input type="checkbox" id="earTrainerMajorMinorOnly">
-            <span>Major/minor notes only</span>
-          </label>
-        </div>
+        </fieldset>
 
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">
@@ -1913,6 +1913,8 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           </div>
         </div>
 
+        <fieldset class="ear-trainer-constraints">
+          <legend class="control-label">Constraints</legend>
         <div class="ear-trainer-setting-row">
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerPlayRootFirst">
@@ -1921,6 +1923,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerFixKey">
             <span>Fix key</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerMajorMinorOnly">
+            <span>Major/minor notes only</span>
           </label>
           <div class="ear-trainer-key" id="earTrainerKeyControl" hidden="">
             <span class="control-label">Key:</span>
@@ -1947,13 +1953,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             </span>
           </div>
         </div>
-
-        <div class="ear-trainer-setting-row">
-          <label class="checkbox-label">
-            <input type="checkbox" id="earTrainerMajorMinorOnly">
-            <span>Major/minor notes only</span>
-          </label>
-        </div>
+        </fieldset>
 
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">
@@ -2038,6 +2038,8 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           </div>
         </div>
 
+        <fieldset class="ear-trainer-constraints">
+          <legend class="control-label">Constraints</legend>
         <div class="ear-trainer-setting-row">
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerPlayRootFirst">
@@ -2046,6 +2048,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerFixKey">
             <span>Fix key</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerMajorMinorOnly">
+            <span>Major/minor notes only</span>
           </label>
           <div class="ear-trainer-key" id="earTrainerKeyControl">
             <span class="control-label">Key:</span>
@@ -2072,13 +2078,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             </span>
           </div>
         </div>
-
-        <div class="ear-trainer-setting-row">
-          <label class="checkbox-label">
-            <input type="checkbox" id="earTrainerMajorMinorOnly">
-            <span>Major/minor notes only</span>
-          </label>
-        </div>
+        </fieldset>
 
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">

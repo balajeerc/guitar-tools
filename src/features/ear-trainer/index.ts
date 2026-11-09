@@ -334,6 +334,9 @@ function setupSettingEvents(): void {
   getInput('earTrainerPlayRootFirst')?.addEventListener('change', (event) => {
     updateSettings({ playRootFirst: (event.target as HTMLInputElement).checked });
   });
+  getInput('earTrainerMajorMinorOnly')?.addEventListener('change', (event) => {
+    updateSettings({ majorMinorOnly: (event.target as HTMLInputElement).checked });
+  });
   getInput('earTrainerFixKey')?.addEventListener('change', (event) => {
     updateSettings({ fixedKey: (event.target as HTMLInputElement).checked });
   });

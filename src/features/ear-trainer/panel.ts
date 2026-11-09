@@ -82,6 +82,13 @@ export function earTrainerPanelHtml(): string {
           </div>
         </div>
 
+        <div class="ear-trainer-setting-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerMajorMinorOnly" />
+            <span>Major/minor notes only</span>
+          </label>
+        </div>
+
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">
             <legend>Tone</legend>

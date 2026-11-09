@@ -86,6 +86,7 @@ describe('exercise settings', () => {
       directions: ['ascending', 'descending'],
       noteCount: 4,
       keyIndex: 0,
+      majorMinorOnly: false,
       fixedKey: true,
       playRootFirst: true,
       tone: 'warm',
@@ -94,6 +95,14 @@ describe('exercise settings', () => {
     expect(normalizeSettings({ directions: ['ascending', 'ascending'] }).directions).toEqual([
       'ascending',
     ]);
+  });
+  it.each([
+    [undefined, false],
+    [false, false],
+    [true, true],
+    ['true', false],
+  ])('normalizes the major/minor restriction %s', (value, expected) => {
+    expect(normalizeSettings({ majorMinorOnly: value } as never).majorMinorOnly).toBe(expected);
   });
   it.each([
     { playRootFirst: false, directions: ['descending'] },
@@ -141,13 +150,16 @@ describe('exercise settings', () => {
 describe('exercise generation', () => {
   it.each(
     ([['ascending'], ['descending'], ['ascending', 'descending']] as const).flatMap((directions) =>
-      [false, true].map((playRootFirst) => ({ directions, playRootFirst }))
+      [false, true].flatMap((playRootFirst) =>
+        [false, true].map((majorMinorOnly) => ({ directions, playRootFirst, majorMinorOnly }))
+      )
     )
   )(
-    'keeps one-octave phrases inside the key roots ($directions, root first: $playRootFirst)',
-    ({ directions, playRootFirst }) => {
+    'keeps phrases in range ($directions, root first: $playRootFirst, major/minor: $majorMinorOnly)',
+    ({ directions, playRootFirst, majorMinorOnly }) => {
       expect.hasAssertions();
       const lowerRoots = [57, 58, 59, 48, 49, 50, 51, 52, 53, 54, 55, 56];
+      const excludedDegrees = majorMinorOnly ? [1, 6] : [];
       for (const [keyIndex, lowerRoot] of lowerRoots.entries()) {
         for (const noteCount of [2, 3, 4]) {
           for (const random of [() => 0, (length: number) => length - 1]) {
@@ -161,6 +173,7 @@ describe('exercise generation', () => {
                 keyIndex,
                 noteCount,
                 playRootFirst,
+                majorMinorOnly,
               },
               random
             );
@@ -174,11 +187,48 @@ describe('exercise generation', () => {
             expect(exercise.rootMidi).toBe(playRootFirst ? exercise.notes[0] : null);
             expect(exercise.rootMidi).toBe(playRootFirst ? lowerRoot : null);
             expectPhraseDirections(exercise, directions, playRootFirst);
+            expect(
+              exercise.notes.every((note) => !excludedDegrees.includes((note - lowerRoot) % 12))
+            ).toBe(true);
           }
         }
       }
     }
   );
+  it('retains every major/minor degree and allows mixing them in a phrase', () => {
+    const settings = {
+      ...DEFAULT_EAR_TRAINER_SETTINGS,
+      octaveStart: 3,
+      octaveEnd: 3,
+      keyIndex: 3,
+      fixedKey: true,
+      majorMinorOnly: true,
+    };
+    const starts = Array.from({ length: 11 }, (_, selection) => {
+      return createExercise(settings, (length) => selection % length).notes[0];
+    });
+    expect(starts).toEqual([48, 50, 51, 52, 53, 55, 56, 57, 58, 59, 60]);
+    let selection = 0;
+    const mixed = createExercise({ ...settings, playRootFirst: true }, () =>
+      requiredAt([1, 0], selection++)
+    );
+    expect(exerciseDegrees(mixed)).toEqual(['1', 'b3', '3']);
+  });
+  it('allows chromatic degrees when the restriction is off', () => {
+    let selection = 0;
+    const exercise = createExercise(
+      {
+        ...DEFAULT_EAR_TRAINER_SETTINGS,
+        octaveStart: 3,
+        octaveEnd: 3,
+        fixedKey: true,
+        playRootFirst: true,
+      },
+      () => requiredAt([5, 9], selection++)
+    );
+    expect(exercise.notes).toEqual([48, 54, 49]);
+    expect(exerciseDegrees(exercise)).toEqual(['1', 'b5', 'b2']);
+  });
   it.each([
     { noteCount: 2, first: [48, 49], last: [48, 60] },
     { noteCount: 3, first: [48, 49, 48], last: [48, 60, 48] },

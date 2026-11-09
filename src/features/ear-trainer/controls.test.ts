@@ -7,29 +7,69 @@ import { DEFAULT_EAR_TRAINER_SETTINGS } from './theory';
 
 let initEarTrainerFeature: () => void;
 
+function mountDescendingRootExercise() {
+  vi.useFakeTimers();
+  const audio = audioHarness();
+  vi.spyOn(crypto, 'getRandomValues').mockImplementation((array) => {
+    (array as Uint32Array).fill(0);
+    return array;
+  });
+  mountApp();
+  saveEarTrainerSettings({
+    ...DEFAULT_EAR_TRAINER_SETTINGS,
+    octaveStart: 3,
+    octaveEnd: 3,
+    fixedKey: true,
+    playRootFirst: true,
+    directions: ['descending'],
+    noteCount: 4,
+  });
+  initEarTrainerFeature();
+  return audio;
+}
+
 describe('ear trainer user flow', () => {
   beforeEach(async () => {
     vi.resetModules();
     ({ initEarTrainerFeature } = await import('./index'));
   });
-  it('plays an upward jump then descends when root-first and descending-only are selected', async () => {
-    vi.useFakeTimers();
-    const audio = audioHarness();
-    vi.spyOn(crypto, 'getRandomValues').mockImplementation((array) => {
-      (array as Uint32Array).fill(0);
-      return array;
-    });
-    mountApp();
-    saveEarTrainerSettings({
-      ...DEFAULT_EAR_TRAINER_SETTINGS,
-      octaveStart: 3,
-      octaveEnd: 3,
-      fixedKey: true,
-      noteCount: 4,
-      playRootFirst: true,
-      directions: ['descending'],
-    });
+  it('persists the major/minor mode and plays only allowed notes before restoring chromatic mode', async () => {
+    const audio = mountDescendingRootExercise();
+    expect((element('#earTrainerMajorMinorOnly') as HTMLInputElement).checked).toBe(false);
+    click('#earTrainerMajorMinorOnly');
+    expect(loadEarTrainerSettings().majorMinorOnly).toBe(true);
+    expect(element('#earTrainerRoundLabel').textContent).toContain('Major/minor notes only');
+    expect(element('#earTrainerSettingsHint').textContent).toContain(
+      'Allowed degrees: 1, 2, ♭3, 3, 4, 5, ♭6, 6, ♭7, 7.'
+    );
+    click('#earTrainerPlayBtn');
+    await settle();
+    const frequencies = audio.events
+      .filter(
+        (event) =>
+          event.method === 'frequency.set' && audio.nodes[event.node]?.kind === 'oscillator'
+      )
+      .map((event) => event.args[0]);
+    expect(frequencies).toEqual([48, 51, 50, 48].map((midi) => 440 * 2 ** ((midi - 69) / 12)));
+    await vi.advanceTimersByTimeAsync(10_000);
+    change('#earTrainerDegreeInput', '1321');
+    click('[data-ear-trainer-accidental="1"]');
+    click('#earTrainerCheckBtn');
+    expect(element('#earTrainerStatus').textContent).toBe('You got it!');
     initEarTrainerFeature();
+    expect((element('#earTrainerMajorMinorOnly') as HTMLInputElement).checked).toBe(true);
+    click('#earTrainerMajorMinorOnly');
+    expect(loadEarTrainerSettings().majorMinorOnly).toBe(false);
+    expect(element('#earTrainerRoundLabel').textContent).not.toContain('Major/minor notes only');
+    click('#earTrainerRevealBtn');
+    expect(element('#earTrainerResult').textContent).toContain('C3 ↑ D3 ↓ C#3 ↓ C3');
+    click('#earTrainerMajorMinorOnly');
+    click('#earTrainerReset .reset-link');
+    expect((element('#earTrainerMajorMinorOnly') as HTMLInputElement).checked).toBe(false);
+    expect(loadEarTrainerSettings()).toEqual(DEFAULT_EAR_TRAINER_SETTINGS);
+  });
+  it('plays an upward jump then descends when root-first and descending-only are selected', async () => {
+    const audio = mountDescendingRootExercise();
     const ascending = element('#earTrainerAscending') as HTMLInputElement;
     expect(ascending.checked).toBe(false);
     expect(ascending.disabled).toBe(false);

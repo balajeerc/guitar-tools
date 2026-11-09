@@ -672,6 +672,7 @@ exports[`exercise settings > preserves the default exercise preferences 1`] = `
   ],
   "fixedKey": false,
   "keyIndex": 3,
+  "majorMinorOnly": false,
   "noteCount": 3,
   "octaveEnd": 3,
   "octaveStart": 2,

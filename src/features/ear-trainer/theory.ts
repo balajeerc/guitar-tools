@@ -12,11 +12,13 @@ export const MAX_NOTE_COUNT = 4;
 export type EarTrainerDirection = 'ascending' | 'descending';
 
 const DIRECTIONS: readonly EarTrainerDirection[] = ['ascending', 'descending'];
+const MAJOR_MINOR_SEMITONES: readonly number[] = [0, 2, 3, 4, 5, 7, 8, 9, 10, 11];
 
 export interface EarTrainerSettings {
   directions: readonly EarTrainerDirection[];
   fixedKey: boolean;
   keyIndex: number;
+  majorMinorOnly: boolean;
   noteCount: number;
   octaveEnd: number;
   octaveStart: number;
@@ -32,6 +34,7 @@ export const DEFAULT_EAR_TRAINER_SETTINGS: EarTrainerSettings = {
   playRootFirst: false,
   fixedKey: false,
   keyIndex: 3,
+  majorMinorOnly: false,
   tone: 'pluck',
 };
 
@@ -125,6 +128,7 @@ export function normalizeSettings(value: null | Partial<EarTrainerSettings>): Ea
     playRootFirst: normalizedPlayRootFirst(value),
     fixedKey: value?.fixedKey === true,
     keyIndex: clampInteger(value?.keyIndex, 0, 11, DEFAULT_EAR_TRAINER_SETTINGS.keyIndex),
+    majorMinorOnly: value?.majorMinorOnly === true,
     tone: value?.tone ?? DEFAULT_EAR_TRAINER_SETTINGS.tone,
   };
 }
@@ -186,8 +190,18 @@ function keyPitchClass(keyIndex: number): number {
   return (keyIndex + 9) % 12;
 }
 
-function octaveRange(start: number, end: number, keyIndex: number): NoteBounds {
-  return { low: rootMidiForOctave(keyIndex, start), high: rootMidiForOctave(keyIndex, end + 1) };
+function octaveRange(
+  start: number,
+  end: number,
+  keyIndex: number,
+  majorMinorOnly: boolean
+): NoteRange {
+  const low = rootMidiForOctave(keyIndex, start);
+  const high = rootMidiForOctave(keyIndex, end + 1);
+  const notes = Array.from({ length: high - low + 1 }, (_, index) => low + index).filter(
+    (note) => !majorMinorOnly || MAJOR_MINOR_SEMITONES.includes((note - low) % 12)
+  );
+  return { low, high, notes };
 }
 
 interface NoteBounds {
@@ -195,48 +209,61 @@ interface NoteBounds {
   low: number;
 }
 
+interface NoteRange extends NoteBounds {
+  notes: readonly number[];
+}
+
 function rootMidiForOctave(keyIndex: number, octave: number): number {
   return (octave + 1) * 12 + keyPitchClass(keyIndex);
 }
 
-function randomNote(low: number, high: number, random: RandomIndex): number {
-  return low + random(high - low + 1);
+function randomNote(notes: readonly number[], random: RandomIndex): number {
+  return requiredAt(notes, random(notes.length));
 }
 
 function startLimits(
-  range: NoteBounds,
+  range: NoteRange,
   directions: readonly EarTrainerDirection[],
   noteCount: number
 ): NoteBounds {
   const ascendingOnly = directions.length === 1 && directions[0] === 'ascending';
   const descendingOnly = directions.length === 1 && directions[0] === 'descending';
   return {
-    low: descendingOnly ? range.low + noteCount - 1 : range.low,
-    high: ascendingOnly ? range.high - noteCount + 1 : range.high,
+    low: descendingOnly ? requiredAt(range.notes, noteCount - 1) : range.low,
+    high: ascendingOnly ? requiredAt(range.notes, range.notes.length - noteCount) : range.high,
   };
 }
 
-function chooseStart(settings: EarTrainerSettings, range: NoteBounds, random: RandomIndex): number {
+function chooseStart(settings: EarTrainerSettings, range: NoteRange, random: RandomIndex): number {
   if (settings.playRootFirst) return range.low;
   const limits = startLimits(range, settings.directions, settings.noteCount);
-  return randomNote(limits.low, limits.high, random);
+  const choices = range.notes.filter((note) => note >= limits.low && note <= limits.high);
+  return randomNote(choices, random);
 }
 
 function nextNoteChoices(
   current: number,
-  bounds: NoteBounds,
+  bounds: NoteRange,
   directions: readonly EarTrainerDirection[],
   remaining: number
 ): number[] {
   const both = directions.length > 1;
-  const high = both ? bounds.high : bounds.high - remaining;
-  const low = both ? bounds.low : bounds.low + remaining;
+  const high = both ? bounds.high : requiredAt(bounds.notes, bounds.notes.length - remaining - 1);
+  const low = both ? bounds.low : requiredAt(bounds.notes, remaining);
   const choices: number[] = [];
   for (const semitones of Array.from({ length: 12 }, (_, index) => index + 1)) {
-    if (directions.includes('ascending') && current + semitones <= high) {
+    if (
+      directions.includes('ascending') &&
+      current + semitones <= high &&
+      bounds.notes.includes(current + semitones)
+    ) {
       choices.push(current + semitones);
     }
-    if (directions.includes('descending') && current - semitones >= low) {
+    if (
+      directions.includes('descending') &&
+      current - semitones >= low &&
+      bounds.notes.includes(current - semitones)
+    ) {
       choices.push(current - semitones);
     }
   }
@@ -245,7 +272,7 @@ function nextNoteChoices(
 
 function nextNote(
   current: number,
-  bounds: NoteBounds,
+  bounds: NoteRange,
   directions: readonly EarTrainerDirection[],
   remaining: number,
   random: RandomIndex
@@ -254,11 +281,7 @@ function nextNote(
   return choices[random(choices.length)] ?? current;
 }
 
-function buildNotes(
-  settings: EarTrainerSettings,
-  range: NoteBounds,
-  random: RandomIndex
-): number[] {
+function buildNotes(settings: EarTrainerSettings, range: NoteRange, random: RandomIndex): number[] {
   const start = chooseStart(settings, range, random);
   const notes = [start];
   if (
@@ -266,8 +289,11 @@ function buildNotes(
     settings.directions.length === 1 &&
     settings.directions[0] === 'descending'
   ) {
-    // Leave at least one semitone for each subsequent downward step.
-    notes.push(randomNote(start + Math.max(1, settings.noteCount - 2), start + 12, random));
+    // Leave an available scale note for each subsequent downward step.
+    const choices = range.notes
+      .slice(Math.max(1, settings.noteCount - 2))
+      .filter((note) => note <= start + 12);
+    notes.push(randomNote(choices, random));
   }
   while (notes.length < settings.noteCount) {
     const remaining = settings.noteCount - notes.length - 1;
@@ -283,7 +309,12 @@ export function createExercise(
 ): EarTrainerExercise {
   const settings = normalizeSettings(preferences);
   const keyIndex = settings.fixedKey ? settings.keyIndex : random(12);
-  const range = octaveRange(settings.octaveStart, settings.octaveEnd, keyIndex);
+  const range = octaveRange(
+    settings.octaveStart,
+    settings.octaveEnd,
+    keyIndex,
+    settings.majorMinorOnly
+  );
   const notes = buildNotes(settings, range, random);
 
   return {

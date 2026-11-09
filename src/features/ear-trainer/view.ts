@@ -65,14 +65,16 @@ function settingsHint(settings: EarTrainerSettings): string {
   const key = settings.fixedKey
     ? `Key fixed to ${keyName(settings.keyIndex)}.`
     : 'Key changes each exercise.';
-  return `${range} ${directionHint(settings)} ${start} ${key}`;
+  const notes = settings.majorMinorOnly ? ' Allowed degrees: 1, 2, ♭3, 3, 4, 5, ♭6, 6, ♭7, 7.' : '';
+  return `${range} ${directionHint(settings)} ${start} ${key}${notes}`;
 }
 
 function roundLabel(settings: EarTrainerSettings, keyIndex: number): string {
   const range = `Oct ${settings.octaveStart}–${settings.octaveEnd}`;
   const key = `Key ${keyName(keyIndex)}`;
   const rootFirst = settings.playRootFirst ? ' · Root first' : '';
-  return `${range} · ${key}${rootFirst} · ${directionLabel(settings)}`;
+  const notes = settings.majorMinorOnly ? ' · Major/minor notes only' : '';
+  return `${range} · ${key}${rootFirst} · ${directionLabel(settings)}${notes}`;
 }
 
 function noteCountLabel(count: number, singular: string, plural: string): string {
@@ -86,6 +88,7 @@ export function renderSettings(settings: EarTrainerSettings): void {
   setChecked('earTrainerAscending', settings.directions.includes('ascending'));
   setChecked('earTrainerDescending', settings.directions.includes('descending'));
   setChecked('earTrainerPlayRootFirst', settings.playRootFirst);
+  setChecked('earTrainerMajorMinorOnly', settings.majorMinorOnly);
   setChecked('earTrainerFixKey', settings.fixedKey);
   setHidden('earTrainerKeyControl', !settings.fixedKey);
   setText('earTrainerKeyDisplay', keyName(settings.keyIndex));

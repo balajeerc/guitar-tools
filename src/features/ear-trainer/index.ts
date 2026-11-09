@@ -350,6 +350,10 @@ function setupRoundEvents(): void {
   document.getElementById('earTrainerCheckBtn')?.addEventListener('click', checkAnswer);
   document.getElementById('earTrainerRevealBtn')?.addEventListener('click', revealAnswer);
   document.getElementById('earTrainerNewBtn')?.addEventListener('click', newExercise);
+  document.getElementById('earTrainerNextBtn')?.addEventListener('click', () => {
+    newExercise();
+    document.getElementById('earTrainerPlayBtn')?.focus();
+  });
   getInput('earTrainerDegreeInput')?.addEventListener('input', (event) => {
     updateAnswerInput(event.target as HTMLInputElement);
   });

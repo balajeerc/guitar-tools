@@ -9,6 +9,20 @@ function toneButtonsHtml(): string {
   ).join('');
 }
 
+function answerEntryHtml(): string {
+  return `<div class="ear-trainer-answer-row">
+        <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
+          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"></div>
+          <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric"
+            pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" />
+        </div>
+        <button type="button" class="melodies-btn melodies-btn-primary ear-trainer-next-btn"
+          id="earTrainerNextBtn" aria-label="Next exercise" title="Next exercise" hidden>
+          <span aria-hidden="true">→</span>
+        </button>
+        </div>`;
+}
+
 export function earTrainerPanelHtml(): string {
   return `<section class="melodies-game ear-trainer" aria-labelledby="earTrainerHeading">
     <header class="melodies-hero">
@@ -111,11 +125,7 @@ export function earTrainerPanelHtml(): string {
         <label class="melodies-manual-label" for="earTrainerDegreeInput">
           Enter each note as a scale degree of the key (1–7)
         </label>
-        <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
-          <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"></div>
-          <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric"
-            pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" />
-        </div>
+        ${answerEntryHtml()}
         <p class="ear-trainer-input-hint">
           Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
         </p>

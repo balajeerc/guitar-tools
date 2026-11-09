@@ -100,9 +100,14 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
         <label class="melodies-manual-label" for="earTrainerDegreeInput">
           Enter each note as a scale degree of the key (1–7)
         </label>
+        <div class="ear-trainer-answer-row">
         <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
           <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled correct">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled incorrect">2</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled incorrect">3</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental"></button></span></div>
           <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <button type="button" class="melodies-btn melodies-btn-primary ear-trainer-next-btn" id="earTrainerNextBtn" aria-label="Next exercise" title="Next exercise" hidden="">
+          <span aria-hidden="true">→</span>
+        </button>
         </div>
         <p class="ear-trainer-input-hint">
           Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
@@ -225,9 +230,14 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
         <label class="melodies-manual-label" for="earTrainerDegreeInput">
           Enter each note as a scale degree of the key (1–7)
         </label>
+        <div class="ear-trainer-answer-row">
         <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
           <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled">2</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled">3</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental"></button></span></div>
           <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <button type="button" class="melodies-btn melodies-btn-primary ear-trainer-next-btn" id="earTrainerNextBtn" aria-label="Next exercise" title="Next exercise" hidden="">
+          <span aria-hidden="true">→</span>
+        </button>
         </div>
         <p class="ear-trainer-input-hint">
           Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
@@ -350,9 +360,14 @@ exports[`ear trainer user flow > persists settings, constrains ranges, plays exe
         <label class="melodies-manual-label" for="earTrainerDegreeInput">
           Enter each note as a scale degree of the key (1–7)
         </label>
+        <div class="ear-trainer-answer-row">
         <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
           <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled correct">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled correct">♭2</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is flat; change accidental" disabled="">♭</button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled correct">2</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
           <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3" disabled="">
+        </div>
+        <button type="button" class="melodies-btn melodies-btn-primary ear-trainer-next-btn" id="earTrainerNextBtn" aria-label="Next exercise" title="Next exercise">
+          <span aria-hidden="true">→</span>
+        </button>
         </div>
         <p class="ear-trainer-input-hint">
           Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
@@ -477,9 +492,14 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         <label class="melodies-manual-label" for="earTrainerDegreeInput">
           Enter each note as a scale degree of the key (1–7)
         </label>
+        <div class="ear-trainer-answer-row">
         <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
           <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
           <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <button type="button" class="melodies-btn melodies-btn-primary ear-trainer-next-btn" id="earTrainerNextBtn" aria-label="Next exercise" title="Next exercise" hidden="">
+          <span aria-hidden="true">→</span>
+        </button>
         </div>
         <p class="ear-trainer-input-hint">
           Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
@@ -602,9 +622,14 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         <label class="melodies-manual-label" for="earTrainerDegreeInput">
           Enter each note as a scale degree of the key (1–7)
         </label>
+        <div class="ear-trainer-answer-row">
         <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
           <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
           <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <button type="button" class="melodies-btn melodies-btn-primary ear-trainer-next-btn" id="earTrainerNextBtn" aria-label="Next exercise" title="Next exercise" hidden="">
+          <span aria-hidden="true">→</span>
+        </button>
         </div>
         <p class="ear-trainer-input-hint">
           Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
@@ -727,9 +752,14 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         <label class="melodies-manual-label" for="earTrainerDegreeInput">
           Enter each note as a scale degree of the key (1–7)
         </label>
+        <div class="ear-trainer-answer-row">
         <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
           <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
           <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <button type="button" class="melodies-btn melodies-btn-primary ear-trainer-next-btn" id="earTrainerNextBtn" aria-label="Next exercise" title="Next exercise" hidden="">
+          <span aria-hidden="true">→</span>
+        </button>
         </div>
         <p class="ear-trainer-input-hint">
           Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
@@ -852,9 +882,14 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         <label class="melodies-manual-label" for="earTrainerDegreeInput">
           Enter each note as a scale degree of the key (1–7)
         </label>
+        <div class="ear-trainer-answer-row">
         <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
           <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
           <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <button type="button" class="melodies-btn melodies-btn-primary ear-trainer-next-btn" id="earTrainerNextBtn" aria-label="Next exercise" title="Next exercise" hidden="">
+          <span aria-hidden="true">→</span>
+        </button>
         </div>
         <p class="ear-trainer-input-hint">
           Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
@@ -977,9 +1012,14 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         <label class="melodies-manual-label" for="earTrainerDegreeInput">
           Enter each note as a scale degree of the key (1–7)
         </label>
+        <div class="ear-trainer-answer-row">
         <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
           <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
           <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <button type="button" class="melodies-btn melodies-btn-primary ear-trainer-next-btn" id="earTrainerNextBtn" aria-label="Next exercise" title="Next exercise" hidden="">
+          <span aria-hidden="true">→</span>
+        </button>
         </div>
         <p class="ear-trainer-input-hint">
           Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
@@ -1102,9 +1142,14 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         <label class="melodies-manual-label" for="earTrainerDegreeInput">
           Enter each note as a scale degree of the key (1–7)
         </label>
+        <div class="ear-trainer-answer-row">
         <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
           <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
           <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <button type="button" class="melodies-btn melodies-btn-primary ear-trainer-next-btn" id="earTrainerNextBtn" aria-label="Next exercise" title="Next exercise" hidden="">
+          <span aria-hidden="true">→</span>
+        </button>
         </div>
         <p class="ear-trainer-input-hint">
           Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
@@ -1227,9 +1272,14 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         <label class="melodies-manual-label" for="earTrainerDegreeInput">
           Enter each note as a scale degree of the key (1–7)
         </label>
+        <div class="ear-trainer-answer-row">
         <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
           <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="3" aria-label="Interval 4 is natural; change accidental" disabled=""></button></span></div>
           <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="4">
+        </div>
+        <button type="button" class="melodies-btn melodies-btn-primary ear-trainer-next-btn" id="earTrainerNextBtn" aria-label="Next exercise" title="Next exercise" hidden="">
+          <span aria-hidden="true">→</span>
+        </button>
         </div>
         <p class="ear-trainer-input-hint">
           Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
@@ -1352,9 +1402,14 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         <label class="melodies-manual-label" for="earTrainerDegreeInput">
           Enter each note as a scale degree of the key (1–7)
         </label>
+        <div class="ear-trainer-answer-row">
         <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
           <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
           <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <button type="button" class="melodies-btn melodies-btn-primary ear-trainer-next-btn" id="earTrainerNextBtn" aria-label="Next exercise" title="Next exercise" hidden="">
+          <span aria-hidden="true">→</span>
+        </button>
         </div>
         <p class="ear-trainer-input-hint">
           Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
@@ -1477,9 +1532,14 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         <label class="melodies-manual-label" for="earTrainerDegreeInput">
           Enter each note as a scale degree of the key (1–7)
         </label>
+        <div class="ear-trainer-answer-row">
         <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
           <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
           <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <button type="button" class="melodies-btn melodies-btn-primary ear-trainer-next-btn" id="earTrainerNextBtn" aria-label="Next exercise" title="Next exercise" hidden="">
+          <span aria-hidden="true">→</span>
+        </button>
         </div>
         <p class="ear-trainer-input-hint">
           Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
@@ -1602,9 +1662,14 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         <label class="melodies-manual-label" for="earTrainerDegreeInput">
           Enter each note as a scale degree of the key (1–7)
         </label>
+        <div class="ear-trainer-answer-row">
         <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
           <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
           <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <button type="button" class="melodies-btn melodies-btn-primary ear-trainer-next-btn" id="earTrainerNextBtn" aria-label="Next exercise" title="Next exercise" hidden="">
+          <span aria-hidden="true">→</span>
+        </button>
         </div>
         <p class="ear-trainer-input-hint">
           Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
@@ -1727,9 +1792,14 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         <label class="melodies-manual-label" for="earTrainerDegreeInput">
           Enter each note as a scale degree of the key (1–7)
         </label>
+        <div class="ear-trainer-answer-row">
         <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
           <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
           <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <button type="button" class="melodies-btn melodies-btn-primary ear-trainer-next-btn" id="earTrainerNextBtn" aria-label="Next exercise" title="Next exercise" hidden="">
+          <span aria-hidden="true">→</span>
+        </button>
         </div>
         <p class="ear-trainer-input-hint">
           Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
@@ -1852,9 +1922,14 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         <label class="melodies-manual-label" for="earTrainerDegreeInput">
           Enter each note as a scale degree of the key (1–7)
         </label>
+        <div class="ear-trainer-answer-row">
         <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
           <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental"></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
           <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <button type="button" class="melodies-btn melodies-btn-primary ear-trainer-next-btn" id="earTrainerNextBtn" aria-label="Next exercise" title="Next exercise" hidden="">
+          <span aria-hidden="true">→</span>
+        </button>
         </div>
         <p class="ear-trainer-input-hint">
           Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
@@ -1977,9 +2052,14 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         <label class="melodies-manual-label" for="earTrainerDegreeInput">
           Enter each note as a scale degree of the key (1–7)
         </label>
+        <div class="ear-trainer-answer-row">
         <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
           <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box"></span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
           <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3">
+        </div>
+        <button type="button" class="melodies-btn melodies-btn-primary ear-trainer-next-btn" id="earTrainerNextBtn" aria-label="Next exercise" title="Next exercise" hidden="">
+          <span aria-hidden="true">→</span>
+        </button>
         </div>
         <p class="ear-trainer-input-hint">
           Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
@@ -2102,9 +2182,14 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         <label class="melodies-manual-label" for="earTrainerDegreeInput">
           Enter each note as a scale degree of the key (1–7)
         </label>
+        <div class="ear-trainer-answer-row">
         <div class="melodies-interval-entry" id="earTrainerDegreeEntry">
           <div class="melodies-interval-boxes" id="earTrainerDegreeBoxes"><span class="melodies-interval-slot"><span class="melodies-interval-box filled correct">1</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="0" aria-label="Interval 1 is natural; change accidental" disabled=""></button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled correct">♭2</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="1" aria-label="Interval 2 is flat; change accidental" disabled="">♭</button></span><span class="melodies-interval-slot"><span class="melodies-interval-box filled correct">2</span><button type="button" class="melodies-accidental-btn" data-ear-trainer-accidental="2" aria-label="Interval 3 is natural; change accidental" disabled=""></button></span></div>
           <input id="earTrainerDegreeInput" class="melodies-interval-input" type="text" inputmode="numeric" pattern="[1-7]*" autocomplete="off" aria-label="Note scale degrees" maxlength="3" disabled="">
+        </div>
+        <button type="button" class="melodies-btn melodies-btn-primary ear-trainer-next-btn" id="earTrainerNextBtn" aria-label="Next exercise" title="Next exercise">
+          <span aria-hidden="true">→</span>
+        </button>
         </div>
         <p class="ear-trainer-input-hint">
           Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.

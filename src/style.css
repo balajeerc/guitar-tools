@@ -3282,6 +3282,37 @@ body {
   line-height: 1.45;
 }
 
+.ear-trainer-answer-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 12px;
+}
+
+.ear-trainer-answer-row .melodies-interval-entry {
+  min-width: 0;
+}
+
+.ear-trainer-next-btn {
+  flex: 0 0 44px;
+  min-width: 44px;
+  min-height: 44px;
+  height: 50px;
+  padding: 0;
+  border-radius: var(--radius-md);
+  font-size: 28px;
+  line-height: 1;
+}
+
+.ear-trainer-next-btn[hidden] {
+  display: none;
+}
+
+.ear-trainer-next-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
 .ear-trainer-manual .melodies-interval-box {
   width: 48px;
 }
@@ -3390,6 +3421,14 @@ body {
 
   .ear-trainer-manual .melodies-interval-box {
     width: 42px;
+  }
+
+  .ear-trainer-answer-row {
+    gap: 8px;
+  }
+
+  .ear-trainer-next-btn {
+    height: 44px;
   }
 
   .ear-trainer .melodies-actions {

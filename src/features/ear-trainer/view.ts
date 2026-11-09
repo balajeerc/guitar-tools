@@ -176,4 +176,5 @@ export function updateRoundButtons(state: RoundButtonState): void {
     state.playing || state.finished || !state.hasPlayed || !state.selectionsComplete
   );
   setDisabled('earTrainerRevealBtn', state.finished);
+  setHidden('earTrainerNextBtn', !state.finished);
 }

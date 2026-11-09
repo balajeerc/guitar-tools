@@ -33,6 +33,60 @@ describe('ear trainer user flow', () => {
     vi.resetModules();
     ({ initEarTrainerFeature } = await import('./index'));
   });
+  it.each([
+    {
+      completion: 'correct',
+      finish: () => {
+        change('#earTrainerDegreeInput', '1221');
+        click('[data-ear-trainer-accidental="2"]');
+        click('#earTrainerCheckBtn');
+      },
+      status: 'You got it!',
+    },
+    {
+      completion: 'revealed',
+      finish: () => {
+        click('#earTrainerRevealBtn');
+      },
+      status: 'Answer revealed',
+    },
+  ])(
+    'shows the inline next button after a $completion round and starts a fresh exercise',
+    async ({ finish, status }) => {
+      const audio = mountDescendingRootExercise();
+      const next = element('#earTrainerNextBtn') as HTMLButtonElement;
+      const preferences = loadEarTrainerSettings();
+      expect(next.hidden).toBe(true);
+      click('#earTrainerPlayBtn');
+      await settle();
+      await vi.advanceTimersByTimeAsync(10_000);
+      change('#earTrainerDegreeInput', '1111');
+      click('#earTrainerCheckBtn');
+      expect(element('#earTrainerStatus').textContent).toBe('2 of 4 notes correct');
+      expect(next.hidden).toBe(true);
+      finish();
+      expect(element('#earTrainerStatus').textContent).toBe(status);
+      expect(next.hidden).toBe(false);
+      click('#earTrainerPlayBtn');
+      await settle();
+      const stoppedBefore = audio.events.filter((event) => event.method === 'stop').length;
+      next.focus();
+      click('#earTrainerNextBtn');
+      expect(audio.events.filter((event) => event.method === 'stop').length).toBeGreaterThan(
+        stoppedBefore
+      );
+      expect(next.hidden).toBe(true);
+      expect(element('#earTrainerResult').hidden).toBe(true);
+      expect((element('#earTrainerDegreeInput') as HTMLInputElement).value).toBe('1');
+      expect((element('#earTrainerDegreeInput') as HTMLInputElement).disabled).toBe(false);
+      expect((element('#earTrainerCheckBtn') as HTMLButtonElement).disabled).toBe(true);
+      expect(document.activeElement?.id).toBe('earTrainerPlayBtn');
+      expect(loadEarTrainerSettings()).toEqual(preferences);
+      await vi.advanceTimersByTimeAsync(10_000);
+      expect(element('#earTrainerStatus').textContent).toBe('Press play to listen');
+      expect(next.hidden).toBe(true);
+    }
+  );
   it('persists the major/minor mode and plays only allowed notes before restoring chromatic mode', async () => {
     const audio = mountDescendingRootExercise();
     expect((element('#earTrainerMajorMinorOnly') as HTMLInputElement).checked).toBe(false);

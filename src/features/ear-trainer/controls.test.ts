@@ -12,17 +12,43 @@ describe('ear trainer user flow', () => {
     vi.resetModules();
     ({ initEarTrainerFeature } = await import('./index'));
   });
-  it('keeps ascending enabled for root-first and restores direction editing when it is off', () => {
+  it('plays an upward jump then descends when root-first and descending-only are selected', async () => {
+    vi.useFakeTimers();
+    const audio = audioHarness();
+    vi.spyOn(crypto, 'getRandomValues').mockImplementation((array) => {
+      (array as Uint32Array).fill(0);
+      return array;
+    });
     mountApp();
     saveEarTrainerSettings({
       ...DEFAULT_EAR_TRAINER_SETTINGS,
+      octaveStart: 3,
+      octaveEnd: 3,
+      fixedKey: true,
+      noteCount: 4,
       playRootFirst: true,
       directions: ['descending'],
     });
     initEarTrainerFeature();
     const ascending = element('#earTrainerAscending') as HTMLInputElement;
-    expect(ascending.checked).toBe(true);
-    expect(ascending.disabled).toBe(true);
+    expect(ascending.checked).toBe(false);
+    expect(ascending.disabled).toBe(false);
+    expect(element('#earTrainerRoundLabel').textContent).toContain('Up then down');
+    expect(element('#earTrainerSettingsHint').textContent).toContain(
+      'The first jump is upward; any remaining notes only descend.'
+    );
+    click('#earTrainerPlayBtn');
+    await settle();
+    const frequencies = audio.events
+      .filter(
+        (event) =>
+          event.method === 'frequency.set' && audio.nodes[event.node]?.kind === 'oscillator'
+      )
+      .map((event) => event.args[0]);
+    expect(frequencies).toEqual([48, 50, 49, 48].map((midi) => 440 * 2 ** ((midi - 69) / 12)));
+    await vi.advanceTimersByTimeAsync(10_000);
+    click('#earTrainerRevealBtn');
+    expect(element('#earTrainerResult').textContent).toContain('C3 ↑ D3 ↓ C#3 ↓ C3');
     click('#earTrainerAscending');
     expect(loadEarTrainerSettings().directions).toEqual(['ascending', 'descending']);
     expect(element('#earTrainerSettingsHint').textContent).toContain(
@@ -33,9 +59,9 @@ describe('ear trainer user flow', () => {
     click('#earTrainerAscending');
     expect(loadEarTrainerSettings().directions).toEqual(['descending']);
     click('#earTrainerPlayRootFirst');
-    expect(ascending.checked).toBe(true);
-    expect(ascending.disabled).toBe(true);
-    expect(loadEarTrainerSettings().directions).toEqual(['ascending', 'descending']);
+    expect(ascending.checked).toBe(false);
+    expect(ascending.disabled).toBe(false);
+    expect(loadEarTrainerSettings().directions).toEqual(['descending']);
   });
   it('plays and labels a random-key phrase within the selected root-to-root range', async () => {
     vi.useFakeTimers();
@@ -223,9 +249,8 @@ describe('ear trainer user flow', () => {
     expect((element('#earTrainerOctaveStart') as HTMLInputElement).value).toBe('2');
     click('#earTrainerDescending');
     click('#earTrainerAscending');
-    expect(loadEarTrainerSettings().directions).toEqual(['ascending', 'descending']);
+    expect(loadEarTrainerSettings().directions).toEqual(['descending']);
     click('#earTrainerPlayRootFirst');
-    click('#earTrainerAscending');
     expect(loadEarTrainerSettings().directions).toEqual(['descending']);
     click('#earTrainerDescending');
     expect((element('#earTrainerDescending') as HTMLInputElement).checked).toBe(true);

@@ -296,7 +296,7 @@ exports[`ear trainer user flow > persists settings, constrains ranges, plays exe
             <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
             <span class="ear-trainer-direction-options">
               <label class="checkbox-label">
-                <input type="checkbox" id="earTrainerAscending" checked="" disabled="">
+                <input type="checkbox" id="earTrainerAscending" checked="">
                 <span>Ascending</span>
               </label>
               <label class="checkbox-label">
@@ -315,7 +315,7 @@ exports[`ear trainer user flow > persists settings, constrains ranges, plays exe
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases only ascend. The first note is the lowest root, so its box starts at 1. Ascending stays enabled to allow movement from this root. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases only ascend. The first note is the lowest root, so its box starts at 1. Key fixed to C.</p>
         </div>
       </details>
 
@@ -416,7 +416,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
             <span class="ear-trainer-direction-options">
               <label class="checkbox-label">
-                <input type="checkbox" id="earTrainerAscending" checked="" disabled="">
+                <input type="checkbox" id="earTrainerAscending" checked="">
                 <span>Ascending</span>
               </label>
               <label class="checkbox-label">
@@ -435,7 +435,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases only ascend. The first note is the lowest root, so its box starts at 1. Ascending stays enabled to allow movement from this root. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases only ascend. The first note is the lowest root, so its box starts at 1. Key fixed to C.</p>
         </div>
       </details>
 
@@ -534,7 +534,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
             <span class="ear-trainer-direction-options">
               <label class="checkbox-label">
-                <input type="checkbox" id="earTrainerAscending" checked="" disabled="">
+                <input type="checkbox" id="earTrainerAscending" checked="">
                 <span>Ascending</span>
               </label>
               <label class="checkbox-label">
@@ -553,7 +553,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases only ascend. The first note is the lowest root, so its box starts at 1. Ascending stays enabled to allow movement from this root. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases only ascend. The first note is the lowest root, so its box starts at 1. Key fixed to C.</p>
         </div>
       </details>
 
@@ -1242,7 +1242,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
             <span class="ear-trainer-direction-options">
               <label class="checkbox-label">
-                <input type="checkbox" id="earTrainerAscending" checked="" disabled="">
+                <input type="checkbox" id="earTrainerAscending" checked="">
                 <span>Ascending</span>
               </label>
               <label class="checkbox-label">
@@ -1261,7 +1261,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is the lowest root, so its box starts at 1. Ascending stays enabled to allow movement from this root. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is the lowest root, so its box starts at 1. Key fixed to C.</p>
         </div>
       </details>
 
@@ -1360,7 +1360,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
             <span class="ear-trainer-direction-options">
               <label class="checkbox-label">
-                <input type="checkbox" id="earTrainerAscending" checked="" disabled="">
+                <input type="checkbox" id="earTrainerAscending" checked="">
                 <span>Ascending</span>
               </label>
               <label class="checkbox-label">
@@ -1379,7 +1379,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is the lowest root, so its box starts at 1. Ascending stays enabled to allow movement from this root. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is the lowest root, so its box starts at 1. Key fixed to C.</p>
         </div>
       </details>
 
@@ -1478,7 +1478,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
             <span class="ear-trainer-direction-options">
               <label class="checkbox-label">
-                <input type="checkbox" id="earTrainerAscending" checked="" disabled="">
+                <input type="checkbox" id="earTrainerAscending" checked="">
                 <span>Ascending</span>
               </label>
               <label class="checkbox-label">
@@ -1497,7 +1497,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is the lowest root, so its box starts at 1. Ascending stays enabled to allow movement from this root. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is the lowest root, so its box starts at 1. Key fixed to C.</p>
         </div>
       </details>
 
@@ -1596,7 +1596,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
             <span class="ear-trainer-direction-options">
               <label class="checkbox-label">
-                <input type="checkbox" id="earTrainerAscending" checked="" disabled="">
+                <input type="checkbox" id="earTrainerAscending" checked="">
                 <span>Ascending</span>
               </label>
               <label class="checkbox-label">
@@ -1615,7 +1615,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is the lowest root, so its box starts at 1. Ascending stays enabled to allow movement from this root. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is the lowest root, so its box starts at 1. Key fixed to C.</p>
         </div>
       </details>
 
@@ -1714,7 +1714,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
             <span class="ear-trainer-direction-options">
               <label class="checkbox-label">
-                <input type="checkbox" id="earTrainerAscending" checked="" disabled="">
+                <input type="checkbox" id="earTrainerAscending" checked="">
                 <span>Ascending</span>
               </label>
               <label class="checkbox-label">
@@ -1733,7 +1733,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is the lowest root, so its box starts at 1. Ascending stays enabled to allow movement from this root. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases may ascend or descend. The first note is the lowest root, so its box starts at 1. Key fixed to C.</p>
         </div>
       </details>
 
@@ -1950,7 +1950,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
             <span class="control-label" id="earTrainerDirectionLabel">Direction:</span>
             <span class="ear-trainer-direction-options">
               <label class="checkbox-label">
-                <input type="checkbox" id="earTrainerAscending" checked="" disabled="">
+                <input type="checkbox" id="earTrainerAscending" checked="">
                 <span>Ascending</span>
               </label>
               <label class="checkbox-label">
@@ -1969,7 +1969,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
           <span id="earTrainerReset"><button type="button" class="reset-link">Reset</button></span>
         </div>
 
-        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases only ascend. The first note is the lowest root, so its box starts at 1. Ascending stays enabled to allow movement from this root. Key fixed to C.</p>
+        <p class="ear-trainer-settings-hint" id="earTrainerSettingsHint">Notes stay from the key's root in octave 2 through its root in octave 4, inclusive. Phrases only ascend. The first note is the lowest root, so its box starts at 1. Key fixed to C.</p>
         </div>
       </details>
 

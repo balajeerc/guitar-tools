@@ -1,16 +1,34 @@
 import { describe, expect, it, vi } from 'vitest';
 
+import { requiredAt } from '../../shared/requiredAt';
+
 import {
   clampInteger,
   createExercise,
   DEFAULT_EAR_TRAINER_SETTINGS,
   degreeSemitones,
+  type EarTrainerDirection,
+  type EarTrainerExercise,
   exerciseDegrees,
   intervalOption,
   keyName,
   midiNoteLabel,
   normalizeSettings,
 } from './theory';
+
+function expectPhraseDirections(
+  exercise: EarTrainerExercise,
+  directions: readonly EarTrainerDirection[],
+  playRootFirst: boolean
+): void {
+  const steps = exercise.notes
+    .slice(1)
+    .map((note, index) => note - requiredAt(exercise.notes, index));
+  const laterSteps = playRootFirst ? steps.slice(1) : steps;
+  expect(
+    laterSteps.every((step) => directions.includes(step > 0 ? 'ascending' : 'descending'))
+  ).toBe(true);
+}
 
 describe('exercise settings', () => {
   it('preserves the default exercise preferences', async () => {
@@ -79,9 +97,9 @@ describe('exercise settings', () => {
   });
   it.each([
     { playRootFirst: false, directions: ['descending'] },
-    { playRootFirst: true, directions: ['ascending', 'descending'] },
+    { playRootFirst: true, directions: ['descending'] },
   ] as const)(
-    'keeps ascending available when root-first is $playRootFirst',
+    'preserves descending-only mode when root-first is $playRootFirst',
     ({ playRootFirst, directions }) => {
       expect(normalizeSettings({ directions: ['descending'], playRootFirst }).directions).toEqual(
         directions
@@ -91,7 +109,7 @@ describe('exercise settings', () => {
   it('normalizes descending-only legacy root-first settings', () => {
     expect(
       normalizeSettings({ directions: ['descending'], alwaysPlayRoot: true } as never).directions
-    ).toEqual(['ascending', 'descending']);
+    ).toEqual(['descending']);
   });
   it.each([
     ['1', 0],
@@ -155,11 +173,30 @@ describe('exercise generation', () => {
             );
             expect(exercise.rootMidi).toBe(playRootFirst ? exercise.notes[0] : null);
             expect(exercise.rootMidi).toBe(playRootFirst ? lowerRoot : null);
+            expectPhraseDirections(exercise, directions, playRootFirst);
           }
         }
       }
     }
   );
+  it.each([
+    { noteCount: 2, first: [48, 49], last: [48, 60] },
+    { noteCount: 3, first: [48, 49, 48], last: [48, 60, 48] },
+    { noteCount: 4, first: [48, 50, 49, 48], last: [48, 60, 49, 48] },
+  ])('jumps up then descends with room for all $noteCount notes', ({ noteCount, first, last }) => {
+    const settings = {
+      ...DEFAULT_EAR_TRAINER_SETTINGS,
+      octaveStart: 3,
+      octaveEnd: 3,
+      keyIndex: 3,
+      fixedKey: true,
+      playRootFirst: true,
+      noteCount,
+      directions: ['descending'] as const,
+    };
+    expect(createExercise(settings, () => 0).notes).toEqual(first);
+    expect(createExercise(settings, (length) => length - 1).notes).toEqual(last);
+  });
   it.each([
     { selection: 'first', random: () => 0, notes: [55, 56, 57] },
     { selection: 'last', random: (length: number) => length - 1, notes: [55, 67, 55] },
@@ -242,7 +279,7 @@ describe('exercise generation', () => {
   );
   it.each([
     ['ascending', 2, [59, 60, 61]],
-    ['descending', 3, [48, 49, 50]],
+    ['descending', 3, [48, 49, 48]],
     ['ascending', 3, [48, 49, 50]],
   ] as const)('finds a root with space in a one-octave %s range', (direction, keyIndex, notes) => {
     expect(

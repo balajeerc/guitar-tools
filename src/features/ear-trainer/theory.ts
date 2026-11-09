@@ -104,8 +104,7 @@ function normalizedDirections(value: null | Partial<EarTrainerSettings>): EarTra
   const stored = value?.directions;
   if (!Array.isArray(stored)) return [...DIRECTIONS];
   const directions = DIRECTIONS.filter((direction) => stored.includes(direction));
-  const ascendingRequired = normalizedPlayRootFirst(value) && !directions.includes('ascending');
-  return directions.length === 0 || ascendingRequired ? [...DIRECTIONS] : directions;
+  return directions.length > 0 ? directions : [...DIRECTIONS];
 }
 
 function normalizedPlayRootFirst(value: null | Partial<EarTrainerSettings>): boolean {
@@ -262,6 +261,14 @@ function buildNotes(
 ): number[] {
   const start = chooseStart(settings, range, random);
   const notes = [start];
+  if (
+    settings.playRootFirst &&
+    settings.directions.length === 1 &&
+    settings.directions[0] === 'descending'
+  ) {
+    // Leave at least one semitone for each subsequent downward step.
+    notes.push(randomNote(start + Math.max(1, settings.noteCount - 2), start + 12, random));
+  }
   while (notes.length < settings.noteCount) {
     const remaining = settings.noteCount - notes.length - 1;
     const current = requiredAt(notes, notes.length - 1);

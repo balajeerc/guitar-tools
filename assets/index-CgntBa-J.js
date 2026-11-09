@@ -104,6 +104,8 @@
           </div>
         </div>
 
+        <fieldset class="ear-trainer-constraints">
+          <legend class="control-label">Constraints</legend>
         <div class="ear-trainer-setting-row">
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerPlayRootFirst" />
@@ -112,6 +114,10 @@
           <label class="checkbox-label">
             <input type="checkbox" id="earTrainerFixKey" />
             <span>Fix key</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerMajorMinorOnly" />
+            <span>Major/minor notes only</span>
           </label>
           <div class="ear-trainer-key" id="earTrainerKeyControl" hidden>
             <span class="control-label">Key:</span>
@@ -138,13 +144,7 @@
             </span>
           </div>
         </div>
-
-        <div class="ear-trainer-setting-row">
-          <label class="checkbox-label">
-            <input type="checkbox" id="earTrainerMajorMinorOnly" />
-            <span>Major/minor notes only</span>
-          </label>
-        </div>
+        </fieldset>
 
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">

@@ -221,7 +221,9 @@
         </div>
       </details>
 
-      <div class="melodies-prompt" id="earTrainerPrompt">
+      <div class="melodies-prompt" id="earTrainerPrompt"
+        data-ready-status="Which degrees did you hear?"
+        data-ready-hint="Enter each note, then use the small buttons to add ♭ or ♯.">
         <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
         <strong id="earTrainerStatus">Press play to listen</strong>
         <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>

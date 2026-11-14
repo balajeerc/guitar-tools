@@ -171,6 +171,8 @@ function naturalDegreeSemitones(digit: string): null | number {
       return 9;
     case '7':
       return 11;
+    case '8':
+      return 12;
     default:
       return null;
   }

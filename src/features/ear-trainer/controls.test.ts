@@ -71,6 +71,37 @@ describe('ear trainer user flow', () => {
     ({ initEarTrainerFeature } = await import('./index'));
   });
 
+  it.each(['1', '8'])('accepts %s for an octave above the root', async (octaveDegree) => {
+    vi.useFakeTimers();
+    audioHarness();
+    mockRandomValues(11);
+    mountApp();
+    saveEarTrainerSettings({
+      ...DEFAULT_EAR_TRAINER_SETTINGS,
+      octaveStart: 3,
+      octaveEnd: 3,
+      fixedKey: true,
+      playRootFirst: true,
+      directions: ['ascending'],
+      noteCount: 2,
+    });
+    initEarTrainerFeature();
+    click('#earTrainerPlayBtn');
+    await settle();
+    await vi.advanceTimersByTimeAsync(10_000);
+    const answer = `1${octaveDegree}`;
+    change('#earTrainerDegreeInput', answer);
+    const input = element('#earTrainerDegreeInput') as HTMLInputElement;
+    expect(input.value).toBe(answer);
+    expect(input.checkValidity()).toBe(true);
+    expect(element('#earTrainerDegreeBoxes').textContent).toContain(octaveDegree);
+    expect((element('#earTrainerCheckBtn') as HTMLButtonElement).disabled).toBe(false);
+    click('#earTrainerCheckBtn');
+    expect(element('#earTrainerStatus').textContent).toBe('You got it!');
+    expect(element('#earTrainerResult').textContent).toContain('C3 ↑ C4');
+    expect(element('#earTrainerAccuracy').textContent).toBe('100% first-try accuracy');
+  });
+
   it('offers next exercise after a correct round without replaying the phrase', async () => {
     const { next, preferences } = await playPartiallyCheckedRound();
     change('#earTrainerDegreeInput', '1221');

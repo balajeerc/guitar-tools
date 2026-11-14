@@ -22,6 +22,14 @@ describe('manual scale-degree answers', () => {
     expect(sanitizeDegreeInput('0189b1♭2#3 4a567', 5)).toBe('11234');
     expect(sanitizeDegreeInput('123', 0)).toBe('');
   });
+  it.each([
+    ['8', 1, '8'],
+    ['0198b2x3', 3, '182'],
+    ['', 4, ''],
+    ['8', 0, ''],
+  ])('allows the octave degree in %s when requested', (value, maximumLength, expected) => {
+    expect(sanitizeDegreeInput(value, maximumLength, true)).toBe(expected);
+  });
   it('normalizes octaves and negative intervals relative to a tonic', () => {
     expect(degreesFromTonic([60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 59], 60)).toEqual([
       '1',

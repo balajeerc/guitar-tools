@@ -129,10 +129,13 @@ describe('exercise settings', () => {
     ['5', 7],
     ['6', 9],
     ['7', 11],
+    ['8', 0],
+    ['b8', 11],
+    ['#8', 1],
     ['b1', 11],
     ['#7', 0],
     ['', null],
-    ['8', null],
+    ['9', null],
   ])('interprets degree %s', (degree, semitones) => {
     expect(degreeSemitones(degree)).toBe(semitones);
   });

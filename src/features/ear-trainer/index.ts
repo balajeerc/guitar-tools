@@ -235,7 +235,7 @@ function recordFirstAttempt(judgement: readonly boolean[]): void {
 function updateAnswerInput(field: HTMLInputElement): void {
   const count = round.exercise.notes.length;
   const caret = field.selectionStart ?? field.value.length;
-  const digits = sanitizeDegreeInput(field.value, count);
+  const digits = sanitizeDegreeInput(field.value, count, true);
   field.value = digits;
   const nextCaret = Math.min(caret, digits.length);
   field.setSelectionRange(nextCaret, nextCaret);

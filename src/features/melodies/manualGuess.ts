@@ -24,8 +24,13 @@ const CHROMATIC_DEGREES = [
   '7',
 ] as const;
 
-export function sanitizeDegreeInput(value: string, maximumLength: number): string {
-  return (value.match(/[1-7]/g) ?? []).join('').slice(0, maximumLength);
+export function sanitizeDegreeInput(
+  value: string,
+  maximumLength: number,
+  allowOctave = false
+): string {
+  const digits = allowOctave ? value.match(/[1-8]/g) : value.match(/[1-7]/g);
+  return (digits ?? []).join('').slice(0, maximumLength);
 }
 
 function judgePattern(

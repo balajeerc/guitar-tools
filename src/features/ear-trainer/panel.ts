@@ -151,7 +151,7 @@ export function earTrainerPanelHtml(): string {
         </label>
         ${answerEntryHtml()}
         <p class="ear-trainer-input-hint">
-          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
+          Example: 1, ♭3, 5. Tap a number again or its small button to cycle ♭, ♯, natural.
         </p>
       </div>
 

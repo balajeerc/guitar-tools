@@ -109,6 +109,7 @@ function updateButtons(): void {
     playing: round.playing,
     hasPlayed: round.hasPlayed,
     finished: isFinished(),
+    revealed: round.status === 'revealed',
     selectionsComplete: answersComplete(),
   });
 }
@@ -150,7 +151,10 @@ async function playExercise(): Promise<void> {
     if (currentPlayback === playbackId) {
       round.playing = false;
       setText('earTrainerStatus', 'Which degrees did you hear?');
-      setText('earTrainerHint', 'Enter each note, then use the small buttons to add ♭ or ♯.');
+      setText(
+        'earTrainerHint',
+        'Enter each note, then tap a number again or its small button to change the accidental.'
+      );
       updateButtons();
     }
   }
@@ -242,13 +246,13 @@ function updateAnswerInput(field: HTMLInputElement): void {
   renderAnswers();
   const entered = round.degrees.filter((degree) => degree.length > 0).length;
   setText('earTrainerStatus', `${entered} of ${count} notes entered`);
-  setText('earTrainerHint', 'Tap the small button under a box to cycle ♭, natural and ♯.');
+  setText('earTrainerHint', 'Tap a number again or its small button to cycle ♭, ♯, natural.');
   updateButtons();
 }
 
 function cycleAccidental(index: number): void {
   const degree = round.degrees[index];
-  if (!degree) return;
+  if (!degree || isFinished()) return;
   round.degrees[index] = `${nextDegreeAccidental(degree)}${degree.charAt(degree.length - 1)}`;
   round.judgement = null;
   renderAnswers();
@@ -265,6 +269,32 @@ function focusDegreeInput(position?: number): void {
   const start = position === undefined ? length : Math.min(position, length);
   const end = start < length ? start + 1 : start;
   field.setSelectionRange(start, end);
+}
+
+function intervalSlotIndex(target: HTMLElement): number {
+  const slot = target.closest<HTMLElement>('.melodies-interval-slot');
+  if (!slot?.parentElement) return -1;
+  return [...slot.parentElement.children].indexOf(slot);
+}
+
+function handleIntervalEntryClick(event: MouseEvent): void {
+  const target = event.target as HTMLElement;
+  const button = target.closest<HTMLButtonElement>('[data-ear-trainer-accidental]');
+  if (button) {
+    const index = Number(button.dataset.earTrainerAccidental);
+    if (!Number.isNaN(index)) cycleAccidental(index);
+    return;
+  }
+  const index = intervalSlotIndex(target);
+  const tappedFilledBox =
+    index >= 0 &&
+    target.closest<HTMLElement>('.melodies-interval-box') !== null &&
+    (round.degrees[index] ?? '').length > 0;
+  if (tappedFilledBox) {
+    cycleAccidental(index);
+    return;
+  }
+  focusDegreeInput(index >= 0 ? index : undefined);
 }
 
 function commitOctaves(field: 'end' | 'start'): void {
@@ -395,18 +425,9 @@ function setupRoundEvents(): void {
   getInput('earTrainerDegreeInput')?.addEventListener('input', (event) => {
     updateAnswerInput(event.target as HTMLInputElement);
   });
-  document.getElementById('earTrainerDegreeEntry')?.addEventListener('click', (event) => {
-    const target = event.target as HTMLElement;
-    const button = target.closest<HTMLButtonElement>('[data-ear-trainer-accidental]');
-    if (button) {
-      const index = Number(button.dataset.earTrainerAccidental);
-      if (!Number.isNaN(index)) cycleAccidental(index);
-      return;
-    }
-    const slot = target.closest<HTMLElement>('.melodies-interval-slot');
-    const slotIndex = slot?.parentElement ? [...slot.parentElement.children].indexOf(slot) : -1;
-    focusDegreeInput(slotIndex >= 0 ? slotIndex : undefined);
-  });
+  document
+    .getElementById('earTrainerDegreeEntry')
+    ?.addEventListener('click', handleIntervalEntryClick);
 }
 
 function pauseExercise(): void {

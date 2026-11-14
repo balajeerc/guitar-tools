@@ -22,6 +22,7 @@ interface RoundButtonState {
   finished: boolean;
   hasPlayed: boolean;
   playing: boolean;
+  revealed: boolean;
   selectionsComplete: boolean;
 }
 
@@ -170,8 +171,10 @@ export function renderResult(exercise: EarTrainerExercise, heading: string, deta
 }
 
 export function updateRoundButtons(state: RoundButtonState): void {
+  const hidePlay = state.finished && !state.revealed;
   setText('earTrainerPlayBtn', state.playing ? '♪ Playing…' : '▶ Play notes');
-  setDisabled('earTrainerPlayBtn', state.playing);
+  setDisabled('earTrainerPlayBtn', state.playing || hidePlay);
+  setHidden('earTrainerPlayBtn', hidePlay);
   setText('earTrainerCheckBtn', state.finished ? 'Next exercise' : 'Check answer');
   setDisabled(
     'earTrainerCheckBtn',

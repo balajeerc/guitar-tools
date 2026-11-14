@@ -11,7 +11,7 @@ import {
 } from '../../__fixtures__/browser';
 
 import { loadEarTrainerSettings, saveEarTrainerSettings } from './settings';
-import { DEFAULT_EAR_TRAINER_SETTINGS } from './theory';
+import { DEFAULT_EAR_TRAINER_SETTINGS, type EarTrainerSettings } from './theory';
 
 let initEarTrainerFeature: () => void;
 
@@ -33,70 +33,79 @@ function mountDescendingRootExercise() {
   return audio;
 }
 
+async function playPartiallyCheckedRound() {
+  const audio = mountDescendingRootExercise();
+  const next = element('#earTrainerNextBtn') as HTMLButtonElement;
+  const preferences = loadEarTrainerSettings();
+  expect(next.hidden).toBe(true);
+  click('#earTrainerPlayBtn');
+  await settle();
+  await vi.advanceTimersByTimeAsync(10_000);
+  change('#earTrainerDegreeInput', '1111');
+  click('#earTrainerCheckBtn');
+  expect(element('#earTrainerStatus').textContent).toBe('2 of 4 notes correct');
+  expect(next.hidden).toBe(true);
+  return { audio, next, preferences };
+}
+
+async function expectFreshExerciseFollows(
+  next: HTMLButtonElement,
+  preferences: EarTrainerSettings
+): Promise<void> {
+  expect(next.hidden).toBe(true);
+  expect(element('#earTrainerCheckBtn').textContent).toBe('Check answer');
+  expect(element('#earTrainerResult').hidden).toBe(true);
+  expect((element('#earTrainerDegreeInput') as HTMLInputElement).value).toBe('1');
+  expect((element('#earTrainerDegreeInput') as HTMLInputElement).disabled).toBe(false);
+  expect((element('#earTrainerCheckBtn') as HTMLButtonElement).disabled).toBe(true);
+  expect(document.activeElement?.id).toBe('earTrainerPlayBtn');
+  expect(loadEarTrainerSettings()).toEqual(preferences);
+  await vi.advanceTimersByTimeAsync(10_000);
+  expect(element('#earTrainerStatus').textContent).toBe('Press play to listen');
+  expect(next.hidden).toBe(true);
+}
+
 describe('ear trainer user flow', () => {
   beforeEach(async () => {
     vi.resetModules();
     ({ initEarTrainerFeature } = await import('./index'));
   });
-  it.each([
-    {
-      completion: 'correct',
-      advanceSelector: '#earTrainerCheckBtn',
-      finish: () => {
-        change('#earTrainerDegreeInput', '1221');
-        click('[data-ear-trainer-accidental="2"]');
-        click('#earTrainerCheckBtn');
-      },
-      status: 'You got it!',
-    },
-    {
-      completion: 'revealed',
-      advanceSelector: '#earTrainerNextBtn',
-      finish: () => {
-        click('#earTrainerRevealBtn');
-      },
-      status: 'Answer revealed',
-    },
-  ])(
-    'offers next exercise after a $completion round and advances via $advanceSelector',
-    async ({ finish, status, advanceSelector }) => {
-      const audio = mountDescendingRootExercise();
-      const next = element('#earTrainerNextBtn') as HTMLButtonElement;
-      const preferences = loadEarTrainerSettings();
-      expect(next.hidden).toBe(true);
-      click('#earTrainerPlayBtn');
-      await settle();
-      await vi.advanceTimersByTimeAsync(10_000);
-      change('#earTrainerDegreeInput', '1111');
-      click('#earTrainerCheckBtn');
-      expect(element('#earTrainerStatus').textContent).toBe('2 of 4 notes correct');
-      expect(next.hidden).toBe(true);
-      finish();
-      expect(element('#earTrainerStatus').textContent).toBe(status);
-      expect(next.hidden).toBe(false);
-      expect(element('#earTrainerCheckBtn').textContent).toBe('Next exercise');
-      expect((element('#earTrainerCheckBtn') as HTMLButtonElement).disabled).toBe(false);
-      click('#earTrainerPlayBtn');
-      await settle();
-      const stoppedBefore = audio.events.filter((event) => event.method === 'stop').length;
-      next.focus();
-      click(advanceSelector);
-      expect(audio.events.filter((event) => event.method === 'stop').length).toBeGreaterThan(
-        stoppedBefore
-      );
-      expect(next.hidden).toBe(true);
-      expect(element('#earTrainerCheckBtn').textContent).toBe('Check answer');
-      expect(element('#earTrainerResult').hidden).toBe(true);
-      expect((element('#earTrainerDegreeInput') as HTMLInputElement).value).toBe('1');
-      expect((element('#earTrainerDegreeInput') as HTMLInputElement).disabled).toBe(false);
-      expect((element('#earTrainerCheckBtn') as HTMLButtonElement).disabled).toBe(true);
-      expect(document.activeElement?.id).toBe('earTrainerPlayBtn');
-      expect(loadEarTrainerSettings()).toEqual(preferences);
-      await vi.advanceTimersByTimeAsync(10_000);
-      expect(element('#earTrainerStatus').textContent).toBe('Press play to listen');
-      expect(next.hidden).toBe(true);
-    }
-  );
+
+  it('offers next exercise after a correct round without replaying the phrase', async () => {
+    const { next, preferences } = await playPartiallyCheckedRound();
+    change('#earTrainerDegreeInput', '1221');
+    click('[data-ear-trainer-accidental="2"]');
+    click('#earTrainerCheckBtn');
+    expect(element('#earTrainerStatus').textContent).toBe('You got it!');
+    expect(next.hidden).toBe(false);
+    expect(element('#earTrainerCheckBtn').textContent).toBe('Next exercise');
+    expect((element('#earTrainerCheckBtn') as HTMLButtonElement).disabled).toBe(false);
+    expect((element('#earTrainerPlayBtn') as HTMLButtonElement).hidden).toBe(true);
+    expect((element('#earTrainerPlayBtn') as HTMLButtonElement).disabled).toBe(true);
+    next.focus();
+    click('#earTrainerCheckBtn');
+    await expectFreshExerciseFollows(next, preferences);
+  });
+
+  it('offers next exercise after a revealed round and stops an active replay', async () => {
+    const { audio, next, preferences } = await playPartiallyCheckedRound();
+    click('#earTrainerRevealBtn');
+    expect(element('#earTrainerStatus').textContent).toBe('Answer revealed');
+    expect(next.hidden).toBe(false);
+    expect(element('#earTrainerCheckBtn').textContent).toBe('Next exercise');
+    expect((element('#earTrainerCheckBtn') as HTMLButtonElement).disabled).toBe(false);
+    expect((element('#earTrainerPlayBtn') as HTMLButtonElement).hidden).toBe(false);
+    expect((element('#earTrainerPlayBtn') as HTMLButtonElement).disabled).toBe(false);
+    click('#earTrainerPlayBtn');
+    await settle();
+    const stoppedBefore = audio.events.filter((event) => event.method === 'stop').length;
+    next.focus();
+    click('#earTrainerNextBtn');
+    expect(audio.events.filter((event) => event.method === 'stop').length).toBeGreaterThan(
+      stoppedBefore
+    );
+    await expectFreshExerciseFollows(next, preferences);
+  });
   it('persists the major/minor mode and plays only allowed notes before restoring chromatic mode', async () => {
     const audio = mountDescendingRootExercise();
     expect((element('#earTrainerMajorMinorOnly') as HTMLInputElement).checked).toBe(false);
@@ -233,7 +242,7 @@ describe('ear trainer user flow', () => {
     expect(element('#ear-trainer-page').innerHTML).toMatchSnapshot('playing exercise');
     await vi.advanceTimersByTimeAsync(10_000);
     expect(element('#earTrainerHint').textContent).toBe(
-      'Enter each note, then use the small buttons to add ♭ or ♯.'
+      'Enter each note, then tap a number again or its small button to change the accidental.'
     );
     expect((element('#earTrainerCheckBtn') as HTMLButtonElement).disabled).toBe(false);
     change('#earTrainerDegreeInput', '1');
@@ -257,6 +266,23 @@ describe('ear trainer user flow', () => {
     await vi.advanceTimersByTimeAsync(10_000);
     expect(element('#earTrainerStatus').textContent).toBe(initial);
     expect((element('#earTrainerPlayBtn') as HTMLButtonElement).disabled).toBe(false);
+  });
+
+  it('cycles a filled degree box through flat, sharp and natural when tapped again', () => {
+    vi.useFakeTimers();
+    audioHarness();
+    mockRandomValues();
+    mountApp();
+    initEarTrainerFeature();
+    change('#earTrainerDegreeInput', '1');
+    expect(element('.melodies-interval-box').textContent).toBe('1');
+    element('.melodies-interval-box').click();
+    expect(element('#earTrainerStatus').textContent).toBe('Note 1 changed to ♭1');
+    expect(element('.melodies-interval-box').textContent).toBe('♭1');
+    element('.melodies-interval-box').click();
+    expect(element('#earTrainerStatus').textContent).toBe('Note 1 changed to ♯1');
+    element('.melodies-interval-box').click();
+    expect(element('#earTrainerStatus').textContent).toBe('Note 1 changed to 1');
   });
 
   it('updates settings and round affordances after every individual selection', () => {

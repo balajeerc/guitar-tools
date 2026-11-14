@@ -119,7 +119,7 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
         </button>
         </div>
         <p class="ear-trainer-input-hint">
-          Example: 1, ♭3, 5. Tap a number again or its small button to cycle ♭, ♯, natural.
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
         </p>
       </div>
 
@@ -267,7 +267,7 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
         </button>
         </div>
         <p class="ear-trainer-input-hint">
-          Example: 1, ♭3, 5. Tap a number again or its small button to cycle ♭, ♯, natural.
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
         </p>
       </div>
 
@@ -415,7 +415,7 @@ exports[`ear trainer user flow > persists settings, constrains ranges, plays exe
         </button>
         </div>
         <p class="ear-trainer-input-hint">
-          Example: 1, ♭3, 5. Tap a number again or its small button to cycle ♭, ♯, natural.
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
         </p>
       </div>
 
@@ -565,7 +565,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </button>
         </div>
         <p class="ear-trainer-input-hint">
-          Example: 1, ♭3, 5. Tap a number again or its small button to cycle ♭, ♯, natural.
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
         </p>
       </div>
 
@@ -713,7 +713,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </button>
         </div>
         <p class="ear-trainer-input-hint">
-          Example: 1, ♭3, 5. Tap a number again or its small button to cycle ♭, ♯, natural.
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
         </p>
       </div>
 
@@ -861,7 +861,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </button>
         </div>
         <p class="ear-trainer-input-hint">
-          Example: 1, ♭3, 5. Tap a number again or its small button to cycle ♭, ♯, natural.
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
         </p>
       </div>
 
@@ -1009,7 +1009,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </button>
         </div>
         <p class="ear-trainer-input-hint">
-          Example: 1, ♭3, 5. Tap a number again or its small button to cycle ♭, ♯, natural.
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
         </p>
       </div>
 
@@ -1157,7 +1157,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </button>
         </div>
         <p class="ear-trainer-input-hint">
-          Example: 1, ♭3, 5. Tap a number again or its small button to cycle ♭, ♯, natural.
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
         </p>
       </div>
 
@@ -1305,7 +1305,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </button>
         </div>
         <p class="ear-trainer-input-hint">
-          Example: 1, ♭3, 5. Tap a number again or its small button to cycle ♭, ♯, natural.
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
         </p>
       </div>
 
@@ -1453,7 +1453,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </button>
         </div>
         <p class="ear-trainer-input-hint">
-          Example: 1, ♭3, 5. Tap a number again or its small button to cycle ♭, ♯, natural.
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
         </p>
       </div>
 
@@ -1601,7 +1601,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </button>
         </div>
         <p class="ear-trainer-input-hint">
-          Example: 1, ♭3, 5. Tap a number again or its small button to cycle ♭, ♯, natural.
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
         </p>
       </div>
 
@@ -1749,7 +1749,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </button>
         </div>
         <p class="ear-trainer-input-hint">
-          Example: 1, ♭3, 5. Tap a number again or its small button to cycle ♭, ♯, natural.
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
         </p>
       </div>
 
@@ -1897,7 +1897,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </button>
         </div>
         <p class="ear-trainer-input-hint">
-          Example: 1, ♭3, 5. Tap a number again or its small button to cycle ♭, ♯, natural.
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
         </p>
       </div>
 
@@ -2045,7 +2045,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </button>
         </div>
         <p class="ear-trainer-input-hint">
-          Example: 1, ♭3, 5. Tap a number again or its small button to cycle ♭, ♯, natural.
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
         </p>
       </div>
 
@@ -2193,7 +2193,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </button>
         </div>
         <p class="ear-trainer-input-hint">
-          Example: 1, ♭3, 5. Tap a number again or its small button to cycle ♭, ♯, natural.
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
         </p>
       </div>
 
@@ -2341,7 +2341,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </button>
         </div>
         <p class="ear-trainer-input-hint">
-          Example: 1, ♭3, 5. Tap a number again or its small button to cycle ♭, ♯, natural.
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
         </p>
       </div>
 
@@ -2489,7 +2489,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </button>
         </div>
         <p class="ear-trainer-input-hint">
-          Example: 1, ♭3, 5. Tap a number again or its small button to cycle ♭, ♯, natural.
+          Example: 1, ♭3, 5. Tap the small button under a box to cycle ♭, ♮, ♯.
         </p>
       </div>
 

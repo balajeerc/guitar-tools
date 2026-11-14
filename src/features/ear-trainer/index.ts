@@ -157,10 +157,7 @@ async function playExercise(): Promise<void> {
     if (currentPlayback === playbackId) {
       round.playing = false;
       setText('earTrainerStatus', 'Which degrees did you hear?');
-      setText(
-        'earTrainerHint',
-        'Enter each note, then tap a number again or its small button to change the accidental.'
-      );
+      setText('earTrainerHint', 'Enter each note, then use the small buttons to add ♭ or ♯.');
       updateButtons();
     }
   }
@@ -252,7 +249,7 @@ function updateAnswerInput(field: HTMLInputElement): void {
   renderAnswers();
   const entered = round.degrees.filter((degree) => degree.length > 0).length;
   setText('earTrainerStatus', `${entered} of ${count} notes entered`);
-  setText('earTrainerHint', 'Tap a number again or its small button to cycle ♭, ♯, natural.');
+  setText('earTrainerHint', 'Tap the small button under a box to cycle ♭, natural and ♯.');
   updateButtons();
 }
 
@@ -292,14 +289,6 @@ function handleIntervalEntryClick(event: MouseEvent): void {
     return;
   }
   const index = intervalSlotIndex(target);
-  const tappedFilledBox =
-    index >= 0 &&
-    target.closest<HTMLElement>('.melodies-interval-box') !== null &&
-    (round.degrees[index] ?? '').length > 0;
-  if (tappedFilledBox) {
-    cycleAccidental(index);
-    return;
-  }
   focusDegreeInput(index >= 0 ? index : undefined);
 }
 

@@ -242,7 +242,7 @@ describe('ear trainer user flow', () => {
     expect(element('#ear-trainer-page').innerHTML).toMatchSnapshot('playing exercise');
     await vi.advanceTimersByTimeAsync(10_000);
     expect(element('#earTrainerHint').textContent).toBe(
-      'Enter each note, then tap a number again or its small button to change the accidental.'
+      'Enter each note, then use the small buttons to add ♭ or ♯.'
     );
     expect((element('#earTrainerCheckBtn') as HTMLButtonElement).disabled).toBe(false);
     change('#earTrainerDegreeInput', '1');
@@ -268,21 +268,19 @@ describe('ear trainer user flow', () => {
     expect((element('#earTrainerPlayBtn') as HTMLButtonElement).disabled).toBe(false);
   });
 
-  it('cycles a filled degree box through flat, sharp and natural when tapped again', () => {
+  it('focuses the degree input and selects the tapped filled box', () => {
     vi.useFakeTimers();
     audioHarness();
     mockRandomValues();
     mountApp();
     initEarTrainerFeature();
-    change('#earTrainerDegreeInput', '1');
-    expect(element('.melodies-interval-box').textContent).toBe('1');
+    change('#earTrainerDegreeInput', '12');
+    const field = element('#earTrainerDegreeInput') as HTMLInputElement;
+    field.blur();
     element('.melodies-interval-box').click();
-    expect(element('#earTrainerStatus').textContent).toBe('Note 1 changed to ♭1');
-    expect(element('.melodies-interval-box').textContent).toBe('♭1');
-    element('.melodies-interval-box').click();
-    expect(element('#earTrainerStatus').textContent).toBe('Note 1 changed to ♯1');
-    element('.melodies-interval-box').click();
-    expect(element('#earTrainerStatus').textContent).toBe('Note 1 changed to 1');
+    expect(document.activeElement?.id).toBe('earTrainerDegreeInput');
+    expect(field.selectionStart).toBe(0);
+    expect(field.selectionEnd).toBe(1);
   });
 
   it('updates settings and round affordances after every individual selection', () => {

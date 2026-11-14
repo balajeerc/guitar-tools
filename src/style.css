@@ -3133,6 +3133,30 @@ body {
 
 /* ===== Interval ear trainer ===== */
 
+/* Reserve the ready prompt's wrapped text so playback does not move the controls. */
+#earTrainerStatus,
+#earTrainerPrompt::before {
+  grid-area: 1 / 2;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+#earTrainerHint,
+#earTrainerPrompt::after {
+  grid-area: 2 / 2;
+  font-size: 13px;
+}
+
+#earTrainerPrompt::before {
+  content: attr(data-ready-status);
+  visibility: hidden;
+}
+
+#earTrainerPrompt::after {
+  content: attr(data-ready-hint);
+  visibility: hidden;
+}
+
 .ear-trainer-session {
   margin-top: 16px;
   padding: 16px;

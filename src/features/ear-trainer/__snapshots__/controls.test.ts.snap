@@ -99,7 +99,7 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
         </div>
       </details>
 
-      <div class="melodies-prompt" id="earTrainerPrompt">
+      <div class="melodies-prompt" id="earTrainerPrompt" data-ready-status="Which degrees did you hear?" data-ready-hint="Enter each note, then use the small buttons to add ♭ or ♯.">
         <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
         <strong id="earTrainerStatus">1 of 3 notes correct</strong>
         <span id="earTrainerHint">Highlighted notes need another listen. Change them and check again.</span>
@@ -247,7 +247,7 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
         </div>
       </details>
 
-      <div class="melodies-prompt" id="earTrainerPrompt">
+      <div class="melodies-prompt" id="earTrainerPrompt" data-ready-status="Which degrees did you hear?" data-ready-hint="Enter each note, then use the small buttons to add ♭ or ♯.">
         <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
         <strong id="earTrainerStatus">Listen carefully…</strong>
         <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
@@ -395,7 +395,7 @@ exports[`ear trainer user flow > persists settings, constrains ranges, plays exe
         </div>
       </details>
 
-      <div class="melodies-prompt" id="earTrainerPrompt">
+      <div class="melodies-prompt" id="earTrainerPrompt" data-ready-status="Which degrees did you hear?" data-ready-hint="Enter each note, then use the small buttons to add ♭ or ♯.">
         <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
         <strong id="earTrainerStatus">You got it!</strong>
         <span id="earTrainerHint">Every scale degree matched.</span>
@@ -545,7 +545,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </div>
       </details>
 
-      <div class="melodies-prompt" id="earTrainerPrompt">
+      <div class="melodies-prompt" id="earTrainerPrompt" data-ready-status="Which degrees did you hear?" data-ready-hint="Enter each note, then use the small buttons to add ♭ or ♯.">
         <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
         <strong id="earTrainerStatus">Press play to listen</strong>
         <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
@@ -693,7 +693,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </div>
       </details>
 
-      <div class="melodies-prompt" id="earTrainerPrompt">
+      <div class="melodies-prompt" id="earTrainerPrompt" data-ready-status="Which degrees did you hear?" data-ready-hint="Enter each note, then use the small buttons to add ♭ or ♯.">
         <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
         <strong id="earTrainerStatus">Press play to listen</strong>
         <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
@@ -841,7 +841,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </div>
       </details>
 
-      <div class="melodies-prompt" id="earTrainerPrompt">
+      <div class="melodies-prompt" id="earTrainerPrompt" data-ready-status="Which degrees did you hear?" data-ready-hint="Enter each note, then use the small buttons to add ♭ or ♯.">
         <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
         <strong id="earTrainerStatus">Press play to listen</strong>
         <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
@@ -989,7 +989,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </div>
       </details>
 
-      <div class="melodies-prompt" id="earTrainerPrompt">
+      <div class="melodies-prompt" id="earTrainerPrompt" data-ready-status="Which degrees did you hear?" data-ready-hint="Enter each note, then use the small buttons to add ♭ or ♯.">
         <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
         <strong id="earTrainerStatus">Press play to listen</strong>
         <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
@@ -1137,7 +1137,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </div>
       </details>
 
-      <div class="melodies-prompt" id="earTrainerPrompt">
+      <div class="melodies-prompt" id="earTrainerPrompt" data-ready-status="Which degrees did you hear?" data-ready-hint="Enter each note, then use the small buttons to add ♭ or ♯.">
         <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
         <strong id="earTrainerStatus">Press play to listen</strong>
         <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
@@ -1285,7 +1285,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </div>
       </details>
 
-      <div class="melodies-prompt" id="earTrainerPrompt">
+      <div class="melodies-prompt" id="earTrainerPrompt" data-ready-status="Which degrees did you hear?" data-ready-hint="Enter each note, then use the small buttons to add ♭ or ♯.">
         <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
         <strong id="earTrainerStatus">Press play to listen</strong>
         <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
@@ -1433,7 +1433,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </div>
       </details>
 
-      <div class="melodies-prompt" id="earTrainerPrompt">
+      <div class="melodies-prompt" id="earTrainerPrompt" data-ready-status="Which degrees did you hear?" data-ready-hint="Enter each note, then use the small buttons to add ♭ or ♯.">
         <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
         <strong id="earTrainerStatus">Press play to listen</strong>
         <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
@@ -1581,7 +1581,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </div>
       </details>
 
-      <div class="melodies-prompt" id="earTrainerPrompt">
+      <div class="melodies-prompt" id="earTrainerPrompt" data-ready-status="Which degrees did you hear?" data-ready-hint="Enter each note, then use the small buttons to add ♭ or ♯.">
         <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
         <strong id="earTrainerStatus">Press play to listen</strong>
         <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
@@ -1729,7 +1729,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </div>
       </details>
 
-      <div class="melodies-prompt" id="earTrainerPrompt">
+      <div class="melodies-prompt" id="earTrainerPrompt" data-ready-status="Which degrees did you hear?" data-ready-hint="Enter each note, then use the small buttons to add ♭ or ♯.">
         <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
         <strong id="earTrainerStatus">Press play to listen</strong>
         <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
@@ -1877,7 +1877,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </div>
       </details>
 
-      <div class="melodies-prompt" id="earTrainerPrompt">
+      <div class="melodies-prompt" id="earTrainerPrompt" data-ready-status="Which degrees did you hear?" data-ready-hint="Enter each note, then use the small buttons to add ♭ or ♯.">
         <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
         <strong id="earTrainerStatus">Press play to listen</strong>
         <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
@@ -2025,7 +2025,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </div>
       </details>
 
-      <div class="melodies-prompt" id="earTrainerPrompt">
+      <div class="melodies-prompt" id="earTrainerPrompt" data-ready-status="Which degrees did you hear?" data-ready-hint="Enter each note, then use the small buttons to add ♭ or ♯.">
         <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
         <strong id="earTrainerStatus">Press play to listen</strong>
         <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
@@ -2173,7 +2173,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </div>
       </details>
 
-      <div class="melodies-prompt" id="earTrainerPrompt">
+      <div class="melodies-prompt" id="earTrainerPrompt" data-ready-status="Which degrees did you hear?" data-ready-hint="Enter each note, then use the small buttons to add ♭ or ♯.">
         <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
         <strong id="earTrainerStatus">Press play to listen</strong>
         <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
@@ -2321,7 +2321,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </div>
       </details>
 
-      <div class="melodies-prompt" id="earTrainerPrompt">
+      <div class="melodies-prompt" id="earTrainerPrompt" data-ready-status="Which degrees did you hear?" data-ready-hint="Enter each note, then use the small buttons to add ♭ or ♯.">
         <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
         <strong id="earTrainerStatus">Press play to listen</strong>
         <span id="earTrainerHint">Enter each note as a scale degree of the key.</span>
@@ -2469,7 +2469,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
         </div>
       </details>
 
-      <div class="melodies-prompt" id="earTrainerPrompt">
+      <div class="melodies-prompt" id="earTrainerPrompt" data-ready-status="Which degrees did you hear?" data-ready-hint="Enter each note, then use the small buttons to add ♭ or ♯.">
         <span class="melodies-prompt-icon" aria-hidden="true">♪</span>
         <strong id="earTrainerStatus">Answer revealed</strong>
         <span id="earTrainerHint">Listen once more and notice the note degrees.</span>

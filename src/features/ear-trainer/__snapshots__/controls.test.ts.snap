@@ -6,6 +6,7 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
       <p class="melodies-eyebrow">Scale degree ear training</p>
       <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
       <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+      <button type="button" class="melodies-btn melodies-btn-secondary ear-trainer-cheatsheet-btn" id="earTrainerCheatsheetBtn" aria-haspopup="dialog">Show cheatsheet</button>
     </header>
 
     <div class="melodies-card">
@@ -124,9 +125,7 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
 
       <div class="melodies-actions">
         <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
-        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn">
-          Check answer
-        </button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn">Check answer</button>
       </div>
 
       <div class="melodies-result" id="earTrainerResult" hidden=""></div>
@@ -152,6 +151,7 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
       <p class="melodies-eyebrow">Scale degree ear training</p>
       <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
       <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+      <button type="button" class="melodies-btn melodies-btn-secondary ear-trainer-cheatsheet-btn" id="earTrainerCheatsheetBtn" aria-haspopup="dialog">Show cheatsheet</button>
     </header>
 
     <div class="melodies-card">
@@ -270,9 +270,7 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
 
       <div class="melodies-actions">
         <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn" disabled="">♪ Playing…</button>
-        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
-          Check answer
-        </button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">Check answer</button>
       </div>
 
       <div class="melodies-result" id="earTrainerResult" hidden=""></div>
@@ -298,6 +296,7 @@ exports[`ear trainer user flow > persists settings, constrains ranges, plays exe
       <p class="melodies-eyebrow">Scale degree ear training</p>
       <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
       <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+      <button type="button" class="melodies-btn melodies-btn-secondary ear-trainer-cheatsheet-btn" id="earTrainerCheatsheetBtn" aria-haspopup="dialog">Show cheatsheet</button>
     </header>
 
     <div class="melodies-card">
@@ -416,9 +415,7 @@ exports[`ear trainer user flow > persists settings, constrains ranges, plays exe
 
       <div class="melodies-actions">
         <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
-        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
-          Check answer
-        </button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn">Next exercise</button>
       </div>
 
       <div class="melodies-result" id="earTrainerResult"><strong>You got it!</strong><span>C2 ↑ C#2 ↑ D2</span><div class="melodies-answer"><b>Scale degrees</b><div><span>1</span><i aria-hidden="true">–</i><span>♭2</span><i aria-hidden="true">–</i><span>2</span></div></div><div class="melodies-answer"><b>Intervals</b><div><span>m2</span><i aria-hidden="true">–</i><span>m2</span></div></div><small>Every note matched. Key C · root C2. Direction is not scored.</small></div>
@@ -446,6 +443,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       <p class="melodies-eyebrow">Scale degree ear training</p>
       <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
       <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+      <button type="button" class="melodies-btn melodies-btn-secondary ear-trainer-cheatsheet-btn" id="earTrainerCheatsheetBtn" aria-haspopup="dialog">Show cheatsheet</button>
     </header>
 
     <div class="melodies-card">
@@ -564,9 +562,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
 
       <div class="melodies-actions">
         <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
-        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
-          Check answer
-        </button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">Check answer</button>
       </div>
 
       <div class="melodies-result" id="earTrainerResult" hidden=""></div>
@@ -592,6 +588,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       <p class="melodies-eyebrow">Scale degree ear training</p>
       <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
       <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+      <button type="button" class="melodies-btn melodies-btn-secondary ear-trainer-cheatsheet-btn" id="earTrainerCheatsheetBtn" aria-haspopup="dialog">Show cheatsheet</button>
     </header>
 
     <div class="melodies-card">
@@ -710,9 +707,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
 
       <div class="melodies-actions">
         <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
-        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
-          Check answer
-        </button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">Check answer</button>
       </div>
 
       <div class="melodies-result" id="earTrainerResult" hidden=""></div>
@@ -738,6 +733,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       <p class="melodies-eyebrow">Scale degree ear training</p>
       <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
       <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+      <button type="button" class="melodies-btn melodies-btn-secondary ear-trainer-cheatsheet-btn" id="earTrainerCheatsheetBtn" aria-haspopup="dialog">Show cheatsheet</button>
     </header>
 
     <div class="melodies-card">
@@ -856,9 +852,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
 
       <div class="melodies-actions">
         <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
-        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
-          Check answer
-        </button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">Check answer</button>
       </div>
 
       <div class="melodies-result" id="earTrainerResult" hidden=""></div>
@@ -884,6 +878,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       <p class="melodies-eyebrow">Scale degree ear training</p>
       <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
       <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+      <button type="button" class="melodies-btn melodies-btn-secondary ear-trainer-cheatsheet-btn" id="earTrainerCheatsheetBtn" aria-haspopup="dialog">Show cheatsheet</button>
     </header>
 
     <div class="melodies-card">
@@ -1002,9 +997,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
 
       <div class="melodies-actions">
         <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
-        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
-          Check answer
-        </button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">Check answer</button>
       </div>
 
       <div class="melodies-result" id="earTrainerResult" hidden=""></div>
@@ -1030,6 +1023,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       <p class="melodies-eyebrow">Scale degree ear training</p>
       <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
       <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+      <button type="button" class="melodies-btn melodies-btn-secondary ear-trainer-cheatsheet-btn" id="earTrainerCheatsheetBtn" aria-haspopup="dialog">Show cheatsheet</button>
     </header>
 
     <div class="melodies-card">
@@ -1148,9 +1142,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
 
       <div class="melodies-actions">
         <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
-        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
-          Check answer
-        </button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">Check answer</button>
       </div>
 
       <div class="melodies-result" id="earTrainerResult" hidden=""></div>
@@ -1176,6 +1168,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       <p class="melodies-eyebrow">Scale degree ear training</p>
       <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
       <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+      <button type="button" class="melodies-btn melodies-btn-secondary ear-trainer-cheatsheet-btn" id="earTrainerCheatsheetBtn" aria-haspopup="dialog">Show cheatsheet</button>
     </header>
 
     <div class="melodies-card">
@@ -1294,9 +1287,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
 
       <div class="melodies-actions">
         <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
-        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
-          Check answer
-        </button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">Check answer</button>
       </div>
 
       <div class="melodies-result" id="earTrainerResult" hidden=""></div>
@@ -1322,6 +1313,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       <p class="melodies-eyebrow">Scale degree ear training</p>
       <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
       <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+      <button type="button" class="melodies-btn melodies-btn-secondary ear-trainer-cheatsheet-btn" id="earTrainerCheatsheetBtn" aria-haspopup="dialog">Show cheatsheet</button>
     </header>
 
     <div class="melodies-card">
@@ -1440,9 +1432,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
 
       <div class="melodies-actions">
         <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
-        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
-          Check answer
-        </button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">Check answer</button>
       </div>
 
       <div class="melodies-result" id="earTrainerResult" hidden=""></div>
@@ -1468,6 +1458,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       <p class="melodies-eyebrow">Scale degree ear training</p>
       <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
       <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+      <button type="button" class="melodies-btn melodies-btn-secondary ear-trainer-cheatsheet-btn" id="earTrainerCheatsheetBtn" aria-haspopup="dialog">Show cheatsheet</button>
     </header>
 
     <div class="melodies-card">
@@ -1586,9 +1577,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
 
       <div class="melodies-actions">
         <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
-        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
-          Check answer
-        </button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">Check answer</button>
       </div>
 
       <div class="melodies-result" id="earTrainerResult" hidden=""></div>
@@ -1614,6 +1603,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       <p class="melodies-eyebrow">Scale degree ear training</p>
       <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
       <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+      <button type="button" class="melodies-btn melodies-btn-secondary ear-trainer-cheatsheet-btn" id="earTrainerCheatsheetBtn" aria-haspopup="dialog">Show cheatsheet</button>
     </header>
 
     <div class="melodies-card">
@@ -1732,9 +1722,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
 
       <div class="melodies-actions">
         <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
-        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
-          Check answer
-        </button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">Check answer</button>
       </div>
 
       <div class="melodies-result" id="earTrainerResult" hidden=""></div>
@@ -1760,6 +1748,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       <p class="melodies-eyebrow">Scale degree ear training</p>
       <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
       <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+      <button type="button" class="melodies-btn melodies-btn-secondary ear-trainer-cheatsheet-btn" id="earTrainerCheatsheetBtn" aria-haspopup="dialog">Show cheatsheet</button>
     </header>
 
     <div class="melodies-card">
@@ -1878,9 +1867,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
 
       <div class="melodies-actions">
         <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
-        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
-          Check answer
-        </button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">Check answer</button>
       </div>
 
       <div class="melodies-result" id="earTrainerResult" hidden=""></div>
@@ -1906,6 +1893,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       <p class="melodies-eyebrow">Scale degree ear training</p>
       <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
       <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+      <button type="button" class="melodies-btn melodies-btn-secondary ear-trainer-cheatsheet-btn" id="earTrainerCheatsheetBtn" aria-haspopup="dialog">Show cheatsheet</button>
     </header>
 
     <div class="melodies-card">
@@ -2024,9 +2012,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
 
       <div class="melodies-actions">
         <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
-        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
-          Check answer
-        </button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">Check answer</button>
       </div>
 
       <div class="melodies-result" id="earTrainerResult" hidden=""></div>
@@ -2052,6 +2038,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       <p class="melodies-eyebrow">Scale degree ear training</p>
       <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
       <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+      <button type="button" class="melodies-btn melodies-btn-secondary ear-trainer-cheatsheet-btn" id="earTrainerCheatsheetBtn" aria-haspopup="dialog">Show cheatsheet</button>
     </header>
 
     <div class="melodies-card">
@@ -2170,9 +2157,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
 
       <div class="melodies-actions">
         <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
-        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
-          Check answer
-        </button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">Check answer</button>
       </div>
 
       <div class="melodies-result" id="earTrainerResult" hidden=""></div>
@@ -2198,6 +2183,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       <p class="melodies-eyebrow">Scale degree ear training</p>
       <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
       <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+      <button type="button" class="melodies-btn melodies-btn-secondary ear-trainer-cheatsheet-btn" id="earTrainerCheatsheetBtn" aria-haspopup="dialog">Show cheatsheet</button>
     </header>
 
     <div class="melodies-card">
@@ -2316,9 +2302,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
 
       <div class="melodies-actions">
         <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
-        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
-          Check answer
-        </button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">Check answer</button>
       </div>
 
       <div class="melodies-result" id="earTrainerResult" hidden=""></div>
@@ -2344,6 +2328,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       <p class="melodies-eyebrow">Scale degree ear training</p>
       <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
       <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+      <button type="button" class="melodies-btn melodies-btn-secondary ear-trainer-cheatsheet-btn" id="earTrainerCheatsheetBtn" aria-haspopup="dialog">Show cheatsheet</button>
     </header>
 
     <div class="melodies-card">
@@ -2462,9 +2447,7 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
 
       <div class="melodies-actions">
         <button type="button" class="melodies-btn melodies-btn-secondary" id="earTrainerPlayBtn">▶ Play notes</button>
-        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn" disabled="">
-          Check answer
-        </button>
+        <button type="button" class="melodies-btn melodies-btn-primary" id="earTrainerCheckBtn">Next exercise</button>
       </div>
 
       <div class="melodies-result" id="earTrainerResult"><strong>Answer revealed</strong><span>C2 ↑ C#2 ↑ D2</span><div class="melodies-answer"><b>Scale degrees</b><div><span>1</span><i aria-hidden="true">–</i><span>♭2</span><i aria-hidden="true">–</i><span>2</span></div></div><div class="melodies-answer"><b>Intervals</b><div><span>m2</span><i aria-hidden="true">–</i><span>m2</span></div></div><small>Listen again and notice the scale degrees. Key C · root C2. Direction is not scored.</small></div>

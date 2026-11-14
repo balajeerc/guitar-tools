@@ -172,9 +172,10 @@ export function renderResult(exercise: EarTrainerExercise, heading: string, deta
 export function updateRoundButtons(state: RoundButtonState): void {
   setText('earTrainerPlayBtn', state.playing ? '♪ Playing…' : '▶ Play notes');
   setDisabled('earTrainerPlayBtn', state.playing);
+  setText('earTrainerCheckBtn', state.finished ? 'Next exercise' : 'Check answer');
   setDisabled(
     'earTrainerCheckBtn',
-    state.playing || state.finished || !state.hasPlayed || !state.selectionsComplete
+    !state.finished && (state.playing || !state.hasPlayed || !state.selectionsComplete)
   );
   setDisabled('earTrainerRevealBtn', state.finished);
   setHidden('earTrainerNextBtn', !state.finished);

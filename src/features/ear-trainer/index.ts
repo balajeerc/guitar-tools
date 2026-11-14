@@ -4,6 +4,7 @@ import { createMelodyPlayer } from '../melodies/playback';
 import { MELODY_TONES, type MelodyTone } from '../melodies/tone';
 import { accidentalPrefix, formatDegree, nextDegreeAccidental, setText } from '../melodies/ui';
 
+import { setupCheatsheet } from './cheatsheet';
 import { earTrainerPanelHtml } from './panel';
 import { loadPractice, recordAttempt, savePractice, takeReview } from './practice';
 import { renderSession } from './sessionView';
@@ -175,8 +176,17 @@ function finishRound(status: 'correct' | 'revealed'): void {
   updateButtons();
 }
 
+function advanceExercise(): void {
+  newExercise();
+  document.getElementById('earTrainerPlayBtn')?.focus();
+}
+
 function checkAnswer(): void {
-  if (isFinished() || round.playing || !round.hasPlayed) return;
+  if (isFinished()) {
+    advanceExercise();
+    return;
+  }
+  if (round.playing || !round.hasPlayed) return;
   if (!answersComplete()) {
     setText('earTrainerStatus', 'Enter every note first');
     setText('earTrainerHint', 'Type one scale degree for each note.');
@@ -381,10 +391,7 @@ function setupRoundEvents(): void {
   document.getElementById('earTrainerCheckBtn')?.addEventListener('click', checkAnswer);
   document.getElementById('earTrainerRevealBtn')?.addEventListener('click', revealAnswer);
   document.getElementById('earTrainerNewBtn')?.addEventListener('click', newExercise);
-  document.getElementById('earTrainerNextBtn')?.addEventListener('click', () => {
-    newExercise();
-    document.getElementById('earTrainerPlayBtn')?.focus();
-  });
+  document.getElementById('earTrainerNextBtn')?.addEventListener('click', advanceExercise);
   getInput('earTrainerDegreeInput')?.addEventListener('input', (event) => {
     updateAnswerInput(event.target as HTMLInputElement);
   });
@@ -402,14 +409,17 @@ function setupRoundEvents(): void {
   });
 }
 
-function handleRouteStop(): void {
-  if (window.location.hash.slice(1) === 'ear-trainer') return;
+function pauseExercise(): void {
   const wasPlaying = round.playing;
   stopPlayback();
   if (!wasPlaying) return;
   setText('earTrainerStatus', 'Playback stopped');
   setText('earTrainerHint', 'Press play to hear the exercise again.');
   updateButtons();
+}
+
+function handleRouteStop(): void {
+  if (window.location.hash.slice(1) !== 'ear-trainer') pauseExercise();
 }
 
 function setupRouteStop(): void {
@@ -435,4 +445,5 @@ export function initEarTrainerFeature(): void {
   setupSettingEvents();
   setupRoundEvents();
   setupRouteStop();
+  setupCheatsheet({ getTone: () => settings.tone, onOpen: pauseExercise });
 }

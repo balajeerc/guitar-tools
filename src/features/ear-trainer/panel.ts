@@ -50,6 +50,7 @@ export function earTrainerPanelHtml(): string {
       <p class="melodies-eyebrow">Scale degree ear training</p>
       <h1 id="earTrainerHeading">Name the scale degrees you hear</h1>
       <p class="melodies-intro">Listen to the phrase, then name each note as a scale degree of the key.</p>
+      <button type="button" class="melodies-btn melodies-btn-secondary ear-trainer-cheatsheet-btn" id="earTrainerCheatsheetBtn" aria-haspopup="dialog">Show cheatsheet</button>
     </header>
 
     <div class="melodies-card">

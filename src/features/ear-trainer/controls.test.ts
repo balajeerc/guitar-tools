@@ -41,6 +41,7 @@ describe('ear trainer user flow', () => {
   it.each([
     {
       completion: 'correct',
+      advanceSelector: '#earTrainerCheckBtn',
       finish: () => {
         change('#earTrainerDegreeInput', '1221');
         click('[data-ear-trainer-accidental="2"]');
@@ -50,14 +51,15 @@ describe('ear trainer user flow', () => {
     },
     {
       completion: 'revealed',
+      advanceSelector: '#earTrainerNextBtn',
       finish: () => {
         click('#earTrainerRevealBtn');
       },
       status: 'Answer revealed',
     },
   ])(
-    'shows the inline next button after a $completion round and starts a fresh exercise',
-    async ({ finish, status }) => {
+    'offers next exercise after a $completion round and advances via $advanceSelector',
+    async ({ finish, status, advanceSelector }) => {
       const audio = mountDescendingRootExercise();
       const next = element('#earTrainerNextBtn') as HTMLButtonElement;
       const preferences = loadEarTrainerSettings();
@@ -72,15 +74,18 @@ describe('ear trainer user flow', () => {
       finish();
       expect(element('#earTrainerStatus').textContent).toBe(status);
       expect(next.hidden).toBe(false);
+      expect(element('#earTrainerCheckBtn').textContent).toBe('Next exercise');
+      expect((element('#earTrainerCheckBtn') as HTMLButtonElement).disabled).toBe(false);
       click('#earTrainerPlayBtn');
       await settle();
       const stoppedBefore = audio.events.filter((event) => event.method === 'stop').length;
       next.focus();
-      click('#earTrainerNextBtn');
+      click(advanceSelector);
       expect(audio.events.filter((event) => event.method === 'stop').length).toBeGreaterThan(
         stoppedBefore
       );
       expect(next.hidden).toBe(true);
+      expect(element('#earTrainerCheckBtn').textContent).toBe('Check answer');
       expect(element('#earTrainerResult').hidden).toBe(true);
       expect((element('#earTrainerDegreeInput') as HTMLInputElement).value).toBe('1');
       expect((element('#earTrainerDegreeInput') as HTMLInputElement).disabled).toBe(false);

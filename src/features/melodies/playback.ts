@@ -48,17 +48,21 @@ function scheduleNote(
 export function createMelodyPlayer(): MelodyPlayer {
   let context: AudioContext | null = null;
   let scheduled: OscillatorNode[] = [];
+  let playbackId = 0;
 
   function stop(): void {
+    playbackId += 1;
     for (const oscillator of scheduled) oscillator.stop();
     scheduled = [];
   }
 
   async function play(melody: Melody, tone: SynthTone): Promise<void> {
     stop();
+    const currentPlayback = playbackId;
     context ??= new AudioContext();
     const ctx = context;
     if (ctx.state === 'suspended') await ctx.resume();
+    if (currentPlayback !== playbackId) return;
     const beatSeconds = 60 / melody.bpm;
     let cursor = ctx.currentTime + START_DELAY_SECONDS;
     scheduled = melody.notes.map(({ midi, beats, restAfterBeats = 0 }) => {
@@ -70,7 +74,7 @@ export function createMelodyPlayer(): MelodyPlayer {
     await new Promise<void>((resolve) => {
       window.setTimeout(resolve, (cursor - ctx.currentTime) * 1000);
     });
-    scheduled = [];
+    if (currentPlayback === playbackId) scheduled = [];
   }
 
   return { play, stop };

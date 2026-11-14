@@ -70,10 +70,14 @@ describe('ear trainer interval cheatsheet', () => {
     for (let semitones = 1; semitones <= 12; semitones++) {
       const selector = row(semitones);
       const first = element(`${selector} [data-song-title]`).textContent;
+      expect(first.trim()).not.toBe('');
+      expect(element(`${selector} [data-song-cue]`).textContent.trim()).not.toBe('');
       const titles = new Set([first]);
       for (let index = 1; index < 5; index++) {
         click(`${selector} [data-reference-step="1"]`);
-        titles.add(element(`${selector} [data-song-title]`).textContent);
+        const title = element(`${selector} [data-song-title]`).textContent;
+        expect(title.trim()).not.toBe('');
+        titles.add(title);
         expect(element(`${selector} [data-song-count]`).textContent).toBe(`${index + 1} / 5`);
         expect(element(`${selector} [data-song-cue]`).textContent.length).toBeGreaterThan(0);
       }
@@ -94,28 +98,34 @@ describe('ear trainer interval cheatsheet', () => {
   });
 
   it.each([
-    [1, 277.1826],
-    [2, 293.6648],
-    [3, 311.127],
-    [4, 329.6276],
-    [5, 349.2282],
-    [6, 369.9944],
-    [7, 391.9954],
-    [8, 415.3047],
-    [9, 440],
-    [10, 466.1638],
-    [11, 493.8833],
-    [12, 523.2511],
-  ])(
+    [1, 277.1826, 'Minor 2nd', 'm2', '♭2'],
+    [2, 293.6648, 'Major 2nd', 'M2', '2'],
+    [3, 311.127, 'Minor 3rd', 'm3', '♭3'],
+    [4, 329.6276, 'Major 3rd', 'M3', '3'],
+    [5, 349.2282, 'Perfect 4th', 'P4', '4'],
+    [6, 369.9944, 'Tritone', 'A4 / d5', '♯4 / ♭5'],
+    [7, 391.9954, 'Perfect 5th', 'P5', '5'],
+    [8, 415.3047, 'Minor 6th', 'm6', '♭6'],
+    [9, 440, 'Major 6th', 'M6', '6'],
+    [10, 466.1638, 'Minor 7th', 'm7', '♭7'],
+    [11, 493.8833, 'Major 7th', 'M7', '7'],
+    [12, 523.2511, 'Octave', 'P8', '1′'],
+  ] as const)(
     'plays C4 followed by the note %i semitones above, in the selected tone',
-    async (semitones, expected) => {
+    async (semitones, expected, name, symbol, degree) => {
       const audio = audioHarness();
       const preferences = loadEarTrainerSettings();
       click('#earTrainerCheatsheetBtn');
+      expect(element(`${row(semitones)} th`).textContent).toContain(name);
+      expect(element(`${row(semitones)} th small`).textContent).toBe(`${symbol} · 1 → ${degree}`);
+      expect(element(`${row(semitones)} [data-play-interval]`).getAttribute('aria-label')).toBe(
+        `Play ${name}: root then ${degree}`
+      );
       play(semitones);
       await settle();
       const heard = frequencies(audio);
       expect(heard).toHaveLength(2);
+      expect(element(`${row(semitones)} [data-play-interval]`).textContent).toBe('■');
       expect(heard[0]).toBeCloseTo(261.6256, 3);
       expect(heard[1]).toBeCloseTo(expected, 3);
       expect(
@@ -129,6 +139,7 @@ describe('ear trainer interval cheatsheet', () => {
         'false'
       );
       expect(element('.cheatsheet-status').textContent).toContain('finished');
+      expect(element(`${row(semitones)} [data-play-interval]`).textContent).toBe('▶');
       expect(loadEarTrainerSettings()).toEqual(preferences);
       expect(element('#earTrainerStatus').textContent).toBe('Press play to listen');
       click('.cheatsheet-close');
@@ -183,17 +194,38 @@ describe('ear trainer interval cheatsheet', () => {
     expect(element('#earTrainerStatus').textContent).toBe('Playback stopped');
   });
 
-  it('closes on a backdrop click and leaves clicks inside the dialog open', () => {
+  it.each([
+    { clientX: 99, clientY: 200 },
+    { clientX: 301, clientY: 200 },
+    { clientX: 200, clientY: 99 },
+    { clientX: 200, clientY: 301 },
+  ])('closes when the backdrop is clicked at $clientX, $clientY', (position) => {
     click('#earTrainerCheatsheetBtn');
-    element('dialog').dispatchEvent(
-      new MouseEvent('click', { bubbles: true, clientX: 0, clientY: 0 })
-    );
-    expect(document.querySelector('dialog')).not.toBeNull();
-    element('dialog').dispatchEvent(
-      new MouseEvent('click', { bubbles: true, clientX: 100, clientY: 100 })
-    );
+    const dialog = element('dialog');
+    vi.spyOn(dialog, 'getBoundingClientRect').mockReturnValue(new DOMRect(100, 100, 200, 200));
+    dialog.dispatchEvent(new MouseEvent('click', { bubbles: true, ...position }));
     expect(document.querySelector('dialog')).toBeNull();
     expect(document.activeElement?.id).toBe('earTrainerCheatsheetBtn');
+  });
+
+  it('keeps clicks within the dialog and on its boundaries open', () => {
+    expect.hasAssertions();
+    click('#earTrainerCheatsheetBtn');
+    const dialog = element('dialog');
+    vi.spyOn(dialog, 'getBoundingClientRect').mockReturnValue(new DOMRect(100, 100, 200, 200));
+    for (const position of [
+      { clientX: 200, clientY: 200 },
+      { clientX: 100, clientY: 200 },
+      { clientX: 300, clientY: 200 },
+      { clientX: 200, clientY: 100 },
+      { clientX: 200, clientY: 300 },
+    ]) {
+      dialog.dispatchEvent(new MouseEvent('click', { bubbles: true, ...position }));
+      expect(document.querySelector('dialog')).toBe(dialog);
+    }
+    element('#cheatsheetHeading').dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    expect(document.querySelector('dialog')).toBe(dialog);
+    click('.cheatsheet-close');
   });
 
   it('keeps keyboard navigation within the modal', () => {
@@ -201,14 +233,25 @@ describe('ear trainer interval cheatsheet', () => {
     const dialog = element('dialog');
     const close = element('.cheatsheet-close');
     const last = element('.cheatsheet-source a');
-    close.dispatchEvent(
-      new KeyboardEvent('keydown', { key: 'Tab', shiftKey: true, bubbles: true })
-    );
+    const backwards = new KeyboardEvent('keydown', {
+      key: 'Tab',
+      shiftKey: true,
+      bubbles: true,
+      cancelable: true,
+    });
+    close.dispatchEvent(backwards);
+    expect(backwards.defaultPrevented).toBe(true);
     expect(document.activeElement).toBe(last);
     last.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', bubbles: true }));
     expect(document.activeElement).toBe(close);
     dialog.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
     expect(document.activeElement).toBe(close);
+    const middle = element(`${row(1)} [data-reference-step="1"]`);
+    middle.focus();
+    const forwards = new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true });
+    middle.dispatchEvent(forwards);
+    expect(forwards.defaultPrevented).toBe(false);
+    expect(document.activeElement).toBe(middle);
     click('.cheatsheet-close');
   });
 

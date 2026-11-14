@@ -35,7 +35,7 @@ function trapFocus(event: KeyboardEvent): void {
   const last = controls[controls.length - 1];
   const boundary = event.shiftKey ? first : last;
   const destination = event.shiftKey ? last : first;
-  if (boundary?.matches(':focus')) {
+  if (boundary?.isSameNode(document.activeElement)) {
     event.preventDefault();
     destination?.focus();
   }

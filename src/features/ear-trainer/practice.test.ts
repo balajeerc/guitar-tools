@@ -124,4 +124,128 @@ describe('adaptive ear practice', () => {
     localStorage.setItem('ear-trainer-practice', JSON.stringify({ attempts: 0, nextReviewAt: 0 }));
     expect(loadPractice().reviews).toEqual([]);
   });
+
+  it.each([
+    { keyIndex: 12 },
+    { keyIndex: -1 },
+    { keyIndex: 1.5 },
+    { notes: [48], intervals: [] },
+    { notes: [48, 49, 50, 51, 52], intervals: [1, 1, 1, 1] },
+    { notes: [48, 144], intervals: [1] },
+    { notes: [48, -1], intervals: [1] },
+    { intervals: [1, 13] },
+    { intervals: [1, -1] },
+    { intervals: [1] },
+    { intervals: null },
+    { rootMidi: 49 },
+  ])('rejects an invalid saved exercise: %j', (update) => {
+    const practice = loadPractice();
+    recordAttempt(practice, missed, settings, [true, false, false]);
+    const review = practice.reviews[0]!;
+    localStorage.setItem(
+      'ear-trainer-practice',
+      JSON.stringify({
+        ...practice,
+        reviews: [{ ...review, exercise: { ...review.exercise, ...update } }],
+      })
+    );
+    expect(loadPractice().reviews).toEqual([]);
+  });
+
+  it.each([
+    { keyIndex: 11, notes: [131, 143], intervals: [12], rootMidi: null },
+    { keyIndex: 0, notes: [0, 1, 2, 3], intervals: [1, 1, 1], rootMidi: 0 },
+  ])('restores valid exercises at supported boundaries: %j', (exercise) => {
+    const practice = loadPractice();
+    recordAttempt(practice, exercise, settings, [true, false]);
+    savePractice(practice);
+    expect(loadPractice().reviews[0]?.exercise).toEqual(exercise);
+  });
+
+  it.each([{ context: 0 }, { streak: 2 }, { due: -1 }])(
+    'rejects invalid saved review metadata: %j',
+    (update) => {
+      const practice = loadPractice();
+      recordAttempt(practice, missed, settings, [true, false, false]);
+      localStorage.setItem(
+        'ear-trainer-practice',
+        JSON.stringify({
+          ...practice,
+          reviews: [{ ...practice.reviews[0], ...update }],
+        })
+      );
+      expect(loadPractice().reviews).toEqual([]);
+    }
+  );
+
+  it('rejects invalid daily dates and retains a perfect daily score on reload', () => {
+    const practice = loadPractice();
+    recordAttempt(practice, missed, settings, [true, true, true]);
+    savePractice(practice);
+    expect(loadPractice().today).toEqual(practice.today);
+    localStorage.setItem(
+      'ear-trainer-practice',
+      JSON.stringify({
+        ...practice,
+        today: { ...practice.today, date: 0 },
+      })
+    );
+    expect(loadPractice().today.total).toBe(0);
+  });
+
+  it('caps imported review history and retains the most recent entries', () => {
+    const practice = loadPractice();
+    recordAttempt(practice, missed, settings, [true, false, false]);
+    const review = practice.reviews[0]!;
+    localStorage.setItem(
+      'ear-trainer-practice',
+      JSON.stringify({
+        ...practice,
+        reviews: Array.from({ length: 55 }, (_, due) => ({ ...review, due })),
+      })
+    );
+    const restored = loadPractice();
+    expect(restored.reviews).toHaveLength(50);
+    expect(restored.reviews[0]?.due).toBe(5);
+    expect(restored.reviews[49]?.due).toBe(54);
+  });
+
+  it('chooses the oldest due phrase and spaces out multiple overdue reviews', () => {
+    const practice = loadPractice();
+    recordAttempt(practice, missed, settings, [true, false, false]);
+    recordAttempt(practice, fresh, settings, [true, false, false]);
+    practice.reviews.reverse();
+    practice.attempts = 20;
+    expect(takeReview(practice, settings)).toEqual(missed);
+    expect(takeReview(practice, settings)).toBeNull();
+    practice.attempts = 22;
+    expect(takeReview(practice, settings)).toBeNull();
+    practice.attempts = 23;
+    expect(takeReview(practice, settings)).toEqual(fresh);
+  });
+
+  it('keeps matching notes separate when the practice constraints or tonic differ', () => {
+    const practice = loadPractice();
+    recordAttempt(practice, missed, settings, [true, false, false]);
+    recordAttempt(practice, missed, { ...settings, octaveEnd: 4 }, [true, false, false]);
+    expect(practice.reviews).toHaveLength(2);
+    const randomSettings = { ...settings, fixedKey: false, playRootFirst: false };
+    recordAttempt(practice, { ...missed, rootMidi: null }, randomSettings, [false, false, false]);
+    recordAttempt(practice, { ...missed, rootMidi: null, keyIndex: 2 }, randomSettings, [
+      false,
+      false,
+      false,
+    ]);
+    expect(practice.reviews).toHaveLength(4);
+  });
+
+  it('rolls over the daily score when the next answer is submitted after midnight', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date(2026, 10, 14, 23, 59));
+    const practice = loadPractice();
+    recordAttempt(practice, missed, settings, [true, false, false]);
+    vi.setSystemTime(new Date(2026, 10, 15, 0, 1));
+    recordAttempt(practice, fresh, settings, [true, true, true]);
+    expect(practice.today).toEqual({ date: '2026-11-15', correct: 2, total: 2, rounds: 1 });
+  });
 });

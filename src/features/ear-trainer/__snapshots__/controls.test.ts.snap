@@ -135,7 +135,10 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
       </div>
     </div>
     <section class="ear-trainer-session" id="earTrainerSession" aria-labelledby="earTrainerSessionHeading">
-      <h2 id="earTrainerSessionHeading">Today’s session</h2>
+      <div class="ear-trainer-session-header">
+        <h2 id="earTrainerSessionHeading">Today’s session</h2>
+        <button type="button" class="melodies-link-btn" id="earTrainerResetSessionBtn">Reset session</button>
+      </div>
       <div role="status" aria-live="polite">
         <strong id="earTrainerAccuracy">33% first-try accuracy</strong>
         <span id="earTrainerSessionCount">1 of 3 notes · 1 exercise</span>
@@ -280,7 +283,10 @@ exports[`ear trainer user flow > checks complete played answers, preserves the i
       </div>
     </div>
     <section class="ear-trainer-session" id="earTrainerSession" aria-labelledby="earTrainerSessionHeading">
-      <h2 id="earTrainerSessionHeading">Today’s session</h2>
+      <div class="ear-trainer-session-header">
+        <h2 id="earTrainerSessionHeading">Today’s session</h2>
+        <button type="button" class="melodies-link-btn" id="earTrainerResetSessionBtn" disabled="">Reset session</button>
+      </div>
       <div role="status" aria-live="polite">
         <strong id="earTrainerAccuracy">— first-try accuracy</strong>
         <span id="earTrainerSessionCount">0 of 0 notes · 0 exercises</span>
@@ -425,7 +431,10 @@ exports[`ear trainer user flow > persists settings, constrains ranges, plays exe
       </div>
     </div>
     <section class="ear-trainer-session" id="earTrainerSession" aria-labelledby="earTrainerSessionHeading">
-      <h2 id="earTrainerSessionHeading">Today’s session</h2>
+      <div class="ear-trainer-session-header">
+        <h2 id="earTrainerSessionHeading">Today’s session</h2>
+        <button type="button" class="melodies-link-btn" id="earTrainerResetSessionBtn">Reset session</button>
+      </div>
       <div role="status" aria-live="polite">
         <strong id="earTrainerAccuracy">0% first-try accuracy</strong>
         <span id="earTrainerSessionCount">0 of 2 notes · 1 exercise</span>
@@ -572,7 +581,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       </div>
     </div>
     <section class="ear-trainer-session" id="earTrainerSession" aria-labelledby="earTrainerSessionHeading">
-      <h2 id="earTrainerSessionHeading">Today’s session</h2>
+      <div class="ear-trainer-session-header">
+        <h2 id="earTrainerSessionHeading">Today’s session</h2>
+        <button type="button" class="melodies-link-btn" id="earTrainerResetSessionBtn" disabled="">Reset session</button>
+      </div>
       <div role="status" aria-live="polite">
         <strong id="earTrainerAccuracy">— first-try accuracy</strong>
         <span id="earTrainerSessionCount">0 of 0 notes · 0 exercises</span>
@@ -717,7 +729,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       </div>
     </div>
     <section class="ear-trainer-session" id="earTrainerSession" aria-labelledby="earTrainerSessionHeading">
-      <h2 id="earTrainerSessionHeading">Today’s session</h2>
+      <div class="ear-trainer-session-header">
+        <h2 id="earTrainerSessionHeading">Today’s session</h2>
+        <button type="button" class="melodies-link-btn" id="earTrainerResetSessionBtn" disabled="">Reset session</button>
+      </div>
       <div role="status" aria-live="polite">
         <strong id="earTrainerAccuracy">— first-try accuracy</strong>
         <span id="earTrainerSessionCount">0 of 0 notes · 0 exercises</span>
@@ -862,7 +877,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       </div>
     </div>
     <section class="ear-trainer-session" id="earTrainerSession" aria-labelledby="earTrainerSessionHeading">
-      <h2 id="earTrainerSessionHeading">Today’s session</h2>
+      <div class="ear-trainer-session-header">
+        <h2 id="earTrainerSessionHeading">Today’s session</h2>
+        <button type="button" class="melodies-link-btn" id="earTrainerResetSessionBtn" disabled="">Reset session</button>
+      </div>
       <div role="status" aria-live="polite">
         <strong id="earTrainerAccuracy">— first-try accuracy</strong>
         <span id="earTrainerSessionCount">0 of 0 notes · 0 exercises</span>
@@ -1007,7 +1025,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       </div>
     </div>
     <section class="ear-trainer-session" id="earTrainerSession" aria-labelledby="earTrainerSessionHeading">
-      <h2 id="earTrainerSessionHeading">Today’s session</h2>
+      <div class="ear-trainer-session-header">
+        <h2 id="earTrainerSessionHeading">Today’s session</h2>
+        <button type="button" class="melodies-link-btn" id="earTrainerResetSessionBtn" disabled="">Reset session</button>
+      </div>
       <div role="status" aria-live="polite">
         <strong id="earTrainerAccuracy">— first-try accuracy</strong>
         <span id="earTrainerSessionCount">0 of 0 notes · 0 exercises</span>
@@ -1152,7 +1173,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       </div>
     </div>
     <section class="ear-trainer-session" id="earTrainerSession" aria-labelledby="earTrainerSessionHeading">
-      <h2 id="earTrainerSessionHeading">Today’s session</h2>
+      <div class="ear-trainer-session-header">
+        <h2 id="earTrainerSessionHeading">Today’s session</h2>
+        <button type="button" class="melodies-link-btn" id="earTrainerResetSessionBtn" disabled="">Reset session</button>
+      </div>
       <div role="status" aria-live="polite">
         <strong id="earTrainerAccuracy">— first-try accuracy</strong>
         <span id="earTrainerSessionCount">0 of 0 notes · 0 exercises</span>
@@ -1297,7 +1321,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       </div>
     </div>
     <section class="ear-trainer-session" id="earTrainerSession" aria-labelledby="earTrainerSessionHeading">
-      <h2 id="earTrainerSessionHeading">Today’s session</h2>
+      <div class="ear-trainer-session-header">
+        <h2 id="earTrainerSessionHeading">Today’s session</h2>
+        <button type="button" class="melodies-link-btn" id="earTrainerResetSessionBtn" disabled="">Reset session</button>
+      </div>
       <div role="status" aria-live="polite">
         <strong id="earTrainerAccuracy">— first-try accuracy</strong>
         <span id="earTrainerSessionCount">0 of 0 notes · 0 exercises</span>
@@ -1442,7 +1469,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       </div>
     </div>
     <section class="ear-trainer-session" id="earTrainerSession" aria-labelledby="earTrainerSessionHeading">
-      <h2 id="earTrainerSessionHeading">Today’s session</h2>
+      <div class="ear-trainer-session-header">
+        <h2 id="earTrainerSessionHeading">Today’s session</h2>
+        <button type="button" class="melodies-link-btn" id="earTrainerResetSessionBtn" disabled="">Reset session</button>
+      </div>
       <div role="status" aria-live="polite">
         <strong id="earTrainerAccuracy">— first-try accuracy</strong>
         <span id="earTrainerSessionCount">0 of 0 notes · 0 exercises</span>
@@ -1587,7 +1617,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       </div>
     </div>
     <section class="ear-trainer-session" id="earTrainerSession" aria-labelledby="earTrainerSessionHeading">
-      <h2 id="earTrainerSessionHeading">Today’s session</h2>
+      <div class="ear-trainer-session-header">
+        <h2 id="earTrainerSessionHeading">Today’s session</h2>
+        <button type="button" class="melodies-link-btn" id="earTrainerResetSessionBtn" disabled="">Reset session</button>
+      </div>
       <div role="status" aria-live="polite">
         <strong id="earTrainerAccuracy">— first-try accuracy</strong>
         <span id="earTrainerSessionCount">0 of 0 notes · 0 exercises</span>
@@ -1732,7 +1765,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       </div>
     </div>
     <section class="ear-trainer-session" id="earTrainerSession" aria-labelledby="earTrainerSessionHeading">
-      <h2 id="earTrainerSessionHeading">Today’s session</h2>
+      <div class="ear-trainer-session-header">
+        <h2 id="earTrainerSessionHeading">Today’s session</h2>
+        <button type="button" class="melodies-link-btn" id="earTrainerResetSessionBtn" disabled="">Reset session</button>
+      </div>
       <div role="status" aria-live="polite">
         <strong id="earTrainerAccuracy">— first-try accuracy</strong>
         <span id="earTrainerSessionCount">0 of 0 notes · 0 exercises</span>
@@ -1877,7 +1913,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       </div>
     </div>
     <section class="ear-trainer-session" id="earTrainerSession" aria-labelledby="earTrainerSessionHeading">
-      <h2 id="earTrainerSessionHeading">Today’s session</h2>
+      <div class="ear-trainer-session-header">
+        <h2 id="earTrainerSessionHeading">Today’s session</h2>
+        <button type="button" class="melodies-link-btn" id="earTrainerResetSessionBtn" disabled="">Reset session</button>
+      </div>
       <div role="status" aria-live="polite">
         <strong id="earTrainerAccuracy">— first-try accuracy</strong>
         <span id="earTrainerSessionCount">0 of 0 notes · 0 exercises</span>
@@ -2022,7 +2061,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       </div>
     </div>
     <section class="ear-trainer-session" id="earTrainerSession" aria-labelledby="earTrainerSessionHeading">
-      <h2 id="earTrainerSessionHeading">Today’s session</h2>
+      <div class="ear-trainer-session-header">
+        <h2 id="earTrainerSessionHeading">Today’s session</h2>
+        <button type="button" class="melodies-link-btn" id="earTrainerResetSessionBtn" disabled="">Reset session</button>
+      </div>
       <div role="status" aria-live="polite">
         <strong id="earTrainerAccuracy">— first-try accuracy</strong>
         <span id="earTrainerSessionCount">0 of 0 notes · 0 exercises</span>
@@ -2167,7 +2209,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       </div>
     </div>
     <section class="ear-trainer-session" id="earTrainerSession" aria-labelledby="earTrainerSessionHeading">
-      <h2 id="earTrainerSessionHeading">Today’s session</h2>
+      <div class="ear-trainer-session-header">
+        <h2 id="earTrainerSessionHeading">Today’s session</h2>
+        <button type="button" class="melodies-link-btn" id="earTrainerResetSessionBtn" disabled="">Reset session</button>
+      </div>
       <div role="status" aria-live="polite">
         <strong id="earTrainerAccuracy">— first-try accuracy</strong>
         <span id="earTrainerSessionCount">0 of 0 notes · 0 exercises</span>
@@ -2312,7 +2357,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       </div>
     </div>
     <section class="ear-trainer-session" id="earTrainerSession" aria-labelledby="earTrainerSessionHeading">
-      <h2 id="earTrainerSessionHeading">Today’s session</h2>
+      <div class="ear-trainer-session-header">
+        <h2 id="earTrainerSessionHeading">Today’s session</h2>
+        <button type="button" class="melodies-link-btn" id="earTrainerResetSessionBtn" disabled="">Reset session</button>
+      </div>
       <div role="status" aria-live="polite">
         <strong id="earTrainerAccuracy">— first-try accuracy</strong>
         <span id="earTrainerSessionCount">0 of 0 notes · 0 exercises</span>
@@ -2457,7 +2505,10 @@ exports[`ear trainer user flow > updates settings and round affordances after ev
       </div>
     </div>
     <section class="ear-trainer-session" id="earTrainerSession" aria-labelledby="earTrainerSessionHeading">
-      <h2 id="earTrainerSessionHeading">Today’s session</h2>
+      <div class="ear-trainer-session-header">
+        <h2 id="earTrainerSessionHeading">Today’s session</h2>
+        <button type="button" class="melodies-link-btn" id="earTrainerResetSessionBtn">Reset session</button>
+      </div>
       <div role="status" aria-live="polite">
         <strong id="earTrainerAccuracy">0% first-try accuracy</strong>
         <span id="earTrainerSessionCount">0 of 2 notes · 1 exercise</span>

@@ -1,4 +1,4 @@
-import { setHidden, setText } from '../melodies/ui';
+import { setDisabled, setHidden, setText } from '../melodies/ui';
 
 import { type EarTrainerPractice, refreshSession } from './practice';
 
@@ -6,6 +6,7 @@ export function renderSession(practice: EarTrainerPractice, enabled: boolean): v
   refreshSession(practice);
   setHidden('earTrainerSession', !enabled);
   const { correct, total, rounds } = practice.today;
+  setDisabled('earTrainerResetSessionBtn', total === 0);
   const accuracy = total === 0 ? '—' : `${Math.round((correct / total) * 100)}%`;
   setText('earTrainerAccuracy', `${accuracy} first-try accuracy`);
   setText(

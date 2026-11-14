@@ -46,6 +46,25 @@ describe('today’s ear trainer session', () => {
     expect((element('#earTrainerRepeatMistakes') as HTMLInputElement).checked).toBe(true);
     expect(element('#earTrainerAccuracy').textContent).toBe('— first-try accuracy');
     expect(element('#earTrainerSession').hidden).toBe(false);
+    expect((element('#earTrainerResetSessionBtn') as HTMLButtonElement).disabled).toBe(true);
+  });
+
+  it('resets today’s session while keeping adaptive review progress', async () => {
+    await playRound();
+    change('#earTrainerDegreeInput', '111');
+    click('#earTrainerCheckBtn');
+    expect(element('#earTrainerAccuracy').textContent).toBe('0% first-try accuracy');
+    const before = loadPractice();
+    expect(before.attempts).toBeGreaterThan(0);
+    expect(before.reviews).toHaveLength(1);
+    click('#earTrainerResetSessionBtn');
+    expect(element('#earTrainerAccuracy').textContent).toBe('— first-try accuracy');
+    expect(element('#earTrainerSessionCount').textContent).toBe('0 of 0 notes · 0 exercises');
+    expect((element('#earTrainerResetSessionBtn') as HTMLButtonElement).disabled).toBe(true);
+    const after = loadPractice();
+    expect(after.today).toMatchObject({ correct: 0, total: 0, rounds: 0 });
+    expect(after.attempts).toBe(before.attempts);
+    expect(after.reviews).toEqual(before.reviews);
   });
 
   it('preserves first-check accuracy across retries, replays, reveals and reloads', async () => {

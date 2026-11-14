@@ -3141,8 +3141,16 @@ body {
   border-radius: var(--radius-lg);
 }
 
-.ear-trainer-session h2 {
-  margin: 0 0 8px;
+.ear-trainer-session-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.ear-trainer-session-header h2 {
+  margin: 0;
   font-size: 14px;
 }
 

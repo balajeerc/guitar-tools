@@ -6,7 +6,13 @@ import { accidentalPrefix, formatDegree, nextDegreeAccidental, setText } from '.
 
 import { setupCheatsheet } from './cheatsheet';
 import { earTrainerPanelHtml } from './panel';
-import { loadPractice, recordAttempt, savePractice, takeReview } from './practice';
+import {
+  loadPractice,
+  recordAttempt,
+  resetTodaySession,
+  savePractice,
+  takeReview,
+} from './practice';
 import { renderSession } from './sessionView';
 import { loadEarTrainerSettings, saveEarTrainerSettings } from './settings';
 import {
@@ -359,6 +365,18 @@ function resetSettings(): void {
   newExercise();
 }
 
+function resetSessionProgress(): void {
+  resetTodaySession(practice);
+  savePractice(practice);
+  renderSession(practice, settings.repeatMistakes);
+}
+
+function setupSessionEvents(): void {
+  document
+    .getElementById('earTrainerResetSessionBtn')
+    ?.addEventListener('click', resetSessionProgress);
+}
+
 function setupToneEvents(): void {
   for (const { value } of MELODY_TONES) {
     document.getElementById(`earTrainerTone${value}Btn`)?.addEventListener('click', () => {
@@ -465,6 +483,7 @@ export function initEarTrainerFeature(): void {
   newExercise();
   setupSettingEvents();
   setupRoundEvents();
+  setupSessionEvents();
   setupRouteStop();
   setupCheatsheet({ getTone: () => settings.tone, onOpen: pauseExercise });
 }

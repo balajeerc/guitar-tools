@@ -25,7 +25,10 @@ function answerEntryHtml(): string {
 
 function sessionHtml(): string {
   return `<section class="ear-trainer-session" id="earTrainerSession" aria-labelledby="earTrainerSessionHeading">
-      <h2 id="earTrainerSessionHeading">Today’s session</h2>
+      <div class="ear-trainer-session-header">
+        <h2 id="earTrainerSessionHeading">Today’s session</h2>
+        <button type="button" class="melodies-link-btn" id="earTrainerResetSessionBtn">Reset session</button>
+      </div>
       <div role="status" aria-live="polite">
         <strong id="earTrainerAccuracy"></strong>
         <span id="earTrainerSessionCount"></span>

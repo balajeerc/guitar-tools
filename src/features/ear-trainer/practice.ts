@@ -40,6 +40,10 @@ export function refreshSession(practice: EarTrainerPractice): void {
   if (practice.today.date !== localDate()) practice.today = emptySession();
 }
 
+export function resetTodaySession(practice: EarTrainerPractice): void {
+  practice.today = emptySession();
+}
+
 function practiceContext(settings: EarTrainerSettings): string {
   return JSON.stringify([
     settings.octaveStart,

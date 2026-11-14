@@ -677,6 +677,7 @@ exports[`exercise settings > preserves the default exercise preferences 1`] = `
   "octaveEnd": 3,
   "octaveStart": 2,
   "playRootFirst": false,
+  "repeatMistakes": true,
   "tone": "pluck",
 }
 `;

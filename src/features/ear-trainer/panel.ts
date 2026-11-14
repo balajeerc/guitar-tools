@@ -23,6 +23,27 @@ function answerEntryHtml(): string {
         </div>`;
 }
 
+function sessionHtml(): string {
+  return `<section class="ear-trainer-session" id="earTrainerSession" aria-labelledby="earTrainerSessionHeading">
+      <h2 id="earTrainerSessionHeading">Today’s session</h2>
+      <div role="status" aria-live="polite">
+        <strong id="earTrainerAccuracy"></strong>
+        <span id="earTrainerSessionCount"></span>
+      </div>
+      <p id="earTrainerSessionHint"></p>
+    </section>`;
+}
+
+function practiceSettingHtml(): string {
+  return `<div>
+          <label class="checkbox-label">
+            <input type="checkbox" id="earTrainerRepeatMistakes" checked aria-describedby="earTrainerPracticeHint" />
+            <span>Repeat mistakes &amp; track today’s session</span>
+          </label>
+          <p class="ear-trainer-settings-hint" id="earTrainerPracticeHint">Adaptive practice: missed phrases return after a few exercises. Two first-try successes clear a phrase. Progress is saved in this browser.</p>
+        </div>`;
+}
+
 export function earTrainerPanelHtml(): string {
   return `<section class="melodies-game ear-trainer" aria-labelledby="earTrainerHeading">
     <header class="melodies-hero">
@@ -103,6 +124,8 @@ export function earTrainerPanelHtml(): string {
         </div>
         </fieldset>
 
+        ${practiceSettingHtml()}
+
         <div class="ear-trainer-setting-row ear-trainer-tone-row">
           <fieldset class="melodies-tone">
             <legend>Tone</legend>
@@ -144,5 +167,6 @@ export function earTrainerPanelHtml(): string {
         <button type="button" class="melodies-link-btn" id="earTrainerNewBtn">New exercise</button>
       </div>
     </div>
+    ${sessionHtml()}
   </section>`;
 }

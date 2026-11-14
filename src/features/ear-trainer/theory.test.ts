@@ -83,6 +83,7 @@ describe('exercise settings', () => {
     ).toEqual({
       octaveStart: 1,
       octaveEnd: 7,
+      repeatMistakes: true,
       directions: ['ascending', 'descending'],
       noteCount: 4,
       keyIndex: 0,

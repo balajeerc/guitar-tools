@@ -5,6 +5,8 @@ import { MELODY_TONES, type MelodyTone } from '../melodies/tone';
 import { accidentalPrefix, formatDegree, nextDegreeAccidental, setText } from '../melodies/ui';
 
 import { earTrainerPanelHtml } from './panel';
+import { loadPractice, recordAttempt, savePractice, takeReview } from './practice';
+import { renderSession } from './sessionView';
 import { loadEarTrainerSettings, saveEarTrainerSettings } from './settings';
 import {
   clampInteger,
@@ -39,6 +41,7 @@ interface RoundState {
   hasPlayed: boolean;
   judgement: boolean[] | null;
   playing: boolean;
+  recorded: boolean;
   status: RoundStatus;
 }
 
@@ -50,6 +53,7 @@ const player = createMelodyPlayer();
 let settings: EarTrainerSettings = { ...DEFAULT_EAR_TRAINER_SETTINGS };
 let round: RoundState = createRound(createExercise(settings), settings.playRootFirst);
 let playbackId = 0;
+let practice = loadPractice();
 
 function getInput(id: string): HTMLInputElement | null {
   return document.getElementById(id) as HTMLInputElement | null;
@@ -64,6 +68,7 @@ function createRound(exercise: EarTrainerExercise, prefillFirst: boolean): Round
     status: 'ready',
     hasPlayed: false,
     playing: false,
+    recorded: false,
   };
 }
 
@@ -109,9 +114,17 @@ function updateButtons(): void {
 
 function newExercise(): void {
   stopPlayback();
-  round = createRound(createExercise(settings), settings.playRootFirst);
+  const review = takeReview(practice, settings);
+  round = createRound(review ?? createExercise(settings), settings.playRootFirst);
+  savePractice(practice);
   renderSettings(settings);
-  renderExercise(round.exercise, settings, INITIAL_STATUS, INITIAL_HINT);
+  renderExercise(
+    round.exercise,
+    settings,
+    INITIAL_STATUS,
+    review ? 'A phrase to revisit. Listen and try again from memory.' : INITIAL_HINT
+  );
+  renderSession(practice, settings.repeatMistakes);
   renderAnswers();
   updateButtons();
 }
@@ -163,6 +176,7 @@ function finishRound(status: 'correct' | 'revealed'): void {
 }
 
 function checkAnswer(): void {
+  if (isFinished() || round.playing || !round.hasPlayed) return;
   if (!answersComplete()) {
     setText('earTrainerStatus', 'Enter every note first');
     setText('earTrainerHint', 'Type one scale degree for each note.');
@@ -175,6 +189,7 @@ function checkAnswer(): void {
     return degreeSemitones(actual) === degreeSemitones(degree);
   });
   const correctCount = judgement.filter(Boolean).length;
+  recordFirstAttempt(judgement);
   round.judgement = judgement;
   if (correctCount === expected.length) {
     finishRound('correct');
@@ -187,7 +202,17 @@ function checkAnswer(): void {
 }
 
 function revealAnswer(): void {
-  if (!isFinished()) finishRound('revealed');
+  if (isFinished()) return;
+  recordFirstAttempt(round.exercise.notes.map(() => false));
+  finishRound('revealed');
+}
+
+function recordFirstAttempt(judgement: readonly boolean[]): void {
+  if (round.recorded || !settings.repeatMistakes) return;
+  round.recorded = true;
+  recordAttempt(practice, round.exercise, settings, judgement);
+  savePractice(practice);
+  renderSession(practice, true);
 }
 
 function updateAnswerInput(field: HTMLInputElement): void {
@@ -311,6 +336,20 @@ function setupDirectionEvents(): void {
   });
 }
 
+function setupCheckboxSettingEvents(): void {
+  const fields = {
+    earTrainerPlayRootFirst: 'playRootFirst',
+    earTrainerMajorMinorOnly: 'majorMinorOnly',
+    earTrainerFixKey: 'fixedKey',
+    earTrainerRepeatMistakes: 'repeatMistakes',
+  } as const;
+  for (const [id, field] of Object.entries(fields)) {
+    getInput(id)?.addEventListener('change', (event) => {
+      updateSettings({ [field]: (event.target as HTMLInputElement).checked });
+    });
+  }
+}
+
 function setupSettingEvents(): void {
   getInput('earTrainerOctaveStart')?.addEventListener('change', () => {
     commitOctaves('start');
@@ -331,15 +370,7 @@ function setupSettingEvents(): void {
     changeKey(1);
   });
   setupDirectionEvents();
-  getInput('earTrainerPlayRootFirst')?.addEventListener('change', (event) => {
-    updateSettings({ playRootFirst: (event.target as HTMLInputElement).checked });
-  });
-  getInput('earTrainerMajorMinorOnly')?.addEventListener('change', (event) => {
-    updateSettings({ majorMinorOnly: (event.target as HTMLInputElement).checked });
-  });
-  getInput('earTrainerFixKey')?.addEventListener('change', (event) => {
-    updateSettings({ fixedKey: (event.target as HTMLInputElement).checked });
-  });
+  setupCheckboxSettingEvents();
   setupToneEvents();
 }
 
@@ -397,6 +428,7 @@ export function initEarTrainerFeature(): void {
   container.innerHTML = earTrainerPanelHtml();
   setupSettingsDisclosure();
   settings = loadEarTrainerSettings();
+  practice = loadPractice();
   round = createRound(createExercise(settings), settings.playRootFirst);
   document.getElementById('earTrainerReset')?.appendChild(createResetLink(resetSettings));
   newExercise();

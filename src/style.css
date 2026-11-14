@@ -3133,6 +3133,32 @@ body {
 
 /* ===== Interval ear trainer ===== */
 
+.ear-trainer-session {
+  margin-top: 16px;
+  padding: 16px;
+  background: var(--color-muted);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.ear-trainer-session h2 {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.ear-trainer-session [role='status'] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: 14px;
+}
+
+.ear-trainer-session p {
+  margin: 8px 0 0;
+  color: var(--color-text-secondary);
+  font-size: 12px;
+}
+
 .ear-trainer-settings {
   margin: 16px 0 12px;
 }

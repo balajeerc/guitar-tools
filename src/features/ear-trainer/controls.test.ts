@@ -1,6 +1,14 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { audioHarness, change, click, element, mountApp, settle } from '../../__fixtures__/browser';
+import {
+  audioHarness,
+  change,
+  click,
+  element,
+  mockRandomValues,
+  mountApp,
+  settle,
+} from '../../__fixtures__/browser';
 
 import { loadEarTrainerSettings, saveEarTrainerSettings } from './settings';
 import { DEFAULT_EAR_TRAINER_SETTINGS } from './theory';
@@ -10,10 +18,7 @@ let initEarTrainerFeature: () => void;
 function mountDescendingRootExercise() {
   vi.useFakeTimers();
   const audio = audioHarness();
-  vi.spyOn(crypto, 'getRandomValues').mockImplementation((array) => {
-    (array as Uint32Array).fill(0);
-    return array;
-  });
+  mockRandomValues();
   mountApp();
   saveEarTrainerSettings({
     ...DEFAULT_EAR_TRAINER_SETTINGS,

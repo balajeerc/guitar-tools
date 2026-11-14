@@ -27,6 +27,13 @@ export function change(selector: string, value: string): void {
   control.dispatchEvent(new Event('change', { bubbles: true }));
 }
 
+export function mockRandomValues(value = 0) {
+  return vi.spyOn(crypto, 'getRandomValues').mockImplementation((array) => {
+    (array as Uint32Array).fill(value);
+    return array;
+  });
+}
+
 export const mediaQueries = new Map<string, MediaQueryList>();
 export const resizeCallbacks: ResizeObserverCallback[] = [];
 export const frames = new Map<number, FrameRequestCallback>();

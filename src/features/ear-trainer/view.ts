@@ -90,6 +90,7 @@ export function renderSettings(settings: EarTrainerSettings): void {
   setChecked('earTrainerPlayRootFirst', settings.playRootFirst);
   setChecked('earTrainerMajorMinorOnly', settings.majorMinorOnly);
   setChecked('earTrainerFixKey', settings.fixedKey);
+  setChecked('earTrainerRepeatMistakes', settings.repeatMistakes);
   setHidden('earTrainerKeyControl', !settings.fixedKey);
   setText('earTrainerKeyDisplay', keyName(settings.keyIndex));
   setText('earTrainerSettingsHint', settingsHint(settings));

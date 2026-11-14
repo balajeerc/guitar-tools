@@ -23,6 +23,7 @@ export interface EarTrainerSettings {
   octaveEnd: number;
   octaveStart: number;
   playRootFirst: boolean;
+  repeatMistakes: boolean;
   tone: MelodyTone;
 }
 
@@ -35,6 +36,7 @@ export const DEFAULT_EAR_TRAINER_SETTINGS: EarTrainerSettings = {
   fixedKey: false,
   keyIndex: 3,
   majorMinorOnly: false,
+  repeatMistakes: true,
   tone: 'pluck',
 };
 
@@ -129,6 +131,7 @@ export function normalizeSettings(value: null | Partial<EarTrainerSettings>): Ea
     fixedKey: value?.fixedKey === true,
     keyIndex: clampInteger(value?.keyIndex, 0, 11, DEFAULT_EAR_TRAINER_SETTINGS.keyIndex),
     majorMinorOnly: value?.majorMinorOnly === true,
+    repeatMistakes: value?.repeatMistakes !== false,
     tone: value?.tone ?? DEFAULT_EAR_TRAINER_SETTINGS.tone,
   };
 }
